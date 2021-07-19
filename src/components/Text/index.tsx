@@ -1,5 +1,5 @@
-import { forwardRef, ReactNode } from 'react'
-import styled from 'styled-components/macro'
+import { forwardRef, ReactNode } from "react";
+import styled from "styled-components/macro";
 import {
   color,
   ColorProps,
@@ -10,26 +10,34 @@ import {
   compose,
   space,
   SpaceProps,
-} from 'styled-system'
+  LayoutProps,
+  layout,
+} from "styled-system";
 
 type Props = {
-  children: ReactNode
-  as?: string | React.ComponentType<any>
-  className?: string
-} & StyledProps
+  children: ReactNode;
+  as?: string | React.ComponentType<any>;
+  className?: string;
+} & StyledProps;
 
-const Text = forwardRef(({ as = 'span', className, children, ...props }: Props, ref) => (
-  <Container ref={ref} className={className} as={as} {...props}>
-    {children}
-  </Container>
-))
+const Text = forwardRef(
+  ({ as = "span", className, children, ...props }: Props, ref) => (
+    <Container ref={ref} className={className} as={as} {...props}>
+      {children}
+    </Container>
+  )
+);
 
-type StyledProps = TypographyProps & ColorProps & ShadowProps & SpaceProps
+type StyledProps = TypographyProps &
+  ColorProps &
+  ShadowProps &
+  SpaceProps &
+  LayoutProps;
 
 const Container = styled.span<StyledProps>`
   white-space: pre-line;
 
-  ${compose(typography, color, shadow, space)}
-`
+  ${compose(typography, color, shadow, space, layout)}
+`;
 
-export default Text
+export default Text;

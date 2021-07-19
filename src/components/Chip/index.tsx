@@ -20,6 +20,7 @@ const Container = styled.div<ContainerProps>`
   border-radius: ${(props) => props.theme.radii.small};
   padding: 5px 10px;
   color: white;
+  cursor: default;
   background-color: ${(props) => {
     if (props.variant === "POSITIVE") {
       return props.theme.colors.green;

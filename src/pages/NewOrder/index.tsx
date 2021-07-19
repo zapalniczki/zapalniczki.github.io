@@ -15,7 +15,7 @@ const NewOrder = ({ isAuthorized, setIsAuthorized, userId }: Props) => {
   return (
     <>
       <Header isAuthorized={isAuthorized} setIsAuthorized={setIsAuthorized}>
-        New Order
+        Nowe zamówienie
       </Header>
       <Page>
         <PageColumns>

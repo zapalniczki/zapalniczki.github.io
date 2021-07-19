@@ -1,3 +1,5 @@
+import Flexbox from "components/Flexbox";
+import Separator from "components/Separator";
 import Text from "components/Text";
 import React, { ReactNode } from "react";
 import styled from "styled-components/macro";
@@ -10,18 +12,20 @@ type Props = {
 const TileHeader = (props: Props) => {
   return (
     <Container>
-      <Text>{props.title}</Text>
-      {props.children}
+      <Flexbox alignItems="center" justifyContent="space-between">
+        <Text fontSize="18px" fontWeight="600" margin={0} as="h3">
+          {props.title}
+        </Text>
+        {props.children}
+      </Flexbox>
+      <Separator />
     </Container>
   );
 };
 
-const Container = styled.h3`
-  margin: 0;
+const Container = styled.div`
   display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 600;
+  flex-direction: column;
 `;
 
 export default TileHeader;

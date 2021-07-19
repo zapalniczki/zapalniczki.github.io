@@ -1,6 +1,11 @@
 import getUser from "api/users/getUser";
+import Box from "components/Box";
 import Button from "components/Button";
+import Flexbox from "components/Flexbox";
+import Image from "components/Image";
+import Link from "components/Link";
 import QueryLoader from "components/QueryLoader";
+import Separator from "components/Separator";
 import Text from "components/Text";
 import Tile from "components/Tile";
 import TileHeader from "components/TileHeader";
@@ -22,28 +27,34 @@ const UserProfile = ({ userId }: Props) => {
         return (
           <Tile>
             <TileHeader title="Klient">
-              <Button>Zobacz szczegóły</Button>
+              <Link to="/konto/settings">Zobacz szczegóły</Link>
             </TileHeader>
 
-            <Text>{address.name}</Text>
-            <Text>{contact.email}</Text>
-            <Text>{contact.phone_numer}</Text>
+            <Flexbox flexDirection="column" alignItems="center">
+              <Box width="100px" height="100px">
+                <Image src="/" rounded></Image>
+              </Box>
 
-            {[address, billing_address].map((e, index) => {
-              return (
-                <>
-                  <Text marginTop="20px">
-                    {index === 0 ? "Adres" : "Adress do wysyki"}
-                  </Text>
+              <Text marginTop="5px" fontSize="18px" textAlign="center">
+                {address.name}
+              </Text>
+              <Text color="blue" textAlign="center" marginTop="5px">
+                {contact.email}
+              </Text>
+              <Text textAlign="center" marginTop="5px">
+                {contact.phone_number}
+              </Text>
+            </Flexbox>
 
-                  <Text>{e.street}</Text>
-                  <Text>
-                    {e.post_code}, {e.city}
-                  </Text>
-                  <Text>{e.country}</Text>
-                </>
-              );
-            })}
+            <Separator />
+
+            <Text as="strong">Adres do wysyłki</Text>
+
+            <Text>{billing_address.street}</Text>
+            <Text>
+              {billing_address.post_code}, {billing_address.city}
+            </Text>
+            <Text>{billing_address.country}</Text>
           </Tile>
         );
       }}

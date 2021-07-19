@@ -3,7 +3,10 @@ import Box from "components/Box";
 import Flexbox from "components/Flexbox";
 import Image from "components/Image";
 import { InputBox } from "components/Input";
+import Link from "components/Link";
 import Row from "components/Row";
+import Text from "components/Text";
+import TextButton from "components/TextButton";
 import { OrderProduct } from "models/orderProduct";
 import { Product } from "models/product";
 import ProductSelect from "./ProductSelect";
@@ -37,43 +40,32 @@ const ProductRow = ({
   });
 
   return (
-    <Box marginTop="10px" height="150px" style={{ border: "1px solid red" }}>
+    <Box marginTop="20px">
       <Row key={name}>
-        <Flexbox
-          style={{ border: "1px solid red" }}
-          alignItems="center"
-          gridArea="1 / 1 / 1 / 8"
-        >
-          <Flexbox flexDirection="column">
-            <ProductSelect name={name} products={availableProducts} />
-            <p>
-              <strong>Opis:</strong>
-              {thisProduct?.description}
-            </p>
-          </Flexbox>
-
+        <Flexbox alignItems="center" gridArea="1 / 1 / 1 / 8">
           {thisProduct?.picture_url && (
-            <Box height="100%" width="auto">
+            <Box
+              height="100px"
+              minWidth="100px"
+              maxWidth="100px"
+              marginRight="20px"
+            >
               <Image src={thisProduct.picture_url} />
             </Box>
           )}
+
+          <Flexbox flexDirection="column">
+            <Link to="/">{thisProduct?.name}</Link>
+          </Flexbox>
         </Flexbox>
 
-        <Flexbox
-          style={{ border: "2px solid red" }}
-          alignItems="center"
-          gridArea="1 / 8 / 1 / 11"
-        >
+        <Flexbox alignItems="center" gridArea="1 / 8 / 1 / 11">
           <InputBox maxWidth="100px">
-            <span>{price ? `${price}zł` : ""}</span>
+            <Text padding="0 5px">{price ? `${price}zł` : ""}</Text>
           </InputBox>
         </Flexbox>
 
-        <Flexbox
-          style={{ border: "2px solid red" }}
-          alignItems="center"
-          gridArea="1 / 11 / 1 / 14"
-        >
+        <Flexbox alignItems="center" gridArea="1 / 11 / 1 / 14">
           <QuantitySelect product={product} name={name} />
         </Flexbox>
 
@@ -82,13 +74,15 @@ const ProductRow = ({
         </Flexbox>
 
         <Flexbox alignItems="center" gridArea="1 / 16 / 1 / 17">
-          <button
+          <TextButton
             disabled={values._products?.length === 1}
-            onClick={remove}
-            style={{ cursor: "pointer" }}
+            onClick={(event) => {
+              event.preventDefault();
+              remove();
+            }}
           >
             X
-          </button>
+          </TextButton>
         </Flexbox>
       </Row>
     </Box>

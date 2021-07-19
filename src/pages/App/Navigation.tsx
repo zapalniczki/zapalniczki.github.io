@@ -1,9 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 import Button from "components/Button";
 import { maxWidthStyles } from "components/Page";
-import Flexbox from "components/Flexbox";
 
 type Props = {
   isAuthorized: boolean;
@@ -11,30 +10,20 @@ type Props = {
 };
 
 const Navigation = ({ isAuthorized, setIsAuthorized }: Props) => {
-  const { pathname } = useLocation();
-
   return (
     <Wrapper>
       <Container>
-        <Flexbox alignItems="center">
-          {pathname !== "/" && <Link to="/">Strona Glowna</Link>}
-        </Flexbox>
-
-        <Flexbox marginLeft="auto">
-          {isAuthorized ? (
-            <>
-              <Link to="/konto">Konto uzytkownika</Link>
-              <Button onClick={() => setIsAuthorized(false)}>
-                Wyloguj się
-              </Button>
-            </>
-          ) : (
-            <>
-              <Link to="/register">Zarejestruj</Link>
-              <Link to="/login">Login</Link>
-            </>
-          )}
-        </Flexbox>
+        {isAuthorized ? (
+          <>
+            <Link to="/konto">Konto uzytkownika</Link>
+            <Button onClick={() => setIsAuthorized(false)}>Wyloguj się</Button>
+          </>
+        ) : (
+          <>
+            <Link to="/register">Zarejestruj</Link>
+            <Link to="/login">Login</Link>
+          </>
+        )}
       </Container>
     </Wrapper>
   );
@@ -45,7 +34,6 @@ const Wrapper = styled.header`
   padding-left: auto;
   height: 60px;
   align-items: center;
-  /* position: absolute; */
   width: 100%;
   left: 0;
   right: 0;
@@ -60,6 +48,8 @@ const Wrapper = styled.header`
 
 const Container = styled.div`
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   ${maxWidthStyles}
 `;
 

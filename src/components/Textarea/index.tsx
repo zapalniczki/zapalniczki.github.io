@@ -9,8 +9,8 @@ const Textarea = (props: Props) => {
 };
 
 const Container = styled.textarea`
-  width: 200px;
-  height: 150px;
+  width: 100%;
+  min-height: 100px;
 `;
 
 export default Textarea;

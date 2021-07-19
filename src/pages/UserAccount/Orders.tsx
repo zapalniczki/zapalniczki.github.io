@@ -58,7 +58,7 @@ const Orders = ({ userId }: Props) => {
               <Row>
                 <Box gridArea="1 / 1 / 1 / 17">
                   <Text>
-                    Nie masz zadnych zamowien{" "}
+                    Nie masz zadnych zamowien
                     <Link to="/newOrder">Zaloz nowe</Link>
                   </Text>
                 </Box>
@@ -73,11 +73,11 @@ const Orders = ({ userId }: Props) => {
                   </Flexbox>
 
                   <Flexbox alignItems="center" gridArea="1 / 5 / 1 / 8">
-                    <Text>{format(parseIso(order.createdOn), dateFormat)}</Text>
+                    <Text>{getCreatedOnValue(order.createdOn)}</Text>
                   </Flexbox>
 
                   <Flexbox alignItems="center" gridArea="1 / 8 / 1 / 11">
-                    <Text>{order.total}zl</Text>
+                    <Text>{order.total}zł</Text>
                   </Flexbox>
 
                   <Flexbox alignItems="center" gridArea="1 / 11 / 1 / 14">
@@ -113,7 +113,7 @@ const mapStatusToVariant: Record<Order["status"], ChipVariant> = {
   CLOSED: "NEGATIVE",
 };
 
-export const dateFormat = "yyyy-MM-dd";
+export const dateFormat = "dd.MM.yyyy";
 export const timeFormat = "HH:mm";
 export default Orders;
 

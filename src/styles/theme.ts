@@ -18,6 +18,9 @@ const colors = {
   gray1: "rgb(222, 225, 230)",
   gray2: "rgb(127, 137, 155)",
   gray3: "rgb(228, 238, 230)",
+  gray4: "rgb(228, 230, 229)",
+  gray5: "rgb(245, 247, 249)",
+  gray7: "rgb(227, 228,232)",
 
   green: "rgb(57, 195, 141)",
   orange: "rgb(255, 167, 1)",

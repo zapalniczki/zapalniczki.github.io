@@ -1,6 +1,7 @@
 import createOrder, { FormValues } from "api/createOrder";
 import editOrder from "api/editOrder";
 import { OrderProduct } from "models/orderProduct";
+import { Product } from "models/product";
 import { useMutation } from "react-query";
 import getNow from "utils/getNow";
 
@@ -19,7 +20,7 @@ export const useForm = (userId: string, prevValues?: FormValues) => {
     if (prevValues) return prevValues;
 
     return {
-      _products: [getInitialProduct()],
+      _products: [],
       notes: "",
       status: "OPEN",
       total: 0,
@@ -35,10 +36,10 @@ export const useForm = (userId: string, prevValues?: FormValues) => {
   };
 };
 
-export const getInitialProduct = (): OrderProduct => ({
-  price: 0,
+export const getInitialProduct = (product: Product): OrderProduct => ({
+  price: product.price,
   quantity: 0,
-  name: "",
+  name: product.name,
   total: 0,
-  _id: "",
+  _id: product._id,
 });

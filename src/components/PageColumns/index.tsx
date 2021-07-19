@@ -9,12 +9,9 @@ const PageColumns = ({ children }: Props) => {
 };
 
 const Container = styled.div`
-  border: 3px solid blue;
-
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: 2fr 1fr;
-  padding: 1rem 0 0 0;
+  grid-template-columns: 2.1fr 0.9fr;
 `;
 
 export default PageColumns;

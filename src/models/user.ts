@@ -12,7 +12,7 @@ const user = object({
   authorization,
   contact: object({
     email: string(),
-    phone_numer: string(),
+    phone_number: string(),
   }),
 
   address: object({
@@ -35,3 +35,10 @@ const user = object({
 export type User = TypeOf<typeof user>;
 
 export default user;
+
+export const emailRegex =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+export const phoneNumberRegex = /^\+48\d{9}$/;
+
+export const postCodeRegex = /^\d{2}-\d{3}$/;

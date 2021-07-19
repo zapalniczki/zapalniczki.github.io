@@ -15,11 +15,13 @@ import { OrderProduct } from "models/orderProduct";
 import Button from "components/Button";
 import ProductRow from "./ProductRow";
 import { FieldArray } from "react-final-form-arrays";
-import Input from "components/Input";
 import Textarea from "components/Textarea";
 import { getInitialProduct, useForm } from "./form";
 import QueryLoader from "components/QueryLoader";
 import { Order } from "models/order";
+import Label from "components/Label";
+import Select from "components/Select";
+import { Product } from "models/product";
 
 type Props = {
   userId: string;
@@ -30,21 +32,12 @@ const OrderForm = ({ userId, prevValues }: Props) => {
   const productsQuery = useQuery("products", getProducts);
   const { onSubmit, getInitialValues } = useForm(userId, prevValues);
 
-  console.log(prevValues);
-
   return (
     <QueryLoader query={productsQuery}>
       {(products) => {
         return (
           <Tile>
             <TileHeader title="Formularz zamówienia" />
-
-            <Flexbox alignItems="center" marginY="20px">
-              <Input value="" onChange={() => undefined} />
-              <Button variant="secondary" marginLeft="10px">
-                alfa
-              </Button>
-            </Flexbox>
 
             <Form<FormValues>
               onSubmit={onSubmit}
@@ -60,29 +53,39 @@ const OrderForm = ({ userId, prevValues }: Props) => {
                   mutators: { push },
                 },
               }) => {
-                const disableAdding = values._products
-                  ?.map((product) => !!product._id && !!product.quantity)
+                const noProductSelected = values._products?.length === 0;
+                const isAnyQuantityMissing = values._products
+                  ?.map((product) => product.quantity !== 0)
                   .includes(false);
-
-                const selectedProductsCount = values._products
-                  ?.map((product) => !!product._id)
-                  .filter((id) => id).length;
-
-                const isMoreProductAvailable =
-                  products.length > (selectedProductsCount ?? 0);
-
-                const isAnyProductCompleted =
-                  values._products
-                    ?.map((product) => !!product._id && !!product.quantity)
-                    .filter((val) => !val).length !== 0;
+                const availableProducts = getAvailableProducts(
+                  products,
+                  values
+                );
 
                 return (
                   <Flexbox
-                    style={{ border: "1px solid red" }}
                     flexDirection="column"
                     as="form"
                     onSubmit={handleSubmit}
                   >
+                    <Flexbox marginBottom="20px">
+                      <Select
+                        options={mapProductsToOptions(availableProducts)}
+                        onSelect={({ selectedItem }) => {
+                          const selectedProduct = availableProducts.find(
+                            (product) => product._id === selectedItem?.value
+                          );
+
+                          if (!selectedProduct) return null;
+
+                          push("_products", getInitialProduct(selectedProduct));
+                        }}
+                      />
+                      <Button marginLeft="10px" variant="secondary">
+                        Przeglądaj produkty
+                      </Button>
+                    </Flexbox>
+
                     <Row>
                       <Box gridArea="1 / 1 / 1 / 8">
                         <Text>Produkt</Text>
@@ -96,55 +99,53 @@ const OrderForm = ({ userId, prevValues }: Props) => {
                         <Text>Ilość</Text>
                       </Box>
 
-                      <Box gridArea="1 / 14 / 1 / 17">
+                      <Box gridArea="1 / 14 / 1 / 16">
                         <Text>Kwota</Text>
                       </Box>
                     </Row>
+
                     <Separator />
 
                     <FieldArray<OrderProduct> name="_products">
                       {({ fields }) => (
                         <>
-                          {fields.map((name, index) => (
-                            <ProductRow
-                              values={values}
-                              index={index}
-                              remove={() => fields.remove(index)}
-                              name={name}
-                              products={products}
-                              product={fields.value[index]}
-                            />
-                          ))}
+                          {fields.length === 0 ? (
+                            <Text textAlign="center">
+                              Zamówienie musi zawierać co najmniej 1 produkt.
+                            </Text>
+                          ) : (
+                            fields.map((name, index) => (
+                              <ProductRow
+                                values={values}
+                                index={index}
+                                remove={() => fields.remove(index)}
+                                name={name}
+                                products={products}
+                                product={fields.value[index]}
+                              />
+                            ))
+                          )}
                         </>
                       )}
                     </FieldArray>
 
-                    <Box marginTop="20px">
-                      {isMoreProductAvailable ? (
-                        <Button
-                          variant="secondary"
-                          type="button"
-                          disabled={disableAdding}
-                          onClick={() => push("_products", getInitialProduct())}
-                        >
-                          Dodaj Produkt
-                        </Button>
-                      ) : (
-                        <span>Zostały wybrane wszystkie dostepne produkty</span>
-                      )}
+                    <Separator />
+
+                    <Box width="100%">
+                      <Field<FormValues["notes"]> name="notes">
+                        {(props) => (
+                          <Label marginTop={0} title="Uwagi do zamówienia">
+                            <Textarea {...props.input} />
+                          </Label>
+                        )}
+                      </Field>
                     </Box>
 
-                    <Text>Uwagi do zamownia</Text>
-                    <Field<FormValues["notes"]> name="notes">
-                      {(props) => <Textarea {...props.input} />}
-                    </Field>
-
-                    <Flexbox
-                      marginTop="20px"
-                      style={{ border: "1px solid red" }}
-                      justifyContent="flex-end"
-                    >
-                      <Button disabled={isAnyProductCompleted} type="submit">
+                    <Flexbox marginTop="20px" justifyContent="flex-end">
+                      <Button
+                        disabled={noProductSelected || isAnyQuantityMissing}
+                        type="submit"
+                      >
                         Wyślij
                       </Button>
                     </Flexbox>
@@ -160,3 +161,15 @@ const OrderForm = ({ userId, prevValues }: Props) => {
 };
 
 export default OrderForm;
+
+const mapProductsToOptions = (products: Product[]) =>
+  products.map((product) => ({
+    value: product._id,
+    name: product.name,
+  }));
+
+const getAvailableProducts = (products: Product[], values: FormValues) =>
+  products.filter((product) => {
+    const selectedProducts = values._products?.map(({ _id }) => _id) ?? [];
+    return !selectedProducts.includes(product._id);
+  });

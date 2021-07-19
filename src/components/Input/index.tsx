@@ -21,23 +21,23 @@ const Input = ({ maxWidth, ...props }: Props) => {
 
 type InputStyledProps = Pick<Props, "maxWidth">;
 export const InputBox = styled.div<InputStyledProps>`
-  border: 1px solid red;
+  border: 1px solid ${(props) => props.theme.colors.gray4};
   height: ${BUTTON_HEIGHT};
   width: min-content;
   justify-content: flex-start;
   align-items: center;
   display: flex;
-  padding: 0 5px;
   border-radius: ${(props) => props.theme.radii.small};
   max-width: ${(props) => props.maxWidth};
   width: 100%;
+  position: relative;
 `;
 
 const InputStyled = styled.input`
   height: 100%;
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 0 5px;
   width: 100%;
 `;
 
