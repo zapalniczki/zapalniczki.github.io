@@ -9,7 +9,6 @@ import Text from "components/Text";
 import TextButton from "components/TextButton";
 import { OrderProduct } from "models/orderProduct";
 import { Product } from "models/product";
-import ProductSelect from "./ProductSelect";
 import QuantitySelect from "./QuantitySelect";
 
 type Props = {
@@ -31,13 +30,6 @@ const ProductRow = ({
 }: Props) => {
   const { price, total, _id } = product;
   const thisProduct = products.find((p) => p._id === _id);
-
-  const availableProducts = products.filter((product) => {
-    const selectedProducts =
-      values._products?.filter((_p, i) => i !== index).map((p) => p._id) ?? [];
-
-    return !selectedProducts.includes(product._id);
-  });
 
   return (
     <Box marginTop="20px">

@@ -49,17 +49,14 @@ const addOrder = async (params: FormValues) => {
   };
 
   await setDoc(userOrdersRef, userOrderPayload);
-
-  alert("success!");
 };
 
-const getOrderTotal = (products: FormValues["_products"]) => {
-  return round(
+const getOrderTotal = (products: FormValues["_products"]) =>
+  round(
     products
       ?.map((product) => product.price * product.quantity)
       .reduce((prev, curr) => prev + curr) ?? 0,
     2
   );
-};
 
 export default addOrder;

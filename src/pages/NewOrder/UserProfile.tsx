@@ -1,6 +1,5 @@
 import getUser from "api/users/getUser";
 import Box from "components/Box";
-import Button from "components/Button";
 import Flexbox from "components/Flexbox";
 import Image from "components/Image";
 import Link from "components/Link";

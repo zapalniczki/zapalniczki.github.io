@@ -5,12 +5,27 @@ import { Product } from "models/product";
 import { useMutation } from "react-query";
 import getNow from "utils/getNow";
 
-export const useForm = (userId: string, prevValues?: FormValues) => {
+export const useForm = (
+  userId: string,
+  setView: React.Dispatch<React.SetStateAction<View>>,
+  prevValues?: FormValues
+) => {
   const { mutateAsync: create } = useMutation<unknown, unknown, FormValues>(
-    createOrder
+    createOrder,
+    {
+      onSuccess: () => {
+        setView("success");
+      },
+    }
   );
+
   const { mutateAsync: edit } = useMutation<unknown, unknown, FormValues>(
-    editOrder
+    editOrder,
+    {
+      onSuccess: () => {
+        setView("success");
+      },
+    }
   );
 
   const onSubmit = (values: FormValues) =>
@@ -43,3 +58,5 @@ export const getInitialProduct = (product: Product): OrderProduct => ({
   total: 0,
   _id: product._id,
 });
+
+export type View = "form" | "success";

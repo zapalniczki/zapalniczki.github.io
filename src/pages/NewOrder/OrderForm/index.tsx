@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Tile from "components/Tile";
 import { Field, Form } from "react-final-form";
 import Flexbox from "components/Flexbox";
@@ -16,12 +16,13 @@ import Button from "components/Button";
 import ProductRow from "./ProductRow";
 import { FieldArray } from "react-final-form-arrays";
 import Textarea from "components/Textarea";
-import { getInitialProduct, useForm } from "./form";
+import { getInitialProduct, useForm, View } from "./form";
 import QueryLoader from "components/QueryLoader";
 import { Order } from "models/order";
 import Label from "components/Label";
 import Select from "components/Select";
 import { Product } from "models/product";
+import ResultScreen from "components/ResultScreen";
 
 type Props = {
   userId: string;
@@ -29,8 +30,14 @@ type Props = {
 };
 
 const OrderForm = ({ userId, prevValues }: Props) => {
+  const [view, setView] = useState<View>("form");
+
   const productsQuery = useQuery("products", getProducts);
-  const { onSubmit, getInitialValues } = useForm(userId, prevValues);
+  const { onSubmit, getInitialValues } = useForm(userId, setView, prevValues);
+
+  if (view === "success") {
+    return <ResultScreen variant="success" />;
+  }
 
   return (
     <QueryLoader query={productsQuery}>
