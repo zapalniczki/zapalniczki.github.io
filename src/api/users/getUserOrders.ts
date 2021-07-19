@@ -12,7 +12,7 @@ const getUserOrders = async (
 
   const db = getFirestore();
   const ref = collection(db, "users", userId, "orders");
-  const q = query(ref, orderBy("createdOn", "desc"));
+  const q = query(ref, orderBy("updatedOn", "desc"));
   const snapshot = await getDocs(q);
   const orders = getCollection(snapshot, userOrder);
 

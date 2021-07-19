@@ -56,12 +56,12 @@ const Orders = ({ userId }: Props) => {
           {orders.length === 0 ? (
             <Tile>
               <Row>
-                <Box gridArea="1 / 1 / 1 / 17">
-                  <Text>
-                    Nie masz zadnych zamowien
-                    <Link to="/newOrder">Zaloz nowe</Link>
+                <Flexbox justifyContent="center" gridArea="1 / 1 / 1 / 17">
+                  <Text textAlign="center">
+                    Nie masz żadnych zamówień{" "}
+                    <Link to="/newOrder">Załóż nowe</Link>
                   </Text>
-                </Box>
+                </Flexbox>
               </Row>
             </Tile>
           ) : (

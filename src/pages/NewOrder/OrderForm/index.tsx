@@ -124,7 +124,6 @@ const OrderForm = ({ userId, prevValues }: Props) => {
                             fields.map((name, index) => (
                               <ProductRow
                                 values={values}
-                                index={index}
                                 remove={() => fields.remove(index)}
                                 name={name}
                                 products={products}

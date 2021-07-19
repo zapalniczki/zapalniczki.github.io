@@ -1,7 +1,14 @@
-import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  updateDoc,
+  collection,
+  getDocs,
+  deleteDoc,
+} from "firebase/firestore";
 import { Order } from "models/order";
 import round from "lodash/round";
-import { UserOrder } from "models/userOrder";
 import getNow from "utils/getNow";
 
 export type FormValues = Order;
@@ -17,17 +24,25 @@ const editOrder = async (params: FormValues) => {
   const total = getOrderTotal(params._products) ?? 0;
 
   // Update order to /orders
-  const orderPayload: Order = {
+  const orderPayload: Omit<Order, "createdOn"> = {
     status: params.status,
     total,
     userId: params.userId,
-    createdOn: now,
     updatedOn: now,
     notes: params.notes,
   };
 
   const ordersRef = doc(db, "orders", orderId);
   updateDoc(ordersRef, orderPayload);
+
+  // Remove old products
+  const oldProductsRef = collection(db, "orders", orderId, "products");
+  const oldProducts = await getDocs(oldProductsRef);
+
+  oldProducts.forEach((product) => {
+    const productRef = doc(db, "orders", orderId, "products", product.id);
+    deleteDoc(productRef);
+  });
 
   // Update products to /orders/XXX/products
   params._products?.forEach(async (product) => {
@@ -39,14 +54,13 @@ const editOrder = async (params: FormValues) => {
 
   // Update order to /user/XXX/orders/XXX
   const userOrdersRef = doc(db, "users", params.userId, "orders", orderId);
-  const userOrderPayload: UserOrder = {
+  const userOrderPayload = {
     total,
     status: params.status,
-    createdOn: now,
     updatedOn: now,
   };
 
-  await setDoc(userOrdersRef, userOrderPayload);
+  await updateDoc(userOrdersRef, userOrderPayload);
 };
 
 const getOrderTotal = (products: FormValues["_products"]) =>

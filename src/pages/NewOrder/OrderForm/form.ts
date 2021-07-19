@@ -1,5 +1,6 @@
 import createOrder, { FormValues } from "api/createOrder";
 import editOrder from "api/editOrder";
+import { queryClient } from "index";
 import { OrderProduct } from "models/orderProduct";
 import { Product } from "models/product";
 import { useMutation } from "react-query";
@@ -13,8 +14,9 @@ export const useForm = (
   const { mutateAsync: create } = useMutation<unknown, unknown, FormValues>(
     createOrder,
     {
-      onSuccess: () => {
+      onSuccess: async () => {
         setView("success");
+        await queryClient.refetchQueries(["userOrders"]);
       },
     }
   );
@@ -22,8 +24,9 @@ export const useForm = (
   const { mutateAsync: edit } = useMutation<unknown, unknown, FormValues>(
     editOrder,
     {
-      onSuccess: () => {
+      onSuccess: async () => {
         setView("success");
+        await queryClient.refetchQueries(["userOrders"]);
       },
     }
   );

@@ -7,7 +7,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import theme from "./styles/theme";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: { refetchOnWindowFocus: false, staleTime: 90000 },
   },

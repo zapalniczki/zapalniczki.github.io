@@ -16,18 +16,10 @@ type Props = {
   products: Product[];
   remove: () => void;
   values: FormValues;
-  index: number;
   product: OrderProduct;
 };
 
-const ProductRow = ({
-  product,
-  name,
-  products,
-  remove,
-  values,
-  index,
-}: Props) => {
+const ProductRow = ({ product, name, products, remove, values }: Props) => {
   const { price, total, _id } = product;
   const thisProduct = products.find((p) => p._id === _id);
 
