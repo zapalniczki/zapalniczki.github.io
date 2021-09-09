@@ -661,10 +661,13 @@ class PrecacheCacheKeyPlugin {
     constructor({ precacheController }) {
         this.cacheKeyWillBeUsed = async ({ request, params, }) => {
             // Params is type any, can't change right now.
-            // eslint-disable-next-line
-            const cacheKey = params && params.cacheKey ||
+            /* eslint-disable */
+            const cacheKey = (params === null || params === void 0 ? void 0 : params.cacheKey) ||
                 this._precacheController.getCacheKeyForURL(request.url);
-            return cacheKey ? new Request(cacheKey) : request;
+            /* eslint-enable */
+            return cacheKey
+                ? new Request(cacheKey, { headers: request.headers })
+                : request;
         };
         this._precacheController = precacheController;
     }
@@ -1739,7 +1742,8 @@ class PrecacheStrategy extends Strategy_Strategy {
     constructor(options = {}) {
         options.cacheName = cacheNames_cacheNames.getPrecacheName(options.cacheName);
         super(options);
-        this._fallbackToNetwork = options.fallbackToNetwork === false ? false : true;
+        this._fallbackToNetwork =
+            options.fallbackToNetwork === false ? false : true;
         // Redirected responses cannot be used to satisfy a navigation request, so
         // any redirected response must be "copied" rather than cloned, so the new
         // response doesn't contain the `redirected` flag. See:
@@ -1755,24 +1759,40 @@ class PrecacheStrategy extends Strategy_Strategy {
      */
     async _handle(request, handler) {
         const response = await handler.cacheMatch(request);
-        if (!response) {
-            // If this is an `install` event then populate the cache. If this is a
-            // `fetch` event (or any other event) then respond with the cached
-            // response.
-            if (handler.event && handler.event.type === 'install') {
-                return await this._handleInstall(request, handler);
-            }
-            return await this._handleFetch(request, handler);
+        if (response) {
+            return response;
         }
-        return response;
+        // If this is an `install` event for an entry that isn't already cached,
+        // then populate the cache.
+        if (handler.event && handler.event.type === 'install') {
+            return await this._handleInstall(request, handler);
+        }
+        // Getting here means something went wrong. An entry that should have been
+        // precached wasn't found in the cache.
+        return await this._handleFetch(request, handler);
     }
     async _handleFetch(request, handler) {
         let response;
-        // Fall back to the network if we don't have a cached response
-        // (perhaps due to manual cache cleanup).
+        const params = (handler.params || {});
+        // Fall back to the network if we're configured to do so.
         if (this._fallbackToNetwork) {
             if (false) {}
-            response = await handler.fetch(request);
+            const integrityInManifest = params.integrity;
+            const integrityInRequest = request.integrity;
+            const noIntegrityConflict = !integrityInRequest || integrityInRequest === integrityInManifest;
+            response = await handler.fetch(new Request(request, {
+                integrity: integrityInRequest || integrityInManifest,
+            }));
+            // It's only "safe" to repair the cache if we're using SRI to guarantee
+            // that the response matches the precache manifest's expectations,
+            // and there's either a) no integrity property in the incoming request
+            // or b) there is an integrity, and it matches the precache manifest.
+            // See https://github.com/GoogleChrome/workbox/issues/2858
+            if (integrityInManifest && noIntegrityConflict) {
+                this._useDefaultCacheabilityPluginIfNeeded();
+                const wasCached = await handler.cachePut(request, response.clone());
+                if (false) {}
+            }
         }
         else {
             // This shouldn't normally happen, but there are edge cases:
@@ -1860,12 +1880,12 @@ PrecacheStrategy.defaultPrecacheCacheabilityPlugin = {
             return null;
         }
         return response;
-    }
+    },
 };
 PrecacheStrategy.copyRedirectedCacheableResponsesPlugin = {
     async cacheWillUpdate({ response }) {
         return response.redirected ? await copyResponse(response) : response;
-    }
+    },
 };
 
 
@@ -2093,6 +2113,14 @@ class PrecacheController {
     getCacheKeyForURL(url) {
         const urlObject = new URL(url, location.href);
         return this._urlsToCacheKeys.get(urlObject.href);
+    }
+    /**
+     * @param {string} url A cache key whose SRI you want to look up.
+     * @return {string} The subresource integrity associated with the cache key,
+     * or undefined if it's not set.
+     */
+    getIntegrityForCacheKey(cacheKey) {
+        return this._cacheKeysToIntegrities.get(cacheKey);
     }
     /**
      * This acts as a drop-in replacement for
@@ -2884,7 +2912,8 @@ class PrecacheRoute extends Route_Route {
             for (const possibleURL of generateURLVariations(request.url, options)) {
                 const cacheKey = urlsToCacheKeys.get(possibleURL);
                 if (cacheKey) {
-                    return { cacheKey };
+                    const integrity = precacheController.getIntegrityForCacheKey(cacheKey);
+                    return { cacheKey, integrity };
                 }
             }
             if (false) {}
@@ -4311,7 +4340,9 @@ class CacheTimestampsModel {
             id: this._getId(url),
         };
         const db = await this.getDb();
-        await db.put(CACHE_OBJECT_STORE, entry);
+        const tx = db.transaction(CACHE_OBJECT_STORE, 'readwrite', { durability: 'relaxed' });
+        await tx.store.put(entry);
+        await tx.done;
     }
     /**
      * Returns the timestamp stored for a given URL.
@@ -5066,7 +5097,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-precacheAndRoute([{'revision':'493dce79cef28bf865c1d35abbfb1ee6','url':'/404.html'},{'revision':null,'url':'/images/banner-guy.fbf4f0f7396fe31ca288dc1dd9822342.png'},{'revision':null,'url':'/images/creditcards.9024dc86450bbd2666b162083f5f91dd.png'},{'revision':null,'url':'/images/logo-wordmark.c9095b79e4c1cb5d9f82799542443b19.png'},{'revision':null,'url':'/images/logo.059e10fa5fedbfb65165e7565ed3936f.png'},{'revision':'878920a30c95d6f8d8e066c03a71fb25','url':'/index.html'},{'revision':null,'url':'/js/main.1b8ba99ac72ff07f7b49.js'},{'revision':null,'url':'/js/vendor.8e0bca470a7e6ccdd133.js'},{'revision':'a171957ed6ac6364403e39cd18efdcad','url':'/main.css'},{'revision':'b127f7589a1b597b853947114cce97f1','url':'/static/banner.jpg'},{'revision':'f866913f47c4b6b837a6920189f8b265','url':'/static/creditcards.png'},{'revision':'c1558c012afbfb5c95a86f1a99786826','url':'/static/favicon.png'},{'revision':'6cb5664eba350b2d6c6bd0c25ad53d08','url':'/static/logo-wordmark.png'},{'revision':'b1e0a283928cc4ce2a1b8b77c0163933','url':'/vendor.css'}]);
+precacheAndRoute([{'revision':'46bd6af7a23a2ad14fa416bd209628e8','url':'/404.html'},{'revision':null,'url':'/images/banner-guy.fbf4f0f7396fe31ca288dc1dd9822342.png'},{'revision':null,'url':'/images/creditcards.9024dc86450bbd2666b162083f5f91dd.png'},{'revision':null,'url':'/images/logo-wordmark.c9095b79e4c1cb5d9f82799542443b19.png'},{'revision':null,'url':'/images/logo.059e10fa5fedbfb65165e7565ed3936f.png'},{'revision':'f97d0f3612ff87a353c1b86003fd9014','url':'/index.html'},{'revision':null,'url':'/js/main.14be3467bb6d2ed4e1b0.js'},{'revision':null,'url':'/js/vendor.3e001d9fe1840cd53770.js'},{'revision':'aa57d42899db1d97775757eb717f5568','url':'/main.css'},{'revision':'b127f7589a1b597b853947114cce97f1','url':'/static/banner.jpg'},{'revision':'f866913f47c4b6b837a6920189f8b265','url':'/static/creditcards.png'},{'revision':'c1558c012afbfb5c95a86f1a99786826','url':'/static/favicon.png'},{'revision':'6cb5664eba350b2d6c6bd0c25ad53d08','url':'/static/logo-wordmark.png'},{'revision':'b1e0a283928cc4ce2a1b8b77c0163933','url':'/vendor.css'}]);
 
 var currentCacheNames = _objectSpread({
   precacheTemp: "".concat(workbox_core_cacheNames_cacheNames.precache, "-temp")
