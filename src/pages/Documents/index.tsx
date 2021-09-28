@@ -3,7 +3,7 @@ import { ExternalLink } from 'components'
 import { useScrollTop, useTabTitle } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import ListItem from 'components/ListItem'
+import { ListItem } from 'components'
 
 const Documents = () => {
   const { t } = useTranslation('DOCUMENTS')

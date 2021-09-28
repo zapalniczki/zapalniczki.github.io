@@ -1,5 +1,4 @@
-import { Box, InputLabel } from 'components'
-import { Flexbox } from 'components'
+import { Flexbox, Box, InputLabel } from 'components'
 import { StyledInput } from 'components/Input'
 import { FieldProps } from 'formik'
 import React from 'react'
@@ -26,7 +25,7 @@ const CheckboxField = ({
 }: Props) => (
   <>
     {isFirst && (
-      <Flexbox marginBottom="0" marginRight="auto" justifyContent="flex-start">
+      <Flexbox justifyContent="flex-start" marginBottom="0" marginRight="auto">
         {touched && error ? (
           <InputLabel error>{error}</InputLabel>
         ) : (
@@ -37,32 +36,32 @@ const CheckboxField = ({
 
     <Container
       backgroundColor="background-color-01"
-      padding="s-size"
       marginBottom="m-size"
+      padding="s-size"
       position="relative"
     >
       <StyledInput
-        name={name}
+        checked={id === value}
         id={id}
+        name={name}
+        onBlur={onBlur}
+        onChange={onChange}
         type="radio"
         value={id}
-        checked={id === value}
-        onChange={onChange}
-        onBlur={onBlur}
       />
 
       <Flexbox
         as="label"
-        padding="0"
-        width="100%"
         htmlFor={id}
         justifyContent="space-between"
+        padding="0"
+        width="100%"
       >
-        <Flexbox as="h4" marginRight="auto" alignItems="center">
+        <Flexbox alignItems="center" as="h4" marginRight="auto">
           {title}
 
           {subtitle && (
-            <Box marginLeft="s-size" as="span" fontStyle="italic">
+            <Box as="span" fontStyle="italic" marginLeft="s-size">
               {subtitle}
             </Box>
           )}

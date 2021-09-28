@@ -1,4 +1,4 @@
-import Box from 'components/Box'
+import { Box } from 'components'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -14,13 +14,13 @@ type Props = {
 const Indicator = ({ clickHandler, isSelected }: Props) => (
   <Container
     as="button"
-    border="none"
-    marginRight="xxs-size"
-    width="2.5rem"
-    height="0.5rem"
     backgroundColor={isSelected ? 'braty-red' : 'white'}
+    border="none"
     disabled={isSelected}
+    height="0.5rem"
+    marginRight="xxs-size"
     onClick={clickHandler}
+    width="2.5rem"
   />
 )
 

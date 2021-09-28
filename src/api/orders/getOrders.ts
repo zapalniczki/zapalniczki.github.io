@@ -34,5 +34,3 @@ export const useGetOrders = (status?: OrderStatus) => {
 
 export const getOrdersQueryKey = (status?: OrderStatus) =>
   status ? `orders/${status}` : 'orders'
-
-export default getOrders

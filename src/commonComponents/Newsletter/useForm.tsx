@@ -1,4 +1,4 @@
-import { useAddEmail } from 'api/newsletter/addEmail'
+import { useAddEmail } from 'api'
 import { useSchema, useTranslation } from 'hooks'
 import { loaderContext } from 'providers/LoaderProvider'
 import { useContext, useState } from 'react'

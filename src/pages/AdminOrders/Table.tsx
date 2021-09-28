@@ -1,4 +1,4 @@
-import { useGetOrders } from 'api/getOrders'
+import { useGetOrders } from 'api'
 import { Box, QueryLoader } from 'components'
 import isBefore from 'date-fns/isBefore'
 import { Order, OrderStatus } from 'models/order'

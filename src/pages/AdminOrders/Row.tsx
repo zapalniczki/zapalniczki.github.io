@@ -1,5 +1,4 @@
 // @ts-check
-import { useUpdateOrderStatus } from 'api/updateOrderStatus'
 import { Box, Select } from 'components'
 import ORDER_STATUSES from 'constants/orderStatuses'
 import { TranslateFunc } from 'hooks/useTranslation'
@@ -9,7 +8,7 @@ import { useTranslation } from 'hooks'
 import { displayDate, displayMoney, getDateFromTimestamp } from 'utils'
 import uniq from 'lodash.uniq'
 import { differenceInDays } from 'date-fns'
-import { useGetMoldsOld } from 'api/molds/getMolds'
+import { useUpdateOrderStatus, useGetMoldsOld } from 'api'
 import { MoldStatus } from 'models/mold'
 
 type Props = {

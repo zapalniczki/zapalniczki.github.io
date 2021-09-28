@@ -1,3 +1,5 @@
 export * from './getOrderStatus'
 export * from './addOrder'
 export * from './triggerNewOrder'
+export * from './getOrders'
+export * from './updateOrderStatus'

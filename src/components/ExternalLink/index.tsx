@@ -1,4 +1,4 @@
-import Badge from 'components/Badge'
+import { Badge } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { ReactNode } from 'react'

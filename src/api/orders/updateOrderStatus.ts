@@ -45,5 +45,3 @@ export const useUpdateOrderStatus = (
     }
   }, [currentStatus])
 }
-
-export default updateOrderStatus

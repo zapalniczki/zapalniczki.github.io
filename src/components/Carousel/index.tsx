@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel as CarouselLib } from 'react-responsive-carousel'
-import Box from 'components/Box'
+import { Box } from 'components'
 import useBanners, { BannerKey } from './useBanners'
 import Indicator from './Indicator'
 import Chevron from './Chevron'

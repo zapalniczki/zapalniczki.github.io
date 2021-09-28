@@ -1,5 +1,5 @@
-import Flexbox from 'components/Flexbox'
-import Heading from 'components/Heading'
+import { Flexbox } from 'components'
+import { Heading } from 'components'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'

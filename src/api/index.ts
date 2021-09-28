@@ -18,13 +18,3 @@ export * from './callback'
 
 // MOLDS
 export * from './molds'
-
-////////////////////////
-// UNTIL NOW
-//////////////////////////////
-
-export * from './getProducts'
-export * from './getProduct'
-
-// PRODUCTS
-export { default as updateOrderStatus } from './updateOrderStatus'

@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-import { getProductsSelect, Product } from '../getProducts'
+import { getProductsSelect, Product } from './getProducts'
 
 type Model = Product
 

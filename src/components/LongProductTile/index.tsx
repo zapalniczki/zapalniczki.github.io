@@ -1,6 +1,5 @@
 import { Product } from 'api'
-import { Tile, ImageLoader, Flexbox } from 'components'
-import Heading from 'components/Heading'
+import { Heading, Tile, ImageLoader, Flexbox } from 'components'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import styled from 'styled-components'

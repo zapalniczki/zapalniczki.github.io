@@ -1,4 +1,4 @@
-import { useGetFeatured } from 'api/products'
+import { useGetFeatured } from 'api'
 import { ProductsGrid } from 'commonComponents'
 import { useTranslation } from 'hooks'
 import React from 'react'
