@@ -9,7 +9,7 @@ import { useTranslation } from 'hooks'
 import { displayDate, displayMoney, getDateFromTimestamp } from 'utils'
 import uniq from 'lodash.uniq'
 import { differenceInDays } from 'date-fns'
-import { useGetMolds } from 'api/molds/getMolds'
+import { useGetMoldsOld } from 'api/molds/getMolds'
 import { MoldStatus } from 'models/mold'
 
 type Props = {
@@ -37,13 +37,13 @@ const Row = ({ order, columns }: Props) => {
 
       <Box as="td" minWidth="15rem">
         <Select
-          value={currentStatus}
           onChange={(option) => {
             if (option) {
               setCurrentStatus(option)
             }
           }}
           options={getStatusesWithLabels(t)}
+          value={currentStatus}
         />
       </Box>
     </Box>
@@ -53,7 +53,7 @@ const Row = ({ order, columns }: Props) => {
 const useOrderInfo = (order: Order): Record<AdminTableColumns, ReactNode> => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const query = useGetMolds()
+  const query = useGetMoldsOld()
 
   const moldsData = query.data
 

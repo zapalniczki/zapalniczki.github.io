@@ -22,5 +22,3 @@ const getDeliveryTypes = async () => {
 
 export const useGetDeliveryTypes = () =>
   useQuery('deliveryTypes', getDeliveryTypes)
-
-export default getDeliveryTypes

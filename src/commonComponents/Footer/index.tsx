@@ -1,11 +1,14 @@
 import { Box, Flexbox, Link, Logo, MaxWidth, Separator, Text } from 'components'
-import * as Routes from 'constants/routes'
-import { useTranslation } from 'hooks'
+import { DOCUMENTS } from 'constants/routes'
+import { useAdmin, useTranslation } from 'hooks'
 
 import React from 'react'
+import adminLinks from './adminLinks'
+import links from './links'
 
 const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
+  const { isAdmin } = useAdmin()
 
   return (
     <Flexbox
@@ -19,18 +22,28 @@ const Footer = () => {
           <Logo />
         </Box>
 
-        <Flexbox
-          alignItems="flex-start"
-          flexDirection="column"
-          marginTop="l-size"
-        >
-          {links.map((link) => (
-            <Link key={link.to} to={link.to}>
-              <Text marginY="xs-size" type="body-1">
-                {commonT(`FOOTER.links.${link.label}`)}
-              </Text>
-            </Link>
-          ))}
+        <Flexbox justifyContent="space-between" marginTop="l-size" width="100%">
+          <Flexbox alignItems="flex-start" flexDirection="column">
+            {links.map((link) => (
+              <Link key={link.to} to={link.to}>
+                <Text marginY="xs-size" type="body-1">
+                  {commonT(`FOOTER.links.${link.label}`)}
+                </Text>
+              </Link>
+            ))}
+          </Flexbox>
+
+          {isAdmin && (
+            <Flexbox alignItems="flex-start" flexDirection="column">
+              {adminLinks.map((link) => (
+                <Link key={link.to} to={link.to}>
+                  <Text marginY="xs-size" type="body-1">
+                    {commonT(`FOOTER.adminLinks.${link.label}`)}
+                  </Text>
+                </Link>
+              ))}
+            </Flexbox>
+          )}
         </Flexbox>
 
         <Separator marginY="l-size" />
@@ -42,7 +55,7 @@ const Footer = () => {
             })}
           </Text>
 
-          <Link to={Routes.DOCUMENTS}>
+          <Link to={DOCUMENTS}>
             <Text type="caption">{commonT('FOOTER.documents')}</Text>
           </Link>
         </Flexbox>
@@ -50,28 +63,5 @@ const Footer = () => {
     </Flexbox>
   )
 }
-
-const links = [
-  {
-    label: 'home',
-    to: Routes.HOME
-  },
-  {
-    label: 'products',
-    to: Routes.PRODUCTS
-  },
-  {
-    label: 'howToCreateOrder',
-    to: Routes.HOW_TO_CREATE_ORDER
-  },
-  {
-    label: 'deliveryAndPayments',
-    to: Routes.DELIVERY_AND_PAYMENTS
-  },
-  {
-    label: 'contact',
-    to: Routes.CONTACT
-  }
-]
 
 export default Footer

@@ -25,5 +25,3 @@ const getFeatured = async () => {
 export const useGetFeatured = () => {
   return useQuery('products/featured', () => getFeatured())
 }
-
-export default getFeatured

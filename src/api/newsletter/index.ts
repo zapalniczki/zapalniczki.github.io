@@ -1,1 +1,1 @@
-export { default as addEmail } from './addEmail'
+export * from './addEmail'

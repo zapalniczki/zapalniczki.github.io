@@ -10,6 +10,9 @@ const pl = {
         deliveryAndPayments: 'Dostawa i płatności',
         contact: 'Kontakt'
       },
+      adminLinks: {
+        adminOrders: 'Zamówienia'
+      },
       allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
       documents: 'Dokumenty'
     },

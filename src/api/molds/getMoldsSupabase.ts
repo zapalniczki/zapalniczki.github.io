@@ -16,5 +16,3 @@ const getMolds = async () => {
 }
 
 export const useGetMolds = () => useQuery('molds', getMolds)
-
-export default getMolds

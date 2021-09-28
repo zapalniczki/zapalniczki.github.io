@@ -1,2 +1,5 @@
-export { default as getFeatured } from './getFeatured'
 export * from './getFeatured'
+export * from './getCollectionProducts'
+export * from './getOtherIcons'
+export * from './getOtherPlaces'
+export * from './getLabelProducts'

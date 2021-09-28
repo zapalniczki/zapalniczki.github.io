@@ -1,4 +1,4 @@
-import { useAddNumber } from 'api/callback/addNumber'
+import { useAddNumber } from 'api'
 import { useSchema } from 'hooks'
 import { loaderContext } from 'providers/LoaderProvider'
 import { useContext, useState } from 'react'

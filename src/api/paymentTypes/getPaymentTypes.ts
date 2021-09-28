@@ -20,5 +20,3 @@ const getPaymentTypes = async () => {
 
 export const useGetPaymentTypes = () =>
   useQuery('paymentTypes', getPaymentTypes)
-
-export default getPaymentTypes

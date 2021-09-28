@@ -22,9 +22,9 @@ const Table = ({ status, columns }: Props) => {
         return (
           <Box
             as="table"
-            width="100%"
             border="1px solid"
             borderColor="border-color"
+            width="100%"
           >
             {orders.length > 0 && (
               <thead>

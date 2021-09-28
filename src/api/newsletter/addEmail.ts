@@ -22,5 +22,3 @@ const addEmail = async (payload: AddEmailPayload) => {
 export const useAddEmail = () => {
   return useMutation(addEmail)
 }
-
-export default addEmail

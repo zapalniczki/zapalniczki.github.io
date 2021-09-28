@@ -26,5 +26,3 @@ export const useTriggerNewOrder = () => {
 
   return (payload: TriggerNewOrderPayload) => mutateAsync(payload)
 }
-
-export default triggerNewOrder

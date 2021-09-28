@@ -1,30 +1,30 @@
-export { default as getOrders } from './getOrders'
-export { default as updateOrderStatus } from './updateOrderStatus'
-export { default as getMolds } from './molds/getMolds'
-
 // PRODUCTS
-export * from './getCollectionProducts'
-export * from './getLabelProducts'
-export * from './getOtherIcons'
-export * from './getOtherPlaces'
-export * from './getProduct'
-export * from './getProducts'
+export * from './products'
 
 // PAYMENT TYPES
-export * from './paymentTypes/getPaymentTypes'
+export * from './paymentTypes'
 
 // DELIVERY TYPES
-export * from './deliveryTypes/getDeliveryTypes'
-
-// ORDERS
-export * from './addOrder'
-export * from './getOrderStatus'
-
-// TRIGGER NEW ORDER
-export * from './triggerNewOrder'
+export * from './deliveryTypes'
 
 // NEWSLETTER
 export * from './newsletter'
 
-// PRODUCTS
+// ORDERS
+export * from './orders'
+
+// CALLBACK
+export * from './callback'
+
+// MOLDS
+export * from './molds'
+
+////////////////////////
+// UNTIL NOW
+//////////////////////////////
+
 export * from './getProducts'
+export * from './getProduct'
+
+// PRODUCTS
+export { default as updateOrderStatus } from './updateOrderStatus'

@@ -13,7 +13,6 @@ const getMolds = async () => {
   return orders
 }
 
-export const useGetMolds = () => useQuery(getMoldsQueryKey, getMolds)
+export const useGetMoldsOld = () => useQuery(getMoldsQueryKey, getMolds)
 
 export const getMoldsQueryKey = 'molds'
-export default getMolds

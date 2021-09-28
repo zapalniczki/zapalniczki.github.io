@@ -2,13 +2,15 @@ import { Box, Page, Tile } from 'components'
 import ORDER_STATUSES from 'constants/orderStatuses'
 import { OrderStatus } from 'models/order'
 import React from 'react'
-import { useTranslation } from 'hooks'
+import { useScrollTop, useTranslation } from 'hooks'
 import { AdminTableColumns } from './Row'
 import Table from './Table'
 
 const AdminOrders = () => {
   const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('ADMIN_ORDERS')
+
+  useScrollTop()
 
   return (
     <Page>
