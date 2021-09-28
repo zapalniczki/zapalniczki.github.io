@@ -456,7 +456,7 @@ const pl = {
 
   CHECKOUT_RESULT: {
     title: 'Dziękujemy za złożenie zamówienia',
-    orderId: 'ID Twojego zamówienia to:',
+    orderId: 'Numer referencyjny zamówienia to:',
     info: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Znajdują się tam informacje o szczegółach zamówienia, dostawy i danymi do płatności.',
     actions: {
       backToHome: 'Wróć na stronę główną',
@@ -622,7 +622,7 @@ const pl = {
         info: 'Do wpłat',
         nrb: '31 1140 2004 0000 3402 8090 0648',
         info2: 'Nazwa banku: mBank S.A.',
-        info3: 'Tytuł: ID zamówienia'
+        info3: 'Tytuł: Numer referencyjny zamówienia'
       }
     }
   },

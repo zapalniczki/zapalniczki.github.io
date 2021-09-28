@@ -5,12 +5,15 @@ import Form from './Form'
 import useForm from './useForm'
 import { Formik, Form as FormikForm } from 'formik'
 import { SpaceProps } from 'styled-system'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useTheme } from 'styled-components'
 
 type Props = SpaceProps
 
 const CallMeBack = (props: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const { view, schema, initialValues, onSubmit } = useForm()
+  const { colors } = useTheme()
 
   let title = commonT('CALL_ME_BACK.FORM.title')
   let subtitle = commonT('CALL_ME_BACK.FORM.subtitle')
@@ -44,8 +47,19 @@ const CallMeBack = (props: Props) => {
         justifyContent="flex-start"
         width="100%"
       >
-        <Heading level={4}>{title}</Heading>
+        <Flexbox alignItems="center">
+          <Heading level={4} marginRight="m-size">
+            {title}
+          </Heading>
 
+          {view.view === 'SUCCESS' && (
+            <FontAwesomeIcon
+              color={colors.green}
+              icon="check-circle"
+              size="2x"
+            />
+          )}
+        </Flexbox>
         <Text marginBottom="m-size" type="body-2">
           {subtitle}
         </Text>

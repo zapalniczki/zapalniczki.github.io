@@ -4,10 +4,13 @@ import { useTranslation } from 'hooks'
 import Form from './Form'
 import useForm from './useForm'
 import { Formik, Form as FormikForm } from 'formik'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useTheme } from 'styled-components'
 
 const Newsletter = () => {
   const { t: commonT } = useTranslation('COMMON')
   const { view, schema, initialValues, onSubmit, setView } = useForm()
+  const { colors } = useTheme()
 
   let title = commonT('NEWSLETTER.FORM.title')
   let subtitle = commonT('NEWSLETTER.FORM.subtitle')
@@ -15,13 +18,13 @@ const Newsletter = () => {
   let content = (
     <Formik
       initialValues={initialValues}
+      onSubmit={onSubmit}
       validateOnChange
       validationSchema={schema}
-      onSubmit={onSubmit}
     >
       {({ handleSubmit }) => (
         <>
-          <FormikForm style={{ width: '100%' }} onSubmit={handleSubmit}>
+          <FormikForm onSubmit={handleSubmit} style={{ width: '100%' }}>
             <Form />
           </FormikForm>
           <Text marginTop="xxs-size" type="caption">
@@ -55,14 +58,30 @@ const Newsletter = () => {
   }
 
   return (
-    <Banner marginTop="xxl-size" horizonal medium>
+    <Banner horizonal marginTop="xxl-size" medium>
       <Flexbox
-        justifyContent="flex-start"
         flexDirection="column"
-        width="100%"
         height="100%"
+        justifyContent="flex-start"
+        width="100%"
       >
-        <Heading level={4}>{title}</Heading>
+        <Flexbox alignItems="center">
+          <Heading level={4} marginRight="m-size">
+            {title}
+          </Heading>
+
+          {view.view === 'SUCCESS' && (
+            <FontAwesomeIcon
+              color={colors.green}
+              icon="check-circle"
+              size="2x"
+            />
+          )}
+
+          {view.view === 'ERROR' && (
+            <FontAwesomeIcon color={colors.red} icon="times-circle" size="2x" />
+          )}
+        </Flexbox>
 
         <Text marginBottom="m-size" type="body-2">
           {subtitle}

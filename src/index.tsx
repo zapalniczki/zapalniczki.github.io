@@ -46,7 +46,8 @@ import {
   faQuestion,
   faSearch,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faTimesCircle
 } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { initializeApp } from '@firebase/app'
@@ -89,7 +90,8 @@ library.add(
   faSearch,
   faCheck,
   faChevronLeft,
-  faChevronRight
+  faChevronRight,
+  faTimesCircle
 )
 
 export const queryClient = new QueryClient({
