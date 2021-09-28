@@ -1,15 +1,15 @@
 import { string, number, boolean, object, TypeOf } from 'zod'
 
 const deliveryType = object({
+  created_at: string(),
+  frontend_icon_name: string(),
   id: string(),
+  isAvailable: boolean().nullable(),
   label: string(),
   price: number(),
-  time: string(),
   requires_address: boolean().nullable(),
-  isAvailable: boolean().nullable(),
-  frontend_icon_name: string()
+  time: string(),
+  updated_at: string()
 })
 
 export type DeliveryType = TypeOf<typeof deliveryType>
-
-export default deliveryType

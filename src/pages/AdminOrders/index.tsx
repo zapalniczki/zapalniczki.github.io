@@ -1,10 +1,12 @@
-import { Box, Page, Tile } from 'components'
+import { Banner, Heading, Page, Text, Tile } from 'components'
 import ORDER_STATUSES from 'constants/orderStatuses'
-import { OrderStatus } from 'models/order'
 import React from 'react'
 import { useScrollTop, useTranslation } from 'hooks'
 import { AdminTableColumns } from './Row'
 import Table from './Table'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
+import { OrderStatus } from 'models'
 
 const AdminOrders = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -14,17 +16,33 @@ const AdminOrders = () => {
 
   return (
     <Page>
-      {ORDER_STATUSES.map((status, index) => (
-        <Tile key={status} marginTop={index === 0 ? 0 : '3rem'}>
-          <Box as="h2" marginY="m-size">
-            {commonT(`orderStatuses.${status}`)}
-          </Box>
-          <Box as="h5" margin={0} marginBottom="m-size">
-            {t(`statusesInfo.${status}`)}
-          </Box>
-          <Table columns={statusToColumns[status]} status={status} />
-        </Tile>
-      ))}
+      <Banner
+        horizonal
+        marginBottom="xxl-size"
+        small
+        title={<Heading level={4}>{t('title')}</Heading>}
+      />
+
+      <Tabs>
+        <TabList>
+          {ORDER_STATUSES.map((status) => (
+            <Tab key={status}>
+              <Text type="button">{commonT(`ORDER_STATUSES.${status}`)}</Text>
+            </Tab>
+          ))}
+        </TabList>
+
+        {ORDER_STATUSES.map((status) => (
+          <TabPanel key={status}>
+            <Tile>
+              <Heading level={6} marginY="l-size">
+                {t(`STATUSES_INFO.${status}`)}
+              </Heading>
+              <Table columns={statusToColumns[status]} status={status} />
+            </Tile>
+          </TabPanel>
+        ))}
+      </Tabs>
     </Page>
   )
 }

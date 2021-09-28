@@ -5,7 +5,7 @@ import { basketContext } from 'providers/BasketProvider'
 import React, { useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { basketToggleContext } from 'providers/BasketToggleProvider'
-import { BasketItem } from 'models/basketItem'
+import { BasketItem } from 'models'
 import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
 import { Product, useGetProducts } from 'api'
 import { checkoutContext } from 'providers/CheckoutProvider'
@@ -31,9 +31,9 @@ const Checkout = () => {
 
         return (
           <Flexbox
+            alignItems="center"
             background="white"
             padding="m-size"
-            alignItems="center"
             width="100%"
           >
             <Flexbox flexDirection="column">
@@ -42,19 +42,19 @@ const Checkout = () => {
             </Flexbox>
 
             <Button
-              size="medium"
-              variant="secondary"
               marginLeft="auto"
               onClick={() => {
                 closeBasket()
                 history.push(PRODUCTS)
               }}
+              size="medium"
+              variant="secondary"
             >
               {t('basket.backToShop')}
             </Button>
 
             <Button
-              size="medium"
+              disabled={!basketLength || pathname === '/checkout'}
               marginLeft="m-size"
               onClick={() => {
                 setCheckout((prev) => ({
@@ -66,7 +66,7 @@ const Checkout = () => {
                 closeBasket()
                 history.push(CHECKOUT_PRODUCTS)
               }}
-              disabled={!basketLength || pathname === '/checkout'}
+              size="medium"
             >
               {t('basket.checkout')}
             </Button>

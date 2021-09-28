@@ -1,11 +1,11 @@
 import { boolean, object, string, TypeOf } from 'zod'
 
 const paymentType = object({
+  created_at: string(),
+  is_available: boolean().nullable(),
   id: string(),
   label: string(),
-  is_available: boolean().nullable()
+  updated_at: string()
 })
 
 export type PaymentType = TypeOf<typeof paymentType>
-
-export default paymentType

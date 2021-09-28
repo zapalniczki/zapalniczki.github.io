@@ -16,7 +16,7 @@ import { generatePath } from 'react-router-dom'
 
 import { basketContext } from 'providers/BasketProvider'
 import { displayMoney } from 'utils'
-import { BasketItem as BasketItemType } from 'models/basketItem'
+import { BasketItem as BasketItemType } from 'models'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { basketToggleContext } from 'providers/BasketToggleProvider'
 

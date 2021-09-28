@@ -1,31 +1,35 @@
-import { Address } from 'models/supabaseOrder'
+import {
+  Address,
+  DeliveryType,
+  Order,
+  OrderItem,
+  PaymentType,
+  User
+} from 'models'
 import supabase from 'supabase'
-import { Email, Phone } from 'Types'
 
 export type AddOrderPayload = {
-  address: Address
-  shipping: Address
-
-  phone: Phone
-  email: Email
-
-  deliveryType: string
-  paymentType: string
-  total: number
-  products: { id: string; quantity: number }[]
-  fullname: string
-  isCompany?: boolean
+  address: Omit<Address, 'id' | 'created_at' | 'updated_at'>
+  shipping: Omit<Address, 'id' | 'created_at' | 'updated_at'>
+  phone: User['phone']
+  email: User['email']
+  deliveryType: DeliveryType['id']
+  paymentType: PaymentType['id']
+  total: Order['total']
+  products: Pick<OrderItem, 'id' | 'quantity'>[]
+  fullname: User['full_name']
+  isCompany?: User['is_company']
 }
 
 export const addOrder = async (payload: AddOrderPayload) => {
   // ADDRESS
   const { data: address, error: addressError } = await supabase
-    .from<AddressDb>('address')
+    .from<Address>('address')
     .upsert({
       street: payload.address.street,
-      street_no: payload.address.streetNo,
-      adress_cdn: payload.address.adressCdn,
-      post_code: payload.address.postCode,
+      street_no: payload.address.street_no,
+      adress_cdn: payload.address.adress_cdn,
+      post_code: payload.address.post_code,
       city: payload.address.city
     })
     .single()
@@ -40,12 +44,12 @@ export const addOrder = async (payload: AddOrderPayload) => {
 
   // SHIPPING
   const { data: shipping, error: shippingError } = await supabase
-    .from<AddressDb>('address')
+    .from<Address>('address')
     .upsert({
       street: payload.address.street,
-      street_no: payload.address.streetNo,
-      adress_cdn: payload.address.adressCdn,
-      post_code: payload.address.postCode,
+      street_no: payload.address.street_no,
+      adress_cdn: payload.address.adress_cdn,
+      post_code: payload.address.post_code,
       city: payload.address.city
     })
     .single()
@@ -59,8 +63,11 @@ export const addOrder = async (payload: AddOrderPayload) => {
   }
 
   // USER
+
+  type AddUserResponse = Omit<User, 'updated_at' | 'created_at'>
+
   const { data: userData, error: userError } = await supabase
-    .from<User>('user')
+    .from<AddUserResponse>('user')
     .insert([
       {
         is_company: payload.isCompany,
@@ -126,42 +133,4 @@ export const addOrder = async (payload: AddOrderPayload) => {
   }
 
   return order.id
-}
-
-type AddressDb = {
-  street: string
-  street_no: string
-  adress_cdn: string
-  post_code: string
-  city: string
-  id: string
-}
-
-type User = {
-  is_company?: boolean
-  full_name: string
-  address_id: string
-  shipping_id: string
-  phone: string
-  email: string
-  preferred_payment: string
-  preferred_delivery: string
-  id: string
-}
-
-type Order = {
-  id: string
-  status: 'OPEN'
-  user_id: string
-  shipping_id: string
-  delivery_type: string
-  payment_type: string
-  total: number
-}
-
-type OrderItem = {
-  id: string
-  product_id: string
-  order_id: string
-  quantity: number
 }

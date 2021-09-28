@@ -44,16 +44,16 @@ const useFormSubmit = () => {
       products: checkout.products2 || [],
       address: {
         street: checkout.contactDetails2?.street ?? '',
-        streetNo: checkout.contactDetails2?.streetNo ?? '',
-        adressCdn: checkout.contactDetails2?.addressCdn ?? '',
-        postCode: checkout.contactDetails2?.postCode ?? '',
+        street_no: checkout.contactDetails2?.streetNo ?? '',
+        adress_cdn: checkout.contactDetails2?.addressCdn ?? '',
+        post_code: checkout.contactDetails2?.postCode ?? '',
         city: checkout.contactDetails2?.city ?? ''
       },
       shipping: {
         street: checkout.shipping2?.street ?? '',
-        streetNo: checkout.shipping2?.streetNo ?? '',
-        adressCdn: checkout.shipping2?.addressCdn ?? '',
-        postCode: checkout.shipping2?.postCode ?? '',
+        street_no: checkout.shipping2?.streetNo ?? '',
+        adress_cdn: checkout.shipping2?.addressCdn ?? '',
+        post_code: checkout.shipping2?.postCode ?? '',
         city: checkout.shipping2?.city ?? ''
       }
     }

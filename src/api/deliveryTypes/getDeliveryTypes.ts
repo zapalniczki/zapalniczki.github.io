@@ -2,12 +2,12 @@ import { DeliveryType } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 
+type GetDeliveryTypesResponse = DeliveryType
+
 const getDeliveryTypes = async () => {
   const { data, error } = await supabase
-    .from<DeliveryType>('delivery_type')
-    .select(
-      'id, label, price, time, requires_address, isAvailable, frontend_icon_name'
-    )
+    .from<GetDeliveryTypesResponse>('delivery_type')
+    .select()
 
   if (error) {
     throw new Error(error.message)

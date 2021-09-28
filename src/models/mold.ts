@@ -6,9 +6,9 @@ export type MoldStatus = TypeOf<typeof status>
 
 const mold = object({
   id: string(),
-  productId: string(),
-  variant: string(),
-  status
+  created_at: string(),
+  updated_at: string(),
+  status: status.nullable()
 })
 
 export type Mold = TypeOf<typeof mold>

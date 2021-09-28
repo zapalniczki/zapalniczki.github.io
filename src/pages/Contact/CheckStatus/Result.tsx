@@ -17,7 +17,7 @@ const Result = ({ status, setView }: Props) => {
     <ViewWrapper flexDirection="column">
       <Text type="body-2">
         {t('items.CHECK_STATUS.result.info')}{' '}
-        <strong>{commonT(`orderStatuses.${status}`)}</strong>
+        <strong>{commonT(`ORDER_STATUSES.${status}`)}</strong>
       </Text>
 
       <Text type="caption">

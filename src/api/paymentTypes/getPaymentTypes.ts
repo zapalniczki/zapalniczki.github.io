@@ -2,10 +2,12 @@ import { PaymentType } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 
+type GetPaymentTypesResponse = PaymentType
+
 const getPaymentTypes = async () => {
   const { data, error } = await supabase
-    .from<PaymentType>('payment_type')
-    .select('id, label, is_available')
+    .from<GetPaymentTypesResponse>('payment_type')
+    .select()
 
   if (error) {
     throw new Error(error.message)

@@ -63,14 +63,11 @@ span {
   }
 }
 
-/* .control-arrow {
-  opacity: 1 !important;
+.react-tabs__tab-list {
+  margin-bottom: 0;
+  border-bottom: none;
+}
 
-  ::before {
-    border-right-color:${getColor('braty-red')} !important;
-    border-left-color:${getColor('braty-red')} !important;
-  }
-} */
 
 `
 

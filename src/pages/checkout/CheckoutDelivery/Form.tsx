@@ -21,16 +21,16 @@ const Form = ({ deliveryTypes }: Props) => {
         {deliveryTypes
           .filter((type) => type.isAvailable)
           .map((type, index) => (
-            <Field name="deliveryType" key={type.label}>
+            <Field key={type.label} name="deliveryType">
               {(props: FieldProps<DeliveryType, FormValues>) => (
                 <CheckboxField
                   {...props}
+                  fieldLabel={t('form.deliveryType.label')}
                   id={type.label}
                   isFirst={index === 0}
-                  title={commonT(`deliveryTypes.${type.label}`)}
                   subtitle={`${type.time}`}
+                  title={commonT(`deliveryTypes.${type.label}`)}
                   val={displayMoney(type.price)}
-                  fieldLabel={t('form.deliveryType.label')}
                 />
               )}
             </Field>

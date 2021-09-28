@@ -3,8 +3,7 @@ import {
   BasketProvider,
   BasketToggleProvider,
   CheckoutProvider,
-  LoaderProvider,
-  RemoteConfigProvider
+  LoaderProvider
 } from 'providers'
 
 import React, { StrictMode } from 'react'
@@ -115,12 +114,10 @@ render(
             <I18nextProvider i18n={i18n}>
               <CheckoutProvider>
                 <BasketToggleProvider>
-                  <RemoteConfigProvider>
-                    <LoaderProvider>
-                      <GlobalStyle />
-                      <App />
-                    </LoaderProvider>
-                  </RemoteConfigProvider>
+                  <LoaderProvider>
+                    <GlobalStyle />
+                    <App />
+                  </LoaderProvider>
                 </BasketToggleProvider>
               </CheckoutProvider>
             </I18nextProvider>

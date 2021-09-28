@@ -1,4 +1,4 @@
-import { BasketItem } from 'models/basketItem'
+import { BasketItem } from 'models'
 import React, { createContext, ReactNode, useState } from 'react'
 
 type BasketContex = {

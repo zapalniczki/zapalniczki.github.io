@@ -1,3 +1,4 @@
+import { OrderStatus } from 'models'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
 
@@ -5,14 +6,14 @@ type Params = {
   id: string
 }
 
-type OrderStatus = {
+type GetOrderStatusResponse = {
   id: string
-  status: string
+  status: OrderStatus
 }
 
 export const getOrderStatus = async (params: Params) => {
   const { data, error } = await supabase
-    .from<OrderStatus>('order')
+    .from<GetOrderStatusResponse>('order')
     .select('status')
     .eq('id', params.id)
     .single()
@@ -22,7 +23,7 @@ export const getOrderStatus = async (params: Params) => {
   }
 
   if (!data) {
-    throw new Error('No data in getProducts')
+    throw new Error('No data in getOrderStatus')
   }
 
   return data

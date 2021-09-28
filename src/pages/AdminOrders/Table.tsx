@@ -1,11 +1,11 @@
 import { useGetOrders } from 'api'
 import { Box, QueryLoader } from 'components'
 import isBefore from 'date-fns/isBefore'
-import { Order, OrderStatus } from 'models/order'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { getDateFromTimestamp } from 'utils'
 import Row, { AdminTableColumns } from './Row'
+import { OrderStatus } from 'models'
 
 type Props = {
   status: OrderStatus
@@ -64,7 +64,7 @@ const Table = ({ status, columns }: Props) => {
   )
 }
 
-const sortOrders = (orders: Order[]) =>
+const sortOrders = (orders: OrderOLD[]) =>
   orders.sort((prev, next) =>
     isBefore(
       getDateFromTimestamp(prev.modifiedAt),

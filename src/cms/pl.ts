@@ -54,7 +54,7 @@ const pl = {
       PICK_UP: 'Odbiór własny'
     },
 
-    orderStatuses: {
+    ORDER_STATUSES: {
       OPEN: 'Nowe',
       PAYMENT_RECEIVED: 'Zapłacone',
       IN_PREPARATION: 'W przygotowaniu',
@@ -525,7 +525,8 @@ const pl = {
   },
 
   ADMIN_ORDERS: {
-    statusesInfo: {
+    title: 'Zamówienia',
+    STATUSES_INFO: {
       OPEN: 'Zamówienia, które dostały dopiero złożone. Zmiana statusu po zaksięgowaniu "SUMA" na koncie.',
       PAYMENT_RECEIVED:
         'Zamówienia, które zostały opłacone. Zmiana statusu po zazieleniu wszystkich w "MATRYCE".',

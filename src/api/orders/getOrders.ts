@@ -1,36 +1,28 @@
-import {
-  collection,
-  getDocs,
-  getFirestore,
-  query,
-  where
-} from 'firebase/firestore'
-import { order } from 'models'
-import { OrderStatus } from 'models/order'
+import { OrderStatus } from 'models'
 import { useQuery } from 'react-query'
-import { getCollection } from 'utils'
+import supabase from 'supabase'
 
-const getOrders = async (status?: OrderStatus) => {
-  const db = getFirestore()
-  const ref = collection(db, 'orders')
+type GetOrdersRespons = {
+  status: OrderStatus
+}
 
-  let q = query(ref)
+const getOrders = async (status: OrderStatus) => {
+  const { data, error } = await supabase
+    .from<GetOrdersRespons>('orders')
+    .select('getProductsSelect')
+    .eq('status', status)
 
-  if (status) {
-    q = query(ref, where('status', '==', status))
+  if (error) {
+    throw new Error(error.message)
   }
 
-  const snapshot = await getDocs(q)
-  const orders = getCollection(snapshot, order)
+  if (!data) {
+    throw new Error('No data in getOrders')
+  }
 
-  return orders
+  return data
 }
 
-export const useGetOrders = (status?: OrderStatus) => {
-  const queryKey = getOrdersQueryKey(status)
-
-  return useQuery(queryKey, () => getOrders(status))
+export const useGetOrders = (status: OrderStatus) => {
+  return useQuery(['orders', { status }], () => getOrders(status))
 }
-
-export const getOrdersQueryKey = (status?: OrderStatus) =>
-  status ? `orders/${status}` : 'orders'

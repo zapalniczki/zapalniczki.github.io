@@ -1,6 +1,6 @@
 import { doc, getFirestore, Timestamp, updateDoc } from 'firebase/firestore'
 import { queryClient } from 'index'
-import { Order, OrderStatus } from 'models/order'
+import { OrderStatus } from 'models'
 import { CurrentStatus } from 'pages/AdminOrders/Row'
 import { loaderContext } from 'providers/LoaderProvider'
 import { useContext, useEffect } from 'react'
@@ -24,7 +24,7 @@ const updateOrderStatus = async (payload: UpdateOrderStatus) => {
 }
 
 export const useUpdateOrderStatus = (
-  order: Order,
+  order: OrderOLD,
   currentStatus: CurrentStatus
 ) => {
   const { show, hide } = useContext(loaderContext)

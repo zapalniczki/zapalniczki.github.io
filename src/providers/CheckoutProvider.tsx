@@ -12,7 +12,7 @@ import {
   Postcode,
   Street
 } from 'Types'
-import { BasketItem } from 'models/basketItem'
+import { BasketItem } from 'models'
 
 type Props = {
   children: ReactNode

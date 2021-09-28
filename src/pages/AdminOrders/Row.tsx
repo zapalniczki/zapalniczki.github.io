@@ -2,17 +2,16 @@
 import { Box, Select } from 'components'
 import ORDER_STATUSES from 'constants/orderStatuses'
 import { TranslateFunc } from 'hooks/useTranslation'
-import { Order } from 'models/order'
 import React, { ReactNode, useState } from 'react'
 import { useTranslation } from 'hooks'
 import { displayDate, displayMoney, getDateFromTimestamp } from 'utils'
 import uniq from 'lodash.uniq'
 import { differenceInDays } from 'date-fns'
-import { useUpdateOrderStatus, useGetMoldsOld } from 'api'
-import { MoldStatus } from 'models/mold'
+import { useUpdateOrderStatus, useGetMolds } from 'api'
+import { MoldStatus } from 'models/new/mold'
 
 type Props = {
-  order: Order
+  order: OrderOLD
   columns: AdminTableColumns[]
 }
 
@@ -21,7 +20,7 @@ const Row = ({ order, columns }: Props) => {
 
   const [currentStatus, setCurrentStatus] = useState<CurrentStatus>({
     value: order.status,
-    label: t(`orderStatuses.${order.status}`)
+    label: t(`ORDER_STATUSES.${order.status}`)
   })
 
   const orderInfo = useOrderInfo(order)
@@ -49,12 +48,13 @@ const Row = ({ order, columns }: Props) => {
   )
 }
 
-const useOrderInfo = (order: Order): Record<AdminTableColumns, ReactNode> => {
+const useOrderInfo = (
+  order: OrderOLD
+): Record<AdminTableColumns, ReactNode> => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const query = useGetMoldsOld()
-
-  const moldsData = query.data
+  const moldsQuery = useGetMolds()
+  const moldsData = moldsQuery.data
 
   return {
     id: order.id,
@@ -112,7 +112,7 @@ const useOrderInfo = (order: Order): Record<AdminTableColumns, ReactNode> => {
 const getStatusesWithLabels = (t: TranslateFunc) => {
   return ORDER_STATUSES.map((status) => ({
     value: status,
-    label: t(`orderStatuses.${status}`)
+    label: t(`ORDER_STATUSES.${status}`)
   }))
 }
 

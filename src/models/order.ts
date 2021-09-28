@@ -1,78 +1,26 @@
-import { string, number, object, enum as zenum, array, TypeOf } from 'zod'
+import { string, object, TypeOf, enum as zenum, number } from 'zod'
 
-import { PAYMENT_METHODS } from 'cms/config'
-import ORDER_STATUSES from 'constants/orderStatuses'
-import basketItem from './basketItem'
-import timestapDate from './timestampDate'
+const orderStatus = zenum([
+  'OPEN',
+  'PAYMENT_RECEIVED',
+  'IN_PREPARATION',
+  'AWAITING_FOR_PICKUP',
+  'IN_DELIVERY',
+  'COMPLETED'
+])
 
-const mobile = object({
-  country: string(),
-  countryCode: string(),
-  dialCode: string(),
-  value: string()
-})
-
-export type Mobile = TypeOf<typeof mobile>
-
-const contactDetails = object({
-  city: string(),
-  email: string(),
-  fullname: string(),
-  mobile,
-  nip: string(),
-  postCode: string(),
-  street: string()
-})
-
-export type ContactDetails = TypeOf<typeof contactDetails>
-
-const customerType = zenum(['INDIVIDUAL', 'COMPANY'])
-
-export type CustomerType = TypeOf<typeof customerType>
-
-const deliveryType = zenum(['FREE_PARCEL', 'PICK_UP'])
-
-export type DeliveryType = TypeOf<typeof deliveryType>
-
-const paymentType = zenum([...PAYMENT_METHODS])
-
-export type PaymentType = TypeOf<typeof paymentType>
-
-const shipping = object({
-  city: string(),
-  postCode: string(),
-  street: string()
-})
-
-export type Shipping = TypeOf<typeof shipping>
-
-const total = object({
-  delivery: number(),
-  products: number(),
-  sum: number()
-})
-
-export type Total = TypeOf<typeof total>
-
-const status = zenum([...ORDER_STATUSES])
-
-export type OrderStatus = TypeOf<typeof status>
+export type OrderStatus = TypeOf<typeof orderStatus>
 
 const order = object({
+  created_at: string(),
+  delivery_type: string(),
   id: string(),
-  products: array(basketItem).nullable(),
-  customerType: customerType.nullable(),
-  contactDetails: contactDetails.nullable(),
-  deliveryType: deliveryType.nullable(),
-  shipping: shipping.nullable(),
-  paymentType: paymentType.nullable(),
-  invoice: string().nullable(),
-  total,
-  createdAt: timestapDate,
-  modifiedAt: timestapDate,
-  status
+  payment_type: string(),
+  shipping_id: string(),
+  status: string(),
+  total: number(),
+  updated_at: string(),
+  user_id: string()
 })
 
 export type Order = TypeOf<typeof order>
-
-export default order

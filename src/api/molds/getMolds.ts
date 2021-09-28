@@ -1,18 +1,23 @@
-import { collection, getDocs, getFirestore } from 'firebase/firestore'
-import { mold } from 'models'
+import { Mold } from 'models'
 import { useQuery } from 'react-query'
-import { getCollection } from 'utils'
+import supabase from 'supabase'
+
+type GetMoldsResponse = Mold
 
 const getMolds = async () => {
-  const db = getFirestore()
-  const ref = collection(db, 'molds')
+  const { data, error } = await supabase
+    .from<GetMoldsResponse>('molds')
+    .select()
 
-  const snapshot = await getDocs(ref)
-  const orders = getCollection(snapshot, mold)
+  if (error) {
+    throw new Error(error.message)
+  }
 
-  return orders
+  if (!data) {
+    throw new Error('No data in getMolds')
+  }
+
+  return data
 }
 
-export const useGetMoldsOld = () => useQuery(getMoldsQueryKey, getMolds)
-
-export const getMoldsQueryKey = 'molds'
+export const useGetMolds = () => useQuery('molds', getMolds)
