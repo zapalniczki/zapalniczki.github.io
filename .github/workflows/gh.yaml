@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [query]
+    branches: [dev]
 
 jobs:
   BUILD:
