@@ -6,7 +6,7 @@ const user = object({
   email: string(),
   full_name: string(),
   id: string().uuid(),
-  is_company: boolean(),
+  is_company: boolean().nullable(),
   nip: string(),
   phone: string(),
   preferred_delivery: string().uuid(),

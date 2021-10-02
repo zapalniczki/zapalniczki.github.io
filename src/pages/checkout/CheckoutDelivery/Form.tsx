@@ -29,7 +29,7 @@ const Form = ({ deliveryTypes }: Props) => {
                   id={type.label}
                   isFirst={index === 0}
                   subtitle={`${type.time}`}
-                  title={commonT(`deliveryTypes.${type.label}`)}
+                  title={commonT(`DELIVERY_TYPES.${type.label}`)}
                   val={displayMoney(type.price)}
                 />
               )}

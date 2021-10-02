@@ -8,8 +8,6 @@ export type SelectOption = {
   label: string
 }
 
-export type Role = 'USER' | 'ADMIN'
-
 export type Street = string
 export type HourseNr = string
 export type PostCode = string

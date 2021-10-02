@@ -39,28 +39,28 @@ const DeliveryAndPayments = () => {
       <SectionHead marginTop="xxl-size" title={t('processingTime.title')} />
       <Grid gridTemplateColumns="1fr 5rem 1fr 5rem 1fr">
         <Option
+          description={t('processingTime.items.PRODUCTION.description')}
           icon="calendar-alt"
           title={t('processingTime.items.PRODUCTION.title')}
-          description={t('processingTime.items.PRODUCTION.description')}
         />
 
         <Flexbox alignSelf="center">
-          <FontAwesomeIcon size="3x" icon="plus" />
+          <FontAwesomeIcon icon="plus" size="3x" />
         </Flexbox>
 
         <Option
+          description={t('processingTime.items.DELIVERY.description')}
           icon="truck-loading"
           title={t('processingTime.items.DELIVERY.title')}
-          description={t('processingTime.items.DELIVERY.description')}
         />
 
         <Flexbox alignSelf="center">
-          <FontAwesomeIcon size="3x" icon="equals" />
+          <FontAwesomeIcon icon="equals" size="3x" />
         </Flexbox>
 
         <Option
-          icon="boxes"
           description={t('processingTime.items.TOTAL.description')}
+          icon="boxes"
         />
       </Grid>
 
@@ -91,8 +91,8 @@ const DeliveryAndPayments = () => {
               .map((type) => (
                 <FeatureItem
                   key={type.id}
-                  title={commonT(`deliveryTypes.${type.label}`)}
                   subtitle={`${displayMoney(type.price)} - ${type.time}`}
+                  title={commonT(`DELIVERY_TYPES.${type.label}`)}
                 >
                   <FontAwesomeIcon
                     icon={type.frontend_icon_name as IconName}

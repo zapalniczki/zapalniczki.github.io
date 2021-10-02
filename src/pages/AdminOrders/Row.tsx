@@ -1,28 +1,25 @@
-// @ts-check
 import { Box, Select } from 'components'
 import ORDER_STATUSES from 'constants/orderStatuses'
 import { TranslateFunc } from 'hooks/useTranslation'
 import React, { ReactNode, useState } from 'react'
 import { useTranslation } from 'hooks'
-import { displayDate, displayMoney, getDateFromTimestamp } from 'utils'
+import { displayDate, displayMoney } from 'utils'
 import uniq from 'lodash.uniq'
-import { differenceInDays } from 'date-fns'
-import { useUpdateOrderStatus, useGetMolds } from 'api'
-import { MoldStatus } from 'models/new/mold'
+import { differenceInDays, parseISO } from 'date-fns'
+import { useUpdateOrderStatus, useGetMolds, GetOrdersResponse } from 'api'
+import { MoldStatus, Order } from 'models'
 
 type Props = {
-  order: OrderOLD
+  order: GetOrdersResponse
   columns: AdminTableColumns[]
 }
 
 const Row = ({ order, columns }: Props) => {
-  const { t } = useTranslation('COMMON')
-
+  const { t: commonT } = useTranslation('COMMON')
   const [currentStatus, setCurrentStatus] = useState<CurrentStatus>({
     value: order.status,
-    label: t(`ORDER_STATUSES.${order.status}`)
+    label: commonT(`ORDER_STATUSES.${order.status}`)
   })
-
   const orderInfo = useOrderInfo(order)
 
   useUpdateOrderStatus(order, currentStatus)
@@ -40,7 +37,7 @@ const Row = ({ order, columns }: Props) => {
               setCurrentStatus(option)
             }
           }}
-          options={getStatusesWithLabels(t)}
+          options={getStatusesWithLabels(commonT)}
           value={currentStatus}
         />
       </Box>
@@ -49,63 +46,70 @@ const Row = ({ order, columns }: Props) => {
 }
 
 const useOrderInfo = (
-  order: OrderOLD
+  order: GetOrdersResponse
 ): Record<AdminTableColumns, ReactNode> => {
   const { t: commonT } = useTranslation('COMMON')
+  const { t } = useTranslation('ADMIN_ORDERS')
 
   const moldsQuery = useGetMolds()
   const moldsData = moldsQuery.data
 
   return {
     id: order.id,
-    modifiedAt: displayDate(getDateFromTimestamp(order.modifiedAt)),
-    createdAt: displayDate(getDateFromTimestamp(order.createdAt)),
-    customerType: commonT('customerTypes.' + order.customerType),
-    boxesCount: order.products
-      ?.map((product) => product.quantity)
-      .reduce((prev, curr) => prev + curr, 0),
-    customerName: order.contactDetails?.fullname,
-    customerEmail: order.contactDetails?.email,
-    customerPhone: order.contactDetails?.mobile.value,
-    deliveryType: commonT('deliveryMethods.' + order.deliveryType),
-    sum: displayMoney(order.total.sum),
-    molds: uniq(
-      order.products?.map((product) => ({
-        productId: product.id
-      }))
-    ).map((mold) => {
-      const displayName = mold.productId
-
-      let status: MoldStatus | null = null
-
-      if (moldsData) {
-        const alfa = moldsData.find(
-          (dbMold) => dbMold.productId === mold.productId
-        )
-
-        status = alfa?.status || null
-      }
-
-      let color = 'red'
-      if (status === 'DONE') {
-        color = 'green'
-      }
-
-      if (status === 'IN_PROGRESS') {
-        color = 'yellow'
-      }
-
-      return (
-        <Box color={color} key={displayName}>
-          {displayName}
-        </Box>
-      )
-    }),
+    updatedAt: displayDate(parseISO(order.updated_at)),
+    createdAt: displayDate(parseISO(order.created_at)),
+    isCompany: t(`IS_COMPANY.${order.isCompany.is_company ? 'yes' : 'no'}`),
+    customerName: order.customerName.full_name,
+    customerEmail: order.customerEmail.email,
+    customerPhone: order.customerPhone.phone,
     orderTime: differenceInDays(
-      getDateFromTimestamp(order.modifiedAt),
-      getDateFromTimestamp(order.createdAt)
+      parseISO(order.created_at),
+      parseISO(order.updated_at)
     ),
-    deliveryId: 'XXX XXX XXX XXX XXX'
+    sum: displayMoney(order.total),
+    deliveryType: commonT('DELIVERY_TYPES.' + order.deliveryType.label),
+    deliveryId: 'XXX XXX XXX XXX XXX',
+    boxesCount:
+      order.products
+        ?.map((product) => product.quantity)
+        .reduce((prev, curr) => prev + curr, 0) || 0
+
+    // molds: uniq(
+    //   order.products?.map((product) => ({
+    //     productId: product.id
+    //   }))
+    // ).map((mold) => {
+    //   const displayName = mold.productId
+
+    //   let status: MoldStatus | null = null
+
+    //   if (moldsData) {
+    //     const alfa = moldsData.find(
+    //       (dbMold) => dbMold.productId === mold.productId
+    //     )
+
+    //     status = alfa?.status || null
+    //   }
+
+    //   let color = 'red'
+    //   if (status === 'DONE') {
+    //     color = 'green'
+    //   }
+
+    //   if (status === 'IN_PROGRESS') {
+    //     color = 'yellow'
+    //   }
+
+    //   return (
+    //     <Box color={color} key={displayName}>
+    //       {displayName}
+    //     </Box>
+    //   )
+    // }),
+    // orderTime: differenceInDays(
+    //   getDateFromTimestamp(order.modifiedAt),
+    //   getDateFromTimestamp(order.createdAt)
+    // ),
   }
 }
 
@@ -118,18 +122,19 @@ const getStatusesWithLabels = (t: TranslateFunc) => {
 
 export type AdminTableColumns =
   | 'id'
-  | 'modifiedAt'
+  | 'updatedAt'
   | 'createdAt'
-  | 'customerType'
-  | 'customerName'
-  | 'deliveryType'
-  | 'sum'
-  | 'boxesCount'
-  | 'molds'
-  | 'orderTime'
-  | 'deliveryId'
-  | 'customerEmail'
+  | 'isCompany'
   | 'customerPhone'
+  | 'customerName'
+  | 'customerEmail'
+  | 'orderTime'
+  | 'sum'
+  | 'deliveryType'
+  | 'boxesCount'
+  | 'deliveryId'
+
+// | 'molds'
 
 export type CurrentStatus = {
   value: string

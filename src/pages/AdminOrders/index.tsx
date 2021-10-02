@@ -50,25 +50,23 @@ const AdminOrders = () => {
 const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
   OPEN: [
     'id',
-    'createdAt',
-    'customerType',
+    'updatedAt',
+    'isCompany',
     'customerName',
     'customerPhone',
     'customerEmail',
     'sum'
   ],
-  PAYMENT_RECEIVED: ['id', 'modifiedAt', 'boxesCount', 'molds'],
-  IN_PREPARATION: [
+  PAYMENT_RECEIVED: [
     'id',
-    'modifiedAt',
-    'createdAt',
-    'customerType',
-    'deliveryType',
-    'sum'
+    'updatedAt',
+    'boxesCount'
+    //  'molds'
   ],
-  AWAITING_FOR_PICKUP: ['id', 'modifiedAt', 'deliveryType', 'deliveryId'],
-  IN_DELIVERY: ['id', 'modifiedAt', 'deliveryType', 'deliveryId'],
-  COMPLETED: ['id', 'modifiedAt', 'createdAt', 'orderTime', 'sum']
+  IN_PREPARATION: ['id', 'updatedAt', 'isCompany', 'deliveryType', 'sum'],
+  AWAITING_FOR_PICKUP: ['id', 'updatedAt', 'deliveryType', 'deliveryId'],
+  IN_DELIVERY: ['id', 'updatedAt', 'deliveryType', 'deliveryId'],
+  COMPLETED: ['id', 'createdAt', 'updatedAt', 'orderTime', 'sum']
 }
 
 export default AdminOrders

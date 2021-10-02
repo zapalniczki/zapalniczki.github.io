@@ -140,8 +140,8 @@ const Form = ({ isCompany: isCompany }: Props) => {
           <Field name="phone">
             {(props: FieldProps<string, FormValues>) => (
               <MobileInput
-                label={getRequiredOrNot(t('form.phone.label'), true)}
                 fieldProps={props}
+                label={getRequiredOrNot(t('form.phone.label'), true)}
               />
             )}
           </Field>

@@ -13,14 +13,14 @@ export type OrderStatus = TypeOf<typeof orderStatus>
 
 const order = object({
   created_at: string(),
-  delivery_type: string(),
-  id: string(),
-  payment_type: string(),
-  shipping_id: string(),
+  delivery_type: string().uuid(),
+  id: string().uuid(),
+  payment_type: string().uuid(),
+  shipping_id: string().uuid(),
   status: string(),
   total: number(),
   updated_at: string(),
-  user_id: string()
+  user_id: string().uuid()
 })
 
 export type Order = TypeOf<typeof order>

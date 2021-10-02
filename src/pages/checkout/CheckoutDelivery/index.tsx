@@ -37,9 +37,9 @@ const CheckoutDelivery = () => {
           {(deliveryTypes) => (
             <Formik
               initialValues={initialValues}
+              onSubmit={(values) => onSubmitForm(values, deliveryTypes)}
               validateOnChange
               validationSchema={schema}
-              onSubmit={(values) => onSubmitForm(values, deliveryTypes)}
             >
               {({ handleSubmit, values }) => {
                 const delivery = deliveryTypes.find(

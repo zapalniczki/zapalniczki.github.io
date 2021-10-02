@@ -64,13 +64,13 @@ const Table = ({ status, columns }: Props) => {
   )
 }
 
-const sortOrders = (orders: OrderOLD[]) =>
+const sortOrders = (orders: any[]) =>
   orders.sort((prev, next) =>
-    isBefore(
-      getDateFromTimestamp(prev.modifiedAt),
-      getDateFromTimestamp(next.modifiedAt)
-    )
-      ? -1
+    // isBefore()
+    true
+      ? // getDateFromTimestamp(prev.modifiedAt),
+        // getDateFromTimestamp(next.modifiedAt)
+        -1
       : 1
   )
 

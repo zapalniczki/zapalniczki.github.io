@@ -24,7 +24,7 @@ const updateOrderStatus = async (payload: UpdateOrderStatus) => {
 }
 
 export const useUpdateOrderStatus = (
-  order: OrderOLD,
+  order: any,
   currentStatus: CurrentStatus
 ) => {
   const { show, hide } = useContext(loaderContext)

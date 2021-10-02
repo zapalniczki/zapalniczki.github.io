@@ -14,7 +14,7 @@ type Props = {
 const Indicator = ({ clickHandler, isSelected }: Props) => (
   <Container
     as="button"
-    backgroundColor={isSelected ? 'braty-red' : 'white'}
+    backgroundColor={isSelected ? 'black' : 'white'}
     border="none"
     disabled={isSelected}
     height="0.5rem"

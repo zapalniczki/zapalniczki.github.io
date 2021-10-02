@@ -23,7 +23,7 @@ const Chevron = ({ right, clickHandler }: Props) => {
     >
       <Button onClick={clickHandler} variant="quaternary">
         <FontAwesomeIcon
-          color={colors['braty-red']}
+          color={colors['black']}
           icon={right ? 'chevron-right' : 'chevron-left'}
           size="2x"
         />

@@ -49,7 +49,7 @@ const pl = {
       COMPANY: 'Firma'
     },
 
-    deliveryTypes: {
+    DELIVERY_TYPES: {
       FREE_DELIVERY: 'Bezpłatna dostawa',
       PICK_UP: 'Odbiór własny'
     },
@@ -539,20 +539,24 @@ const pl = {
       COMPLETED: 'Zamówienia, które są ukończone.'
     },
     headers: {
-      id: 'Id zamówienia',
+      id: 'Numer referencyjny',
       status: 'Zmień status ',
       customerName: 'Nazwa klienta',
       customerPhone: 'Telefon',
       customerEmail: 'Email',
       createdAt: 'Data zamówienia',
-      modifiedAt: 'Data modyfikacji',
-      customerType: 'Typ Klienta',
+      updatedAt: 'Data modyfikacji',
+      isCompany: 'Czy firma?',
       deliveryType: 'Typ dostawy',
       sum: 'Suma',
       boxesCount: 'Liczba pudełek',
       molds: 'Matryce',
       orderTime: 'Czas zamówienia',
       deliveryId: 'Numer paczki'
+    },
+    IS_COMPANY: {
+      yes: 'Tak',
+      no: 'Nie'
     },
     emptyState: 'Nie ma żadnych zamówień'
   },
