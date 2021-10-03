@@ -48,10 +48,6 @@ const CallMeBack = (props: Props) => {
         width="100%"
       >
         <Flexbox alignItems="center">
-          <Heading level={4} marginRight="m-size">
-            {title}
-          </Heading>
-
           {view.view === 'SUCCESS' && (
             <FontAwesomeIcon
               color={colors.green}
@@ -59,8 +55,13 @@ const CallMeBack = (props: Props) => {
               size="2x"
             />
           )}
+
+          <Heading level={4} marginLeft={view.view === 'FORM' ? 0 : 'm-size'}>
+            {title}
+          </Heading>
         </Flexbox>
-        <Text marginBottom="m-size" type="body-2">
+
+        <Text marginBottom="m-size" marginTop="s-size" type="body-2">
           {subtitle}
         </Text>
 

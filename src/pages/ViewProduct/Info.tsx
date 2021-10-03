@@ -13,7 +13,7 @@ const Info = ({ product }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   return (
-    <Flexbox flexGrow={1} flexDirection="column" marginLeft="xl-size">
+    <Flexbox flexDirection="column" flexGrow={1} marginLeft="xl-size">
       <Heading level={4}>{product.name}</Heading>
 
       <Separator />

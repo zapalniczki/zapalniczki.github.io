@@ -66,10 +66,6 @@ const Newsletter = () => {
         width="100%"
       >
         <Flexbox alignItems="center">
-          <Heading level={4} marginRight="m-size">
-            {title}
-          </Heading>
-
           {view.view === 'SUCCESS' && (
             <FontAwesomeIcon
               color={colors.green}
@@ -81,9 +77,13 @@ const Newsletter = () => {
           {view.view === 'ERROR' && (
             <FontAwesomeIcon color={colors.red} icon="times-circle" size="2x" />
           )}
+
+          <Heading level={4} marginLeft={view.view !== 'FORM' ? 'm-size' : 0}>
+            {title}
+          </Heading>
         </Flexbox>
 
-        <Text marginBottom="m-size" type="body-2">
+        <Text marginBottom="m-size" marginTop="s-size" type="body-2">
           {subtitle}
         </Text>
 
