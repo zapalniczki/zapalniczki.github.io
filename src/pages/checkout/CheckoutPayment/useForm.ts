@@ -10,7 +10,7 @@ import {
   PaymentType2
 } from 'providers/CheckoutProvider'
 import { useMutation } from 'react-query'
-import { AddOrderPayload, addOrder, useTriggerNewOrder } from 'api'
+import { AddOrderPayload, addOrder, useTriggerSendEmail } from 'api'
 import { basketContext } from 'providers/BasketProvider'
 
 import { loaderContext } from 'providers/LoaderProvider'
@@ -30,7 +30,7 @@ const useFormSubmit = () => {
   const { mutateAsync: mutateAddOrderSupabase, isLoading } =
     useMutation(addOrder)
 
-  const triggerNewOrder = useTriggerNewOrder()
+  const triggerSendEmail = useTriggerSendEmail()
 
   const onSubmit = async (form: FormValues) => {
     show()
@@ -63,10 +63,16 @@ const useFormSubmit = () => {
       orderID: orderId
     }
 
-    triggerNewOrder({
-      order,
-      order_id: orderId,
-      to: order.email
+    triggerSendEmail({
+      name: order.fullname,
+      to: order.email,
+      type: {
+        key: 'NEW_ORDER',
+        content: {
+          order_id: orderId,
+          phone: order.phone
+        }
+      }
     })
 
     setCheckout(initState)

@@ -1,17 +1,23 @@
 import { useMutation } from 'react-query'
-import { AddOrderPayload } from './addOrder'
+import { Email, Fullname, Phone } from 'Types'
 
-type TriggerNewOrderPayload = {
-  order: AddOrderPayload
-  order_id: string
-  to: string
+type TriggerSendEmailPayload = {
+  name: Fullname
+  to: Email
+  type: {
+    key: 'NEW_ORDER'
+    content: {
+      order_id: string
+      phone: Phone
+    }
+  }
 }
 
-const triggerNewOrder = (payload: TriggerNewOrderPayload) => {
+const triggerSendEmail = (payload: TriggerSendEmailPayload) => {
   const headers = new Headers()
   headers.append('Content-Type', 'application/json')
 
-  const path = 'https://en226xi0lt4gdzu.m.pipedream.net'
+  const path = 'https://en1oerk9p7kdazn.m.pipedream.net'
   const options = {
     method: 'POST',
     headers,
@@ -21,8 +27,8 @@ const triggerNewOrder = (payload: TriggerNewOrderPayload) => {
   return fetch(path, options)
 }
 
-export const useTriggerNewOrder = () => {
-  const { mutateAsync } = useMutation(triggerNewOrder)
+export const useTriggerSendEmail = () => {
+  const { mutateAsync } = useMutation(triggerSendEmail)
 
-  return (payload: TriggerNewOrderPayload) => mutateAsync(payload)
+  return (payload: TriggerSendEmailPayload) => mutateAsync(payload)
 }
