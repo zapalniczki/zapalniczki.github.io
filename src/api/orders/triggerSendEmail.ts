@@ -1,16 +1,22 @@
 import { useMutation } from 'react-query'
 import { Email, Fullname, Phone } from 'Types'
 
-type TriggerSendEmailPayload = {
-  name: Fullname
-  to: Email
-  type: {
-    key: 'NEW_ORDER'
-    content: {
-      order_id: string
-      phone: Phone
+type EventType =
+  | {
+      key: 'NEW_ORDER'
+      content: {
+        order_id: string
+        phone: Phone
+        name: Fullname
+      }
     }
-  }
+  | {
+      key: 'NEWSLETTER_SIGNUP'
+    }
+
+type TriggerSendEmailPayload = {
+  type: EventType
+  to: Email
 }
 
 const triggerSendEmail = (payload: TriggerSendEmailPayload) => {

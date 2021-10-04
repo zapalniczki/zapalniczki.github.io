@@ -1,5 +1,5 @@
 export * from './getOrderStatus'
 export * from './addOrder'
-export * from './triggerNewOrder'
+export * from './triggerSendEmail'
 export * from './getOrders'
 export * from './updateOrderStatus'

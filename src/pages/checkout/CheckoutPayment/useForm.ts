@@ -64,11 +64,11 @@ const useFormSubmit = () => {
     }
 
     triggerSendEmail({
-      name: order.fullname,
       to: order.email,
       type: {
         key: 'NEW_ORDER',
         content: {
+          name: order.fullname,
           order_id: orderId,
           phone: order.phone
         }
