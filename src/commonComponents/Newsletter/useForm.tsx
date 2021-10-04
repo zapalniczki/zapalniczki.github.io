@@ -1,4 +1,4 @@
-import { useAddEmail } from 'api'
+import { useAddEmail, useTriggerSendEmail } from 'api'
 import { useSchema, useTranslation } from 'hooks'
 import { loaderContext } from 'providers/LoaderProvider'
 import { useContext, useState } from 'react'
@@ -18,6 +18,7 @@ const useForm = () => {
   })
 
   const { mutateAsync: mutateAddEmail } = useAddEmail()
+  const triggerSendEmail = useTriggerSendEmail()
 
   const onSubmit = async (values: FormValues) => {
     try {
@@ -25,6 +26,13 @@ const useForm = () => {
 
       await mutateAddEmail({
         email: values.email
+      })
+
+      triggerSendEmail({
+        to: values.email,
+        type: {
+          key: 'NEWSLETTER_SIGNUP'
+        }
       })
 
       setView({
