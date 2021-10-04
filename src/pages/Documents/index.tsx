@@ -20,7 +20,7 @@ const Documents = () => {
       />
 
       <ListItem marginTop="l-size">
-        <ExternalLink to="https://drive.google.com/file/d/1csQd4cWoBWJh26xaFo-ZWasBoZPk-8FK/view?usp=sharing">
+        <ExternalLink to="https://docs.google.com/document/d/1PfnUmbE0uZpxnne0Sz6eHPhT9Risc_YtnbygORBi5DA/edit?usp=sharing">
           {t('TYPES.termsAndConditions')}
         </ExternalLink>
       </ListItem>
