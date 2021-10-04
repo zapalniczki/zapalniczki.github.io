@@ -8,7 +8,7 @@ import {
   CHECKOUT_PRODUCTS,
   PRODUCTS
 } from 'constants/routes'
-import { Flexbox, Box, Button } from 'components'
+import { Flexbox, Button } from 'components'
 import { useCheckoutStep } from './StepTracker'
 
 type Props = {
@@ -60,32 +60,28 @@ const Actions = ({ primaryDisabled }: Props) => {
 
   return (
     <Flexbox
-      marginTop="3rem"
       alignItems="center"
       justifyContent="space-between"
+      marginTop="3rem"
     >
       <Button
-        size="medium"
-        variant="secondary"
         onClick={onClickPrevious}
+        size="medium"
         type="button"
+        variant="secondary"
       >
         {t(isFirstPage ? 'checkoutActions.backToShop' : 'checkoutActions.back')}
       </Button>
       <Button
-        size="medium"
         disabled={isBasketEmpty || primaryDisabled}
-        onClick={onClickNext}
-        type={isFirstPage ? 'button' : 'submit'}
         icon="arrow-right"
+        onClick={onClickNext}
+        size="medium"
+        type={isFirstPage ? 'button' : 'submit'}
       >
-        <Box marginRight="s-size">
-          {t(
-            current === 5
-              ? 'checkoutActions.createOrder'
-              : 'checkoutActions.next'
-          )}
-        </Box>
+        {t(
+          current === 5 ? 'checkoutActions.createOrder' : 'checkoutActions.next'
+        )}
       </Button>
     </Flexbox>
   )

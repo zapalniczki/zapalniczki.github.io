@@ -24,7 +24,7 @@ const colors = {
   'gray-20': '#b6b6b6',
 
   'button-color': '#101010',
-  'button-hover': 'lighten(button-color, 10%)',
+  'button-hover': '#101010',
 
   'color-success': '#000',
   'label-color': '#696868',

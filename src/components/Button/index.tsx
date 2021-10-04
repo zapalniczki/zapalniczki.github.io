@@ -63,13 +63,13 @@ const Container = styled.button<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
 
   &:hover {
-    cursor: pointer;
     background: ${getColor('button-hover')};
     border: 1px solid;
     border-color: ${getColor('button-hover')};
-    text-decoration: none;
   }
 
   ${(props) =>

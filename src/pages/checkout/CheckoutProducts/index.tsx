@@ -25,13 +25,13 @@ const CheckoutProducts = () => {
         <StepTitle>{t('title')}</StepTitle>
 
         <Flexbox
-          minHeight="20rem"
+          alignItems="center"
           flexDirection="column"
           marginTop="2rem"
-          alignItems="center"
+          minHeight="20rem"
         >
           {isBasketEmpty && (
-            <Flexbox alignItems="center" justifyContent="center" flexGrow={1}>
+            <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
               <Text type="caption">{t('emptyState')}</Text>
             </Flexbox>
           )}
