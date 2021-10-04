@@ -56,8 +56,10 @@ const useOrderInfo = (
 
   return {
     id: order.id,
-    updatedAt: displayDate(parseISO(order.updated_at)),
-    createdAt: displayDate(parseISO(order.created_at)),
+    // updatedAt: displayDate(parseISO(order.updated_at)),
+    updatedAt: '20/20/2021',
+    // createdAt: displayDate(parseISO(order.created_at)),
+    createdAt: '20/20/2021',
     isCompany: t(`IS_COMPANY.${order.isCompany.is_company ? 'yes' : 'no'}`),
     customerName: order.customerName.full_name,
     customerEmail: order.customerEmail.email,

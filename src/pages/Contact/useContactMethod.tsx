@@ -10,6 +10,7 @@ const useContactMethods = (): ContactMethod[] => {
 
   return [
     {
+      icon: 'question',
       key: 'CHECK_STATUS',
       extended: true,
       content: <CheckStatus />
@@ -48,16 +49,16 @@ const useContactMethods = (): ContactMethod[] => {
         <>
           <Text type="body-2">{t('items.ADDRESS.info')}</Text>
 
-          <Text marginTop="s-size" type="subtitle-2" lineHeight="1.21">
+          <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
             {t('items.ADDRESS.address1')}
           </Text>
-          <Text type="subtitle-2" lineHeight="1.21">
+          <Text lineHeight="1.21" type="subtitle-2">
             {t('items.ADDRESS.address2')}
           </Text>
-          <Text type="subtitle-2" lineHeight="1.21">
+          <Text lineHeight="1.21" type="subtitle-2">
             {t('items.ADDRESS.address3')}
           </Text>
-          <Text type="subtitle-2" lineHeight="1.21">
+          <Text lineHeight="1.21" type="subtitle-2">
             {t('items.ADDRESS.address4')}
           </Text>
         </>

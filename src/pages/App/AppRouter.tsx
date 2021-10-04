@@ -62,7 +62,7 @@ const AppRouter = () => (
 
         <Route component={CheckoutResult} path={CHECKOUT_RESULT} />
 
-        <Route component={AdminOrders} path={ADMIN_ORDERS} />
+        <AdminRoute component={AdminOrders} path={ADMIN_ORDERS} />
 
         <Route component={Contact} path={CONTACT} />
 
@@ -74,8 +74,6 @@ const AppRouter = () => (
 
         <Route component={Home} exact path={HOME} />
 
-        <AdminRoute component={TestComponent} path="/test" />
-
         <Route component={PageNotFound} path="*" />
       </Switch>
 
@@ -84,5 +82,4 @@ const AppRouter = () => (
   </Router>
 )
 
-const TestComponent = () => <h1>Test Component</h1>
 export default AppRouter

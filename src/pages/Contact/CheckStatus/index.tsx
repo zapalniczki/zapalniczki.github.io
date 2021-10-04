@@ -1,16 +1,14 @@
 import { Form as FormikForm, Formik } from 'formik'
 import React from 'react'
 import { Flexbox } from 'components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Form from './Form'
 import Result from './Result'
 import Error from './Error'
 import useForm from './useForm'
-import styled, { useTheme } from 'styled-components'
+import styled from 'styled-components'
 
 const CheckStatus = () => {
   const { view, setView, schema, initialValues, onSubmit } = useForm()
-  const { colors } = useTheme()
 
   let content: JSX.Element
   if (view.view === 'RESULT') {
@@ -42,13 +40,7 @@ const CheckStatus = () => {
         alignItems="center"
         justifyContent="center"
         marginLeft="xxxl-size"
-      >
-        <FontAwesomeIcon
-          color={colors['braty-red']}
-          icon="box-open"
-          size="4x"
-        />
-      </Flexbox>
+      />
     </Flexbox>
   )
 }
