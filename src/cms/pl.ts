@@ -11,7 +11,8 @@ const pl = {
         contact: 'Kontakt'
       },
       adminLinks: {
-        adminOrders: 'Zamówienia'
+        orders: 'Zamówienia',
+        newsletterUsers: 'Użytkownicy newslettera'
       },
       allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
       documents: 'Dokumenty'
@@ -561,6 +562,10 @@ const pl = {
       no: 'Nie'
     },
     emptyState: 'Nie ma żadnych zamówień'
+  },
+
+  ADMIN_NEWSLETTER_USERS: {
+    title: 'Użytkownicy newslettera'
   },
 
   CONTACT: {

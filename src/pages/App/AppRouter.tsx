@@ -2,6 +2,7 @@ import { createBrowserHistory } from 'history'
 import React from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
 import {
+  ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
@@ -32,7 +33,8 @@ import {
   Home,
   Contact,
   DeliveryAndPayments,
-  HowToCreateOrder
+  HowToCreateOrder,
+  AdminNewsletterUsers
 } from 'pages'
 import Documents from 'pages/Documents'
 import { AdminRoute } from 'components'
@@ -63,6 +65,11 @@ const AppRouter = () => (
         <Route component={CheckoutResult} path={CHECKOUT_RESULT} />
 
         <AdminRoute component={AdminOrders} path={ADMIN_ORDERS} />
+
+        <AdminRoute
+          component={AdminNewsletterUsers}
+          path={ADMIN_NEWSLETTER_USERS}
+        />
 
         <Route component={Contact} path={CONTACT} />
 

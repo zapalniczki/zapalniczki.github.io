@@ -34,7 +34,7 @@ const Footer = () => {
           </Flexbox>
 
           {isAdmin && (
-            <Flexbox alignItems="flex-start" flexDirection="column">
+            <Flexbox alignItems="flex-end" flexDirection="column">
               {adminLinks.map((link) => (
                 <Link key={link.to} to={link.to}>
                   <Text marginY="xs-size" type="body-1">

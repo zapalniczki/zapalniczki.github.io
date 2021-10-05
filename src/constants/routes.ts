@@ -18,6 +18,8 @@ export const CHECKOUT_RESULT = '/checkout/result'
 
 export const ADMIN_ORDERS = '/admin_orders'
 
+export const ADMIN_NEWSLETTER_USERS = '/admin_newsletter_users'
+
 export const DELIVERY_AND_PAYMENTS = '/delivery_and_payments'
 
 export const CONTACT = '/contact'

@@ -1,9 +1,13 @@
-import * as Routes from 'constants/routes'
+import { ADMIN_NEWSLETTER_USERS, ADMIN_ORDERS } from 'constants/routes'
 
 const adminLinks = [
   {
-    label: 'adminOrders',
-    to: Routes.ADMIN_ORDERS
+    label: 'orders',
+    to: ADMIN_ORDERS
+  },
+  {
+    label: 'newsletterUsers',
+    to: ADMIN_NEWSLETTER_USERS
   }
 ]
 
