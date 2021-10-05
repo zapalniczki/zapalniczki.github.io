@@ -21,16 +21,16 @@ const AdminDeliveryTypes = () => {
   const columns = useMemo(
     () => [
       {
+        Header: t('HEADERS.label'),
+        accessor: 'label' as const
+      },
+      {
         Header: t('HEADERS.created_at'),
         accessor: 'created_at' as const
       },
       {
         Header: t('HEADERS.updated_at'),
         accessor: 'updated_at' as const
-      },
-      {
-        Header: t('HEADERS.label'),
-        accessor: 'label' as const
       },
       {
         Header: t('HEADERS.price'),
@@ -41,16 +41,16 @@ const AdminDeliveryTypes = () => {
         accessor: 'time' as const
       },
       {
+        Header: t('HEADERS.frontend_icon_name'),
+        accessor: 'frontend_icon_name' as const
+      },
+      {
         Header: t('HEADERS.requires_address'),
         accessor: 'requires_address' as const
       },
       {
         Header: t('HEADERS.is_enabled'),
         accessor: 'is_enabled' as const
-      },
-      {
-        Header: t('HEADERS.frontend_icon_name'),
-        accessor: 'frontend_icon_name' as const
       }
     ],
     []
@@ -109,7 +109,7 @@ const shapeData = (data: DeliveryType[]) =>
           />
         </Flexbox>
       ),
-      frontend_icon_name: record.frontend_icon_name
+      frontend_icon_name: record.frontend_icon_name ?? '-'
     }
   })
 

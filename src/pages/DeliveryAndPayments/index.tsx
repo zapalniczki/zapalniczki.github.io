@@ -95,7 +95,7 @@ const DeliveryAndPayments = () => {
                   title={type.label}
                 >
                   <FontAwesomeIcon
-                    icon={type.frontend_icon_name as IconName}
+                    icon={(type.frontend_icon_name ?? 'question') as IconName}
                     size="3x"
                   />
                 </FeatureItem>
