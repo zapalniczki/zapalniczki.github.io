@@ -78,8 +78,6 @@ const BasketItem = ({ product: basketProduct }: Props) => {
             })
           }
 
-          console.log(product)
-
           return (
             <>
               <SimpleButton

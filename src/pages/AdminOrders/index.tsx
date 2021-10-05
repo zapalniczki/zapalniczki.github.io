@@ -1,12 +1,11 @@
-import { Banner, Heading, Page, Text, Tile } from 'components'
-import ORDER_STATUSES from 'constants/orderStatuses'
+import { Banner, Box, Heading, Page, Text, Tile } from 'components'
 import React from 'react'
 import { useScrollTop, useTranslation } from 'hooks'
 import { AdminTableColumns } from './Row'
 import Table from './Table'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
-import { OrderStatus } from 'models'
+import { OrderStatus, ORDER_STATUSES } from 'models'
 
 const AdminOrders = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -38,7 +37,14 @@ const AdminOrders = () => {
               <Heading level={6} marginY="l-size">
                 {t(`STATUSES_INFO.${status}`)}
               </Heading>
-              <Table columns={statusToColumns[status]} status={status} />
+              <Box
+                minHeight="50rem"
+                overflowX="scroll"
+                overflowY="auto"
+                width="100%"
+              >
+                <Table columns={statusToColumns[status]} status={status} />
+              </Box>
             </Tile>
           </TabPanel>
         ))}
@@ -50,13 +56,13 @@ const AdminOrders = () => {
 const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
   OPEN: [
     'id',
-    'updatedAt',
-    'isCompany',
+    'createdAt',
     'customerName',
     'customerPhone',
     'customerEmail',
     'sum'
   ],
+  CONFIRMED: ['id', 'updatedAt', 'sum'],
   PAYMENT_RECEIVED: [
     'id',
     'updatedAt',

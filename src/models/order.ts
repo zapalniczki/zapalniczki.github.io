@@ -2,6 +2,7 @@ import { string, object, TypeOf, enum as zenum, number } from 'zod'
 
 const orderStatus = zenum([
   'OPEN',
+  'CONFIRMED',
   'PAYMENT_RECEIVED',
   'IN_PREPARATION',
   'AWAITING_FOR_PICKUP',
@@ -10,6 +11,7 @@ const orderStatus = zenum([
 ])
 
 export type OrderStatus = TypeOf<typeof orderStatus>
+export const ORDER_STATUSES = orderStatus.options
 
 const order = object({
   created_at: string(),

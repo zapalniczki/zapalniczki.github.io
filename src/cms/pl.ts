@@ -56,6 +56,7 @@ const pl = {
 
     ORDER_STATUSES: {
       OPEN: 'Nowe',
+      CONFIRMED: 'Potwierdzone',
       PAYMENT_RECEIVED: 'Zapłacone',
       IN_PREPARATION: 'W przygotowaniu',
       AWAITING_FOR_PICKUP: 'Oczekuje na kuriera',
@@ -527,7 +528,9 @@ const pl = {
   ADMIN_ORDERS: {
     title: 'Zamówienia',
     STATUSES_INFO: {
-      OPEN: 'Zamówienia, które dostały dopiero złożone. Zmiana statusu po zaksięgowaniu "SUMA" na koncie.',
+      OPEN: 'Zamówienia, które dostały dopiero złożone. Oczekują na potwierdzenie przez nas zamówienia z klientem',
+      CONFIRMED:
+        'Zamówienia, które zostały potwierdzone i oczekują na płatność. Zmiana statusu po zaksięgowaniu "SUMA" na koncie.',
       PAYMENT_RECEIVED:
         'Zamówienia, które zostały opłacone. Zmiana statusu po zazieleniu wszystkich w "MATRYCE".',
       IN_PREPARATION:
@@ -546,7 +549,6 @@ const pl = {
       customerEmail: 'Email',
       createdAt: 'Data zamówienia',
       updatedAt: 'Data modyfikacji',
-      isCompany: 'Czy firma?',
       deliveryType: 'Typ dostawy',
       sum: 'Suma',
       boxesCount: 'Liczba pudełek',
@@ -584,7 +586,9 @@ const pl = {
         result: {
           info: 'Status Twojego zamówienia to',
           statusesMeanings: {
-            OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i oczekujemy na wpłatę środków',
+            OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i niebawem skontaktujemy się z Tobą w celu potwierdzenia.',
+            CONFIRMED:
+              'Co oznacza, ze zamówienie zostało potwierdzone i oczekujemy na wpłatę środków.',
             PAYMENT_RECEIVED:
               'Co oznacza, że otrzymaliśmy środki i niebawem przystąpimy do jego realizacji.',
             IN_PREPARATION:

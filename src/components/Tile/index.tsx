@@ -14,7 +14,6 @@ type Props = {
   HeightProps &
   GridColumnProps &
   FlexboxProps
-
 const Tile = ({ onClick, children, ...props }: Props) => (
   <Flexbox
     background="white"

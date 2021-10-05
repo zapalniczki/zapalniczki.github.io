@@ -20,7 +20,6 @@ const getOrders = async (status: OrderStatus) => {
     .select(
       `
       id,
-
       deliveryType: delivery_type(label),
       total,
       updated_at,
@@ -33,6 +32,7 @@ const getOrders = async (status: OrderStatus) => {
       `
     )
     .eq('status', status)
+    .order('updated_at', { ascending: true })
 
   if (error) {
     throw new Error(error.message)
@@ -42,7 +42,6 @@ const getOrders = async (status: OrderStatus) => {
     throw new Error('No data in getOrders')
   }
 
-  console.log(data)
   return data
 }
 
