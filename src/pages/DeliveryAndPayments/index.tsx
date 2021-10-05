@@ -87,12 +87,12 @@ const DeliveryAndPayments = () => {
         {(deliveryTypes) => (
           <Grid>
             {deliveryTypes
-              .filter((type) => type.isAvailable)
+              .filter((type) => type.is_enabled)
               .map((type) => (
                 <FeatureItem
                   key={type.id}
                   subtitle={`${displayMoney(type.price)} - ${type.time}`}
-                  title={commonT(`DELIVERY_TYPES.${type.label}`)}
+                  title={type.label}
                 >
                   <FontAwesomeIcon
                     icon={type.frontend_icon_name as IconName}

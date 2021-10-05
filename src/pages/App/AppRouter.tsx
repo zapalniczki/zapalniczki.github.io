@@ -3,6 +3,7 @@ import React from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
 import {
   ADMIN_CALLBACKS,
+  ADMIN_DELIVERY_TYPES,
   ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
   CHECKOUT_DELIVERY,
@@ -40,6 +41,7 @@ import {
 import Documents from 'pages/Documents'
 import { AdminRoute } from 'components'
 import AdminCallbacks from 'pages/AdminCallbacks'
+import AdminDeliveryTypes from 'pages/AdminDeliveryTypes'
 
 export const history = createBrowserHistory()
 
@@ -74,6 +76,11 @@ const AppRouter = () => (
         />
 
         <AdminRoute component={AdminCallbacks} path={ADMIN_CALLBACKS} />
+
+        <AdminRoute
+          component={AdminDeliveryTypes}
+          path={ADMIN_DELIVERY_TYPES}
+        />
 
         <Route component={Contact} path={CONTACT} />
 

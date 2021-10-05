@@ -13,7 +13,8 @@ const pl = {
       adminLinks: {
         orders: 'Zamówienia',
         newsletterUsers: 'Użytkownicy newslettera',
-        callbacks: 'Prośby o kontakt'
+        callbacks: 'Prośby o kontakt',
+        deliveryTypes: 'Metody dostawy'
       },
       allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
       documents: 'Dokumenty'
@@ -49,11 +50,6 @@ const pl = {
     customerTypes: {
       INDIVIDUAL: 'Klient indywidualny',
       COMPANY: 'Firma'
-    },
-
-    DELIVERY_TYPES: {
-      FREE_DELIVERY: 'Bezpłatna dostawa',
-      PICK_UP: 'Odbiór własny'
     },
 
     ORDER_STATUSES: {
@@ -592,6 +588,20 @@ const pl = {
       updated_at: 'Data modyfikacji',
       phone_number: 'Numer telefonu',
       done: 'Wykonano'
+    }
+  },
+
+  ADMIN_DELIVERY_TYPES: {
+    title: 'Metody dostawy',
+    HEADERS: {
+      created_at: 'Data utworzenia',
+      updated_at: 'Data modyfikacji',
+      label: 'Etykieta',
+      price: 'Cena',
+      time: 'Czas',
+      requires_address: 'Wymaga adresu',
+      is_enabled: 'Włączone',
+      frontend_icon_name: 'Ikona'
     }
   },
 

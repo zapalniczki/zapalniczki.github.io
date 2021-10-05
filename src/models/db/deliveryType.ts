@@ -4,7 +4,7 @@ const deliveryType = object({
   created_at: string(),
   frontend_icon_name: string(),
   id: string(),
-  isAvailable: boolean().nullable(),
+  is_enabled: boolean().nullable(),
   label: string(),
   price: number(),
   requires_address: boolean().nullable(),

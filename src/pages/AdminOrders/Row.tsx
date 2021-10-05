@@ -49,7 +49,6 @@ const Row = ({ order, columns }: Props) => {
 const useOrderInfo = (
   order: GetOrdersResponse
 ): Record<AdminTableColumns, ReactNode> => {
-  const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('ADMIN_ORDERS')
 
   const moldsQuery = useGetMolds()
@@ -68,7 +67,7 @@ const useOrderInfo = (
       parseISO(order.updated_at)
     ),
     sum: displayMoney(order.total),
-    deliveryType: commonT('DELIVERY_TYPES.' + order.deliveryType.label),
+    deliveryType: order.deliveryType.label,
     deliveryId: 'XXX XXX XXX XXX XXX',
     boxesCount:
       order.products

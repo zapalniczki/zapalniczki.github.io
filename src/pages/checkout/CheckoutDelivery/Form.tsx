@@ -12,14 +12,13 @@ type Props = {
 }
 
 const Form = ({ deliveryTypes }: Props) => {
-  const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('CHECKOUT_DELIVERY')
 
   return (
     <>
       <Row flexDirection="column">
         {deliveryTypes
-          .filter((type) => type.isAvailable)
+          .filter((type) => type.is_enabled)
           .map((type, index) => (
             <Field key={type.label} name="deliveryType">
               {(props: FieldProps<DeliveryType, FormValues>) => (
@@ -29,7 +28,7 @@ const Form = ({ deliveryTypes }: Props) => {
                   id={type.label}
                   isFirst={index === 0}
                   subtitle={`${type.time}`}
-                  title={commonT(`DELIVERY_TYPES.${type.label}`)}
+                  title={type.label}
                   val={displayMoney(type.price)}
                 />
               )}
