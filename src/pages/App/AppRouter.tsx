@@ -2,6 +2,7 @@ import { createBrowserHistory } from 'history'
 import React from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
 import {
+  ADMIN_CALLBACKS,
   ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
   CHECKOUT_DELIVERY,
@@ -38,6 +39,7 @@ import {
 } from 'pages'
 import Documents from 'pages/Documents'
 import { AdminRoute } from 'components'
+import AdminCallbacks from 'pages/AdminCallbacks'
 
 export const history = createBrowserHistory()
 
@@ -70,6 +72,8 @@ const AppRouter = () => (
           component={AdminNewsletterUsers}
           path={ADMIN_NEWSLETTER_USERS}
         />
+
+        <AdminRoute component={AdminCallbacks} path={ADMIN_CALLBACKS} />
 
         <Route component={Contact} path={CONTACT} />
 

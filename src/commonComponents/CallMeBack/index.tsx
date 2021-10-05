@@ -1,4 +1,4 @@
-import { Banner, Flexbox, Heading, Text } from 'components'
+import { Banner, Box, Button, Flexbox, Heading, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import Form from './Form'
@@ -39,6 +39,18 @@ const CallMeBack = (props: Props) => {
     subtitle = commonT('CALL_ME_BACK.SUCCESS.subtitle')
   }
 
+  if (view.view === 'ERROR') {
+    content = (
+      <Box>
+        <Button size="small">
+          {commonT('CALL_ME_BACK.ERROR.buttonLabel')}
+        </Button>
+      </Box>
+    )
+    title = commonT('CALL_ME_BACK.ERROR.title')
+    subtitle = commonT('CALL_ME_BACK.ERROR.subtitle')
+  }
+
   return (
     <Banner horizonal small {...props}>
       <Flexbox
@@ -54,6 +66,10 @@ const CallMeBack = (props: Props) => {
               icon="check-circle"
               size="2x"
             />
+          )}
+
+          {view.view === 'ERROR' && (
+            <FontAwesomeIcon color={colors.red} icon="times-circle" size="2x" />
           )}
 
           <Heading level={4} marginLeft={view.view === 'FORM' ? 0 : 'm-size'}>

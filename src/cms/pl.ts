@@ -12,7 +12,8 @@ const pl = {
       },
       adminLinks: {
         orders: 'Zamówienia',
-        newsletterUsers: 'Użytkownicy newslettera'
+        newsletterUsers: 'Użytkownicy newslettera',
+        callbacks: 'Prośby o kontakt'
       },
       allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
       documents: 'Dokumenty'
@@ -183,6 +184,12 @@ const pl = {
         title: 'Prośba o telefon została wysłana',
         subtitle:
           'Niedługo się z Tobą skontaktujemy. Średnio zajmuje nam to 24 godziny.'
+      },
+
+      ERROR: {
+        title: 'Niestety się nie udało',
+        subtitle: 'Naciśnij poniższy przycisk i spróbuj ponownie.',
+        buttonLabel: 'Spróbuj jeszcze raz'
       }
     }
   },
@@ -575,6 +582,16 @@ const pl = {
         consent: 'Zgoda',
         edit: 'Edycja'
       }
+    }
+  },
+
+  ADMIN_CALLBACKS: {
+    title: 'Prośby o kontakt',
+    HEADERS: {
+      created_at: 'Data utworzenia',
+      updated_at: 'Data modyfikacji',
+      phone_number: 'Numer telefonu',
+      done: 'Wykonano'
     }
   },
 

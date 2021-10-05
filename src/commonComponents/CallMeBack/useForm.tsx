@@ -7,6 +7,7 @@ import { object } from 'yup'
 
 const useForm = () => {
   const [view, setView] = useState<View>({ view: 'FORM' })
+
   const { getSchema } = useSchema()
   const { show, hide } = useContext(loaderContext)
 
@@ -29,10 +30,13 @@ const useForm = () => {
       setView({
         view: 'SUCCESS'
       })
-
-      // eslint-disable-next-line no-empty
-    } catch (_e: unknown) {}
-    hide()
+    } catch (_e: unknown) {
+      setView({
+        view: 'ERROR'
+      })
+    } finally {
+      hide()
+    }
   }
 
   return {
@@ -48,6 +52,6 @@ export type FormValues = {
   phone: string
 }
 
-type View = { view: 'FORM' } | { view: 'SUCCESS' }
+type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }
 
 export default useForm
