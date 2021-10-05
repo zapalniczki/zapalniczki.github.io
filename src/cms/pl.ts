@@ -14,7 +14,8 @@ const pl = {
         orders: 'Zamówienia',
         newsletterUsers: 'Użytkownicy newslettera',
         callbacks: 'Prośby o kontakt',
-        deliveryTypes: 'Metody dostawy'
+        deliveryTypes: 'Metody dostawy',
+        paymentTypes: 'Metody płatności'
       },
       allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
       documents: 'Dokumenty'
@@ -38,13 +39,6 @@ const pl = {
       back: 'Wróć',
       next: 'Dalej',
       createOrder: 'Zamawiam i płacę'
-    },
-
-    paymentTypes: {
-      STANDARD_TRANSFER: {
-        title: 'Przelew tradycyjny',
-        subtitle: 'W tym momencie oferujemy tylko ten sposób płatności'
-      }
     },
 
     customerTypes: {
@@ -600,6 +594,19 @@ const pl = {
       price: 'Cena',
       time: 'Czas',
       requires_address: 'Wymaga adresu',
+      is_enabled: 'Włączone',
+      frontend_icon_name: 'Ikona'
+    }
+  },
+
+  ADMIN_PAYMENT_TYPES: {
+    title: 'Metody płatności',
+    HEADERS: {
+      created_at: 'Data utworzenia',
+      updated_at: 'Data modyfikacji',
+      label: 'Etykieta',
+      price: 'Cena',
+      time: 'Czas',
       is_enabled: 'Włączone',
       frontend_icon_name: 'Ikona'
     }

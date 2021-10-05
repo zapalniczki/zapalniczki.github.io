@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useGetDeliveryTypes } from 'api'
+import { useGetPaymentTypes } from 'api'
 import {
   Banner,
   Flexbox,
@@ -10,17 +10,17 @@ import {
   Tile
 } from 'components'
 import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
-import { DeliveryType } from 'models'
+import { PaymentType } from 'models'
 import React, { useMemo } from 'react'
 import { displayDate, displayMoney } from 'utils'
 
-const AdminDeliveryTypes = () => {
-  const { t } = useTranslation('ADMIN_DELIVERY_TYPES')
+const AdminPaymentTypes = () => {
+  const { t } = useTranslation('ADMIN_PAYMENT_TYPES')
 
   useScrollTop()
   useDocumentTitle(t('title'))
 
-  const callbacksQuery = useGetDeliveryTypes()
+  const callbacksQuery = useGetPaymentTypes()
   const columns = useMemo(
     () => [
       {
@@ -42,14 +42,6 @@ const AdminDeliveryTypes = () => {
       {
         Header: t('HEADERS.time'),
         accessor: 'time' as const
-      },
-      {
-        Header: t('HEADERS.frontend_icon_name'),
-        accessor: 'frontend_icon_name' as const
-      },
-      {
-        Header: t('HEADERS.requires_address'),
-        accessor: 'requires_address' as const
       },
       {
         Header: t('HEADERS.is_enabled'),
@@ -80,7 +72,7 @@ const AdminDeliveryTypes = () => {
   )
 }
 
-const shapeData = (data: DeliveryType[]) =>
+const shapeData = (data: PaymentType[]) =>
   data.map((record) => {
     const possitiveProps = {
       color: 'green',
@@ -98,13 +90,6 @@ const shapeData = (data: DeliveryType[]) =>
       label: record.label,
       price: displayMoney(record.price),
       time: record.time,
-      requires_address: (
-        <Flexbox justifyContent="center">
-          <FontAwesomeIcon
-            {...(record.requires_address ? possitiveProps : negativeProps)}
-          />
-        </Flexbox>
-      ),
       is_enabled: (
         <Flexbox justifyContent="center">
           <FontAwesomeIcon
@@ -116,4 +101,4 @@ const shapeData = (data: DeliveryType[]) =>
     }
   })
 
-export default AdminDeliveryTypes
+export default AdminPaymentTypes

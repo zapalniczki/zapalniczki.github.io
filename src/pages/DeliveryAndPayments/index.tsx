@@ -19,7 +19,6 @@ import { displayMoney } from 'utils'
 import Option from './Option'
 
 const DeliveryAndPayments = () => {
-  const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('DELIVERY_AND_PAYMENTS')
 
   useScrollTop()
@@ -66,16 +65,16 @@ const DeliveryAndPayments = () => {
 
       <SectionHead marginTop="xxl-size" title={t('payments.title')} />
       <QueryLoader query={paymentTypesQuery}>
-        {(paymentMethods) => (
+        {(paymentTypes) => (
           <Grid>
-            {paymentMethods
-              .filter((type) => type.is_available)
-              .map((feature) => (
-                <FeatureItem
-                  key={feature.id}
-                  title={commonT(`paymentTypes.${feature.label}.title`)}
-                >
-                  <FontAwesomeIcon icon="exchange-alt" size="3x" />
+            {paymentTypes
+              .filter((type) => type.is_enabled)
+              .map((type) => (
+                <FeatureItem key={type.id} title={type.label}>
+                  <FontAwesomeIcon
+                    icon={(type.frontend_icon_name ?? 'question') as IconName}
+                    size="3x"
+                  />
                 </FeatureItem>
               ))}
           </Grid>

@@ -1,6 +1,6 @@
 import { Banner, Box, Heading, Page, Text, Tile } from 'components'
 import React from 'react'
-import { useScrollTop, useTranslation } from 'hooks'
+import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
 import { AdminTableColumns } from './Row'
 import Table from './Table'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
@@ -12,6 +12,7 @@ const AdminOrders = () => {
   const { t } = useTranslation('ADMIN_ORDERS')
 
   useScrollTop()
+  useDocumentTitle(t('title'))
 
   return (
     <Page>

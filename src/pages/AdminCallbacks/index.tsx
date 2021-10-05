@@ -10,7 +10,7 @@ import {
   Table,
   Tile
 } from 'components'
-import { useTranslation } from 'hooks'
+import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
 import { Callback } from 'models'
 import React, { useMemo } from 'react'
 import { DefaultTheme, useTheme } from 'styled-components'
@@ -19,6 +19,9 @@ import { displayDate } from 'utils'
 const AdminCallbacks = () => {
   const { t } = useTranslation('ADMIN_CALLBACKS')
   const { colors } = useTheme()
+
+  useScrollTop()
+  useDocumentTitle(t('title'))
 
   const callbacksQuery = useGetCallbacks()
   const columns = useMemo(

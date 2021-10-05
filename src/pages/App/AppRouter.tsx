@@ -6,6 +6,7 @@ import {
   ADMIN_DELIVERY_TYPES,
   ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
+  ADMIN_PAYMENT_TYPES,
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
   CHECKOUT_PAYMENT,
@@ -22,26 +23,27 @@ import {
 } from 'constants/routes'
 import { Basket, Footer, Navigation } from 'commonComponents'
 import {
-  CheckoutDetails,
-  ViewProduct,
-  PageNotFound,
-  Products,
-  CheckoutProducts,
-  CheckoutDelivery,
-  CheckoutPayment,
-  CheckoutShipping,
-  CheckoutResult,
+  AdminCallbacks,
+  AdminDeliveryTypes,
+  AdminNewsletterUsers,
   AdminOrders,
-  Home,
+  CheckoutDelivery,
+  CheckoutDetails,
+  CheckoutPayment,
+  CheckoutProducts,
+  CheckoutResult,
+  CheckoutShipping,
   Contact,
   DeliveryAndPayments,
+  Home,
   HowToCreateOrder,
-  AdminNewsletterUsers
+  PageNotFound,
+  Products,
+  ViewProduct
 } from 'pages'
 import Documents from 'pages/Documents'
 import { AdminRoute } from 'components'
-import AdminCallbacks from 'pages/AdminCallbacks'
-import AdminDeliveryTypes from 'pages/AdminDeliveryTypes'
+import AdminPaymentTypes from 'pages/AdminPaymentTypes'
 
 export const history = createBrowserHistory()
 
@@ -81,6 +83,8 @@ const AppRouter = () => (
           component={AdminDeliveryTypes}
           path={ADMIN_DELIVERY_TYPES}
         />
+
+        <AdminRoute component={AdminPaymentTypes} path={ADMIN_PAYMENT_TYPES} />
 
         <Route component={Contact} path={CONTACT} />
 

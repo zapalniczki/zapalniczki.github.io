@@ -2,6 +2,7 @@ export const ADMIN_CALLBACKS = '/admin_callbacks'
 export const ADMIN_DELIVERY_TYPES = '/admin_delivery_types'
 export const ADMIN_NEWSLETTER_USERS = '/admin_newsletter_users'
 export const ADMIN_ORDERS = '/admin_orders'
+export const ADMIN_PAYMENT_TYPES = '/admin_payment_types'
 
 export const CHECKOUT_DELIVERY = '/checkout/delivery'
 export const CHECKOUT_DETAILS = '/checkout/details'

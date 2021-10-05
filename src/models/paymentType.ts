@@ -1,11 +1,14 @@
-import { boolean, object, string, TypeOf } from 'zod'
+import { boolean, number, object, string, TypeOf } from 'zod'
 
 const paymentType = object({
+  id: string().uuid(),
   created_at: string(),
-  is_available: boolean().nullable(),
-  id: string(),
+  updated_at: string(),
   label: string(),
-  updated_at: string()
+  price: number(),
+  time: string(),
+  frontend_icon_name: string().nullable(),
+  is_enabled: boolean().nullable()
 })
 
 export type PaymentType = TypeOf<typeof paymentType>

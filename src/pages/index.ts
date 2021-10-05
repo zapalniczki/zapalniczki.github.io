@@ -2,6 +2,7 @@ export { default as AdminCallbacks } from './AdminCallbacks'
 export { default as AdminNewsletterUsers } from './AdminNewsletterUsers'
 export { default as AdminOrders } from './AdminOrders'
 export { default as AdminDeliveryTypes } from './AdminDeliveryTypes'
+export { default as AdminPaymentTypes } from './AdminPaymentTypes'
 
 export { default as App } from './App'
 export { default as CheckoutDelivery } from './checkout/CheckoutDelivery'

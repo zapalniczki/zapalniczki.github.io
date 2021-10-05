@@ -11,26 +11,27 @@ type Props = {
 }
 
 const Form = ({ paymentTypes }: Props) => {
-  const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('CHECKOUT_PAYMENT')
 
   return (
     <>
       <Row flexDirection="column">
-        {paymentTypes.map((type, index) => (
-          <Field key={type.label} name="paymentType">
-            {(props: FieldProps<PaymentType, FormValues>) => (
-              <CheckboxField
-                {...props}
-                fieldLabel={t('form.paymentType.label')}
-                id={type.id}
-                isFirst={index === 0}
-                subtitle={commonT(`paymentTypes.${type.label}.subtitle`)}
-                title={commonT(`paymentTypes.${type.label}.title`)}
-              />
-            )}
-          </Field>
-        ))}
+        {paymentTypes
+          .filter((type) => type.is_enabled)
+          .map((type, index) => (
+            <Field key={type.label} name="paymentType">
+              {(props: FieldProps<PaymentType, FormValues>) => (
+                <CheckboxField
+                  {...props}
+                  fieldLabel={t('form.paymentType.label')}
+                  id={type.id}
+                  isFirst={index === 0}
+                  subtitle={type.time}
+                  title={type.label}
+                />
+              )}
+            </Field>
+          ))}
       </Row>
     </>
   )
