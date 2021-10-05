@@ -4,9 +4,9 @@ import React, { ReactNode, useState } from 'react'
 import { useTranslation } from 'hooks'
 import { displayDate, displayMoney } from 'utils'
 import uniq from 'lodash.uniq'
-import { differenceInDays, parseISO } from 'date-fns'
+import { parseISO, differenceInDays } from 'date-fns'
 import { useUpdateOrderStatus, useGetMolds, GetOrdersResponse } from 'api'
-import { MoldStatus, Order, ORDER_STATUSES } from 'models'
+import { MoldStatus, ORDER_STATUSES } from 'models'
 
 type Props = {
   order: GetOrdersResponse
@@ -55,13 +55,10 @@ const useOrderInfo = (
   const moldsQuery = useGetMolds()
   const moldsData = moldsQuery.data
 
-  console.log(order)
-  console.log(moldsData)
-
   return {
     id: order.id,
-    updatedAt: displayDate(parseISO(order.updated_at)),
-    createdAt: displayDate(parseISO(order.created_at)),
+    updatedAt: displayDate(order.updated_at),
+    createdAt: displayDate(order.created_at),
     isCompany: t(`IS_COMPANY.${order.isCompany.is_company ? 'yes' : 'no'}`),
     customerName: order.customerName.full_name,
     customerEmail: order.customerEmail.email,

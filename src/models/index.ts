@@ -16,3 +16,6 @@ export * from './db/address'
 export * from './db/callback'
 export * from './db/user'
 export * from './db/orderItem'
+
+export { default as newsletter } from './db/newsletter'
+export * from './db/newsletter'

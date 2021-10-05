@@ -565,7 +565,17 @@ const pl = {
   },
 
   ADMIN_NEWSLETTER_USERS: {
-    title: 'Użytkownicy newslettera'
+    title: 'Użytkownicy newslettera',
+    LIST: {
+      title: 'Lista',
+      HEADERS: {
+        email: 'Adres email',
+        created_at: 'Data utworzenia',
+        updated_at: 'Data modyfikacji',
+        consent: 'Zgoda',
+        edit: 'Edycja'
+      }
+    }
   },
 
   CONTACT: {
