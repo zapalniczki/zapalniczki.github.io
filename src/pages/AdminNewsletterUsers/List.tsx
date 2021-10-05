@@ -30,11 +30,11 @@ const List = () => {
       {
         Header: t('LIST.HEADERS.consent'),
         accessor: 'consent' as const
-      },
-      {
-        Header: t('LIST.HEADERS.edit'),
-        accessor: 'edit' as const
       }
+      // {
+      //   Header: t('LIST.HEADERS.edit'),
+      //   accessor: 'edit' as const
+      // }
     ],
     []
   )
@@ -69,8 +69,8 @@ const shapeData = (users: Newsletter[], colors: DefaultTheme['colors']) =>
         <Flexbox justifyContent="center">
           <FontAwesomeIcon color={iconColor} icon={icon} />
         </Flexbox>
-      ),
-      edit: 'XXX'
+      )
+      // edit: <EditModal />
     }
   })
 
