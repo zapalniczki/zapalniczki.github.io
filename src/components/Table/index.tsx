@@ -41,13 +41,11 @@ function Table<T extends DataConstraint>({ columns, data }: Props<T>) {
 
             return (
               <tr {...row.getRowProps()} key={i}>
-                {row.cells.map((cell, index) => {
-                  return (
+                {row.cells.map((cell, index) => (
                     <td {...cell.getCellProps()} key={index}>
                       {cell.render('Cell')}
                     </td>
-                  )
-                })}
+                  ))}
               </tr>
             )
           })}

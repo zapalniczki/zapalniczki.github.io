@@ -11,11 +11,11 @@ type Props = {
 const SimpleButton = ({ disabled, onClick, children, ...props }: Props) => (
   <Box {...props}>
     <Button
-      size="medium"
-      variant="ternary"
       disabled={disabled}
       onClick={onClick}
+      size="medium"
       type="button"
+      variant="ternary"
     >
       {children}
     </Button>

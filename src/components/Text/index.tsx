@@ -64,11 +64,11 @@ const Text = ({ wrap = true, span, children, type, ...props }: Props) => {
   return (
     <Container
       as={span ? 'span' : 'p'}
-      margin={0}
+      color={props.white ? 'white' : 'black'}
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}
-      color={props.white ? 'white' : 'black'}
+      margin={0}
       wrap={wrap}
       {...props}
     >

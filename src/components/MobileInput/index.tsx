@@ -27,15 +27,15 @@ const MobileInput = ({ fieldProps, placeholder, label, disabled }: Props) => {
       )}
 
       <StyledPhoneInput
-        isError={!!touched && !!error}
-        disabled={disabled}
         country="pl"
-        inputClass="input-form d-block"
-        placeholder={placeholder}
-        disableDropdown
         countryCodeEditable={false}
+        disableDropdown
+        disabled={disabled}
+        inputClass="input-form d-block"
+        isError={!!touched && !!error}
         masks={{ pl: '... .. .. ..' }}
         onChange={(value) => setValue(value)}
+        placeholder={placeholder}
         value={field.value ?? ''}
       />
     </Flexbox>

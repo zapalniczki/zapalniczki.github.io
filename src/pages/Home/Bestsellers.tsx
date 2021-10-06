@@ -10,8 +10,8 @@ const Bestsellers = () => {
   return (
     <ProductsGrid
       marginTop="xxl-size"
-      title={t('bestsellers.title')}
       query={productsQuery}
+      title={t('bestsellers.title')}
     />
   )
 }

@@ -12,11 +12,11 @@ type Props = {
 
 const Tile = ({ extended, content, icon, title }: Props) => (
   <TileComponent
-    gridColumn={extended ? 'auto / span 2' : 'auto'}
     flexDirection="column"
+    gridColumn={extended ? 'auto / span 2' : 'auto'}
   >
     <Flexbox alignItems="center" marginBottom="m-size">
-      {icon && <FontAwesomeIcon size="2x" icon={icon} />}
+      {icon && <FontAwesomeIcon icon={icon} size="2x" />}
 
       <Heading level={6} marginLeft={icon && 'm-size'}>
         {title}

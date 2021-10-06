@@ -9,14 +9,14 @@ type Props = {
 
 const FeatureItem = ({ title, subtitle, children }: Props) => (
   <Tile height={subtitle ? '23.53rem' : '20rem'} padding={0}>
-    <Flexbox flexGrow={1} alignItems="center" justifyContent="center">
+    <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
       {children}
     </Flexbox>
 
     <Flexbox
+      alignItems="center"
       backgroundColor="background-color"
       flexDirection="column"
-      alignItems="center"
       padding="m-size"
     >
       <Text type="subtitle-1">{title}</Text>

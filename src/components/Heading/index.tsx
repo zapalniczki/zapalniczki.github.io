@@ -54,11 +54,11 @@ const Heading = ({ children, level, ...props }: Props) => {
   return (
     <Box
       as={`h${level}`}
-      margin="0"
+      color="heading-color"
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}
-      color="heading-color"
+      margin="0"
       {...props}
     >
       {children}

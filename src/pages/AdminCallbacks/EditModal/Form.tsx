@@ -11,8 +11,7 @@ const Form = () => {
     <>
       <ModalContent>
         <Field name="done">
-          {(props: FieldProps<boolean, FormValues>) => {
-            return (
+          {(props: FieldProps<boolean, FormValues>) => (
               <>
                 <Text marginBottom="s-size" type="body-2">
                   {t('EDIT_MODAL.FORM.DONE.label')}
@@ -25,8 +24,7 @@ const Form = () => {
                   }
                 />
               </>
-            )
-          }}
+            )}
         </Field>
       </ModalContent>
     </>

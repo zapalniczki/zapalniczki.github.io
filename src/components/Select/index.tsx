@@ -10,16 +10,16 @@ type Props = {
 
 const Select = ({ placeholder, onChange, options, value }: Props) => (
   <SelectFromLib
-    value={value}
-    placeholder={placeholder}
     onChange={onChange}
     options={sortAndMapOptions(options)}
+    placeholder={placeholder}
     styles={{
       menu: (provided: any) => ({
         ...provided,
         zIndex: 10
       })
     }}
+    value={value}
   />
 )
 

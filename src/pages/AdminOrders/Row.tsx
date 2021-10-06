@@ -114,12 +114,10 @@ const useOrderInfo = (
   }
 }
 
-const getStatusesWithLabels = (t: TranslateFunc) => {
-  return ORDER_STATUSES.map((status) => ({
+const getStatusesWithLabels = (t: TranslateFunc) => ORDER_STATUSES.map((status) => ({
     value: status,
     label: t(`ORDER_STATUSES.${status}`)
   }))
-}
 
 export type AdminTableColumns =
   | 'id'

@@ -22,14 +22,14 @@ const Header = () => {
 
   return (
     <Flexbox
+      alignItems="center"
+      backgroundColor="white"
       padding="m-size"
       width="100%"
-      backgroundColor="white"
       // @ts-ignore
       zIndex="basket"
-      alignItems="center"
     >
-      <Text type="subtitle-1" marginRight="auto">
+      <Text marginRight="auto" type="subtitle-1">
         {t('basket.title')}
 
         {!!basketLength && (
@@ -42,8 +42,6 @@ const Header = () => {
       {!!basketLength && (
         <Button
           marginRight="s-size"
-          size="medium"
-          variant="secondary"
           onClick={() => {
             clearBasket()
             setCheckout((prev) => ({
@@ -51,17 +49,19 @@ const Header = () => {
               totalNew: 0
             }))
           }}
+          size="medium"
           type="button"
+          variant="secondary"
         >
           {t('basket.clear')}
         </Button>
       )}
 
       <Button
-        size="medium"
-        variant="secondary"
         onClick={closeBasket}
+        size="medium"
         type="button"
+        variant="secondary"
       >
         {t('basket.close')}
       </Button>

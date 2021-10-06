@@ -45,6 +45,4 @@ const getOrders = async (status: OrderStatus) => {
   return data
 }
 
-export const useGetOrders = (status: OrderStatus) => {
-  return useQuery(['orders', { status }], () => getOrders(status))
-}
+export const useGetOrders = (status: OrderStatus) => useQuery(['orders', { status }], () => getOrders(status))

@@ -31,9 +31,9 @@ const ViewProduct = () => {
         {(product) => (
           <>
             <BackButton
+              label={t('actions.goBack')}
               marginBottom="s-size"
               to={PRODUCTS}
-              label={t('actions.goBack')}
             />
 
             <Tile flexDirection="row">
@@ -42,7 +42,7 @@ const ViewProduct = () => {
               <Info product={product} />
             </Tile>
 
-            <OtherIcons labelId={product.label.id} iconId={product.icon.id} />
+            <OtherIcons iconId={product.icon.id} labelId={product.label.id} />
 
             <OtherPlaces
               collectionId={product.collection.id}

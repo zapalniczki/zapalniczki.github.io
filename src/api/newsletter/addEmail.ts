@@ -20,6 +20,4 @@ const addEmail = async (payload: AddEmailPayload) => {
   return data
 }
 
-export const useAddEmail = () => {
-  return useMutation(addEmail)
-}
+export const useAddEmail = () => useMutation(addEmail)

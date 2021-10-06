@@ -13,14 +13,14 @@ function QueryLoader<T>({ children, query, Loader }: Props<T>): JSX.Element {
   if (query.isFetching) {
     if (Loader) {
       return Loader
-    } else {
+    } 
       return <p>ładowanie...</p>
-    }
+    
   } else if (query.isSuccess) {
     return <>{children(query.data as T)}</>
-  } else {
+  } 
     return <p>ERROR</p>
-  }
+  
 }
 
 export default QueryLoader

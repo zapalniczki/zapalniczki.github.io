@@ -6,12 +6,10 @@ type Props = {
   children: ReactNode
 } & FlexboxProps
 
-const ModalContent = ({ children, ...props }: Props) => {
-  return (
+const ModalContent = ({ children, ...props }: Props) => (
     <Flexbox {...props} flexDirection="column" height="100%" width="100%">
       {children}
     </Flexbox>
   )
-}
 
 export default ModalContent

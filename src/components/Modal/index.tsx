@@ -14,8 +14,7 @@ type Props = {
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const Modal = ({ label, children, isOpen, setIsOpen }: Props) => {
-  return (
+const Modal = ({ label, children, isOpen, setIsOpen }: Props) => (
     <>
       <Button
         onClick={() => setIsOpen((prev) => !prev)}
@@ -29,7 +28,6 @@ const Modal = ({ label, children, isOpen, setIsOpen }: Props) => {
       </NativeModal>
     </>
   )
-}
 
 const customStyles = {
   content: {

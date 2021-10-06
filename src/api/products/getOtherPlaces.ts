@@ -28,6 +28,4 @@ const getOtherPlaces = async (params: Params) => {
   return data
 }
 
-export const useGetOtherPlaces = (params: Params) => {
-  return useQuery(['products', params], () => getOtherPlaces(params))
-}
+export const useGetOtherPlaces = (params: Params) => useQuery(['products', params], () => getOtherPlaces(params))

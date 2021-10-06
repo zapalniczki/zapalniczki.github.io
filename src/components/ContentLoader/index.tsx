@@ -7,10 +7,10 @@ type Props = {
 } & IContentLoaderProps
 
 const ContentLoader = ({ children, ...props }: Props) => (
-  <Box width={`${props.width}px`} height={`${props.height}px`}>
+  <Box height={`${props.height}px`} width={`${props.width}px`}>
     <ReactContentLoader speed={2} {...props}>
       {children}
-      <rect x="0" y="0" rx="0" ry="0" width="200" height="200" />
+      <rect height="200" rx="0" ry="0" width="200" x="0" y="0" />
     </ReactContentLoader>
   </Box>
 )

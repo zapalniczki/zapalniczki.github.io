@@ -4,11 +4,11 @@ import { ContentLoader } from 'components'
 const TileLoader = () => (
   <ContentLoader
     gradientRatio={1}
-    width={380}
     height={300}
     viewBox="0 0 380 300"
+    width={380}
   >
-    <rect width="380" height="300" />
+    <rect height="300" width="380" />
   </ContentLoader>
 )
 

@@ -26,6 +26,4 @@ const getLabelProducts = async (params: Params) => {
   return data
 }
 
-export const useGetLabelProducts = (params: Params) => {
-  return useQuery(['products', params], () => getLabelProducts(params))
-}
+export const useGetLabelProducts = (params: Params) => useQuery(['products', params], () => getLabelProducts(params))

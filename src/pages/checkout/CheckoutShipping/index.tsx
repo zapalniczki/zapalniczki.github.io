@@ -34,9 +34,9 @@ const CheckoutShipping = () => {
 
         <Formik
           initialValues={initialValues}
+          onSubmit={onSubmitForm}
           validateOnChange
           validationSchema={schema}
-          onSubmit={onSubmitForm}
         >
           {({ handleSubmit }) => (
             <FormikForm onSubmit={handleSubmit}>

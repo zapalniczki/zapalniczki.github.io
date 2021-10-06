@@ -18,9 +18,9 @@ const Form = ({ product }: Props) => {
   return (
     <Formik
       initialValues={initialValues}
+      onSubmit={submitForm}
       validateOnChange
       validationSchema={schema}
-      onSubmit={submitForm}
     >
       {() => (
         <FormikForm>

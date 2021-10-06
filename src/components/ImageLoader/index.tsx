@@ -27,10 +27,10 @@ const ImageLoader = ({
       )}
 
       <Image
-        objectPosition={objectPosition}
-        objectFit={objectFit}
-        loaded={loaded}
         alt={alt || ''}
+        loaded={loaded}
+        objectFit={objectFit}
+        objectPosition={objectPosition}
         onLoad={() => setLoaded(true)}
         src={src}
       />

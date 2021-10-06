@@ -26,6 +26,4 @@ const getCollectionProducts = async (params: Params) => {
   return data
 }
 
-export const useGetCollectionProducts = (params: Params) => {
-  return useQuery(['products', params], () => getCollectionProducts(params))
-}
+export const useGetCollectionProducts = (params: Params) => useQuery(['products', params], () => getCollectionProducts(params))

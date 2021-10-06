@@ -21,7 +21,7 @@ const Total = ({ customProducts, customDelivery }: Props) => {
   const sum = add(products, delivery)
 
   return (
-    <Flexbox marginTop="2rem" justifyContent="flex-end" alignItems="center">
+    <Flexbox alignItems="center" justifyContent="flex-end" marginTop="2rem">
       <table>
         <tbody>
           <tr>

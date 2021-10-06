@@ -25,14 +25,14 @@ const useForm = (product: ProductDetails) => {
         const productInBasket = prev.find((elem) => elem.id === product.id)
 
         return prev.filter((elem) => elem !== productInBasket)
-      } else {
+      } 
         const newBasketProduct = {
           id: product.id,
           quantity: 1
         }
 
         return [...prev, newBasketProduct]
-      }
+      
     })
 
     setCheckout((prev) => ({

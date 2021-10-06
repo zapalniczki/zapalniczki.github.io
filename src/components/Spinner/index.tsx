@@ -9,7 +9,7 @@ type Props = SpaceProps & {
 
 const Spinner = ({ small, ...props }: Props) => (
   <Box {...props} opacity={0.5}>
-    <FontAwesomeIcon spin icon="spinner" size={small ? '2x' : '3x'} />
+    <FontAwesomeIcon icon="spinner" size={small ? '2x' : '3x'} spin />
   </Box>
 )
 

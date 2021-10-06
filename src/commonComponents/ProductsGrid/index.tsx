@@ -33,8 +33,7 @@ const ProductsList = ({
   query,
   vertical,
   ...props
-}: Props) => {
-  return (
+}: Props) => (
     <QueryLoader
       Loader={<Loader count={loaderCount} title={!!title || !!link} />}
       query={query}
@@ -72,6 +71,5 @@ const ProductsList = ({
       }}
     </QueryLoader>
   )
-}
 
 export default ProductsList

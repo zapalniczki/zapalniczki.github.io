@@ -17,7 +17,7 @@ const MakeOrderSteps = () => {
           size="10x"
         />
       </Flexbox>
-      <Flexbox marginLeft="l-size" border="2px solid red">
+      <Flexbox border="2px solid red" marginLeft="l-size">
         <Box as="h2">{t('MAKE_ORDER_STEPS.title')}</Box>
       </Flexbox>
     </Tile>

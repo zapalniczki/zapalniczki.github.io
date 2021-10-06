@@ -8,13 +8,12 @@ type Props = {
   title?: string
   description: string
 }
-const Option = ({ icon, title, description }: Props) => {
-  return (
+const Option = ({ icon, title, description }: Props) => (
     <Flexbox
-      padding="m-size"
       alignItems="center"
       border="1px solid"
       borderColor="border-color"
+      padding="m-size"
     >
       <Flexbox alignItems="center" justifyContent="center" marginRight="l-size">
         <FontAwesomeIcon icon={icon} size="3x" />
@@ -22,17 +21,16 @@ const Option = ({ icon, title, description }: Props) => {
 
       <Flexbox flexDirection="column">
         {title && (
-          <Text type="subtitle-2" marginBottom="xs-size">
+          <Text marginBottom="xs-size" type="subtitle-2">
             {title}
           </Text>
         )}
 
-        <Text type="body-2" lineHeight="1.21">
+        <Text lineHeight="1.21" type="body-2">
           {description}
         </Text>
       </Flexbox>
     </Flexbox>
   )
-}
 
 export default Option

@@ -31,7 +31,7 @@ const Square = ({ children, ratio = 1, ...props }: Props) => {
   }, [ref, ratio])
 
   return (
-    <Box ref={ref} width="100%" height={`${height}px`} {...props}>
+    <Box height={`${height}px`} ref={ref} width="100%" {...props}>
       {children}
     </Box>
   )

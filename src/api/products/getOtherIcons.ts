@@ -28,6 +28,4 @@ const getOtherIcons = async (params: Params) => {
   return data
 }
 
-export const useGetOtherIcons = (params: Params) => {
-  return useQuery(['products', params], () => getOtherIcons(params))
-}
+export const useGetOtherIcons = (params: Params) => useQuery(['products', params], () => getOtherIcons(params))

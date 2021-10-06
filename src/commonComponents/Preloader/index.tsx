@@ -3,10 +3,10 @@ import React from 'react'
 
 const Preloader = () => (
   <Flexbox
-    width="100vw"
+    alignItems="center"
     height="100vh"
     justifyContent="center"
-    alignItems="center"
+    width="100vw"
   >
     <Spinner />
   </Flexbox>

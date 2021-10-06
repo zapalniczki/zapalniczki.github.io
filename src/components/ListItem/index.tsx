@@ -9,8 +9,7 @@ type Props = {
   children: ReactNode
 } & SpaceProps
 
-const ListItem = ({ children, ...props }: Props) => {
-  return (
+const ListItem = ({ children, ...props }: Props) => (
     <Container {...props}>
       <Triangle />
       <Heading level={6} marginLeft="m-size">
@@ -18,7 +17,6 @@ const ListItem = ({ children, ...props }: Props) => {
       </Heading>
     </Container>
   )
-}
 
 const Triangle = styled.div`
   width: 0;

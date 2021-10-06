@@ -6,8 +6,7 @@ type Props = {
   onChange: (checked: boolean) => void
 }
 
-const Switch = ({ checked, onChange }: Props) => {
-  return (
+const Switch = ({ checked, onChange }: Props) => (
     <NativeSwitch
       checked={checked}
       checkedIcon={false}
@@ -15,6 +14,5 @@ const Switch = ({ checked, onChange }: Props) => {
       uncheckedIcon={false}
     />
   )
-}
 
 export default Switch

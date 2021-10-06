@@ -22,6 +22,4 @@ const getFeatured = async () => {
   return data
 }
 
-export const useGetFeatured = () => {
-  return useQuery('products/featured', () => getFeatured())
-}
+export const useGetFeatured = () => useQuery('products/featured', () => getFeatured())

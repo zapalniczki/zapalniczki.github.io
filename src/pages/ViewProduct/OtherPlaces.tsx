@@ -15,9 +15,6 @@ const OtherPlaces = ({ labelId, collectionId }: Props) => {
 
   return (
     <ProductsGrid
-      marginTop="xxl-size"
-      title={t('otherPlaces.title')}
-      query={productsQuery}
       link={{
         to: {
           pathname: '/products',
@@ -27,6 +24,9 @@ const OtherPlaces = ({ labelId, collectionId }: Props) => {
         },
         label: t('otherIcons.linkLabel')
       }}
+      marginTop="xxl-size"
+      query={productsQuery}
+      title={t('otherPlaces.title')}
     />
   )
 }

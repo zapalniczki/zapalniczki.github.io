@@ -76,6 +76,4 @@ const getProduct = async ({ id }: GetProductPayload) => {
   return data
 }
 
-export const useGetProduct = (payload: GetProductPayload) => {
-  return useQuery(['product', payload], () => getProduct(payload))
-}
+export const useGetProduct = (payload: GetProductPayload) => useQuery(['product', payload], () => getProduct(payload))
