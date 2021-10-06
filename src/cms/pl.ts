@@ -2,6 +2,20 @@ const pl = {
   COMMON: {
     soon: 'Wkrótce',
 
+    MODAL: {
+      FOOTER: {
+        primaryLabel: 'Zapisz',
+        secondaryLabel: 'Anuluj'
+      },
+      SUCCESS: {
+        title: 'Zmiany zostały zapisane'
+      },
+      ERROR: {
+        title: 'Nie udało się',
+        buttonLabel: 'Spróbuj ponownie'
+      }
+    },
+
     FOOTER: {
       links: {
         home: 'Strona Główna',
@@ -571,6 +585,15 @@ const pl = {
         updated_at: 'Data modyfikacji',
         consent: 'Zgoda',
         edit: 'Edycja'
+      }
+    },
+    EDIT_MODAL: {
+      buttonLabel: 'Edytuj',
+      title: 'Edycja użytkownika newslettera',
+      FORM: {
+        CONSENT: {
+          label: 'Użytkownik wyraża zgodę na przesyłanie newslettera'
+        }
       }
     }
   },

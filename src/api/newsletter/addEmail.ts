@@ -1,3 +1,4 @@
+import { Newsletter } from 'models'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
 import { Email } from 'Types'
@@ -7,7 +8,7 @@ type AddEmailPayload = {
 }
 
 const addEmail = async (payload: AddEmailPayload) => {
-  const { data, error } = await supabase.from('newsletter').insert({
+  const { data, error } = await supabase.from<Newsletter>('newsletter').insert({
     consent: true,
     email: payload.email
   })

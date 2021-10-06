@@ -7,6 +7,7 @@ import { Newsletter } from 'models'
 import React, { useMemo } from 'react'
 import { DefaultTheme, useTheme } from 'styled-components'
 import { displayDate } from 'utils'
+import EditModal from './EditModal'
 
 const List = () => {
   const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
@@ -30,11 +31,11 @@ const List = () => {
       {
         Header: t('LIST.HEADERS.consent'),
         accessor: 'consent' as const
+      },
+      {
+        Header: t('LIST.HEADERS.edit'),
+        accessor: 'edit' as const
       }
-      // {
-      //   Header: t('LIST.HEADERS.edit'),
-      //   accessor: 'edit' as const
-      // }
     ],
     []
   )
@@ -69,8 +70,8 @@ const shapeData = (users: Newsletter[], colors: DefaultTheme['colors']) =>
         <Flexbox justifyContent="center">
           <FontAwesomeIcon color={iconColor} icon={icon} />
         </Flexbox>
-      )
-      // edit: <EditModal />
+      ),
+      edit: <EditModal consent={user.consent} id={user.id} />
     }
   })
 

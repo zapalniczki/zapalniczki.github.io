@@ -4,9 +4,8 @@ import { useTranslation } from 'hooks'
 import { Redirect } from 'react-router-dom'
 import { Formik, Form as FormikForm } from 'formik'
 import { CHECKOUT_PRODUCTS } from 'constants/routes'
-import { Flexbox, Page } from 'components'
+import { Switch, Flexbox, Page } from 'components'
 import { checkoutContext } from 'providers/CheckoutProvider'
-import Switch from 'react-switch'
 import styled from 'styled-components'
 import { StepTitle, Actions, Wrapper, StepTracker } from '../common'
 import useForm from './useForm'
@@ -50,11 +49,7 @@ const CheckoutDetails = () => {
 
           <Switch
             checked={!isCompany}
-            checkedIcon={false}
-            offColor="#e1e1e1"
             onChange={(checked) => setIsCompany(!checked)}
-            onColor="#e1e1e1"
-            uncheckedIcon={false}
           />
 
           <CustomTypeButton onClick={() => setIsCompany(false)}>
