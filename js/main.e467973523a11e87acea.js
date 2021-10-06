@@ -1,0 +1,9844 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 47606:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useAddNumber = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const addNumber = async (payload) => {
+    const { data, error } = await supabase_1.default.from('callback').insert({
+        phone_number: payload.phone
+    });
+    if (error) {
+        throw new Error(error.code);
+    }
+    return data;
+};
+const useAddNumber = () => (0, react_query_1.useMutation)(addNumber);
+exports.useAddNumber = useAddNumber;
+exports["default"] = addNumber;
+
+
+/***/ }),
+
+/***/ 88129:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetCallbacks = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getCallbacks = async () => {
+    const { data, error } = await supabase_1.default
+        .from('callback')
+        .select()
+        .order('updated_at');
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getCallbacks');
+    }
+    return data;
+};
+const useGetCallbacks = () => (0, react_query_1.useQuery)('callbacks', getCallbacks);
+exports.useGetCallbacks = useGetCallbacks;
+
+
+/***/ }),
+
+/***/ 88044:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(47606), exports);
+__exportStar(__webpack_require__(88129), exports);
+__exportStar(__webpack_require__(50177), exports);
+
+
+/***/ }),
+
+/***/ 50177:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useUpdateCallback = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const updateCallback = async (payload) => {
+    const { data, error } = await supabase_1.default
+        .from('callback')
+        .update({
+        done: payload.done
+    })
+        .eq('id', payload.id);
+    if (error) {
+        throw new Error(error.code);
+    }
+    return data;
+};
+const useUpdateCallback = () => {
+    const { mutateAsync } = (0, react_query_1.useMutation)(updateCallback);
+    return (params) => mutateAsync(params);
+};
+exports.useUpdateCallback = useUpdateCallback;
+
+
+/***/ }),
+
+/***/ 41815:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetDeliveryTypes = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getDeliveryTypes = async () => {
+    const { data, error } = await supabase_1.default
+        .from('delivery_type')
+        .select();
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getDeliveryTypes');
+    }
+    return data;
+};
+const useGetDeliveryTypes = () => (0, react_query_1.useQuery)('deliveryTypes', getDeliveryTypes);
+exports.useGetDeliveryTypes = useGetDeliveryTypes;
+
+
+/***/ }),
+
+/***/ 24310:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(41815), exports);
+__exportStar(__webpack_require__(31938), exports);
+
+
+/***/ }),
+
+/***/ 31938:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useUpdateDeliveryType = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const updateDeliveryType = async (payload) => {
+    const { data, error } = await supabase_1.default
+        .from('delivery_type')
+        .update({
+        is_enabled: payload.isEnabled
+    })
+        .eq('id', payload.id);
+    if (error) {
+        throw new Error(error.code);
+    }
+    return data;
+};
+const useUpdateDeliveryType = () => {
+    const { mutateAsync } = (0, react_query_1.useMutation)(updateDeliveryType);
+    return (params) => mutateAsync(params);
+};
+exports.useUpdateDeliveryType = useUpdateDeliveryType;
+
+
+/***/ }),
+
+/***/ 70395:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+// PRODUCTS
+__exportStar(__webpack_require__(10819), exports);
+// PAYMENT TYPES
+__exportStar(__webpack_require__(19625), exports);
+// DELIVERY TYPES
+__exportStar(__webpack_require__(24310), exports);
+// NEWSLETTER
+__exportStar(__webpack_require__(83648), exports);
+// ORDERS
+__exportStar(__webpack_require__(41794), exports);
+// CALLBACK
+__exportStar(__webpack_require__(88044), exports);
+// MOLDS
+__exportStar(__webpack_require__(87421), exports);
+
+
+/***/ }),
+
+/***/ 378:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetMolds = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getMolds = async () => {
+    const { data, error } = await supabase_1.default
+        .from('molds')
+        .select();
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getMolds');
+    }
+    return data;
+};
+const useGetMolds = () => (0, react_query_1.useQuery)('molds', getMolds);
+exports.useGetMolds = useGetMolds;
+
+
+/***/ }),
+
+/***/ 87421:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(378), exports);
+
+
+/***/ }),
+
+/***/ 35281:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useAddEmail = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const addEmail = async (payload) => {
+    const { data, error } = await supabase_1.default.from('newsletter').insert({
+        consent: true,
+        email: payload.email
+    });
+    if (error) {
+        throw new Error(error.code);
+    }
+    return data;
+};
+const useAddEmail = () => (0, react_query_1.useMutation)(addEmail);
+exports.useAddEmail = useAddEmail;
+
+
+/***/ }),
+
+/***/ 17750:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetNewsletterUsers = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getNewsletterUsers = async () => {
+    const { data, error } = await supabase_1.default
+        .from('newsletter')
+        .select()
+        .order('updated_at');
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getNewsletterUsers');
+    }
+    return data;
+};
+const useGetNewsletterUsers = () => (0, react_query_1.useQuery)('newsletterUsers', getNewsletterUsers);
+exports.useGetNewsletterUsers = useGetNewsletterUsers;
+
+
+/***/ }),
+
+/***/ 83648:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(35281), exports);
+__exportStar(__webpack_require__(17750), exports);
+__exportStar(__webpack_require__(96083), exports);
+
+
+/***/ }),
+
+/***/ 96083:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useUpdateConsent = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const updateConsent = async (payload) => {
+    const { data, error } = await supabase_1.default
+        .from('newsletter')
+        .update({
+        consent: payload.consent
+    })
+        .eq('id', payload.id);
+    if (error) {
+        throw new Error(error.code);
+    }
+    return data;
+};
+const useUpdateConsent = () => {
+    const { mutateAsync } = (0, react_query_1.useMutation)(updateConsent);
+    return (params) => mutateAsync(params);
+};
+exports.useUpdateConsent = useUpdateConsent;
+
+
+/***/ }),
+
+/***/ 51975:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.addOrder = void 0;
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const addOrder = async (payload) => {
+    // ADDRESS
+    const { data: address, error: addressError } = await supabase_1.default
+        .from('address')
+        .upsert({
+        street: payload.address.street,
+        street_no: payload.address.street_no,
+        adress_cdn: payload.address.adress_cdn,
+        post_code: payload.address.post_code,
+        city: payload.address.city
+    })
+        .single();
+    if (addressError) {
+        throw new Error(addressError.message);
+    }
+    if (!address) {
+        throw new Error('addOrderSupabase/address error');
+    }
+    // SHIPPING
+    const { data: shipping, error: shippingError } = await supabase_1.default
+        .from('address')
+        .upsert({
+        street: payload.address.street,
+        street_no: payload.address.street_no,
+        adress_cdn: payload.address.adress_cdn,
+        post_code: payload.address.post_code,
+        city: payload.address.city
+    })
+        .single();
+    if (shippingError) {
+        throw new Error(shippingError.message);
+    }
+    if (!shipping) {
+        throw new Error('addOrderSupabase/shipping error');
+    }
+    const { data: userData, error: userError } = await supabase_1.default
+        .from('user')
+        .insert([
+        {
+            is_company: payload.isCompany,
+            full_name: payload.fullname,
+            address_id: address.id,
+            shipping_id: shipping.id,
+            phone: payload.phone,
+            email: payload.email,
+            preferred_payment: payload.paymentType,
+            preferred_delivery: payload.deliveryType
+        }
+    ])
+        .single();
+    if (userError) {
+        throw new Error(userError.message);
+    }
+    if (!userData) {
+        throw new Error('addOrderSupabase/user error');
+    }
+    // ORDER
+    const { data: order, error: orderError } = await supabase_1.default
+        .from('order')
+        .insert([
+        {
+            status: 'OPEN',
+            user_id: userData.id,
+            shipping_id: shipping.id,
+            delivery_type: payload.deliveryType,
+            payment_type: payload.paymentType,
+            total: payload.total
+        }
+    ])
+        .single();
+    if (orderError) {
+        throw new Error(orderError.message);
+    }
+    if (!order) {
+        throw new Error('addOrderSupabase/order error');
+    }
+    // ORDER_ITEM
+    const { data: orderItem, error: orderItemError } = await supabase_1.default
+        .from('order_item')
+        .insert(payload.products.map((product) => ({
+        product_id: product.id,
+        quantity: product.quantity,
+        order_id: order.id
+    })));
+    if (orderItemError) {
+        throw new Error(orderItemError.message);
+    }
+    if (!orderItem) {
+        throw new Error('addOrderSupabase/orderItem error');
+    }
+    return order.id;
+};
+exports.addOrder = addOrder;
+
+
+/***/ }),
+
+/***/ 47498:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetOrderStatus = exports.getOrderStatus = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getOrderStatus = async (params) => {
+    const { data, error } = await supabase_1.default
+        .from('order')
+        .select('status')
+        .eq('id', params.id)
+        .single();
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getOrderStatus');
+    }
+    return data;
+};
+exports.getOrderStatus = getOrderStatus;
+const useGetOrderStatus = () => {
+    const { mutateAsync } = (0, react_query_1.useMutation)(exports.getOrderStatus);
+    return (params) => mutateAsync(params);
+};
+exports.useGetOrderStatus = useGetOrderStatus;
+
+
+/***/ }),
+
+/***/ 36322:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetOrders = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getOrders = async (status) => {
+    const { data, error } = await supabase_1.default
+        .from('order')
+        .select(`
+      id,
+      deliveryType: delivery_type(label),
+      total,
+      updated_at,
+      created_at,
+      isCompany: user(is_company),
+      customerName: user(full_name),
+      customerPhone: user(phone),
+      customerEmail: user(email),
+      status
+      `)
+        .eq('status', status)
+        .order('updated_at', { ascending: true });
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getOrders');
+    }
+    return data;
+};
+const useGetOrders = (status) => (0, react_query_1.useQuery)(['orders', { status }], () => getOrders(status));
+exports.useGetOrders = useGetOrders;
+
+
+/***/ }),
+
+/***/ 41794:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(47498), exports);
+__exportStar(__webpack_require__(51975), exports);
+__exportStar(__webpack_require__(81581), exports);
+__exportStar(__webpack_require__(36322), exports);
+__exportStar(__webpack_require__(56531), exports);
+
+
+/***/ }),
+
+/***/ 81581:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useTriggerSendEmail = void 0;
+const react_query_1 = __webpack_require__(88767);
+const triggerSendEmail = (payload) => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const path = 'https://en1oerk9p7kdazn.m.pipedream.net';
+    const options = {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload)
+    };
+    return fetch(path, options);
+};
+const useTriggerSendEmail = () => {
+    const { mutateAsync } = (0, react_query_1.useMutation)(triggerSendEmail);
+    return (payload) => mutateAsync(payload);
+};
+exports.useTriggerSendEmail = useTriggerSendEmail;
+
+
+/***/ }),
+
+/***/ 56531:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useUpdateOrderStatus = void 0;
+const firestore_1 = __webpack_require__(81591);
+const index_1 = __webpack_require__(92629);
+const LoaderProvider_1 = __webpack_require__(8329);
+const react_1 = __webpack_require__(67294);
+const react_query_1 = __webpack_require__(88767);
+const updateOrderStatus = async (payload) => {
+    const db = (0, firestore_1.getFirestore)();
+    const ref = (0, firestore_1.doc)(db, 'orders', payload.id);
+    const snapshot = await (0, firestore_1.updateDoc)(ref, {
+        status: payload.status,
+        modifiedAt: firestore_1.Timestamp.fromDate(new Date())
+    });
+    return snapshot;
+};
+const useUpdateOrderStatus = (order, currentStatus) => {
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const { mutateAsync: mutateUpdateOrderStatus } = (0, react_query_1.useMutation)(updateOrderStatus);
+    (0, react_1.useEffect)(() => {
+        if (currentStatus.value !== order.status) {
+            show();
+            mutateUpdateOrderStatus({
+                id: order.id,
+                status: currentStatus.value
+            });
+            index_1.queryClient.invalidateQueries(`orders/${order.status}`);
+            index_1.queryClient.invalidateQueries(`orders/${currentStatus.value}`);
+            hide();
+        }
+    }, [currentStatus]);
+};
+exports.useUpdateOrderStatus = useUpdateOrderStatus;
+
+
+/***/ }),
+
+/***/ 62622:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetPaymentTypes = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getPaymentTypes = async () => {
+    const { data, error } = await supabase_1.default
+        .from('payment_type')
+        .select();
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getPaymentTypes');
+    }
+    return data;
+};
+const useGetPaymentTypes = () => (0, react_query_1.useQuery)('paymentTypes', getPaymentTypes);
+exports.useGetPaymentTypes = useGetPaymentTypes;
+
+
+/***/ }),
+
+/***/ 19625:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(62622), exports);
+
+
+/***/ }),
+
+/***/ 57207:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetCollectionProducts = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getProducts_1 = __webpack_require__(85348);
+const getCollectionProducts = async (params) => {
+    const { data, error } = await supabase_1.default
+        .from('products')
+        .select(getProducts_1.getProductsSelect)
+        .filter('collection_id', 'eq', params.collectionId)
+        .eq('visible', true);
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getCollectionProducts');
+    }
+    return data;
+};
+const useGetCollectionProducts = (params) => (0, react_query_1.useQuery)(['products', params], () => getCollectionProducts(params));
+exports.useGetCollectionProducts = useGetCollectionProducts;
+
+
+/***/ }),
+
+/***/ 66499:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetFeatured = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getProducts_1 = __webpack_require__(85348);
+const getFeatured = async () => {
+    const { data, error } = await supabase_1.default
+        .from('products')
+        .select(getProducts_1.getProductsSelect)
+        .eq('visible', true)
+        .eq('featured', true);
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getFeatured');
+    }
+    return data;
+};
+const useGetFeatured = () => (0, react_query_1.useQuery)('products/featured', () => getFeatured());
+exports.useGetFeatured = useGetFeatured;
+
+
+/***/ }),
+
+/***/ 11519:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetLabelProducts = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getProducts_1 = __webpack_require__(85348);
+const getLabelProducts = async (params) => {
+    const { data, error } = await supabase_1.default
+        .from('products')
+        .select(getProducts_1.getProductsSelect)
+        .filter('label_id', 'eq', params.labelId)
+        .eq('visible', true);
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getLabelProduct');
+    }
+    return data;
+};
+const useGetLabelProducts = (params) => (0, react_query_1.useQuery)(['products', params], () => getLabelProducts(params));
+exports.useGetLabelProducts = useGetLabelProducts;
+
+
+/***/ }),
+
+/***/ 78111:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetOtherIcons = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getProducts_1 = __webpack_require__(85348);
+const getOtherIcons = async (params) => {
+    const { data, error } = await supabase_1.default
+        .from('products')
+        .select(getProducts_1.getProductsSelect)
+        .filter('label_id', 'eq', params.labelId)
+        .filter('icon_id', 'neq', params.iconId)
+        .eq('visible', true);
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getOtherIcons');
+    }
+    return data;
+};
+const useGetOtherIcons = (params) => (0, react_query_1.useQuery)(['products', params], () => getOtherIcons(params));
+exports.useGetOtherIcons = useGetOtherIcons;
+
+
+/***/ }),
+
+/***/ 81837:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetOtherPlaces = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getProducts_1 = __webpack_require__(85348);
+const getOtherPlaces = async (params) => {
+    const { data, error } = await supabase_1.default
+        .from('products')
+        .select(getProducts_1.getProductsSelect)
+        .filter('collection_id', 'eq', params.collectionId)
+        .filter('label_id', 'neq', params.labelId)
+        .eq('visible', true);
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getOtherIcons');
+    }
+    return data;
+};
+const useGetOtherPlaces = (params) => (0, react_query_1.useQuery)(['products', params], () => getOtherPlaces(params));
+exports.useGetOtherPlaces = useGetOtherPlaces;
+
+
+/***/ }),
+
+/***/ 43087:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetProduct = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getProduct = async ({ id }) => {
+    const { data, error } = await supabase_1.default
+        .from('products')
+        .select(`
+      id,
+      price,
+      name,
+      description,
+      label: labels (
+        label,
+        id
+      ),
+      icon: icons (
+        label,
+        id
+      ),
+      collection: collections (
+        label,
+        id
+      ),
+      mold: molds (
+        status,
+        id
+      ),
+      mainImage: image(
+        large,
+        thumbnail,
+        basket
+      )
+      `)
+        .eq('id', id)
+        .single();
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getProduct');
+    }
+    return data;
+};
+const useGetProduct = (payload) => (0, react_query_1.useQuery)(['product', payload], () => getProduct(payload));
+exports.useGetProduct = useGetProduct;
+
+
+/***/ }),
+
+/***/ 85348:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useGetProducts = exports.getProductsSelect = void 0;
+const react_query_1 = __webpack_require__(88767);
+const supabase_1 = __importDefault(__webpack_require__(32606));
+const getProducts = async () => {
+    const { data, error } = await supabase_1.default
+        .from('products')
+        .select(exports.getProductsSelect)
+        .eq('visible', true);
+    if (error) {
+        throw new Error(error.message);
+    }
+    if (!data) {
+        throw new Error('No data in getProducts');
+    }
+    return data;
+};
+exports.getProductsSelect = 'id, price, name, label_id, icon_id, collection_id, mainImage:image(tile, long)';
+const useGetProducts = () => (0, react_query_1.useQuery)('products', getProducts);
+exports.useGetProducts = useGetProducts;
+
+
+/***/ }),
+
+/***/ 10819:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__exportStar(__webpack_require__(66499), exports);
+__exportStar(__webpack_require__(57207), exports);
+__exportStar(__webpack_require__(78111), exports);
+__exportStar(__webpack_require__(81837), exports);
+__exportStar(__webpack_require__(11519), exports);
+__exportStar(__webpack_require__(43087), exports);
+__exportStar(__webpack_require__(85348), exports);
+
+
+/***/ }),
+
+/***/ 57905:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const pl = {
+    COMMON: {
+        soon: 'Wkrótce',
+        MODAL: {
+            FOOTER: {
+                primaryLabel: 'Zapisz',
+                secondaryLabel: 'Anuluj'
+            },
+            SUCCESS: {
+                title: 'Zmiany zostały zapisane'
+            },
+            ERROR: {
+                title: 'Nie udało się',
+                buttonLabel: 'Spróbuj ponownie'
+            }
+        },
+        FOOTER: {
+            links: {
+                home: 'Strona Główna',
+                products: 'Produkty',
+                howToCreateOrder: 'Jak złożyć zamówienie',
+                deliveryAndPayments: 'Dostawa i płatności',
+                contact: 'Kontakt'
+            },
+            adminLinks: {
+                orders: 'Zamówienia',
+                newsletterUsers: 'Użytkownicy newslettera',
+                callbacks: 'Prośby o kontakt',
+                deliveryTypes: 'Metody dostawy',
+                paymentTypes: 'Metody płatności'
+            },
+            allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
+            documents: 'Dokumenty'
+        },
+        checkoutSteps: {
+            1: 'Podsumowanie',
+            2: 'Dane kontaktowe',
+            3: 'Dostawa',
+            5: 'Płatność'
+        },
+        checkoutTotal: {
+            delivery: 'Dostawa',
+            products: 'Produkty',
+            sum: 'Suma'
+        },
+        checkoutActions: {
+            backToShop: 'Wróć do sklepu',
+            back: 'Wróć',
+            next: 'Dalej',
+            createOrder: 'Zamawiam i płacę'
+        },
+        customerTypes: {
+            INDIVIDUAL: 'Klient indywidualny',
+            COMPANY: 'Firma'
+        },
+        ORDER_STATUSES: {
+            OPEN: 'Nowe',
+            CONFIRMED: 'Potwierdzone',
+            PAYMENT_RECEIVED: 'Zapłacone',
+            IN_PREPARATION: 'W przygotowaniu',
+            AWAITING_FOR_PICKUP: 'Oczekuje na kuriera',
+            IN_DELIVERY: 'W dostawie',
+            COMPLETED: 'Zakończone'
+        },
+        navigation: {
+            home: 'Strona Główna',
+            products: 'Produkty',
+            HOW_TO_CREATE_ORDER: 'Jak złożyć zamówienie',
+            deliveryAndPayments: 'Dostawa i płatności',
+            contact: 'Kontakt'
+        },
+        basket: {
+            close: 'Zamknij',
+            clear: 'Wyczyść',
+            empty: 'Twój koszyk jest pusty',
+            title: 'Mój koszyk ',
+            total: 'Suma',
+            checkout: 'Złóż zamówienie',
+            backToShop: 'Wróć do sklepu',
+            products: '({{count}} produkt)',
+            products_plural: '({{count}} produkty)',
+            products_multiple: '({{count}} produktów)',
+            modal: {
+                info: 'Musisz się zalogować żeby kontynuować',
+                continue: 'Wróć do sklepu',
+                signIn: 'Zaloguj się'
+            }
+        },
+        loading: 'Ładowanie',
+        toasts: {
+            addedProductToBasket: 'Dodano produkt do koszyka',
+            removeProductFromBasket: 'Usunięto produkt z koszyka'
+        },
+        companyName: 'braty.co',
+        features: {
+            title: 'Dlaczego warto kupować u nas?',
+            items: {
+                FREE_DELIVERY: 'Darmowa dostawa',
+                QUICK_SERVICE: 'Szybka obsługa',
+                RETURNS: '14 dni na zwrot',
+                QUALITY: 'Gwarancja jakości',
+                PICK_UP: 'Możliwość odbioru osobistego',
+                CLUB: 'Zniżki dla stałych klientów'
+            }
+        },
+        readTermAndConditions: {
+            title: 'Koniecznie przeczytaj regulamin',
+            buttonLabel: 'Przejdź do regulaminu'
+        },
+        readPrivacyPolicy: {
+            title: 'Koniecznie przeczytaj politykę prywatności',
+            buttonLabel: 'Przejdź do polityki prywatnści'
+        },
+        VALIDATIONS: {
+            EMAIL: {
+                email: 'Wprowadzony email jest niepoprawny',
+                required: 'Proszę podać adres e-mail'
+            },
+            PHONE: {
+                required: 'Proszę podać numer telefonu',
+                matches: 'Numer telefonu może zawierać cyfry, spacje i znak +',
+                min: 'Numer telefonu powinien składać się z numeru kierunkowego i 9 cyfr'
+            }
+        },
+        NEWSLETTER: {
+            FORM: {
+                title: 'Zapisz się do newslettera i zyskaj 10zł rabatu',
+                subtitle: 'Będziesz na bieżąco z nowymi produktami oraz ofertami specjalnymi',
+                info: 'Naciskając przycisk "Potwierdzam i wysyłam" wyrażasz zgodę na przesyłanie informacji handlowych.',
+                FORM: {
+                    EMAIL: {
+                        placeholder: 'Twój adres email'
+                    },
+                    SUBMIT: {
+                        label: 'Potwierdzam i wysyłam'
+                    }
+                }
+            },
+            SUCCESS: {
+                title: 'Udało się!',
+                subtitle: 'Niedługo wyślemy Tobie powitalnego emaila z kodem rabatowym do wykorzystania przy składaniu zamówienia.'
+            },
+            ERROR: {
+                title: 'Nie udało się!',
+                tryAgain: 'Spróbuj jeszcze raz',
+                codes: {
+                    23505: 'Podany adres e-mail jest już zarejestrowany',
+                    default: 'W tym momencie nie udało się ustalić przyczyny. Zadzwoń na 792 531 179, a my to dla Ciebie zrobimy.'
+                }
+            }
+        },
+        CALL_ME_BACK: {
+            FORM: {
+                title: 'Jeżeli masz jakikolwiek problem lub nie ma Twojego produktu...',
+                subtitle: 'Zadzwoń na +48 792 531 179 albo podaj swój numer telefonu, a my odzwonimy.',
+                FORM: {
+                    PHONE: {
+                        placeholder: 'Twój numer telefonu'
+                    },
+                    SUBMIT: {
+                        label: 'Potwierdzam i wysyłam'
+                    }
+                }
+            },
+            SUCCESS: {
+                title: 'Prośba o telefon została wysłana',
+                subtitle: 'Niedługo się z Tobą skontaktujemy. Średnio zajmuje nam to 24 godziny.'
+            },
+            ERROR: {
+                title: 'Niestety się nie udało',
+                subtitle: 'Naciśnij poniższy przycisk i spróbuj ponownie.',
+                buttonLabel: 'Spróbuj jeszcze raz'
+            }
+        }
+    },
+    // profilePage: {
+    //   tabs: {
+    //     account: 'Profil',
+    //     orders: 'Zamówienia'
+    //   },
+    //   account: {
+    //     noValue: 'Brak',
+    //     fields: {
+    //       customerType: 'Typ konta',
+    //       phone: 'Numer telefonu',
+    //       email: 'Email',
+    //       street: 'Adres',
+    //       postCode: 'Kod pocztowy',
+    //       city: 'Miasto',
+    //       dateJoined: 'Data założenia konta'
+    //     },
+    //     customerTypes: {
+    //       INDIVIDUAL: 'Klient Indywidualny',
+    //       COMPANY: 'Firma'
+    //     }
+    //   }
+    // },
+    // signUpPage: {
+    //   name: { label: 'Imię i nazwisko / Nazwa firmy', placeholder: 'Adam Nowak' },
+    //   email: { label: 'Adres email', placeholder: 'test@example.com' },
+    //   password: { label: 'Hasło', placeholder: 'Twoje hasło' },
+    //   signUp: 'Zarejestruj się',
+    //   signingUp: 'Poczekaj chwilę',
+    //   haveAccount: 'Masz konto?',
+    //   signIn: 'Zaloguj się',
+    //   title: 'Zarejestuj nowe konto',
+    //   validations: {
+    //     email: {
+    //       email: 'Email nie jest prawidłowy',
+    //       required: 'Email jest wymagany'
+    //     },
+    //     password: {
+    //       required: 'Hasło jest wymagane',
+    //       min: 'Minimalna liczba znaków to 8',
+    //       matches: 'Hasło powinno zawierać co najmniej 1 wielką literę'
+    //     }
+    //   }
+    // },
+    // signupConfirmationPage: {
+    //   title: 'Potwierdź adres email',
+    //   info: 'Na podany adres email wysłaliśmy wiadomość z linkiem do potwierdzenia konta.'
+    // },
+    // forgotPasswordPage: {
+    //   title: 'Nie pamiętasz hasła?',
+    //   info: 'Wprowadż adres e-mail a my wyślemy wiadomość z linkiem do zresetowania hasła.',
+    //   placeholder: 'Twój e-mail',
+    //   buttonLabel: 'Zresetuj hasło',
+    //   loadingLabel: 'Przetwarzanie'
+    // },
+    // signInPage: {
+    //   title: 'Zaloguj się',
+    //   form: {
+    //     email: {
+    //       label: 'Email',
+    //       placeholder: ''
+    //     },
+    //     password: {
+    //       label: 'Hasło',
+    //       placeholder: ''
+    //     }
+    //   },
+    //   forgotPassword: 'Nie pamiętasz hasła?',
+    //   notSignedup: 'Potrzebujesz konta?',
+    //   signIn: 'Zaloguj się',
+    //   signIning: 'Poczekaj chwilę',
+    //   signUp: 'Zarejestruj się'
+    // },
+    // ADD_PRODUCT_PAGE: {
+    //   title: 'Dodaj produkt',
+    //   form: {
+    //     productName: 'Nazwa produktu',
+    //     description: 'Opis',
+    //     price: 'Cena',
+    //     variants: {
+    //       label: 'Dostępne opcje',
+    //       placeholder: ''
+    //     },
+    //     mainPicture: {
+    //       label: 'Zdjęcie główne',
+    //       placeholder: 'Wybierz zdjęcie'
+    //     },
+    //     gallery: {
+    //       label: 'Galeria',
+    //       placeholder: 'Wybierz zdjęcia'
+    //     },
+    //     featured: {
+    //       label: 'Dodaj do nowych'
+    //     },
+    //     recommended: {
+    //       label: 'Dodaj do rekomendowanych'
+    //     }
+    //   },
+    //   actions: {
+    //     save: 'Zapisz'
+    //   }
+    // },
+    HOME: {
+        title: 'Strona Główna',
+        banner: {
+            title: 'Twoje miejsce w Twoim punkcie',
+            description: 'Buying eyewear should leave you happy and good-looking, with money in your pocket. Glasses, sunglasses, and contacts—we’ve got your eyes covered.',
+            buttonLabel: 'Produkty'
+        },
+        FEATURED: {
+            title: 'Nowości'
+        },
+        bestsellers: {
+            title: 'Bestsellery',
+            linkLabel: 'Zobacz wszystkie'
+        }
+    },
+    CHECKOUT_PRODUCTS: {
+        title: 'Podsumowanie',
+        desc: 'Sprawdź produkty w Twoim koszyku.',
+        productsTotal: 'Cena produktów:',
+        emptyState: 'Koszyk jest pusty. Dodaj produkty do koszyka i wróć tutaj później.'
+    },
+    CHECKOUT_DETAILS: {
+        title: 'Dane kontaktowe',
+        form: {
+            fullName: {
+                label: 'Imię i nazwisko',
+                placeholder: '',
+                validations: {
+                    required: 'To pole jest wymagane'
+                }
+            },
+            email: {
+                label: 'Adres email',
+                placeholder: '',
+                validations: {
+                    email: 'Wprowadzony email jest niepoprawny',
+                    required: 'Proszę podać adres e-mail'
+                }
+            },
+            phone: {
+                label: 'Numer telefonu',
+                placeholder: '',
+                validations: {
+                    min: 'Numer telefonu powinien składać się z numeru kierunkowego i 9 cyfr',
+                    required: 'Proszę podać numer telefonu'
+                }
+            },
+            street: {
+                label: 'Ulica',
+                placeholder: '',
+                validations: {
+                    required: 'Proszę podać adres'
+                }
+            },
+            streetNr: {
+                label: 'Numer domu',
+                placeholder: '',
+                validations: {
+                    required: 'Proszę podać numer domu lub ulicy'
+                }
+            },
+            addressCdn: {
+                label: 'Adres c.d.',
+                placeholder: '',
+                validations: {}
+            },
+            postCode: {
+                label: 'Kod pocztowy',
+                placeholder: '',
+                validations: {
+                    matches: 'Kod pocztowy powinien mieć format XX-XXX',
+                    required: 'Proszę podać kod pocztowy'
+                }
+            },
+            city: {
+                label: 'Miasto',
+                placeholder: '',
+                validations: {
+                    required: 'Proszę podać miejscowość'
+                }
+            },
+            nip: {
+                label: 'NIP',
+                placeholder: '',
+                validations: {
+                    required: 'Proszę podać prawidłowy NIP',
+                    length: 'NIP powinien mieć 10 znaków',
+                    matches: 'NIP powinien zawierać tylko cyfry'
+                }
+            }
+        }
+    },
+    CHECKOUT_DELIVERY: {
+        title: 'Dostawa',
+        form: {
+            deliveryType: {
+                label: 'Wybierz sposób dostawy',
+                validations: {
+                    required: 'Wybierz aby przejść dalej.'
+                }
+            }
+        }
+    },
+    CHECKOUT_SHIPPING: {
+        title: 'Dane do dostawy',
+        form: {
+            street: {
+                label: 'Ulica',
+                placeholder: '',
+                validations: {
+                    required: 'Proszę podać adres'
+                }
+            },
+            streetNr: {
+                label: 'Numer domu',
+                placeholder: '',
+                validations: {
+                    required: 'Proszę podać numer domu lub ulicy'
+                }
+            },
+            addressCdn: {
+                label: 'Adres c.d.',
+                placeholder: '',
+                validations: {}
+            },
+            postCode: {
+                label: 'Kod pocztowy',
+                placeholder: '',
+                validations: {
+                    matches: 'Kod pocztowy powinien mieć format XX-XXX',
+                    required: 'Proszę podać kod pocztowy'
+                }
+            },
+            city: {
+                label: 'Miasto',
+                placeholder: '',
+                validations: {
+                    required: 'Proszę podać miejscowość'
+                }
+            }
+        }
+    },
+    CHECKOUT_PAYMENT: {
+        title: 'Płatność',
+        form: {
+            paymentType: {
+                label: 'Wybierz sposób płatności',
+                validations: {
+                    required: 'Wybierz, aby przejść dalej.'
+                }
+            }
+        }
+    },
+    CHECKOUT_RESULT: {
+        title: 'Dziękujemy za złożenie zamówienia',
+        orderId: 'Numer referencyjny zamówienia to:',
+        info: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Znajdują się tam informacje o szczegółach zamówienia, dostawy i danymi do płatności.',
+        actions: {
+            backToHome: 'Wróć na stronę główną',
+            backToShop: 'Kontynuuj zakupy',
+            orders: 'Przejdź do zamówień',
+            confirmation: 'Zobacz zamówienie'
+        }
+    },
+    PRODUCTS: {
+        title: 'Produkty',
+        showAllLabel: 'Pokaż wszystkie',
+        productsSingle: '{{count}} produkt',
+        productsFew: '{{count}} produkty',
+        productsMultiple: '{{count}} produktów',
+        searchPlaceholder: 'Wyszukaj',
+        CALLBACK: {
+            title: 'Nie widzisz potrzebnego produktu?',
+            subtitle: 'Wpisz swój numer, a my odzwonimy.'
+        }
+    },
+    PAGE_NOT_FOUND: {
+        title: '404 ',
+        heading: ':( Strona, której szukasz, nie istnieje.',
+        buttonLabel: 'Przejdź na stronę główną'
+    },
+    VIEW_PRODUCT: {
+        title: '{{productName}}',
+        icon: 'ikona',
+        label: 'napis',
+        color: 'kolor',
+        colorValueTODO: 'drewno mix',
+        priceSubtitle: 'Cena za 50 sztuk - zawiera VAT',
+        avilability: {
+            DONE: 'Produkt łatwo dostępny',
+            IN_PROGRESS: 'Produkt średnio dostępny',
+            NULL: 'Minimalny czas realizacji to 7 dni'
+        },
+        actions: {
+            goBack: 'Wróć',
+            addToBasket: 'Dodaj do koszyka',
+            removeFromBasket: 'Usuń z koszyka'
+        },
+        max10characters: 'Maksymalnie 10 znaków',
+        selectPlaceholder: 'Wybierz albo wyszukaj',
+        otherIcons: {
+            title: 'Inne ikony',
+            linkLabel: 'Zobacz wszystkie'
+        },
+        otherPlaces: {
+            title: 'Inne miejsca',
+            linkLabel: 'Zobacz wszystkie'
+        }
+    },
+    ADMIN_ORDERS: {
+        title: 'Zamówienia',
+        STATUSES_INFO: {
+            OPEN: 'Zamówienia, które dostały dopiero złożone. Oczekują na potwierdzenie przez nas zamówienia z klientem',
+            CONFIRMED: 'Zamówienia, które zostały potwierdzone i oczekują na płatność. Zmiana statusu po zaksięgowaniu "SUMA" na koncie.',
+            PAYMENT_RECEIVED: 'Zamówienia, które zostały opłacone. Zmiana statusu po zazieleniu wszystkich w "MATRYCE".',
+            IN_PREPARATION: 'Zamówienia, które można zrealizować. Zmiana statusu po ukończeniu produkcji.',
+            AWAITING_FOR_PICKUP: 'Zamówienia, które są wyprodukowane. Zmiana statusu po wprowadzeniu "NUMER PACZKI".',
+            IN_DELIVERY: 'Zamówienia, które są odebrane przez kuriera. Zmiana statusu po otrzymaniu paczki przez klienta.',
+            COMPLETED: 'Zamówienia, które są ukończone.'
+        },
+        headers: {
+            id: 'Numer referencyjny',
+            status: 'Zmień status ',
+            customerName: 'Nazwa klienta',
+            customerPhone: 'Telefon',
+            customerEmail: 'Email',
+            createdAt: 'Data zamówienia',
+            updatedAt: 'Data modyfikacji',
+            deliveryType: 'Typ dostawy',
+            sum: 'Suma',
+            boxesCount: 'Liczba pudełek',
+            molds: 'Matryce',
+            orderTime: 'Czas zamówienia',
+            deliveryId: 'Numer paczki'
+        },
+        IS_COMPANY: {
+            yes: 'Tak',
+            no: 'Nie'
+        },
+        emptyState: 'Nie ma żadnych zamówień'
+    },
+    ADMIN_NEWSLETTER_USERS: {
+        title: 'Użytkownicy newslettera',
+        LIST: {
+            title: 'Lista',
+            HEADERS: {
+                email: 'Adres email',
+                created_at: 'Data utworzenia',
+                updated_at: 'Data modyfikacji',
+                consent: 'Zgoda',
+                edit: 'Edycja'
+            }
+        },
+        EDIT_MODAL: {
+            buttonLabel: 'Edytuj',
+            title: 'Edycja użytkownika newslettera',
+            FORM: {
+                CONSENT: {
+                    label: 'Użytkownik wyraża zgodę na przesyłanie newslettera'
+                }
+            }
+        }
+    },
+    ADMIN_CALLBACKS: {
+        title: 'Prośby o kontakt',
+        LIST: {
+            HEADERS: {
+                created_at: 'Data utworzenia',
+                updated_at: 'Data modyfikacji',
+                phone_number: 'Numer telefonu',
+                done: 'Wykonano',
+                edit: 'Edycja'
+            }
+        },
+        EDIT_MODAL: {
+            buttonLabel: 'Edytuj',
+            title: 'Edycja prośby o kontakt',
+            FORM: {
+                DONE: {
+                    label: 'Wykonano telefonu do klienta'
+                }
+            }
+        }
+    },
+    ADMIN_DELIVERY_TYPES: {
+        title: 'Metody dostawy',
+        LIST: {
+            HEADERS: {
+                created_at: 'Data utworzenia',
+                updated_at: 'Data modyfikacji',
+                label: 'Etykieta',
+                price: 'Cena',
+                time: 'Czas',
+                requires_address: 'Wymaga adresu',
+                is_enabled: 'Włączone',
+                frontend_icon_name: 'Ikona',
+                edit: 'Edytuj'
+            }
+        },
+        EDIT_MODAL: {
+            buttonLabel: 'Edytuj',
+            title: 'Edycja metody dostawy',
+            FORM: {
+                IS_ENABLED: {
+                    label: 'Metoda dostępna'
+                }
+            }
+        }
+    },
+    ADMIN_PAYMENT_TYPES: {
+        title: 'Metody płatności',
+        HEADERS: {
+            created_at: 'Data utworzenia',
+            updated_at: 'Data modyfikacji',
+            label: 'Etykieta',
+            price: 'Cena',
+            time: 'Czas',
+            is_enabled: 'Włączone',
+            frontend_icon_name: 'Ikona'
+        }
+    },
+    CONTACT: {
+        title: 'Kontakt',
+        items: {
+            CHECK_STATUS: {
+                title: 'Sprawdź status zamówienia',
+                form: {
+                    id: {
+                        label: 'Numer referencyjny zamówienia',
+                        placeholder: 'Znajduje się w tytule każdej wiadomości email',
+                        validation: {
+                            required: 'To pole jest wymagane',
+                            length: 'Numer referencyjny zamówienia powinien składać się z 36 znaków'
+                        }
+                    },
+                    submit: {
+                        label: 'Sprawdź'
+                    }
+                },
+                result: {
+                    info: 'Status Twojego zamówienia to',
+                    statusesMeanings: {
+                        OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i niebawem skontaktujemy się z Tobą w celu potwierdzenia.',
+                        CONFIRMED: 'Co oznacza, ze zamówienie zostało potwierdzone i oczekujemy na wpłatę środków.',
+                        PAYMENT_RECEIVED: 'Co oznacza, że otrzymaliśmy środki i niebawem przystąpimy do jego realizacji.',
+                        IN_PREPARATION: 'Co oznacza, że zamówienie jest realizowane właśnie teraz.',
+                        AWAITING_FOR_PICKUP: 'Co oznacza, że zamówienie zostało skompletowane i oczekuje na kuriera.',
+                        IN_DELIVERY: 'Co oznacza, że zamówienie jest w drodze.',
+                        COMPLETED: 'Co oznacza, że zamówienie zostało skompletowane i dostarczone.'
+                    },
+                    tryNew: 'Sprawdź kolejne'
+                },
+                error: {
+                    info: 'Podany numer referencyjny nie został znaleziony. Sprawdź podany numer i spróbuj jeszcze raz.',
+                    tryNew: 'Spróbuj jeszcze raz'
+                }
+            },
+            EMAIL: {
+                title: 'E-mail',
+                info: 'Kontakt w sprawie zamówień',
+                email: 'kontakt@braty.co'
+            },
+            GET_INVOICE: {
+                title: 'Pobierz fakturę'
+            },
+            ADDRESS: {
+                title: 'Adres',
+                info: 'Wymiany, zwroty i odbiór osobisty',
+                address1: 'BRATY Przemysław Rychlewicz',
+                address2: 'ul. Bora-Komorowskiego 12/1',
+                address3: '80-366 Gdańsk',
+                address4: 'Polska'
+            },
+            PHONE: {
+                title: 'Telefon',
+                info: 'Czynne od poniedziałku do piątku, w godzinach 9:00 do 17:00.',
+                mobile: '+48 792 531 179'
+            },
+            ACCOUNT: {
+                title: 'Numer konta',
+                info: 'Do wpłat',
+                nrb: '31 1140 2004 0000 3402 8090 0648',
+                info2: 'Nazwa banku: mBank S.A.',
+                info3: 'Tytuł: Numer referencyjny zamówienia'
+            }
+        }
+    },
+    DELIVERY_AND_PAYMENTS: {
+        title: 'Dostawa i płatności',
+        processingTime: {
+            title: 'Czas realizacji',
+            items: {
+                PRODUCTION: {
+                    title: 'Czas produkcji',
+                    description: 'Zależy głównie od liczby zamówionych pudełek oraz czy zamawiasz u nas pierwszy raz.'
+                },
+                DELIVERY: {
+                    title: 'Czas dostawy',
+                    description: 'Wysyłka zazwyczaj następuje następnego dnia roboczego.'
+                },
+                TOTAL: {
+                    description: 'Całkowity czas realizacji zależy od zamówienia. Zadzwoń na +48 792 531 179 i upewnj się, że zamówienie będzie na czas.'
+                }
+            }
+        },
+        payments: {
+            title: 'Rodzaje płatności'
+        },
+        delivery: {
+            title: 'Sposoby dostawy'
+        }
+    },
+    HOW_TO_CREATE_ORDER: {
+        title: 'Jak złożyć zamówienie',
+        MAKE_ORDER_STEPS: {
+            title: 'Jak złożyć zamówienie',
+            steps: {
+                FIND_PRODUCT: 'Przejdź do zakładki PŁATNOŚCI i znajdź interesujący Cię produkt.',
+                ADD_TO_BASKET: 'Po zweryfikowaniu produktu, jego opisu i ceny, dodaj produkt do koszyka za pomocą przycisku DODAJ DO KOSZYKA.'
+            }
+        }
+    },
+    DOCUMENTS: {
+        title: 'Dokumenty',
+        TYPES: {
+            termsAndConditions: 'Regulamin',
+            privacyPolicy: 'Polityka prywatności',
+            cookiesPolicy: 'Polityka Cookies'
+        }
+    }
+};
+exports["default"] = pl;
+
+
+/***/ }),
+
+/***/ 70451:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importStar(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const react_router_dom_1 = __webpack_require__(77856);
+const BasketProvider_1 = __webpack_require__(62434);
+const utils_1 = __webpack_require__(65928);
+const routes_1 = __webpack_require__(36722);
+const BasketToggleProvider_1 = __webpack_require__(27333);
+const react_fontawesome_1 = __webpack_require__(67814);
+const SimpleButton_1 = __importDefault(__webpack_require__(27765));
+const api_1 = __webpack_require__(70395);
+const lodash_add_1 = __importDefault(__webpack_require__(24427));
+const CheckoutProvider_1 = __webpack_require__(74618);
+const lodash_subtract_1 = __importDefault(__webpack_require__(81057));
+const BasketItem = ({ product: basketProduct }) => {
+    const { setBasket } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const { closeBasket } = (0, react_1.useContext)(BasketToggleProvider_1.basketToggleContext);
+    const { setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const { id, quantity } = basketProduct;
+    const productQuery = (0, api_1.useGetProduct)({ id });
+    const productPath = (0, react_router_dom_1.generatePath)(routes_1.VIEW_PRODUCT, { id });
+    return (react_1.default.createElement(Container, null,
+        react_1.default.createElement(components_1.QueryLoader, { query: productQuery }, (product) => {
+            const modifyQuantity = (addition) => {
+                setBasket((prev) => {
+                    if (addition === undefined) {
+                        const productInBasket = findBasketItem(prev, basketProduct).product;
+                        return prev.filter((elem) => elem !== productInBasket);
+                    }
+                    const index = findBasketItem(prev, basketProduct).index;
+                    const result = [...prev];
+                    result[index].quantity = quantity + (addition ? 1 : -1);
+                    return result;
+                });
+                setCheckout((checkoutPrev) => {
+                    const productTotal = product.price * basketProduct.quantity;
+                    return {
+                        ...checkoutPrev,
+                        totalNew: addition === undefined
+                            ? (0, lodash_subtract_1.default)(checkoutPrev.totalNew, productTotal)
+                            : addition
+                                ? (0, lodash_add_1.default)(checkoutPrev.totalNew, product.price)
+                                : (0, lodash_subtract_1.default)(checkoutPrev.totalNew, product.price)
+                    };
+                });
+            };
+            return (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(SimpleButton_1.default, { disabled: quantity === 1, gridArea: "button-minus", onClick: () => modifyQuantity(false) },
+                    react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "minus", size: "1x" })),
+                react_1.default.createElement(SimpleButton_1.default, { gridArea: "button-plus", onClick: () => modifyQuantity(true) },
+                    react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "plus", size: "1x" })),
+                react_1.default.createElement(components_1.Box, { border: "1px solid", borderColor: "border-color", gridArea: "picture", height: "9rem", position: "relative", width: "9rem" },
+                    react_1.default.createElement(components_1.ImageLoader, { alt: product.name, src: product.mainImage.basket })),
+                react_1.default.createElement(components_1.Flexbox, { flexDirection: "column", gridArea: "name" },
+                    react_1.default.createElement(components_1.Link, { onClick: closeBasket, to: productPath }, product.name)),
+                react_1.default.createElement(components_1.Flexbox, { alignItems: "center" },
+                    react_1.default.createElement(components_1.Box, { as: "h4", margin: "0", marginRight: "m-size" }, (0, utils_1.displayMoney)(product.price)),
+                    react_1.default.createElement(components_1.Badge, { count: quantity, stanalone: true })),
+                react_1.default.createElement(SimpleButton_1.default, { gridArea: "button-remove", onClick: () => modifyQuantity(undefined) },
+                    react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "times", size: "1x" }))));
+        })));
+};
+const findBasketItem = (basket, product) => {
+    const index = basket.findIndex((elem) => elem.id === product.id);
+    return {
+        product: basket[index],
+        index
+    };
+};
+const Container = (0, styled_components_1.default)(components_1.Tile) `
+  padding: ${(props) => props.theme.space['s-size']};
+  min-height: 11.6rem;
+  display: flex;
+  align-items: center;
+  /* @include bezier-transition(); */
+  /* animation: slide-up 0.5s ease; */
+  width: 100%;
+  margin-bottom: ${(props) => props.theme.space['m-size']};
+  display: grid;
+  grid-template-columns: max-content 9rem auto max-content;
+  grid-template-rows: repeat(2, 4.6rem);
+  grid-gap: 0.5rem 2rem;
+  grid-template-areas:
+    'button-plus picture name button-remove'
+    'button-minus picture alba button-remove';
+`;
+exports["default"] = BasketItem;
+
+
+/***/ }),
+
+/***/ 17925:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.getProductTotal = void 0;
+const components_1 = __webpack_require__(82740);
+const utils_1 = __webpack_require__(65928);
+const BasketProvider_1 = __webpack_require__(62434);
+const react_1 = __importStar(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const BasketToggleProvider_1 = __webpack_require__(27333);
+const routes_1 = __webpack_require__(36722);
+const api_1 = __webpack_require__(70395);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const hooks_1 = __webpack_require__(5554);
+const Checkout = () => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    const { pathname } = (0, react_router_dom_1.useLocation)();
+    const history = (0, react_router_dom_1.useHistory)();
+    const { basket, basketLength } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const { closeBasket } = (0, react_1.useContext)(BasketToggleProvider_1.basketToggleContext);
+    const { setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const productsQuery = (0, api_1.useGetProducts)();
+    return (react_1.default.createElement(components_1.QueryLoader, { query: productsQuery }, (products) => {
+        const total = (0, utils_1.calculateTotal)(basket.map((product) => (0, exports.getProductTotal)(products, product)));
+        return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", background: "white", padding: "m-size", width: "100%" },
+            react_1.default.createElement(components_1.Flexbox, { flexDirection: "column" },
+                react_1.default.createElement(components_1.Text, { type: "caption" }, t('basket.total')),
+                react_1.default.createElement(components_1.Heading, { level: 5 }, (0, utils_1.displayMoney)(total))),
+            react_1.default.createElement(components_1.Button, { marginLeft: "auto", onClick: () => {
+                    closeBasket();
+                    history.push(routes_1.PRODUCTS);
+                }, size: "medium", variant: "secondary" }, t('basket.backToShop')),
+            react_1.default.createElement(components_1.Button, { disabled: !basketLength || pathname === '/checkout', marginLeft: "m-size", onClick: () => {
+                    setCheckout((prev) => ({
+                        ...prev,
+                        totalNew: total,
+                        products2: basket
+                    }));
+                    closeBasket();
+                    history.push(routes_1.CHECKOUT_PRODUCTS);
+                }, size: "medium" }, t('basket.checkout'))));
+    }));
+};
+const getProductTotal = (products, basketItem) => {
+    const price = products.find((elem) => elem.id === basketItem.id)?.price || 0;
+    return price * basketItem.quantity;
+};
+exports.getProductTotal = getProductTotal;
+exports["default"] = Checkout;
+
+
+/***/ }),
+
+/***/ 59286:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const BasketProvider_1 = __webpack_require__(62434);
+const BasketToggleProvider_1 = __webpack_require__(27333);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const Header = () => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    const { closeBasket } = (0, react_1.useContext)(BasketToggleProvider_1.basketToggleContext);
+    const { clearBasket, basketLength } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const { setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    let countName = 'basket.products';
+    if (basketLength > 4) {
+        countName = 'basket.products_multiple';
+    }
+    else if (basketLength > 1) {
+        countName = 'basket.products_plural';
+    }
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", backgroundColor: "white", padding: "m-size", width: "100%", 
+        // TODO Which this is not accepted? zIndex="basket"
+        zIndex: 60 },
+        react_1.default.createElement(components_1.Text, { marginRight: "auto", type: "subtitle-1" },
+            t('basket.title'),
+            !!basketLength && (react_1.default.createElement(components_1.Text, { marginLeft: "s-size", span: true, type: "caption" }, t(countName, { count: basketLength })))),
+        !!basketLength && (react_1.default.createElement(components_1.Button, { marginRight: "s-size", onClick: () => {
+                clearBasket();
+                setCheckout((prev) => ({
+                    ...prev,
+                    totalNew: 0
+                }));
+            }, size: "medium", type: "button", variant: "secondary" }, t('basket.clear'))),
+        react_1.default.createElement(components_1.Button, { onClick: closeBasket, size: "medium", type: "button", variant: "secondary" }, t('basket.close'))));
+};
+exports["default"] = Header;
+
+
+/***/ }),
+
+/***/ 27765:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const SimpleButton = ({ disabled, onClick, children, ...props }) => (react_1.default.createElement(components_1.Box, { ...props },
+    react_1.default.createElement(components_1.Button, { disabled: disabled, onClick: onClick, size: "medium", type: "button", variant: "ternary" }, children)));
+exports["default"] = SimpleButton;
+
+
+/***/ }),
+
+/***/ 30947:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.BasketItem = void 0;
+const react_1 = __importStar(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const BasketProvider_1 = __webpack_require__(62434);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const BasketToggleProvider_1 = __webpack_require__(27333);
+const hooks_1 = __webpack_require__(5554);
+const Header_1 = __importDefault(__webpack_require__(59286));
+const Checkout_1 = __importDefault(__webpack_require__(17925));
+const BasketItem_1 = __importDefault(__webpack_require__(70451));
+exports.BasketItem = BasketItem_1.default;
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Basket = () => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    const { isOpen, setIsOpen } = (0, react_1.useContext)(BasketToggleProvider_1.basketToggleContext);
+    const { basket, basketLength } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const ref = (0, react_1.useRef)(null);
+    (0, react_1.useEffect)(() => {
+        const handleClickOutside = (event) => {
+            if (event.target instanceof HTMLElement &&
+                !ref.current?.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    });
+    return (react_1.default.createElement(Container, { isOpen: isOpen, ref: ref },
+        react_1.default.createElement(Header_1.default, null),
+        react_1.default.createElement(components_1.Flexbox, { flexDirection: "column", flexGrow: 1, overflowY: "auto", padding: "s-size" },
+            !basketLength && (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexGrow: 1, justifyContent: "center" },
+                react_1.default.createElement(components_1.Text, { type: "caption" }, t('basket.empty')))),
+            basket.map((product) => (react_1.default.createElement(BasketItem_1.default, { key: product.id, product: product })))),
+        react_1.default.createElement(Checkout_1.default, null)));
+};
+const Container = styled_components_1.default.div `
+  width: 60rem;
+  height: 100vh;
+  background: ${(0, getColor_1.default)('white')};
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+  flex-direction: column;
+
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+  z-index: ${(props) => props.theme.zIndices.basket};
+`;
+exports["default"] = Basket;
+
+
+/***/ }),
+
+/***/ 46476:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const common_1 = __webpack_require__(34090);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const Form = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "flex-end" },
+        react_1.default.createElement(common_1.FieldWrapper, null,
+            react_1.default.createElement(formik_1.Field, { name: "phone" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, placeholder: commonT('CALL_ME_BACK.FORM.FORM.PHONE.placeholder') })))),
+        react_1.default.createElement(components_1.Button, { marginLeft: "m-size", size: "small", type: "submit" }, commonT('CALL_ME_BACK.FORM.FORM.SUBMIT.label'))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 17937:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const Form_1 = __importDefault(__webpack_require__(46476));
+const useForm_1 = __importDefault(__webpack_require__(92063));
+const formik_1 = __webpack_require__(94649);
+const react_fontawesome_1 = __webpack_require__(67814);
+const styled_components_1 = __webpack_require__(91288);
+const CallMeBack = (props) => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const { view, schema, initialValues, onSubmit } = (0, useForm_1.default)();
+    const { colors } = (0, styled_components_1.useTheme)();
+    let title = commonT('CALL_ME_BACK.FORM.title');
+    let subtitle = commonT('CALL_ME_BACK.FORM.subtitle');
+    let content = (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmit, validateOnChange: true, validationSchema: schema }, ({ handleSubmit }) => (react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit, style: { width: '100%' } },
+        react_1.default.createElement(Form_1.default, null)))));
+    if (view.view === 'SUCCESS') {
+        content = react_1.default.createElement(react_1.default.Fragment, null);
+        title = commonT('CALL_ME_BACK.SUCCESS.title');
+        subtitle = commonT('CALL_ME_BACK.SUCCESS.subtitle');
+    }
+    if (view.view === 'ERROR') {
+        content = (react_1.default.createElement(components_1.Box, null,
+            react_1.default.createElement(components_1.Button, { size: "small" }, commonT('CALL_ME_BACK.ERROR.buttonLabel'))));
+        title = commonT('CALL_ME_BACK.ERROR.title');
+        subtitle = commonT('CALL_ME_BACK.ERROR.subtitle');
+    }
+    return (react_1.default.createElement(components_1.Banner, { horizonal: true, small: true, ...props },
+        react_1.default.createElement(components_1.Flexbox, { flexDirection: "column", height: "100%", justifyContent: "flex-start", width: "100%" },
+            react_1.default.createElement(components_1.Flexbox, { alignItems: "center" },
+                view.view === 'SUCCESS' && (react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors.green, icon: "check-circle", size: "2x" })),
+                view.view === 'ERROR' && (react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors.red, icon: "times-circle", size: "2x" })),
+                react_1.default.createElement(components_1.Heading, { level: 4, marginLeft: view.view === 'FORM' ? 0 : 'm-size' }, title)),
+            react_1.default.createElement(components_1.Text, { marginBottom: "m-size", marginTop: "s-size", type: "body-2" }, subtitle),
+            content)));
+};
+exports["default"] = CallMeBack;
+
+
+/***/ }),
+
+/***/ 92063:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const hooks_1 = __webpack_require__(5554);
+const LoaderProvider_1 = __webpack_require__(8329);
+const react_1 = __webpack_require__(67294);
+const yup_1 = __webpack_require__(87561);
+const useForm = () => {
+    const [view, setView] = (0, react_1.useState)({ view: 'FORM' });
+    const { getSchema } = (0, hooks_1.useSchema)();
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const initialValues = { phone: '' };
+    const schema = (0, yup_1.object)({
+        phone: getSchema('phone')
+    });
+    const { mutateAsync: mutateAddNumber } = (0, api_1.useAddNumber)();
+    const onSubmit = async (values) => {
+        try {
+            show();
+            await mutateAddNumber({
+                phone: values.phone
+            });
+            setView({
+                view: 'SUCCESS'
+            });
+        }
+        catch (_e) {
+            setView({
+                view: 'ERROR'
+            });
+        }
+        finally {
+            hide();
+        }
+    };
+    return {
+        initialValues,
+        schema,
+        onSubmit,
+        view,
+        setView
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 92439:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const Features = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(components_1.SectionHead, { marginTop: "xxl-size", title: commonT('features.title') }),
+        react_1.default.createElement(components_1.Grid, null, features.map((feature) => (react_1.default.createElement(components_1.FeatureItem, { key: feature.key, title: commonT(`features.items.${feature.key}`) },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: feature.icon, size: "3x" })))))));
+};
+const features = [
+    {
+        key: 'FREE_DELIVERY',
+        icon: 'truck'
+    },
+    {
+        key: 'QUICK_SERVICE',
+        icon: 'user-clock'
+    },
+    {
+        key: 'RETURNS',
+        icon: 'exchange-alt'
+    },
+    {
+        key: 'QUALITY',
+        icon: 'star'
+    },
+    {
+        key: 'PICK_UP',
+        icon: 'box-open'
+    },
+    {
+        key: 'CLUB',
+        icon: 'hand-holding-usd'
+    }
+];
+exports["default"] = Features;
+
+
+/***/ }),
+
+/***/ 94158:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const routes_1 = __webpack_require__(36722);
+const adminLinks = [
+    {
+        label: 'orders',
+        to: routes_1.ADMIN_ORDERS
+    },
+    {
+        label: 'newsletterUsers',
+        to: routes_1.ADMIN_NEWSLETTER_USERS
+    },
+    {
+        label: 'callbacks',
+        to: routes_1.ADMIN_CALLBACKS
+    },
+    {
+        label: 'deliveryTypes',
+        to: routes_1.ADMIN_DELIVERY_TYPES
+    },
+    {
+        label: 'paymentTypes',
+        to: routes_1.ADMIN_PAYMENT_TYPES
+    }
+];
+exports["default"] = adminLinks;
+
+
+/***/ }),
+
+/***/ 49862:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const adminLinks_1 = __importDefault(__webpack_require__(94158));
+const links_1 = __importDefault(__webpack_require__(32894));
+const Footer = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const { isAdmin } = (0, hooks_1.useAdmin)();
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", backgroundColor: "off-white", flexDirection: "column", paddingY: "l-size" },
+        react_1.default.createElement(components_1.MaxWidth, { alignItems: "flex-start", flexDirection: "column" },
+            react_1.default.createElement(components_1.Box, { marginLeft: "-1rem" },
+                react_1.default.createElement(components_1.Logo, null)),
+            react_1.default.createElement(components_1.Flexbox, { justifyContent: "space-between", marginTop: "l-size", width: "100%" },
+                react_1.default.createElement(components_1.Flexbox, { alignItems: "flex-start", flexDirection: "column" }, links_1.default.map((link) => (react_1.default.createElement(components_1.Link, { key: link.to, to: link.to },
+                    react_1.default.createElement(components_1.Text, { marginY: "xs-size", type: "body-1" }, commonT(`FOOTER.links.${link.label}`)))))),
+                isAdmin && (react_1.default.createElement(components_1.Flexbox, { alignItems: "flex-end", flexDirection: "column" }, adminLinks_1.default.map((link) => (react_1.default.createElement(components_1.Link, { key: link.to, to: link.to },
+                    react_1.default.createElement(components_1.Text, { marginY: "xs-size", type: "body-1" }, commonT(`FOOTER.adminLinks.${link.label}`)))))))),
+            react_1.default.createElement(components_1.Separator, { marginY: "l-size" }),
+            react_1.default.createElement(components_1.Flexbox, { justifyContent: "space-between", width: "100%" },
+                react_1.default.createElement(components_1.Text, { type: "caption" }, commonT('FOOTER.allRightsReserved', {
+                    year: new Date().getFullYear()
+                })),
+                react_1.default.createElement(components_1.Link, { to: routes_1.DOCUMENTS },
+                    react_1.default.createElement(components_1.Text, { type: "caption" }, commonT('FOOTER.documents')))))));
+};
+exports["default"] = Footer;
+
+
+/***/ }),
+
+/***/ 32894:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const Routes = __importStar(__webpack_require__(36722));
+const links = [
+    {
+        label: 'home',
+        to: Routes.HOME
+    },
+    {
+        label: 'products',
+        to: Routes.PRODUCTS
+    },
+    {
+        label: 'howToCreateOrder',
+        to: Routes.HOW_TO_CREATE_ORDER
+    },
+    {
+        label: 'deliveryAndPayments',
+        to: Routes.DELIVERY_AND_PAYMENTS
+    },
+    {
+        label: 'contact',
+        to: Routes.CONTACT
+    }
+];
+exports["default"] = links;
+
+
+/***/ }),
+
+/***/ 12977:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const BasketProvider_1 = __webpack_require__(62434);
+const react_1 = __importStar(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const components_1 = __webpack_require__(82740);
+const BasketToggleProvider_1 = __webpack_require__(27333);
+const routes_1 = __webpack_require__(36722);
+const react_fontawesome_1 = __webpack_require__(67814);
+const BasketToggle = () => {
+    const { pathname } = (0, react_router_dom_1.useLocation)();
+    const { basket } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const { setIsOpen } = (0, react_1.useContext)(BasketToggleProvider_1.basketToggleContext);
+    return (react_1.default.createElement(components_1.Button, { disabled: basketDisabledpathnames.includes(pathname), onClick: () => setIsOpen((prev) => !prev), padding: "s-size", type: "button", variant: "quaternary" },
+        react_1.default.createElement(components_1.Badge, { count: basket.length },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "shopping-basket", size: "2x" }))));
+};
+const basketDisabledpathnames = [
+    routes_1.CHECKOUT_PRODUCTS,
+    routes_1.CHECKOUT_DETAILS,
+    routes_1.CHECKOUT_DELIVERY,
+    routes_1.CHECKOUT_SHIPPING,
+    routes_1.CHECKOUT_PAYMENT,
+    routes_1.CHECKOUT_RESULT
+];
+exports["default"] = BasketToggle;
+
+
+/***/ }),
+
+/***/ 56018:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const react_router_dom_1 = __webpack_require__(77856);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const mainMenuLinks_1 = __importDefault(__webpack_require__(78259));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const MainMenu = () => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    const { pathname } = (0, react_router_dom_1.useLocation)();
+    return (react_1.default.createElement(components_1.Flexbox, { as: "ul", flexGrow: 1, marginX: "m-size", marginY: "0", paddingLeft: 0 }, mainMenuLinks_1.default.map(({ label, ...link }) => (react_1.default.createElement(components_1.Box, { as: "li", display: "inline-block", key: link.to },
+        react_1.default.createElement(StyledLink, { isActive: !!(0, react_router_dom_1.matchPath)(pathname, { path: link.to, exact: link.exact }), ...link },
+            react_1.default.createElement(components_1.Text, { fontWeight: "bold", type: "subtitle-2" }, t(label))))))));
+};
+const StyledLink = (0, styled_components_1.default)(components_1.Link) `
+  opacity: ${(props) => (props.isActive ? 1 : 0.5)};
+  padding: ${(props) => `${props.theme.space['xs-size']} ${props.theme.space['m-size']}`};
+
+  &:hover {
+    background: ${(0, getColor_1.default)('background-color-01')};
+  }
+`;
+exports["default"] = MainMenu;
+
+
+/***/ }),
+
+/***/ 43173:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.NavigationMenuItem = void 0;
+const react_1 = __importStar(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const BasketToggle_1 = __importDefault(__webpack_require__(12977));
+const MainMenu_1 = __importDefault(__webpack_require__(56018));
+const react_router_dom_1 = __webpack_require__(77856);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Navigation = () => {
+    const [isExpanded, setIsExpanded] = (0, react_1.useState)(false);
+    (0, react_1.useEffect)(() => {
+        const scrollHandler = () => {
+            if (window.pageYOffset >= 70) {
+                setIsExpanded(true);
+            }
+            else {
+                setIsExpanded(false);
+            }
+        };
+        window.addEventListener('scroll', scrollHandler);
+        return () => window.removeEventListener('scroll', scrollHandler);
+    }, []);
+    return (react_1.default.createElement(Container, { isExpanded: isExpanded },
+        react_1.default.createElement(components_1.MaxWidth, { alignItems: "center", flexDirection: "row" },
+            react_1.default.createElement(react_router_dom_1.Link, { to: routes_1.HOME },
+                react_1.default.createElement(components_1.Logo, { expanded: isExpanded })),
+            react_1.default.createElement(MainMenu_1.default, null),
+            react_1.default.createElement(NavigationMenu, null,
+                react_1.default.createElement(exports.NavigationMenuItem, null,
+                    react_1.default.createElement(BasketToggle_1.default, null))))));
+};
+const Container = styled_components_1.default.nav `
+  width: 100%;
+  background: ${(props) => {
+    if (props.isExpanded) {
+        return (0, getColor_1.default)('nav-bg-scrolled')(props);
+    }
+    return (0, getColor_1.default)('nav-bg')(props);
+}};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${(props) => {
+    if (props.isExpanded) {
+        return 0;
+    }
+    return `${props.theme.space['l-size']} 0`;
+}};
+
+  position: ${(props) => (props.isExpanded ? 'fixed' : 'absolute')};
+  top: 0;
+  transform: translateY(0);
+  z-index: ${(props) => props.theme.zIndices.navigation};
+  box-shadow: ${(props) => props.isExpanded && '0 5px 10px rgba(0, 0, 0, 0.02)'};
+`;
+const NavigationMenu = styled_components_1.default.ul `
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+`;
+exports.NavigationMenuItem = styled_components_1.default.li `
+  display: inline-block;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+`;
+exports["default"] = Navigation;
+
+
+/***/ }),
+
+/***/ 78259:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const routes_1 = __webpack_require__(36722);
+const mainMenuLinks = [
+    {
+        exact: true,
+        to: routes_1.HOME,
+        label: 'navigation.home'
+    },
+    {
+        to: routes_1.PRODUCTS,
+        label: 'navigation.products'
+    },
+    {
+        to: routes_1.HOW_TO_CREATE_ORDER,
+        label: 'navigation.HOW_TO_CREATE_ORDER'
+    },
+    {
+        to: routes_1.DELIVERY_AND_PAYMENTS,
+        label: 'navigation.deliveryAndPayments'
+    },
+    {
+        to: routes_1.CONTACT,
+        label: 'navigation.contact'
+    }
+];
+exports["default"] = mainMenuLinks;
+
+
+/***/ }),
+
+/***/ 74746:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const common_1 = __webpack_require__(34090);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const Form = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "flex-end" },
+        react_1.default.createElement(common_1.FieldWrapper, null,
+            react_1.default.createElement(formik_1.Field, { name: "email" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, placeholder: commonT('NEWSLETTER.FORM.FORM.EMAIL.placeholder') })))),
+        react_1.default.createElement(components_1.Button, { marginLeft: "m-size", size: "small", type: "submit" }, commonT('NEWSLETTER.FORM.FORM.SUBMIT.label'))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 96084:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const Form_1 = __importDefault(__webpack_require__(74746));
+const useForm_1 = __importDefault(__webpack_require__(40461));
+const formik_1 = __webpack_require__(94649);
+const react_fontawesome_1 = __webpack_require__(67814);
+const styled_components_1 = __webpack_require__(91288);
+const Newsletter = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const { view, schema, initialValues, onSubmit, setView } = (0, useForm_1.default)();
+    const { colors } = (0, styled_components_1.useTheme)();
+    let title = commonT('NEWSLETTER.FORM.title');
+    let subtitle = commonT('NEWSLETTER.FORM.subtitle');
+    let content = (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmit, validateOnChange: true, validationSchema: schema }, ({ handleSubmit }) => (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit, style: { width: '100%' } },
+            react_1.default.createElement(Form_1.default, null)),
+        react_1.default.createElement(components_1.Text, { marginTop: "xxs-size", type: "caption" }, commonT('NEWSLETTER.FORM.info'))))));
+    if (view.view === 'SUCCESS') {
+        content = react_1.default.createElement(react_1.default.Fragment, null);
+        title = commonT('NEWSLETTER.SUCCESS.title');
+        subtitle = commonT('NEWSLETTER.SUCCESS.subtitle');
+    }
+    if (view.view === 'ERROR') {
+        content = (react_1.default.createElement(components_1.Box, null,
+            react_1.default.createElement(components_1.Button, { onClick: () => setView({ view: 'FORM' }), size: "small", variant: "primary" }, commonT('NEWSLETTER.ERROR.tryAgain'))));
+        title = commonT('NEWSLETTER.ERROR.title');
+        subtitle = commonT(view.message);
+    }
+    return (react_1.default.createElement(components_1.Banner, { horizonal: true, marginTop: "xxl-size", medium: true },
+        react_1.default.createElement(components_1.Flexbox, { flexDirection: "column", height: "100%", justifyContent: "flex-start", width: "100%" },
+            react_1.default.createElement(components_1.Flexbox, { alignItems: "center" },
+                view.view === 'SUCCESS' && (react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors.green, icon: "check-circle", size: "2x" })),
+                view.view === 'ERROR' && (react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors.red, icon: "times-circle", size: "2x" })),
+                react_1.default.createElement(components_1.Heading, { level: 4, marginLeft: view.view !== 'FORM' ? 'm-size' : 0 }, title)),
+            react_1.default.createElement(components_1.Text, { marginBottom: "m-size", marginTop: "s-size", type: "body-2" }, subtitle),
+            content)));
+};
+exports["default"] = Newsletter;
+
+
+/***/ }),
+
+/***/ 40461:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const hooks_1 = __webpack_require__(5554);
+const LoaderProvider_1 = __webpack_require__(8329);
+const react_1 = __webpack_require__(67294);
+const yup_1 = __webpack_require__(87561);
+const useForm = () => {
+    const [view, setView] = (0, react_1.useState)({ view: 'FORM' });
+    const { getSchema } = (0, hooks_1.useSchema)();
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const initialValues = { email: '' };
+    const schema = (0, yup_1.object)({
+        email: getSchema('email')
+    });
+    const { mutateAsync: mutateAddEmail } = (0, api_1.useAddEmail)();
+    const triggerSendEmail = (0, api_1.useTriggerSendEmail)();
+    const onSubmit = async (values) => {
+        try {
+            show();
+            await mutateAddEmail({
+                email: values.email
+            });
+            triggerSendEmail({
+                to: values.email,
+                type: {
+                    key: 'NEWSLETTER_SIGNUP'
+                }
+            });
+            setView({
+                view: 'SUCCESS'
+            });
+        }
+        catch (_e) {
+            if (_e instanceof Error) {
+                let message;
+                switch (_e.message) {
+                    case '23505':
+                        message = commonT('NEWSLETTER.ERROR.codes.23505');
+                        break;
+                    default:
+                        message = commonT('NEWSLETTER.ERROR.codes.default');
+                }
+                setView({
+                    view: 'ERROR',
+                    message
+                });
+            }
+        }
+        hide();
+    };
+    return {
+        initialValues,
+        schema,
+        onSubmit,
+        view,
+        setView
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 85353:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Preloader = () => (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", height: "100vh", justifyContent: "center", width: "100vw" },
+    react_1.default.createElement(components_1.Spinner, null)));
+exports["default"] = Preloader;
+
+
+/***/ }),
+
+/***/ 21741:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.productImageHover = void 0;
+const components_1 = __webpack_require__(82740);
+const react_1 = __importStar(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const styled_components_1 = __importStar(__webpack_require__(91288));
+const utils_1 = __webpack_require__(65928);
+const routes_1 = __webpack_require__(36722);
+const react_fontawesome_1 = __webpack_require__(67814);
+const BasketProvider_1 = __webpack_require__(62434);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const ProductTile = ({ product }) => {
+    const viewProductPath = (0, react_router_dom_1.generatePath)(routes_1.VIEW_PRODUCT, { id: product.id });
+    const { colors } = (0, styled_components_1.useTheme)();
+    const { getProductFromBasket } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const isInBasket = !!getProductFromBasket(product.id);
+    const image = product.mainImage.tile;
+    return (react_1.default.createElement(Container, { as: react_router_dom_1.Link, "max-height": "30rem", to: viewProductPath },
+        react_1.default.createElement(ImageWrapper, null,
+            react_1.default.createElement(components_1.ImageLoader, { alt: "", src: image })),
+        react_1.default.createElement(components_1.Flexbox, { backgroundColor: "background-color", justifyContent: "space-between", padding: "m-size", width: "100%" },
+            react_1.default.createElement(components_1.Flexbox, { flexDirection: "column" },
+                react_1.default.createElement(components_1.Text, { fontWeight: "bold", type: "subtitle-1" }, product.name),
+                react_1.default.createElement(components_1.Text, { type: "body-2" }, (0, utils_1.displayMoney)(product.price))),
+            isInBasket && (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "center" },
+                react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "shopping-basket", size: "1x" }),
+                react_1.default.createElement(components_1.Box, { marginLeft: "xxs-size" },
+                    react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors.green, icon: "check", size: "1x" })))))));
+};
+exports.productImageHover = (0, styled_components_1.css) `
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+`;
+const Container = (0, styled_components_1.default)(components_1.Tile) `
+  color: unset;
+  cursor: pointer;
+  justify-content: space-between;
+  text-decoration: none;
+  border: 1px solid;
+  border-color: ${(0, getColor_1.default)('border-color')};
+
+  ${exports.productImageHover}
+`;
+const ImageWrapper = styled_components_1.default.div `
+  width: 100%;
+  height: 20rem;
+  background: ${(0, getColor_1.default)('white')};
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`;
+exports["default"] = ProductTile;
+
+
+/***/ }),
+
+/***/ 51621:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const TileLoader = () => (react_1.default.createElement(components_1.ContentLoader, { gradientRatio: 1, height: 300, viewBox: "0 0 380 300", width: 380 },
+    react_1.default.createElement("rect", { height: "300", width: "380" })));
+exports["default"] = TileLoader;
+
+
+/***/ }),
+
+/***/ 95496:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const TIle_loader_1 = __importDefault(__webpack_require__(51621));
+const Loader = ({ title, count = 3, ...props }) => (react_1.default.createElement(components_1.Flexbox, { flexDirection: "column" },
+    title && (react_1.default.createElement(components_1.Box, { marginBottom: "m-size", marginTop: "xxl-size" },
+        react_1.default.createElement(components_1.ContentLoader, { gradientRatio: 1, height: 30, viewBox: "0 0 117 30", width: 117 },
+            react_1.default.createElement("rect", { height: "30", width: "117" })))),
+    react_1.default.createElement(components_1.Grid, { ...props }, [...Array(count).keys()].map((n) => (react_1.default.createElement(TIle_loader_1.default, { key: n }))))));
+exports["default"] = Loader;
+
+
+/***/ }),
+
+/***/ 69462:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const index_loader_1 = __importDefault(__webpack_require__(95496));
+const ProductTile_1 = __importDefault(__webpack_require__(21741));
+const ProductsList = ({ loaderCount, searchQuery, link, title, query, vertical, ...props }) => (react_1.default.createElement(components_1.QueryLoader, { Loader: react_1.default.createElement(index_loader_1.default, { count: loaderCount, title: !!title || !!link }), query: query }, (products) => {
+    let Component = ProductTile_1.default;
+    if (vertical) {
+        Component = components_1.LongProductTile;
+    }
+    if (!products.length) {
+        return null;
+    }
+    return (react_1.default.createElement(components_1.Flexbox, { as: "section", flexDirection: "column", ...props },
+        react_1.default.createElement(components_1.SectionHead, { link: link, title: title }),
+        react_1.default.createElement(components_1.Grid, { gridTemplateColumns: vertical ? '1fr' : 'repeat(3, 1fr)' }, products
+            .filter((product) => {
+            if (searchQuery) {
+                return product.name
+                    .toLowerCase()
+                    .includes(searchQuery.toLowerCase());
+            }
+            return true;
+        })
+            .map((product) => (react_1.default.createElement(Component, { key: product.id, product: product }))))));
+}));
+exports["default"] = ProductsList;
+
+
+/***/ }),
+
+/***/ 411:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const ReadPrivacyPolicy = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    return (react_1.default.createElement(components_1.TitleAndLinkBanner, { link: {
+            to: routes_1.DOCUMENTS,
+            label: commonT('readPrivacyPolicy.buttonLabel')
+        }, title: commonT('readPrivacyPolicy.title') }));
+};
+exports["default"] = ReadPrivacyPolicy;
+
+
+/***/ }),
+
+/***/ 48800:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const ReadTermsAndConditions = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    return (react_1.default.createElement(components_1.TitleAndLinkBanner, { link: {
+            to: routes_1.DOCUMENTS,
+            label: commonT('readTermAndConditions.buttonLabel')
+        }, title: commonT('readTermAndConditions.title') }));
+};
+exports["default"] = ReadTermsAndConditions;
+
+
+/***/ }),
+
+/***/ 39186:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ReadPrivacyPolicy = exports.ReadTermsAndConditions = exports.ProductsGrid = exports.Preloader = exports.Newsletter = exports.Navigation = exports.Footer = exports.Features = exports.CallMeBack = exports.Basket = void 0;
+__exportStar(__webpack_require__(30947), exports);
+var Basket_1 = __webpack_require__(30947);
+Object.defineProperty(exports, "Basket", ({ enumerable: true, get: function () { return __importDefault(Basket_1).default; } }));
+var CallMeBack_1 = __webpack_require__(17937);
+Object.defineProperty(exports, "CallMeBack", ({ enumerable: true, get: function () { return __importDefault(CallMeBack_1).default; } }));
+var Features_1 = __webpack_require__(92439);
+Object.defineProperty(exports, "Features", ({ enumerable: true, get: function () { return __importDefault(Features_1).default; } }));
+var Footer_1 = __webpack_require__(49862);
+Object.defineProperty(exports, "Footer", ({ enumerable: true, get: function () { return __importDefault(Footer_1).default; } }));
+var Navigation_1 = __webpack_require__(43173);
+Object.defineProperty(exports, "Navigation", ({ enumerable: true, get: function () { return __importDefault(Navigation_1).default; } }));
+var Newsletter_1 = __webpack_require__(96084);
+Object.defineProperty(exports, "Newsletter", ({ enumerable: true, get: function () { return __importDefault(Newsletter_1).default; } }));
+var Preloader_1 = __webpack_require__(85353);
+Object.defineProperty(exports, "Preloader", ({ enumerable: true, get: function () { return __importDefault(Preloader_1).default; } }));
+var ProductsGrid_1 = __webpack_require__(69462);
+Object.defineProperty(exports, "ProductsGrid", ({ enumerable: true, get: function () { return __importDefault(ProductsGrid_1).default; } }));
+var ReadTermsAndConditions_1 = __webpack_require__(48800);
+Object.defineProperty(exports, "ReadTermsAndConditions", ({ enumerable: true, get: function () { return __importDefault(ReadTermsAndConditions_1).default; } }));
+var ReadPrivacyPolicy_1 = __webpack_require__(411);
+Object.defineProperty(exports, "ReadPrivacyPolicy", ({ enumerable: true, get: function () { return __importDefault(ReadPrivacyPolicy_1).default; } }));
+
+
+/***/ }),
+
+/***/ 11970:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const routes_1 = __webpack_require__(36722);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const AdminRoute = (props) => {
+    const { isAdmin } = (0, hooks_1.useAdmin)();
+    if (!isAdmin) {
+        return react_1.default.createElement(react_router_dom_1.Redirect, { to: routes_1.HOME });
+    }
+    return react_1.default.createElement(react_router_dom_1.Route, { ...props });
+};
+exports["default"] = AdminRoute;
+
+
+/***/ }),
+
+/***/ 99576:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const BackButton = ({ to, label, ...props }) => (react_1.default.createElement(components_1.Box, { paddingY: "xs-size", ...props },
+    react_1.default.createElement(components_1.Link, { icon: "arrow-left", to: to }, label)));
+exports["default"] = BackButton;
+
+
+/***/ }),
+
+/***/ 17963:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const getSpace_1 = __importDefault(__webpack_require__(58151));
+const Badge = ({ children, stanalone = false, ...props }) => {
+    let content = react_1.default.createElement(react_1.default.Fragment, null);
+    if (props.hasText) {
+        content = (react_1.default.createElement(Count, { hasText: props.hasText, stanalone: stanalone }, props.text));
+    }
+    else {
+        if (props.count >= 1) {
+            content = react_1.default.createElement(Count, { stanalone: stanalone }, props.count);
+        }
+    }
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "center", position: "relative" },
+        children,
+        content));
+};
+const Count = styled_components_1.default.span `
+  height: 2rem;
+  width: ${(props) => (props.hasText ? 'unset' : '2rem')};
+  padding: ${(props) => props.hasText && `0 ${(0, getSpace_1.default)('xxs-size')(props)}`};
+  border-radius: ${(props) => (props.hasText ? '0.3rem' : '55%')};
+  background: ${(0, getColor_1.default)('red')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${(0, getColor_1.default)('white')};
+  font-size: 1.1rem;
+  font-weight: bold;
+  position: ${(props) => !props.stanalone && 'absolute'};
+  top: ${(props) => !props.stanalone && '0'};
+  right: ${(props) => !props.stanalone && '0'};
+  transform: ${(props) => !props.stanalone && 'translate(75%, -75%)'};
+`;
+exports["default"] = Badge;
+
+
+/***/ }),
+
+/***/ 57857:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const Banner = ({ small, medium, description, title, children, background, horizonal, ...props }) => (react_1.default.createElement(components_1.Flexbox, { ...props, alignItems: "center", backgroundColor: "background-color-01", height: small ? '20rem' : medium ? '30rem' : '40rem', justifyContent: "center", position: "relative" },
+    react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexDirection: horizonal ? 'row' : 'column', justifyContent: horizonal ? 'space-between' : 'center', paddingX: horizonal ? 'xxl-size' : 0, width: horizonal ? '100%' : '70rem', zIndex: 1 },
+        title && title,
+        description && (react_1.default.createElement(components_1.Text, { marginBottom: "l-size", marginTop: "m-size", textAlign: "center", type: "body-2" }, description)),
+        children),
+    react_1.default.createElement(components_1.Box, { height: "100%", left: "0", position: "absolute", top: "0", width: "100%" }, background)));
+exports["default"] = Banner;
+
+
+/***/ }),
+
+/***/ 51821:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importStar(__webpack_require__(91288));
+const YourPlaceInYourPoint = () => (react_1.default.createElement(StyledSvg, { clipRule: "evenodd", fillRule: "evenodd", height: "100%", imageRendering: "optimizeQuality", shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", version: "1.1", viewBox: "0 0 10160 3386.7", width: "100%", xmlSpace: "preserve", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink" },
+    react_1.default.createElement("g", { id: "Warstwa_x0020_1" },
+        react_1.default.createElement("metadata", { id: "CorelCorpID_0Corel-Layer" }),
+        react_1.default.createElement("rect", { fill: "#F2F2F2", height: "3386.67", width: "10160", x: "-0.04", y: "0.02" }),
+        react_1.default.createElement("path", { d: "M7583.38 2428.71l16.84 0 0 -51.22 180.45 0 0 51.22 16.84 0c0,16.31 18.91,29.66 42,29.66l0 552.02 -298.13 0 0 -552.02c23.09,0 42,-13.35 42,-29.66z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M7583.38 2423.71l11.84 0 0 -51.22 190.45 0 0 51.22 16.84 0 0 5c0,6.43 3.93,12.43 10.21,16.87 6.79,4.79 16.29,7.79 26.79,7.79l5 0 0 562.02 -308.13 0 0 -562.02 5 0c10.5,0 20,-3 26.79,-7.79 6.28,-4.44 10.21,-10.44 10.21,-16.87l0 -5 5 0zm16.84 10l-12.32 0c-1.54,7.84 -6.62,14.82 -13.99,20.03 -7.27,5.14 -16.9,8.6 -27.53,9.43l0 542.22 288.13 0 0 -542.22c-10.63,-0.83 -20.26,-4.29 -27.53,-9.43 -7.37,-5.21 -12.45,-12.19 -13.99,-20.03l-17.32 0 0 -51.22 -170.45 0 0 51.22 -5 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "9107.31,1576.62 9280.16,1576.62 9280.16,1833.56 9107.31,1833.56 " }),
+        react_1.default.createElement("path", { d: "M9107.31 1571.62l177.85 0 0 266.94 -182.85 0 0 -266.94 5 0zm167.85 10l-162.85 0 0 246.94 162.85 0 0 -246.94z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "8818.05,2478.24 8986.63,2478.24 8986.63,2858.19 8929.01,2858.19 8929.01,3013.91 8818.05,3013.91 " }),
+        react_1.default.createElement("path", { d: "M8818.05 2473.24l173.58 0 0 389.95 -57.62 0 0 155.72 -120.96 0 0 -545.67 5 0zm163.58 10l-158.58 0 0 525.67 100.96 0 0 -155.72 57.62 0 0 -369.95z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "9400.84,2478.24 9581.07,2478.24 9581.07,3013.91 9458.45,3013.91 9458.45,2858.19 9400.84,2858.19 " }),
+        react_1.default.createElement("path", { d: "M9400.84 2473.24l185.23 0 0 545.67 -132.62 0 0 -155.72 -57.61 0 0 -389.95 5 0zm175.23 10l-170.23 0 0 369.95 57.61 0 0 155.72 112.62 0 0 -525.67z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M8402.68 3013.91l526.33 0 0 361.26 -526.33 0 0 -361.26zm1055.77 0l526.33 0 0 361.26 -526.33 0 0 -361.26z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M8402.68 3008.91l531.33 0 0 371.26 -536.33 0 0 -371.26 5 0zm521.33 10l-516.33 0 0 351.26 516.33 0 0 -351.26zm534.44 -10l531.33 0 0 371.26 -536.33 0 0 -371.26 5 0zm521.33 10l-516.33 0 0 351.26 516.33 0 0 -351.26z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "8986.63,1833.56 9400.84,1833.56 9400.84,2858.19 8986.63,2858.19 " }),
+        react_1.default.createElement("path", { d: "M8986.63 1828.56l419.21 0 0 1034.63 -424.21 0 0 -1034.63 5 0zm409.21 10l-404.21 0 0 1014.63 404.21 0 0 -1014.63z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "9140.01,1459.8 9247.46,1459.8 9247.46,1571.92 9140.01,1571.92 " }),
+        react_1.default.createElement("path", { d: "M9140.01 1454.8l112.45 0 0 122.12 -117.45 0 0 -122.12 5 0zm102.45 10l-97.45 0 0 102.12 97.45 0 0 -102.12z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "9132.22,1384.09 9255.24,1384.09 9255.24,1444.82 9132.22,1444.82 " }),
+        react_1.default.createElement("path", { d: "M9132.22 1379.09l128.02 0 0 70.73 -133.02 0 0 -70.73 5 0zm118.02 10l-113.02 0 0 50.73 113.02 0 0 -50.73z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9176.21 1324.37l35.04 0c0,24.4 19.99,44.38 44.38,44.38l0 0 -123.8 0 0 0c24.4,0 44.38,-19.98 44.38,-44.38z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9176.21 1319.37l40.04 0 0 5c0,10.81 4.45,20.67 11.57,27.81 7.14,7.12 17,11.57 27.81,11.57l0 10 -123.8 0 0 -10c10.81,0 20.67,-4.45 27.8,-11.58 7.14,-7.14 11.58,-16.99 11.58,-27.8l0 -5 5 0zm30.29 10l-25.54 0c-1.18,11.6 -6.42,22.05 -14.25,29.88 -1.61,1.61 -3.34,3.12 -5.17,4.5l64.4 0c-1.82,-1.38 -3.55,-2.89 -5.17,-4.5 -7.84,-7.86 -13.08,-18.29 -14.27,-29.88z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 1280.77c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 1275.77c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.07 1473.09c22.14,0 40.1,17.95 40.1,40.1 0,22.14 -17.96,40.09 -40.1,40.09 -22.14,0 -40.1,-17.95 -40.1,-40.09 0,-22.15 17.96,-40.1 40.1,-40.1z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.07 1468.09c12.43,0 23.71,5.05 31.87,13.21 8.18,8.18 13.23,19.46 13.23,31.89 0,12.45 -5.05,23.73 -13.21,31.89 -8.14,8.14 -19.44,13.2 -31.89,13.2 -12.45,0 -23.75,-5.06 -31.89,-13.2 -8.16,-8.16 -13.21,-19.44 -13.21,-31.89 0,-12.43 5.05,-23.71 13.21,-31.87 8.18,-8.18 19.46,-13.23 31.89,-13.23zm24.82 20.28c-6.34,-6.35 -15.13,-10.28 -24.82,-10.28 -9.69,0 -18.48,3.93 -24.81,10.27 -6.36,6.35 -10.29,15.14 -10.29,24.83 0,9.67 3.94,18.46 10.29,24.81 6.34,6.34 15.14,10.28 24.81,10.28 9.67,0 18.47,-3.94 24.81,-10.28 6.35,-6.35 10.29,-15.14 10.29,-24.81 0,-9.69 -3.93,-18.48 -10.28,-24.82z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9111.59 1519.47c3.87,0 7.01,11.33 7.01,25.3 0,13.98 -3.14,25.31 -7.01,25.31 -3.87,0 -7,-11.33 -7,-25.31 0,-13.97 3.13,-25.3 7,-25.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9111.59 1515.66c3.86,0 6.88,3.91 8.62,10.21 1.36,4.9 2.2,11.61 2.2,18.9 0,7.3 -0.84,14 -2.2,18.91 -1.74,6.3 -4.76,10.21 -8.62,10.21 -3.84,0 -6.87,-3.91 -8.61,-10.21 -1.36,-4.91 -2.2,-11.61 -2.2,-18.91 0,-7.3 0.84,-14 2.2,-18.9 1.74,-6.3 4.77,-10.21 8.61,-10.21zm1.3 12.23l-1.3 -4.61 -1.29 4.61c-1.17,4.24 -1.9,10.21 -1.9,16.88 0,6.67 0.73,12.65 1.9,16.89l1.29 4.61 1.3 -4.61c1.17,-4.24 1.9,-10.22 1.9,-16.89 0,-6.66 -0.73,-12.64 -1.9,-16.88z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9273.54 1520.25c3.87,0 7.01,11.33 7.01,25.3 0,13.97 -3.14,25.3 -7.01,25.3 -3.86,0 -7,-11.33 -7,-25.3 0,-13.97 3.14,-25.3 7,-25.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9273.54 1516.44c3.86,0 6.88,3.91 8.62,10.21 1.36,4.9 2.2,11.61 2.2,18.9 0,7.29 -0.84,13.99 -2.2,18.9 -1.74,6.3 -4.76,10.21 -8.62,10.21 -3.85,0 -6.87,-3.91 -8.61,-10.22 -1.36,-4.9 -2.2,-11.6 -2.2,-18.89 0,-7.29 0.84,-13.99 2.2,-18.89 1.74,-6.31 4.76,-10.22 8.61,-10.22zm1.3 12.23l-1.3 -4.61 -1.29 4.62c-1.17,4.22 -1.9,10.21 -1.9,16.87 0,6.66 0.73,12.65 1.9,16.87l1.29 4.62 1.3 -4.61c1.17,-4.24 1.9,-10.22 1.9,-16.88 0,-6.66 -0.73,-12.64 -1.9,-16.88z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "8929.01,2858.19 9458.45,2858.19 9458.45,3375.17 8929.01,3375.17 " }),
+        react_1.default.createElement("path", { d: "M8929.01 2853.19l534.44 0 0 526.98 -539.44 0 0 -526.98 5 0zm524.44 10l-519.44 0 0 506.98 519.44 0 0 -506.98z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M8999.82 1701.02c7.05,0 12.76,26.18 12.76,58.49 0,32.31 -5.71,58.49 -12.76,58.49 -7.04,0 -12.75,-26.18 -12.75,-58.49 0,-32.31 5.71,-58.49 12.75,-58.49z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M8999.82 1697.21c5.56,0 10.03,7.7 12.74,20.14 2.36,10.83 3.83,25.75 3.83,42.16 0,16.41 -1.47,31.33 -3.83,42.16 -2.71,12.44 -7.18,20.14 -12.74,20.14 -5.56,0 -10.03,-7.71 -12.74,-20.14 -2.35,-10.83 -3.82,-25.76 -3.82,-42.16 0,-16.4 1.47,-31.33 3.82,-42.16 2.71,-12.43 7.18,-20.14 12.74,-20.14zm5.3 21.74c-1.9,-8.72 -3.82,-14.12 -5.3,-14.12 -1.48,0 -3.4,5.41 -5.3,14.12 -2.24,10.32 -3.64,24.67 -3.64,40.56 0,15.89 1.4,30.24 3.64,40.56 1.9,8.71 3.82,14.12 5.3,14.12 1.48,0 3.4,-5.4 5.3,-14.12 2.25,-10.31 3.65,-24.67 3.65,-40.56 0,-15.9 -1.4,-30.25 -3.65,-40.56z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9063.27 1701.02c7.05,0 12.76,26.18 12.76,58.49 0,32.31 -5.71,58.49 -12.76,58.49 -7.05,0 -12.76,-26.18 -12.76,-58.49 0,-32.31 5.71,-58.49 12.76,-58.49z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9063.27 1697.21c5.56,0 10.03,7.7 12.74,20.14 2.36,10.83 3.83,25.75 3.83,42.16 0,16.41 -1.47,31.33 -3.83,42.16 -2.71,12.44 -7.18,20.14 -12.74,20.14 -5.55,0 -10.03,-7.7 -12.74,-20.14 -2.36,-10.83 -3.83,-25.75 -3.83,-42.16 0,-16.41 1.47,-31.33 3.83,-42.16 2.71,-12.44 7.19,-20.14 12.74,-20.14zm5.3 21.74c-1.9,-8.72 -3.82,-14.12 -5.3,-14.12 -1.47,0 -3.4,5.4 -5.3,14.12 -2.25,10.31 -3.65,24.66 -3.65,40.56 0,15.89 1.4,30.25 3.65,40.56 1.9,8.72 3.83,14.12 5.3,14.12 1.48,0 3.4,-5.4 5.3,-14.12 2.25,-10.31 3.65,-24.67 3.65,-40.56 0,-15.9 -1.4,-30.25 -3.65,-40.56z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9325.28 1701.02c7.05,0 12.76,26.18 12.76,58.49 0,32.31 -5.71,58.49 -12.76,58.49 -7.05,0 -12.76,-26.18 -12.76,-58.49 0,-32.31 5.71,-58.49 12.76,-58.49z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9325.28 1697.21c5.56,0 10.03,7.7 12.74,20.14 2.36,10.83 3.83,25.75 3.83,42.16 0,16.41 -1.47,31.33 -3.83,42.16 -2.71,12.44 -7.18,20.14 -12.74,20.14 -5.55,0 -10.03,-7.7 -12.74,-20.14 -2.36,-10.83 -3.83,-25.75 -3.83,-42.16 0,-16.41 1.47,-31.33 3.83,-42.16 2.71,-12.44 7.19,-20.14 12.74,-20.14zm5.3 21.74c-1.9,-8.72 -3.82,-14.12 -5.3,-14.12 -1.47,0 -3.4,5.4 -5.3,14.12 -2.25,10.31 -3.65,24.66 -3.65,40.56 0,15.89 1.4,30.25 3.65,40.56 1.9,8.72 3.83,14.12 5.3,14.12 1.48,0 3.4,-5.4 5.3,-14.12 2.25,-10.31 3.65,-24.67 3.65,-40.56 0,-15.9 -1.4,-30.25 -3.65,-40.56z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9381.63 1701.02c7.05,0 12.76,26.18 12.76,58.49 0,32.31 -5.71,58.49 -12.76,58.49 -7.05,0 -12.76,-26.18 -12.76,-58.49 0,-32.31 5.71,-58.49 12.76,-58.49z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9381.63 1697.21c5.56,0 10.03,7.7 12.74,20.14 2.36,10.83 3.83,25.75 3.83,42.16 0,16.41 -1.47,31.33 -3.83,42.16 -2.71,12.44 -7.18,20.14 -12.74,20.14 -5.55,0 -10.03,-7.7 -12.74,-20.14 -2.36,-10.83 -3.83,-25.75 -3.83,-42.16 0,-16.41 1.47,-31.33 3.83,-42.16 2.71,-12.44 7.19,-20.14 12.74,-20.14zm5.3 21.74c-1.9,-8.72 -3.82,-14.12 -5.3,-14.12 -1.47,0 -3.4,5.4 -5.3,14.12 -2.25,10.31 -3.65,24.66 -3.65,40.56 0,15.89 1.4,30.25 3.65,40.56 1.9,8.72 3.83,14.12 5.3,14.12 1.48,0 3.4,-5.4 5.3,-14.12 2.25,-10.31 3.65,-24.67 3.65,-40.56 0,-15.9 -1.4,-30.25 -3.65,-40.56z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("g", null,
+            react_1.default.createElement("path", { d: "M9326.19 1889.91l2.47 371.75 -2.47 -371.75zm2.89 431.05l1.22 183.9 -1.22 -183.9zm-182.46 -431.05l2.48 371.75 -2.48 -371.75zm2.87 431.05l3.07 458.64 -3.07 -458.64zm92.16 -431.05l0.38 57.43 -0.38 -57.43zm0.77 116.73l1.7 255.02 -1.7 -255.02zm2.1 314.32l3.07 458.64 -3.07 -458.64zm86.17 243.2l1.43 215.44 -1.43 -215.44zm-265.76 -674.25l0.38 57.43 -0.38 -57.43zm0.77 116.73l1.71 255.02 -1.71 -255.02zm2.1 314.32l3.07 458.64 -3.07 -458.64z", fill: "#9D9E9E" })),
+        react_1.default.createElement("path", { d: "M9336.15 1889.87l2.47 371.75 -19.92 0.08 -2.47 -371.75 19.92 -0.08zm2.89 431.05l1.22 183.9 -19.92 0.08 -1.22 -183.9 19.92 -0.08zm-182.46 -431.05l2.48 371.75 -19.92 0.08 -2.48 -371.75 19.92 -0.08zm2.87 431.05l3.07 458.64 -19.92 0.08 -3.07 -458.64 19.92 -0.08zm92.16 -431.05l0.38 57.43 -19.92 0.08 -0.38 -57.43 19.92 -0.08zm0.77 116.73l1.7 255.02 -19.92 0.08 -1.7 -255.02 19.92 -0.08zm2.1 314.32l3.07 458.64 -19.92 0.08 -3.07 -458.64 19.92 -0.08zm86.17 243.2l1.43 215.44 -19.92 0.08 -1.43 -215.44 19.92 -0.08zm-265.76 -674.25l0.38 57.43 -19.92 0.08 -0.38 -57.43 19.92 -0.08zm0.77 116.73l1.71 255.02 -19.92 0.08 -1.71 -255.02 19.92 -0.08zm2.1 314.32l3.07 458.64 -19.92 0.08 -3.07 -458.64 19.92 -0.08z", fill: "#FFED00", fillRule: "nonzero", id: "windows" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "8905.94,2391.77 8925.21,2415.94 8944.47,2440.12 8905.94,2440.12 8867.41,2440.12 8886.67,2415.94 " }),
+        react_1.default.createElement("path", { d: "M8908.92 2389.4l43.45 54.53 -92.87 0 46.44 -58.27 2.98 3.74zm13.31 28.91l-16.29 -20.43 -30.63 38.43 61.26 0 -14.34 -18z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "9499.88,2391.77 9519.15,2415.94 9538.41,2440.12 9499.88,2440.12 9461.35,2440.12 9480.61,2415.94 " }),
+        react_1.default.createElement("path", { d: "M9502.86 2389.4l43.45 54.53 -92.87 0 46.44 -58.27 2.98 3.74zm13.31 28.91l-16.29 -20.43 -30.63 38.43 61.26 0 -14.34 -18z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M8174.47 2428.71l214.13 0c0,23.1 18.9,42 42,42l0 539.68 -298.13 0 0 -539.68c23.1,0 42,-18.9 42,-42z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M8174.47 2423.71l219.13 0 0 5c0,10.16 4.18,19.42 10.88,26.12 6.69,6.72 15.95,10.88 26.12,10.88l5 0 0 549.68 -308.13 0 0 -549.68 5 0c10.17,0 19.43,-4.16 26.12,-10.86 6.72,-6.71 10.88,-15.97 10.88,-26.14l0 -5 5 0zm209.4 10l-204.67 0c-1.17,10.93 -6.13,20.78 -13.53,28.18 -7.42,7.42 -17.27,12.38 -28.2,13.55l0 529.95 288.13 0 0 -529.95c-10.93,-1.17 -20.78,-6.13 -28.19,-13.54 -7.4,-7.38 -12.37,-17.24 -13.54,-28.19z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M7890.2 2428.71l22.45 0 0 -29.48c12.29,0 22.36,-6.09 22.36,-13.54l101.6 0c0,7.45 10.06,13.54 22.35,13.54l0 29.48 22.44 0c0,16.88 22.81,30.7 50.67,30.7l0 550.98 -292.54 0 0 -550.98c27.86,0 50.67,-13.82 50.67,-30.7z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M7890.2 2423.71l17.45 0 0 -29.48 5 0c5.24,0 9.92,-1.25 13.21,-3.24 2.55,-1.56 4.15,-3.46 4.15,-5.3l0 -5 111.6 0 0 5c0,1.84 1.6,3.74 4.14,5.28 3.3,2.02 7.97,3.26 13.21,3.26l5 0 0 29.48 22.44 0 0 5c0,6.57 4.79,12.77 12.47,17.42 8.42,5.1 20.18,8.28 33.2,8.28l5 0 0 560.98 -302.54 0 0 -560.98 5 0c13.02,0 24.78,-3.18 33.2,-8.28 7.68,-4.65 12.47,-10.85 12.47,-17.42l0 -5 5 0zm22.45 10l-17.98 0c-1.77,8.25 -7.86,15.54 -16.78,20.94 -8.8,5.33 -20.49,8.88 -33.36,9.62l0 541.12 282.54 0 0 -541.12c-12.87,-0.74 -24.56,-4.29 -33.36,-9.62 -8.92,-5.4 -15.01,-12.69 -16.78,-20.94l-22.97 0 0 -29.79c-5.1,-0.63 -9.72,-2.2 -13.36,-4.4 -3.82,-2.29 -6.64,-5.34 -8.03,-8.83l-93.52 0c-1.39,3.5 -4.22,6.54 -8.03,8.84 -3.64,2.19 -8.27,3.76 -13.37,4.39l0 29.79 -5 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "7690.46,2284.21 7750.76,2311.47 7811.06,2338.74 7690.46,2338.74 7569.86,2338.74 7630.16,2311.47 " }),
+        react_1.default.createElement("path", { d: "M7692.51 2279.66l141.71 64.08 -287.53 0 143.77 -65.01 2.05 0.93zm56.2 36.36l-58.25 -26.33 -97.43 44.05 194.86 0 -39.18 -17.72z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "7984.52,2295.35 8007.13,2322.61 8029.75,2349.88 7984.52,2349.88 7939.3,2349.88 7961.91,2322.61 " }),
+        react_1.default.createElement("path", { d: "M7988.37 2292.17l52.01 62.71 -111.72 0 55.86 -67.36 3.85 4.65zm14.91 33.62l-18.76 -22.62 -34.59 41.71 69.18 0 -15.83 -19.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "8287.79,2307.58 8355.73,2348.43 8423.68,2389.3 8287.79,2389.3 8151.9,2389.3 8219.85,2348.43 " }),
+        react_1.default.createElement("path", { d: "M8290.35 2303.3l151.31 91 -307.75 0 153.88 -92.54 2.56 1.54zm62.82 49.41l-65.38 -39.31 -117.9 70.9 235.8 0 -52.52 -31.59z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "7558.06,2570.45 7822.83,2570.45 7822.83,2580.45 7558.06,2580.45 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "7886.93,2581.51 8075.22,2581.51 8075.22,2591.51 7886.93,2591.51 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "7886.61,2761.58 8071.82,2761.58 8071.82,2771.58 7886.61,2771.58 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "8142.87,2587.05 8407.65,2587.05 8407.65,2597.05 8142.87,2597.05 " }),
+        react_1.default.createElement("path", { d: "M7942.99 2512.43l0 164.98 -10 0 0 -164.98 10 0zm0 175.39l0 277.57 -10 0 0 -277.57 10 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "8033.12,2511.74 8033.12,2965.39 8023.12,2965.39 8023.12,2511.74 " }),
+        react_1.default.createElement("path", { d: "M8229.27 2511.12l0 221.23 -10 0 0 -221.23 10 0zm0 239.23l0 215.04 -10 0 0 -215.04 10 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "7557.96,2756.03 7822.74,2756.03 7822.74,2766.03 7557.96,2766.03 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "8339.1,2511.12 8339.1,2965.39 8329.1,2965.39 8329.1,2511.12 " }),
+        react_1.default.createElement("path", { d: "M7695.78 2511.12l0 146.49 -10 0 0 -146.49 10 0zm0 186.65l0 153.73 -10 0 0 -153.73 10 0zm0 167.58l0 100.04 -10 0 0 -100.04 10 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "8150.82,2853.48 8415.6,2853.48 8415.6,2863.48 8150.82,2863.48 " }),
+        react_1.default.createElement("g", null,
+            react_1.default.createElement("path", { d: "M6749.87 3052.57c37.51,0 68.33,28.63 71.81,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+            react_1.default.createElement("path", { d: "M6893.95 3142.65c37.51,0 68.33,28.62 71.8,65.22l-143.6 0c3.47,-36.6 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+            react_1.default.createElement("path", { d: "M6749.87 3142.65c37.51,0 68.33,28.62 71.81,65.22l-143.61 0c3.48,-36.6 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+            react_1.default.createElement("path", { d: "M6749.87 3222.69c37.51,0 68.33,28.62 71.81,65.21l-143.61 0c3.48,-36.59 34.3,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+            react_1.default.createElement("path", { d: "M6748.83 3303.88c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+            react_1.default.createElement("g", { id: "_2973655341776" },
+                react_1.default.createElement("path", { d: "M7770 3052.57c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7915.1 3052.57c37.5,0 68.32,28.63 71.8,65.22l-143.6 0c3.47,-36.59 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7625.92 3052.57c37.51,0 68.32,28.63 71.8,65.22l-143.6 0c3.47,-36.59 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8204.76 3052.57c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8349.86 3052.57c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8061.42 3052.57c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7770 3142.65c37.5,0 68.32,28.62 71.8,65.22l-143.61 0c3.48,-36.6 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7915.1 3142.65c37.5,0 68.32,28.62 71.8,65.22l-143.6 0c3.47,-36.6 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7625.92 3142.65c37.51,0 68.32,28.62 71.8,65.22l-143.6 0c3.47,-36.6 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8204.76 3142.65c37.5,0 68.32,28.62 71.8,65.22l-143.61 0c3.48,-36.6 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8349.86 3142.65c37.5,0 68.32,28.62 71.8,65.22l-143.61 0c3.48,-36.6 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8061.42 3142.65c37.5,0 68.32,28.62 71.8,65.22l-143.61 0c3.48,-36.6 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7770 3222.69c37.5,0 68.32,28.62 71.8,65.21l-143.61 0c3.48,-36.59 34.3,-65.21 71.81,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7915.1 3222.69c37.5,0 68.32,28.62 71.8,65.21l-143.6 0c3.47,-36.59 34.29,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7625.92 3222.69c37.51,0 68.32,28.62 71.8,65.21l-143.6 0c3.47,-36.59 34.29,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8204.76 3222.69c37.5,0 68.32,28.62 71.8,65.21l-143.61 0c3.48,-36.59 34.3,-65.21 71.81,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8349.86 3222.69c37.5,0 68.32,28.62 71.8,65.21l-143.61 0c3.48,-36.59 34.3,-65.21 71.81,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8061.42 3222.69c37.5,0 68.32,28.62 71.8,65.21l-143.61 0c3.48,-36.59 34.3,-65.21 71.81,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7768.95 3303.88c37.51,0 68.33,28.63 71.81,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7914.05 3303.88c37.51,0 68.33,28.63 71.81,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7624.88 3303.88c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8203.71 3303.88c37.51,0 68.33,28.63 71.81,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8348.81 3303.88c37.51,0 68.33,28.63 71.81,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M8060.37 3303.88c37.51,0 68.33,28.63 71.81,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M6893.95 3052.57c37.51,0 68.33,28.63 71.8,65.22l-143.6 0c3.47,-36.59 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7039.05 3052.57c37.51,0 68.33,28.63 71.8,65.22l-143.6 0c3.48,-36.59 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7328.71 3052.57c37.51,0 68.33,28.63 71.8,65.22l-143.6 0c3.47,-36.59 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7473.81 3052.57c37.51,0 68.33,28.63 71.8,65.22l-143.6 0c3.47,-36.59 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7185.37 3052.57c37.51,0 68.33,28.63 71.8,65.22l-143.6 0c3.48,-36.59 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7039.05 3142.65c37.51,0 68.33,28.62 71.8,65.22l-143.6 0c3.48,-36.6 34.3,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7328.71 3142.65c37.51,0 68.33,28.62 71.8,65.22l-143.6 0c3.47,-36.6 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7473.81 3142.65c37.51,0 68.33,28.62 71.8,65.22l-143.6 0c3.47,-36.6 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7185.37 3142.65c37.51,0 68.33,28.62 71.8,65.22l-143.6 0c3.48,-36.6 34.29,-65.22 71.8,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M6893.95 3222.69c37.51,0 68.33,28.62 71.8,65.21l-143.6 0c3.47,-36.59 34.29,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7039.05 3222.69c37.51,0 68.33,28.62 71.8,65.21l-143.6 0c3.48,-36.59 34.3,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7328.71 3222.69c37.51,0 68.33,28.62 71.8,65.21l-143.6 0c3.47,-36.59 34.29,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7473.81 3222.69c37.51,0 68.33,28.62 71.8,65.21l-143.6 0c3.47,-36.59 34.29,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7185.37 3222.69c37.51,0 68.33,28.62 71.8,65.21l-143.6 0c3.48,-36.59 34.29,-65.21 71.8,-65.21z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M6892.91 3303.88c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7038.01 3303.88c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7327.67 3303.88c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7472.77 3303.88c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }),
+                react_1.default.createElement("path", { d: "M7184.33 3303.88c37.5,0 68.32,28.63 71.8,65.22l-143.61 0c3.48,-36.59 34.3,-65.22 71.81,-65.22z", fill: "#B2B3B3", fillOpacity: "0.780392", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.780392", strokeWidth: "7.62" }))),
+        react_1.default.createElement("path", { d: "M7038.99 2230.74l-8.36 8.89 0 6.61 -65.11 59.86 -43.7 248.54 -4.4 11.04 -41.1 29.98 2.16 8.57 43.27 -23.02 106.87 -241.93 95.94 290.14 32.85 91.58 46.82 110.1 -28.16 1.12 2.56 34.42 32.19 2.57 5.14 17.83 14.19 0 0 22.94 -6.45 2.54 -1.29 155.47 75.93 0 -9.39 -150.98 55.73 -1.96 0 -66.24 -16.94 -1.13 -2.12 9.88 -46.34 -0.44 76 -186.65 10.48 -1.89 7.33 18.37 -5.68 4.42 7.88 31.4 33.44 -19.42 -9.98 -30.2 -12.13 5.27 -7.63 -38.34 -23.28 -57.39 -8.43 1.85 0.85 4.69 -21.38 13.61 -260.74 -342.81 -14.15 -15.94 -5.28 -12.56 -7.59 -0.79 0 0zm8.36 17.97l15.87 26.1 254.22 333.95 -136.9 87.09 -146.83 -373.67 9.64 -65.71 4 -7.76 0 0zm-18.66 8.09l-12.8 61.6 -0.65 1.42 -39.23 -11.73 52.68 -51.29zm-56.61 57.06l40.81 12.31 -85.09 213.48 44.28 -225.79 0 0zm376.92 280.39l8.51 47.77 -3.22 1.05 -18.48 -28.31 -6.16 -8.1 19.36 -12.41 -0.01 0zm-28.63 18.37l6.64 8.71 20.64 23.96 -9.24 3.08 -4.18 10.09 -16.79 0.91 -1.4 -8.46 -34.13 3.38 0.15 21.34 -87.81 17.97 126.12 -80.98zm-38.27 69.8l0.14 23.16 25.56 1.31 -67.39 122.8 -17.05 0.69 -28.48 -98.01 -11.77 -29.91 98.99 -20.04z", fill: "#434242", fillOpacity: "0.258824" }),
+        react_1.default.createElement("path", { d: "M9193.73 1228.27c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 1223.27c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 1176.46c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 1171.46c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 1125.83c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 1120.83c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 1075.12c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 1070.12c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 1018.89c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 1013.89c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 964.87c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 959.87c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 914.16c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 909.16c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M9193.73 861.29c10.32,0 18.69,8.36 18.69,18.68 0,10.32 -8.37,18.68 -18.69,18.68 -10.32,0 -18.68,-8.36 -18.68,-18.68 0,-10.32 8.36,-18.68 18.68,-18.68z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M9193.73 856.29c6.52,0 12.45,2.66 16.74,6.93 4.29,4.27 6.95,10.21 6.95,16.75 0,6.54 -2.66,12.48 -6.93,16.75 -4.31,4.27 -10.24,6.93 -16.76,6.93 -6.54,0 -12.48,-2.66 -16.75,-6.93 -4.27,-4.27 -6.93,-10.21 -6.93,-16.75 0,-6.54 2.66,-12.48 6.93,-16.75 4.27,-4.27 10.21,-6.93 16.75,-6.93zm9.68 14c-2.47,-2.46 -5.91,-4 -9.68,-4 -3.77,0 -7.2,1.54 -9.67,4.01 -2.47,2.47 -4.01,5.9 -4.01,9.67 0,3.77 1.54,7.2 4.01,9.67 2.47,2.47 5.9,4.01 9.67,4.01 3.77,0 7.21,-1.54 9.69,-4 2.46,-2.48 4,-5.91 4,-9.68 0,-3.77 -1.54,-7.2 -4.01,-9.68z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("g", null,
+            react_1.default.createElement("path", { d: "M2103.95 2792.15l3135.1 0 0 592.38 -140.35 0 0 -267.63c0,-106.24 -86.92,-193.18 -193.16,-193.18l0 0c-106.24,0 -193.17,86.94 -193.17,193.18l0 267.63 -114.86 0 0 -267.63c0,-106.24 -86.93,-193.18 -193.17,-193.18l0 0c-106.25,0 -193.17,86.94 -193.17,193.18l0 267.63 -106.64 0 0 -267.63c0,-106.24 -86.92,-193.18 -193.17,-193.18l0 0c-106.24,0 -193.16,86.94 -193.16,193.18l0 267.63 -117.1 0 0 -267.63c0,-106.24 -86.92,-193.18 -193.17,-193.18l0 0c-106.24,0 -193.16,86.94 -193.16,193.18l0 267.63 -114.71 0 0 -267.63c0,-106.24 -86.92,-193.18 -193.16,-193.18l0 0c-106.25,0 -193.17,86.94 -193.17,193.18l0 267.63 -115.26 0 0 -267.63c0,-106.24 -86.94,-193.18 -193.18,-193.18l0 0c-106.25,0 -193.16,86.94 -193.16,193.18l0 267.63 -108.18 0 0 -592.38zm2555.5 94.92l2.96 0c12.93,0 23.51,10.59 23.51,23.52l0 48.84 -20.76 17.11 -9.67 0 -20.23 -16.97 0 -48.31c0,-13.3 10.89,-24.19 24.19,-24.19zm-70.8 -0.59l2.96 0c12.93,0 23.51,10.58 23.51,23.52l0 38.95 -50.66 -32.44 0 -5.84c0,-13.31 10.88,-24.19 24.19,-24.19zm145.08 -2.22l-2.96 0c-12.94,0 -23.52,10.58 -23.52,23.52l0 38.95 50.66 -32.44 0 -5.84c0,-13.31 -10.88,-24.19 -24.18,-24.19zm-581.4 2.81l2.96 0c12.93,0 23.51,10.59 23.51,23.52l0 48.84 -20.76 17.11 -9.67 0 -20.23 -16.97 0 -48.31c0,-13.3 10.89,-24.19 24.19,-24.19zm-70.8 -0.59l2.96 0c12.93,0 23.51,10.58 23.51,23.52l0 38.95 -50.66 -32.44 0 -5.84c0,-13.31 10.88,-24.19 24.19,-24.19zm145.08 -2.22l-2.96 0c-12.94,0 -23.52,10.58 -23.52,23.52l0 38.95 50.66 -32.44 0 -5.84c0,-13.31 -10.88,-24.19 -24.18,-24.19zm-576.99 2.81l2.96 0c12.93,0 23.51,10.59 23.51,23.52l0 48.84 -20.76 17.11 -9.67 0 -20.23 -16.97 0 -48.31c0,-13.3 10.89,-24.19 24.19,-24.19zm-70.8 -0.59l2.96 0c12.93,0 23.51,10.58 23.51,23.52l0 38.95 -50.66 -32.44 0 -5.84c0,-13.31 10.88,-24.19 24.19,-24.19zm145.08 -2.22l-2.96 0c-12.94,0 -23.52,10.58 -23.52,23.52l0 38.95 50.66 -32.44 0 -5.84c0,-13.31 -10.88,-24.19 -24.18,-24.19zm-576.99 2.81l2.96 0c12.93,0 23.51,10.59 23.51,23.52l0 48.84 -20.76 17.11 -9.67 0 -20.23 -16.97 0 -48.31c0,-13.3 10.89,-24.19 24.19,-24.19zm-70.8 -0.59l2.96 0c12.93,0 23.51,10.58 23.51,23.52l0 38.95 -50.66 -32.44 0 -5.84c0,-13.31 10.88,-24.19 24.19,-24.19zm145.08 -2.22l-2.96 0c-12.94,0 -23.52,10.58 -23.52,23.52l0 38.95 50.66 -32.44 0 -5.84c0,-13.31 -10.88,-24.19 -24.18,-24.19zm-563.76 2.81l2.96 0c12.93,0 23.51,10.59 23.51,23.52l0 48.84 -20.76 17.11 -9.67 0 -20.23 -16.97 0 -48.31c0,-13.3 10.89,-24.19 24.19,-24.19zm-70.8 -0.59l2.96 0c12.93,0 23.51,10.58 23.51,23.52l0 38.95 -50.66 -32.44 0 -5.84c0,-13.31 10.88,-24.19 24.19,-24.19zm145.08 -2.22l-2.96 0c-12.94,0 -23.52,10.58 -23.52,23.52l0 38.95 50.66 -32.44 0 -5.84c0,-13.31 -10.88,-24.19 -24.18,-24.19z", fill: "#9D9E9E", fillOpacity: "0.560784" }),
+            react_1.default.createElement("path", { d: "M2103.95 2788.34l3138.91 0 0 600 -147.97 0 0 -271.44c0,-52.07 -21.31,-99.43 -55.62,-133.74 -34.31,-34.33 -81.65,-55.63 -133.73,-55.63 -52.08,0 -99.42,21.3 -133.73,55.62 -34.33,34.32 -55.63,81.67 -55.63,133.75l0 271.44 -122.48 0 0 -271.44c0,-52.08 -21.3,-99.43 -55.62,-133.74 -34.32,-34.33 -81.66,-55.63 -133.74,-55.63 -52.08,0 -99.42,21.3 -133.73,55.62 -34.33,34.32 -55.63,81.67 -55.63,133.75l0 271.44 -114.26 0 0 -271.44c0,-52.08 -21.3,-99.43 -55.62,-133.74 -34.32,-34.33 -81.66,-55.63 -133.74,-55.63 -52.08,0 -99.42,21.3 -133.73,55.62 -34.31,34.32 -55.62,81.68 -55.62,133.75l0 271.44 -124.72 0 0 -271.44c0,-52.08 -21.3,-99.43 -55.62,-133.74 -34.32,-34.33 -81.66,-55.63 -133.74,-55.63 -52.08,0 -99.42,21.3 -133.73,55.62 -34.31,34.32 -55.62,81.68 -55.62,133.75l0 271.44 -122.33 0 0 -271.44c0,-52.07 -21.31,-99.43 -55.62,-133.74 -34.31,-34.33 -81.65,-55.63 -133.73,-55.63 -52.08,0 -99.42,21.3 -133.73,55.62 -34.33,34.32 -55.63,81.67 -55.63,133.75l0 271.44 -122.88 0 0 -271.44c0,-52.07 -21.32,-99.43 -55.63,-133.74 -34.31,-34.31 -81.67,-55.63 -133.74,-55.63 -52.07,0 -99.42,21.31 -133.73,55.62 -34.31,34.31 -55.62,81.67 -55.62,133.75l0 271.44 -115.8 0 0 -600 3.81 0zm3131.29 7.62l-3127.48 0 0 584.76 100.56 0 0 -263.82c0,-54.15 22.17,-103.42 57.86,-139.12 35.69,-35.7 84.95,-57.87 139.11,-57.87 54.16,0 103.41,22.18 139.11,57.87 35.7,35.71 57.88,84.96 57.88,139.12l0 263.82 107.64 0 0 -263.82c0,-54.14 22.17,-103.41 57.87,-139.11 35.71,-35.71 84.96,-57.88 139.11,-57.88 54.15,0 103.41,22.17 139.1,57.88 35.7,35.68 57.87,84.95 57.87,139.11l0 263.82 107.09 0 0 -263.82c0,-54.16 22.17,-103.43 57.86,-139.12 35.7,-35.7 84.95,-57.87 139.11,-57.87 54.14,0 103.4,22.17 139.1,57.87 35.71,35.71 57.88,84.98 57.88,139.12l0 263.82 109.48 0 0 -263.82c0,-54.16 22.17,-103.43 57.86,-139.12 35.7,-35.7 84.95,-57.87 139.11,-57.87 54.14,0 103.4,22.17 139.1,57.87 35.71,35.71 57.88,84.98 57.88,139.12l0 263.82 99.02 0 0 -263.82c0,-54.14 22.17,-103.41 57.87,-139.11 35.71,-35.71 84.96,-57.88 139.11,-57.88 54.14,0 103.4,22.17 139.1,57.87 35.71,35.71 57.88,84.98 57.88,139.12l0 263.82 107.24 0 0 -263.82c0,-54.14 22.17,-103.41 57.87,-139.11 35.71,-35.71 84.96,-57.88 139.11,-57.88 54.15,0 103.41,22.17 139.1,57.88 35.7,35.68 57.87,84.95 57.87,139.11l0 263.82 132.73 0 0 -584.76zm-575.79 87.3l2.96 0c7.5,0 14.35,3.09 19.29,8.03 4.94,4.94 8.03,11.79 8.03,19.3l0 50.61 -23.22 19.15 -12.39 0 -22.67 -19.01 0 -50.08c0,-7.67 3.16,-14.69 8.23,-19.76 5.08,-5.08 12.1,-8.24 19.77,-8.24zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.39,5.98 -3.69,3.68 -5.99,8.79 -5.99,14.4l0 46.54 17.8 14.93 6.95 0 18.29 -15.08 0 -47.06c0,-5.42 -2.23,-10.36 -5.79,-13.92 -3.56,-3.56 -8.5,-5.79 -13.91,-5.79zm-73.76 -8.21l2.96 0c7.51,0 14.35,3.09 19.29,8.03 4.95,4.95 8.03,11.8 8.03,19.3l0 45.9 -58.28 -37.32 0 -7.91c0,-7.68 3.16,-14.7 8.22,-19.77 5.08,-5.07 12.08,-8.23 19.78,-8.23zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.4,5.98 -3.68,3.68 -5.98,8.79 -5.98,14.4l0 3.77 43.04 27.56 0 -32c0,-5.43 -2.22,-10.37 -5.78,-13.92 -3.57,-3.56 -8.5,-5.79 -13.92,-5.79zm142.12 -2.22l-2.96 0c-5.42,0 -10.36,2.23 -13.92,5.79 -3.57,3.55 -5.79,8.49 -5.79,13.92l0 32 43.04 -27.56 0 -3.77c0,-5.61 -2.3,-10.72 -5.98,-14.4 -3.68,-3.68 -8.79,-5.98 -14.39,-5.98zm-2.96 -7.62l2.96 0c7.69,0 14.71,3.16 19.77,8.22 5.06,5.08 8.22,12.1 8.22,19.78l0 7.91 -58.28 37.32 0 -45.9c0,-7.5 3.08,-14.35 8.04,-19.29 4.93,-4.95 11.78,-8.04 19.29,-8.04zm-578.44 2.81l2.96 0c7.5,0 14.35,3.09 19.29,8.03 4.94,4.94 8.03,11.79 8.03,19.3l0 50.61 -23.22 19.15 -12.39 0 -22.67 -19.01 0 -50.08c0,-7.67 3.16,-14.69 8.23,-19.76 5.08,-5.08 12.1,-8.24 19.77,-8.24zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.39,5.98 -3.69,3.68 -5.99,8.79 -5.99,14.4l0 46.54 17.8 14.93 6.95 0 18.29 -15.08 0 -47.06c0,-5.42 -2.23,-10.36 -5.79,-13.92 -3.56,-3.56 -8.5,-5.79 -13.91,-5.79zm-73.76 -8.21l2.96 0c7.51,0 14.35,3.09 19.29,8.03 4.95,4.95 8.03,11.8 8.03,19.3l0 45.9 -58.28 -37.32 0 -7.91c0,-7.68 3.16,-14.7 8.22,-19.77 5.08,-5.07 12.08,-8.23 19.78,-8.23zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.4,5.98 -3.68,3.68 -5.98,8.79 -5.98,14.4l0 3.77 43.04 27.56 0 -32c0,-5.43 -2.22,-10.37 -5.78,-13.92 -3.57,-3.56 -8.5,-5.79 -13.92,-5.79zm142.12 -2.22l-2.96 0c-5.42,0 -10.36,2.23 -13.92,5.79 -3.57,3.55 -5.79,8.49 -5.79,13.92l0 32 43.04 -27.56 0 -3.77c0,-5.61 -2.3,-10.72 -5.98,-14.4 -3.68,-3.68 -8.79,-5.98 -14.39,-5.98zm-2.96 -7.62l2.96 0c7.69,0 14.71,3.16 19.77,8.22 5.06,5.08 8.22,12.1 8.22,19.78l0 7.91 -58.28 37.32 0 -45.9c0,-7.5 3.08,-14.35 8.04,-19.29 4.93,-4.95 11.78,-8.04 19.29,-8.04zm-574.03 2.81l2.96 0c7.5,0 14.35,3.09 19.29,8.03 4.94,4.94 8.03,11.79 8.03,19.3l0 50.61 -23.22 19.15 -12.39 0 -22.67 -19.01 0 -50.08c0,-7.67 3.16,-14.69 8.23,-19.76 5.08,-5.08 12.1,-8.24 19.77,-8.24zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.39,5.98 -3.69,3.68 -5.99,8.79 -5.99,14.4l0 46.54 17.8 14.93 6.95 0 18.29 -15.08 0 -47.06c0,-5.42 -2.23,-10.36 -5.79,-13.92 -3.56,-3.56 -8.5,-5.79 -13.91,-5.79zm-73.76 -8.21l2.96 0c7.51,0 14.35,3.09 19.29,8.03 4.95,4.95 8.03,11.8 8.03,19.3l0 45.9 -58.28 -37.32 0 -7.91c0,-7.68 3.16,-14.7 8.22,-19.77 5.08,-5.07 12.08,-8.23 19.78,-8.23zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.4,5.98 -3.68,3.68 -5.98,8.79 -5.98,14.4l0 3.77 43.04 27.56 0 -32c0,-5.43 -2.22,-10.37 -5.78,-13.92 -3.57,-3.56 -8.5,-5.79 -13.92,-5.79zm142.12 -2.22l-2.96 0c-5.42,0 -10.36,2.23 -13.92,5.79 -3.57,3.55 -5.79,8.49 -5.79,13.92l0 32 43.04 -27.56 0 -3.77c0,-5.61 -2.3,-10.72 -5.98,-14.4 -3.68,-3.68 -8.79,-5.98 -14.39,-5.98zm-2.96 -7.62l2.96 0c7.69,0 14.71,3.16 19.77,8.22 5.06,5.08 8.22,12.1 8.22,19.78l0 7.91 -58.28 37.32 0 -45.9c0,-7.5 3.08,-14.35 8.04,-19.29 4.93,-4.95 11.78,-8.04 19.29,-8.04zm-574.03 2.81l2.96 0c7.5,0 14.35,3.09 19.29,8.03 4.94,4.94 8.03,11.79 8.03,19.3l0 50.61 -23.22 19.15 -12.39 0 -22.67 -19.01 0 -50.08c0,-7.67 3.16,-14.69 8.23,-19.76 5.08,-5.08 12.1,-8.24 19.77,-8.24zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.39,5.98 -3.69,3.68 -5.99,8.79 -5.99,14.4l0 46.54 17.8 14.93 6.95 0 18.29 -15.08 0 -47.06c0,-5.42 -2.23,-10.36 -5.79,-13.92 -3.56,-3.56 -8.5,-5.79 -13.91,-5.79zm-73.76 -8.21l2.96 0c7.51,0 14.35,3.09 19.29,8.03 4.95,4.95 8.03,11.8 8.03,19.3l0 45.9 -58.28 -37.32 0 -7.91c0,-7.68 3.16,-14.7 8.22,-19.77 5.08,-5.07 12.08,-8.23 19.78,-8.23zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.4,5.98 -3.68,3.68 -5.98,8.79 -5.98,14.4l0 3.77 43.04 27.56 0 -32c0,-5.43 -2.22,-10.37 -5.78,-13.92 -3.57,-3.56 -8.5,-5.79 -13.92,-5.79zm142.12 -2.22l-2.96 0c-5.42,0 -10.36,2.23 -13.92,5.79 -3.57,3.55 -5.79,8.49 -5.79,13.92l0 32 43.04 -27.56 0 -3.77c0,-5.61 -2.3,-10.72 -5.98,-14.4 -3.68,-3.68 -8.79,-5.98 -14.39,-5.98zm-2.96 -7.62l2.96 0c7.69,0 14.71,3.16 19.77,8.22 5.06,5.08 8.22,12.1 8.22,19.78l0 7.91 -58.28 37.32 0 -45.9c0,-7.5 3.08,-14.35 8.04,-19.29 4.93,-4.95 11.78,-8.04 19.29,-8.04zm-560.8 2.81l2.96 0c7.5,0 14.35,3.09 19.29,8.03 4.94,4.94 8.03,11.79 8.03,19.3l0 50.61 -23.22 19.15 -12.39 0 -22.67 -19.01 0 -50.08c0,-7.67 3.16,-14.69 8.23,-19.76 5.08,-5.08 12.1,-8.24 19.77,-8.24zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.39,5.98 -3.69,3.68 -5.99,8.79 -5.99,14.4l0 46.54 17.8 14.93 6.95 0 18.29 -15.08 0 -47.06c0,-5.42 -2.23,-10.36 -5.79,-13.92 -3.56,-3.56 -8.5,-5.79 -13.91,-5.79zm-73.76 -8.21l2.96 0c7.51,0 14.35,3.09 19.29,8.03 4.95,4.95 8.03,11.8 8.03,19.3l0 45.9 -58.28 -37.32 0 -7.91c0,-7.68 3.16,-14.7 8.22,-19.77 5.08,-5.07 12.08,-8.23 19.78,-8.23zm2.96 7.62l-2.96 0c-5.61,0 -10.72,2.3 -14.4,5.98 -3.68,3.68 -5.98,8.79 -5.98,14.4l0 3.77 43.04 27.56 0 -32c0,-5.43 -2.22,-10.37 -5.78,-13.92 -3.57,-3.56 -8.5,-5.79 -13.92,-5.79zm142.12 -2.22l-2.96 0c-5.42,0 -10.36,2.23 -13.92,5.79 -3.57,3.55 -5.79,8.49 -5.79,13.92l0 32 43.04 -27.56 0 -3.77c0,-5.61 -2.3,-10.72 -5.98,-14.4 -3.68,-3.68 -8.79,-5.98 -14.39,-5.98zm-2.96 -7.62l2.96 0c7.69,0 14.71,3.16 19.77,8.22 5.06,5.08 8.22,12.1 8.22,19.78l0 7.91 -58.28 37.32 0 -45.9c0,-7.5 3.08,-14.35 8.04,-19.29 4.93,-4.95 11.78,-8.04 19.29,-8.04z", fill: "#FEFEFE", fillRule: "nonzero" })),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "324.89,1299.29 346.94,1609.03 368.99,1918.77 324.89,1918.77 280.78,1918.77 302.83,1609.03 " }),
+        react_1.default.createElement("path", { d: "M328.69 1299.02c14.8,207.84 29.12,415.76 44.4,623.56l-96.4 0 48.21 -676.92 3.79 53.36zm14.45 310.28l-18.25 -256.37 -40.02 562.03 80.03 0 -21.76 -305.66z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2167.34c1.28,0 2.31,1.03 2.31,2.3 0,1.27 -1.03,2.3 -2.31,2.3 -1.27,0 -2.3,-1.03 -2.3,-2.3 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2163.53c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.69 -0.69,3.21 -1.8,4.32 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.68,0 -3.18,-0.69 -4.28,-1.76 -1.14,-1.17 -1.83,-2.67 -1.83,-4.35 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm-0.99 7.12l0.99 0.41 0 -1.38 -0.99 0.97zm0.99 0.41l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.38 -0.99 0.41 0.99 0.97zm1.43 0.04l-1.39 0 1 -0.97 0.39 0.97zm-1.47 0l-1.37 0 0.4 0.99 0.97 -0.99zm-0.97 -0.99l-0.4 0.99 1.37 0 -0.97 -0.99zm1.05 0.99l1.39 0 -0.39 0.97 -1 -0.97zm-0.04 -1.43l0 1.39 0.97 -1 -0.97 -0.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2174.44c1.28,0 2.31,1.03 2.31,2.3 0,1.27 -1.03,2.3 -2.31,2.3 -1.27,0 -2.3,-1.03 -2.3,-2.3 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2170.63c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.69 -0.69,3.21 -1.8,4.32 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.68,0 -3.18,-0.69 -4.28,-1.76 -1.14,-1.17 -1.83,-2.67 -1.83,-4.35 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm-0.99 7.12l0.99 0.41 0 -1.38 -0.99 0.97zm0.99 0.41l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.38 -0.99 0.41 0.99 0.97zm1.43 0.04l-1.39 0 1 -0.97 0.39 0.97zm-1.47 0l-1.37 0 0.4 0.99 0.97 -0.99zm-0.97 -0.99l-0.4 0.99 1.37 0 -0.97 -0.99zm1.05 0.99l1.39 0 -0.39 0.97 -1 -0.97zm-0.04 -1.43l0 1.39 0.97 -1 -0.97 -0.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2180.38c1.28,0 2.31,1.03 2.31,2.3 0,1.27 -1.03,2.3 -2.31,2.3 -1.27,0 -2.3,-1.03 -2.3,-2.3 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2176.57c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.69 -0.69,3.21 -1.8,4.32 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.68,0 -3.18,-0.69 -4.28,-1.76 -1.14,-1.17 -1.83,-2.67 -1.83,-4.35 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm-0.99 7.12l0.99 0.41 0 -1.38 -0.99 0.97zm0.99 0.41l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.38 -0.99 0.41 0.99 0.97zm1.43 0.04l-1.39 0 1 -0.97 0.39 0.97zm-1.47 0l-1.37 0 0.4 0.99 0.97 -0.99zm-0.97 -0.99l-0.4 0.99 1.37 0 -0.97 -0.99zm1.05 0.99l1.39 0 -0.39 0.97 -1 -0.97zm-0.04 -1.43l0 1.39 0.97 -1 -0.97 -0.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2187.29c1.28,0 2.31,1.03 2.31,2.3 0,1.27 -1.03,2.3 -2.31,2.3 -1.27,0 -2.3,-1.03 -2.3,-2.3 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2183.48c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.69 -0.69,3.21 -1.8,4.32 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.68,0 -3.18,-0.69 -4.28,-1.76 -1.14,-1.17 -1.83,-2.67 -1.83,-4.35 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm-0.99 7.12l0.99 0.41 0 -1.38 -0.99 0.97zm0.99 0.41l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.38 -0.99 0.41 0.99 0.97zm1.43 0.04l-1.39 0 1 -0.97 0.39 0.97zm-1.47 0l-1.37 0 0.4 0.99 0.97 -0.99zm-0.97 -0.99l-0.4 0.99 1.37 0 -0.97 -0.99zm1.05 0.99l1.39 0 -0.39 0.97 -1 -0.97zm-0.04 -1.43l0 1.39 0.97 -1 -0.97 -0.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2193.81c1.28,0 2.31,1.03 2.31,2.3 0,1.27 -1.03,2.3 -2.31,2.3 -1.27,0 -2.3,-1.03 -2.3,-2.3 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2190c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.69 -0.69,3.21 -1.8,4.32 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.68,0 -3.18,-0.69 -4.28,-1.76 -1.14,-1.17 -1.83,-2.67 -1.83,-4.35 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm-0.99 7.12l0.99 0.41 0 -1.38 -0.99 0.97zm0.99 0.41l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.38 -0.99 0.41 0.99 0.97zm1.43 0.04l-1.39 0 1 -0.97 0.39 0.97zm-1.47 0l-1.37 0 0.4 0.99 0.97 -0.99zm-0.97 -0.99l-0.4 0.99 1.37 0 -0.97 -0.99zm1.05 0.99l1.39 0 -0.39 0.97 -1 -0.97zm-0.04 -1.43l0 1.39 0.97 -1 -0.97 -0.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2200.33c1.28,0 2.31,1.03 2.31,2.3 0,1.27 -1.03,2.3 -2.31,2.3 -1.27,0 -2.3,-1.03 -2.3,-2.3 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2196.52c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.69 -0.69,3.21 -1.8,4.32 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.68,0 -3.18,-0.69 -4.28,-1.76 -1.14,-1.17 -1.83,-2.67 -1.83,-4.35 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm-0.99 7.12l0.99 0.41 0 -1.38 -0.99 0.97zm0.99 0.41l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.38 -0.99 0.41 0.99 0.97zm1.43 0.04l-1.39 0 1 -0.97 0.39 0.97zm-1.47 0l-1.37 0 0.4 0.99 0.97 -0.99zm-0.97 -0.99l-0.4 0.99 1.37 0 -0.97 -0.99zm1.05 0.99l1.39 0 -0.39 0.97 -1 -0.97zm-0.04 -1.43l0 1.39 0.97 -1 -0.97 -0.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2206.66c1.28,0 2.31,1.03 2.31,2.3 0,1.27 -1.03,2.3 -2.31,2.3 -1.27,0 -2.3,-1.03 -2.3,-2.3 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2202.85c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.69 -0.69,3.21 -1.8,4.32 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.68,0 -3.18,-0.69 -4.28,-1.76 -1.14,-1.17 -1.83,-2.67 -1.83,-4.35 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm-0.99 7.12l0.99 0.41 0 -1.38 -0.99 0.97zm0.99 0.41l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.38 -0.99 0.41 0.99 0.97zm1.43 0.04l-1.39 0 1 -0.97 0.39 0.97zm-1.47 0l-1.37 0 0.4 0.99 0.97 -0.99zm-0.97 -0.99l-0.4 0.99 1.37 0 -0.97 -0.99zm1.05 0.99l1.39 0 -0.39 0.97 -1 -0.97zm-0.04 -1.43l0 1.39 0.97 -1 -0.97 -0.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2213.18c1.28,0 2.31,1.03 2.31,2.3 0,1.28 -1.03,2.31 -2.31,2.31 -1.27,0 -2.3,-1.03 -2.3,-2.31 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2209.37c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.68 -0.69,3.22 -1.8,4.33 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.69,0 -3.21,-0.69 -4.32,-1.8 -1.08,-1.08 -1.79,-2.64 -1.79,-4.32 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm1.01 5.1l-0.99 0.99 1.4 0.02 -0.41 -1.01zm-1.02 1.04l-1 0.98 1.01 0.41 -0.01 -1.39zm0.01 1.39l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.37 -0.99 0.41 0.99 0.96zm-0.03 0.05l-1.38 -0.01 0.4 1.01 0.98 -1zm-1.38 -0.01l1.37 0 -0.97 -0.99 -0.4 0.99zm1.42 -0.03l1 -0.98 -1.01 -0.4 0.01 1.38zm0.03 0.03l1.38 0 -0.38 0.97 -1 -0.97z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2219.51c1.28,0 2.31,1.03 2.31,2.3 0,1.28 -1.03,2.31 -2.31,2.31 -1.27,0 -2.3,-1.03 -2.3,-2.31 0,-1.27 1.03,-2.3 2.3,-2.3z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2215.7c1.68,0 3.24,0.71 4.32,1.79 1.11,1.11 1.8,2.63 1.8,4.32 0,1.68 -0.69,3.22 -1.8,4.33 -1.08,1.08 -2.64,1.79 -4.32,1.79 -1.69,0 -3.21,-0.69 -4.32,-1.8 -1.08,-1.08 -1.79,-2.64 -1.79,-4.32 0,-1.64 0.69,-3.18 1.76,-4.28 1.17,-1.14 2.67,-1.83 4.35,-1.83zm1.01 5.1l-0.99 0.99 1.4 0.02 -0.41 -1.01zm-1.02 1.04l-1 0.98 1.01 0.41 -0.01 -1.39zm0.01 1.39l0.97 -0.38 -0.97 -1 0 1.38zm0 -1.46l0 -1.37 -0.99 0.41 0.99 0.96zm-0.03 0.05l-1.38 -0.01 0.4 1.01 0.98 -1zm-1.38 -0.01l1.37 0 -0.97 -0.99 -0.4 0.99zm1.42 -0.03l1 -0.98 -1.01 -0.4 0.01 1.38zm0.03 0.03l1.38 0 -0.38 0.97 -1 -0.97z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M783.59 2225.27c2.12,0 3.83,1.71 3.83,3.83 0,2.11 -1.71,3.83 -3.83,3.83 -2.11,0 -3.83,-1.72 -3.83,-3.83 0,-2.12 1.72,-3.83 3.83,-3.83z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M783.59 2221.46c2.1,0 4.03,0.87 5.4,2.24 1.37,1.37 2.24,3.3 2.24,5.4 0,2.09 -0.86,3.99 -2.22,5.37 -1.39,1.4 -3.32,2.27 -5.42,2.27 -2.09,0 -3.99,-0.86 -5.37,-2.22 -1.41,-1.43 -2.27,-3.33 -2.27,-5.42 0,-2.1 0.87,-4.03 2.24,-5.4 1.41,-1.38 3.31,-2.24 5.4,-2.24z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "187.04,2243.99 187.56,2243.99 220.99,2229.98 254.94,2215.75 322.84,2215.75 390.74,2215.75 424.69,2229.98 458.13,2243.99 458.64,2243.99 458.64,2244.21 458.64,2491.69 645.5,2491.69 645.5,2243.99 917.1,2243.99 917.1,3393.4 187.04,3393.4 187.04,2244.21 ", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "754.31,1986.34 779.04,1986.31 803.78,1986.27 816.2,1997.31 828.62,2008.35 816.31,2019.42 804.01,2030.49 779.28,2030.53 754.54,2030.56 742.12,2019.53 729.7,2008.49 742.01,1997.42 " }),
+        react_1.default.createElement("path", { d: "M754.31 1982.54l50.92 -0.08 29.1 25.87 -28.85 25.95 -52.37 0.08 -29.11 -25.86 28.85 -25.96 1.46 0zm24.73 7.57l-23.26 0.03 -20.37 18.33 20.57 18.29 46.57 -0.07 20.36 -18.32 -20.58 -18.3 -23.29 0.04z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.16 2005.76c22.5,0 40.74,6.93 40.74,15.48 0,2.7 -1.81,5.23 -4.99,7.44l0 24.52 1.29 1.15 12.42 11.03 -12.31 11.08 -12.3 11.07 -24.74 0.03 -24.73 0.04 -12.42 -11.04 -12.42 -11.04 12.31 -11.07 1.4 -1.26 0 -24.51c-3.18,-2.21 -4.99,-4.74 -4.99,-7.44 0,-8.55 18.24,-15.48 40.74,-15.48z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.16 2001.95c11.7,0 22.38,1.83 30.15,4.78 8.89,3.38 14.4,8.5 14.4,14.51 0,2.1 -0.68,4.11 -1.91,5.95 -0.79,1.18 -1.83,2.32 -3.08,3.37l0 20.94 15.61 13.86 -28.85 25.96 -52.38 0.08 -29.1 -25.87 15.6 -14.03 0 -20.94c-1.25,-1.05 -2.29,-2.19 -3.08,-3.37 -1.23,-1.84 -1.91,-3.85 -1.91,-5.95 0,-6.01 5.51,-11.13 14.39,-14.51 7.77,-2.95 18.46,-4.78 30.16,-4.78zm27.46 11.9c-6.95,-2.64 -16.67,-4.28 -27.46,-4.28 -10.79,0 -20.51,1.64 -27.46,4.28 -5.84,2.23 -9.47,4.88 -9.47,7.39 0,0.55 0.22,1.15 0.61,1.73 0.57,0.85 1.51,1.74 2.73,2.58l1.65 1.14 0 28.18 -11.81 10.63 20.58 18.3 46.56 -0.07 20.37 -18.33 -11.82 -10.51 0 -28.2 1.65 -1.14c1.23,-0.85 2.16,-1.73 2.73,-2.58 0.39,-0.58 0.61,-1.18 0.61,-1.73 0,-2.51 -3.63,-5.16 -9.47,-7.39z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "748.4,1969.06 809.91,1969.06 809.91,1992.69 748.4,1992.69 " }),
+        react_1.default.createElement("path", { d: "M748.4 1965.25l65.32 0 0 31.25 -69.13 0 0 -31.25 3.81 0zm57.7 7.62l-53.89 0 0 16.01 53.89 0 0 -16.01z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.16 1905.14c22.99,0 41.62,14.31 41.62,31.96 0,5.64 -1.9,10.93 -5.23,15.53 3.97,2.22 6.25,4.84 6.25,7.65 0,8.1 -19.09,14.66 -42.64,14.66 -23.55,0 -42.64,-6.56 -42.64,-14.66 0,-2.81 2.28,-5.43 6.25,-7.66 -3.33,-4.59 -5.23,-9.89 -5.23,-15.52 0,-17.65 18.63,-31.96 41.62,-31.96z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.16 1901.33c12.34,0 23.58,3.89 31.74,10.15 8.45,6.49 13.69,15.55 13.69,25.62 0,3.16 -0.54,6.27 -1.53,9.24 -0.6,1.79 -1.38,3.53 -2.31,5.19 0.93,0.75 1.74,1.54 2.41,2.35 1.59,1.94 2.45,4.11 2.45,6.4 0,5.86 -5.76,10.77 -15.06,13.97 -8.08,2.77 -19.19,4.5 -31.39,4.5 -12.2,0 -23.31,-1.73 -31.39,-4.5 -9.3,-3.2 -15.06,-8.11 -15.06,-13.97 0,-2.29 0.86,-4.46 2.45,-6.4 0.66,-0.81 1.47,-1.59 2.41,-2.35 -0.92,-1.66 -1.7,-3.39 -2.3,-5.18 -1,-2.97 -1.54,-6.08 -1.54,-9.25 0,-10.07 5.24,-19.13 13.69,-25.62 8.16,-6.26 19.4,-10.15 31.74,-10.15zm27.12 16.19c-6.89,-5.29 -16.49,-8.57 -27.12,-8.57 -10.63,0 -20.23,3.28 -27.12,8.57 -6.59,5.06 -10.69,12 -10.69,19.58 0,2.36 0.39,4.66 1.12,6.81 0.76,2.27 1.92,4.46 3.38,6.48l2.51 3.45 -3.74 2.1c-1.58,0.88 -2.81,1.83 -3.56,2.75 -0.47,0.59 -0.73,1.13 -0.73,1.59 0,2.23 3.8,4.66 9.92,6.77 7.32,2.51 17.56,4.08 28.91,4.08 11.36,0 21.59,-1.57 28.91,-4.08 6.12,-2.11 9.92,-4.54 9.92,-6.77 0,-0.46 -0.26,-1 -0.73,-1.58 -0.75,-0.93 -1.98,-1.87 -3.56,-2.75l-3.72 -2.09 2.49 -3.45c1.46,-2.02 2.62,-4.21 3.39,-6.5 0.72,-2.15 1.11,-4.45 1.11,-6.81 0,-7.58 -4.1,-14.52 -10.69,-19.58z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.16 1832.05c2.1,0 3.8,6.32 3.8,14.12 0,7.8 -1.7,14.13 -3.8,14.13 -2.1,0 -3.8,-6.33 -3.8,-14.13 0,-7.8 1.7,-14.12 3.8,-14.12z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.16 1828.24c2.98,0 5.21,2.67 6.37,6.96 0.75,2.86 1.24,6.75 1.24,10.97 0,4.22 -0.49,8.11 -1.24,10.96 -1.16,4.31 -3.38,6.98 -6.37,6.98 -3,0 -5.21,-2.67 -6.37,-6.97 -0.75,-2.86 -1.24,-6.75 -1.24,-10.97 0,-4.22 0.49,-8.11 1.24,-10.96 1.16,-4.3 3.38,-6.97 6.37,-6.97zm0 7.83c0.24,-0.13 0.35,-0.21 0,-0.21 -0.35,0 -0.25,0.08 0,0.21zm0 20.42c0.35,0 0.24,-0.08 0,-0.22 -0.25,0.14 -0.35,0.22 0,0.22z", fill: "#B2B3B3", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.16 1869.24c2.1,0 3.8,6.32 3.8,14.12 0,7.8 -1.7,14.12 -3.8,14.12 -2.1,0 -3.8,-6.32 -3.8,-14.12 0,-7.8 1.7,-14.12 3.8,-14.12z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.16 1865.43c2.98,0 5.21,2.67 6.37,6.96 0.75,2.86 1.24,6.75 1.24,10.97 0,4.22 -0.49,8.11 -1.24,10.96 -1.16,4.3 -3.39,6.97 -6.37,6.97 -2.99,0 -5.21,-2.67 -6.37,-6.96 -0.75,-2.86 -1.24,-6.75 -1.24,-10.97 0,-4.22 0.49,-8.11 1.24,-10.96 1.16,-4.3 3.38,-6.97 6.37,-6.97zm0 7.83c0.24,-0.13 0.35,-0.21 0,-0.21 -0.35,0 -0.25,0.08 0,0.21zm0 20.41c0.35,0 0.24,-0.08 0,-0.21 -0.25,0.13 -0.35,0.21 0,0.21z", fill: "#B2B3B3", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M674.97 2103.54c1.23,0 2.24,3.68 2.24,8.23 0,4.54 -1.01,8.22 -2.24,8.22 -1.24,0 -2.25,-3.68 -2.25,-8.22 0,-4.55 1.01,-8.23 2.25,-8.23z", fill: "#2B2A29" }),
+        react_1.default.createElement("path", { d: "M674.97 2099.73c2.54,0 4.4,2.01 5.26,5.26 0.48,1.81 0.79,4.22 0.79,6.78 0,2.55 -0.31,4.97 -0.8,6.79 -0.85,3.23 -2.71,5.24 -5.25,5.24 -2.56,0 -4.37,-2 -5.25,-5.22 -0.5,-1.82 -0.81,-4.25 -0.81,-6.81 0,-2.56 0.31,-4.99 0.81,-6.82 0.88,-3.22 2.69,-5.22 5.25,-5.22z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M674.97 2083.85c1.23,0 2.24,3.68 2.24,8.22 0,4.55 -1.01,8.23 -2.24,8.23 -1.24,0 -2.25,-3.68 -2.25,-8.23 0,-4.54 1.01,-8.22 2.25,-8.22z", fill: "#2B2A29" }),
+        react_1.default.createElement("path", { d: "M674.97 2080.04c2.54,0 4.4,2.01 5.26,5.24 0.48,1.83 0.79,4.24 0.79,6.79 0,2.56 -0.31,4.97 -0.8,6.78 -0.85,3.25 -2.71,5.26 -5.25,5.26 -2.56,0 -4.37,-2 -5.25,-5.22 -0.5,-1.82 -0.81,-4.26 -0.81,-6.82 0,-2.56 0.31,-4.98 0.81,-6.81 0.88,-3.22 2.69,-5.22 5.25,-5.22z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M674.97 2062.41c1.23,0 2.24,3.68 2.24,8.23 0,4.54 -1.01,8.22 -2.24,8.22 -1.24,0 -2.25,-3.68 -2.25,-8.22 0,-4.55 1.01,-8.23 2.25,-8.23z", fill: "#2B2A29" }),
+        react_1.default.createElement("path", { d: "M674.97 2058.6c2.54,0 4.4,2.01 5.26,5.26 0.48,1.81 0.79,4.22 0.79,6.78 0,2.55 -0.31,4.97 -0.8,6.79 -0.85,3.23 -2.71,5.24 -5.25,5.24 -2.56,0 -4.37,-2 -5.25,-5.22 -0.5,-1.82 -0.81,-4.25 -0.81,-6.81 0,-2.56 0.31,-4.99 0.81,-6.82 0.88,-3.22 2.69,-5.22 5.25,-5.22z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M877.44 2101.58c1.24,0 2.24,3.69 2.24,8.23 0,4.54 -1,8.23 -2.24,8.23 -1.24,0 -2.25,-3.69 -2.25,-8.23 0,-4.54 1.01,-8.23 2.25,-8.23z", fill: "#2B2A29" }),
+        react_1.default.createElement("path", { d: "M877.44 2097.77c2.54,0 4.4,2.01 5.26,5.24 0.48,1.83 0.79,4.25 0.79,6.8 0,2.55 -0.31,4.98 -0.8,6.8 -0.85,3.23 -2.71,5.24 -5.25,5.24 -2.56,0 -4.37,-2 -5.25,-5.22 -0.5,-1.82 -0.81,-4.26 -0.81,-6.82 0,-2.56 0.31,-4.99 0.81,-6.82 0.88,-3.22 2.69,-5.22 5.25,-5.22z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M877.44 2081.89c1.24,0 2.24,3.69 2.24,8.23 0,4.54 -1,8.22 -2.24,8.22 -1.24,0 -2.25,-3.68 -2.25,-8.22 0,-4.54 1.01,-8.23 2.25,-8.23z", fill: "#2B2A29" }),
+        react_1.default.createElement("path", { d: "M877.44 2078.08c2.54,0 4.4,2.01 5.26,5.24 0.48,1.83 0.79,4.25 0.79,6.8 0,2.55 -0.31,4.98 -0.8,6.8 -0.86,3.22 -2.72,5.23 -5.25,5.23 -2.56,0 -4.37,-2 -5.25,-5.22 -0.5,-1.82 -0.81,-4.25 -0.81,-6.81 0,-2.56 0.31,-4.99 0.81,-6.82 0.88,-3.22 2.69,-5.22 5.25,-5.22z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M877.44 2060.45c1.24,0 2.24,3.69 2.24,8.23 0,4.54 -1,8.23 -2.24,8.23 -1.24,0 -2.25,-3.69 -2.25,-8.23 0,-4.54 1.01,-8.23 2.25,-8.23z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M877.44 2056.64c2.54,0 4.4,2.01 5.26,5.24 0.48,1.83 0.79,4.25 0.79,6.8 0,2.55 -0.31,4.98 -0.8,6.8 -0.85,3.23 -2.71,5.24 -5.25,5.24 -2.56,0 -4.37,-2 -5.25,-5.22 -0.5,-1.82 -0.81,-4.26 -0.81,-6.82 0,-2.56 0.31,-4.99 0.81,-6.82 0.88,-3.22 2.69,-5.22 5.25,-5.22z", fill: "#B2B3B3", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M674.89 2045.85c3.15,0 5.71,2.55 5.71,5.7 0,3.15 -2.56,5.7 -5.71,5.7 -3.15,0 -5.7,-2.55 -5.7,-5.7 0,-3.15 2.55,-5.7 5.7,-5.7z", fill: "#2B2A29" }),
+        react_1.default.createElement("path", { d: "M674.89 2042.04c2.61,0 4.99,1.08 6.72,2.79 1.72,1.71 2.8,4.11 2.8,6.72 0,2.61 -1.08,5.01 -2.79,6.72 -1.74,1.71 -4.12,2.79 -6.73,2.79 -2.63,0 -5.01,-1.08 -6.72,-2.79 -1.71,-1.71 -2.79,-4.09 -2.79,-6.72 0,-2.61 1.08,-5.01 2.79,-6.72 1.71,-1.71 4.09,-2.79 6.72,-2.79zm1.35 8.17c-0.33,-0.33 -0.81,-0.55 -1.35,-0.55 -0.52,0 -1.01,0.22 -1.34,0.55 -0.33,0.33 -0.55,0.82 -0.55,1.34 0,0.52 0.22,1.01 0.55,1.34 0.33,0.33 0.82,0.55 1.34,0.55 0.54,0 1.02,-0.22 1.35,-0.55 0.33,-0.33 0.55,-0.82 0.55,-1.34 0,-0.52 -0.22,-1.01 -0.55,-1.34z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M878.05 2043.68c3.15,0 5.7,2.55 5.7,5.7 0,3.15 -2.55,5.7 -5.7,5.7 -3.15,0 -5.7,-2.55 -5.7,-5.7 0,-3.15 2.55,-5.7 5.7,-5.7z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M878.05 2039.87c2.61,0 5.01,1.08 6.72,2.79 1.71,1.71 2.79,4.11 2.79,6.72 0,2.63 -1.08,5.01 -2.79,6.72 -1.71,1.71 -4.11,2.79 -6.72,2.79 -2.63,0 -5.01,-1.08 -6.72,-2.79 -1.71,-1.71 -2.79,-4.09 -2.79,-6.72 0,-2.61 1.08,-5.01 2.79,-6.72 1.71,-1.71 4.09,-2.79 6.72,-2.79zm1.34 8.17c-0.33,-0.33 -0.82,-0.55 -1.34,-0.55 -0.52,0 -1.01,0.22 -1.34,0.55 -0.33,0.33 -0.55,0.82 -0.55,1.34 0,0.52 0.22,1.01 0.55,1.34 0.33,0.33 0.82,0.55 1.34,0.55 0.52,0 1.01,-0.22 1.34,-0.55 0.33,-0.33 0.55,-0.82 0.55,-1.34 0,-0.52 -0.22,-1.01 -0.55,-1.34z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M780.37 2056.57l0.01 0c52.21,0 94.92,42.71 94.92,94.92l0 78.68 -192.29 0 0 -76.24c0,-53.55 43.81,-97.36 97.36,-97.36z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M780.37 2052.76c27.15,0 51.84,11.12 69.73,29 17.89,17.9 29.01,42.59 29.01,69.73l0 82.49 -199.91 0 0 -80.05c0,-27.81 11.39,-53.12 29.72,-71.45 18.33,-18.33 43.63,-29.72 71.45,-29.72zm0.01 7.62c-25.75,0 -49.15,10.53 -66.08,27.47 -16.95,16.96 -27.48,40.36 -27.48,66.08l0 72.43 184.67 0 0 -74.87c0,-25.06 -10.26,-47.85 -26.76,-64.35 -16.5,-16.5 -39.29,-26.76 -64.35,-26.76z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M636.61 2200.95l14.07 0 0 -27.07 -9.77 0c0.18,-25.78 16.89,-46.62 37.48,-46.62 20.58,0 37.29,20.84 37.47,46.62l-11.13 0 0 27.07 150.99 0 0 -27.07 -9.77 0c0.18,-25.78 16.89,-46.62 37.48,-46.62 20.58,0 37.29,20.84 37.47,46.62l-11.13 0 0 27.07 13.66 0 0 30.42 -286.82 0 0 -30.42z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M636.61 2197.14l10.26 0 0 -19.45 -9.78 0 0.02 -3.82c0.09,-13.78 4.66,-26.3 11.94,-35.36 7.47,-9.3 17.85,-15.06 29.34,-15.06 11.49,0 21.86,5.75 29.34,15.06 7.27,9.06 11.84,21.58 11.93,35.36l0.03 3.82 -11.15 0 0 19.45 143.37 0 0 -19.45 -9.78 0 0.02 -3.82c0.09,-13.78 4.66,-26.3 11.94,-35.36 7.47,-9.3 17.85,-15.06 29.34,-15.06 11.49,0 21.86,5.75 29.34,15.06 7.27,9.06 11.84,21.58 11.93,35.36l0.03 3.82 -11.15 0 0 19.45 13.66 0 0 38.04 -294.44 0 0 -38.04 3.81 0zm14.07 7.62l-10.26 0 0 22.8 279.2 0 0 -22.8 -13.66 0 0 -34.69 10.98 0c-0.79,-10.47 -4.52,-19.85 -10.09,-26.8 -6.06,-7.54 -14.34,-12.2 -23.42,-12.2 -9.08,0 -17.37,4.67 -23.42,12.2 -5.59,6.94 -9.31,16.34 -10.1,26.8l9.62 0 0 34.69 -158.61 0 0 -34.69 10.98 0c-0.79,-10.47 -4.52,-19.85 -10.09,-26.8 -6.06,-7.54 -14.34,-12.2 -23.42,-12.2 -9.08,0 -17.37,4.67 -23.42,12.2 -5.59,6.94 -9.31,16.34 -10.1,26.8l9.62 0 0 34.69 -3.81 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "180.3,2055.34 216.24,2040.69 252.18,2026.04 324.05,2026.04 395.93,2026.04 431.86,2040.69 467.8,2055.34 441.1,2066.22 441.1,2255.92 207.01,2255.92 207.01,2066.22 ", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "180.79,1913.71 282.46,1913.71 298.72,1900.54 327.13,1877.53 355.55,1900.54 371.81,1913.71 473.47,1913.71 473.47,1954.39 180.79,1954.39 " }),
+        react_1.default.createElement("path", { d: "M180.79 1909.9l100.33 0 46.01 -37.27 46.02 37.27 104.13 0 0 48.3 -300.3 0 0 -48.3 3.81 0zm101.67 7.62l-97.86 0 0 33.06 285.06 0 0 -33.06 -99.18 0 -43.35 -35.1 -43.33 35.1 -1.34 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "180.79,1948.35 282.46,1948.35 298.72,1935.18 327.13,1912.16 355.55,1935.18 371.81,1948.35 473.47,1948.35 473.47,1989.02 180.79,1989.02 " }),
+        react_1.default.createElement("path", { d: "M180.79 1944.54l100.33 0 46.01 -37.28 46.02 37.28 104.13 0 0 48.29 -300.3 0 0 -48.29 3.81 0zm101.67 7.62l-97.86 0 0 33.05 285.06 0 0 -33.05 -99.18 0 -43.35 -35.11 -43.33 35.11 -1.34 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "180.79,1984.07 282.46,1984.07 298.72,1969.84 327.13,1944.99 355.55,1969.84 371.81,1984.07 473.47,1984.07 473.47,2028.01 372.39,2028.01 370.98,2026.7 327.41,1986.11 283.85,2026.7 282.45,2028.01 180.79,2028.01 " }),
+        react_1.default.createElement("path", { d: "M180.79 1980.26l100.26 0 46.08 -40.32 46.09 40.32 104.06 0 0 51.56 -106.37 0 -43.5 -40.52 -43.48 40.52 -106.95 0 0 -51.56 3.81 0zm101.67 7.62l-97.86 0 0 36.32 96.37 0 46.44 -43.29 46.46 43.29 95.79 0 0 -36.32 -99.26 0 -43.27 -37.84 -43.25 37.84 -1.42 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "249.78,1742.55 260.65,1826.54 271.53,1910.53 249.78,1910.53 228.02,1910.53 238.9,1826.54 " }),
+        react_1.default.createElement("path", { d: "M253.55 1742.07l22.31 172.27 -52.16 0 26.09 -201.39 3.76 29.12zm3.33 84.95l-7.1 -54.87 -17.43 134.57 34.85 0 -10.32 -79.7z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "398.2,1742.55 409.08,1826.54 419.95,1910.53 398.2,1910.53 376.44,1910.53 387.32,1826.54 " }),
+        react_1.default.createElement("path", { d: "M401.97 1742.07l22.31 172.27 -52.16 0 26.08 -201.38 3.77 29.11zm3.34 84.95l-7.11 -54.89 -17.43 134.59 34.85 0 -10.31 -79.7z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "452.19,1910.12 456.1,1937.24 460.02,1964.36 452.19,1964.36 444.37,1964.36 448.28,1937.24 " }),
+        react_1.default.createElement("path", { d: "M455.96 1909.58l8.46 58.59 -24.44 0 12.21 -84.74 3.77 26.15zm-3.63 28.2l-0.14 -0.97 -3.42 23.74 6.85 0 -3.29 -22.77z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "481.42,1890.19 485.34,1917.31 489.25,1944.44 481.42,1944.44 473.6,1944.44 477.51,1917.31 " }),
+        react_1.default.createElement("path", { d: "M485.19 1889.65l8.46 58.6 -24.44 0 12.21 -84.72 3.77 26.12zm-3.62 28.2l-0.15 -1 -3.42 23.78 6.85 0 -3.28 -22.78z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "430.43,1825.27 439.41,1887.51 448.39,1949.76 430.43,1949.76 412.48,1949.76 421.45,1887.51 " }),
+        react_1.default.createElement("path", { d: "M434.2 1824.73l18.59 128.84 -44.7 0 22.34 -154.97 3.77 26.13zm1.44 63.32l-5.21 -36.11 -13.55 94.01 27.11 0 -8.35 -57.9z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "222.2,1840.08 231.18,1902.33 240.16,1964.57 222.2,1964.57 204.24,1964.57 213.22,1902.33 " }),
+        react_1.default.createElement("path", { d: "M225.97 1839.54l18.59 128.84 -44.71 0 22.35 -154.98 3.77 26.14zm1.44 63.33l-5.21 -36.12 -13.56 94.01 27.12 0 -8.35 -57.89z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "176.04,1895.14 179.95,1922.26 183.86,1949.39 176.04,1949.39 168.21,1949.39 172.12,1922.26 " }),
+        react_1.default.createElement("path", { d: "M179.81 1894.6l8.45 58.6 -24.44 0 12.23 -84.72 3.76 26.12zm-3.63 28.2l-0.14 -1 -3.43 23.78 6.85 0 -3.28 -22.78z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "204.81,1922.06 208.72,1949.18 212.63,1976.31 204.81,1976.31 196.98,1976.31 200.89,1949.18 " }),
+        react_1.default.createElement("path", { d: "M208.58 1921.52l8.45 58.6 -24.44 0 12.23 -84.72 3.76 26.12zm-3.63 28.2l-0.14 -1 -3.43 23.78 6.85 0 -3.28 -22.78z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M398.2 1734.38c4.35,0 7.87,3.53 7.87,7.88 0,4.35 -3.52,7.88 -7.87,7.88 -4.35,0 -7.88,-3.53 -7.88,-7.88 0,-4.35 3.53,-7.88 7.88,-7.88z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M398.2 1730.57c3.2,0 6.13,1.32 8.24,3.43 2.12,2.12 3.44,5.05 3.44,8.26 0,3.21 -1.32,6.15 -3.43,8.25 -2.12,2.12 -5.05,3.44 -8.25,3.44 -3.21,0 -6.15,-1.32 -8.25,-3.43 -2.12,-2.11 -3.44,-5.05 -3.44,-8.26 0,-3.21 1.31,-6.14 3.43,-8.26 2.1,-2.11 5.04,-3.43 8.26,-3.43zm2.87 8.8c-0.71,-0.72 -1.75,-1.18 -2.87,-1.18 -1.13,0 -2.16,0.45 -2.88,1.18 -0.73,0.74 -1.19,1.77 -1.19,2.89 0,1.13 0.45,2.16 1.18,2.88 0.73,0.74 1.76,1.19 2.89,1.19 1.12,0 2.16,-0.46 2.87,-1.18 0.74,-0.73 1.19,-1.76 1.19,-2.89 0,-1.13 -0.46,-2.17 -1.19,-2.89z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M249.77 1740.38c4.36,0 7.88,3.52 7.88,7.87 0,4.35 -3.52,7.88 -7.88,7.88 -4.35,0 -7.87,-3.53 -7.87,-7.88 0,-4.35 3.52,-7.87 7.87,-7.87z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M249.77 1736.57c3.22,0 6.16,1.32 8.26,3.42 2.12,2.12 3.43,5.04 3.43,8.26 0,3.21 -1.32,6.15 -3.43,8.25 -2.12,2.12 -5.05,3.44 -8.26,3.44 -3.2,0 -6.14,-1.32 -8.24,-3.43 -2.12,-2.11 -3.44,-5.05 -3.44,-8.26 0,-3.2 1.32,-6.13 3.42,-8.25 2.13,-2.11 5.05,-3.43 8.26,-3.43zm2.88 8.8c-0.72,-0.72 -1.75,-1.18 -2.88,-1.18 -1.14,0 -2.16,0.46 -2.88,1.18 -0.72,0.72 -1.18,1.76 -1.18,2.88 0,1.13 0.45,2.16 1.18,2.88 0.73,0.74 1.76,1.19 2.88,1.19 1.13,0 2.17,-0.46 2.88,-1.18 0.74,-0.73 1.19,-1.76 1.19,-2.89 0,-1.13 -0.46,-2.15 -1.19,-2.88z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M430.44 1825.93c4.35,0 7.87,3.53 7.87,7.88 0,4.35 -3.52,7.87 -7.87,7.87 -4.36,0 -7.88,-3.52 -7.88,-7.87 0,-4.35 3.52,-7.88 7.88,-7.88z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M430.44 1822.12c3.2,0 6.13,1.32 8.24,3.43 2.12,2.12 3.44,5.05 3.44,8.26 0,3.21 -1.32,6.13 -3.42,8.25 -2.13,2.11 -5.06,3.43 -8.26,3.43 -3.22,0 -6.16,-1.32 -8.26,-3.42 -2.12,-2.12 -3.43,-5.04 -3.43,-8.26 0,-3.21 1.32,-6.14 3.43,-8.25 2.11,-2.12 5.05,-3.44 8.26,-3.44zm2.87 8.8c-0.71,-0.72 -1.75,-1.18 -2.87,-1.18 -1.13,0 -2.16,0.45 -2.88,1.18 -0.73,0.72 -1.19,1.76 -1.19,2.89 0,1.13 0.46,2.15 1.19,2.88 0.72,0.72 1.75,1.18 2.88,1.18 1.12,0 2.16,-0.46 2.88,-1.18 0.72,-0.72 1.18,-1.74 1.18,-2.88 0,-1.13 -0.46,-2.17 -1.19,-2.89z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M222.2 1838.04c4.35,0 7.88,3.52 7.88,7.87 0,4.35 -3.53,7.88 -7.88,7.88 -4.35,0 -7.87,-3.53 -7.87,-7.88 0,-4.35 3.52,-7.87 7.87,-7.87z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M222.2 1834.23c3.21,0 6.14,1.32 8.25,3.43 2.12,2.12 3.44,5.05 3.44,8.25 0,3.22 -1.32,6.16 -3.44,8.25 -2.11,2.13 -5.04,3.44 -8.25,3.44 -3.2,0 -6.14,-1.32 -8.24,-3.43 -2.12,-2.11 -3.44,-5.05 -3.44,-8.26 0,-3.2 1.32,-6.13 3.42,-8.25 2.13,-2.11 5.05,-3.43 8.26,-3.43zm2.88 8.8c-0.71,-0.72 -1.75,-1.18 -2.88,-1.18 -1.14,0 -2.16,0.46 -2.88,1.18 -0.72,0.72 -1.18,1.76 -1.18,2.88 0,1.13 0.45,2.16 1.18,2.88 0.73,0.74 1.76,1.19 2.88,1.19 1.12,0 2.15,-0.46 2.88,-1.19 0.74,-0.72 1.19,-1.75 1.19,-2.88 0,-1.12 -0.46,-2.16 -1.19,-2.88z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M481.42 1882.31c4.36,0 7.88,3.53 7.88,7.88 0,4.35 -3.52,7.88 -7.88,7.88 -4.35,0 -7.87,-3.53 -7.87,-7.88 0,-4.35 3.52,-7.88 7.87,-7.88z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M481.42 1878.5c3.21,0 6.14,1.32 8.25,3.43 2.12,2.12 3.44,5.05 3.44,8.26 0,3.21 -1.32,6.15 -3.43,8.25 -2.12,2.12 -5.05,3.44 -8.26,3.44 -3.2,0 -6.14,-1.32 -8.24,-3.43 -2.12,-2.11 -3.44,-5.05 -3.44,-8.26 0,-3.21 1.32,-6.14 3.43,-8.25 2.11,-2.12 5.05,-3.44 8.25,-3.44zm2.88 8.8c-0.71,-0.72 -1.75,-1.18 -2.88,-1.18 -1.12,0 -2.15,0.45 -2.87,1.18 -0.73,0.72 -1.19,1.76 -1.19,2.89 0,1.13 0.45,2.16 1.18,2.88 0.73,0.74 1.76,1.19 2.88,1.19 1.13,0 2.17,-0.46 2.88,-1.18 0.74,-0.73 1.19,-1.76 1.19,-2.89 0,-1.13 -0.46,-2.17 -1.19,-2.89z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M176.04 1887.26c4.35,0 7.87,3.53 7.87,7.88 0,4.35 -3.52,7.88 -7.87,7.88 -4.35,0 -7.88,-3.53 -7.88,-7.88 0,-4.35 3.53,-7.88 7.88,-7.88z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M176.04 1883.45c3.2,0 6.13,1.32 8.24,3.43 2.12,2.12 3.44,5.05 3.44,8.26 0,3.21 -1.32,6.15 -3.43,8.25 -2.12,2.12 -5.05,3.44 -8.25,3.44 -3.21,0 -6.15,-1.32 -8.25,-3.43 -2.12,-2.11 -3.44,-5.05 -3.44,-8.26 0,-3.21 1.31,-6.14 3.43,-8.26 2.1,-2.11 5.04,-3.43 8.26,-3.43zm2.87 8.8c-0.71,-0.72 -1.75,-1.18 -2.87,-1.18 -1.13,0 -2.16,0.45 -2.88,1.18 -0.73,0.74 -1.19,1.77 -1.19,2.89 0,1.13 0.45,2.16 1.18,2.88 0.73,0.74 1.76,1.19 2.89,1.19 1.12,0 2.16,-0.46 2.87,-1.18 0.74,-0.73 1.19,-1.76 1.19,-2.89 0,-1.13 -0.46,-2.17 -1.19,-2.89z", fill: "#9D9E9E", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", fillRule: "nonzero", points: "252.49,1687.44 254.66,1817.81 247.06,1817.93 244.89,1687.56 " }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", fillRule: "nonzero", points: "400.91,1689.55 403.08,1827.6 395.48,1827.72 393.31,1689.67 " }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", fillRule: "nonzero", points: "433.15,1757.99 435.32,1896.04 427.72,1896.16 425.55,1758.11 " }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", fillRule: "nonzero", points: "224.92,1762.87 227.09,1900.92 219.49,1901.04 217.32,1762.99 " }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "324.88,1620.83 353.29,1630.33 381.69,1639.84 370.84,1655.22 359.99,1670.6 324.88,1670.6 289.78,1670.6 278.93,1655.22 268.08,1639.84 296.48,1630.33 " }),
+        react_1.default.createElement("path", { d: "M326.09 1617.23l61.66 20.64 -25.79 36.54 -74.14 0 -25.79 -36.54 62.85 -21.04 1.21 0.4zm25.99 16.7l-27.2 -9.1 -50.75 16.99 17.62 24.97 66.27 0 17.62 -24.97 -23.56 -7.89z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M324.89 1279.36c10.35,0 18.74,8.39 18.74,18.74 0,10.35 -8.39,18.74 -18.74,18.74 -10.36,0 -18.74,-8.39 -18.74,-18.74 0,-10.35 8.38,-18.74 18.74,-18.74z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M324.89 1275.55c6.21,0 11.86,2.53 15.94,6.61 4.08,4.08 6.61,9.72 6.61,15.94 0,6.21 -2.53,11.86 -6.61,15.94 -4.08,4.08 -9.73,6.61 -15.94,6.61 -6.22,0 -11.86,-2.53 -15.94,-6.61 -4.08,-4.08 -6.61,-9.72 -6.61,-15.94 0,-6.22 2.53,-11.86 6.61,-15.94 4.08,-4.08 9.72,-6.61 15.94,-6.61zm10.56 11.99c-2.69,-2.69 -6.44,-4.37 -10.56,-4.37 -4.13,0 -7.87,1.68 -10.56,4.37 -2.69,2.69 -4.37,6.43 -4.37,10.56 0,4.13 1.68,7.87 4.37,10.56 2.69,2.69 6.43,4.37 10.56,4.37 4.12,0 7.87,-1.68 10.56,-4.37 2.69,-2.69 4.37,-6.44 4.37,-10.56 0,-4.13 -1.68,-7.87 -4.37,-10.56z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M327.7 2069.87l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M327.7 2066.06c5.62,0 10.76,2.31 14.46,6.03 3.71,3.69 6.03,8.82 6.03,14.45l0 57.4 -40.96 0 0 -57.4c0,-5.62 2.31,-10.76 6.01,-14.46 3.7,-3.7 8.84,-6.02 14.46,-6.02zm9.09 11.39c-2.31,-2.32 -5.54,-3.77 -9.09,-3.77 -3.53,0 -6.76,1.46 -9.08,3.78 -2.32,2.32 -3.77,5.55 -3.77,9.08l0 49.78 25.72 0 0 -49.78c0,-3.54 -1.46,-6.76 -3.78,-9.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M327.7 2154.24l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M327.7 2150.43c5.62,0 10.76,2.31 14.46,6.03 3.71,3.69 6.03,8.82 6.03,14.45l0 57.4 -40.96 0 0 -57.4c0,-5.62 2.31,-10.76 6.01,-14.46 3.7,-3.7 8.84,-6.02 14.46,-6.02zm9.09 11.39c-2.31,-2.32 -5.54,-3.77 -9.09,-3.77 -3.53,0 -6.76,1.46 -9.08,3.78 -2.32,2.32 -3.77,5.55 -3.77,9.08l0 49.78 25.72 0 0 -49.78c0,-3.54 -1.46,-6.76 -3.78,-9.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M327.7 2298.21l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M327.7 2294.4c5.62,0 10.76,2.31 14.46,6.03 3.71,3.69 6.03,8.82 6.03,14.45l0 57.4 -40.96 0 0 -57.4c0,-5.62 2.31,-10.76 6.01,-14.46 3.7,-3.7 8.84,-6.02 14.46,-6.02zm9.09 11.39c-2.31,-2.32 -5.54,-3.77 -9.09,-3.77 -3.53,0 -6.76,1.46 -9.08,3.78 -2.32,2.32 -3.77,5.55 -3.77,9.08l0 49.78 25.72 0 0 -49.78c0,-3.54 -1.46,-6.76 -3.78,-9.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M327.7 2412.15l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M327.7 2408.34c5.62,0 10.76,2.31 14.46,6.03 3.71,3.69 6.03,8.82 6.03,14.45l0 57.4 -40.96 0 0 -57.4c0,-5.62 2.31,-10.76 6.01,-14.46 3.7,-3.7 8.84,-6.02 14.46,-6.02zm9.09 11.39c-2.31,-2.32 -5.54,-3.77 -9.09,-3.77 -3.53,0 -6.76,1.46 -9.08,3.78 -2.32,2.32 -3.77,5.55 -3.77,9.08l0 49.78 25.72 0 0 -49.78c0,-3.54 -1.46,-6.76 -3.78,-9.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M327.7 2521.65l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62" }),
+        react_1.default.createElement("path", { d: "M327.7 2638.05l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M327.7 2634.24c5.62,0 10.76,2.31 14.46,6.03 3.71,3.69 6.03,8.82 6.03,14.45l0 57.4 -40.96 0 0 -57.4c0,-5.62 2.31,-10.76 6.01,-14.46 3.7,-3.7 8.84,-6.02 14.46,-6.02zm9.09 11.39c-2.31,-2.32 -5.54,-3.77 -9.09,-3.77 -3.53,0 -6.76,1.46 -9.08,3.78 -2.32,2.32 -3.77,5.55 -3.77,9.08l0 49.78 25.72 0 0 -49.78c0,-3.54 -1.46,-6.76 -3.78,-9.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M327.7 2753.99l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M327.7 2750.18c5.62,0 10.76,2.31 14.46,6.03 3.71,3.69 6.03,8.82 6.03,14.45l0 57.4 -40.96 0 0 -57.4c0,-5.62 2.31,-10.76 6.01,-14.46 3.7,-3.7 8.84,-6.02 14.46,-6.02zm9.09 11.39c-2.31,-2.32 -5.54,-3.77 -9.09,-3.77 -3.53,0 -6.76,1.46 -9.08,3.78 -2.32,2.32 -3.77,5.55 -3.77,9.08l0 49.78 25.72 0 0 -49.78c0,-3.54 -1.46,-6.76 -3.78,-9.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M327.7 2858.07l0 0c9.18,0 16.68,7.5 16.68,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.66,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M327.7 2854.26c5.62,0 10.76,2.31 14.46,6.03 3.71,3.69 6.03,8.82 6.03,14.45l0 57.4 -40.96 0 0 -57.4c0,-5.62 2.31,-10.76 6.01,-14.46 3.7,-3.7 8.84,-6.02 14.46,-6.02zm9.09 11.39c-2.31,-2.32 -5.54,-3.77 -9.09,-3.77 -3.53,0 -6.76,1.46 -9.08,3.78 -2.32,2.32 -3.77,5.55 -3.77,9.08l0 49.78 25.72 0 0 -49.78c0,-3.54 -1.46,-6.76 -3.78,-9.09z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "541.08,2694.75 568.48,2694.75 618.73,2745 618.73,2957.76 488.36,2957.76 488.36,2747.48 " }),
+        react_1.default.createElement("path", { d: "M541.08 2690.94l28.97 0 52.49 52.49 0 218.14 -137.99 0 0 -215.66 54.96 -54.97 1.57 0zm25.83 7.62l-24.26 0 -50.48 50.49 0 204.9 122.75 0 0 -207.38 -48.01 -48.01z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62", x1: "261.39", x2: "261.39", y1: "2046.16", y2: "2234.79" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "389.04,2041.81 389.04,2230.45 381.42,2230.45 381.42,2041.81 " }),
+        react_1.default.createElement("path", { d: "M779.26 2298.21l0 0c9.17,0 16.67,7.5 16.67,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.67,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.26 2294.4c5.62,0 10.76,2.32 14.46,6.02 3.7,3.7 6.02,8.84 6.02,14.46l0 57.4 -40.96 0 0 -57.4c0,-5.61 2.31,-10.75 6.03,-14.45 3.69,-3.71 8.82,-6.03 14.45,-6.03zm9.08 11.4c-2.32,-2.32 -5.55,-3.78 -9.08,-3.78 -3.54,0 -6.76,1.46 -9.08,3.78 -2.33,2.31 -3.78,5.54 -3.78,9.08l0 49.78 25.72 0 0 -49.78c0,-3.53 -1.46,-6.76 -3.78,-9.08z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.26 2412.15l0 0c9.17,0 16.67,7.5 16.67,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.67,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.26 2408.34c5.62,0 10.76,2.32 14.46,6.02 3.7,3.7 6.02,8.84 6.02,14.46l0 57.4 -40.96 0 0 -57.4c0,-5.61 2.31,-10.75 6.03,-14.45 3.69,-3.71 8.82,-6.03 14.45,-6.03zm9.08 11.4c-2.32,-2.32 -5.55,-3.78 -9.08,-3.78 -3.54,0 -6.76,1.46 -9.08,3.78 -2.33,2.31 -3.78,5.54 -3.78,9.08l0 49.78 25.72 0 0 -49.78c0,-3.53 -1.46,-6.76 -3.78,-9.08z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.26 2521.65l0 0c9.17,0 16.67,7.5 16.67,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.67,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.26 2517.84c5.62,0 10.76,2.32 14.46,6.02 3.7,3.7 6.02,8.84 6.02,14.46l0 57.4 -40.96 0 0 -57.4c0,-5.61 2.31,-10.75 6.03,-14.45 3.69,-3.71 8.82,-6.03 14.45,-6.03zm9.08 11.4c-2.32,-2.32 -5.55,-3.78 -9.08,-3.78 -3.54,0 -6.76,1.46 -9.08,3.78 -2.33,2.31 -3.78,5.54 -3.78,9.08l0 49.78 25.72 0 0 -49.78c0,-3.53 -1.46,-6.76 -3.78,-9.08z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.26 2638.05l0 0c9.17,0 16.67,7.5 16.67,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.67,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.26 2634.24c5.62,0 10.76,2.32 14.46,6.02 3.7,3.7 6.02,8.84 6.02,14.46l0 57.4 -40.96 0 0 -57.4c0,-5.61 2.31,-10.75 6.03,-14.45 3.69,-3.71 8.82,-6.03 14.45,-6.03zm9.08 11.4c-2.32,-2.32 -5.55,-3.78 -9.08,-3.78 -3.54,0 -6.76,1.46 -9.08,3.78 -2.33,2.31 -3.78,5.54 -3.78,9.08l0 49.78 25.72 0 0 -49.78c0,-3.53 -1.46,-6.76 -3.78,-9.08z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.26 2753.99l0 0c9.17,0 16.67,7.5 16.67,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.67,-16.67z", fill: "#9D9E9E" }),
+        react_1.default.createElement("path", { d: "M779.26 2750.18c5.62,0 10.76,2.32 14.46,6.02 3.7,3.7 6.02,8.84 6.02,14.46l0 57.4 -40.96 0 0 -57.4c0,-5.61 2.31,-10.75 6.03,-14.45 3.69,-3.71 8.82,-6.03 14.45,-6.03zm9.08 11.4c-2.32,-2.32 -5.55,-3.78 -9.08,-3.78 -3.54,0 -6.76,1.46 -9.08,3.78 -2.33,2.31 -3.78,5.54 -3.78,9.08l0 49.78 25.72 0 0 -49.78c0,-3.53 -1.46,-6.76 -3.78,-9.08z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("path", { d: "M779.26 2858.07l0 0c9.17,0 16.67,7.5 16.67,16.67l0 53.59 -33.34 0 0 -53.59c0,-9.17 7.5,-16.67 16.67,-16.67z", fill: "#9D9E9E", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "213.63,2382.22 435.25,2382.22 435.25,2389.84 213.63,2389.84 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "213.63,2495.2 435.25,2495.2 435.25,2502.82 213.63,2502.82 " }),
+        react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62", x1: "217.97", x2: "439.59", y1: "2611.99", y2: "2611.99" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "215.8,2727.68 437.42,2727.68 437.42,2735.3 215.8,2735.3 " }),
+        react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62", x1: "215.8", x2: "437.42", y1: "2844.48", y2: "2844.48" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "224.49,2960.17 446.11,2960.17 446.11,2967.79 224.49,2967.79 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "669.91,2382.22 891.53,2382.22 891.53,2389.84 669.91,2389.84 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "669.91,2495.2 891.53,2495.2 891.53,2502.82 669.91,2502.82 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "674.26,2608.18 895.88,2608.18 895.88,2615.8 674.26,2615.8 " }),
+        react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "7.62", x1: "672.08", x2: "893.7", y1: "2731.49", y2: "2731.49" }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "672.08,2840.67 893.7,2840.67 893.7,2848.29 672.08,2848.29 " }),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", fillRule: "nonzero", points: "680.77,2960.17 902.39,2960.17 902.39,2967.79 680.77,2967.79 " }),
+        react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "552.07,2386.17 582.62,2458.93 613.18,2531.69 552.07,2531.69 490.96,2531.69 521.52,2458.93 " }),
+        react_1.default.createElement("path", { d: "M555.58 2384.7l63.33 150.8 -133.67 0 66.83 -159.16 3.51 8.36zm23.53 75.7l-27.04 -64.4 -55.38 131.88 110.76 0 -28.34 -67.48z", fill: "#FEFEFE", fillRule: "nonzero" }),
+        react_1.default.createElement("line", { fill: "none", stroke: "#9D9E9E", strokeMiterlimit: "22.9256", strokeWidth: "7.62", x1: "551.22", x2: "551.22", y1: "2302.39", y2: "2390.59" }),
+        react_1.default.createElement("line", { fill: "none", stroke: "#9D9E9E", strokeMiterlimit: "22.9256", strokeWidth: "7.62", x1: "522.55", x2: "579.88", y1: "2329.95", y2: "2329.95" }),
+        react_1.default.createElement("g", null,
+            react_1.default.createElement("path", { d: "M1618.83 2474.69l-189.6 200.3 135.85 237.4 104.38 182.42 76.74 -137.11 122.56 -218.97 -249.93 -264.04zm853.95 915.72l12.86 0 -31.45 -33.22 18.59 33.22z", fill: "#9D9E9E" }),
+            react_1.default.createElement("path", { d: "M1618.82 2480.97l-184.23 194.65 234.83 410.38 194.01 -346.63 -244.61 -258.4zm-192.73 191.05l192.73 -203.62c85.01,89.95 169.99,180.01 255.29,269.67 -68.33,121.78 -136.4,243.7 -204.6,365.55 -81.97,-143.01 -164.14,-285.99 -245.63,-429.26l2.21 -2.34zm1049.24 714.05l0.25 0 -0.62 -0.66 0.37 0.66zm10.31 8.68l-15.4 0 -36.82 -65.79 62.28 65.79 -10.06 0z", fill: "#FEFEFE", fillRule: "nonzero" }),
+            react_1.default.createElement("path", { d: "M1618.83 2474.69l-126.76 133.91 38.94 47.39 42.48 -62.32 65.16 116.14 33.99 -84.98c0,0 59.49,65.15 67.99,-8.5 0.45,-3.9 0.75,-7.89 0.95,-11.96l-122.75 -129.68z", fill: "#FEFEFE" }),
+            react_1.default.createElement("path", { d: "M1618.82 2480.97l-120.99 127.83 32.85 39.98 43.18 -63.34 64.14 114.34 33.13 -82.83 4.65 4.89c0.14,0.16 53.15,58.14 60.54,-6l0.84 -9.86 -118.34 -125.01zm-129.88 124.66l129.88 -137.23 127.17 134.34 -0.47 8 -0.59 6.09c-8.04,69.73 -55.49,30.38 -70.72,15.74l-34.9 87.27 -66.18 -117.95 -41.8 61.31 -45.02 -54.8 2.63 -2.77z", fill: "#2B2A29", fillRule: "nonzero" }),
+            react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "1988.4,2524.99 1746.2,2957.7 1669.46,3094.81 1838.61,3390.41 1988.4,3390.41 2472.78,3390.41 2230.59,2957.7 " }),
+            react_1.default.createElement("path", { d: "M1988.39 2533.87l-313.94 560.91 166.68 291.29 624.26 0 -477 -852.2zm-245.98 421.71l245.98 -439.48c163.93,292.88 327.99,585.69 491.79,878.65l-644.08 0c-57.43,-99.8 -114.67,-199.85 -171.62,-299.92l77.93 -139.25z", fill: "#FEFEFE", fillRule: "nonzero" }),
+            react_1.default.createElement("polygon", { fill: "#FEFEFE", points: "1975.26,2548.45 1881.35,2716.23 1924.74,2846.42 2004.06,2750.11 2207.11,2915.75 1989.86,2527.6 " }),
+            react_1.default.createElement("path", { d: "M1979.02 2550.61l-92.96 166.08 40.32 120.94 77.08 -93.61 188.75 153.99 -202.76 -362.27 -10.43 14.87zm-101.46 163.5c36.54,-65.27 69.94,-133.59 112.73,-194.64 77.11,138.08 154.45,276.04 231.74,414.03l-217.37 -177.32 -81.54 99.01c-15.54,-46.44 -31.19,-92.9 -46.48,-139.43l0.92 -1.65z", fill: "#2B2A29", fillRule: "nonzero" }),
+            react_1.default.createElement("polygon", { fill: "#9D9E9E", points: "1291.55,2434.38 1018.02,2912.39 744.49,3390.41 1291.55,3390.41 1838.61,3390.41 1565.08,2912.39 " }),
+            react_1.default.createElement("path", { d: "M1291.55 2443.11l-539.58 942.96 1079.16 0 -539.58 -942.96zm-277.3 467.13l277.3 -484.61c184.75,323.09 369.39,646.27 554.56,969.12l-1109.11 0 277.25 -484.51z", fill: "#FEFEFE", fillRule: "nonzero" }),
+            react_1.default.createElement("polygon", { fill: "#FEFEFE", points: "1291.55,2434.38 1142.53,2694.8 1182.85,2737.81 1239.51,2652.82 1375.48,2834.12 1395.3,2717.98 1480.28,2771.8 1482.33,2767.78 " }),
+            react_1.default.createElement("path", { d: "M1291.55 2443.11l-143.66 251.07 34.39 36.69 57.02 -85.54 133.59 178.14 19.24 -112.64 82.53 52.27 -183.11 -319.99zm-152.78 249.54l152.79 -267.02c65.08,114.07 130.23,228.18 195.7,342.02l-5.27 10.35 -83.51 -52.88 -20.42 119.64 -138.34 -184.45 -56.28 84.44 -46.25 -49.33 1.58 -2.77z", fill: "#2B2A29", fillRule: "nonzero" })),
+        react_1.default.createElement("g", null,
+            react_1.default.createElement("path", { d: "M5104.44 3336.71c0,0 -88.44,-62.05 -153.82,-134.15 -37.55,-41.42 -67.51,-86.16 -68.7,-124.37 52.36,-127.63 497.4,-255.23 968.61,-238.88 471.21,16.36 769,127.61 854.08,196.33 134.2,108.41 -32.02,261.08 -130.89,304.33 0,0 101.44,-3.27 140.71,49.09 -160.35,3.27 -703.56,-85.08 -1724.52,16.36 -3.27,-71.99 114.53,-68.71 114.53,-68.71z", fill: "#9D9E9E", fillOpacity: "0.639216", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeOpacity: "0.639216", strokeWidth: "10" }),
+            react_1.default.createElement("path", { d: "M5104.44 3336.71c0,0 647.38,-148.21 1469.28,3.26", fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "4933.2", x2: "4967.57", y1: "3039.85", y2: "3079.11" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5015.01", x2: "5042.82", y1: "2995.67", y2: "3038.21" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5111.55", x2: "5129.54", y1: "2958.03", y2: "3012.03" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5232.62", x2: "5248.99", y1: "2925.31", y2: "2980.94" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5358.6", x2: "5368.42", y1: "2895.86", y2: "2956.4" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5507.5", x2: "5515.67", y1: "2872.95", y2: "2935.13" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5677.66", x2: "5680.93", y1: "2856.59", y2: "2917.13" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5838.01", x2: "5836.37", y1: "2853.32", y2: "2907.32" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "5977.08", x2: "5967.27", y1: "2859.86", y2: "2920.41" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "6094.88", x2: "6075.25", y1: "2871.32", y2: "2931.85" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "6211.05", x2: "6196.33", y1: "2890.95", y2: "2949.85" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "6374.67", x2: "6358.3", y1: "2925.31", y2: "2982.58" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "6531.74", x2: "6492.47", y1: "2977.67", y2: "3021.85" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "6646.27", x2: "6607", y1: "3026.76", y2: "3070.94" }),
+            react_1.default.createElement("line", { fill: "none", stroke: "#FEFEFE", strokeMiterlimit: "22.9256", strokeWidth: "10", x1: "6722.71", x2: "6676.56", y1: "3105.96", y2: "3127.52" })),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", points: "991.75,3050.04 1031.67,3124.5 1071.59,3198.96 1018.37,3198.96 1031.67,3223.78 1071.59,3298.24 1002.6,3298.24 1003.01,3301.5 1014.27,3391.91 991.75,3391.91 969.23,3391.91 980.49,3301.5 980.9,3298.24 911.91,3298.24 951.83,3223.78 965.14,3198.96 911.91,3198.96 951.83,3124.5 " }),
+        react_1.default.createElement("path", { d: "M996.15 3047.7l83.77 156.27 -53.23 0 53.23 99.26 -71.65 0 11.66 93.68 -56.35 0 11.66 -93.68 -71.64 0 53.21 -99.26 -53.21 0 88.17 -164.46 4.38 8.19zm31.13 79.14l-35.52 -66.27 -71.52 133.4 53.22 0 -53.22 99.26 66.34 0c-4.05,31.2 -7.81,62.46 -11.69,93.68l33.72 0c-3.88,-31.22 -7.68,-62.47 -11.67,-93.68l66.32 0 -53.21 -99.26 53.22 0 -35.99 -67.13z", fill: "#2B2A29", fillRule: "nonzero" }),
+        react_1.default.createElement("g", null,
+            react_1.default.createElement("polygon", { fill: "#FEFEFE", points: "802.71,3045.76 842.63,3120.22 882.55,3194.68 829.32,3194.68 842.63,3219.49 882.55,3293.96 813.56,3293.96 813.97,3297.21 825.23,3387.62 802.71,3387.62 780.19,3387.62 791.45,3297.21 791.86,3293.96 722.87,3293.96 762.79,3219.49 776.1,3194.68 722.87,3194.68 762.79,3120.22 " }),
+            react_1.default.createElement("path", { d: "M806.48 3043.74l83.21 155.23 -53.22 0 53.22 99.27 -71.27 0 11.66 93.67 -54.73 0 11.65 -93.67 -71.26 0 53.21 -99.27 -53.21 0 86.98 -162.25 3.76 7.02zm32.39 78.48l-36.16 -67.44 -72.7 135.61 53.23 0 -53.23 99.28 66.71 0c-3.99,31.2 -7.79,62.44 -11.67,93.66l35.32 0 -11.66 -93.66 66.7 0 -53.22 -99.28 53.22 0 -36.54 -68.17z", fill: "#2B2A29", fillRule: "nonzero" })),
+        react_1.default.createElement("polygon", { fill: "#FEFEFE", points: "604.84,3050.04 644.75,3124.5 684.67,3198.96 631.45,3198.96 644.75,3223.78 684.67,3298.24 615.68,3298.24 616.09,3301.5 627.35,3391.91 604.84,3391.91 582.32,3391.91 593.58,3301.5 593.99,3298.24 525,3298.24 564.92,3223.78 578.22,3198.96 525,3198.96 564.92,3124.5 " }),
+        react_1.default.createElement("path", { d: "M609.23 3047.7l83.78 156.27 -53.24 0 53.24 99.27 -71.67 0 11.67 93.67 -56.34 0 11.66 -93.67 -71.66 0 53.21 -99.27 -53.21 0 88.18 -164.46 4.38 8.19zm31.13 79.15l-35.52 -66.28 -71.52 133.4 53.24 0 -53.24 99.27 66.33 0c-3.99,31.21 -7.79,62.45 -11.67,93.67l33.71 0 -11.66 -93.67 66.32 0 -53.22 -99.27 53.22 0 -35.99 -67.12z", fill: "#2B2A29", fillRule: "nonzero" }))));
+const blink = (0, styled_components_1.keyframes) `
+ 0% {
+    filter: blur(5px) brightness(1);
+  }
+
+  3% {
+    filter: blur(5px) brightness(0);
+  }
+
+  6% {
+    filter: blur(5px) brightness(0);
+  }
+
+  7% {
+    filter: blur(5px) brightness(1);
+  }
+
+  8% {
+    filter: blur(5px) brightness(0);
+  }
+
+  9% {
+    filter: blur(5px) brightness(1);
+  }
+
+  10% {
+    filter: blur(5px) brightness(0);
+  }
+
+  20% {
+    filter: blur(5px) brightness(1);
+  }
+
+  50% {
+    filter: blur(5px) brightness(1);
+  }
+
+  99% {
+    filter: blur(5px) brightness(0);
+  }
+
+  100% {
+    filter: blur(5px) brightness(1);
+  }
+`;
+const StyledSvg = styled_components_1.default.svg `
+  & #windows {
+    animation: ${blink} 10s linear infinite alternate;
+    animation-delay: 5s;
+    filter: blur(0px) brightness(1);
+  }
+`;
+exports["default"] = YourPlaceInYourPoint;
+
+
+/***/ }),
+
+/***/ 80603:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const Banner_1 = __importDefault(__webpack_require__(57857));
+const YourPlaceInYourPoint_1 = __importDefault(__webpack_require__(51821));
+const BannerWithPicture = ({ bannerKey, children, ...props }) => {
+    let background;
+    switch (bannerKey) {
+        case 'YOUR_PLACE':
+        default:
+            background = react_1.default.createElement(YourPlaceInYourPoint_1.default, null);
+    }
+    return (react_1.default.createElement(Banner_1.default, { background: background, ...props }, children));
+};
+exports["default"] = BannerWithPicture;
+
+
+/***/ }),
+
+/***/ 91430:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const styled_system_1 = __webpack_require__(18005);
+const styleProps = (0, styled_system_1.compose)(styled_system_1.layout, styled_system_1.space, styled_system_1.position, styled_system_1.flex, styled_system_1.grid, styled_system_1.border, styled_system_1.flexbox, styled_system_1.background, styled_system_1.color, styled_system_1.typography);
+const Box = styled_components_1.default.div `
+  ${styleProps}
+`;
+exports["default"] = Box;
+
+
+/***/ }),
+
+/***/ 97830:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importStar(__webpack_require__(91288));
+const styled_system_1 = __webpack_require__(18005);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Button = ({ variant = 'primary', disabled, onClick, children, type = 'button', size = 'large', icon, ...props }) => (react_1.default.createElement(Container, { ...props, disabled: disabled, onClick: onClick, size: size, type: type, variant: variant },
+    children && (react_1.default.createElement(components_1.Text, { type: "button", white: variant === 'primary', wrap: false }, children)),
+    icon && (react_1.default.createElement(components_1.Box, { marginLeft: children ? 'm-size' : 0 },
+        react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: icon })))));
+const Container = styled_components_1.default.button `
+  background: ${(0, getColor_1.default)('button-color')};
+  padding: ${(props) => props.theme.space['m-size']};
+  border: 1px solid;
+  border-color: ${(0, getColor_1.default)('button-color')};
+  color: ${(0, getColor_1.default)('white')};
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: ${(0, getColor_1.default)('button-hover')};
+    border: 1px solid;
+    border-color: ${(0, getColor_1.default)('button-hover')};
+  }
+
+  ${(props) => props.variant === 'secondary' &&
+    (0, styled_components_1.css) `
+      background: transparent;
+      border: 1px solid;
+      border-color: ${(0, getColor_1.default)('button-color')};
+      color: ${(0, getColor_1.default)('button-color')};
+
+      &:hover {
+        background: ${(0, getColor_1.default)('border-color')};
+        border: 1px solid;
+        border-color: ${(0, getColor_1.default)('button-color')};
+      }
+    `}
+
+  ${(props) => props.variant === 'ternary' &&
+    (0, styled_components_1.css) `
+      background: transparent;
+      border: 1px solid;
+      border-color: ${(0, getColor_1.default)('border-color')};
+      color: ${(0, getColor_1.default)('paragraph-color')};
+
+      &:hover {
+        border: 1px solid;
+        border-color: ${(0, getColor_1.default)('border-color')};
+        background: ${(0, getColor_1.default)('border-color')};
+      }
+    `}
+
+    ${(props) => props.variant === 'quaternary' &&
+    (0, styled_components_1.css) `
+      background: transparent;
+      border-color: transparent;
+      color: ${(0, getColor_1.default)('paragraph-color')};
+
+      &:hover {
+        background: transparent;
+        border-color: transparent;
+      }
+    `}
+
+
+    ${(props) => props.size === 'medium' &&
+    (0, styled_components_1.css) `
+      font-size: ${(props) => props.theme.fontSizes['font-small']};
+      padding: ${(props) => `${props.theme.space['xs-size']} ${props.theme.space['m-size']}`};
+      width: max-content;
+    `}
+
+    ${(props) => props.size === 'small' &&
+    (0, styled_components_1.css) `
+      height: 3.5rem;
+      padding: ${(props) => `0 ${props.theme.space['m-size']}`};
+      width: max-content;
+    `}
+
+  ${(props) => props.disabled &&
+    (0, styled_components_1.css) `
+      opacity: 0.5;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    `}
+
+  ${styled_system_1.space}
+`;
+exports["default"] = Button;
+
+
+/***/ }),
+
+/***/ 33036:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __webpack_require__(91288);
+const Chevron = ({ right, clickHandler }) => {
+    const { colors } = (0, styled_components_1.useTheme)();
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", height: "100%", left: !right ? 0 : 'unset', position: "absolute", right: right ? 0 : 'unset', top: "0", zIndex: 5 },
+        react_1.default.createElement(components_1.Button, { onClick: clickHandler, variant: "quaternary" },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors['black'], icon: right ? 'chevron-right' : 'chevron-left', size: "2x" }))));
+};
+exports["default"] = Chevron;
+
+
+/***/ }),
+
+/***/ 11427:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const Indicator = ({ clickHandler, isSelected }) => (react_1.default.createElement(Container, { as: "button", backgroundColor: isSelected ? 'black' : 'white', border: "none", disabled: isSelected, height: "0.5rem", marginRight: "xxs-size", onClick: clickHandler, width: "2.5rem" }));
+const Container = (0, styled_components_1.default)(components_1.Box) `
+  cursor: pointer;
+`;
+exports["default"] = Indicator;
+
+
+/***/ }),
+
+/***/ 27433:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(67294));
+__webpack_require__(82615); // requires a loader
+const react_responsive_carousel_1 = __webpack_require__(10615);
+const components_1 = __webpack_require__(82740);
+const useBanners_1 = __importDefault(__webpack_require__(54589));
+const Indicator_1 = __importDefault(__webpack_require__(11427));
+const Chevron_1 = __importDefault(__webpack_require__(33036));
+const Carousel = ({ children }) => {
+    const { getBanner } = (0, useBanners_1.default)();
+    const multipleChildren = children.length > 1;
+    return (react_1.default.createElement(components_1.Box, { height: "100%", width: "100%" },
+        react_1.default.createElement(react_responsive_carousel_1.Carousel, { autoPlay: true, dynamicHeight: false, infiniteLoop: true, interval: 7000, renderArrowNext: (clickHandler) => (react_1.default.createElement(Chevron_1.default, { clickHandler: clickHandler, right: true })), renderArrowPrev: (clickHandler) => (react_1.default.createElement(Chevron_1.default, { clickHandler: clickHandler })), renderIndicator: (clickHandler, isSelected, index, label) => (react_1.default.createElement(Indicator_1.default, { clickHandler: clickHandler, index: index, isSelected: isSelected, label: label })), showArrows: !!multipleChildren, showIndicators: true, showStatus: false, showThumbs: false, useKeyboardArrows: true }, children.map((child, index) => (react_1.default.createElement(react_1.Fragment, { key: index }, getBanner(child)))))));
+};
+exports["default"] = Carousel;
+
+
+/***/ }),
+
+/***/ 54589:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const components_2 = __webpack_require__(82740);
+const components_3 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const react_router_dom_1 = __webpack_require__(77856);
+const useBanners = () => {
+    const history = (0, react_router_dom_1.useHistory)();
+    const { t } = (0, hooks_1.useTranslation)('HOME');
+    const banners = getBanners(t, history);
+    const getBanner = (key) => banners[key];
+    return {
+        banners,
+        getBanner
+    };
+};
+const getBanners = (t, history) => ({
+    YOUR_PLACE: (react_1.default.createElement(components_1.BannerWithPicture, { bannerKey: "YOUR_PLACE", description: t('banner.description'), title: react_1.default.createElement(components_3.Heading, { level: 3, textAlign: "center" },
+            react_1.default.createElement("strong", null, "Twoje"),
+            "\u00A0miejsce w\u00A0",
+            react_1.default.createElement("strong", null, "Twoim"),
+            "\u00A0punkcie") },
+        react_1.default.createElement(components_2.Button, { icon: "arrow-right", onClick: () => history.push(routes_1.PRODUCTS), size: "medium" }, t('banner.buttonLabel'))))
+});
+exports["default"] = useBanners;
+
+
+/***/ }),
+
+/***/ 26845:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const Input_1 = __webpack_require__(94561);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const CheckboxField = ({ id, field: { value, onChange, onBlur, name }, meta: { touched, error }, isFirst, title, subtitle, val, fieldLabel }) => (react_1.default.createElement(react_1.default.Fragment, null,
+    isFirst && (react_1.default.createElement(components_1.Flexbox, { justifyContent: "flex-start", marginBottom: "0", marginRight: "auto" }, touched && error ? (react_1.default.createElement(components_1.InputLabel, { error: true }, error)) : (react_1.default.createElement(components_1.InputLabel, { htmlFor: name }, fieldLabel)))),
+    react_1.default.createElement(Container, { backgroundColor: "background-color-01", marginBottom: "m-size", padding: "s-size", position: "relative" },
+        react_1.default.createElement(Input_1.StyledInput, { checked: id === value, id: id, name: name, onBlur: onBlur, onChange: onChange, type: "radio", value: id }),
+        react_1.default.createElement(components_1.Flexbox, { as: "label", htmlFor: id, justifyContent: "space-between", padding: "0", width: "100%" },
+            react_1.default.createElement(components_1.Flexbox, { alignItems: "center", as: "h4", marginRight: "auto" },
+                title,
+                subtitle && (react_1.default.createElement(components_1.Box, { as: "span", fontStyle: "italic", marginLeft: "s-size" }, subtitle))),
+            val && react_1.default.createElement("h4", null, val)))));
+const Container = (0, styled_components_1.default)(components_1.Flexbox) `
+  cursor: pointer;
+`;
+exports["default"] = CheckboxField;
+
+
+/***/ }),
+
+/***/ 67394:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_content_loader_1 = __importDefault(__webpack_require__(24561));
+const ContentLoader = ({ children, ...props }) => (react_1.default.createElement(components_1.Box, { height: `${props.height}px`, width: `${props.width}px` },
+    react_1.default.createElement(react_content_loader_1.default, { speed: 2, ...props },
+        children,
+        react_1.default.createElement("rect", { height: "200", rx: "0", ry: "0", width: "200", x: "0", y: "0" }))));
+exports["default"] = ContentLoader;
+
+
+/***/ }),
+
+/***/ 59990:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const ExternalLink = ({ children, to }) => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const isDisabled = to.length === 0;
+    const link = (react_1.default.createElement(Container, { "aria-disabled": isDisabled, disabled: isDisabled, href: isDisabled ? undefined : to, rel: "noopener noreferrer", target: isDisabled ? '_self' : '_blank' }, children));
+    if (isDisabled) {
+        return (react_1.default.createElement(components_1.Badge, { hasText: true, text: commonT('soon') }, link));
+    }
+    return link;
+};
+const Container = styled_components_1.default.a `
+  color: ${(props) => props.disabled ? (0, getColor_1.default)('gray-01')(props) : (0, getColor_1.default)('black')(props)};
+  text-decoration: none;
+  cursor: ${(props) => props.disabled && 'not-allowed'};
+
+  &:hover {
+    text-decoration: ${(props) => !props.disabled && 'underline'};
+  }
+`;
+exports["default"] = ExternalLink;
+
+
+/***/ }),
+
+/***/ 64019:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const FeatureItem = ({ title, subtitle, children }) => (react_1.default.createElement(components_1.Tile, { height: subtitle ? '23.53rem' : '20rem', padding: 0 },
+    react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexGrow: 1, justifyContent: "center" }, children),
+    react_1.default.createElement(components_1.Flexbox, { alignItems: "center", backgroundColor: "background-color", flexDirection: "column", padding: "m-size" },
+        react_1.default.createElement(components_1.Text, { type: "subtitle-1" }, title),
+        subtitle && react_1.default.createElement(components_1.Text, { type: "subtitle-2" }, subtitle))));
+exports["default"] = FeatureItem;
+
+
+/***/ }),
+
+/***/ 99664:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const Flexbox = (0, styled_components_1.default)(components_1.Box).attrs(() => ({
+    display: 'flex'
+})) ``;
+exports["default"] = Flexbox;
+
+
+/***/ }),
+
+/***/ 4741:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Grid = ({ children, ...props }) => (react_1.default.createElement(components_1.Box, { display: "grid", gridGap: GRID_GAP, gridTemplateColumns: "repeat(3, 1fr)", ...props }, children));
+const GRID_GAP = '3rem';
+exports["default"] = Grid;
+
+
+/***/ }),
+
+/***/ 41087:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __webpack_require__(91288);
+const Heading = ({ children, level, ...props }) => {
+    const { fontSizes, fontWeigths, letterSpacings } = (0, styled_components_1.useTheme)();
+    let fontSize, fontWeight, letterSpacing;
+    switch (level) {
+        case 1:
+            fontSize = fontSizes['new-huge-s-size'];
+            fontWeight = fontWeigths['light'];
+            letterSpacing = letterSpacings[100];
+            break;
+        case 2:
+            fontSize = fontSizes['new-large-l-size'];
+            fontWeight = fontWeigths['light'];
+            letterSpacing = letterSpacings[200];
+            break;
+        case 3:
+            fontSize = fontSizes['new-large-m-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[300];
+            break;
+        case 4:
+            fontSize = fontSizes['new-large-s-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[600];
+            break;
+        case 5:
+            fontSize = fontSizes['new-medium-l-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[300];
+            break;
+        case 6:
+            fontSize = fontSizes['new-medium-m-size'];
+            fontWeight = fontWeigths['medium'];
+            letterSpacing = letterSpacings[500];
+            break;
+    }
+    return (react_1.default.createElement(components_1.Box, { as: `h${level}`, color: "heading-color", fontSize: fontSize, fontWeight: fontWeight, letterSpacing: letterSpacing, margin: "0", ...props }, children));
+};
+exports["default"] = Heading;
+
+
+/***/ }),
+
+/***/ 407:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importStar(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const ImageLoader = ({ objectPosition, objectFit = 'contain', src, alt = '' }) => {
+    const [loaded, setLoaded] = (0, react_1.useState)(false);
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        !loaded && (react_1.default.createElement(SpinnerWrapper, null,
+            react_1.default.createElement(components_1.Spinner, { small: true }))),
+        react_1.default.createElement(Image, { alt: alt || '', loaded: loaded, objectFit: objectFit, objectPosition: objectPosition, onLoad: () => setLoaded(true), src: src })));
+};
+const Image = styled_components_1.default.img `
+  width: 100%;
+  height: 100%;
+  object-fit: ${(props) => props.objectFit};
+  object-position: ${(props) => props.objectPosition};
+
+  animation: fadeIn 0.3s ease;
+  opacity: ${(props) => (props.loaded ? 1 : 0)};
+`;
+const SpinnerWrapper = styled_components_1.default.div `
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+exports["default"] = ImageLoader;
+
+
+/***/ }),
+
+/***/ 94561:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StyledInput = void 0;
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Input = ({ type = 'text', disabled, field, meta, label, placeholder, maxLength, ...props }) => {
+    const touched = meta?.touched;
+    const { error } = meta;
+    return (react_1.default.createElement(components_1.Flexbox, { ...props, flexDirection: "column" },
+        touched && error ? (react_1.default.createElement(components_1.InputLabel, { error: true }, error)) : (label && react_1.default.createElement(components_1.InputLabel, { htmlFor: field.name }, label)),
+        react_1.default.createElement(exports.StyledInput, { ...field, disabled: disabled, id: field.name, maxLength: maxLength, placeholder: placeholder, type: type })));
+};
+exports.StyledInput = styled_components_1.default.input `
+  height: 3.5rem;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid;
+  border-color: ${(0, getColor_1.default)('border-color')};
+  padding: ${(props) => `${props.theme.space['xs-size']} ${props.theme.space['xs-size']}`};
+
+  &[type='checkbox'],
+  &[type='radio'] {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+  }
+
+  &[type='checkbox'] + label:before,
+  &[type='radio'] + label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: ${(0, getColor_1.default)('white')};
+    border: 2px solid;
+    border-color: ${(0, getColor_1.default)('border-color-focus')};
+    padding: 1rem;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin: auto 0.5rem auto 0;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  &[type='checkbox'] + label:after,
+  &[type='radio'] + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 2.2rem;
+    bottom: 0;
+    margin: auto;
+    width: 3px;
+    height: 1rem;
+    border: solid;
+    border-color: ${(0, getColor_1.default)('border-color')};
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+  }
+
+  &[type='checkbox']:hover + label:before,
+  &[type='radio']:hover + label:before {
+    border: 2px solid;
+    border-color: ${(0, getColor_1.default)('border-color-focus')};
+  }
+
+  &[type='checkbox']:checked + label:before,
+  &[type='radio']:checked + label:before {
+    border: 2px solid;
+    border-color: ${(0, getColor_1.default)('black')};
+    background: ${(0, getColor_1.default)('black')};
+  }
+
+  &[type='checkbox']:checked + label:after,
+  &[type='radio']:checked + label:after {
+    border: solid;
+    border-color: ${(0, getColor_1.default)('white')};
+    border-width: 0 2px 2px 0;
+  }
+
+  * {
+    cursor: pointer;
+  }
+`;
+exports["default"] = Input;
+
+
+/***/ }),
+
+/***/ 49777:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Label = styled_components_1.default.label `
+  font-size: ${(props) => props.theme.fontSizes['font-small']};
+  border: none;
+  background: none;
+  padding: ${(props) => `${props.theme.space['xs-size']} ${props.theme.space['xs-size']}`};
+  color: ${(props) => {
+    if (props.error) {
+        return (0, getColor_1.default)('red')(props);
+    }
+    return (0, getColor_1.default)('label-color')(props);
+}};
+  border: none;
+`;
+exports["default"] = Label;
+
+
+/***/ }),
+
+/***/ 19405:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Link = ({ icon, children, ...props }) => (react_1.default.createElement(Container, { ...props },
+    icon && react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: icon }),
+    react_1.default.createElement(components_1.Text, { fontWeight: icon ? 'bold' : 'unset', marginLeft: icon ? 's-size' : 0, type: "subtitle-1" }, children)));
+const Container = (0, styled_components_1.default)(react_router_dom_1.Link) `
+  display: flex;
+  align-items: center;
+  text-decoration: ${(props) => (props.underline ? 'underline' : 'none')};
+  color: ${(0, getColor_1.default)('black')};
+`;
+exports["default"] = Link;
+
+
+/***/ }),
+
+/***/ 79045:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const components_2 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const ListItem = ({ children, ...props }) => (react_1.default.createElement(Container, { ...props },
+    react_1.default.createElement(Triangle, null),
+    react_1.default.createElement(components_2.Heading, { level: 6, marginLeft: "m-size" }, children)));
+const Triangle = styled_components_1.default.div `
+  width: 0;
+  height: 0;
+  border-top: 0.5rem solid transparent;
+  border-left: 1rem solid;
+  border-left-color: ${(0, getColor_1.default)('braty-red')};
+  border-bottom: 0.5rem solid transparent;
+`;
+const Container = (0, styled_components_1.default)(components_1.Flexbox) `
+  list-style-type: none;
+  align-items: center;
+`;
+exports["default"] = ListItem;
+
+
+/***/ }),
+
+/***/ 45775:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Logo = ({ expanded }) => (react_1.default.createElement(components_1.Box, { height: !expanded ? '6rem' : '4.5rem' },
+    react_1.default.createElement("svg", { height: "100%", style: {
+            shapeRendering: 'geometricPrecision',
+            textRendering: 'geometricPrecision',
+            imageRendering: 'crisp-edges',
+            fillRule: 'evenodd',
+            clipRule: 'evenodd'
+        }, 
+        // width="120px"
+        // height="60px"
+        // preserveAspectRatio=""
+        version: "1.1", viewBox: "0 0 6000 3000", width: "auto", xmlSpace: "preserve", xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink" },
+        react_1.default.createElement("g", { id: "Warstwa_x0020_1" },
+            react_1.default.createElement("metadata", { id: "CorelCorpID_0Corel-Layer" }),
+            react_1.default.createElement("path", { className: "fil0", d: "M435.71 935.58c15.34,-4.61 39.9,-9.59 73.66,-14.98 33.76,-5.37 68.27,-8.05 103.57,-8.05 33.75,0 64.07,2.29 90.93,6.9 26.85,4.61 49.49,13.81 67.9,27.64 18.42,13.8 32.22,32.61 41.42,56.39 9.22,23.78 13.83,54.86 13.83,93.22l0 225.57c38.34,-15.34 74.81,-26.09 109.32,-32.22 34.54,-6.14 72.51,-9.22 113.93,-9.22 73.66,0 143.49,13.05 209.47,39.13 65.98,26.1 124.3,64.07 174.94,113.95 50.63,49.86 90.54,111.64 119.68,185.28 29.17,73.66 43.74,158.83 43.74,255.5 0,99.76 -14.96,186.83 -44.88,261.25 -29.93,74.42 -71.74,136.2 -125.45,185.3 -53.71,49.1 -119.29,86.32 -196.81,111.64 -77.49,25.32 -163.03,37.97 -256.64,37.97 -101.28,0 -187.21,-11.9 -257.79,-35.68 -70.59,-23.78 -130.45,-53.32 -179.55,-88.61 -67.51,-47.57 -101.27,-108.96 -101.27,-184.16l0 -1226.82zm538.61 1226.82c70.58,0 125.44,-24.14 164.59,-72.49 39.12,-48.34 58.68,-120.07 58.68,-215.22 0,-96.67 -19.95,-168.79 -59.85,-216.35 -39.88,-47.59 -93.59,-71.37 -161.11,-71.37 -30.71,0 -57.17,3.07 -79.41,9.22 -22.25,6.12 -46.42,15.34 -72.52,27.61l0 501.8c16.88,10.73 37.22,19.56 61,26.46 23.78,6.9 53.32,10.34 88.62,10.34zm1132.48 269.33c-15.34,4.59 -39.52,9.2 -72.52,13.81 -32.97,4.61 -67.12,6.9 -102.42,6.9 -33.75,0 -64.07,-2.29 -90.93,-6.9 -26.85,-4.61 -49.49,-13.81 -67.9,-27.64 -18.42,-13.8 -32.59,-32.59 -42.56,-56.39 -9.98,-23.78 -14.98,-54.86 -14.98,-93.22l0 -690.52c0,-35.29 6.54,-65.61 19.56,-90.93 13.05,-25.32 31.86,-47.95 56.39,-67.9 24.57,-19.96 54.86,-37.98 90.94,-54.08 36.05,-16.12 74.8,-30.32 116.24,-42.59 41.42,-12.29 84.4,-21.87 128.89,-28.78 44.51,-6.9 89,-10.36 133.51,-10.36 73.64,0 131.96,14.19 174.94,42.58 42.95,28.39 64.44,74.81 64.44,139.28 0,21.46 -3.07,42.56 -9.2,63.29 -6.14,20.71 -13.83,39.52 -23.02,56.39 -32.22,0 -65.22,1.54 -98.98,4.61 -33.76,3.05 -66.76,7.66 -98.98,13.81 -32.22,6.12 -62.54,12.66 -90.91,19.56 -28.39,6.9 -52.56,14.95 -72.51,24.17l0 784.91zm925.3 -246.3c26.08,0 54.86,-2.68 86.32,-8.05 31.44,-5.37 54.86,-12.66 70.2,-21.88l0 -184.13 -165.74 13.81c-42.95,3.07 -78.24,12.27 -105.88,27.61 -27.61,15.36 -41.42,38.37 -41.42,69.07 0,30.69 11.88,55.62 35.69,74.81 23.78,19.17 64.05,28.76 120.83,28.76zm-18.41 -904.6c82.85,0 158.44,8.44 226.71,25.32 68.3,16.88 126.62,42.59 174.94,77.13 48.34,34.51 85.56,78.24 111.63,131.2 26.1,52.93 39.15,115.46 39.15,187.59l0 515.58c0,39.9 -11.14,72.52 -33.39,97.83 -22.24,25.32 -48.71,47.2 -79.42,65.62 -99.73,59.83 -240.13,89.75 -421.21,89.75 -81.32,0 -154.61,-7.68 -219.81,-23.02 -65.22,-15.34 -121.23,-38.37 -168.03,-69.05 -46.81,-30.69 -82.88,-69.81 -108.2,-117.4 -25.32,-47.56 -37.98,-102.81 -37.98,-165.71 0,-105.88 31.47,-187.23 94.37,-243.99 62.93,-56.78 160.37,-92.07 292.33,-105.88l301.55 -32.22 0 -16.12c0,-44.51 -19.56,-76.34 -58.71,-95.52 -39.13,-19.19 -95.52,-28.78 -169.18,-28.78 -58.32,0 -115.08,6.15 -170.32,18.42 -55.25,12.27 -105.13,27.61 -149.62,46.02 -19.95,-13.8 -36.83,-34.9 -50.63,-63.29 -13.81,-28.39 -20.74,-57.93 -20.74,-88.61 0,-39.91 9.61,-71.74 28.78,-95.52 19.18,-23.78 48.71,-44.12 88.62,-61 44.51,-16.88 97.05,-29.15 157.66,-36.83 60.64,-7.69 117.79,-11.52 171.5,-11.52zm1109.45 768.79c0,39.9 12.66,68.29 37.98,85.17 25.32,16.88 61,25.32 107.03,25.32 23.02,0 46.81,-1.93 71.37,-5.76 24.54,-3.82 46.02,-8.82 64.44,-14.95 13.8,16.88 25.71,35.66 35.68,56.4 9.98,20.7 14.96,45.63 14.96,74.8 0,58.3 -21.86,105.89 -65.59,142.72 -43.74,36.83 -120.86,55.24 -231.35,55.24 -135.03,0 -238.99,-30.71 -311.89,-92.07 -72.88,-61.4 -109.32,-161.13 -109.32,-299.24l0 -985.16c16.87,-4.61 41.05,-9.58 72.51,-14.97 31.44,-5.37 64.83,-8.05 100.13,-8.05 67.51,0 120.07,11.9 157.66,35.68 37.59,23.79 56.39,74.03 56.39,150.77l0 147.32 301.53 0c9.22,16.88 18.02,37.98 26.49,63.29 8.44,25.32 12.66,53.32 12.66,84.01 0,53.71 -11.91,92.46 -35.69,116.25 -23.78,23.78 -55.64,35.68 -95.54,35.68l-209.45 0 0 347.55zm630.69 98.98c-16.88,-38.37 -34.91,-81.32 -54.08,-128.88 -19.19,-47.59 -39.15,-102.06 -59.85,-163.45 -20.71,-61.37 -42.2,-131.57 -64.45,-210.59 -22.27,-79.03 -45.66,-169.96 -70.22,-272.77 21.49,-21.49 50.27,-40.29 86.32,-56.39 36.08,-16.12 75.59,-24.17 118.54,-24.17 53.71,0 98.23,11.12 133.52,33.36 35.29,22.27 61.37,64.08 78.25,125.45l181.83 633 9.22 0c18.42,-52.18 36.44,-108.96 54.08,-170.33 17.66,-61.39 34.93,-124.68 51.81,-189.91 16.87,-65.22 32.61,-130.42 47.17,-195.64 14.58,-65.22 27.24,-129.3 37.97,-192.2 55.25,-29.15 115.86,-43.73 181.87,-43.73 53.7,0 98.19,11.51 133.49,34.53 35.29,23.01 52.93,62.91 52.93,119.69 0,41.42 -5.37,89.37 -16.1,143.86 -10.76,54.47 -24.93,112.4 -42.59,173.79 -17.63,61.37 -38.37,124.66 -62.15,189.88 -23.78,65.23 -48.71,129.28 -74.8,192.21 -26.08,62.9 -52.93,122.37 -80.57,178.37 -27.61,56.03 -54.46,106.27 -80.56,150.78 -42.96,75.18 -82.86,136.57 -119.69,184.13 -36.83,47.57 -72.12,84.79 -105.88,111.64 -33.76,26.86 -67.52,45.27 -101.27,55.25 -33.76,9.97 -69.06,14.95 -105.89,14.95 -64.44,0 -116.61,-19.17 -156.51,-57.54 -39.91,-38.37 -63.69,-88.22 -71.37,-149.61 49.12,-38.37 98.22,-80.96 147.32,-127.74 49.1,-46.81 93.61,-94.76 133.49,-143.86 -26.07,-7.68 -54.07,-25.71 -84,-54.1 -29.93,-28.39 -62.54,-81.71 -97.83,-159.98z", fill: "#0A0A0A" }),
+            react_1.default.createElement("path", { className: "fil1", d: "M5108.91 97.13c277.72,0 502.83,225.11 502.83,502.82 0,239.7 -167.69,440.19 -392.19,490.58l0 -417.4 -221.28 0 0 417.4c-224.49,-50.39 -392.18,-250.88 -392.18,-490.58 0,-277.71 225.11,-502.82 502.82,-502.82z", fill: "#E6070F" })))));
+exports["default"] = Logo;
+
+
+/***/ }),
+
+/***/ 64693:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_router_dom_1 = __webpack_require__(77856);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const ProductTile_1 = __webpack_require__(21741);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const LongProductTile = ({ product, ...props }) => {
+    const imageUrl = product.mainImage.long;
+    return (react_1.default.createElement(Container, { as: react_router_dom_1.Link, to: `/view_product/${product.id}`, ...props },
+        react_1.default.createElement(components_1.Heading, { level: 6, marginLeft: "m-size" }, product.name),
+        imageUrl && (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", height: "100%", justifyContent: "center", overflow: "hidden", padding: "auto 0", position: "relative", width: "60rem" },
+            react_1.default.createElement(components_1.ImageLoader, { src: imageUrl })))));
+};
+const Container = (0, styled_components_1.default)(components_1.Tile) `
+  cursor: pointer;
+  text-decoration: none;
+  justify-content: space-between;
+  color: unset;
+  display: flex;
+  align-items: center;
+  height: 20rem;
+  background-color: ${(0, getColor_1.default)('white')};
+  border: 1px solid;
+  border-color: ${(0, getColor_1.default)('border-color')};
+
+  ${ProductTile_1.productImageHover}
+`;
+exports["default"] = LongProductTile;
+
+
+/***/ }),
+
+/***/ 83114:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const styled_system_1 = __webpack_require__(18005);
+const MaxWidth = (0, styled_components_1.default)(components_1.Flexbox) `
+  max-width: 120rem;
+  width: 100%;
+  flex-direction: column;
+
+  ${styled_system_1.flexbox}
+`;
+exports["default"] = MaxWidth;
+
+
+/***/ }),
+
+/***/ 81107:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_phone_input_2_1 = __importDefault(__webpack_require__(67555));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const MobileInput = ({ fieldProps, placeholder, label, disabled }) => {
+    const { meta, field } = fieldProps;
+    const [, , helpers] = (0, formik_1.useField)(fieldProps.field.name);
+    const { touched, error } = meta;
+    const { setValue } = helpers;
+    return (react_1.default.createElement(components_1.Flexbox, { flexDirection: "column" },
+        error ? (react_1.default.createElement(components_1.InputLabel, { error: true }, error)) : (react_1.default.createElement(components_1.InputLabel, { htmlFor: field.name }, label)),
+        react_1.default.createElement(StyledPhoneInput, { country: "pl", countryCodeEditable: false, disableDropdown: true, disabled: disabled, inputClass: "input-form d-block", isError: !!touched && !!error, masks: { pl: '... .. .. ..' }, onChange: (value) => setValue(value), placeholder: placeholder, value: field.value ?? '' })));
+};
+const StyledPhoneInput = (0, styled_components_1.default)(react_phone_input_2_1.default) `
+  border: ${(props) => (props.isError ? '1px solid red' : '1px solid blue')};
+  width: 100%;
+`;
+exports["default"] = MobileInput;
+
+
+/***/ }),
+
+/***/ 98933:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const Flexbox_1 = __importDefault(__webpack_require__(99664));
+const react_1 = __importDefault(__webpack_require__(67294));
+const ModalContent = ({ children, ...props }) => (react_1.default.createElement(Flexbox_1.default, { ...props, flexDirection: "column", height: "100%", width: "100%" }, children));
+exports["default"] = ModalContent;
+
+
+/***/ }),
+
+/***/ 21348:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const ModalFooter = ({ primaryButton, secondaryButton }) => (react_1.default.createElement(components_1.Flexbox, { justifyContent: "flex-end", marginTop: "m-size", width: "100%" },
+    secondaryButton && (react_1.default.createElement(components_1.Button, { onClick: secondaryButton.onClick, size: "small", variant: "secondary" }, secondaryButton.label)),
+    react_1.default.createElement(components_1.Button, { disabled: primaryButton.disabled, marginLeft: "s-size", onClick: primaryButton.onClick, size: "small", variant: "primary" }, primaryButton.label)));
+exports["default"] = ModalFooter;
+
+
+/***/ }),
+
+/***/ 70413:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const Flexbox_1 = __importDefault(__webpack_require__(99664));
+const react_1 = __importDefault(__webpack_require__(67294));
+// sort props keys
+// sort descructurized props
+const ModalHeader = ({ onClick, children }) => (react_1.default.createElement(react_1.default.Fragment, null,
+    react_1.default.createElement(Flexbox_1.default, { alignItems: "center", justifyContent: "space-between" },
+        react_1.default.createElement(components_1.Heading, { level: 6 }, children),
+        react_1.default.createElement(components_1.Button, { icon: "times", onClick: onClick, size: "small", variant: "ternary" })),
+    react_1.default.createElement(components_1.Separator, null)));
+exports["default"] = ModalHeader;
+
+
+/***/ }),
+
+/***/ 93701:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const ModalContent_1 = __importDefault(__webpack_require__(98933));
+const ModalFooter_1 = __importDefault(__webpack_require__(21348));
+const ModalResult = (props) => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(ModalContent_1.default, { alignItems: "center", justifyContent: "center" },
+            react_1.default.createElement(components_1.ResultIcon, { variant: props.variant }),
+            react_1.default.createElement(components_1.Heading, { level: 5, marginTop: "s-size" }, commonT(`MODAL.${props.variant}.title`))),
+        props.variant === 'ERROR' && (react_1.default.createElement(ModalFooter_1.default, { primaryButton: {
+                label: commonT('MODAL.ERROR.buttonLabel'),
+                onClick: props.onClick
+            } }))));
+};
+exports["default"] = ModalResult;
+
+
+/***/ }),
+
+/***/ 3016:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ModalContent = exports.ModalResult = exports.ModalFooter = exports.ModalHeader = void 0;
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_modal_1 = __importDefault(__webpack_require__(83253));
+const ModalHeader_1 = __importDefault(__webpack_require__(70413));
+exports.ModalHeader = ModalHeader_1.default;
+const ModalFooter_1 = __importDefault(__webpack_require__(21348));
+exports.ModalFooter = ModalFooter_1.default;
+const ModalResult_1 = __importDefault(__webpack_require__(93701));
+exports.ModalResult = ModalResult_1.default;
+const ModalContent_1 = __importDefault(__webpack_require__(98933));
+exports.ModalContent = ModalContent_1.default;
+const Modal = ({ label, children, isOpen, setIsOpen }) => (react_1.default.createElement(react_1.default.Fragment, null,
+    react_1.default.createElement(components_1.Button, { onClick: () => setIsOpen((prev) => !prev), size: "small", variant: "secondary" }, label),
+    react_1.default.createElement(react_modal_1.default, { isOpen: isOpen, style: customStyles }, children)));
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        width: '60rem',
+        minHeight: 'none',
+        height: 'auto',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 10,
+        display: 'flex',
+        flexDirection: 'column'
+    }
+};
+exports["default"] = Modal;
+
+
+/***/ }),
+
+/***/ 96580:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const Page = ({ children }) => (react_1.default.createElement(Container, { as: "main" },
+    react_1.default.createElement(components_1.MaxWidth, null, children)));
+const Container = (0, styled_components_1.default)(components_1.Flexbox) `
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: ${(props) => `${props.theme.space.top} ${props.theme.space['pad-desktop']}`};
+  padding-top: calc(12rem + 2rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`;
+exports["default"] = Page;
+
+
+/***/ }),
+
+/***/ 38065:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+function QueryLoader({ children, query, Loader }) {
+    if (query.isFetching) {
+        if (Loader) {
+            return Loader;
+        }
+        return react_1.default.createElement("p", null, "\u0142adowanie...");
+    }
+    else if (query.isSuccess) {
+        return react_1.default.createElement(react_1.default.Fragment, null, children(query.data));
+    }
+    return react_1.default.createElement("p", null, "ERROR");
+}
+exports["default"] = QueryLoader;
+
+
+/***/ }),
+
+/***/ 34657:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_fontawesome_1 = __webpack_require__(67814);
+const styled_components_1 = __webpack_require__(91288);
+const ResultIcon = ({ size = '5x', variant }) => {
+    const { colors } = (0, styled_components_1.useTheme)();
+    return (react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors[variant === 'SUCCESS' ? 'green' : 'red'], icon: variant === 'SUCCESS' ? 'check-circle' : 'times-circle', size: size }));
+};
+exports["default"] = ResultIcon;
+
+
+/***/ }),
+
+/***/ 76022:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const SectionHead = ({ title, link, ...props }) => {
+    if (!title && !link) {
+        return null;
+    }
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "space-between", marginBottom: "m-size", ...props },
+        title && react_1.default.createElement(components_1.Heading, { level: 5 }, title),
+        link && (react_1.default.createElement(components_1.Link, { to: link.to, underline: true }, link.label))));
+};
+exports["default"] = SectionHead;
+
+
+/***/ }),
+
+/***/ 8185:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_select_1 = __importDefault(__webpack_require__(85555));
+const react_1 = __importDefault(__webpack_require__(67294));
+const Select = ({ placeholder, onChange, options, value }) => (react_1.default.createElement(react_select_1.default, { onChange: onChange, options: sortAndMapOptions(options), placeholder: placeholder, styles: {
+        menu: (provided) => ({
+            ...provided,
+            zIndex: 10
+        })
+    }, value: value }));
+const sortAndMapOptions = (options) => options
+    ?.sort((a, b) => (a < b ? -1 : 1))
+    .map((option) => ({
+    label: option.label,
+    value: option.value
+}));
+exports["default"] = Select;
+
+
+/***/ }),
+
+/***/ 77198:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const styled_system_1 = __webpack_require__(18005);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Separator = (0, styled_components_1.default)(components_1.Box) `
+  width: 100%;
+  height: 1px;
+  background: ${(0, getColor_1.default)('border-color')};
+  margin: ${(props) => `${props.theme.space['m-size']} 0`};
+
+  ${styled_system_1.space}
+`;
+exports["default"] = Separator;
+
+
+/***/ }),
+
+/***/ 48370:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Spinner = ({ small, ...props }) => (react_1.default.createElement(components_1.Box, { ...props, opacity: 0.5 },
+    react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "spinner", size: small ? '2x' : '3x', spin: true })));
+exports["default"] = Spinner;
+
+
+/***/ }),
+
+/***/ 9242:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importStar(__webpack_require__(67294));
+const Square = ({ children, ratio = 1, ...props }) => {
+    const ref = (0, react_1.useRef)(null);
+    const [height, setHeight] = (0, react_1.useState)(ref.current?.getBoundingClientRect().width);
+    (0, react_1.useEffect)(() => {
+        const handleResize = () => {
+            const rect = ref.current?.getBoundingClientRect();
+            if (rect) {
+                setHeight(rect.width * ratio);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        return () => window.removeEventListener('resize', handleResize);
+    }, [ref, ratio]);
+    return (react_1.default.createElement(components_1.Box, { height: `${height}px`, ref: ref, width: "100%", ...props }, children));
+};
+exports["default"] = Square;
+
+
+/***/ }),
+
+/***/ 22089:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_switch_1 = __importDefault(__webpack_require__(59936));
+const Switch = ({ checked, onChange }) => (react_1.default.createElement(react_switch_1.default, { checked: checked, checkedIcon: false, onChange: onChange, uncheckedIcon: false }));
+exports["default"] = Switch;
+
+
+/***/ }),
+
+/***/ 25743:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_table_1 = __webpack_require__(79521);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+function Table({ columns, data }) {
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = (0, react_table_1.useTable)({
+        columns,
+        data
+    });
+    return (react_1.default.createElement(Container, null,
+        react_1.default.createElement("table", { ...getTableProps() },
+            react_1.default.createElement("thead", null, headerGroups.map((headerGroup) => (react_1.default.createElement("tr", { ...headerGroup.getHeaderGroupProps(), key: headerGroup.id }, headerGroup.headers.map((column) => (react_1.default.createElement("th", { ...column.getHeaderProps(), key: column.id }, column.render('Header')))))))),
+            react_1.default.createElement("tbody", { ...getTableBodyProps() }, rows.map((row, i) => {
+                prepareRow(row);
+                return (react_1.default.createElement("tr", { ...row.getRowProps(), key: i }, row.cells.map((cell, index) => (react_1.default.createElement("td", { ...cell.getCellProps(), key: index }, cell.render('Cell'))))));
+            })))));
+}
+const Container = styled_components_1.default.div `
+  width: 100%;
+
+  table {
+    border: 1px solid;
+    border-color: ${(props) => props.theme.colors['border-color']};
+    width: 100%;
+
+    th {
+      text-align: left;
+      background: ${(props) => props.theme.colors['background-color-01']};
+    }
+
+    th,
+    td {
+      margin: 0;
+      padding: ${(props) => props.theme.space['m-size']};
+    }
+  }
+`;
+exports["default"] = Table;
+
+
+/***/ }),
+
+/***/ 12664:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importStar(__webpack_require__(91288));
+const Text = ({ wrap = true, span, children, type, ...props }) => {
+    const { fontSizes, fontWeigths, letterSpacings } = (0, styled_components_1.useTheme)();
+    let fontSize, fontWeight, letterSpacing;
+    switch (type) {
+        case 'subtitle-1':
+            fontSize = fontSizes['new-medium-s-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[500];
+            break;
+        case 'subtitle-2':
+            fontSize = fontSizes['new-small-l-size'];
+            fontWeight = fontWeigths['medium'];
+            letterSpacing = letterSpacings[400];
+            break;
+        case 'body-1':
+            fontSize = fontSizes['new-medium-s-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[800];
+            break;
+        case 'body-2':
+        default:
+            fontSize = fontSizes['new-small-l-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[600];
+            break;
+        case 'button':
+            fontSize = fontSizes['new-small-l-size'];
+            fontWeight = fontWeigths['medium'];
+            letterSpacing = letterSpacings[900];
+            break;
+        case 'caption':
+            fontSize = fontSizes['new-small-m-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[700];
+            break;
+        case 'overline':
+            fontSize = fontSizes['new-small-s-size'];
+            fontWeight = fontWeigths['regular'];
+            letterSpacing = letterSpacings[1000];
+            break;
+    }
+    return (react_1.default.createElement(Container, { as: span ? 'span' : 'p', color: props.white ? 'white' : 'black', fontSize: fontSize, fontWeight: fontWeight, letterSpacing: letterSpacing, margin: 0, wrap: wrap, ...props }, children));
+};
+const Container = (0, styled_components_1.default)(components_1.Box) `
+  white-space: ${(props) => (props.wrap ? 'normal' : 'nowrap')};
+`;
+exports["default"] = Text;
+
+
+/***/ }),
+
+/***/ 60935:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Tile = ({ onClick, children, ...props }) => (react_1.default.createElement(components_1.Flexbox, { background: "white", border: "1px solid", borderColor: "border-color", flexDirection: "column", onClick: onClick, padding: "l-size", width: "100%", ...props }, children));
+exports["default"] = Tile;
+
+
+/***/ }),
+
+/***/ 5603:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const TitleAndLinkBanner = ({ title, link: { to, label } }) => {
+    const history = (0, react_router_dom_1.useHistory)();
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, marginTop: "xxl-size", small: true, title: react_1.default.createElement(components_1.Heading, { level: 5 }, title) },
+            react_1.default.createElement(components_1.Button, { icon: "arrow-right", onClick: () => history.push(to) }, label))));
+};
+exports["default"] = TitleAndLinkBanner;
+
+
+/***/ }),
+
+/***/ 82740:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Text = exports.Table = exports.Switch = exports.ResultIcon = exports.Modal = exports.MaxWidth = exports.ListItem = exports.Heading = exports.FeatureItem = exports.ExternalLink = exports.ContentLoader = exports.Carousel = exports.BannerWithPicture = exports.BackButton = exports.AdminRoute = exports.TitleAndLinkBanner = exports.Link = exports.InputLabel = exports.MobileInput = exports.Logo = exports.Input = exports.Spinner = exports.Banner = exports.Grid = exports.SectionHead = exports.ImageLoader = exports.LongProductTile = exports.Select = exports.Tile = exports.Button = exports.CheckboxField = exports.Square = exports.Separator = exports.Page = exports.Flexbox = exports.QueryLoader = exports.Box = exports.Badge = void 0;
+var Badge_1 = __webpack_require__(17963);
+Object.defineProperty(exports, "Badge", ({ enumerable: true, get: function () { return __importDefault(Badge_1).default; } }));
+var Box_1 = __webpack_require__(91430);
+Object.defineProperty(exports, "Box", ({ enumerable: true, get: function () { return __importDefault(Box_1).default; } }));
+var QueryLoader_1 = __webpack_require__(38065);
+Object.defineProperty(exports, "QueryLoader", ({ enumerable: true, get: function () { return __importDefault(QueryLoader_1).default; } }));
+var Flexbox_1 = __webpack_require__(99664);
+Object.defineProperty(exports, "Flexbox", ({ enumerable: true, get: function () { return __importDefault(Flexbox_1).default; } }));
+var Page_1 = __webpack_require__(96580);
+Object.defineProperty(exports, "Page", ({ enumerable: true, get: function () { return __importDefault(Page_1).default; } }));
+var Separator_1 = __webpack_require__(77198);
+Object.defineProperty(exports, "Separator", ({ enumerable: true, get: function () { return __importDefault(Separator_1).default; } }));
+var Square_1 = __webpack_require__(9242);
+Object.defineProperty(exports, "Square", ({ enumerable: true, get: function () { return __importDefault(Square_1).default; } }));
+var CheckboxField_1 = __webpack_require__(26845);
+Object.defineProperty(exports, "CheckboxField", ({ enumerable: true, get: function () { return __importDefault(CheckboxField_1).default; } }));
+var Button_1 = __webpack_require__(97830);
+Object.defineProperty(exports, "Button", ({ enumerable: true, get: function () { return __importDefault(Button_1).default; } }));
+var Tile_1 = __webpack_require__(60935);
+Object.defineProperty(exports, "Tile", ({ enumerable: true, get: function () { return __importDefault(Tile_1).default; } }));
+var Select_1 = __webpack_require__(8185);
+Object.defineProperty(exports, "Select", ({ enumerable: true, get: function () { return __importDefault(Select_1).default; } }));
+var LongProductTile_1 = __webpack_require__(64693);
+Object.defineProperty(exports, "LongProductTile", ({ enumerable: true, get: function () { return __importDefault(LongProductTile_1).default; } }));
+var ImageLoader_1 = __webpack_require__(407);
+Object.defineProperty(exports, "ImageLoader", ({ enumerable: true, get: function () { return __importDefault(ImageLoader_1).default; } }));
+var SectionHead_1 = __webpack_require__(76022);
+Object.defineProperty(exports, "SectionHead", ({ enumerable: true, get: function () { return __importDefault(SectionHead_1).default; } }));
+var Grid_1 = __webpack_require__(4741);
+Object.defineProperty(exports, "Grid", ({ enumerable: true, get: function () { return __importDefault(Grid_1).default; } }));
+var Banner_1 = __webpack_require__(57857);
+Object.defineProperty(exports, "Banner", ({ enumerable: true, get: function () { return __importDefault(Banner_1).default; } }));
+var Spinner_1 = __webpack_require__(48370);
+Object.defineProperty(exports, "Spinner", ({ enumerable: true, get: function () { return __importDefault(Spinner_1).default; } }));
+var Input_1 = __webpack_require__(94561);
+Object.defineProperty(exports, "Input", ({ enumerable: true, get: function () { return __importDefault(Input_1).default; } }));
+var Logo_1 = __webpack_require__(45775);
+Object.defineProperty(exports, "Logo", ({ enumerable: true, get: function () { return __importDefault(Logo_1).default; } }));
+var MobileInput_1 = __webpack_require__(81107);
+Object.defineProperty(exports, "MobileInput", ({ enumerable: true, get: function () { return __importDefault(MobileInput_1).default; } }));
+var InputLabel_1 = __webpack_require__(49777);
+Object.defineProperty(exports, "InputLabel", ({ enumerable: true, get: function () { return __importDefault(InputLabel_1).default; } }));
+var Link_1 = __webpack_require__(19405);
+Object.defineProperty(exports, "Link", ({ enumerable: true, get: function () { return __importDefault(Link_1).default; } }));
+var TitleAndLinkBanner_1 = __webpack_require__(5603);
+Object.defineProperty(exports, "TitleAndLinkBanner", ({ enumerable: true, get: function () { return __importDefault(TitleAndLinkBanner_1).default; } }));
+var AdminRoute_1 = __webpack_require__(11970);
+Object.defineProperty(exports, "AdminRoute", ({ enumerable: true, get: function () { return __importDefault(AdminRoute_1).default; } }));
+var BackButton_1 = __webpack_require__(99576);
+Object.defineProperty(exports, "BackButton", ({ enumerable: true, get: function () { return __importDefault(BackButton_1).default; } }));
+var BannerWithPicture_1 = __webpack_require__(80603);
+Object.defineProperty(exports, "BannerWithPicture", ({ enumerable: true, get: function () { return __importDefault(BannerWithPicture_1).default; } }));
+var Carousel_1 = __webpack_require__(27433);
+Object.defineProperty(exports, "Carousel", ({ enumerable: true, get: function () { return __importDefault(Carousel_1).default; } }));
+var ContentLoader_1 = __webpack_require__(67394);
+Object.defineProperty(exports, "ContentLoader", ({ enumerable: true, get: function () { return __importDefault(ContentLoader_1).default; } }));
+var ExternalLink_1 = __webpack_require__(59990);
+Object.defineProperty(exports, "ExternalLink", ({ enumerable: true, get: function () { return __importDefault(ExternalLink_1).default; } }));
+var FeatureItem_1 = __webpack_require__(64019);
+Object.defineProperty(exports, "FeatureItem", ({ enumerable: true, get: function () { return __importDefault(FeatureItem_1).default; } }));
+var Heading_1 = __webpack_require__(41087);
+Object.defineProperty(exports, "Heading", ({ enumerable: true, get: function () { return __importDefault(Heading_1).default; } }));
+var ListItem_1 = __webpack_require__(79045);
+Object.defineProperty(exports, "ListItem", ({ enumerable: true, get: function () { return __importDefault(ListItem_1).default; } }));
+var MaxWidth_1 = __webpack_require__(83114);
+Object.defineProperty(exports, "MaxWidth", ({ enumerable: true, get: function () { return __importDefault(MaxWidth_1).default; } }));
+var Modal_1 = __webpack_require__(3016);
+Object.defineProperty(exports, "Modal", ({ enumerable: true, get: function () { return __importDefault(Modal_1).default; } }));
+var ResultIcon_1 = __webpack_require__(34657);
+Object.defineProperty(exports, "ResultIcon", ({ enumerable: true, get: function () { return __importDefault(ResultIcon_1).default; } }));
+var Switch_1 = __webpack_require__(22089);
+Object.defineProperty(exports, "Switch", ({ enumerable: true, get: function () { return __importDefault(Switch_1).default; } }));
+var Table_1 = __webpack_require__(25743);
+Object.defineProperty(exports, "Table", ({ enumerable: true, get: function () { return __importDefault(Table_1).default; } }));
+var Text_1 = __webpack_require__(12664);
+Object.defineProperty(exports, "Text", ({ enumerable: true, get: function () { return __importDefault(Text_1).default; } }));
+__exportStar(__webpack_require__(3016), exports);
+
+
+/***/ }),
+
+/***/ 36722:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.VIEW_PRODUCT = exports.PRODUCTS = exports.HOW_TO_CREATE_ORDER = exports.HOME = exports.DOCUMENTS = exports.DELIVERY_AND_PAYMENTS = exports.CONTACT = exports.CHECKOUT_SHIPPING = exports.CHECKOUT_RESULT = exports.CHECKOUT_PRODUCTS = exports.CHECKOUT_PAYMENT = exports.CHECKOUT_DETAILS = exports.CHECKOUT_DELIVERY = exports.ADMIN_PAYMENT_TYPES = exports.ADMIN_ORDERS = exports.ADMIN_NEWSLETTER_USERS = exports.ADMIN_DELIVERY_TYPES = exports.ADMIN_CALLBACKS = void 0;
+exports.ADMIN_CALLBACKS = '/admin_callbacks';
+exports.ADMIN_DELIVERY_TYPES = '/admin_delivery_types';
+exports.ADMIN_NEWSLETTER_USERS = '/admin_newsletter_users';
+exports.ADMIN_ORDERS = '/admin_orders';
+exports.ADMIN_PAYMENT_TYPES = '/admin_payment_types';
+exports.CHECKOUT_DELIVERY = '/checkout/delivery';
+exports.CHECKOUT_DETAILS = '/checkout/details';
+exports.CHECKOUT_PAYMENT = '/checkout/payment';
+exports.CHECKOUT_PRODUCTS = '/checkout/products';
+exports.CHECKOUT_RESULT = '/checkout/result';
+exports.CHECKOUT_SHIPPING = '/checkout/shipping';
+exports.CONTACT = '/contact';
+exports.DELIVERY_AND_PAYMENTS = '/delivery_and_payments';
+exports.DOCUMENTS = '/documents';
+exports.HOME = '/';
+exports.HOW_TO_CREATE_ORDER = '/how_to_create_order';
+exports.PRODUCTS = '/products';
+exports.VIEW_PRODUCT = '/view_product/:id';
+
+
+/***/ }),
+
+/***/ 15650:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const config = {
+    apiKey: "AIzaSyAXnOQn6hJ15jMRHqRT-1nozJ8-omP0s2E",
+    authDomain: "zapalniczki-c7234.firebaseapp.com",
+    databaseURL: "https://zapalniczki-c7234-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "zapalniczki-c7234",
+    storageBucket: "zapalniczki-c7234.appspot.com",
+    messagingSenderId: "397821315416",
+    appId: "1:397821315416:web:7af195e1b14c809e4f3d2d"
+};
+exports["default"] = config;
+
+
+/***/ }),
+
+/***/ 5554:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useAdmin = exports.useTranslation = exports.useTabTitle = exports.useScrollTop = exports.useSchema = exports.useDocumentTitle = void 0;
+var useDocumentTitle_1 = __webpack_require__(669);
+Object.defineProperty(exports, "useDocumentTitle", ({ enumerable: true, get: function () { return __importDefault(useDocumentTitle_1).default; } }));
+var useSchema_1 = __webpack_require__(56585);
+Object.defineProperty(exports, "useSchema", ({ enumerable: true, get: function () { return __importDefault(useSchema_1).default; } }));
+var useScrollTop_1 = __webpack_require__(30695);
+Object.defineProperty(exports, "useScrollTop", ({ enumerable: true, get: function () { return __importDefault(useScrollTop_1).default; } }));
+var useTabTitle_1 = __webpack_require__(74944);
+Object.defineProperty(exports, "useTabTitle", ({ enumerable: true, get: function () { return __importDefault(useTabTitle_1).default; } }));
+var useTranslation_1 = __webpack_require__(36817);
+Object.defineProperty(exports, "useTranslation", ({ enumerable: true, get: function () { return __importDefault(useTranslation_1).default; } }));
+var useAdmin_1 = __webpack_require__(58960);
+Object.defineProperty(exports, "useAdmin", ({ enumerable: true, get: function () { return __importDefault(useAdmin_1).default; } }));
+
+
+/***/ }),
+
+/***/ 58960:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const useAdmin = () => {
+    const adminValue = window.localStorage.getItem('admin');
+    const isAdmin = adminValue === 'true';
+    return {
+        isAdmin
+    };
+};
+exports["default"] = useAdmin;
+
+
+/***/ }),
+
+/***/ 669:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __webpack_require__(67294);
+const hooks_1 = __webpack_require__(5554);
+const useDocumentTitle = (title) => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    (0, react_1.useLayoutEffect)(() => {
+        if (title) {
+            document.title = title;
+        }
+        else {
+            document.title = t('common.companyName');
+        }
+    }, [title]);
+};
+exports["default"] = useDocumentTitle;
+
+
+/***/ }),
+
+/***/ 56585:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const yup_1 = __webpack_require__(87561);
+const useTranslation_1 = __importDefault(__webpack_require__(36817));
+const useSchema = () => {
+    const { t: commonT } = (0, useTranslation_1.default)('COMMON');
+    const schemas = {
+        email: (0, yup_1.string)()
+            .email(commonT('VALIDATIONS.EMAIL.email'))
+            .required(commonT('VALIDATIONS.EMAIL.required')),
+        phone: (0, yup_1.string)()
+            .trim()
+            .min(11, commonT('VALIDATIONS.PHONE.min'))
+            .matches(/^(\+|\s|[0-9])+$/, commonT('VALIDATIONS.PHONE.matches'))
+            .required(commonT('VALIDATIONS.PHONE.required'))
+    };
+    const getSchema = (key) => schemas[key];
+    return { schemas, getSchema };
+};
+exports["default"] = useSchema;
+
+
+/***/ }),
+
+/***/ 30695:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __webpack_require__(67294);
+const useScrollTop = (...trackedProps) => {
+    (0, react_1.useEffect)(() => {
+        window.scrollTo(0, 0);
+    }, [...trackedProps]);
+};
+exports["default"] = useScrollTop;
+
+
+/***/ }),
+
+/***/ 74944:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const hooks_1 = __webpack_require__(5554);
+const useDocumentTitle_1 = __importDefault(__webpack_require__(669));
+const useTabTitle = (title) => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const tabTitle = title + ' | ' + commonT('companyName');
+    (0, useDocumentTitle_1.default)(tabTitle);
+};
+exports["default"] = useTabTitle;
+
+
+/***/ }),
+
+/***/ 36817:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_i18next_1 = __webpack_require__(26828);
+function useTranslation(ns, options) {
+    const { t } = (0, react_i18next_1.useTranslation)(ns, options);
+    return {
+        t
+    };
+}
+exports["default"] = useTranslation;
+
+
+/***/ }),
+
+/***/ 46318:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.config = void 0;
+const i18next_1 = __importDefault(__webpack_require__(17581));
+const pl_1 = __importDefault(__webpack_require__(57905));
+exports.config = {
+    lng: 'pl',
+    keySeparator: '.',
+    resources: {
+        pl: {
+            ADMIN_CALLBACKS: pl_1.default.ADMIN_CALLBACKS,
+            ADMIN_DELIVERY_TYPES: pl_1.default.ADMIN_DELIVERY_TYPES,
+            ADMIN_NEWSLETTER_USERS: pl_1.default.ADMIN_NEWSLETTER_USERS,
+            ADMIN_ORDERS: pl_1.default.ADMIN_ORDERS,
+            ADMIN_PAYMENT_TYPES: pl_1.default.ADMIN_PAYMENT_TYPES,
+            CHECKOUT_DELIVERY: pl_1.default.CHECKOUT_DELIVERY,
+            CHECKOUT_DETAILS: pl_1.default.CHECKOUT_DETAILS,
+            CHECKOUT_PAYMENT: pl_1.default.CHECKOUT_PAYMENT,
+            CHECKOUT_PRODUCTS: pl_1.default.CHECKOUT_PRODUCTS,
+            CHECKOUT_RESULT: pl_1.default.CHECKOUT_RESULT,
+            CHECKOUT_SHIPPING: pl_1.default.CHECKOUT_SHIPPING,
+            COMMON: pl_1.default.COMMON,
+            CONTACT: pl_1.default.CONTACT,
+            DELIVERY_AND_PAYMENTS: pl_1.default.DELIVERY_AND_PAYMENTS,
+            DOCUMENTS: pl_1.default.DOCUMENTS,
+            HOME: pl_1.default.HOME,
+            HOW_TO_CREATE_ORDER: pl_1.default.HOW_TO_CREATE_ORDER,
+            PAGE_NOT_FOUND: pl_1.default.PAGE_NOT_FOUND,
+            PRODUCTS: pl_1.default.PRODUCTS,
+            VIEW_PRODUCT: pl_1.default.VIEW_PRODUCT
+        }
+    }
+};
+i18next_1.default.init(exports.config);
+exports["default"] = i18next_1.default;
+
+
+/***/ }),
+
+/***/ 92629:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.queryClient = void 0;
+const providers_1 = __webpack_require__(7539);
+const react_1 = __importStar(__webpack_require__(67294));
+const react_dom_1 = __webpack_require__(73935);
+__webpack_require__(72225);
+const react_query_1 = __webpack_require__(88767);
+const webfontloader_1 = __importDefault(__webpack_require__(75933));
+const styled_components_1 = __webpack_require__(91288);
+const theme_1 = __importDefault(__webpack_require__(62666));
+const react_i18next_1 = __webpack_require__(26828);
+const config_1 = __importDefault(__webpack_require__(46318));
+const free_solid_svg_icons_1 = __webpack_require__(51436);
+const fontawesome_svg_core_1 = __webpack_require__(78947);
+const app_1 = __webpack_require__(94258);
+const config_2 = __importDefault(__webpack_require__(15650));
+const GlobalStyle_1 = __importDefault(__webpack_require__(4526));
+const pages_1 = __webpack_require__(69905);
+webfontloader_1.default.load({
+    google: {
+        families: ['Roboto:300,400,500,700']
+    }
+});
+fontawesome_svg_core_1.library.add(free_solid_svg_icons_1.faTruck, free_solid_svg_icons_1.faUserClock, free_solid_svg_icons_1.faExchangeAlt, free_solid_svg_icons_1.faStar, free_solid_svg_icons_1.faBoxOpen, free_solid_svg_icons_1.faHandHoldingUsd, free_solid_svg_icons_1.faEnvelopeOpenText, free_solid_svg_icons_1.faMapMarkedAlt, free_solid_svg_icons_1.faUniversity, free_solid_svg_icons_1.faPhoneAlt, free_solid_svg_icons_1.faBox, free_solid_svg_icons_1.faCheckCircle, free_solid_svg_icons_1.faPlus, free_solid_svg_icons_1.faEquals, free_solid_svg_icons_1.faCalendarAlt, free_solid_svg_icons_1.faTruckLoading, free_solid_svg_icons_1.faBoxes, free_solid_svg_icons_1.faArrowRight, free_solid_svg_icons_1.faMinus, free_solid_svg_icons_1.faTimes, free_solid_svg_icons_1.faArrowLeft, free_solid_svg_icons_1.faStoreAlt, free_solid_svg_icons_1.faShoppingBasket, free_solid_svg_icons_1.faSpinner, free_solid_svg_icons_1.faQuestion, free_solid_svg_icons_1.faSearch, free_solid_svg_icons_1.faCheck, free_solid_svg_icons_1.faChevronLeft, free_solid_svg_icons_1.faChevronRight, free_solid_svg_icons_1.faTimesCircle);
+exports.queryClient = new react_query_1.QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+            staleTime: 90000
+        }
+    }
+});
+(0, app_1.initializeApp)(config_2.default);
+const root = document.getElementById('app');
+(0, react_dom_1.render)(react_1.default.createElement(react_1.StrictMode, null,
+    react_1.default.createElement(providers_1.AuthProvider, null,
+        react_1.default.createElement(providers_1.BasketProvider, null,
+            react_1.default.createElement(react_query_1.QueryClientProvider, { client: exports.queryClient },
+                react_1.default.createElement(styled_components_1.ThemeProvider, { theme: theme_1.default },
+                    react_1.default.createElement(react_i18next_1.I18nextProvider, { i18n: config_1.default },
+                        react_1.default.createElement(providers_1.CheckoutProvider, null,
+                            react_1.default.createElement(providers_1.BasketToggleProvider, null,
+                                react_1.default.createElement(providers_1.LoaderProvider, null,
+                                    react_1.default.createElement(GlobalStyle_1.default, null),
+                                    react_1.default.createElement(pages_1.App, null)))))))))), root);
+
+
+/***/ }),
+
+/***/ 6173:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const basketItem = (0, zod_1.object)({
+    id: (0, zod_1.string)(),
+    quantity: (0, zod_1.number)()
+});
+exports["default"] = basketItem;
+
+
+/***/ }),
+
+/***/ 29543:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const address = (0, zod_1.object)({
+    adress_cdn: (0, zod_1.string)(),
+    city: (0, zod_1.string)(),
+    created_at: (0, zod_1.string)(),
+    id: (0, zod_1.string)().uuid(),
+    post_code: (0, zod_1.string)(),
+    street: (0, zod_1.string)(),
+    street_no: (0, zod_1.string)(),
+    updated_at: (0, zod_1.string)()
+});
+exports["default"] = address;
+
+
+/***/ }),
+
+/***/ 32683:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const callback = (0, zod_1.object)({
+    created_at: (0, zod_1.string)(),
+    updated_at: (0, zod_1.string)(),
+    id: (0, zod_1.string)(),
+    phone_number: (0, zod_1.string)(),
+    done: (0, zod_1.boolean)().nullable()
+});
+exports["default"] = callback;
+
+
+/***/ }),
+
+/***/ 54800:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const deliveryType = (0, zod_1.object)({
+    created_at: (0, zod_1.string)(),
+    frontend_icon_name: (0, zod_1.string)().nullable(),
+    id: (0, zod_1.string)(),
+    is_enabled: (0, zod_1.boolean)().nullable(),
+    label: (0, zod_1.string)(),
+    price: (0, zod_1.number)(),
+    requires_address: (0, zod_1.boolean)().nullable(),
+    time: (0, zod_1.string)(),
+    updated_at: (0, zod_1.string)()
+});
+
+
+/***/ }),
+
+/***/ 79177:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const newsletter = (0, zod_1.object)({
+    id: (0, zod_1.string)().uuid(),
+    created_at: (0, zod_1.string)(),
+    updated_at: (0, zod_1.string)(),
+    email: (0, zod_1.string)(),
+    consent: (0, zod_1.boolean)()
+});
+exports["default"] = newsletter;
+
+
+/***/ }),
+
+/***/ 1694:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const orderItem = (0, zod_1.object)({
+    created_at: (0, zod_1.string)(),
+    id: (0, zod_1.string)().uuid(),
+    order_id: (0, zod_1.string)().uuid(),
+    product_id: (0, zod_1.string)().uuid(),
+    quantity: (0, zod_1.number)(),
+    updated_at: (0, zod_1.string)()
+});
+exports["default"] = orderItem;
+
+
+/***/ }),
+
+/***/ 83643:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const user = (0, zod_1.object)({
+    address_id: (0, zod_1.string)().uuid(),
+    created_at: (0, zod_1.string)(),
+    email: (0, zod_1.string)(),
+    full_name: (0, zod_1.string)(),
+    id: (0, zod_1.string)().uuid(),
+    is_company: (0, zod_1.boolean)().nullable(),
+    nip: (0, zod_1.string)(),
+    phone: (0, zod_1.string)(),
+    preferred_delivery: (0, zod_1.string)().uuid(),
+    preferred_payment: (0, zod_1.string)().uuid(),
+    shipping_id: (0, zod_1.string)().uuid(),
+    updated_at: (0, zod_1.string)()
+});
+exports["default"] = user;
+
+
+/***/ }),
+
+/***/ 57554:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.newsletter = exports.basketItem = exports.mold = exports.timestampDate = void 0;
+var timestampDate_1 = __webpack_require__(57254);
+Object.defineProperty(exports, "timestampDate", ({ enumerable: true, get: function () { return __importDefault(timestampDate_1).default; } }));
+// NEW
+var mold_1 = __webpack_require__(5375);
+Object.defineProperty(exports, "mold", ({ enumerable: true, get: function () { return __importDefault(mold_1).default; } }));
+__exportStar(__webpack_require__(5375), exports);
+var basketItem_1 = __webpack_require__(6173);
+Object.defineProperty(exports, "basketItem", ({ enumerable: true, get: function () { return __importDefault(basketItem_1).default; } }));
+__exportStar(__webpack_require__(6173), exports);
+__exportStar(__webpack_require__(76628), exports);
+__exportStar(__webpack_require__(54800), exports);
+__exportStar(__webpack_require__(40316), exports);
+__exportStar(__webpack_require__(29543), exports);
+__exportStar(__webpack_require__(32683), exports);
+__exportStar(__webpack_require__(83643), exports);
+__exportStar(__webpack_require__(1694), exports);
+var newsletter_1 = __webpack_require__(79177);
+Object.defineProperty(exports, "newsletter", ({ enumerable: true, get: function () { return __importDefault(newsletter_1).default; } }));
+__exportStar(__webpack_require__(79177), exports);
+
+
+/***/ }),
+
+/***/ 5375:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const status = (0, zod_1.enum)(['IN_PROGRESS', 'DONE']);
+const mold = (0, zod_1.object)({
+    id: (0, zod_1.string)(),
+    created_at: (0, zod_1.string)(),
+    updated_at: (0, zod_1.string)(),
+    status: status.nullable()
+});
+exports["default"] = mold;
+
+
+/***/ }),
+
+/***/ 40316:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ORDER_STATUSES = void 0;
+const zod_1 = __webpack_require__(78754);
+const orderStatus = (0, zod_1.enum)([
+    'OPEN',
+    'CONFIRMED',
+    'PAYMENT_RECEIVED',
+    'IN_PREPARATION',
+    'AWAITING_FOR_PICKUP',
+    'IN_DELIVERY',
+    'COMPLETED'
+]);
+exports.ORDER_STATUSES = orderStatus.options;
+const order = (0, zod_1.object)({
+    created_at: (0, zod_1.string)(),
+    delivery_type: (0, zod_1.string)().uuid(),
+    id: (0, zod_1.string)().uuid(),
+    payment_type: (0, zod_1.string)().uuid(),
+    shipping_id: (0, zod_1.string)().uuid(),
+    status: (0, zod_1.string)(),
+    total: (0, zod_1.number)(),
+    updated_at: (0, zod_1.string)(),
+    user_id: (0, zod_1.string)().uuid()
+});
+
+
+/***/ }),
+
+/***/ 76628:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const paymentType = (0, zod_1.object)({
+    id: (0, zod_1.string)().uuid(),
+    created_at: (0, zod_1.string)(),
+    updated_at: (0, zod_1.string)(),
+    label: (0, zod_1.string)(),
+    price: (0, zod_1.number)(),
+    time: (0, zod_1.string)(),
+    frontend_icon_name: (0, zod_1.string)().nullable(),
+    is_enabled: (0, zod_1.boolean)().nullable()
+});
+
+
+/***/ }),
+
+/***/ 57254:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const zod_1 = __webpack_require__(78754);
+const timestapDate = (0, zod_1.object)({
+    seconds: (0, zod_1.number)(),
+    nanoseconds: (0, zod_1.number)()
+});
+exports["default"] = timestapDate;
+
+
+/***/ }),
+
+/***/ 6069:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Form = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_CALLBACKS');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(components_1.ModalContent, null,
+            react_1.default.createElement(formik_1.Field, { name: "done" }, (props) => (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(components_1.Text, { marginBottom: "s-size", type: "body-2" }, t('EDIT_MODAL.FORM.DONE.label')),
+                react_1.default.createElement(components_1.Switch, { checked: props.field.value, onChange: () => props.form.setFieldValue('done', !props.field.value) })))))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 57696:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const index_1 = __webpack_require__(92629);
+const react_1 = __importStar(__webpack_require__(67294));
+const Form_1 = __importDefault(__webpack_require__(6069));
+const useForm_1 = __importDefault(__webpack_require__(57648));
+const EditModal = ({ id, done }) => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_CALLBACKS');
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const [isModalOpen, setIsModalOpen] = (0, react_1.useState)(false);
+    const { view, initialValues, onSubmit, schema, setView } = (0, useForm_1.default)(id, done);
+    const onClose = () => {
+        setIsModalOpen(false);
+        setView({ view: 'FORM' });
+        index_1.queryClient.invalidateQueries(['callbacks']);
+    };
+    let content;
+    if (view.view === 'FORM') {
+        content = (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmit, validateOnChange: true, validationSchema: schema }, ({ handleSubmit, submitForm }) => (react_1.default.createElement(react_1.default.Fragment, null,
+            react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit, style: { height: '100%', width: '100%' } },
+                react_1.default.createElement(Form_1.default, null)),
+            react_1.default.createElement(components_1.ModalFooter, { primaryButton: {
+                    onClick: () => submitForm(),
+                    label: commonT('MODAL.FOOTER.primaryLabel')
+                }, secondaryButton: {
+                    onClick: () => onClose(),
+                    label: commonT('MODAL.FOOTER.secondaryLabel')
+                } })))));
+    }
+    if (view.view === 'SUCCESS') {
+        content = react_1.default.createElement(components_1.ModalResult, { variant: view.view });
+    }
+    if (view.view === 'ERROR') {
+        content = (react_1.default.createElement(components_1.ModalResult, { onClick: () => setView({ view: 'FORM' }), variant: view.view }));
+    }
+    return (react_1.default.createElement(components_1.Modal, { isOpen: isModalOpen, label: t('EDIT_MODAL.buttonLabel'), setIsOpen: setIsModalOpen },
+        react_1.default.createElement(components_1.ModalHeader, { onClick: () => onClose() }, t('EDIT_MODAL.title')),
+        content));
+};
+exports["default"] = EditModal;
+
+
+/***/ }),
+
+/***/ 57648:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const LoaderProvider_1 = __webpack_require__(8329);
+const react_1 = __webpack_require__(67294);
+const yup_1 = __webpack_require__(87561);
+const useForm = (id, done) => {
+    const [view, setView] = (0, react_1.useState)({ view: 'FORM' });
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const initialValues = {
+        id,
+        done
+    };
+    const schema = (0, yup_1.object)({
+        id: (0, yup_1.string)(),
+        done: (0, yup_1.boolean)()
+    });
+    const mutateUpdateCallback = (0, api_1.useUpdateCallback)();
+    const onSubmit = async (values) => {
+        try {
+            show();
+            await mutateUpdateCallback({
+                id: values.id,
+                done: values.done
+            });
+            setView({
+                view: 'SUCCESS'
+            });
+        }
+        catch (_e) {
+            console.log('error');
+        }
+        finally {
+            hide();
+        }
+    };
+    return {
+        initialValues,
+        schema,
+        onSubmit,
+        view,
+        setView
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 27709:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const api_1 = __webpack_require__(70395);
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const styled_components_1 = __webpack_require__(91288);
+const utils_1 = __webpack_require__(65928);
+const EditModal_1 = __importDefault(__webpack_require__(57696));
+const List = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_CALLBACKS');
+    const { colors } = (0, styled_components_1.useTheme)();
+    const callbacksQuery = (0, api_1.useGetCallbacks)();
+    const columns = (0, react_1.useMemo)(() => [
+        {
+            Header: t('LIST.HEADERS.created_at'),
+            accessor: 'created_at'
+        },
+        {
+            Header: t('LIST.HEADERS.updated_at'),
+            accessor: 'updated_at'
+        },
+        {
+            Header: t('LIST.HEADERS.phone_number'),
+            accessor: 'phone_number'
+        },
+        {
+            Header: t('LIST.HEADERS.done'),
+            accessor: 'done'
+        },
+        {
+            Header: t('LIST.HEADERS.edit'),
+            accessor: 'edit'
+        }
+    ], []);
+    return (react_1.default.createElement(components_1.Tile, null,
+        react_1.default.createElement(components_1.QueryLoader, { query: callbacksQuery }, (callbacks) => {
+            const shappedData = shapeData(callbacks, colors);
+            return react_1.default.createElement(components_1.Table, { columns: columns, data: shappedData });
+        })));
+};
+const shapeData = (callbacks, colors) => callbacks.map((callback) => {
+    const icon = callback.done ? 'check-circle' : 'times-circle';
+    const iconColor = colors[callback.done ? 'green' : 'red'];
+    return {
+        created_at: (0, utils_1.displayDate)(callback.created_at),
+        updated_at: (0, utils_1.displayDate)(callback.updated_at),
+        phone_number: callback.phone_number,
+        done: (react_1.default.createElement(components_1.Flexbox, { justifyContent: "center" },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: iconColor, icon: icon }))),
+        edit: react_1.default.createElement(EditModal_1.default, { done: callback.done ?? false, id: callback.id })
+    };
+});
+exports["default"] = List;
+
+
+/***/ }),
+
+/***/ 18978:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const List_1 = __importDefault(__webpack_require__(27709));
+const AdminCallbacks = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_CALLBACKS');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useDocumentTitle)(t('title'));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, marginBottom: "xxl-size", small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(List_1.default, null)));
+};
+exports["default"] = AdminCallbacks;
+
+
+/***/ }),
+
+/***/ 90495:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const formik_1 = __webpack_require__(94649);
+const Form = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_DELIVERY_TYPES');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(components_1.ModalContent, null,
+            react_1.default.createElement(formik_1.Field, { name: "is_enabled" }, (props) => (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(components_1.Text, { marginBottom: "s-size", type: "body-2" }, t('EDIT_MODAL.FORM.IS_ENABLED.label')),
+                react_1.default.createElement(components_1.Switch, { checked: props.field.value, onChange: () => props.form.setFieldValue('is_enabled', !props.field.value) })))))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 89343:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const index_1 = __webpack_require__(92629);
+const react_1 = __importStar(__webpack_require__(67294));
+const Form_1 = __importDefault(__webpack_require__(90495));
+const useForm_1 = __importDefault(__webpack_require__(69449));
+const EditModal = ({ id, is_enabled }) => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_DELIVERY_TYPES');
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const [isModalOpen, setIsModalOpen] = (0, react_1.useState)(false);
+    const { view, initialValues, onSubmit, schema, setView } = (0, useForm_1.default)(id, is_enabled);
+    const onClose = () => {
+        setIsModalOpen(false);
+        setView({ view: 'FORM' });
+        index_1.queryClient.invalidateQueries(['deliveryTypes']);
+    };
+    let content;
+    if (view.view === 'FORM') {
+        content = (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmit, validateOnChange: true, validationSchema: schema }, ({ handleSubmit, submitForm }) => (react_1.default.createElement(react_1.default.Fragment, null,
+            react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit, style: { height: '100%', width: '100%' } },
+                react_1.default.createElement(Form_1.default, null)),
+            react_1.default.createElement(components_1.ModalFooter, { primaryButton: {
+                    onClick: () => submitForm(),
+                    label: commonT('MODAL.FOOTER.primaryLabel')
+                }, secondaryButton: {
+                    onClick: () => onClose(),
+                    label: commonT('MODAL.FOOTER.secondaryLabel')
+                } })))));
+    }
+    if (view.view === 'SUCCESS') {
+        content = react_1.default.createElement(components_1.ModalResult, { variant: view.view });
+    }
+    if (view.view === 'ERROR') {
+        content = react_1.default.createElement(components_1.ModalResult, { onClick: () => onClose(), variant: view.view });
+    }
+    return (react_1.default.createElement(components_1.Modal, { isOpen: isModalOpen, label: t('EDIT_MODAL.buttonLabel'), setIsOpen: setIsModalOpen },
+        react_1.default.createElement(components_1.ModalHeader, { onClick: () => onClose() }, t('EDIT_MODAL.title')),
+        content));
+};
+exports["default"] = EditModal;
+
+
+/***/ }),
+
+/***/ 69449:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const LoaderProvider_1 = __webpack_require__(8329);
+const react_1 = __webpack_require__(67294);
+const yup_1 = __webpack_require__(87561);
+const useForm = (id, is_enabled) => {
+    const [view, setView] = (0, react_1.useState)({ view: 'FORM' });
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const initialValues = {
+        id,
+        is_enabled
+    };
+    console.log(initialValues);
+    const schema = (0, yup_1.object)({
+        id: (0, yup_1.string)(),
+        is_enabled: (0, yup_1.boolean)()
+    });
+    const mutateUpdateDeliveryType = (0, api_1.useUpdateDeliveryType)();
+    const onSubmit = async (values) => {
+        try {
+            show();
+            await mutateUpdateDeliveryType({
+                id: values.id,
+                isEnabled: values.is_enabled
+            });
+            setView({
+                view: 'SUCCESS'
+            });
+        }
+        catch (_e) {
+            console.log('error');
+        }
+        finally {
+            hide();
+        }
+    };
+    return {
+        initialValues,
+        schema,
+        onSubmit,
+        view,
+        setView
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 50790:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const api_1 = __webpack_require__(70395);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const utils_1 = __webpack_require__(65928);
+const EditModal_1 = __importDefault(__webpack_require__(89343));
+const List = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_DELIVERY_TYPES');
+    const callbacksQuery = (0, api_1.useGetDeliveryTypes)();
+    const columns = (0, react_1.useMemo)(() => [
+        {
+            Header: t('LIST.HEADERS.label'),
+            accessor: 'label'
+        },
+        {
+            Header: t('LIST.HEADERS.created_at'),
+            accessor: 'created_at'
+        },
+        {
+            Header: t('LIST.HEADERS.updated_at'),
+            accessor: 'updated_at'
+        },
+        {
+            Header: t('LIST.HEADERS.price'),
+            accessor: 'price'
+        },
+        {
+            Header: t('LIST.HEADERS.time'),
+            accessor: 'time'
+        },
+        {
+            Header: t('LIST.HEADERS.frontend_icon_name'),
+            accessor: 'frontend_icon_name'
+        },
+        {
+            Header: t('LIST.HEADERS.requires_address'),
+            accessor: 'requires_address'
+        },
+        {
+            Header: t('LIST.HEADERS.is_enabled'),
+            accessor: 'is_enabled'
+        },
+        {
+            Header: t('LIST.HEADERS.edit'),
+            accessor: 'edit'
+        }
+    ], []);
+    return (react_1.default.createElement(components_1.Tile, null,
+        react_1.default.createElement(components_1.QueryLoader, { query: callbacksQuery }, (data) => {
+            const shappedData = shapeData(data);
+            return react_1.default.createElement(components_1.Table, { columns: columns, data: shappedData });
+        })));
+};
+const shapeData = (data) => data.map((record) => {
+    const possitiveProps = {
+        color: 'green',
+        icon: 'check-circle'
+    };
+    const negativeProps = {
+        color: 'red',
+        icon: 'times-circle'
+    };
+    console.log(record);
+    return {
+        created_at: (0, utils_1.displayDate)(record.created_at),
+        updated_at: (0, utils_1.displayDate)(record.updated_at),
+        label: record.label,
+        price: (0, utils_1.displayMoney)(record.price),
+        time: record.time,
+        requires_address: (react_1.default.createElement(components_1.Flexbox, { justifyContent: "center" },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { ...(record.requires_address ? possitiveProps : negativeProps) }))),
+        is_enabled: (react_1.default.createElement(components_1.Flexbox, { justifyContent: "center" },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { ...(record.is_enabled ? possitiveProps : negativeProps) }))),
+        frontend_icon_name: record.frontend_icon_name ?? '-',
+        edit: react_1.default.createElement(EditModal_1.default, { id: record.id, is_enabled: record.is_enabled || false })
+    };
+});
+exports["default"] = List;
+
+
+/***/ }),
+
+/***/ 87666:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const List_1 = __importDefault(__webpack_require__(50790));
+const AdminDeliveryTypes = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_DELIVERY_TYPES');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useDocumentTitle)(t('title'));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, marginBottom: "xxl-size", small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(List_1.default, null)));
+};
+exports["default"] = AdminDeliveryTypes;
+
+
+/***/ }),
+
+/***/ 60435:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Form = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_NEWSLETTER_USERS');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(components_1.ModalContent, null,
+            react_1.default.createElement(formik_1.Field, { name: "consent" }, (props) => (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(components_1.Text, { marginBottom: "s-size", type: "body-2" }, t('EDIT_MODAL.FORM.CONSENT.label')),
+                react_1.default.createElement(components_1.Switch, { checked: props.field.value, onChange: () => props.form.setFieldValue('consent', !props.field.value) })))))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 69571:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const index_1 = __webpack_require__(92629);
+const react_1 = __importStar(__webpack_require__(67294));
+const Form_1 = __importDefault(__webpack_require__(60435));
+const useForm_1 = __importDefault(__webpack_require__(48975));
+const EditModal = ({ id, consent }) => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_NEWSLETTER_USERS');
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const [isModalOpen, setIsModalOpen] = (0, react_1.useState)(false);
+    const { view, initialValues, onSubmit, schema, setView } = (0, useForm_1.default)(id, consent);
+    const onClose = () => {
+        setIsModalOpen(false);
+        setView({ view: 'FORM' });
+        index_1.queryClient.invalidateQueries(['newsletterUsers']);
+    };
+    let content;
+    if (view.view === 'FORM') {
+        content = (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmit, validateOnChange: true, validationSchema: schema }, ({ handleSubmit, submitForm }) => (react_1.default.createElement(react_1.default.Fragment, null,
+            react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit, style: { height: '100%', width: '100%' } },
+                react_1.default.createElement(Form_1.default, null)),
+            react_1.default.createElement(components_1.ModalFooter, { primaryButton: {
+                    onClick: () => submitForm(),
+                    label: commonT('MODAL.FOOTER.primaryLabel')
+                }, secondaryButton: {
+                    onClick: () => onClose(),
+                    label: commonT('MODAL.FOOTER.secondaryLabel')
+                } })))));
+    }
+    if (view.view === 'SUCCESS') {
+        content = react_1.default.createElement(components_1.ModalResult, { variant: view.view });
+    }
+    if (view.view === 'ERROR') {
+        content = react_1.default.createElement(components_1.ModalResult, { onClick: () => onClose(), variant: view.view });
+    }
+    return (react_1.default.createElement(components_1.Modal, { isOpen: isModalOpen, label: t('EDIT_MODAL.buttonLabel'), setIsOpen: setIsModalOpen },
+        react_1.default.createElement(components_1.ModalHeader, { onClick: () => onClose() }, t('EDIT_MODAL.title')),
+        content));
+};
+exports["default"] = EditModal;
+
+
+/***/ }),
+
+/***/ 48975:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const LoaderProvider_1 = __webpack_require__(8329);
+const react_1 = __webpack_require__(67294);
+const yup_1 = __webpack_require__(87561);
+const useForm = (id, consent) => {
+    const [view, setView] = (0, react_1.useState)({ view: 'FORM' });
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const initialValues = {
+        id,
+        consent
+    };
+    const schema = (0, yup_1.object)({
+        id: (0, yup_1.string)(),
+        consent: (0, yup_1.boolean)()
+    });
+    const mutateUpdateConsent = (0, api_1.useUpdateConsent)();
+    const onSubmit = async (values) => {
+        try {
+            show();
+            await mutateUpdateConsent({
+                id: values.id,
+                consent: values.consent
+            });
+            setView({
+                view: 'SUCCESS'
+            });
+        }
+        catch (_e) {
+            console.log('error');
+        }
+        finally {
+            hide();
+        }
+    };
+    return {
+        initialValues,
+        schema,
+        onSubmit,
+        view,
+        setView
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 81087:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const api_1 = __webpack_require__(70395);
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const styled_components_1 = __webpack_require__(91288);
+const utils_1 = __webpack_require__(65928);
+const EditModal_1 = __importDefault(__webpack_require__(69571));
+const List = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_NEWSLETTER_USERS');
+    const { colors } = (0, styled_components_1.useTheme)();
+    const adminNewsletterUsersQuery = (0, api_1.useGetNewsletterUsers)();
+    const columns = (0, react_1.useMemo)(() => [
+        {
+            Header: t('LIST.HEADERS.email'),
+            accessor: 'email'
+        },
+        {
+            Header: t('LIST.HEADERS.created_at'),
+            accessor: 'created_at'
+        },
+        {
+            Header: t('LIST.HEADERS.updated_at'),
+            accessor: 'updated_at'
+        },
+        {
+            Header: t('LIST.HEADERS.consent'),
+            accessor: 'consent'
+        },
+        {
+            Header: t('LIST.HEADERS.edit'),
+            accessor: 'edit'
+        }
+    ], []);
+    return (react_1.default.createElement(components_1.Tile, null,
+        react_1.default.createElement(components_1.Heading, { level: 4, marginBottom: "s-size" }, t('LIST.title')),
+        react_1.default.createElement(components_1.QueryLoader, { query: adminNewsletterUsersQuery }, (users) => {
+            const shappedData = shapeData(users, colors);
+            return react_1.default.createElement(components_1.Table, { columns: columns, data: shappedData });
+        })));
+};
+const shapeData = (users, colors) => users.map((user) => {
+    const icon = user.consent ? 'check-circle' : 'times-circle';
+    const iconColor = colors[user.consent ? 'green' : 'red'];
+    return {
+        email: user.email,
+        created_at: (0, utils_1.displayDate)(user.created_at),
+        updated_at: (0, utils_1.displayDate)(user.updated_at),
+        consent: (react_1.default.createElement(components_1.Flexbox, { justifyContent: "center" },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: iconColor, icon: icon }))),
+        edit: react_1.default.createElement(EditModal_1.default, { consent: user.consent, id: user.id })
+    };
+});
+exports["default"] = List;
+
+
+/***/ }),
+
+/***/ 49816:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const List_1 = __importDefault(__webpack_require__(81087));
+const AdminNewsletterUsers = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_NEWSLETTER_USERS');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useDocumentTitle)(t('title'));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, marginBottom: "xxl-size", small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(List_1.default, null)));
+};
+exports["default"] = AdminNewsletterUsers;
+
+
+/***/ }),
+
+/***/ 55458:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const utils_1 = __webpack_require__(65928);
+const lodash_uniq_1 = __importDefault(__webpack_require__(97644));
+const date_fns_1 = __webpack_require__(90458);
+const api_1 = __webpack_require__(70395);
+const models_1 = __webpack_require__(57554);
+const Row = ({ order, columns }) => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const [currentStatus, setCurrentStatus] = (0, react_1.useState)({
+        value: order.status,
+        label: commonT(`ORDER_STATUSES.${order.status}`)
+    });
+    const orderInfo = useOrderInfo(order);
+    (0, api_1.useUpdateOrderStatus)(order, currentStatus);
+    return (react_1.default.createElement(components_1.Box, { as: "tr", height: "6rem" },
+        columns.map((column) => (react_1.default.createElement(components_1.Box, { as: "td", key: column, padding: "0 1rem" }, orderInfo[column]))),
+        react_1.default.createElement(components_1.Box, { as: "td", minWidth: "15rem", padding: "0 1rem" },
+            react_1.default.createElement(components_1.Select, { onChange: (option) => {
+                    if (option) {
+                        setCurrentStatus(option);
+                    }
+                }, options: getStatusesWithLabels(commonT), value: currentStatus }))));
+};
+const useOrderInfo = (order) => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_ORDERS');
+    const moldsQuery = (0, api_1.useGetMolds)();
+    const moldsData = moldsQuery.data;
+    return {
+        id: order.id,
+        updatedAt: (0, utils_1.displayDate)(order.updated_at),
+        createdAt: (0, utils_1.displayDate)(order.created_at),
+        isCompany: t(`IS_COMPANY.${order.isCompany.is_company ? 'yes' : 'no'}`),
+        customerName: order.customerName.full_name,
+        customerEmail: order.customerEmail.email,
+        customerPhone: order.customerPhone.phone,
+        orderTime: (0, date_fns_1.differenceInDays)((0, date_fns_1.parseISO)(order.created_at), (0, date_fns_1.parseISO)(order.updated_at)),
+        sum: (0, utils_1.displayMoney)(order.total),
+        deliveryType: order.deliveryType.label,
+        deliveryId: 'XXX XXX XXX XXX XXX',
+        boxesCount: order.products
+            ?.map((product) => product.quantity)
+            .reduce((prev, curr) => prev + curr, 0) || 0,
+        molds: (0, lodash_uniq_1.default)(order.products?.map((product) => ({
+            productId: product.id
+        }))).map((mold) => {
+            const displayName = mold.productId;
+            let status = null;
+            if (moldsData) {
+                // const alfa = moldsData.find(
+                //   (dbMold) => dbMold.productId === mold.productId
+                // )
+                status = null;
+            }
+            let color = 'red';
+            if (status === 'DONE') {
+                color = 'green';
+            }
+            if (status === 'IN_PROGRESS') {
+                color = 'yellow';
+            }
+            return (react_1.default.createElement(components_1.Box, { color: color, key: displayName }, displayName));
+        })
+        // orderTime: differenceInDays(
+        //   getDateFromTimestamp(order.modifiedAt),
+        //   getDateFromTimestamp(order.createdAt)
+        // ),
+    };
+};
+const getStatusesWithLabels = (t) => models_1.ORDER_STATUSES.map((status) => ({
+    value: status,
+    label: t(`ORDER_STATUSES.${status}`)
+}));
+exports["default"] = Row;
+
+
+/***/ }),
+
+/***/ 66931:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const Row_1 = __importDefault(__webpack_require__(55458));
+const Table = ({ status, columns }) => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_ORDERS');
+    const ordersQuery = (0, api_1.useGetOrders)(status);
+    return (react_1.default.createElement(components_1.QueryLoader, { query: ordersQuery }, (orders) => (react_1.default.createElement(components_1.Box, { as: "table", border: "1px solid", borderColor: "border-color", width: "100%" },
+        orders.length > 0 && (react_1.default.createElement("thead", null,
+            react_1.default.createElement("tr", null,
+                columns.map((column) => (react_1.default.createElement(components_1.Box, { as: "th", backgroundColor: "background-color-01", key: column },
+                    react_1.default.createElement("h5", null, t(`headers.${column}`))))),
+                react_1.default.createElement(components_1.Box, { as: "th", backgroundColor: "background-color-01" },
+                    react_1.default.createElement("h5", null, t('headers.status')))))),
+        react_1.default.createElement("tbody", null,
+            orders.map((order) => (react_1.default.createElement(Row_1.default, { columns: columns, key: order.id, order: order }))),
+            !orders.length && (react_1.default.createElement("tr", null,
+                react_1.default.createElement("td", null, t('emptyState')))))))));
+};
+exports["default"] = Table;
+
+
+/***/ }),
+
+/***/ 43855:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const Table_1 = __importDefault(__webpack_require__(66931));
+const react_tabs_1 = __webpack_require__(50196);
+__webpack_require__(42676);
+const models_1 = __webpack_require__(57554);
+const AdminOrders = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_ORDERS');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useDocumentTitle)(t('title'));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, marginBottom: "xxl-size", small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(react_tabs_1.Tabs, null,
+            react_1.default.createElement(react_tabs_1.TabList, null, models_1.ORDER_STATUSES.map((status) => (react_1.default.createElement(react_tabs_1.Tab, { key: status },
+                react_1.default.createElement(components_1.Text, { type: "button" }, commonT(`ORDER_STATUSES.${status}`)))))),
+            models_1.ORDER_STATUSES.map((status) => (react_1.default.createElement(react_tabs_1.TabPanel, { key: status },
+                react_1.default.createElement(components_1.Tile, null,
+                    react_1.default.createElement(components_1.Heading, { level: 6, marginY: "l-size" }, t(`STATUSES_INFO.${status}`)),
+                    react_1.default.createElement(components_1.Box, { minHeight: "50rem", overflowX: "scroll", overflowY: "auto", width: "100%" },
+                        react_1.default.createElement(Table_1.default, { columns: statusToColumns[status], status: status })))))))));
+};
+const statusToColumns = {
+    OPEN: [
+        'id',
+        'createdAt',
+        'customerName',
+        'customerPhone',
+        'customerEmail',
+        'sum'
+    ],
+    CONFIRMED: ['id', 'updatedAt', 'sum'],
+    PAYMENT_RECEIVED: [
+        'id',
+        'updatedAt',
+        'boxesCount'
+        //  'molds'
+    ],
+    IN_PREPARATION: ['id', 'updatedAt', 'isCompany', 'deliveryType', 'sum'],
+    AWAITING_FOR_PICKUP: ['id', 'updatedAt', 'deliveryType', 'deliveryId'],
+    IN_DELIVERY: ['id', 'updatedAt', 'deliveryType', 'deliveryId'],
+    COMPLETED: ['id', 'createdAt', 'updatedAt', 'orderTime', 'sum']
+};
+exports["default"] = AdminOrders;
+
+
+/***/ }),
+
+/***/ 21824:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const api_1 = __webpack_require__(70395);
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const utils_1 = __webpack_require__(65928);
+const AdminPaymentTypes = () => {
+    const { t } = (0, hooks_1.useTranslation)('ADMIN_PAYMENT_TYPES');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useDocumentTitle)(t('title'));
+    const callbacksQuery = (0, api_1.useGetPaymentTypes)();
+    const columns = (0, react_1.useMemo)(() => [
+        {
+            Header: t('HEADERS.label'),
+            accessor: 'label'
+        },
+        {
+            Header: t('HEADERS.created_at'),
+            accessor: 'created_at'
+        },
+        {
+            Header: t('HEADERS.updated_at'),
+            accessor: 'updated_at'
+        },
+        {
+            Header: t('HEADERS.price'),
+            accessor: 'price'
+        },
+        {
+            Header: t('HEADERS.time'),
+            accessor: 'time'
+        },
+        {
+            Header: t('HEADERS.is_enabled'),
+            accessor: 'is_enabled'
+        }
+    ], []);
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, marginBottom: "xxl-size", small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(components_1.Tile, null,
+            react_1.default.createElement(components_1.QueryLoader, { query: callbacksQuery }, (data) => {
+                const shappedData = shapeData(data);
+                return react_1.default.createElement(components_1.Table, { columns: columns, data: shappedData });
+            }))));
+};
+const shapeData = (data) => data.map((record) => {
+    const possitiveProps = {
+        color: 'green',
+        icon: 'check-circle'
+    };
+    const negativeProps = {
+        color: 'red',
+        icon: 'times-circle'
+    };
+    return {
+        created_at: (0, utils_1.displayDate)(record.created_at),
+        updated_at: (0, utils_1.displayDate)(record.updated_at),
+        label: record.label,
+        price: (0, utils_1.displayMoney)(record.price),
+        time: record.time,
+        is_enabled: (react_1.default.createElement(components_1.Flexbox, { justifyContent: "center" },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { ...(record.is_enabled ? possitiveProps : negativeProps) }))),
+        frontend_icon_name: record.frontend_icon_name ?? '-'
+    };
+});
+exports["default"] = AdminPaymentTypes;
+
+
+/***/ }),
+
+/***/ 28712:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.history = void 0;
+const history_1 = __webpack_require__(90071);
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const routes_1 = __webpack_require__(36722);
+const commonComponents_1 = __webpack_require__(39186);
+const pages_1 = __webpack_require__(69905);
+const Documents_1 = __importDefault(__webpack_require__(97573));
+const components_1 = __webpack_require__(82740);
+const AdminPaymentTypes_1 = __importDefault(__webpack_require__(21824));
+exports.history = (0, history_1.createBrowserHistory)();
+const AppRouter = () => (react_1.default.createElement(react_router_dom_1.Router, { history: exports.history },
+    react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(commonComponents_1.Navigation, null),
+        react_1.default.createElement(commonComponents_1.Basket, null),
+        react_1.default.createElement(react_router_dom_1.Switch, null,
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.Products, exact: true, path: routes_1.PRODUCTS }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.ViewProduct, path: routes_1.VIEW_PRODUCT }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.CheckoutProducts, path: routes_1.CHECKOUT_PRODUCTS }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.CheckoutDetails, path: routes_1.CHECKOUT_DETAILS }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.CheckoutDelivery, path: routes_1.CHECKOUT_DELIVERY }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.CheckoutShipping, path: routes_1.CHECKOUT_SHIPPING }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.CheckoutPayment, path: routes_1.CHECKOUT_PAYMENT }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.CheckoutResult, path: routes_1.CHECKOUT_RESULT }),
+            react_1.default.createElement(components_1.AdminRoute, { component: pages_1.AdminOrders, path: routes_1.ADMIN_ORDERS }),
+            react_1.default.createElement(components_1.AdminRoute, { component: pages_1.AdminNewsletterUsers, path: routes_1.ADMIN_NEWSLETTER_USERS }),
+            react_1.default.createElement(components_1.AdminRoute, { component: pages_1.AdminCallbacks, path: routes_1.ADMIN_CALLBACKS }),
+            react_1.default.createElement(components_1.AdminRoute, { component: pages_1.AdminDeliveryTypes, path: routes_1.ADMIN_DELIVERY_TYPES }),
+            react_1.default.createElement(components_1.AdminRoute, { component: AdminPaymentTypes_1.default, path: routes_1.ADMIN_PAYMENT_TYPES }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.Contact, path: routes_1.CONTACT }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.DeliveryAndPayments, path: routes_1.DELIVERY_AND_PAYMENTS }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.HowToCreateOrder, path: routes_1.HOW_TO_CREATE_ORDER }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: Documents_1.default, path: routes_1.DOCUMENTS }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.Home, exact: true, path: routes_1.HOME }),
+            react_1.default.createElement(react_router_dom_1.Route, { component: pages_1.PageNotFound, path: "*" })),
+        react_1.default.createElement(commonComponents_1.Footer, null))));
+exports["default"] = AppRouter;
+
+
+/***/ }),
+
+/***/ 76366:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(67294));
+const AppRouter_1 = __importDefault(__webpack_require__(28712));
+const auth_1 = __webpack_require__(9362);
+const AuthProvider_1 = __webpack_require__(59705);
+const commonComponents_1 = __webpack_require__(39186);
+const App = () => {
+    const { auth, setAuth } = (0, react_1.useContext)(AuthProvider_1.authContext);
+    (0, react_1.useEffect)(() => {
+        (0, auth_1.getAuth)().onAuthStateChanged(async (user) => {
+            if (user) {
+                // setAuth(user)
+            }
+            else {
+                setAuth(null);
+            }
+        });
+    }, []);
+    if (auth === undefined) {
+        return react_1.default.createElement(commonComponents_1.Preloader, null);
+    }
+    return react_1.default.createElement(AppRouter_1.default, null);
+};
+exports["default"] = App;
+
+
+/***/ }),
+
+/***/ 29132:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const _1 = __webpack_require__(76458);
+const Error = ({ message, setView }) => {
+    const { t } = (0, hooks_1.useTranslation)('CONTACT');
+    return (react_1.default.createElement(_1.ViewWrapper, { flexDirection: "column" },
+        react_1.default.createElement(components_1.Text, { type: "body-2" }, message),
+        react_1.default.createElement(components_1.Button, { marginTop: "m-size", onClick: () => setView({ view: 'FORM' }), size: "small" }, t('items.CHECK_STATUS.error.tryNew'))));
+};
+exports["default"] = Error;
+
+
+/***/ }),
+
+/***/ 22622:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const common_1 = __webpack_require__(34090);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const utils_1 = __webpack_require__(65928);
+const _1 = __webpack_require__(76458);
+const Form = () => {
+    const { t } = (0, hooks_1.useTranslation)('CONTACT');
+    return (react_1.default.createElement(_1.ViewWrapper, { alignItems: "flex-end" },
+        react_1.default.createElement(common_1.FieldWrapper, null,
+            react_1.default.createElement(formik_1.Field, { name: "id" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('items.CHECK_STATUS.form.id.label'), true), maxLength: 36, placeholder: t('items.CHECK_STATUS.form.id.placeholder') })))),
+        react_1.default.createElement(components_1.Button, { marginLeft: "m-size", size: "small", type: "submit" }, t('items.CHECK_STATUS.form.submit.label'))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 19772:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const _1 = __webpack_require__(76458);
+const Result = ({ status, setView }) => {
+    const { t } = (0, hooks_1.useTranslation)('CONTACT');
+    const { t: commonT } = (0, hooks_1.useTranslation)('COMMON');
+    return (react_1.default.createElement(_1.ViewWrapper, { flexDirection: "column" },
+        react_1.default.createElement(components_1.Text, { type: "body-2" },
+            t('items.CHECK_STATUS.result.info'),
+            ' ',
+            react_1.default.createElement("strong", null, commonT(`ORDER_STATUSES.${status}`))),
+        react_1.default.createElement(components_1.Text, { type: "caption" }, t(`items.CHECK_STATUS.result.statusesMeanings.${status}`)),
+        react_1.default.createElement(components_1.Button, { marginTop: "m-size", onClick: () => setView({ view: 'FORM' }), size: "small" }, t('items.CHECK_STATUS.result.tryNew'))));
+};
+exports["default"] = Result;
+
+
+/***/ }),
+
+/***/ 76458:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ViewWrapper = void 0;
+const formik_1 = __webpack_require__(94649);
+const react_1 = __importDefault(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const Form_1 = __importDefault(__webpack_require__(22622));
+const Result_1 = __importDefault(__webpack_require__(19772));
+const Error_1 = __importDefault(__webpack_require__(29132));
+const useForm_1 = __importDefault(__webpack_require__(19379));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const CheckStatus = () => {
+    const { view, setView, schema, initialValues, onSubmit } = (0, useForm_1.default)();
+    let content;
+    if (view.view === 'RESULT') {
+        content = react_1.default.createElement(Result_1.default, { setView: setView, status: view.status });
+    }
+    else if (view.view === 'ERROR') {
+        content = react_1.default.createElement(Error_1.default, { message: view.message, setView: setView });
+    }
+    else {
+        content = (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmit, validateOnChange: true, validationSchema: schema }, ({ handleSubmit }) => (react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit, style: { width: '100%' } },
+            react_1.default.createElement(Form_1.default, null)))));
+    }
+    return (react_1.default.createElement(components_1.Flexbox, { justifyContent: "space-between" },
+        content,
+        react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "center", marginLeft: "xxxl-size" })));
+};
+exports.ViewWrapper = (0, styled_components_1.default)(components_1.Flexbox).attrs(() => ({
+    width: '100%'
+})) ``;
+exports["default"] = CheckStatus;
+
+
+/***/ }),
+
+/***/ 19379:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const LoaderProvider_1 = __webpack_require__(8329);
+const react_1 = __webpack_require__(67294);
+const hooks_1 = __webpack_require__(5554);
+const yup_1 = __webpack_require__(87561);
+const useForm = () => {
+    const { t } = (0, hooks_1.useTranslation)('CONTACT');
+    const [view, setView] = (0, react_1.useState)({ view: 'FORM' });
+    const getOrderStatus = (0, api_1.useGetOrderStatus)();
+    const initialValues = {
+        id: ''
+    };
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const schema = (0, yup_1.object)({
+        id: (0, yup_1.string)()
+            .required(t('items.CHECK_STATUS.form.id.validation.required'))
+            .length(36, t('items.CHECK_STATUS.form.id.validation.length'))
+    });
+    const onSubmit = async (formValues) => {
+        try {
+            show();
+            const order = await getOrderStatus(formValues);
+            setView({
+                view: 'RESULT',
+                status: order.status
+            });
+        }
+        catch (e) {
+            setView({
+                view: 'ERROR',
+                message: t('items.CHECK_STATUS.error.info')
+            });
+        }
+        hide();
+    };
+    return {
+        initialValues,
+        schema,
+        onSubmit,
+        view,
+        setView
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 3753:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Tile = ({ extended, content, icon, title }) => (react_1.default.createElement(components_1.Tile, { flexDirection: "column", gridColumn: extended ? 'auto / span 2' : 'auto' },
+    react_1.default.createElement(components_1.Flexbox, { alignItems: "center", marginBottom: "m-size" },
+        icon && react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: icon, size: "2x" }),
+        react_1.default.createElement(components_1.Heading, { level: 6, marginLeft: icon && 'm-size' }, title)),
+    content));
+exports["default"] = Tile;
+
+
+/***/ }),
+
+/***/ 55518:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const commonComponents_1 = __webpack_require__(39186);
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const Tile_1 = __importDefault(__webpack_require__(3753));
+const useContactMethod_1 = __importDefault(__webpack_require__(9518));
+const Contact = () => {
+    const { t } = (0, hooks_2.useTranslation)('CONTACT');
+    const contactMethods = (0, useContactMethod_1.default)();
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(components_1.Grid, { gridTemplateColumns: "repeat(3, 1fr)", marginTop: "xxl-size" }, contactMethods.map(({ key, ...props }) => (react_1.default.createElement(Tile_1.default, { key: key, title: t(`items.${key}.title`), ...props })))),
+        react_1.default.createElement(commonComponents_1.CallMeBack, { marginTop: "xxl-size" }),
+        react_1.default.createElement(commonComponents_1.ReadTermsAndConditions, null)));
+};
+exports["default"] = Contact;
+
+
+/***/ }),
+
+/***/ 9518:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const CheckStatus_1 = __importDefault(__webpack_require__(76458));
+const react_1 = __importDefault(__webpack_require__(67294));
+const useContactMethods = () => {
+    const { t } = (0, hooks_1.useTranslation)('CONTACT');
+    return [
+        {
+            icon: 'question',
+            key: 'CHECK_STATUS',
+            extended: true,
+            content: react_1.default.createElement(CheckStatus_1.default, null)
+        },
+        {
+            icon: 'envelope-open-text',
+            key: 'EMAIL',
+            content: (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(components_1.Text, { type: "body-2" }, t('items.EMAIL.info')),
+                react_1.default.createElement(components_1.Text, { marginTop: "s-size", type: "subtitle-2" }, t('items.EMAIL.email'))))
+        },
+        {
+            icon: 'phone-alt',
+            key: 'PHONE',
+            content: (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(components_1.Text, { type: "body-2" }, t('items.PHONE.info')),
+                react_1.default.createElement(components_1.Text, { marginTop: "s-size", type: "subtitle-2" }, t('items.PHONE.mobile'))))
+        },
+        {
+            icon: 'map-marked-alt',
+            key: 'ADDRESS',
+            content: (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(components_1.Text, { type: "body-2" }, t('items.ADDRESS.info')),
+                react_1.default.createElement(components_1.Text, { lineHeight: "1.21", marginTop: "s-size", type: "subtitle-2" }, t('items.ADDRESS.address1')),
+                react_1.default.createElement(components_1.Text, { lineHeight: "1.21", type: "subtitle-2" }, t('items.ADDRESS.address2')),
+                react_1.default.createElement(components_1.Text, { lineHeight: "1.21", type: "subtitle-2" }, t('items.ADDRESS.address3')),
+                react_1.default.createElement(components_1.Text, { lineHeight: "1.21", type: "subtitle-2" }, t('items.ADDRESS.address4'))))
+        },
+        {
+            icon: 'university',
+            key: 'ACCOUNT',
+            content: (react_1.default.createElement(react_1.default.Fragment, null,
+                react_1.default.createElement(components_1.Text, { type: "body-2" }, t('items.ACCOUNT.info')),
+                react_1.default.createElement(components_1.Text, { marginTop: "s-size", type: "subtitle-2" }, t('items.ACCOUNT.nrb')),
+                react_1.default.createElement(components_1.Text, { marginTop: "s-size", type: "body-2" }, t('items.ACCOUNT.info2')),
+                react_1.default.createElement(components_1.Text, { type: "body-2" }, t('items.ACCOUNT.info3'))))
+        }
+    ];
+};
+exports["default"] = useContactMethods;
+
+
+/***/ }),
+
+/***/ 99256:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Option = ({ icon, title, description }) => (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", border: "1px solid", borderColor: "border-color", padding: "m-size" },
+    react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "center", marginRight: "l-size" },
+        react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: icon, size: "3x" })),
+    react_1.default.createElement(components_1.Flexbox, { flexDirection: "column" },
+        title && (react_1.default.createElement(components_1.Text, { marginBottom: "xs-size", type: "subtitle-2" }, title)),
+        react_1.default.createElement(components_1.Text, { lineHeight: "1.21", type: "body-2" }, description))));
+exports["default"] = Option;
+
+
+/***/ }),
+
+/***/ 49099:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_fontawesome_1 = __webpack_require__(67814);
+const api_1 = __webpack_require__(70395);
+const commonComponents_1 = __webpack_require__(39186);
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const utils_1 = __webpack_require__(65928);
+const Option_1 = __importDefault(__webpack_require__(99256));
+const DeliveryAndPayments = () => {
+    const { t } = (0, hooks_2.useTranslation)('DELIVERY_AND_PAYMENTS');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useTabTitle)(t('title'));
+    const deliveryTypesQuery = (0, api_1.useGetDeliveryTypes)();
+    const paymentTypesQuery = (0, api_1.useGetPaymentTypes)();
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(components_1.SectionHead, { marginTop: "xxl-size", title: t('processingTime.title') }),
+        react_1.default.createElement(components_1.Grid, { gridTemplateColumns: "1fr 5rem 1fr 5rem 1fr" },
+            react_1.default.createElement(Option_1.default, { description: t('processingTime.items.PRODUCTION.description'), icon: "calendar-alt", title: t('processingTime.items.PRODUCTION.title') }),
+            react_1.default.createElement(components_1.Flexbox, { alignSelf: "center" },
+                react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "plus", size: "3x" })),
+            react_1.default.createElement(Option_1.default, { description: t('processingTime.items.DELIVERY.description'), icon: "truck-loading", title: t('processingTime.items.DELIVERY.title') }),
+            react_1.default.createElement(components_1.Flexbox, { alignSelf: "center" },
+                react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: "equals", size: "3x" })),
+            react_1.default.createElement(Option_1.default, { description: t('processingTime.items.TOTAL.description'), icon: "boxes" })),
+        react_1.default.createElement(components_1.SectionHead, { marginTop: "xxl-size", title: t('payments.title') }),
+        react_1.default.createElement(components_1.QueryLoader, { query: paymentTypesQuery }, (paymentTypes) => (react_1.default.createElement(components_1.Grid, null, paymentTypes
+            .filter((type) => type.is_enabled)
+            .map((type) => (react_1.default.createElement(components_1.FeatureItem, { key: type.id, title: type.label },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: (type.frontend_icon_name ?? 'question'), size: "3x" }))))))),
+        react_1.default.createElement(components_1.SectionHead, { marginTop: "xxl-size", title: t('delivery.title') }),
+        react_1.default.createElement(components_1.QueryLoader, { query: deliveryTypesQuery }, (deliveryTypes) => (react_1.default.createElement(components_1.Grid, null, deliveryTypes
+            .filter((type) => type.is_enabled)
+            .map((type) => (react_1.default.createElement(components_1.FeatureItem, { key: type.id, subtitle: `${(0, utils_1.displayMoney)(type.price)} - ${type.time}`, title: type.label },
+            react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: (type.frontend_icon_name ?? 'question'), size: "3x" }))))))),
+        react_1.default.createElement(commonComponents_1.ReadTermsAndConditions, null)));
+};
+exports["default"] = DeliveryAndPayments;
+
+
+/***/ }),
+
+/***/ 97573:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const components_2 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const components_3 = __webpack_require__(82740);
+const Documents = () => {
+    const { t } = (0, hooks_2.useTranslation)('DOCUMENTS');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useTabTitle)(t('title'));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(components_3.ListItem, { marginTop: "l-size" },
+            react_1.default.createElement(components_2.ExternalLink, { to: "https://docs.google.com/document/d/1PfnUmbE0uZpxnne0Sz6eHPhT9Risc_YtnbygORBi5DA/edit?usp=sharing" }, t('TYPES.termsAndConditions'))),
+        react_1.default.createElement(components_3.ListItem, { marginTop: "l-size" },
+            react_1.default.createElement(components_2.ExternalLink, { to: "" }, t('TYPES.privacyPolicy'))),
+        react_1.default.createElement(components_3.ListItem, { marginTop: "l-size" },
+            react_1.default.createElement(components_2.ExternalLink, { to: "" }, t('TYPES.cookiesPolicy')))));
+};
+exports["default"] = Documents;
+
+
+/***/ }),
+
+/***/ 48131:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const commonComponents_1 = __webpack_require__(39186);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Bestsellers = () => {
+    const { t } = (0, hooks_1.useTranslation)('HOME');
+    const productsQuery = (0, api_1.useGetProducts)();
+    return (react_1.default.createElement(commonComponents_1.ProductsGrid, { marginTop: "xxl-size", query: productsQuery, title: t('bestsellers.title') }));
+};
+exports["default"] = Bestsellers;
+
+
+/***/ }),
+
+/***/ 15871:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const commonComponents_1 = __webpack_require__(39186);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Featured = () => {
+    const { t: commonT } = (0, hooks_1.useTranslation)('HOME');
+    const featuredQuery = (0, api_1.useGetFeatured)();
+    return (react_1.default.createElement(commonComponents_1.ProductsGrid, { loaderCount: 3, marginTop: "xxl-size", query: featuredQuery, title: commonT('FEATURED.title'), vertical: true }));
+};
+exports["default"] = Featured;
+
+
+/***/ }),
+
+/***/ 80040:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const hooks_2 = __webpack_require__(5554);
+const Bestsellers_1 = __importDefault(__webpack_require__(48131));
+const commonComponents_1 = __webpack_require__(39186);
+const Featured_1 = __importDefault(__webpack_require__(15871));
+const Home = () => {
+    const { t } = (0, hooks_2.useTranslation)('HOME');
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Carousel, null, ['YOUR_PLACE', 'YOUR_PLACE']),
+        react_1.default.createElement(Featured_1.default, null),
+        react_1.default.createElement(Bestsellers_1.default, null),
+        react_1.default.createElement(commonComponents_1.Newsletter, null)));
+};
+exports["default"] = Home;
+
+
+/***/ }),
+
+/***/ 7214:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const commonComponents_1 = __webpack_require__(39186);
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+// import MakeOrderSteps from './MakeOrderSteps'
+const HowToCreateOrder = () => {
+    const { t } = (0, hooks_1.useTranslation)('HOW_TO_CREATE_ORDER');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useTabTitle)(t('title'));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Banner, { horizonal: true, small: true, title: react_1.default.createElement(components_1.Heading, { level: 4 }, t('title')) }),
+        react_1.default.createElement(commonComponents_1.Features, null),
+        react_1.default.createElement(commonComponents_1.ReadTermsAndConditions, null),
+        react_1.default.createElement(commonComponents_1.ReadPrivacyPolicy, null)));
+};
+exports["default"] = HowToCreateOrder;
+
+
+/***/ }),
+
+/***/ 51957:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const react_router_dom_1 = __webpack_require__(77856);
+const PageNotFound = () => {
+    const history = (0, react_router_dom_1.useHistory)();
+    const { t } = (0, hooks_2.useTranslation)('PAGE_NOT_FOUND');
+    (0, hooks_1.useScrollTop)();
+    (0, hooks_1.useTabTitle)(t('title'));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexDirection: "column", justifyContent: "center", minHeight: "50rem", padding: "xxl-size" },
+            react_1.default.createElement("h1", null, t('title')),
+            react_1.default.createElement(components_1.Button, { marginTop: "3rem", onClick: () => history.push(routes_1.HOME), type: "button" }, t('buttonLabel')))));
+};
+exports["default"] = PageNotFound;
+
+
+/***/ }),
+
+/***/ 44421:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const react_1 = __importDefault(__webpack_require__(67294));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Search = ({ value, onChange }) => {
+    const { t } = (0, hooks_1.useTranslation)('PRODUCTS');
+    return (react_1.default.createElement(components_1.Flexbox, { width: "25rem" },
+        react_1.default.createElement(StyledInput, { onChange: (e) => onChange(e.target.value), placeholder: t('searchPlaceholder'), value: value }),
+        react_1.default.createElement(components_1.Button, { icon: value ? 'times' : 'search', marginLeft: "m-size", onClick: () => onChange(''), size: "medium", variant: "ternary" })));
+};
+const StyledInput = styled_components_1.default.input `
+  border: none;
+  height: 4rem;
+  width: 100%;
+  padding: ${(props) => `0 ${props.theme.space['s-size']}`};
+  border: 1px solid;
+  border-color: ${(0, getColor_1.default)('border-color')};
+  font-size: 1.7rem;
+`;
+exports["default"] = Search;
+
+
+/***/ }),
+
+/***/ 51806:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const index_loader_1 = __importDefault(__webpack_require__(95496));
+const Loader = () => (react_1.default.createElement(components_1.Flexbox, { flexDirection: "column" },
+    react_1.default.createElement(components_1.ContentLoader, { height: 40, viewBox: "0 0 1200 40", width: 1200 },
+        react_1.default.createElement("rect", { height: "24", transform: "translate(0,8)", width: "80" }),
+        react_1.default.createElement("rect", { height: "40", transform: "translate(950,0)", width: "188" }),
+        react_1.default.createElement("rect", { height: "40", transform: "translate(1154,0)", width: "46" })),
+    react_1.default.createElement(index_loader_1.default, { count: 6, marginTop: "m-size" })));
+exports["default"] = Loader;
+
+
+/***/ }),
+
+/***/ 26992:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const commonComponents_1 = __webpack_require__(39186);
+const react_router_dom_1 = __webpack_require__(77856);
+const routes_1 = __webpack_require__(36722);
+const Search_1 = __importDefault(__webpack_require__(44421));
+const react_2 = __webpack_require__(67294);
+const api_1 = __webpack_require__(70395);
+const index_loader_1 = __importDefault(__webpack_require__(51806));
+const Products = () => {
+    const { state } = (0, react_router_dom_1.useLocation)();
+    const { t } = (0, hooks_2.useTranslation)('PRODUCTS');
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    const [query, setQuery] = (0, react_2.useState)('');
+    let productsQuery;
+    if (state?.labelId) {
+        productsQuery = (0, api_1.useGetLabelProducts)({ labelId: state.labelId });
+    }
+    else if (state?.collectionId) {
+        productsQuery = (0, api_1.useGetCollectionProducts)({
+            collectionId: state.collectionId
+        });
+    }
+    else {
+        productsQuery = (0, api_1.useGetProducts)();
+    }
+    const isFiltered = state?.labelId || state?.collectionId;
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(commonComponents_1.CallMeBack, null),
+        react_1.default.createElement(components_1.QueryLoader, { Loader: react_1.default.createElement(index_loader_1.default, null), query: productsQuery }, (data) => {
+            const count = data.length;
+            return (react_1.default.createElement(react_1.default.Fragment, null,
+                isFiltered && (react_1.default.createElement(components_1.BackButton, { label: t('showAllLabel'), marginTop: "xxl-size", to: routes_1.PRODUCTS })),
+                !isFiltered && (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexDirection: "row-reverse", justifyContent: "space-between", marginTop: "xxl-size" },
+                    react_1.default.createElement(Search_1.default, { onChange: (value) => setQuery(value), value: query }),
+                    !query && (react_1.default.createElement(components_1.Text, { fontWeight: "bold", marginRight: "m-size", type: "subtitle-1" }, count === 1
+                        ? t('productsSingle', { count })
+                        : count && count < 5
+                            ? t('productsFew', { count })
+                            : t('productsMultiple', { count }))))),
+                react_1.default.createElement(commonComponents_1.ProductsGrid, { marginTop: "m-size", query: productsQuery, searchQuery: query })));
+        })));
+};
+exports["default"] = Products;
+
+
+/***/ }),
+
+/***/ 68858:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const react_1 = __importStar(__webpack_require__(67294));
+const components_2 = __webpack_require__(82740);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const Images = ({ product }) => {
+    const { name, mainImage } = product;
+    const [selectedImage, setSelectedImage] = (0, react_1.useState)(mainImage.large);
+    (0, react_1.useEffect)(() => {
+        const url = mainImage.large;
+        if (url) {
+            setSelectedImage(url);
+        }
+    }, [product]);
+    const width = '60%';
+    return (react_1.default.createElement(components_1.Flexbox, { flexDirection: "column", flexGrow: 4, maxWidth: width, minWidth: width },
+        react_1.default.createElement(components_1.Flexbox, { display: "flex" },
+            react_1.default.createElement(components_1.Flexbox, { flexDirection: "column", height: "100%", width: "6rem" }, [mainImage.thumbnail].map((image) => (react_1.default.createElement(GalleryImageWrapper, { key: image, onClick: () => setSelectedImage(image), role: "presentation" },
+                react_1.default.createElement(components_2.ImageLoader, { src: image }))))),
+            react_1.default.createElement(ImageWrapper, null,
+                react_1.default.createElement(components_2.ImageLoader, { alt: name, src: selectedImage })))));
+};
+const ImageWrapper = styled_components_1.default.div `
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  position: relative;
+  padding: ${(props) => `0 ${props.theme.space['xxxl-size']}`};
+`;
+const GalleryImageWrapper = styled_components_1.default.div `
+  min-width: 6rem;
+  max-width: 6rem;
+  min-height: 6rem;
+  max-height: 6rem;
+  border: 1px solid;
+  border-color: ${(0, getColor_1.default)('border-color')};
+  position: relative;
+  cursor: pointer;
+
+  &:not(:first-child) {
+    margin-top: ${(props) => props.theme.space['s-size']};
+  }
+`;
+exports["default"] = Images;
+
+
+/***/ }),
+
+/***/ 33961:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const utils_1 = __webpack_require__(65928);
+const NoType_1 = __importDefault(__webpack_require__(12107));
+const Info = ({ product }) => {
+    const { t } = (0, hooks_1.useTranslation)('VIEW_PRODUCT');
+    return (react_1.default.createElement(components_1.Flexbox, { flexDirection: "column", flexGrow: 1, marginLeft: "xl-size" },
+        react_1.default.createElement(components_1.Heading, { level: 4 }, product.name),
+        react_1.default.createElement(components_1.Separator, null),
+        react_1.default.createElement(components_1.Flexbox, null,
+            react_1.default.createElement(components_1.Text, { type: "caption" }, t('color')),
+            react_1.default.createElement(components_1.Text, { marginLeft: "s-size", type: "subtitle-2" }, t('colorValueTODO'))),
+        react_1.default.createElement(components_1.Flexbox, null,
+            react_1.default.createElement(components_1.Text, { type: "caption" }, t('label')),
+            react_1.default.createElement(components_1.Text, { marginLeft: "s-size", type: "subtitle-2" }, product.label.label)),
+        react_1.default.createElement(components_1.Flexbox, null,
+            react_1.default.createElement(components_1.Text, { type: "caption" }, t('icon')),
+            react_1.default.createElement(components_1.Text, { marginLeft: "s-size", type: "subtitle-2" }, product.icon.label)),
+        react_1.default.createElement(components_1.Separator, null),
+        react_1.default.createElement(components_1.Text, { type: "body-2" }, product.description),
+        react_1.default.createElement(components_1.Separator, null),
+        react_1.default.createElement(components_1.Heading, { level: 5 }, (0, utils_1.displayMoney)(product.price)),
+        react_1.default.createElement(components_1.Text, { type: "caption" }, t('priceSubtitle')),
+        react_1.default.createElement(components_1.Separator, null),
+        react_1.default.createElement(NoType_1.default, { product: product })));
+};
+exports["default"] = Info;
+
+
+/***/ }),
+
+/***/ 74034:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const AvilabilityIndicator = ({ mold }) => {
+    const { t } = (0, hooks_1.useTranslation)('VIEW_PRODUCT');
+    const status = !mold ? 'NULL' : mold.status;
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", marginTop: "s-size" },
+        react_1.default.createElement(Dot, { status: status }),
+        react_1.default.createElement(components_1.Text, { marginLeft: "s-size", type: "caption" }, t(`avilability.${status}`))));
+};
+const Dot = styled_components_1.default.div `
+  width: ${(props) => props.theme.space['m-size']};
+  height: ${(props) => props.theme.space['m-size']};
+  background: ${(props) => {
+    if (props.status === 'NULL') {
+        return (0, getColor_1.default)('red')(props);
+    }
+    else if (props.status === 'IN_PROGRESS') {
+        return (0, getColor_1.default)('yellow')(props);
+    }
+    return (0, getColor_1.default)('green')(props);
+}};
+  border-radius: 50%;
+`;
+exports["default"] = AvilabilityIndicator;
+
+
+/***/ }),
+
+/***/ 12107:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importStar(__webpack_require__(67294));
+const formik_1 = __webpack_require__(94649);
+const BasketProvider_1 = __webpack_require__(62434);
+const useForm_1 = __importDefault(__webpack_require__(34725));
+const common_1 = __webpack_require__(68986);
+const AvilabilityIndicator_1 = __importDefault(__webpack_require__(74034));
+const Form = ({ product }) => {
+    const { getProductFromBasket } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const { schema, initialValues, submitForm } = (0, useForm_1.default)(product);
+    const isInBasket = !!getProductFromBasket(product.id);
+    return (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: submitForm, validateOnChange: true, validationSchema: schema }, () => (react_1.default.createElement(formik_1.Form, null,
+        react_1.default.createElement(common_1.SubmitButton, { isInBasket: isInBasket }),
+        react_1.default.createElement(AvilabilityIndicator_1.default, { mold: product.mold })))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 34725:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const BasketProvider_1 = __webpack_require__(62434);
+const react_1 = __webpack_require__(67294);
+const yup_1 = __webpack_require__(87561);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const lodash_subtract_1 = __importDefault(__webpack_require__(81057));
+const lodash_add_1 = __importDefault(__webpack_require__(24427));
+const useForm = (product) => {
+    const { setBasket, getProductFromBasket } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const { setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const initialValues = {};
+    const schema = (0, yup_1.object)({
+        variant: (0, yup_1.string)()
+    });
+    const submitForm = () => {
+        const basketItem = getProductFromBasket(product.id);
+        setBasket((prev) => {
+            if (basketItem) {
+                const productInBasket = prev.find((elem) => elem.id === product.id);
+                return prev.filter((elem) => elem !== productInBasket);
+            }
+            const newBasketProduct = {
+                id: product.id,
+                quantity: 1
+            };
+            return [...prev, newBasketProduct];
+        });
+        setCheckout((prev) => ({
+            ...prev,
+            totalNew: basketItem
+                ? (0, lodash_subtract_1.default)(prev.totalNew, basketItem.quantity * product.price)
+                : (0, lodash_add_1.default)(prev.totalNew, product.price)
+        }));
+    };
+    return {
+        initialValues,
+        schema,
+        submitForm
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 59962:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const commonComponents_1 = __webpack_require__(39186);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const OtherIcons = ({ labelId, iconId }) => {
+    const { t } = (0, hooks_1.useTranslation)('VIEW_PRODUCT');
+    const productsQuery = (0, api_1.useGetOtherIcons)({ labelId, iconId });
+    return (react_1.default.createElement(commonComponents_1.ProductsGrid, { link: {
+            to: {
+                pathname: '/products',
+                state: {
+                    labelId
+                }
+            },
+            label: t('otherIcons.linkLabel')
+        }, marginTop: "xxl-size", query: productsQuery, title: t('otherIcons.title') }));
+};
+exports["default"] = OtherIcons;
+
+
+/***/ }),
+
+/***/ 97933:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const api_1 = __webpack_require__(70395);
+const commonComponents_1 = __webpack_require__(39186);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const OtherPlaces = ({ labelId, collectionId }) => {
+    const { t } = (0, hooks_1.useTranslation)('VIEW_PRODUCT');
+    const productsQuery = (0, api_1.useGetOtherPlaces)({ labelId, collectionId });
+    return (react_1.default.createElement(commonComponents_1.ProductsGrid, { link: {
+            to: {
+                pathname: '/products',
+                state: {
+                    collectionId
+                }
+            },
+            label: t('otherIcons.linkLabel')
+        }, marginTop: "xxl-size", query: productsQuery, title: t('otherPlaces.title') }));
+};
+exports["default"] = OtherPlaces;
+
+
+/***/ }),
+
+/***/ 46263:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const SubmitButton = ({ separation, disabled, isInBasket }) => {
+    const { t } = (0, hooks_1.useTranslation)('VIEW_PRODUCT');
+    return (react_1.default.createElement(components_1.Button, { disabled: disabled, marginTop: separation ? '2rem' : 0, size: "medium", type: "submit", variant: isInBasket ? 'secondary' : 'primary' }, isInBasket ? t('actions.removeFromBasket') : t('actions.addToBasket')));
+};
+exports["default"] = SubmitButton;
+
+
+/***/ }),
+
+/***/ 68986:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SubmitButton = void 0;
+var SubmitButton_1 = __webpack_require__(46263);
+Object.defineProperty(exports, "SubmitButton", ({ enumerable: true, get: function () { return __importDefault(SubmitButton_1).default; } }));
+
+
+/***/ }),
+
+/***/ 20308:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const Loader = () => (react_1.default.createElement(react_1.default.Fragment, null,
+    react_1.default.createElement(components_1.ContentLoader, { height: 44, viewBox: "0 0 1200 44", width: 1200 },
+        react_1.default.createElement("rect", { height: "24", transform: "translate(0,10)", width: "55" })),
+    react_1.default.createElement(components_1.Tile, { marginTop: "1.2rem" },
+        react_1.default.createElement(components_1.Box, { height: "50rem" }))));
+exports["default"] = Loader;
+
+
+/***/ }),
+
+/***/ 4190:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const hooks_2 = __webpack_require__(5554);
+const Images_1 = __importDefault(__webpack_require__(68858));
+const OtherIcons_1 = __importDefault(__webpack_require__(59962));
+const routes_1 = __webpack_require__(36722);
+const Info_1 = __importDefault(__webpack_require__(33961));
+const api_1 = __webpack_require__(70395);
+const OtherPlaces_1 = __importDefault(__webpack_require__(97933));
+const index_loader_1 = __importDefault(__webpack_require__(20308));
+const ViewProduct = () => {
+    const { id } = (0, react_router_dom_1.useParams)();
+    const { t } = (0, hooks_2.useTranslation)('VIEW_PRODUCT');
+    const productQuery = (0, api_1.useGetProduct)({ id });
+    (0, hooks_1.useScrollTop)(id);
+    (0, hooks_1.useDocumentTitle)(t('title', {
+        productName: productQuery.data ? productQuery.data.name : 'Produkt'
+    }));
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(components_1.QueryLoader, { Loader: react_1.default.createElement(index_loader_1.default, null), query: productQuery }, (product) => (react_1.default.createElement(react_1.default.Fragment, null,
+            react_1.default.createElement(components_1.BackButton, { label: t('actions.goBack'), marginBottom: "s-size", to: routes_1.PRODUCTS }),
+            react_1.default.createElement(components_1.Tile, { flexDirection: "row" },
+                react_1.default.createElement(Images_1.default, { product: product }),
+                react_1.default.createElement(Info_1.default, { product: product })),
+            react_1.default.createElement(OtherIcons_1.default, { iconId: product.icon.id, labelId: product.label.id }),
+            react_1.default.createElement(OtherPlaces_1.default, { collectionId: product.collection.id, labelId: product.label.id }))))));
+};
+exports["default"] = ViewProduct;
+
+
+/***/ }),
+
+/***/ 76749:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const react_1 = __importDefault(__webpack_require__(67294));
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const utils_1 = __webpack_require__(65928);
+const common_1 = __webpack_require__(34090);
+const Form = ({ deliveryTypes }) => {
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_DELIVERY');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(common_1.Row, { flexDirection: "column" }, deliveryTypes
+            .filter((type) => type.is_enabled)
+            .map((type, index) => (react_1.default.createElement(formik_1.Field, { key: type.label, name: "deliveryType" }, (props) => (react_1.default.createElement(components_1.CheckboxField, { ...props, fieldLabel: t('form.deliveryType.label'), id: type.id, isFirst: index === 0, subtitle: `${type.time}`, title: type.label, val: (0, utils_1.displayMoney)(type.price) }))))))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 69845:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const formik_1 = __webpack_require__(94649);
+const react_router_dom_1 = __webpack_require__(77856);
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const Actions_1 = __importDefault(__webpack_require__(86417));
+const common_1 = __webpack_require__(34090);
+const useForm_1 = __importDefault(__webpack_require__(66179));
+const Form_1 = __importDefault(__webpack_require__(76749));
+const api_1 = __webpack_require__(70395);
+const CheckoutDelivery = () => {
+    const { t } = (0, hooks_2.useTranslation)('CHECKOUT_DELIVERY');
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    const deliveryTypesQuery = (0, api_1.useGetDeliveryTypes)();
+    const { checkout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const { schema, onSubmitForm, initialValues } = (0, useForm_1.default)();
+    if (!checkout.contactDetails2) {
+        return react_1.default.createElement(react_router_dom_1.Redirect, { to: routes_1.CHECKOUT_DETAILS });
+    }
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(common_1.StepTracker, null),
+        react_1.default.createElement(common_1.Wrapper, null,
+            react_1.default.createElement(common_1.StepTitle, null, t('title')),
+            react_1.default.createElement(components_1.QueryLoader, { query: deliveryTypesQuery }, (deliveryTypes) => (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: (values) => onSubmitForm(values, deliveryTypes), validateOnChange: true, validationSchema: schema }, ({ handleSubmit, values }) => {
+                const delivery = deliveryTypes.find((type) => type.label === values.deliveryType);
+                return (react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit },
+                    react_1.default.createElement(Form_1.default, { deliveryTypes: deliveryTypes }),
+                    react_1.default.createElement(common_1.Total, { customDelivery: delivery?.price }),
+                    react_1.default.createElement(Actions_1.default, null)));
+            }))))));
+};
+exports["default"] = CheckoutDelivery;
+
+
+/***/ }),
+
+/***/ 66179:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_router_dom_1 = __webpack_require__(77856);
+const yup_1 = __webpack_require__(87561);
+const routes_1 = __webpack_require__(36722);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __webpack_require__(67294);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const lodash_add_1 = __importDefault(__webpack_require__(24427));
+const useForm = () => {
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_DELIVERY');
+    const history = (0, react_router_dom_1.useHistory)();
+    const { checkout, setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const onSubmitForm = (form, deliveryTypes) => {
+        const selectedDeliveryType = deliveryTypes.find((method) => method.id === form.deliveryType);
+        if (selectedDeliveryType) {
+            setCheckout((prev) => ({
+                ...prev,
+                deliveryType2: selectedDeliveryType.id,
+                totalNew: (0, lodash_add_1.default)(prev.totalNew, selectedDeliveryType.price)
+            }));
+        }
+        if (selectedDeliveryType?.requires_address) {
+            history.push(routes_1.CHECKOUT_SHIPPING);
+        }
+        else {
+            history.push(routes_1.CHECKOUT_PAYMENT);
+        }
+    };
+    const initialValues = {
+        deliveryType: checkout.deliveryType2 ?? ''
+    };
+    const schema = (0, yup_1.object)().shape({
+        deliveryType: (0, yup_1.string)().required(t('form.deliveryType.validations.required'))
+    });
+    return {
+        onSubmitForm,
+        initialValues,
+        schema
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 44897:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const formik_1 = __webpack_require__(94649);
+const utils_1 = __webpack_require__(65928);
+const react_1 = __importDefault(__webpack_require__(67294));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const Row_1 = __importDefault(__webpack_require__(39897));
+const FieldWrapper_1 = __importDefault(__webpack_require__(39697));
+const Form = ({ isCompany: isCompany }) => {
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_DETAILS');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "fullName", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t(`form.fullName.label`), true), placeholder: t(`form.fullName.placeholder`) })))),
+            isCompany && (react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "nip", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('form.nip.label'), true), maxLength: 10, placeholder: t('form.nip.placeholder') })))))),
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, { width: "75%" },
+                react_1.default.createElement(formik_1.Field, { name: "street", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('form.street.label'), true), placeholder: t('form.street.placeholder') })))),
+            react_1.default.createElement(FieldWrapper_1.default, { width: "25%" },
+                react_1.default.createElement(formik_1.Field, { name: "streetNo", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('form.streetNr.label'), true), placeholder: t('form.streetNr.placeholder') }))))),
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "addressCdn", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('form.addressCdn.label')), maxLength: 6, placeholder: t('form.addressCdn.placeholder') }))))),
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "postCode", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('form.postCode.label'), true), maxLength: 6, placeholder: t('form.postCode.placeholder') })))),
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "city", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('form.city.label'), true), placeholder: t('form.city.placeholder') }))))),
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "email", type: "email" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: (0, utils_1.getRequiredOrNot)(t('form.email.label'), true), placeholder: t('form.email.placeholder') })))),
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "phone" }, (props) => (react_1.default.createElement(components_1.MobileInput, { fieldProps: props, label: (0, utils_1.getRequiredOrNot)(t('form.phone.label'), true) })))))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 42447:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const react_router_dom_1 = __webpack_require__(77856);
+const formik_1 = __webpack_require__(94649);
+const routes_1 = __webpack_require__(36722);
+const components_1 = __webpack_require__(82740);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const common_1 = __webpack_require__(34090);
+const useForm_1 = __importDefault(__webpack_require__(67760));
+const Form_1 = __importDefault(__webpack_require__(44897));
+const CheckoutDetails = () => {
+    const { t } = (0, hooks_2.useTranslation)('CHECKOUT_DETAILS');
+    const { t: commonT } = (0, hooks_2.useTranslation)('COMMON');
+    const { checkout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    const [isCompany, setIsCompany] = (0, react_1.useState)(checkout.contactDetails2?.isCompany || true);
+    const { onSubmitForm, initialValues, getSchema } = (0, useForm_1.default)();
+    if (!checkout.products2) {
+        return react_1.default.createElement(react_router_dom_1.Redirect, { to: routes_1.CHECKOUT_PRODUCTS });
+    }
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(common_1.StepTracker, null),
+        react_1.default.createElement(common_1.Wrapper, null,
+            react_1.default.createElement(common_1.StepTitle, null, t('title')),
+            react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "center", marginBottom: "m-size", marginTop: "m-size" },
+                react_1.default.createElement(CustomTypeButton, { onClick: () => setIsCompany(true) }, commonT('customerTypes.COMPANY')),
+                react_1.default.createElement(components_1.Switch, { checked: !isCompany, onChange: (checked) => setIsCompany(!checked) }),
+                react_1.default.createElement(CustomTypeButton, { onClick: () => setIsCompany(false) }, commonT('customerTypes.INDIVIDUAL'))),
+            react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: (form) => onSubmitForm(form, isCompany), validateOnChange: true, validationSchema: getSchema(isCompany) }, ({ handleSubmit }) => (react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit },
+                react_1.default.createElement(Form_1.default, { isCompany: isCompany }),
+                react_1.default.createElement(common_1.Actions, null)))))));
+};
+const CustomTypeButton = styled_components_1.default.button `
+  width: 50%;
+  height: 5rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+`;
+exports["default"] = CheckoutDetails;
+
+
+/***/ }),
+
+/***/ 67760:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_router_dom_1 = __webpack_require__(77856);
+const yup_1 = __webpack_require__(87561);
+const hooks_1 = __webpack_require__(5554);
+const routes_1 = __webpack_require__(36722);
+const react_1 = __webpack_require__(67294);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const useForm = () => {
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_DETAILS');
+    const history = (0, react_router_dom_1.useHistory)();
+    const { checkout, setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const onSubmitForm = (form, isCompany) => {
+        setCheckout((prev) => ({
+            ...prev,
+            contactDetails2: {
+                ...form,
+                isCompany
+            }
+        }));
+        history.push(routes_1.CHECKOUT_DELIVERY);
+    };
+    const initialValues = {
+        fullName: checkout.contactDetails2?.fullName ?? '',
+        nip: checkout.contactDetails2?.nip ?? '',
+        street: checkout.contactDetails2?.street ?? '',
+        streetNo: checkout.contactDetails2?.streetNo ?? '',
+        addressCdn: checkout.contactDetails2?.addressCdn ?? '',
+        postCode: checkout.contactDetails2?.postCode ?? '',
+        city: checkout.contactDetails2?.city ?? '',
+        email: checkout.contactDetails2?.email ?? '',
+        phone: checkout.contactDetails2?.phone ?? ''
+    };
+    const getSchema = (isCompany) => {
+        const base = (0, yup_1.object)().shape({
+            fullName: (0, yup_1.string)().required(t('form.fullName.validations.required')),
+            email: (0, yup_1.string)()
+                .email(t('form.email.validations.email'))
+                .required(t('form.email.validations.required')),
+            phone: (0, yup_1.string)()
+                .min(11, t('form.phone.validations.min'))
+                .required(t('form.phone.validations.required')),
+            street: (0, yup_1.string)().required(t('form.street.validations.required')),
+            streetNo: (0, yup_1.string)().required(t('form.streetNr.validations.required')),
+            addressCdn: (0, yup_1.string)(),
+            postCode: (0, yup_1.string)()
+                .trim()
+                .matches(/^(\d{2})-(\d{3})$/, t('form.postCode.validations.matches'))
+                .required(t('form.postCode.validations.required')),
+            city: (0, yup_1.string)().required(t('form.city.validations.required'))
+        });
+        const companySchema = base.shape({
+            nip: (0, yup_1.string)()
+                .required(t('form.nip.validations.required'))
+                .length(10, t('form.nip.validations.length'))
+                .matches(/^(\d{10})$/, t('form.nip.validations.matches'))
+        });
+        return isCompany ? companySchema : base;
+    };
+    return {
+        onSubmitForm,
+        initialValues,
+        getSchema
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 56914:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_1 = __importDefault(__webpack_require__(67294));
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const components_1 = __webpack_require__(82740);
+const common_1 = __webpack_require__(34090);
+const Form = ({ paymentTypes }) => {
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_PAYMENT');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(common_1.Row, { flexDirection: "column" }, paymentTypes
+            .filter((type) => type.is_enabled)
+            .map((type, index) => (react_1.default.createElement(formik_1.Field, { key: type.label, name: "paymentType" }, (props) => (react_1.default.createElement(components_1.CheckboxField, { ...props, fieldLabel: t('form.paymentType.label'), id: type.id, isFirst: index === 0, subtitle: type.time, title: type.label }))))))));
+};
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 18736:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const formik_1 = __webpack_require__(94649);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const react_router_dom_1 = __webpack_require__(77856);
+const hooks_2 = __webpack_require__(5554);
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const common_1 = __webpack_require__(34090);
+const useForm_1 = __importDefault(__webpack_require__(4704));
+const Form_1 = __importDefault(__webpack_require__(56914));
+const api_1 = __webpack_require__(70395);
+const CheckoutPayment = () => {
+    const { t } = (0, hooks_2.useTranslation)('CHECKOUT_PAYMENT');
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    const paymentTypesQuery = (0, api_1.useGetPaymentTypes)();
+    const { checkout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const { onSubmit, initialValues, schema, isLoading } = (0, useForm_1.default)();
+    if (!checkout.deliveryType2) {
+        return react_1.default.createElement(react_router_dom_1.Redirect, { to: routes_1.CHECKOUT_DELIVERY });
+    }
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(common_1.StepTracker, null),
+        react_1.default.createElement(common_1.Wrapper, null,
+            react_1.default.createElement(common_1.StepTitle, null, t('title')),
+            react_1.default.createElement(components_1.QueryLoader, { query: paymentTypesQuery }, (paymentTypes) => (react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmit, validateOnChange: true, validationSchema: schema }, ({ handleSubmit }) => (react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit },
+                react_1.default.createElement(Form_1.default, { paymentTypes: paymentTypes }),
+                react_1.default.createElement(common_1.Total, null),
+                react_1.default.createElement(common_1.Actions, { primaryDisabled: isLoading })))))))));
+};
+exports["default"] = CheckoutPayment;
+
+
+/***/ }),
+
+/***/ 4704:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_router_dom_1 = __webpack_require__(77856);
+const yup_1 = __webpack_require__(87561);
+const hooks_1 = __webpack_require__(5554);
+const routes_1 = __webpack_require__(36722);
+const react_1 = __webpack_require__(67294);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const react_query_1 = __webpack_require__(88767);
+const api_1 = __webpack_require__(70395);
+const BasketProvider_1 = __webpack_require__(62434);
+const LoaderProvider_1 = __webpack_require__(8329);
+const useFormSubmit = () => {
+    const history = (0, react_router_dom_1.useHistory)();
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_PAYMENT');
+    const { checkout, setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const { setBasket } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const { show, hide } = (0, react_1.useContext)(LoaderProvider_1.loaderContext);
+    const { mutateAsync: mutateAddOrderSupabase, isLoading } = (0, react_query_1.useMutation)(api_1.addOrder);
+    const triggerSendEmail = (0, api_1.useTriggerSendEmail)();
+    const onSubmit = async (form) => {
+        show();
+        const order = {
+            email: checkout.contactDetails2?.email ?? '',
+            deliveryType: checkout.deliveryType2 ?? '',
+            paymentType: form.paymentType ?? '',
+            total: checkout.totalNew ?? 0,
+            phone: checkout.contactDetails2?.phone ?? '',
+            fullname: checkout.contactDetails2?.fullName ?? '',
+            products: checkout.products2 || [],
+            address: {
+                street: checkout.contactDetails2?.street ?? '',
+                street_no: checkout.contactDetails2?.streetNo ?? '',
+                adress_cdn: checkout.contactDetails2?.addressCdn ?? '',
+                post_code: checkout.contactDetails2?.postCode ?? '',
+                city: checkout.contactDetails2?.city ?? ''
+            },
+            shipping: {
+                street: checkout.shipping2?.street ?? '',
+                street_no: checkout.shipping2?.streetNo ?? '',
+                adress_cdn: checkout.shipping2?.addressCdn ?? '',
+                post_code: checkout.shipping2?.postCode ?? '',
+                city: checkout.shipping2?.city ?? ''
+            }
+        };
+        const orderId = await mutateAddOrderSupabase(order);
+        const locationState = {
+            orderID: orderId
+        };
+        triggerSendEmail({
+            to: order.email,
+            type: {
+                key: 'NEW_ORDER',
+                content: {
+                    name: order.fullname,
+                    order_id: orderId,
+                    phone: order.phone
+                }
+            }
+        });
+        setCheckout(CheckoutProvider_1.initState);
+        setBasket([]);
+        hide();
+        history.push(routes_1.CHECKOUT_RESULT, locationState);
+    };
+    const initialValues = {
+        paymentType: checkout.paymentType2 ?? ''
+    };
+    const schema = (0, yup_1.object)().shape({
+        paymentType: (0, yup_1.string)().required(t('form.paymentType.validations.required'))
+    });
+    return {
+        onSubmit,
+        initialValues,
+        schema,
+        isLoading
+    };
+};
+exports["default"] = useFormSubmit;
+
+
+/***/ }),
+
+/***/ 52903:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const commonComponents_1 = __webpack_require__(39186);
+const BasketProvider_1 = __webpack_require__(62434);
+const common_1 = __webpack_require__(34090);
+const StepTitle_1 = __importDefault(__webpack_require__(66403));
+const CheckoutProducts = () => {
+    const { t } = (0, hooks_2.useTranslation)('CHECKOUT_PRODUCTS');
+    const { basket, basketLength } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    const isBasketEmpty = !basketLength;
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(common_1.StepTracker, null),
+        react_1.default.createElement(common_1.Wrapper, null,
+            react_1.default.createElement(StepTitle_1.default, null, t('title')),
+            react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexDirection: "column", marginTop: "2rem", minHeight: "20rem" },
+                isBasketEmpty && (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexGrow: 1, justifyContent: "center" },
+                    react_1.default.createElement(components_1.Text, { type: "caption" }, t('emptyState')))),
+                basket.map((product) => (react_1.default.createElement(react_1.Fragment, { key: product.id },
+                    react_1.default.createElement(commonComponents_1.BasketItem, { product: product }))))),
+            !isBasketEmpty && react_1.default.createElement(common_1.Total, null),
+            react_1.default.createElement(common_1.Actions, null))));
+};
+exports["default"] = CheckoutProducts;
+
+
+/***/ }),
+
+/***/ 50364:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const react_router_dom_1 = __webpack_require__(77856);
+const hooks_2 = __webpack_require__(5554);
+const react_fontawesome_1 = __webpack_require__(67814);
+const styled_components_1 = __webpack_require__(91288);
+const common_1 = __webpack_require__(34090);
+const CheckoutResult = () => {
+    const { colors } = (0, styled_components_1.useTheme)();
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_RESULT');
+    const { state } = (0, react_router_dom_1.useLocation)();
+    const history = (0, react_router_dom_1.useHistory)();
+    (0, hooks_2.useTabTitle)(t('title'));
+    (0, hooks_2.useScrollTop)();
+    if (!state?.orderID) {
+        return react_1.default.createElement(react_router_dom_1.Redirect, { to: routes_1.HOME });
+    }
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(common_1.Wrapper, null,
+            react_1.default.createElement(components_1.Tile, { alignItems: "center" },
+                react_1.default.createElement(components_1.Flexbox, { justifyContent: "center", marginBottom: "l-size" },
+                    react_1.default.createElement(react_fontawesome_1.FontAwesomeIcon, { color: colors.green, icon: "check-circle", size: "5x" })),
+                react_1.default.createElement(common_1.StepTitle, null, t('title')),
+                react_1.default.createElement(components_1.Text, { marginTop: "l-size", type: "body-2" }, t('orderId')),
+                react_1.default.createElement(components_1.Heading, { level: 5, marginTop: "l-size" }, state.orderID),
+                react_1.default.createElement(components_1.Text, { marginTop: "l-size", type: "body-1" }, t('info')),
+                react_1.default.createElement(components_1.Flexbox, { flexDirection: "row-reverse", justifyContent: "space-between", marginTop: "xxxl-size", width: "100%" },
+                    react_1.default.createElement(components_1.Button, { onClick: () => history.push(routes_1.PRODUCTS), variant: "primary" }, t('actions.backToShop')),
+                    react_1.default.createElement(components_1.Button, { onClick: () => history.push(routes_1.HOME), variant: "secondary" }, t('actions.backToHome')))))));
+};
+exports["default"] = CheckoutResult;
+
+
+/***/ }),
+
+/***/ 18114:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const formik_1 = __webpack_require__(94649);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const FieldWrapper_1 = __importDefault(__webpack_require__(39697));
+const Row_1 = __importDefault(__webpack_require__(39897));
+const Form = () => {
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_SHIPPING');
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, { width: "75%" },
+                react_1.default.createElement(formik_1.Field, { name: "street" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: getRequiredOrNot(t('form.street.label'), true), placeholder: t('form.street.placeholder') })))),
+            react_1.default.createElement(FieldWrapper_1.default, { width: "25%" },
+                react_1.default.createElement(formik_1.Field, { name: "streetNo", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: getRequiredOrNot(t('form.streetNr.label'), true), placeholder: t('form.streetNr.placeholder') }))))),
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "addressCdn", type: "text" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: getRequiredOrNot(t('form.addressCdn.label')), maxLength: 6, placeholder: t('form.addressCdn.placeholder') }))))),
+        react_1.default.createElement(Row_1.default, null,
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "postCode" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: getRequiredOrNot(t('form.postCode.label'), true), placeholder: t('form.postCode.placeholder') })))),
+            react_1.default.createElement(FieldWrapper_1.default, null,
+                react_1.default.createElement(formik_1.Field, { name: "city" }, (props) => (react_1.default.createElement(components_1.Input, { ...props, label: getRequiredOrNot(t('form.city.label'), true), placeholder: t('form.city.placeholder') })))))));
+};
+const getRequiredOrNot = (label, required) => `${required ? '* ' : ''}${label}`;
+exports["default"] = Form;
+
+
+/***/ }),
+
+/***/ 7896:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_2 = __webpack_require__(5554);
+const formik_1 = __webpack_require__(94649);
+const components_1 = __webpack_require__(82740);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const react_router_dom_1 = __webpack_require__(77856);
+const routes_1 = __webpack_require__(36722);
+const common_1 = __webpack_require__(34090);
+const useForm_1 = __importDefault(__webpack_require__(24622));
+const Form_1 = __importDefault(__webpack_require__(18114));
+const CheckoutShipping = () => {
+    const { t } = (0, hooks_2.useTranslation)('CHECKOUT_SHIPPING');
+    (0, hooks_1.useTabTitle)(t('title'));
+    (0, hooks_1.useScrollTop)();
+    const { checkout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const { onSubmitForm, initialValues, schema } = (0, useForm_1.default)();
+    if (!checkout.deliveryType2) {
+        return react_1.default.createElement(react_router_dom_1.Redirect, { to: routes_1.CHECKOUT_DELIVERY });
+    }
+    return (react_1.default.createElement(components_1.Page, null,
+        react_1.default.createElement(common_1.StepTracker, null),
+        react_1.default.createElement(common_1.Wrapper, null,
+            react_1.default.createElement(common_1.StepTitle, null, t('title')),
+            react_1.default.createElement(formik_1.Formik, { initialValues: initialValues, onSubmit: onSubmitForm, validateOnChange: true, validationSchema: schema }, ({ handleSubmit }) => (react_1.default.createElement(formik_1.Form, { onSubmit: handleSubmit },
+                react_1.default.createElement(Form_1.default, null),
+                react_1.default.createElement(common_1.Actions, null)))))));
+};
+exports["default"] = CheckoutShipping;
+
+
+/***/ }),
+
+/***/ 24622:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_router_dom_1 = __webpack_require__(77856);
+const yup_1 = __webpack_require__(87561);
+const routes_1 = __webpack_require__(36722);
+const hooks_1 = __webpack_require__(5554);
+const react_1 = __webpack_require__(67294);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const useForm = () => {
+    const { t } = (0, hooks_1.useTranslation)('CHECKOUT_SHIPPING');
+    const history = (0, react_router_dom_1.useHistory)();
+    const { checkout, setCheckout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const onSubmitForm = (form) => {
+        setCheckout((prev) => ({
+            ...prev,
+            shipping2: form
+        }));
+        history.push(routes_1.CHECKOUT_PAYMENT);
+    };
+    const initialValues = {
+        street: checkout.shipping2?.street ?? '',
+        streetNo: checkout.shipping2?.streetNo ?? '',
+        addressCdn: checkout.shipping2?.addressCdn ?? '',
+        postCode: checkout.shipping2?.postCode ?? '',
+        city: checkout.shipping2?.city ?? ''
+    };
+    const schema = (0, yup_1.object)().shape({
+        street: (0, yup_1.string)().required(t('form.street.validations.required')),
+        streetNo: (0, yup_1.string)().required(t('form.streetNr.validations.required')),
+        addressCdn: (0, yup_1.string)(),
+        postCode: (0, yup_1.string)()
+            .trim()
+            .matches(/^(\d{2})-(\d{3})$/, t('form.postCode.validations.matches'))
+            .required(t('form.postCode.validations.required')),
+        city: (0, yup_1.string)().required(t('form.city.validations.required'))
+    });
+    return {
+        onSubmitForm,
+        initialValues,
+        schema
+    };
+};
+exports["default"] = useForm;
+
+
+/***/ }),
+
+/***/ 86417:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const react_router_dom_1 = __webpack_require__(77856);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const BasketProvider_1 = __webpack_require__(62434);
+const routes_1 = __webpack_require__(36722);
+const components_1 = __webpack_require__(82740);
+const StepTracker_1 = __webpack_require__(31614);
+const Actions = ({ primaryDisabled }) => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    const history = (0, react_router_dom_1.useHistory)();
+    const current = (0, StepTracker_1.useCheckoutStep)();
+    const { basketLength } = (0, react_1.useContext)(BasketProvider_1.basketContext);
+    const isBasketEmpty = basketLength === 0;
+    const onClickPrevious = () => {
+        switch (current) {
+            case 1:
+                history.push(routes_1.PRODUCTS);
+                break;
+            case 2:
+                history.push(routes_1.CHECKOUT_PRODUCTS);
+                break;
+            case 3:
+                history.push(routes_1.CHECKOUT_DETAILS);
+                break;
+            case 4:
+                history.push(routes_1.CHECKOUT_DELIVERY);
+                break;
+            case 5:
+                history.push(routes_1.CHECKOUT_DELIVERY);
+                break;
+            default:
+                break;
+        }
+    };
+    const isFirstPage = current === 1;
+    const onClickNext = () => {
+        if (isFirstPage) {
+            history.push(routes_1.CHECKOUT_DETAILS);
+        }
+    };
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "space-between", marginTop: "3rem" },
+        react_1.default.createElement(components_1.Button, { onClick: onClickPrevious, size: "medium", type: "button", variant: "secondary" }, t(isFirstPage ? 'checkoutActions.backToShop' : 'checkoutActions.back')),
+        react_1.default.createElement(components_1.Button, { disabled: isBasketEmpty || primaryDisabled, icon: "arrow-right", onClick: onClickNext, size: "medium", type: isFirstPage ? 'button' : 'submit' }, t(current === 5 ? 'checkoutActions.createOrder' : 'checkoutActions.next'))));
+};
+exports["default"] = Actions;
+
+
+/***/ }),
+
+/***/ 39697:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const FieldWrapper = (0, styled_components_1.default)(components_1.Box) `
+  width: 100%;
+
+  &:not(:first-child) {
+    margin-left: ${(props) => props.theme.space['s-size']};
+  }
+`;
+exports["default"] = FieldWrapper;
+
+
+/***/ }),
+
+/***/ 39897:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const Row = (0, styled_components_1.default)(components_1.Flexbox) `
+  &:not(:last-child) {
+    margin-bottom: ${(props) => props.theme.space['m-size']};
+  }
+`;
+exports["default"] = Row;
+
+
+/***/ }),
+
+/***/ 66403:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const StepTitle = (0, styled_components_1.default)(components_1.Heading).attrs(() => ({
+    level: 5,
+    textAlign: 'center'
+})) ``;
+exports["default"] = StepTitle;
+
+
+/***/ }),
+
+/***/ 31614:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.useCheckoutStep = void 0;
+const components_1 = __webpack_require__(82740);
+const routes_1 = __webpack_require__(36722);
+const utils_1 = __webpack_require__(65928);
+const react_1 = __importDefault(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const react_router_dom_1 = __webpack_require__(77856);
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const StepTracker = () => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    const current = (0, exports.useCheckoutStep)();
+    return (react_1.default.createElement(components_1.Flexbox, { justifyContent: "center", marginBottom: "3rem" },
+        react_1.default.createElement(Wrapper, null, [1, 2, 3, 4, 5].map((step) => {
+            if (step === 4) {
+                return null;
+            }
+            return (react_1.default.createElement(components_1.Flexbox, { justifyContent: "center", key: step },
+                react_1.default.createElement(components_1.Flexbox, { alignItems: "center", flexDirection: "column", justifyContent: "center", width: "10rem", zIndex: 1 },
+                    react_1.default.createElement(StepIcon, { ...getProps(current, step) }, step === 5 ? 4 : step),
+                    react_1.default.createElement(components_1.Text, { marginTop: "s-size", type: "caption" }, t(`checkoutSteps.${step}`)))));
+        }))));
+};
+const Wrapper = styled_components_1.default.ul `
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+  padding: 0;
+  margin: auto;
+  position: relative;
+
+  :before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 85%;
+    height: 3px;
+    background: ${(props) => `${(0, utils_1.changeColorAlpha)((0, getColor_1.default)('border-color')(props), 0.6)}`};
+  }
+`;
+const getProps = (current, step) => {
+    if (current === step || (current === 4 && step === 3)) {
+        return { selected: true };
+    }
+    if (step < current) {
+        return { done: true };
+    }
+    return {};
+};
+const useCheckoutStep = () => {
+    const { pathname } = (0, react_router_dom_1.useLocation)();
+    let current = 0;
+    if (pathname.includes(routes_1.CHECKOUT_PRODUCTS)) {
+        current = 1;
+    }
+    else if (pathname.includes(routes_1.CHECKOUT_DETAILS)) {
+        current = 2;
+    }
+    else if (pathname.includes(routes_1.CHECKOUT_DELIVERY)) {
+        current = 3;
+    }
+    else if (pathname.includes(routes_1.CHECKOUT_SHIPPING)) {
+        current = 4;
+    }
+    else if (pathname.includes(routes_1.CHECKOUT_PAYMENT)) {
+        current = 5;
+    }
+    return current;
+};
+exports.useCheckoutStep = useCheckoutStep;
+const StepIcon = styled_components_1.default.h4 `
+  margin: 0;
+  padding: ${(props) => props.theme.space['m-size']};
+  background: ${(props) => {
+    if (props.done) {
+        return (0, getColor_1.default)('green')(props);
+    }
+    else if (props.selected) {
+        return (0, getColor_1.default)('gray-10')(props);
+    }
+    return (0, getColor_1.default)('background-color')(props);
+}};
+  border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => {
+    if (props.done || props.selected) {
+        return (0, getColor_1.default)('white')(props);
+    }
+    return (0, getColor_1.default)('black')(props);
+}};
+  border: 1px solid;
+  border-color: ${(props) => !props.done && !props.selected && (0, getColor_1.default)('gray-10')(props)};
+`;
+exports["default"] = StepTracker;
+
+
+/***/ }),
+
+/***/ 85378:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const components_1 = __webpack_require__(82740);
+const utils_1 = __webpack_require__(65928);
+const react_1 = __importStar(__webpack_require__(67294));
+const hooks_1 = __webpack_require__(5554);
+const CheckoutProvider_1 = __webpack_require__(74618);
+const lodash_add_1 = __importDefault(__webpack_require__(24427));
+const Total = ({ customProducts, customDelivery }) => {
+    const { t } = (0, hooks_1.useTranslation)('COMMON');
+    const { checkout } = (0, react_1.useContext)(CheckoutProvider_1.checkoutContext);
+    const { totalNew } = checkout;
+    const products = customProducts || totalNew;
+    const delivery = customDelivery || 0;
+    const sum = (0, lodash_add_1.default)(products, delivery);
+    return (react_1.default.createElement(components_1.Flexbox, { alignItems: "center", justifyContent: "flex-end", marginTop: "2rem" },
+        react_1.default.createElement("table", null,
+            react_1.default.createElement("tbody", null,
+                react_1.default.createElement("tr", null,
+                    react_1.default.createElement("td", null,
+                        react_1.default.createElement("span", null, t('checkoutTotal.products'))),
+                    react_1.default.createElement("td", null,
+                        react_1.default.createElement(components_1.Box, { as: "h4", margin: "0", marginLeft: "m-size" }, (0, utils_1.displayMoney)(products)))),
+                react_1.default.createElement("tr", null,
+                    react_1.default.createElement("td", null,
+                        react_1.default.createElement("span", null, t('checkoutTotal.delivery'))),
+                    react_1.default.createElement("td", null,
+                        react_1.default.createElement(components_1.Box, { as: "h4", margin: "0", marginLeft: "m-size" }, (0, utils_1.displayMoney)(delivery)))),
+                react_1.default.createElement("tr", null,
+                    react_1.default.createElement("td", null,
+                        react_1.default.createElement("span", null, t('checkoutTotal.sum'))),
+                    react_1.default.createElement("td", null,
+                        react_1.default.createElement(components_1.Box, { as: "h3", margin: "0", marginLeft: "m-size" }, (0, utils_1.displayMoney)(sum))))))));
+};
+exports["default"] = Total;
+
+
+/***/ }),
+
+/***/ 69480:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const Wrapper = styled_components_1.default.div `
+  width: 70rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+exports["default"] = Wrapper;
+
+
+/***/ }),
+
+/***/ 34090:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Row = exports.FieldWrapper = exports.StepTitle = exports.Wrapper = exports.StepTracker = exports.Total = exports.Actions = void 0;
+var Actions_1 = __webpack_require__(86417);
+Object.defineProperty(exports, "Actions", ({ enumerable: true, get: function () { return __importDefault(Actions_1).default; } }));
+var Total_1 = __webpack_require__(85378);
+Object.defineProperty(exports, "Total", ({ enumerable: true, get: function () { return __importDefault(Total_1).default; } }));
+var StepTracker_1 = __webpack_require__(31614);
+Object.defineProperty(exports, "StepTracker", ({ enumerable: true, get: function () { return __importDefault(StepTracker_1).default; } }));
+var Wrapper_1 = __webpack_require__(69480);
+Object.defineProperty(exports, "Wrapper", ({ enumerable: true, get: function () { return __importDefault(Wrapper_1).default; } }));
+var StepTitle_1 = __webpack_require__(66403);
+Object.defineProperty(exports, "StepTitle", ({ enumerable: true, get: function () { return __importDefault(StepTitle_1).default; } }));
+var FieldWrapper_1 = __webpack_require__(39697);
+Object.defineProperty(exports, "FieldWrapper", ({ enumerable: true, get: function () { return __importDefault(FieldWrapper_1).default; } }));
+var Row_1 = __webpack_require__(39897);
+Object.defineProperty(exports, "Row", ({ enumerable: true, get: function () { return __importDefault(Row_1).default; } }));
+
+
+/***/ }),
+
+/***/ 69905:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ViewProduct = exports.Products = exports.PageNotFound = exports.HowToCreateOrder = exports.Home = exports.Documents = exports.DeliveryAndPayments = exports.Contact = exports.CheckoutShipping = exports.CheckoutResult = exports.CheckoutProducts = exports.CheckoutPayment = exports.CheckoutDetails = exports.CheckoutDelivery = exports.App = exports.AdminPaymentTypes = exports.AdminDeliveryTypes = exports.AdminOrders = exports.AdminNewsletterUsers = exports.AdminCallbacks = void 0;
+var AdminCallbacks_1 = __webpack_require__(18978);
+Object.defineProperty(exports, "AdminCallbacks", ({ enumerable: true, get: function () { return __importDefault(AdminCallbacks_1).default; } }));
+var AdminNewsletterUsers_1 = __webpack_require__(49816);
+Object.defineProperty(exports, "AdminNewsletterUsers", ({ enumerable: true, get: function () { return __importDefault(AdminNewsletterUsers_1).default; } }));
+var AdminOrders_1 = __webpack_require__(43855);
+Object.defineProperty(exports, "AdminOrders", ({ enumerable: true, get: function () { return __importDefault(AdminOrders_1).default; } }));
+var AdminDeliveryTypes_1 = __webpack_require__(87666);
+Object.defineProperty(exports, "AdminDeliveryTypes", ({ enumerable: true, get: function () { return __importDefault(AdminDeliveryTypes_1).default; } }));
+var AdminPaymentTypes_1 = __webpack_require__(21824);
+Object.defineProperty(exports, "AdminPaymentTypes", ({ enumerable: true, get: function () { return __importDefault(AdminPaymentTypes_1).default; } }));
+var App_1 = __webpack_require__(76366);
+Object.defineProperty(exports, "App", ({ enumerable: true, get: function () { return __importDefault(App_1).default; } }));
+var CheckoutDelivery_1 = __webpack_require__(69845);
+Object.defineProperty(exports, "CheckoutDelivery", ({ enumerable: true, get: function () { return __importDefault(CheckoutDelivery_1).default; } }));
+var CheckoutDetails_1 = __webpack_require__(42447);
+Object.defineProperty(exports, "CheckoutDetails", ({ enumerable: true, get: function () { return __importDefault(CheckoutDetails_1).default; } }));
+var CheckoutPayment_1 = __webpack_require__(18736);
+Object.defineProperty(exports, "CheckoutPayment", ({ enumerable: true, get: function () { return __importDefault(CheckoutPayment_1).default; } }));
+var CheckoutProducts_1 = __webpack_require__(52903);
+Object.defineProperty(exports, "CheckoutProducts", ({ enumerable: true, get: function () { return __importDefault(CheckoutProducts_1).default; } }));
+var CheckoutResult_1 = __webpack_require__(50364);
+Object.defineProperty(exports, "CheckoutResult", ({ enumerable: true, get: function () { return __importDefault(CheckoutResult_1).default; } }));
+var CheckoutShipping_1 = __webpack_require__(7896);
+Object.defineProperty(exports, "CheckoutShipping", ({ enumerable: true, get: function () { return __importDefault(CheckoutShipping_1).default; } }));
+var Contact_1 = __webpack_require__(55518);
+Object.defineProperty(exports, "Contact", ({ enumerable: true, get: function () { return __importDefault(Contact_1).default; } }));
+var DeliveryAndPayments_1 = __webpack_require__(49099);
+Object.defineProperty(exports, "DeliveryAndPayments", ({ enumerable: true, get: function () { return __importDefault(DeliveryAndPayments_1).default; } }));
+var Documents_1 = __webpack_require__(97573);
+Object.defineProperty(exports, "Documents", ({ enumerable: true, get: function () { return __importDefault(Documents_1).default; } }));
+var Home_1 = __webpack_require__(80040);
+Object.defineProperty(exports, "Home", ({ enumerable: true, get: function () { return __importDefault(Home_1).default; } }));
+var HowToCreateOrder_1 = __webpack_require__(7214);
+Object.defineProperty(exports, "HowToCreateOrder", ({ enumerable: true, get: function () { return __importDefault(HowToCreateOrder_1).default; } }));
+var PageNotFound_1 = __webpack_require__(51957);
+Object.defineProperty(exports, "PageNotFound", ({ enumerable: true, get: function () { return __importDefault(PageNotFound_1).default; } }));
+var Products_1 = __webpack_require__(26992);
+Object.defineProperty(exports, "Products", ({ enumerable: true, get: function () { return __importDefault(Products_1).default; } }));
+var ViewProduct_1 = __webpack_require__(4190);
+Object.defineProperty(exports, "ViewProduct", ({ enumerable: true, get: function () { return __importDefault(ViewProduct_1).default; } }));
+
+
+/***/ }),
+
+/***/ 59705:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.authContext = void 0;
+const react_1 = __importStar(__webpack_require__(67294));
+exports.authContext = (0, react_1.createContext)({
+    auth: undefined,
+    setAuth: () => undefined
+});
+const AuthProvider = ({ children }) => {
+    const [auth, setAuth] = (0, react_1.useState)(undefined);
+    return (react_1.default.createElement(exports.authContext.Provider, { value: { auth, setAuth } }, children));
+};
+exports["default"] = AuthProvider;
+
+
+/***/ }),
+
+/***/ 62434:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.basketContext = void 0;
+const react_1 = __importStar(__webpack_require__(67294));
+exports.basketContext = (0, react_1.createContext)({
+    basket: [],
+    setBasket: () => undefined,
+    clearBasket: () => undefined,
+    basketLength: 0,
+    getProductFromBasket: () => undefined
+});
+const BasketProvider = ({ children }) => {
+    const [basket, setBasket] = (0, react_1.useState)([]);
+    const clearBasket = () => setBasket([]);
+    const basketLength = basket.length;
+    const getProductFromBasket = (id) => {
+        const basketItem = basket.find((basketElem) => basketElem.id === id);
+        return basketItem;
+    };
+    return (react_1.default.createElement(exports.basketContext.Provider, { value: {
+            basket,
+            setBasket,
+            clearBasket,
+            basketLength,
+            getProductFromBasket
+        } }, children));
+};
+exports["default"] = BasketProvider;
+
+
+/***/ }),
+
+/***/ 27333:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.basketToggleContext = void 0;
+const react_1 = __importStar(__webpack_require__(67294));
+exports.basketToggleContext = (0, react_1.createContext)({
+    isOpen: false,
+    setIsOpen: () => undefined,
+    closeBasket: () => undefined
+});
+const BasketToggleProvider = ({ children }) => {
+    const [isOpen, setIsOpen] = (0, react_1.useState)(false);
+    const closeBasket = () => setIsOpen(false);
+    return (react_1.default.createElement(exports.basketToggleContext.Provider, { value: {
+            isOpen,
+            setIsOpen,
+            closeBasket
+        } }, children));
+};
+exports["default"] = BasketToggleProvider;
+
+
+/***/ }),
+
+/***/ 74618:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.checkoutContext = exports.initState = void 0;
+const react_1 = __webpack_require__(67294);
+const react_2 = __importDefault(__webpack_require__(67294));
+const CheckoutProvider = ({ children }) => {
+    const [checkout, setCheckout] = (0, react_1.useState)(exports.initState);
+    return (react_2.default.createElement(exports.checkoutContext.Provider, { value: { checkout, setCheckout } }, children));
+};
+exports.initState = {
+    totalNew: 0,
+    products2: null,
+    contactDetails2: null,
+    deliveryType2: null,
+    shipping2: null,
+    paymentType2: null
+};
+exports.checkoutContext = (0, react_1.createContext)({
+    checkout: exports.initState,
+    setCheckout: () => undefined
+});
+exports["default"] = CheckoutProvider;
+
+
+/***/ }),
+
+/***/ 8329:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.loaderContext = void 0;
+const react_1 = __webpack_require__(67294);
+const react_2 = __importDefault(__webpack_require__(67294));
+const styled_components_1 = __importDefault(__webpack_require__(91288));
+const utils_1 = __webpack_require__(65928);
+const components_1 = __webpack_require__(82740);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+exports.loaderContext = (0, react_1.createContext)({
+    show: () => undefined,
+    hide: () => undefined
+});
+const LoaderProvider = ({ children }) => {
+    const [loaderVisible, setLoaderVisible] = (0, react_1.useState)(false);
+    return (react_2.default.createElement(exports.loaderContext.Provider, { value: {
+            show: () => setLoaderVisible(true),
+            hide: () => setLoaderVisible(false)
+        } },
+        loaderVisible && (react_2.default.createElement(Loader, null,
+            react_2.default.createElement(components_1.Spinner, null))),
+        children));
+};
+const Loader = styled_components_1.default.div `
+  background-color: ${(props) => `${(0, utils_1.changeColorAlpha)((0, getColor_1.default)('black')(props), 0.25)}`};
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+exports["default"] = LoaderProvider;
+
+
+/***/ }),
+
+/***/ 7539:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AuthProvider = exports.LoaderProvider = exports.BasketProvider = exports.CheckoutProvider = exports.BasketToggleProvider = void 0;
+var BasketToggleProvider_1 = __webpack_require__(27333);
+Object.defineProperty(exports, "BasketToggleProvider", ({ enumerable: true, get: function () { return __importDefault(BasketToggleProvider_1).default; } }));
+var CheckoutProvider_1 = __webpack_require__(74618);
+Object.defineProperty(exports, "CheckoutProvider", ({ enumerable: true, get: function () { return __importDefault(CheckoutProvider_1).default; } }));
+var BasketProvider_1 = __webpack_require__(62434);
+Object.defineProperty(exports, "BasketProvider", ({ enumerable: true, get: function () { return __importDefault(BasketProvider_1).default; } }));
+var LoaderProvider_1 = __webpack_require__(8329);
+Object.defineProperty(exports, "LoaderProvider", ({ enumerable: true, get: function () { return __importDefault(LoaderProvider_1).default; } }));
+var AuthProvider_1 = __webpack_require__(59705);
+Object.defineProperty(exports, "AuthProvider", ({ enumerable: true, get: function () { return __importDefault(AuthProvider_1).default; } }));
+
+
+/***/ }),
+
+/***/ 4526:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const styled_components_1 = __webpack_require__(91288);
+const getColor_1 = __importDefault(__webpack_require__(73967));
+const GlobalStyle = (0, styled_components_1.createGlobalStyle) `
+* {
+  box-sizing: border-box;
+
+  &:focus {
+    outline: solid 0.3rem;
+    outline-color: ${(0, getColor_1.default)('yellow-outline')};
+  }
+}
+
+html {
+  font-size: 0.625em;
+}
+
+body {
+  min-height: 100vh;
+  height: 100%;
+
+  font-family: 'Roboto';
+  font-size: ${(props) => props.theme.fontSizes.baseFontSize};
+
+  background: ${(0, getColor_1.default)('background-color')};
+  overflow-x: hidden;
+  margin: 0;
+}
+
+p {
+  color: ${(0, getColor_1.default)('paragraph-color')};
+  line-height: ${(props) => props.theme.space['line-height']};
+}
+
+strong {
+  font-weight: bold;
+}
+
+span {
+  color: ${(0, getColor_1.default)('paragraph-color')};
+  font-size: ${(props) => props.theme.fontSizes['font-small']};
+  position: relative;
+}
+
+
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.control-dots {
+  top: 0;
+  bottom: unset !important;
+  justify-content: center;
+  margin-bottom: 0 !important;
+
+  & > *:last-child {
+    margin-right: 0;
+  }
+}
+
+.react-tabs__tab-list {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+
+`;
+exports["default"] = GlobalStyle;
+
+
+/***/ }),
+
+/***/ 73967:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const getColor = (color) => (props) => props.theme.colors[color];
+exports["default"] = getColor;
+
+
+/***/ }),
+
+/***/ 58151:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const getSpace = (space) => (props) => props.theme.space[space];
+exports["default"] = getSpace;
+
+
+/***/ }),
+
+/***/ 62666:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const colors = {
+    'nav-bg': '#f8f8f8',
+    'nav-bg-scrolled': '#fff',
+    'background-color': '#f9f9f9',
+    'background-color-01': '#f2f2f2',
+    'paragraph-color': '#4a4a4a',
+    'heading-color': '#1a1a1a',
+    'border-color': 'rgb(225, 225, 225)',
+    'border-color-focus': '#c5c5c5',
+    white: 'rgb(255, 255, 255)',
+    black: 'rgb(0, 0, 0)',
+    'off-black': '#303030',
+    'off-white': '#f0f0f0',
+    red: 'rgba(247, 45, 45, 0.986)',
+    green: 'rgb(59, 150, 32)',
+    yellow: 'rgb(228, 165, 31)',
+    'yellow-outline': 'rgb(255, 221, 0)',
+    'gray-01': '#3a3a3a',
+    'gray-10': '#818181',
+    'gray-20': '#b6b6b6',
+    'button-color': '#101010',
+    'button-hover': '#101010',
+    'color-success': '#000',
+    'label-color': '#696868',
+    'braty-red': 'rgb(230, 7, 15)'
+};
+const zIndices = {
+    toast: 100,
+    modal: 80,
+    basket: 60,
+    navigation: 55,
+    filter: 40,
+    search: 30,
+    content: 10
+};
+const fontSizes = {
+    baseFontSize: '1.6rem',
+    'font-small': '1.2rem',
+    'font-medium': '1.5rem',
+    'font-large': '2rem',
+    'font-xlarge': '4rem',
+    'new-huge-s-size': '9.6rem',
+    'new-large-l-size': '6.0rem',
+    'new-large-m-size': '4.8rem',
+    'new-large-s-size': '3.4rem',
+    'new-medium-l-size': '2.4rem',
+    'new-medium-m-size': '2.0rem',
+    'new-medium-s-size': '1.6rem',
+    'new-small-l-size': '1.4rem',
+    'new-small-m-size': '1.2rem',
+    'new-small-s-size': '1.0rem'
+};
+const letterSpacings = {
+    100: '-0.15rem',
+    200: '-0.05rem',
+    300: '0',
+    400: '0.01rem',
+    500: '0.015rem',
+    600: '0.025rem',
+    700: '0.04rem',
+    800: '0.05rem',
+    900: '0.125rem',
+    1000: '0.15rem'
+};
+const fontWeigths = {
+    light: '300',
+    regular: '400',
+    medium: '500',
+    bold: '700'
+};
+const space = {
+    'nav-height': '6rem',
+    'xxs-size': '0.5rem',
+    'xs-size': '1rem',
+    's-size': '1.2rem',
+    'm-size': '1.6rem',
+    'l-size': '3.2rem',
+    'xl-size': '4.8rem',
+    'xxl-size': '5.6rem',
+    'xxxl-size': '10rem',
+    top: '10rem',
+    'top-mobile': '8.5rem',
+    bottom: '15rem',
+    'line-height': '2.4rem',
+    'pad-desktop': '10rem'
+};
+const theme = {
+    colors,
+    space,
+    zIndices,
+    fontSizes,
+    fontWeigths,
+    letterSpacings
+};
+exports["default"] = theme;
+
+
+/***/ }),
+
+/***/ 5369:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const config = {
+    url: "https://trntidugdqqpybdgwjux.supabase.co",
+    publicAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMzAwMjU0OSwiZXhwIjoxOTQ4NTc4NTQ5fQ.hAtTDOthtii3r9XFnd6xjEeSTT15PM1OU74Ep5wehVQ"
+};
+exports["default"] = config;
+
+
+/***/ }),
+
+/***/ 32606:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const supabase_js_1 = __webpack_require__(21522);
+const config_1 = __importDefault(__webpack_require__(5369));
+const { url, publicAnonKey } = config_1.default;
+if (!url) {
+    throw new Error('No SUPABASE_URL in envs ');
+}
+if (!publicAnonKey) {
+    throw new Error('No SUPABASE_PUBLIC_ANON_KEY in envs ');
+}
+const supabase = (0, supabase_js_1.createClient)(url, publicAnonKey);
+exports["default"] = supabase;
+
+
+/***/ }),
+
+/***/ 48509:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const calculateTotal = (arr) => {
+    if (!arr || arr?.length === 0)
+        return 0;
+    const total = arr.reduce((acc, val) => acc + val, 0);
+    return parseFloat(total.toFixed(2));
+};
+exports["default"] = calculateTotal;
+
+
+/***/ }),
+
+/***/ 46007:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+function changeColorAlpha(colorValue, alpha) {
+    const parts = colorValue.match(/[\d.]+/g);
+    if (!parts || (parts.length !== 3 && parts.length !== 4)) {
+        throw new Error('Cannot change alpha channel, invalid color value');
+    }
+    parts[3] = alpha.toString();
+    return `rgba(${parts.join()})`;
+}
+exports["default"] = changeColorAlpha;
+
+
+/***/ }),
+
+/***/ 32756:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.displayDate = void 0;
+const date_fns_1 = __webpack_require__(90458);
+const format_1 = __importDefault(__webpack_require__(95639));
+const displayDate = (date) => {
+    let parsedDate;
+    if (typeof date === 'string') {
+        parsedDate = (0, date_fns_1.parseISO)(date);
+    }
+    else {
+        parsedDate = date;
+    }
+    return (0, format_1.default)(parsedDate, 'HH:mm dd/MM/yyyy');
+};
+exports.displayDate = displayDate;
+exports["default"] = exports.displayDate;
+
+
+/***/ }),
+
+/***/ 50595:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.displayMoney = void 0;
+const displayMoney = (n) => {
+    const format = new Intl.NumberFormat('pl-PL', {
+        style: 'currency',
+        currency: 'PLN'
+    });
+    // or use toLocaleString()
+    return format.format(n);
+};
+exports.displayMoney = displayMoney;
+exports["default"] = exports.displayMoney;
+
+
+/***/ }),
+
+/***/ 59623:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const utils_1 = __webpack_require__(65928);
+function getCollection(snapshot, schema) {
+    const records = [];
+    snapshot.forEach((elem) => {
+        const parsedElem = (0, utils_1.parseApiResponse)(schema, elem);
+        records.push(parsedElem);
+    });
+    return records;
+}
+exports["default"] = getCollection;
+
+
+/***/ }),
+
+/***/ 25364:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const getRequiredOrNot = (label, required) => `${required ? '* ' : ''}${label}`;
+exports["default"] = getRequiredOrNot;
+
+
+/***/ }),
+
+/***/ 65928:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.changeColorAlpha = exports.getRequiredOrNot = exports.displayDate = exports.displayMoney = exports.calculateTotal = exports.getCollection = exports.parseApiResponse = void 0;
+var parseApiResponse_1 = __webpack_require__(60452);
+Object.defineProperty(exports, "parseApiResponse", ({ enumerable: true, get: function () { return __importDefault(parseApiResponse_1).default; } }));
+var getCollection_1 = __webpack_require__(59623);
+Object.defineProperty(exports, "getCollection", ({ enumerable: true, get: function () { return __importDefault(getCollection_1).default; } }));
+var calculateTotal_1 = __webpack_require__(48509);
+Object.defineProperty(exports, "calculateTotal", ({ enumerable: true, get: function () { return __importDefault(calculateTotal_1).default; } }));
+var displayMoney_1 = __webpack_require__(50595);
+Object.defineProperty(exports, "displayMoney", ({ enumerable: true, get: function () { return __importDefault(displayMoney_1).default; } }));
+var displayDate_1 = __webpack_require__(32756);
+Object.defineProperty(exports, "displayDate", ({ enumerable: true, get: function () { return __importDefault(displayDate_1).default; } }));
+var getRequiredOrNot_1 = __webpack_require__(25364);
+Object.defineProperty(exports, "getRequiredOrNot", ({ enumerable: true, get: function () { return __importDefault(getRequiredOrNot_1).default; } }));
+var changeColorAlpha_1 = __webpack_require__(46007);
+Object.defineProperty(exports, "changeColorAlpha", ({ enumerable: true, get: function () { return __importDefault(changeColorAlpha_1).default; } }));
+
+
+/***/ }),
+
+/***/ 60452:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+function parseApiResponse(schema, response) {
+    if (response.exists()) {
+        const data = response.data();
+        const { id } = response;
+        const obj = {
+            ...data,
+            id
+        };
+        const parsedResponse = schema.safeParse(obj);
+        if (parsedResponse.success) {
+            return parsedResponse.data;
+        }
+        throw new Error(parsedResponse.error.message);
+    }
+    else {
+        throw new Error('Error Parse');
+    }
+}
+exports["default"] = parseApiResponse;
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			id: moduleId,
+/******/ 			loaded: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			179: 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkecommerce_react"] = self["webpackChunkecommerce_react"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, [736], () => (__webpack_require__(26981)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [736], () => (__webpack_require__(92629)))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=main.e467973523a11e87acea.js.map
