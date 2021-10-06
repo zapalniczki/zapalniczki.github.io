@@ -1,6 +1,4 @@
-import { BannerWithPicture } from 'components'
-import { Button } from 'components'
-import { Heading } from 'components'
+import { Button, Heading, BannerWithPicture } from 'components'
 import { PRODUCTS } from 'constants/routes'
 import { History } from 'history'
 import { TranslateFunc } from 'hooks/useTranslation'

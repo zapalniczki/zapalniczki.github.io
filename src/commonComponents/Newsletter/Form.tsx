@@ -1,6 +1,5 @@
-import { Button, Flexbox, Input } from 'components'
+import { FieldWrapper, Button, Flexbox, Input } from 'components'
 import { Field, FieldProps } from 'formik'
-import { FieldWrapper } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { Email } from 'Types'

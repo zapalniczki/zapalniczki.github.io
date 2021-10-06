@@ -1,10 +1,15 @@
 import { Product } from 'api'
-import { Heading, Tile, ImageLoader, Flexbox } from 'components'
+import {
+  ProductImageHover,
+  Heading,
+  Tile,
+  ImageLoader,
+  Flexbox
+} from 'components'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
-import { ProductImageHover } from 'components'
 import getColor from 'styles/getColor'
 
 type Props = {

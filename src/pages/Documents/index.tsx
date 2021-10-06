@@ -1,5 +1,4 @@
-import { Banner, Heading, Page } from 'components'
-import { ExternalLink } from 'components'
+import { ExternalLink, Banner, Heading, Page } from 'components'
 import { useScrollTop, useTabTitle } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'

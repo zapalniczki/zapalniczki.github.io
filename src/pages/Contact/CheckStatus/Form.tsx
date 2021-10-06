@@ -1,7 +1,6 @@
-import { Button, Input } from 'components'
+import { FieldWrapper, Button, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 
-import { FieldWrapper } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { getRequiredOrNot } from 'utils'

@@ -1,5 +1,4 @@
-import { Flexbox } from 'components'
-import { Heading } from 'components'
+import { Flexbox, Heading } from 'components'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
@@ -10,13 +9,13 @@ type Props = {
 } & SpaceProps
 
 const ListItem = ({ children, ...props }: Props) => (
-    <Container {...props}>
-      <Triangle />
-      <Heading level={6} marginLeft="m-size">
-        {children}
-      </Heading>
-    </Container>
-  )
+  <Container {...props}>
+    <Triangle />
+    <Heading level={6} marginLeft="m-size">
+      {children}
+    </Heading>
+  </Container>
+)
 
 const Triangle = styled.div`
   width: 0;
