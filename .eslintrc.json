@@ -22,7 +22,15 @@
     "react/self-closing-comp": 2,
     "no-else-return": 2,
     "react/jsx-sort-props": 2,
-    "@typescript-eslint/no-empty-interface": 0
+    "@typescript-eslint/no-empty-interface": 0,
+    "arrow-body-style": 2,
+    "no-restricted-imports": [
+      "error",
+      {
+        // "paths": ["import1", "import2"],
+        // "patterns": ["components/*"]
+      }
+    ]
   },
   "ignorePatterns": [
     "/node_modules",

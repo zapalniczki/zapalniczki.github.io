@@ -1,4 +1,5 @@
-import { Separator, Heading, Flexbox, Button } from 'components'
+import { Separator, Heading, Button } from 'components'
+import Flexbox from 'components/Flexbox'
 import React, { ReactNode } from 'react'
 
 type Props = {
@@ -6,17 +7,18 @@ type Props = {
   onClick: () => void
 }
 
-const ModalHeader = ({ onClick, children }: Props) => {
-  return (
-    <>
-      <Flexbox alignItems="center" justifyContent="space-between">
-        <Heading level={6}>{children}</Heading>
-        <Button icon="times" onClick={onClick} size="small" variant="ternary" />
-      </Flexbox>
+// sort props keys
+// sort descructurized props
 
-      <Separator />
-    </>
-  )
-}
+const ModalHeader = ({ onClick, children }: Props) => (
+  <>
+    <Flexbox alignItems="center" justifyContent="space-between">
+      <Heading level={6}>{children}</Heading>
+      <Button icon="times" onClick={onClick} size="small" variant="ternary" />
+    </Flexbox>
+
+    <Separator />
+  </>
+)
 
 export default ModalHeader

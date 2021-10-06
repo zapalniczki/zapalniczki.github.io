@@ -611,7 +611,7 @@ const pl = {
     },
     EDIT_MODAL: {
       buttonLabel: 'Edytuj',
-      title: 'Edycja prośbę o kontakt',
+      title: 'Edycja prośby o kontakt',
       FORM: {
         DONE: {
           label: 'Wykonano telefonu do klienta'
@@ -622,15 +622,27 @@ const pl = {
 
   ADMIN_DELIVERY_TYPES: {
     title: 'Metody dostawy',
-    HEADERS: {
-      created_at: 'Data utworzenia',
-      updated_at: 'Data modyfikacji',
-      label: 'Etykieta',
-      price: 'Cena',
-      time: 'Czas',
-      requires_address: 'Wymaga adresu',
-      is_enabled: 'Włączone',
-      frontend_icon_name: 'Ikona'
+    LIST: {
+      HEADERS: {
+        created_at: 'Data utworzenia',
+        updated_at: 'Data modyfikacji',
+        label: 'Etykieta',
+        price: 'Cena',
+        time: 'Czas',
+        requires_address: 'Wymaga adresu',
+        is_enabled: 'Włączone',
+        frontend_icon_name: 'Ikona',
+        edit: 'Edytuj'
+      }
+    },
+    EDIT_MODAL: {
+      buttonLabel: 'Edytuj',
+      title: 'Edycja metody dostawy',
+      FORM: {
+        IS_ENABLED: {
+          label: 'Metoda dostępna'
+        }
+      }
     }
   },
 

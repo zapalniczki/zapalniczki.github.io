@@ -4,8 +4,7 @@ type StyledProps = {
   theme: Theme
 }
 
-const getColor = (color: Color) => (props: StyledProps) => {
-  return props.theme.colors[color]
-}
+const getColor = (color: Color) => (props: StyledProps) =>
+  props.theme.colors[color]
 
 export default getColor
