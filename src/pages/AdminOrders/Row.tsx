@@ -87,7 +87,6 @@ const useOrderInfo = (
         // const alfa = moldsData.find(
         //   (dbMold) => dbMold.productId === mold.productId
         // )
-        const alfa = null
 
         status = null
       }
@@ -114,7 +113,8 @@ const useOrderInfo = (
   }
 }
 
-const getStatusesWithLabels = (t: TranslateFunc) => ORDER_STATUSES.map((status) => ({
+const getStatusesWithLabels = (t: TranslateFunc) =>
+  ORDER_STATUSES.map((status) => ({
     value: status,
     label: t(`ORDER_STATUSES.${status}`)
   }))

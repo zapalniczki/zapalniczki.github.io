@@ -26,8 +26,8 @@ const Header = () => {
       backgroundColor="white"
       padding="m-size"
       width="100%"
-      // @ts-ignore
-      zIndex="basket"
+      // TODO Which this is not accepted? zIndex="basket"
+      zIndex={60}
     >
       <Text marginRight="auto" type="subtitle-1">
         {t('basket.title')}

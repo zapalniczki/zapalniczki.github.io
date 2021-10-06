@@ -5,6 +5,7 @@ import { CurrentStatus } from 'pages/AdminOrders/Row'
 import { loaderContext } from 'providers/LoaderProvider'
 import { useContext, useEffect } from 'react'
 import { useMutation } from 'react-query'
+import { GetOrdersResponse } from './getOrders'
 
 type UpdateOrderStatus = {
   id: string
@@ -24,7 +25,7 @@ const updateOrderStatus = async (payload: UpdateOrderStatus) => {
 }
 
 export const useUpdateOrderStatus = (
-  order: any,
+  order: GetOrdersResponse,
   currentStatus: CurrentStatus
 ) => {
   const { show, hide } = useContext(loaderContext)

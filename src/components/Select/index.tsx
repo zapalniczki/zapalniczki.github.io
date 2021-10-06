@@ -1,5 +1,6 @@
 import SelectFromLib from 'react-select'
 import React from 'react'
+import { CSSObject } from 'styled-components'
 
 type Props = {
   placeholder?: string
@@ -14,7 +15,7 @@ const Select = ({ placeholder, onChange, options, value }: Props) => (
     options={sortAndMapOptions(options)}
     placeholder={placeholder}
     styles={{
-      menu: (provided: any) => ({
+      menu: (provided: CSSObject) => ({
         ...provided,
         zIndex: 10
       })

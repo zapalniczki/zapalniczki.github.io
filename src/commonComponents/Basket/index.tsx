@@ -9,7 +9,6 @@ import { useTranslation } from 'hooks'
 import Header from './Header'
 import Checkout from './Checkout'
 import BasketItem from './BasketItem'
-import { findDOMNode } from 'react-dom'
 import getColor from 'styles/getColor'
 
 const Basket = () => {
@@ -23,7 +22,7 @@ const Basket = () => {
     const handleClickOutside = (event: Event) => {
       if (
         event.target instanceof HTMLElement &&
-        !findDOMNode(ref.current)?.contains(event.target)
+        !ref.current?.contains(event.target)
       ) {
         setIsOpen(false)
       }
