@@ -32,10 +32,14 @@
     "sort-destructure-keys/sort-destructure-keys": 2,
     "typescript-sort-keys/interface": 2,
     "typescript-sort-keys/string-enum": 2,
+    "react/jsx-no-target-blank": 2,
+    "react/jsx-pascal-case": 2,
+    "react/jsx-wrap-multilines": 2,
+    "react/jsx-tag-spacing": 2,
+
     "no-restricted-imports": [
       "error",
       {
-        // "paths": ["import1", "import2"],
         "patterns": [
           "components/*",
           "api/*",
