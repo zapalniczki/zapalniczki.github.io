@@ -8,6 +8,7 @@ const getCallbacks = async () => {
   const { data, error } = await supabase
     .from<GetCallbacksResponse>('callback')
     .select()
+    .order('updated_at')
 
   if (error) {
     throw new Error(error.message)
