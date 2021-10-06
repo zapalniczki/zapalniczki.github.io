@@ -3,8 +3,8 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 
 type Props = {
-  isInBasket: boolean
-  disabled?: boolean
+  disabled?: boolean,
+  isInBasket: boolean,
   separation?: boolean
 }
 

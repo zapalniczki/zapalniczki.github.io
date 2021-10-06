@@ -6,8 +6,8 @@ import { checkoutContext } from 'providers/CheckoutProvider'
 import add from 'lodash.add'
 
 type Props = {
+  customDelivery?: number,
   customProducts?: number
-  customDelivery?: number
 }
 
 const Total = ({ customDelivery, customProducts }: Props) => {

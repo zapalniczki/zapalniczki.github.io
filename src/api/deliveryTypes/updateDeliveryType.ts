@@ -3,8 +3,8 @@ import { useMutation } from 'react-query'
 import supabase from 'supabase'
 
 type UpdateDeliveryTypePayload = {
+  id: string,
   isEnabled: boolean
-  id: string
 }
 
 const updateDeliveryType = async (payload: UpdateDeliveryTypePayload) => {

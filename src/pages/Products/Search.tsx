@@ -5,8 +5,8 @@ import React from 'react'
 import getColor from 'styles/getColor'
 
 type Props = {
+  onChange: (value: string) => void,
   value: string
-  onChange: (value: string) => void
 }
 
 const Search = ({ onChange, value }: Props) => {

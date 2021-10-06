@@ -3,20 +3,20 @@ import { Email, Fullname, Phone } from 'Types'
 
 type EventType =
   | {
-      key: 'NEW_ORDER'
       content: {
-        order_id: string
+        name: Fullname,
+        order_id: string,
         phone: Phone
-        name: Fullname
-      }
+      },
+      key: 'NEW_ORDER'
     }
   | {
       key: 'NEWSLETTER_SIGNUP'
     }
 
 type TriggerSendEmailPayload = {
+  to: Email,
   type: EventType
-  to: Email
 }
 
 const triggerSendEmail = (payload: TriggerSendEmailPayload) => {

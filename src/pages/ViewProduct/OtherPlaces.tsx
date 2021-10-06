@@ -4,8 +4,8 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 
 type Props = {
+  collectionId: Product['collection_id'],
   labelId: Product['label_id']
-  collectionId: Product['collection_id']
 }
 
 const OtherPlaces = ({ collectionId, labelId }: Props) => {

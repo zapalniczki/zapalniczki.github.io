@@ -24,7 +24,7 @@ const Features = () => {
   )
 }
 
-const features: { key: string; icon: IconName }[] = [
+const features: { icon: IconName, key: string; }[] = [
   {
     key: 'FREE_DELIVERY',
     icon: 'truck'

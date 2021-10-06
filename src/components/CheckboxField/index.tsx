@@ -5,12 +5,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 type Props = FieldProps & {
-  id: string
-  isFirst: boolean
-  title: string
+  fieldLabel: string,
+  id: string,
+  isFirst: boolean,
   subtitle?: string
+  title: string,
   val?: string
-  fieldLabel: string
 }
 
 const CheckboxField = ({

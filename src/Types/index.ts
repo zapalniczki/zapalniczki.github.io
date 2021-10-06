@@ -4,8 +4,8 @@ export type ProductImage = {
 }
 
 export type SelectOption = {
+  label: string,
   value: string
-  label: string
 }
 
 export type Street = string

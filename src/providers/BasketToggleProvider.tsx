@@ -1,9 +1,9 @@
 import React, { createContext, ReactNode, useState } from 'react'
 
 type BasketToggleContext = {
-  isOpen: boolean
+  closeBasket: () => void,
+  isOpen: boolean,
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  closeBasket: () => void
 }
 
 export const basketToggleContext = createContext<BasketToggleContext>({

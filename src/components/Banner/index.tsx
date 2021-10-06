@@ -3,16 +3,16 @@ import { Box, Flexbox, Text } from 'components'
 import { SpaceProps } from 'styled-system'
 
 export type BasicProps = {
-  title?: ReactNode
+  background?: ReactNode,
   description?: string
-  background?: ReactNode
+  title?: ReactNode
 } & SpaceProps
 
 type Props = BasicProps & {
+  children?: ReactNode,
+  horizonal?: boolean,
+  medium?: boolean,
   small?: boolean
-  medium?: boolean
-  children?: ReactNode
-  horizonal?: boolean
 }
 
 const Banner = ({

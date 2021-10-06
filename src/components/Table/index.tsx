@@ -8,9 +8,9 @@ type DataConstraint = Record<
 >
 
 type Props<D extends DataConstraint> = {
+  columns: Column<D>[],
+  data: D[],
   temp?: boolean
-  columns: Column<D>[]
-  data: D[]
 }
 
 function Table<T extends DataConstraint>({ columns, data }: Props<T>) {

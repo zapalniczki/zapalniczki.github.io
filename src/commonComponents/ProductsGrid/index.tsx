@@ -14,14 +14,14 @@ import Loader from './index.loader'
 import ProductTile from './ProductTile'
 
 type Props = {
-  searchQuery?: string
-  query: UseQueryResult<Product[]>
-  title?: string
   link?: {
+    label: string,
     to: LocationDescriptor
-    label: string
-  }
-  loaderCount?: number
+  },
+  loaderCount?: number,
+  query: UseQueryResult<Product[]>,
+  searchQuery?: string,
+  title?: string,
   vertical?: boolean
 } & SpaceProps
 

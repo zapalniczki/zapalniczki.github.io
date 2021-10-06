@@ -8,9 +8,9 @@ import ModalResult from './ModalResult'
 import ModalContent from './ModalContent'
 
 type Props = {
-  label: string
-  children: ReactNode
-  isOpen: boolean
+  children: ReactNode,
+  isOpen: boolean,
+  label: string,
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 

@@ -75,6 +75,6 @@ export type FormValues = {
 type View =
   | { view: 'FORM' }
   | { view: 'SUCCESS' }
-  | { view: 'ERROR'; message: string }
+  | { message: string, view: 'ERROR'; }
 
 export default useForm

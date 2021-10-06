@@ -9,8 +9,8 @@ import { useUpdateOrderStatus, useGetMolds, GetOrdersResponse } from 'api'
 import { MoldStatus, ORDER_STATUSES } from 'models'
 
 type Props = {
+  columns: AdminTableColumns[],
   order: GetOrdersResponse
-  columns: AdminTableColumns[]
 }
 
 const Row = ({ columns, order }: Props) => {
@@ -135,8 +135,8 @@ export type AdminTableColumns =
   | 'molds'
 
 export type CurrentStatus = {
+  label: string,
   value: string
-  label: string
 }
 
 export default Row

@@ -5,9 +5,9 @@ import { SpaceProps, TypographyProps } from 'styled-system'
 
 type Props = {
   children: ReactNode
-  type: Type
-  white?: boolean
-  span?: boolean
+  span?: boolean,
+  type: Type,
+  white?: boolean,
   wrap?: boolean
 } & SpaceProps &
   TypographyProps

@@ -4,8 +4,8 @@ import React from 'react'
 import { useTheme } from 'styled-components'
 
 type Props = {
+  clickHandler: () => void,
   right?: boolean
-  clickHandler: () => void
 }
 
 const Chevron = ({ clickHandler, right }: Props) => {

@@ -5,13 +5,13 @@ import supabase from 'supabase'
 type Base = Pick<Order, 'id' | 'updated_at' | 'created_at' | 'total'>
 
 export type GetOrdersResponse = Base & {
+  customerEmail: { email: User['email'] },
+  customerName: { full_name: User['full_name'] },
+  customerPhone: { phone: User['phone'] },
+  deliveryType: { label: DeliveryType['label'] },
+  isCompany: { is_company: User['is_company'] },
+  products: Pick<OrderItem, 'id' | 'quantity'>[],
   status: OrderStatus
-  isCompany: { is_company: User['is_company'] }
-  customerName: { full_name: User['full_name'] }
-  customerPhone: { phone: User['phone'] }
-  customerEmail: { email: User['email'] }
-  deliveryType: { label: DeliveryType['label'] }
-  products: Pick<OrderItem, 'id' | 'quantity'>[]
 }
 
 const getOrders = async (status: OrderStatus) => {

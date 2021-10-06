@@ -4,9 +4,9 @@ import Banner, { BasicProps } from '../Banner'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 
 type Props = BasicProps & {
-  img?: string
+  bannerKey: BannerKey,
   children?: ReactNode
-  bannerKey: BannerKey
+  img?: string
 }
 
 const BannerWithPicture = ({ bannerKey, children, ...props }: Props) => {

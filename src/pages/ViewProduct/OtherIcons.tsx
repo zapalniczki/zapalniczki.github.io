@@ -4,8 +4,8 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 
 type Props = {
+  iconId: ProductDetails['icon']['label'],
   labelId: ProductDetails['label']['label']
-  iconId: ProductDetails['icon']['label']
 }
 
 const OtherIcons = ({ iconId, labelId }: Props) => {

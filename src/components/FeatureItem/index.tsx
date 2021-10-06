@@ -2,9 +2,9 @@ import { Flexbox, Tile, Text } from 'components'
 import React, { ReactNode } from 'react'
 
 type Props = {
-  title?: string
+  children: ReactNode,
   subtitle?: string
-  children: ReactNode
+  title?: string
 }
 
 const FeatureItem = ({ children, subtitle, title }: Props) => (

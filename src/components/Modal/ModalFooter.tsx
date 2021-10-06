@@ -2,9 +2,9 @@ import { Button, Flexbox } from 'components'
 import React from 'react'
 
 type ButtonProps = {
-  label: string
+  disabled?: boolean,
+  label: string,
   onClick: () => void
-  disabled?: boolean
 }
 
 type Props = {

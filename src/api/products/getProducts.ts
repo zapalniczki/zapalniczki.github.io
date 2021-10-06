@@ -2,24 +2,24 @@ import { useQuery } from 'react-query'
 import supabase from 'supabase'
 
 export type Image = {
-  id: string
-  large: string
+  basket: string,
+  id: string,
+  large: string,
+  long: string,
+  thumbnail: string,
   tile: string
-  thumbnail: string
-  basket: string
-  long: string
 }
 
 export type Product = {
-  name: string
-  id: string
-  price: number
-  label_id: string
-  icon_id: string
-  collection_id: string
-  mainImage: Pick<Image, 'tile' | 'long'>
+  collection_id: string,
+  featured: boolean | null,
+  icon_id: string,
+  id: string,
+  label_id: string,
+  mainImage: Pick<Image, 'tile' | 'long'>,
+  name: string,
+  price: number,
   visible: boolean | null
-  featured: boolean | null
 }
 
 const getProducts = async () => {

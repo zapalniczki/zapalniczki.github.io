@@ -5,8 +5,8 @@ import { ViewWrapper } from '.'
 import { View } from './useForm'
 
 type Props = {
+  setView: React.Dispatch<React.SetStateAction<View>>,
   status: string
-  setView: React.Dispatch<React.SetStateAction<View>>
 }
 
 const Result = ({ setView, status }: Props) => {

@@ -10,7 +10,7 @@ type BaseProps = {
 }
 
 type Props = BaseProps &
-  ({ hasText?: false; count: number } | { hasText: true; text: string })
+  ({ count: number, hasText?: false; } | { hasText: true; text: string })
 
 const Badge = ({ children, stanalone = false, ...props }: Props) => {
   let content = <></>
@@ -36,8 +36,8 @@ const Badge = ({ children, stanalone = false, ...props }: Props) => {
 }
 
 type CountProps = {
+  hasText?: boolean,
   stanalone: boolean
-  hasText?: boolean
 }
 
 const Count = styled.span<CountProps>`

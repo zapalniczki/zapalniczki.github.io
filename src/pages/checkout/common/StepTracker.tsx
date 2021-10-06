@@ -106,8 +106,8 @@ export const useCheckoutStep = () => {
 }
 
 type StepIconProps = {
+  done?: boolean,
   selected?: boolean
-  done?: boolean
 }
 
 const StepIcon = styled.h4<StepIconProps>`

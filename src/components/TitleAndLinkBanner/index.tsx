@@ -3,11 +3,11 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 type Props = {
-  title: string
   link: {
+    label: string,
     to: string
-    label: string
-  }
+  },
+  title: string
 }
 
 const TitleAndLinkBanner = ({ link: { label, to }, title }: Props) => {

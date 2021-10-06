@@ -55,7 +55,7 @@ const useForm = () => {
 
 export type View =
   | { view: 'FORM' }
-  | { view: 'RESULT'; status: string }
-  | { view: 'ERROR'; message: string }
+  | { status: string, view: 'RESULT'; }
+  | { message: string, view: 'ERROR'; }
 
 export default useForm

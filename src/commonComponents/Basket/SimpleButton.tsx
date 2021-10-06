@@ -3,9 +3,9 @@ import { GridAreaProps } from 'styled-system'
 import { Box, Button } from 'components'
 
 type Props = {
-  disabled?: boolean
+  children: ReactNode,
+  disabled?: boolean,
   onClick: () => void
-  children: ReactNode
 } & GridAreaProps
 
 const SimpleButton = ({ children, disabled, onClick, ...props }: Props) => (

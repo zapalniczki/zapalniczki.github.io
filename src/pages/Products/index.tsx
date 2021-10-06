@@ -17,7 +17,7 @@ import { UseQueryResult } from 'react-query'
 import Loader from './index.loader'
 
 const Products = () => {
-  const { state } = useLocation<{ labelId?: string; collectionId?: string }>()
+  const { state } = useLocation<{ collectionId?: string, labelId?: string; }>()
   const { t } = useTranslation('PRODUCTS')
 
   useTabTitle(t('title'))

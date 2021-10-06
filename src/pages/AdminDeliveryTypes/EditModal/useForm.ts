@@ -51,8 +51,8 @@ const useForm = (id: string, is_enabled: boolean) => {
 }
 
 export type FormValues = {
+  id: string,
   is_enabled: boolean
-  id: string
 }
 
 type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }

@@ -4,9 +4,9 @@ import { Flexbox, Text } from 'components'
 import React from 'react'
 
 type Props = {
-  icon: IconName
+  description: string,
+  icon: IconName,
   title?: string
-  description: string
 }
 const Option = ({ description, icon, title }: Props) => (
     <Flexbox

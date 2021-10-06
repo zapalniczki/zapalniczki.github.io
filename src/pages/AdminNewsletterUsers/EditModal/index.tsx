@@ -7,8 +7,8 @@ import Form from './Form'
 import useForm from './useForm'
 
 type Props = {
+  consent: boolean,
   id: string
-  consent: boolean
 }
 
 const EditModal = ({ consent, id }: Props) => {

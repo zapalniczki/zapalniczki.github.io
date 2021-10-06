@@ -3,9 +3,9 @@ import React from 'react'
 import { CSSObject } from 'styled-components'
 
 type Props = {
-  placeholder?: string
-  onChange: (option: Option | null) => void
-  options: Option[]
+  onChange: (option: Option | null) => void,
+  options: Option[],
+  placeholder?: string,
   value?: Option
 }
 

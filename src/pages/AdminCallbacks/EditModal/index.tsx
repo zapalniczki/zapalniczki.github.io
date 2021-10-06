@@ -7,8 +7,8 @@ import Form from './Form'
 import useForm from './useForm'
 
 type Props = {
+  done: boolean,
   id: string
-  done: boolean
 }
 
 const EditModal = ({ done, id }: Props) => {

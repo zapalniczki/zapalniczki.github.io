@@ -4,8 +4,8 @@ import { LocationDescriptor } from 'history'
 import { SpaceProps } from 'styled-system'
 
 type Props = {
+  label: string,
   to: LocationDescriptor
-  label: string
 } & SpaceProps
 
 const BackButton = ({ label, to, ...props }: Props) => (

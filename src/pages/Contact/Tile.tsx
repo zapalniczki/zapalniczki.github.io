@@ -4,10 +4,10 @@ import { Flexbox, Heading, Tile as TileComponent } from 'components'
 import React, { ReactNode } from 'react'
 
 type Props = {
-  icon?: IconName
+  content: ReactNode,
+  extended?: boolean,
+  icon?: IconName,
   title: string
-  content: ReactNode
-  extended?: boolean
 }
 
 const Tile = ({ content, extended, icon, title }: Props) => (

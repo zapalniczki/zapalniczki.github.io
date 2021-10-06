@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'
 
 type Props = {
+  size?: '5x',
   variant: 'SUCCESS' | 'ERROR'
-  size?: '5x'
 }
 
 const ResultIcon = ({ size = '5x', variant }: Props) => {

@@ -4,9 +4,9 @@ import { ReactNode } from 'react'
 import { UseQueryResult } from 'react-query'
 
 type Props<T> = {
-  children: (data: T) => ReactNode
+  Loader?: ReactElement,
+  children: (data: T) => ReactNode,
   query: UseQueryResult<T>
-  Loader?: ReactElement
 }
 
 function QueryLoader<T>({ Loader, children, query }: Props<T>): JSX.Element {

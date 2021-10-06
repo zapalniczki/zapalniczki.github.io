@@ -3,27 +3,27 @@ import supabase from 'supabase'
 import { Image } from './getProducts'
 
 export type ProductDetails = {
-  name: string
-  id: string
-  price: number
-  description: string
-  label: {
-    label: string
-    id: string
-  }
-  icon: {
-    label: string
-    id: string
-  }
   collection: {
+    id: string,
     label: string
-    id: string
+  },
+  description: string,
+  icon: {
+    id: string,
+    label: string
+  },
+  id: string,
+  label: {
+    id: string,
+    label: string
   }
+  mainImage: Pick<Image, 'thumbnail' | 'large' | 'basket'>,
   mold: {
+    id: string,
     status: 'DONE' | 'IN_PROGRESS'
-    id: string
-  } | null
-  mainImage: Pick<Image, 'thumbnail' | 'large' | 'basket'>
+  } | null,
+  name: string,
+  price: number
 }
 
 type GetProductPayload = {

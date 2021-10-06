@@ -7,9 +7,9 @@ import styled from 'styled-components'
 
 type Props = {
   disabled?: boolean
-  placeholder?: string
+  fieldProps: FieldProps<string, FormValues>,
   label: string
-  fieldProps: FieldProps<string, FormValues>
+  placeholder?: string
 }
 
 const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {

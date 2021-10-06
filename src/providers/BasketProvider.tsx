@@ -3,10 +3,10 @@ import React, { createContext, ReactNode, useState } from 'react'
 
 type BasketContex = {
   basket: BasketItem[]
-  setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
+  basketLength: number,
   clearBasket: () => void
-  basketLength: number
-  getProductFromBasket: (id: string) => BasketItem | undefined
+  getProductFromBasket: (id: string) => BasketItem | undefined,
+  setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
 }
 
 export const basketContext = createContext<BasketContex>({

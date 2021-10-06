@@ -29,37 +29,37 @@ const CheckoutProvider = ({ children }: Props) => {
 }
 
 export type ContactDetails2 = {
-  isCompany: IsCompany
+  addressCdn: AddressCdn
+  city: City
+  email: Email
   fullName: Fullname
+  isCompany: IsCompany
   nip: Nip
+  phone: Phone
+  postCode: Postcode
   street: Street
   streetNo: HourseNr
-  addressCdn: AddressCdn
-  postCode: Postcode
-  city: City
-  phone: Phone
-  email: Email
 }
 
 type DeliveryType2 = string
 
 export type Shipping2 = {
+  addressCdn: AddressCdn
+  city: City
+  postCode: Postcode
   street: Street
   streetNo: HourseNr
-  addressCdn: AddressCdn
-  postCode: Postcode
-  city: City
 }
 
 export type PaymentType2 = string
 
 export type Checkout = {
-  totalNew: number
-  products2: BasketItem[] | null
   contactDetails2: ContactDetails2 | null
   deliveryType2: DeliveryType2 | null
-  shipping2: Shipping2 | null
   paymentType2: PaymentType2 | null
+  products2: BasketItem[] | null
+  shipping2: Shipping2 | null
+  totalNew: number
 }
 
 export type CheckoutContent = {

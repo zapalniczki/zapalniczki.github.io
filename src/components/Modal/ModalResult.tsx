@@ -9,8 +9,8 @@ type Props =
       variant: 'SUCCESS'
     }
   | {
+      onClick: () => void,
       variant: 'ERROR'
-      onClick: () => void
     }
 
 const ModalResult = (props: Props) => {

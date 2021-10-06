@@ -6,8 +6,8 @@ import { Spinner } from 'components'
 import getColor from 'styles/getColor'
 
 type LoaderContext = {
-  show: () => void
   hide: () => void
+  show: () => void
 }
 
 export const loaderContext = createContext<LoaderContext>({

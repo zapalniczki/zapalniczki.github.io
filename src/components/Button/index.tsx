@@ -7,13 +7,13 @@ import { SpaceProps, space } from 'styled-system'
 import getColor from 'styles/getColor'
 
 type Props = {
-  disabled?: boolean
-  onClick?: () => void
-  children?: ReactNode
+  children?: ReactNode,
+  disabled?: boolean,
+  icon?: IconName,
+  onClick?: () => void,
+  size?: Size,
+  type?: 'button' | 'submit' | 'reset',
   variant?: Variant
-  type?: 'button' | 'submit' | 'reset'
-  size?: Size
-  icon?: IconName
 } & SpaceProps
 
 const Button = ({
@@ -49,8 +49,8 @@ const Button = ({
 )
 
 type ContainerProps = SpaceProps & {
+  size: Size,
   variant: Variant
-  size: Size
 }
 
 const Container = styled.button<ContainerProps>`

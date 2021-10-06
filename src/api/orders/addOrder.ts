@@ -10,15 +10,15 @@ import supabase from 'supabase'
 
 export type AddOrderPayload = {
   address: Omit<Address, 'id' | 'created_at' | 'updated_at'>
-  shipping: Omit<Address, 'id' | 'created_at' | 'updated_at'>
-  phone: User['phone']
-  email: User['email']
-  deliveryType: DeliveryType['id']
+  deliveryType: DeliveryType['id'],
+  email: User['email'],
+  fullname: User['full_name'],
+  isCompany?: User['is_company'],
   paymentType: PaymentType['id']
-  total: Order['total']
+  phone: User['phone'],
   products: Pick<OrderItem, 'id' | 'quantity'>[]
-  fullname: User['full_name']
-  isCompany?: User['is_company']
+  shipping: Omit<Address, 'id' | 'created_at' | 'updated_at'>,
+  total: Order['total']
 }
 
 export const addOrder = async (payload: AddOrderPayload) => {

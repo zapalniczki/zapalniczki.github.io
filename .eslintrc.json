@@ -16,7 +16,12 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "sort-destructure-keys"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "sort-destructure-keys",
+    "typescript-sort-keys"
+  ],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "react/self-closing-comp": 2,
@@ -25,6 +30,8 @@
     "@typescript-eslint/no-empty-interface": 0,
     "arrow-body-style": 2,
     "sort-destructure-keys/sort-destructure-keys": 2,
+    "typescript-sort-keys/interface": 2,
+    "typescript-sort-keys/string-enum": 2,
     "no-restricted-imports": [
       "error",
       {

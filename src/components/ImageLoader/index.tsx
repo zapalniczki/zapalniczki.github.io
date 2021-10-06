@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 type Props = {
+  alt?: string,
+  className?: string,
+  objectFit?: string,
+  objectPosition?: string,
   src: string
-  alt?: string
-  className?: string
-  objectFit?: string
-  objectPosition?: string
 }
 
 const ImageLoader = ({

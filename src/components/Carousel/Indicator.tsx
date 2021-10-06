@@ -6,8 +6,8 @@ type Props = {
   clickHandler: (
     e: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
   ) => void
-  isSelected: boolean
-  index: number
+  index: number,
+  isSelected: boolean,
   label: string
 }
 

@@ -87,10 +87,10 @@ const useContactMethods = (): ContactMethod[] => {
 }
 
 type ContactMethod = {
-  icon?: IconName
+  content: ReactNode,
+  extended?: boolean,
+  icon?: IconName,
   key: string
-  extended?: boolean
-  content: ReactNode
 }
 
 export default useContactMethods

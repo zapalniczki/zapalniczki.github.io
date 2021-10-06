@@ -4,11 +4,11 @@ import React from 'react'
 import { SpaceProps } from 'styled-system'
 
 type Props = {
-  title?: string
   link?: {
+    label: string,
     to: LocationDescriptor
-    label: string
-  }
+  },
+  title?: string
 } & SpaceProps
 
 const SectionHead = ({ link, title, ...props }: Props) => {

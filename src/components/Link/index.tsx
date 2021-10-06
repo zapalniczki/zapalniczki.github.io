@@ -8,8 +8,8 @@ import getColor from 'styles/getColor'
 
 type Props = LinkProps & {
   className?: string
+  icon?: IconName,
   underline?: boolean
-  icon?: IconName
 }
 
 const Link = ({ children, icon, ...props }: Props) => (

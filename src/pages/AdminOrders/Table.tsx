@@ -6,8 +6,8 @@ import Row, { AdminTableColumns } from './Row'
 import { OrderStatus } from 'models'
 
 type Props = {
+  columns: AdminTableColumns[],
   status: OrderStatus
-  columns: AdminTableColumns[]
 }
 
 const Table = ({ columns, status }: Props) => {

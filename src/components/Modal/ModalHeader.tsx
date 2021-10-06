@@ -7,8 +7,6 @@ type Props = {
   onClick: () => void
 }
 
-// sort props keys
-
 const ModalHeader = ({ children, onClick }: Props) => (
   <>
     <Flexbox alignItems="center" justifyContent="space-between">
