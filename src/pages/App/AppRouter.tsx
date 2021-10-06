@@ -39,11 +39,11 @@ import {
   HowToCreateOrder,
   PageNotFound,
   Products,
-  ViewProduct
+  ViewProduct,
+  Documents,
+  AdminPaymentTypes
 } from 'pages'
-import Documents from 'pages/Documents'
 import { AdminRoute } from 'components'
-import AdminPaymentTypes from 'pages/AdminPaymentTypes'
 
 export const history = createBrowserHistory()
 

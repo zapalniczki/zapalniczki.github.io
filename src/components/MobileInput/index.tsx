@@ -1,13 +1,12 @@
 import { Flexbox, InputLabel } from 'components'
 import { FieldProps, useField } from 'formik'
-import { FormValues } from 'pages/checkout/CheckoutDetails/useForm'
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import styled from 'styled-components'
 
 type Props = {
   disabled?: boolean
-  fieldProps: FieldProps<string, FormValues>,
+  fieldProps: FieldProps<string>
   label: string
   placeholder?: string
 }

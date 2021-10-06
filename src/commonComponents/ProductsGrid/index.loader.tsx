@@ -8,7 +8,7 @@ type Props = SpaceProps & {
   title?: boolean
 }
 
-const Loader = ({ count = 3, title, ...props }: Props) => (
+const ProductsGridLoader = ({ count = 3, title, ...props }: Props) => (
   <Flexbox flexDirection="column">
     {title && (
       <Box marginBottom="m-size" marginTop="xxl-size">
@@ -31,4 +31,4 @@ const Loader = ({ count = 3, title, ...props }: Props) => (
   </Flexbox>
 )
 
-export default Loader
+export default ProductsGridLoader

@@ -2,11 +2,11 @@ import { Box, Flexbox } from 'components'
 import { displayMoney } from 'utils'
 import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
-import { checkoutContext } from 'providers/CheckoutProvider'
+import { checkoutContext } from 'providers'
 import add from 'lodash.add'
 
 type Props = {
-  customDelivery?: number,
+  customDelivery?: number
   customProducts?: number
 }
 

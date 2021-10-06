@@ -1,5 +1,5 @@
 import { useUpdateCallback } from 'api'
-import { loaderContext } from 'providers/LoaderProvider'
+import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
 
 import { object, string, boolean } from 'yup'

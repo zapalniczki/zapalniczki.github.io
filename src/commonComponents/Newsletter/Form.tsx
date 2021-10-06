@@ -1,7 +1,6 @@
 import { Button, Flexbox, Input } from 'components'
 import { Field, FieldProps } from 'formik'
-import { FormValues } from 'pages/checkout/CheckoutDetails/useForm'
-import { FieldWrapper } from 'pages/checkout/common'
+import { FieldWrapper } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { Email } from 'Types'
@@ -13,7 +12,7 @@ const Form = () => {
     <Flexbox alignItems="flex-end">
       <FieldWrapper>
         <Field name="email">
-          {(props: FieldProps<Email, FormValues>) => (
+          {(props: FieldProps<Email>) => (
             <Input
               {...props}
               placeholder={commonT('NEWSLETTER.FORM.FORM.EMAIL.placeholder')}

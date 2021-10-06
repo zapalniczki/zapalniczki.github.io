@@ -1,15 +1,14 @@
-import { Flexbox, Box, InputLabel } from 'components'
-import { StyledInput } from 'components/Input'
+import { StyledInput, Flexbox, Box, InputLabel } from 'components'
 import { FieldProps } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 
 type Props = FieldProps & {
-  fieldLabel: string,
-  id: string,
-  isFirst: boolean,
+  fieldLabel: string
+  id: string
+  isFirst: boolean
   subtitle?: string
-  title: string,
+  title: string
   val?: string
 }
 

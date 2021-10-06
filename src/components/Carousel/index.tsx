@@ -52,3 +52,4 @@ const Carousel = ({ children }: Props) => {
 }
 
 export default Carousel
+export { useBanners, BannerKey }

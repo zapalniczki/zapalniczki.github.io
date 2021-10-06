@@ -1,6 +1,6 @@
 import { useAddEmail, useTriggerSendEmail } from 'api'
 import { useSchema, useTranslation } from 'hooks'
-import { loaderContext } from 'providers/LoaderProvider'
+import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
 
 import { object } from 'yup'
@@ -75,6 +75,6 @@ export type FormValues = {
 type View =
   | { view: 'FORM' }
   | { view: 'SUCCESS' }
-  | { message: string, view: 'ERROR'; }
+  | { message: string; view: 'ERROR' }
 
 export default useForm

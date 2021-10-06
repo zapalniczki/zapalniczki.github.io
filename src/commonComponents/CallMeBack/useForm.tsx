@@ -1,6 +1,6 @@
 import { useAddNumber } from 'api'
 import { useSchema } from 'hooks'
-import { loaderContext } from 'providers/LoaderProvider'
+import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
 
 import { object } from 'yup'

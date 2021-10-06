@@ -4,16 +4,12 @@ import { string, object } from 'yup'
 import { useTranslation } from 'hooks'
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useContext } from 'react'
-import {
-  checkoutContext,
-  initState,
-  PaymentType2
-} from 'providers/CheckoutProvider'
+import { checkoutContext, initState, PaymentType2 } from 'providers'
 import { useMutation } from 'react-query'
 import { AddOrderPayload, addOrder, useTriggerSendEmail } from 'api'
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 
-import { loaderContext } from 'providers/LoaderProvider'
+import { loaderContext } from 'providers'
 
 export type FormValues = {
   paymentType: PaymentType2

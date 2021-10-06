@@ -14,17 +14,17 @@ import styled from 'styled-components'
 
 import { generatePath } from 'react-router-dom'
 
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import { displayMoney } from 'utils'
 import { BasketItem as BasketItemType } from 'models'
 import { VIEW_PRODUCT } from 'constants/routes'
-import { basketToggleContext } from 'providers/BasketToggleProvider'
+import { basketToggleContext } from 'providers'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SimpleButton from './SimpleButton'
 import { useGetProduct } from 'api'
 import add from 'lodash.add'
-import { checkoutContext } from 'providers/CheckoutProvider'
+import { checkoutContext } from 'providers'
 import subtract from 'lodash.subtract'
 
 type Props = {

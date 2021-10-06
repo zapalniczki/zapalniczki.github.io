@@ -1,6 +1,6 @@
 import { ContentLoader, Flexbox } from 'components'
 import React from 'react'
-import ProductsGrid from 'commonComponents/ProductsGrid/index.loader'
+import { ProductsGridLoader } from 'commonComponents'
 
 const Loader = () => (
   <Flexbox flexDirection="column">
@@ -10,7 +10,7 @@ const Loader = () => (
       <rect height="40" transform="translate(1154,0)" width="46" />
     </ContentLoader>
 
-    <ProductsGrid count={6} marginTop="m-size" />
+    <ProductsGridLoader count={6} marginTop="m-size" />
   </Flexbox>
 )
 

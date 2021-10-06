@@ -1,12 +1,19 @@
-import { Box, Flexbox, ImageLoader, Text, Tile } from 'components'
+import {
+  Box,
+  Flexbox,
+  ImageLoader,
+  ProductImageHover,
+  Text,
+  Tile
+} from 'components'
 import React, { useContext } from 'react'
 import { generatePath, Link } from 'react-router-dom'
-import styled, { useTheme, css } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { displayMoney } from 'utils'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { Product } from 'api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import getColor from 'styles/getColor'
 
 type Props = {
@@ -56,14 +63,6 @@ const ProductTile = ({ product }: Props) => {
   )
 }
 
-export const productImageHover = css`
-  &:hover {
-    img {
-      transform: scale(1.1);
-    }
-  }
-`
-
 const Container = styled(Tile)`
   color: unset;
   cursor: pointer;
@@ -72,7 +71,7 @@ const Container = styled(Tile)`
   border: 1px solid;
   border-color: ${getColor('border-color')};
 
-  ${productImageHover}
+  ${ProductImageHover}
 `
 
 const ImageWrapper = styled.div`

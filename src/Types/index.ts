@@ -4,7 +4,7 @@ export type ProductImage = {
 }
 
 export type SelectOption = {
-  label: string,
+  label: string
   value: string
 }
 
@@ -27,3 +27,8 @@ export type Timestamp = string | number | Date
 export type Price = number
 
 export type Variant = string
+
+export type CurrentStatus = {
+  label: string
+  value: string
+}

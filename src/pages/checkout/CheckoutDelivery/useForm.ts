@@ -3,7 +3,7 @@ import { string, object } from 'yup'
 import { CHECKOUT_PAYMENT, CHECKOUT_SHIPPING } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { useContext } from 'react'
-import { checkoutContext } from 'providers/CheckoutProvider'
+import { checkoutContext } from 'providers'
 import add from 'lodash.add'
 import { DeliveryType } from 'models'
 

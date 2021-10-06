@@ -1,5 +1,5 @@
 import { useUpdateDeliveryType } from 'api'
-import { loaderContext } from 'providers/LoaderProvider'
+import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
 
 import { object, string, boolean } from 'yup'
@@ -51,7 +51,7 @@ const useForm = (id: string, is_enabled: boolean) => {
 }
 
 export type FormValues = {
-  id: string,
+  id: string
   is_enabled: boolean
 }
 

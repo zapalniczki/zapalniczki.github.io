@@ -1,8 +1,8 @@
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Badge, Button } from 'components'
-import { basketToggleContext } from 'providers/BasketToggleProvider'
+import { basketToggleContext } from 'providers'
 import {
   CHECKOUT_PAYMENT,
   CHECKOUT_DELIVERY,

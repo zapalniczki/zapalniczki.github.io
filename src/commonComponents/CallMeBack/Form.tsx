@@ -1,10 +1,10 @@
 import { Button, Flexbox, Input } from 'components'
 import { Field, FieldProps } from 'formik'
-import { FormValues } from 'pages/checkout/CheckoutDetails/useForm'
-import { FieldWrapper } from 'pages/checkout/common'
+import { FieldWrapper } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { Phone } from 'Types'
+import { FormValues } from './useForm'
 
 const Form = () => {
   const { t: commonT } = useTranslation('COMMON')

@@ -1,9 +1,9 @@
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import { useContext } from 'react'
 import { string, object } from 'yup'
 
 import { ProductDetails } from 'api'
-import { checkoutContext } from 'providers/CheckoutProvider'
+import { checkoutContext } from 'providers'
 import subtract from 'lodash.subtract'
 import add from 'lodash.add'
 
@@ -25,14 +25,13 @@ const useForm = (product: ProductDetails) => {
         const productInBasket = prev.find((elem) => elem.id === product.id)
 
         return prev.filter((elem) => elem !== productInBasket)
-      } 
-        const newBasketProduct = {
-          id: product.id,
-          quantity: 1
-        }
+      }
+      const newBasketProduct = {
+        id: product.id,
+        quantity: 1
+      }
 
-        return [...prev, newBasketProduct]
-      
+      return [...prev, newBasketProduct]
     })
 
     setCheckout((prev) => ({

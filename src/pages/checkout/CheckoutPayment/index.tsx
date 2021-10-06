@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { useTranslation } from 'hooks'
 import { Page, QueryLoader } from 'components'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
-import { checkoutContext } from 'providers/CheckoutProvider'
+import { checkoutContext } from 'providers'
 import { StepTracker, Actions, StepTitle, Total, Wrapper } from '../common'
 import useForm from './useForm'
 

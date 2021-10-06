@@ -7,9 +7,10 @@ import uniq from 'lodash.uniq'
 import { parseISO, differenceInDays } from 'date-fns'
 import { useUpdateOrderStatus, useGetMolds, GetOrdersResponse } from 'api'
 import { MoldStatus, ORDER_STATUSES } from 'models'
+import { CurrentStatus } from 'Types'
 
 type Props = {
-  columns: AdminTableColumns[],
+  columns: AdminTableColumns[]
   order: GetOrdersResponse
 }
 
@@ -133,10 +134,5 @@ export type AdminTableColumns =
   | 'boxesCount'
   | 'deliveryId'
   | 'molds'
-
-export type CurrentStatus = {
-  label: string,
-  value: string
-}
 
 export default Row

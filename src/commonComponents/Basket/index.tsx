@@ -1,9 +1,9 @@
 import React, { useContext, useRef, useEffect } from 'react'
 import { Flexbox, Text } from 'components'
 
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import styled from 'styled-components'
-import { basketToggleContext } from 'providers/BasketToggleProvider'
+import { basketToggleContext } from 'providers'
 import { useTranslation } from 'hooks'
 
 import Header from './Header'

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import AppRouter from 'pages/App/AppRouter'
+import AppRouter from './AppRouter'
 import { getAuth } from 'firebase/auth'
-import { authContext } from 'providers/AuthProvider'
+import { authContext } from 'providers'
 import { Preloader } from 'commonComponents'
 
 const App = () => {

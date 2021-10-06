@@ -3,7 +3,7 @@ import { useScrollTop, useTabTitle } from 'hooks'
 import React, { Fragment, useContext } from 'react'
 import { useTranslation } from 'hooks'
 import { BasketItem } from 'commonComponents'
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import { Actions, StepTracker, Total, Wrapper } from '../common'
 import StepTitle from '../common/StepTitle'
 

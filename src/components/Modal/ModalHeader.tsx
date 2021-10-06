@@ -1,5 +1,4 @@
-import { Separator, Heading, Button } from 'components'
-import Flexbox from 'components/Flexbox'
+import { Flexbox, Separator, Heading, Button } from 'components'
 import React, { ReactNode } from 'react'
 
 type Props = {

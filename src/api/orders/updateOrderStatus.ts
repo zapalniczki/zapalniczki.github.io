@@ -1,10 +1,10 @@
 import { doc, getFirestore, Timestamp, updateDoc } from 'firebase/firestore'
 import { queryClient } from 'index'
 import { OrderStatus } from 'models'
-import { CurrentStatus } from 'pages/AdminOrders/Row'
-import { loaderContext } from 'providers/LoaderProvider'
+import { loaderContext } from 'providers'
 import { useContext, useEffect } from 'react'
 import { useMutation } from 'react-query'
+import { CurrentStatus } from 'Types'
 import { GetOrdersResponse } from './getOrders'
 
 type UpdateOrderStatus = {

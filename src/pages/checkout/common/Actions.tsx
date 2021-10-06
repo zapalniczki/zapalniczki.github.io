@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom'
 import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import {
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,

@@ -36,7 +36,15 @@
       "error",
       {
         // "paths": ["import1", "import2"],
-        // "patterns": ["components/*"]
+        "patterns": [
+          "components/*",
+          "api/*",
+          "commonComponents/*",
+          "models/*",
+          "pages/*",
+          "providers/*",
+          "utils/*"
+        ]
       }
     ]
   },

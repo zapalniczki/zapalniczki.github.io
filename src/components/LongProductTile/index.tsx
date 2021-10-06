@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
-import { productImageHover } from 'commonComponents/ProductsGrid/ProductTile'
+import { ProductImageHover } from 'components'
 import getColor from 'styles/getColor'
 
 type Props = {
@@ -49,7 +49,7 @@ const Container = styled(Tile)`
   border: 1px solid;
   border-color: ${getColor('border-color')};
 
-  ${productImageHover}
+  ${ProductImageHover}
 `
 
 export default LongProductTile

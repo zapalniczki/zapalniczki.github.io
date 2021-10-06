@@ -1,10 +1,10 @@
-import { BannerKey } from 'components/Carousel/useBanners'
+import { BannerKey } from 'components'
 import React, { ReactNode } from 'react'
 import Banner, { BasicProps } from '../Banner'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 
 type Props = BasicProps & {
-  bannerKey: BannerKey,
+  bannerKey: BannerKey
   children?: ReactNode
   img?: string
 }

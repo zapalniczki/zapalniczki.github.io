@@ -3,7 +3,7 @@ import { object, string } from 'yup'
 import { useTranslation } from 'hooks'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { useContext } from 'react'
-import { checkoutContext, ContactDetails2 } from 'providers/CheckoutProvider'
+import { checkoutContext, ContactDetails2 } from 'providers'
 import { IsCompany } from 'Types'
 
 export type FormValues = Omit<ContactDetails2, 'isCompany'>

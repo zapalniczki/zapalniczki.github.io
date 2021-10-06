@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { Flexbox, Button, Text } from 'components'
 import { useTranslation } from 'hooks'
 
-import { basketContext } from 'providers/BasketProvider'
-import { basketToggleContext } from 'providers/BasketToggleProvider'
-import { checkoutContext } from 'providers/CheckoutProvider'
+import { basketContext } from 'providers'
+import { basketToggleContext } from 'providers'
+import { checkoutContext } from 'providers'
 
 const Header = () => {
   const { t } = useTranslation('COMMON')

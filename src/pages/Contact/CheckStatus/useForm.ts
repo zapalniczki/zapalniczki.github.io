@@ -1,5 +1,5 @@
 import { useGetOrderStatus } from 'api'
-import { loaderContext } from 'providers/LoaderProvider'
+import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
 import { useTranslation } from 'hooks'
 import { object, string } from 'yup'
@@ -55,7 +55,7 @@ const useForm = () => {
 
 export type View =
   | { view: 'FORM' }
-  | { status: string, view: 'RESULT'; }
-  | { message: string, view: 'ERROR'; }
+  | { status: string; view: 'RESULT' }
+  | { message: string; view: 'ERROR' }
 
 export default useForm

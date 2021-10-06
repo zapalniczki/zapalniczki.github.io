@@ -5,7 +5,7 @@ import { Formik, Form as FormikForm } from 'formik'
 import { Redirect } from 'react-router-dom'
 import { Page, QueryLoader } from 'components'
 import { CHECKOUT_DETAILS } from 'constants/routes'
-import { checkoutContext } from 'providers/CheckoutProvider'
+import { checkoutContext } from 'providers'
 import Actions from '../common/Actions'
 import { StepTracker, Wrapper, Total, StepTitle } from '../common'
 

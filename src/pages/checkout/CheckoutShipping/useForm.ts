@@ -3,7 +3,7 @@ import { object, string } from 'yup'
 import { CHECKOUT_PAYMENT } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { useContext } from 'react'
-import { checkoutContext, Shipping2 } from 'providers/CheckoutProvider'
+import { checkoutContext, Shipping2 } from 'providers'
 
 export type FormValues = Shipping2
 

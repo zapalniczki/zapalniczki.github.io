@@ -7,10 +7,10 @@ import getColor from 'styles/getColor'
 
 type Props = SpaceProps &
   FieldProps<string> & {
-    disabled?: boolean,
-    label?: string,
-    maxLength?: number,
-    placeholder: string,
+    disabled?: boolean
+    label?: string
+    maxLength?: number
+    placeholder: string
     type?: 'text' | 'password' | 'email'
   }
 

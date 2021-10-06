@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Formik, Form as FormikForm } from 'formik'
-import { basketContext } from 'providers/BasketProvider'
+import { basketContext } from 'providers'
 import useForm from './useForm'
 import { SubmitButton } from '../common'
 import { ProductDetails } from 'api'
