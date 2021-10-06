@@ -8,25 +8,21 @@ import useForm from './useForm'
 
 type Props = {
   id: string
-  consent: boolean
+  done: boolean
 }
 
-const EditModal = ({ id, consent }: Props) => {
-  const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
+const EditModal = ({ id, done }: Props) => {
+  const { t } = useTranslation('ADMIN_CALLBACKS')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const { view, initialValues, onSubmit, schema, setView } = useForm(
-    id,
-    consent
-  )
+  const { view, initialValues, onSubmit, schema, setView } = useForm(id, done)
 
   const onClose = () => {
     setIsModalOpen(false)
     setView({ view: 'FORM' })
 
-    queryClient.invalidateQueries(['newsletterUsers'])
+    queryClient.invalidateQueries(['callbacks'])
   }
 
   let content
@@ -69,7 +65,12 @@ const EditModal = ({ id, consent }: Props) => {
   }
 
   if (view.view === 'ERROR') {
-    content = <ModalResult onClick={() => onClose()} variant={view.view} />
+    content = (
+      <ModalResult
+        onClick={() => setView({ view: 'FORM' })}
+        variant={view.view}
+      />
+    )
   }
 
   return (

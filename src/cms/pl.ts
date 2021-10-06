@@ -600,11 +600,23 @@ const pl = {
 
   ADMIN_CALLBACKS: {
     title: 'Prośby o kontakt',
-    HEADERS: {
-      created_at: 'Data utworzenia',
-      updated_at: 'Data modyfikacji',
-      phone_number: 'Numer telefonu',
-      done: 'Wykonano'
+    LIST: {
+      HEADERS: {
+        created_at: 'Data utworzenia',
+        updated_at: 'Data modyfikacji',
+        phone_number: 'Numer telefonu',
+        done: 'Wykonano',
+        edit: 'Edycja'
+      }
+    },
+    EDIT_MODAL: {
+      buttonLabel: 'Edytuj',
+      title: 'Edycja prośbę o kontakt',
+      FORM: {
+        DONE: {
+          label: 'Wykonano telefonu do klienta'
+        }
+      }
     }
   },
 
