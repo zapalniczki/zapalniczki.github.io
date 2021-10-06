@@ -19,7 +19,7 @@ const useForm = () => {
 
   const onSubmitForm = (form: FormValues, deliveryTypes: DeliveryType[]) => {
     const selectedDeliveryType = deliveryTypes.find(
-      (method) => method.label === form.deliveryType
+      (method) => method.id === form.deliveryType
     )
 
     if (selectedDeliveryType) {

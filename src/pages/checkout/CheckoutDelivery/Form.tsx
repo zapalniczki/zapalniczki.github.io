@@ -25,7 +25,7 @@ const Form = ({ deliveryTypes }: Props) => {
                 <CheckboxField
                   {...props}
                   fieldLabel={t('form.deliveryType.label')}
-                  id={type.label}
+                  id={type.id}
                   isFirst={index === 0}
                   subtitle={`${type.time}`}
                   title={type.label}
