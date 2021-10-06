@@ -8,6 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 const baseConfig = require('./base.config.js')
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 
 DotEnv.config({ path: '.env.prod' })
 
@@ -34,7 +35,8 @@ module.exports = merge(baseConfig, {
         }
       }
     },
-    minimizer: [new OptimizeCSSAssetsPlugin({})]
+    minimize: true,
+    minimizer: [new OptimizeCSSAssetsPlugin({}), new TerserPlugin()]
   },
   plugins: [
     new CleanWebpackPlugin(),
