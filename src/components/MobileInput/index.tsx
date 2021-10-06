@@ -12,10 +12,10 @@ type Props = {
   fieldProps: FieldProps<string, FormValues>
 }
 
-const MobileInput = ({ fieldProps, placeholder, label, disabled }: Props) => {
-  const { meta, field } = fieldProps
+const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
+  const { field, meta } = fieldProps
   const [, , helpers] = useField(fieldProps.field.name)
-  const { touched, error } = meta
+  const { error, touched } = meta
   const { setValue } = helpers
 
   return (

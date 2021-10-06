@@ -26,11 +26,11 @@ type Props = {
 } & SpaceProps
 
 const ProductsList = ({
-  loaderCount,
-  searchQuery,
   link,
-  title,
+  loaderCount,
   query,
+  searchQuery,
+  title,
   vertical,
   ...props
 }: Props) => (

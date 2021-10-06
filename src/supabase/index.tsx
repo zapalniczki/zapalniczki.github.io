@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import config from './config'
 
-const { url, publicAnonKey } = config
+const { publicAnonKey, url } = config
 
 if (!url) {
   throw new Error('No SUPABASE_URL in envs ')

@@ -12,7 +12,7 @@ type Props = SpaceProps
 
 const CallMeBack = (props: Props) => {
   const { t: commonT } = useTranslation('COMMON')
-  const { view, schema, initialValues, onSubmit } = useForm()
+  const { initialValues, onSubmit, schema, view } = useForm()
   const { colors } = useTheme()
 
   let title = commonT('CALL_ME_BACK.FORM.title')

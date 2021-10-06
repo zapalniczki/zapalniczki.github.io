@@ -10,7 +10,7 @@ type Props = {
   customDelivery?: number
 }
 
-const Total = ({ customProducts, customDelivery }: Props) => {
+const Total = ({ customDelivery, customProducts }: Props) => {
   const { t } = useTranslation('COMMON')
 
   const { checkout } = useContext(checkoutContext)

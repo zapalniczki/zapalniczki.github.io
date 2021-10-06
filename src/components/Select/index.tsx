@@ -9,7 +9,7 @@ type Props = {
   value?: Option
 }
 
-const Select = ({ placeholder, onChange, options, value }: Props) => (
+const Select = ({ onChange, options, placeholder, value }: Props) => (
   <SelectFromLib
     onChange={onChange}
     options={sortAndMapOptions(options)}

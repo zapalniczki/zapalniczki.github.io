@@ -28,7 +28,7 @@ export const useUpdateOrderStatus = (
   order: GetOrdersResponse,
   currentStatus: CurrentStatus
 ) => {
-  const { show, hide } = useContext(loaderContext)
+  const { hide, show } = useContext(loaderContext)
   const { mutateAsync: mutateUpdateOrderStatus } =
     useMutation(updateOrderStatus)
 

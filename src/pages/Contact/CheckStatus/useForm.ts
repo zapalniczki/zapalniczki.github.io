@@ -17,7 +17,7 @@ const useForm = () => {
     id: ''
   }
 
-  const { show, hide } = useContext(loaderContext)
+  const { hide, show } = useContext(loaderContext)
 
   const schema = object({
     id: string()

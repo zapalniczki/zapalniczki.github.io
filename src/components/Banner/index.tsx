@@ -16,13 +16,13 @@ type Props = BasicProps & {
 }
 
 const Banner = ({
-  small,
-  medium,
-  description,
-  title,
-  children,
   background,
+  children,
+  description,
   horizonal,
+  medium,
+  small,
+  title,
   ...props
 }: Props) => (
   <Flexbox

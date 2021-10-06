@@ -10,7 +10,7 @@ type Props = {
   extended?: boolean
 }
 
-const Tile = ({ extended, content, icon, title }: Props) => (
+const Tile = ({ content, extended, icon, title }: Props) => (
   <TileComponent
     flexDirection="column"
     gridColumn={extended ? 'auto / span 2' : 'auto'}

@@ -11,7 +11,7 @@ type Props = {
   }
 } & SpaceProps
 
-const SectionHead = ({ title, link, ...props }: Props) => {
+const SectionHead = ({ link, title, ...props }: Props) => {
   if (!title && !link) {
     return null
   }

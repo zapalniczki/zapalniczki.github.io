@@ -9,7 +9,7 @@ const useForm = () => {
   const [view, setView] = useState<View>({ view: 'FORM' })
 
   const { getSchema } = useSchema()
-  const { show, hide } = useContext(loaderContext)
+  const { hide, show } = useContext(loaderContext)
 
   const initialValues = { phone: '' }
 

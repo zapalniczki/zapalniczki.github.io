@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Images = ({ product }: Props) => {
-  const { name, mainImage } = product
+  const { mainImage, name } = product
   const [selectedImage, setSelectedImage] = useState<string>(mainImage.large)
 
   useEffect(() => {

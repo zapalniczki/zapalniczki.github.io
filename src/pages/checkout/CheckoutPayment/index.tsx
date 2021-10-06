@@ -20,7 +20,7 @@ const CheckoutPayment = () => {
 
   const paymentTypesQuery = useGetPaymentTypes()
   const { checkout } = useContext(checkoutContext)
-  const { onSubmit, initialValues, schema, isLoading } = useForm()
+  const { initialValues, isLoading, onSubmit, schema } = useForm()
 
   if (!checkout.deliveryType2) {
     return <Redirect to={CHECKOUT_DELIVERY} />

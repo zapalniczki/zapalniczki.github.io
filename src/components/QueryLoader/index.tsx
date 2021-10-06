@@ -9,7 +9,7 @@ type Props<T> = {
   Loader?: ReactElement
 }
 
-function QueryLoader<T>({ children, query, Loader }: Props<T>): JSX.Element {
+function QueryLoader<T>({ Loader, children, query }: Props<T>): JSX.Element {
   if (query.isFetching) {
     if (Loader) {
       return Loader

@@ -25,9 +25,9 @@ const useFormSubmit = () => {
   const { checkout, setCheckout } = useContext(checkoutContext)
   const { setBasket } = useContext(basketContext)
 
-  const { show, hide } = useContext(loaderContext)
+  const { hide, show } = useContext(loaderContext)
 
-  const { mutateAsync: mutateAddOrderSupabase, isLoading } =
+  const { isLoading, mutateAsync: mutateAddOrderSupabase } =
     useMutation(addOrder)
 
   const triggerSendEmail = useTriggerSendEmail()

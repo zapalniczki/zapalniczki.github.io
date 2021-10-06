@@ -14,7 +14,7 @@ type Props = {
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const Modal = ({ label, children, isOpen, setIsOpen }: Props) => (
+const Modal = ({ children, isOpen, label, setIsOpen }: Props) => (
     <>
       <Button
         onClick={() => setIsOpen((prev) => !prev)}

@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode
 } & GridAreaProps
 
-const SimpleButton = ({ disabled, onClick, children, ...props }: Props) => (
+const SimpleButton = ({ children, disabled, onClick, ...props }: Props) => (
   <Box {...props}>
     <Button
       disabled={disabled}

@@ -9,7 +9,7 @@ type Props = {
   onChange: (value: string) => void
 }
 
-const Search = ({ value, onChange }: Props) => {
+const Search = ({ onChange, value }: Props) => {
   const { t } = useTranslation('PRODUCTS')
 
   return (

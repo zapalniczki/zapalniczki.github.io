@@ -8,7 +8,7 @@ import useForm from './useForm'
 import styled from 'styled-components'
 
 const CheckStatus = () => {
-  const { view, setView, schema, initialValues, onSubmit } = useForm()
+  const { initialValues, onSubmit, schema, setView, view } = useForm()
 
   let content: JSX.Element
   if (view.view === 'RESULT') {

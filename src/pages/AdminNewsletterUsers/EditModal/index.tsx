@@ -11,13 +11,13 @@ type Props = {
   consent: boolean
 }
 
-const EditModal = ({ id, consent }: Props) => {
+const EditModal = ({ consent, id }: Props) => {
   const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { view, initialValues, onSubmit, schema, setView } = useForm(
+  const { initialValues, onSubmit, schema, setView, view } = useForm(
     id,
     consent
   )

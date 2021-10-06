@@ -8,7 +8,7 @@ type Props = {
   collectionId: Product['collection_id']
 }
 
-const OtherPlaces = ({ labelId, collectionId }: Props) => {
+const OtherPlaces = ({ collectionId, labelId }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const productsQuery = useGetOtherPlaces({ labelId, collectionId })

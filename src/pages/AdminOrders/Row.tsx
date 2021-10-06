@@ -13,7 +13,7 @@ type Props = {
   columns: AdminTableColumns[]
 }
 
-const Row = ({ order, columns }: Props) => {
+const Row = ({ columns, order }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const [currentStatus, setCurrentStatus] = useState<CurrentStatus>({
     value: order.status,

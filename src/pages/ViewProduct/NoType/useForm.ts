@@ -8,7 +8,7 @@ import subtract from 'lodash.subtract'
 import add from 'lodash.add'
 
 const useForm = (product: ProductDetails) => {
-  const { setBasket, getProductFromBasket } = useContext(basketContext)
+  const { getProductFromBasket, setBasket } = useContext(basketContext)
   const { setCheckout } = useContext(checkoutContext)
 
   const initialValues = {}

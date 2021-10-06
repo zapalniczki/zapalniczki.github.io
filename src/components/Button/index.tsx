@@ -17,13 +17,13 @@ type Props = {
 } & SpaceProps
 
 const Button = ({
-  variant = 'primary',
-  disabled,
-  onClick,
   children,
-  type = 'button',
-  size = 'large',
+  disabled,
   icon,
+  onClick,
+  size = 'large',
+  type = 'button',
+  variant = 'primary',
   ...props
 }: Props) => (
   <Container

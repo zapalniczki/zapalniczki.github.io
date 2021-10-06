@@ -12,7 +12,7 @@ type Props = {
 } & SpaceProps &
   TypographyProps
 
-const Text = ({ wrap = true, span, children, type, ...props }: Props) => {
+const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
   const { fontSizes, fontWeigths, letterSpacings } = useTheme()
 
   let fontSize: string, fontWeight: string, letterSpacing: string

@@ -21,7 +21,7 @@ const CheckoutDelivery = () => {
 
   const deliveryTypesQuery = useGetDeliveryTypes()
   const { checkout } = useContext(checkoutContext)
-  const { schema, onSubmitForm, initialValues } = useForm()
+  const { initialValues, onSubmitForm, schema } = useForm()
 
   if (!checkout.contactDetails2) {
     return <Redirect to={CHECKOUT_DETAILS} />

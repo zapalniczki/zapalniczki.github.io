@@ -9,7 +9,7 @@ import { useTheme } from 'styled-components'
 
 const Newsletter = () => {
   const { t: commonT } = useTranslation('COMMON')
-  const { view, schema, initialValues, onSubmit, setView } = useForm()
+  const { initialValues, onSubmit, schema, setView, view } = useForm()
   const { colors } = useTheme()
 
   let title = commonT('NEWSLETTER.FORM.title')

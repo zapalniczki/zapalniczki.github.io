@@ -9,7 +9,7 @@ import { checkoutContext } from 'providers/CheckoutProvider'
 const Header = () => {
   const { t } = useTranslation('COMMON')
   const { closeBasket } = useContext(basketToggleContext)
-  const { clearBasket, basketLength } = useContext(basketContext)
+  const { basketLength, clearBasket } = useContext(basketContext)
   const { setCheckout } = useContext(checkoutContext)
 
   let countName = 'basket.products'

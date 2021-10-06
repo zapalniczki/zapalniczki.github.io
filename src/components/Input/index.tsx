@@ -15,13 +15,13 @@ type Props = SpaceProps &
   }
 
 const Input = ({
-  type = 'text',
   disabled,
   field,
-  meta,
   label,
-  placeholder,
   maxLength,
+  meta,
+  placeholder,
+  type = 'text',
   ...props
 }: Props) => {
   const touched = meta?.touched

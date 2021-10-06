@@ -17,7 +17,7 @@ const EditModal = ({ id, is_enabled }: Props) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { view, initialValues, onSubmit, schema, setView } = useForm(
+  const { initialValues, onSubmit, schema, setView, view } = useForm(
     id,
     is_enabled
   )

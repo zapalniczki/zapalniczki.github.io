@@ -6,7 +6,7 @@ import { object, string, boolean } from 'yup'
 
 const useForm = (id: string, done: boolean) => {
   const [view, setView] = useState<View>({ view: 'FORM' })
-  const { show, hide } = useContext(loaderContext)
+  const { hide, show } = useContext(loaderContext)
 
   const initialValues = {
     id,

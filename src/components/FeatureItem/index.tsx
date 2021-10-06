@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode
 }
 
-const FeatureItem = ({ title, subtitle, children }: Props) => (
+const FeatureItem = ({ children, subtitle, title }: Props) => (
   <Tile height={subtitle ? '23.53rem' : '20rem'} padding={0}>
     <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
       {children}

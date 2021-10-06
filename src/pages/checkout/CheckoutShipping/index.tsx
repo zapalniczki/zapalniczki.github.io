@@ -19,7 +19,7 @@ const CheckoutShipping = () => {
 
   const { checkout } = useContext(checkoutContext)
 
-  const { onSubmitForm, initialValues, schema } = useForm()
+  const { initialValues, onSubmitForm, schema } = useForm()
 
   if (!checkout.deliveryType2) {
     return <Redirect to={CHECKOUT_DELIVERY} />

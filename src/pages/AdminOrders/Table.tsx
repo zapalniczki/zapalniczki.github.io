@@ -10,7 +10,7 @@ type Props = {
   columns: AdminTableColumns[]
 }
 
-const Table = ({ status, columns }: Props) => {
+const Table = ({ columns, status }: Props) => {
   const { t } = useTranslation('ADMIN_ORDERS')
   const ordersQuery = useGetOrders(status)
 

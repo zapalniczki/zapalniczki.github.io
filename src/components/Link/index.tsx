@@ -12,7 +12,7 @@ type Props = LinkProps & {
   icon?: IconName
 }
 
-const Link = ({ icon, children, ...props }: Props) => (
+const Link = ({ children, icon, ...props }: Props) => (
   <Container {...props}>
     {icon && <FontAwesomeIcon icon={icon} />}
 

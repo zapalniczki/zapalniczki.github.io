@@ -8,7 +8,7 @@ type Props = {
   iconId: ProductDetails['icon']['label']
 }
 
-const OtherIcons = ({ labelId, iconId }: Props) => {
+const OtherIcons = ({ iconId, labelId }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const productsQuery = useGetOtherIcons({ labelId, iconId })

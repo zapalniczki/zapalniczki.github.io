@@ -11,12 +11,12 @@ type Props = {
   done: boolean
 }
 
-const EditModal = ({ id, done }: Props) => {
+const EditModal = ({ done, id }: Props) => {
   const { t } = useTranslation('ADMIN_CALLBACKS')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { view, initialValues, onSubmit, schema, setView } = useForm(id, done)
+  const { initialValues, onSubmit, schema, setView, view } = useForm(id, done)
 
   const onClose = () => {
     setIsModalOpen(false)

@@ -10,7 +10,7 @@ type Props = {
   }
 }
 
-const TitleAndLinkBanner = ({ title, link: { to, label } }: Props) => {
+const TitleAndLinkBanner = ({ link: { label, to }, title }: Props) => {
   const history = useHistory()
 
   return (

@@ -8,7 +8,7 @@ type Props = SpaceProps & {
   title?: boolean
 }
 
-const Loader = ({ title, count = 3, ...props }: Props) => (
+const Loader = ({ count = 3, title, ...props }: Props) => (
   <Flexbox flexDirection="column">
     {title && (
       <Box marginBottom="m-size" marginTop="xxl-size">

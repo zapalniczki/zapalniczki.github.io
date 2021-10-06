@@ -8,7 +8,7 @@ type Props = {
   clickHandler: () => void
 }
 
-const Chevron = ({ right, clickHandler }: Props) => {
+const Chevron = ({ clickHandler, right }: Props) => {
   const { colors } = useTheme()
 
   return (

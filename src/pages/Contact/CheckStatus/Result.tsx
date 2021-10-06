@@ -9,7 +9,7 @@ type Props = {
   setView: React.Dispatch<React.SetStateAction<View>>
 }
 
-const Result = ({ status, setView }: Props) => {
+const Result = ({ setView, status }: Props) => {
   const { t } = useTranslation('CONTACT')
   const { t: commonT } = useTranslation('COMMON')
 

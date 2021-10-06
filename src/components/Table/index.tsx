@@ -14,7 +14,7 @@ type Props<D extends DataConstraint> = {
 }
 
 function Table<T extends DataConstraint>({ columns, data }: Props<T>) {
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  const { getTableBodyProps, getTableProps, headerGroups, prepareRow, rows } =
     useTable({
       columns,
       data

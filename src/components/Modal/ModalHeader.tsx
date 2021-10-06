@@ -8,9 +8,8 @@ type Props = {
 }
 
 // sort props keys
-// sort descructurized props
 
-const ModalHeader = ({ onClick, children }: Props) => (
+const ModalHeader = ({ children, onClick }: Props) => (
   <>
     <Flexbox alignItems="center" justifyContent="space-between">
       <Heading level={6}>{children}</Heading>

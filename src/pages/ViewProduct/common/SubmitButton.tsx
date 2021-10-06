@@ -8,7 +8,7 @@ type Props = {
   separation?: boolean
 }
 
-const SubmitButton = ({ separation, disabled, isInBasket }: Props) => {
+const SubmitButton = ({ disabled, isInBasket, separation }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   return (

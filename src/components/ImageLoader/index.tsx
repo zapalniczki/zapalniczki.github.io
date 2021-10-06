@@ -11,10 +11,10 @@ type Props = {
 }
 
 const ImageLoader = ({
-  objectPosition,
+  alt = '',
   objectFit = 'contain',
-  src,
-  alt = ''
+  objectPosition,
+  src
 }: Props) => {
   const [loaded, setLoaded] = useState(false)
 

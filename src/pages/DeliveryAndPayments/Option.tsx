@@ -8,7 +8,7 @@ type Props = {
   title?: string
   description: string
 }
-const Option = ({ icon, title, description }: Props) => (
+const Option = ({ description, icon, title }: Props) => (
     <Flexbox
       alignItems="center"
       border="1px solid"

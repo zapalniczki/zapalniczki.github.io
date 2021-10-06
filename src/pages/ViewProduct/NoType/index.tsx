@@ -12,7 +12,7 @@ type Props = {
 
 const Form = ({ product }: Props) => {
   const { getProductFromBasket } = useContext(basketContext)
-  const { schema, initialValues, submitForm } = useForm(product)
+  const { initialValues, schema, submitForm } = useForm(product)
   const isInBasket = !!getProductFromBasket(product.id)
 
   return (

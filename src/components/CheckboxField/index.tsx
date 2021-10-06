@@ -14,14 +14,14 @@ type Props = FieldProps & {
 }
 
 const CheckboxField = ({
+  field: { name, onBlur, onChange, value },
+  fieldLabel,
   id,
-  field: { value, onChange, onBlur, name },
-  meta: { touched, error },
   isFirst,
-  title,
+  meta: { error, touched },
   subtitle,
-  val,
-  fieldLabel
+  title,
+  val
 }: Props) => (
   <>
     {isFirst && (
