@@ -21,4 +21,6 @@ const getPaymentTypes = async () => {
 }
 
 export const useGetPaymentTypes = () =>
-  useQuery('paymentTypes', getPaymentTypes)
+  useQuery(paymentTypesQueryKey, getPaymentTypes)
+
+export const paymentTypesQueryKey = 'paymentTypes'

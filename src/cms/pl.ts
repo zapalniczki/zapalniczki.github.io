@@ -648,14 +648,26 @@ const pl = {
 
   ADMIN_PAYMENT_TYPES: {
     title: 'Metody płatności',
-    HEADERS: {
-      created_at: 'Data utworzenia',
-      updated_at: 'Data modyfikacji',
-      label: 'Etykieta',
-      price: 'Cena',
-      time: 'Czas',
-      is_enabled: 'Włączone',
-      frontend_icon_name: 'Ikona'
+    LIST: {
+      HEADERS: {
+        created_at: 'Data utworzenia',
+        updated_at: 'Data modyfikacji',
+        label: 'Etykieta',
+        price: 'Cena',
+        time: 'Czas',
+        is_enabled: 'Włączone',
+        frontend_icon_name: 'Ikona',
+        edit: 'Edytuj'
+      }
+    },
+    EDIT_MODAL: {
+      buttonLabel: 'Edytuj',
+      title: 'Edycja użytkownika newslettera',
+      FORM: {
+        IS_ENABLED: {
+          label: 'Użytkownik wyraża zgodę na przesyłanie newslettera'
+        }
+      }
     }
   },
 

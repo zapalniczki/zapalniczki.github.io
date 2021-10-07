@@ -7,7 +7,7 @@ import Bestsellers from './Bestsellers'
 import { Newsletter } from 'commonComponents'
 import Featured from './Featured'
 
-const Home = () => {
+export const Home = () => {
   const { t } = useTranslation('HOME')
 
   useTabTitle(t('title'))

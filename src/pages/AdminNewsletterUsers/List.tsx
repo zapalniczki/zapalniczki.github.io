@@ -56,22 +56,22 @@ const List = () => {
   )
 }
 
-const shapeData = (users: Newsletter[], colors: DefaultTheme['colors']) =>
-  users.map((user) => {
-    const icon: IconName = user.consent ? 'check-circle' : 'times-circle'
+const shapeData = (data: Newsletter[], colors: DefaultTheme['colors']) =>
+  data.map((record) => {
+    const icon: IconName = record.consent ? 'check-circle' : 'times-circle'
     const iconColor =
-      colors[user.consent ? ('green' as const) : ('red' as const)]
+      colors[record.consent ? ('green' as const) : ('red' as const)]
 
     return {
-      email: user.email,
-      created_at: displayDate(user.created_at),
-      updated_at: displayDate(user.updated_at),
+      email: record.email,
+      created_at: displayDate(record.created_at),
+      updated_at: displayDate(record.updated_at),
       consent: (
         <Flexbox justifyContent="center">
           <FontAwesomeIcon color={iconColor} icon={icon} />
         </Flexbox>
       ),
-      edit: <EditModal consent={user.consent} id={user.id} />
+      edit: <EditModal consent={record.consent} id={record.id} />
     }
   })
 

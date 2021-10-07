@@ -15,42 +15,38 @@ import {
   DOCUMENTS,
   HOME,
   HOW_TO_CREATE_ORDER,
+  PRODUCTS,
   VIEW_PRODUCT
 } from 'constants/routes'
 
-import { lazy } from 'react'
+import {
+  AdminCallbacks,
+  AdminDeliveryTypes,
+  AdminNewsletterUsers,
+  AdminOrders,
+  AdminPaymentTypes,
+  CheckoutDelivery,
+  CheckoutDetails,
+  CheckoutPayment,
+  CheckoutProducts,
+  CheckoutResult,
+  CheckoutShipping,
+  Contact,
+  Documents,
+  HowToCreateOrder,
+  PageNotFound,
+  ViewProduct,
+  Products
+} from 'pages'
 
-const AdminCallbacks = lazy(() => import('pages/AdminCallbacks'))
-const AdminDeliveryTypes = lazy(() => import('pages/AdminDeliveryTypes'))
-const AdminNewsletterUsers = lazy(() => import('pages/AdminNewsletterUsers'))
-const AdminOrders = lazy(() => import('pages/AdminOrders'))
-const AdminPaymentTypes = lazy(() => import('pages/AdminPaymentTypes'))
-const CheckoutDelivery = lazy(() => import('pages/checkout/CheckoutDelivery'))
-const CheckoutDetails = lazy(() => import('pages/checkout/CheckoutDetails'))
-const CheckoutPayment = lazy(() => import('pages/checkout/CheckoutPayment'))
-const CheckoutProducts = lazy(() => import('pages/checkout/CheckoutProducts'))
-const CheckoutResult = lazy(() => import('pages/checkout/CheckoutResult'))
-const CheckoutShipping = lazy(() => import('pages/checkout/CheckoutShipping'))
-const Contact = lazy(() => import('pages/Contact'))
-const DeliveryAndPayments = lazy(() => import('pages/DeliveryAndPayments'))
-const Documents = lazy(() => import('pages/Documents'))
-const Home = lazy(() => import('pages/Home'))
-const HowToCreateOrder = lazy(() => import('pages/HowToCreateOrder'))
-const PageNotFound = lazy(() => import('pages/PageNotFound'))
-const ViewProduct = lazy(() => import('pages/ViewProduct'))
+import React from 'react'
 
 const routes = [
-  // {
-  //   component: lazy(
-  //     () =>
-  //       import(
-  //         /* webpackChunkName: "products" */
-  //         'pages/Products'
-  //       )
-  //   ),
-  //   exact: true,
-  //   path: PRODUCTS
-  // },
+  {
+    component: Products,
+    exact: true,
+    path: PRODUCTS
+  },
   {
     component: ViewProduct,
     path: VIEW_PRODUCT
@@ -88,8 +84,9 @@ const routes = [
     path: CONTACT
   },
   {
-    component: DeliveryAndPayments,
-    path: DELIVERY_AND_PAYMENTS
+    component: React.lazy(() => import('pages/DeliveryAndPayments')),
+    path: DELIVERY_AND_PAYMENTS,
+    exact: true
   },
   {
     component: HowToCreateOrder,
@@ -127,7 +124,7 @@ const routes = [
   },
 
   {
-    component: Home,
+    component: React.lazy(() => import('pages/Home')),
     exact: true,
     path: HOME
   },
@@ -137,5 +134,7 @@ const routes = [
     path: '*'
   }
 ]
+
+console.log(routes)
 
 export default routes
