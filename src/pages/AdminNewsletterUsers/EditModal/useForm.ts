@@ -1,12 +1,12 @@
-import { useUpdateConsent } from 'api'
-import { loaderContext } from 'providers'
-import { useContext, useState } from 'react'
+import { updateNewsletterConsent } from 'api'
+import { useFormSubmit } from 'hooks'
+import { useState } from 'react'
+import { useMutation } from 'react-query'
 
 import { object, string, boolean } from 'yup'
 
 const useForm = (id: string, consent: boolean) => {
   const [view, setView] = useState<View>({ view: 'FORM' })
-  const { hide, show } = useContext(loaderContext)
 
   const initialValues = {
     id,
@@ -18,26 +18,24 @@ const useForm = (id: string, consent: boolean) => {
     consent: boolean()
   })
 
-  const mutateUpdateConsent = useUpdateConsent()
+  const useSubmit = () => {
+    const { mutateAsync } = useMutation(updateNewsletterConsent, {
+      onSuccess: () => {
+        setView({
+          view: 'SUCCESS'
+        })
+      }
+    })
 
-  const onSubmit = async (values: FormValues) => {
-    try {
-      show()
-
-      await mutateUpdateConsent({
+    return useFormSubmit((values: FormValues) =>
+      mutateAsync({
         id: values.id,
         consent: values.consent
       })
-
-      setView({
-        view: 'SUCCESS'
-      })
-    } catch (_e: unknown) {
-      console.log('error')
-    } finally {
-      hide()
-    }
+    )
   }
+
+  const onSubmit = useSubmit()
 
   return {
     initialValues,

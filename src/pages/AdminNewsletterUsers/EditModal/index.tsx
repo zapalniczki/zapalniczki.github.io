@@ -12,7 +12,7 @@ type Props = {
 }
 
 const EditModal = ({ consent, id }: Props) => {
-  const { t } = useTranslation('ADMIN_MOLDS')
+  const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)

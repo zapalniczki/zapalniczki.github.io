@@ -5,7 +5,7 @@ import React from 'react'
 import { FormValues } from './useForm'
 
 const Form = () => {
-  const { t } = useTranslation('ADMIN_MOLDS')
+  const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
 
   return (
     <>

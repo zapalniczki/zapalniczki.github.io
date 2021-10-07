@@ -1,17 +1,16 @@
 import { DeliveryType } from 'models'
-import { useMutation } from 'react-query'
 import supabase from 'supabase'
 
 type UpdateDeliveryTypePayload = {
-  id: string,
-  isEnabled: boolean
+  id: string
+  is_enabled: boolean
 }
 
 const updateDeliveryType = async (payload: UpdateDeliveryTypePayload) => {
   const { data, error } = await supabase
     .from<DeliveryType>('delivery_type')
     .update({
-      is_enabled: payload.isEnabled
+      is_enabled: payload.is_enabled
     })
     .eq('id', payload.id)
 
@@ -22,8 +21,4 @@ const updateDeliveryType = async (payload: UpdateDeliveryTypePayload) => {
   return data
 }
 
-export const useUpdateDeliveryType = () => {
-  const { mutateAsync } = useMutation(updateDeliveryType)
-
-  return (params: UpdateDeliveryTypePayload) => mutateAsync(params)
-}
+export default updateDeliveryType

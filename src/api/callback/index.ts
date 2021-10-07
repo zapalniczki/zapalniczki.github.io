@@ -1,3 +1,3 @@
 export * from './addCallback'
 export * from './getCallbacks'
-export * from './updateCallback'
+export { default as updateCallback } from './updateCallback'

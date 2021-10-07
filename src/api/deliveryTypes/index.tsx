@@ -1,2 +1,2 @@
 export * from './getDeliveryTypes'
-export * from './updateDeliveryType'
+export { default as updateDeliveryType } from './updateDeliveryType'

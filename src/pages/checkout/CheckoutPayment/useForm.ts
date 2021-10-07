@@ -15,7 +15,7 @@ export type FormValues = {
   paymentType: PaymentType2
 }
 
-const useFormSubmit = () => {
+const useForm = () => {
   const history = useHistory()
   const { t } = useTranslation('CHECKOUT_PAYMENT')
   const { checkout, setCheckout } = useContext(checkoutContext)
@@ -96,4 +96,4 @@ const useFormSubmit = () => {
 
 export type CheckoutResultLocationState = { orderID: string }
 
-export default useFormSubmit
+export default useForm

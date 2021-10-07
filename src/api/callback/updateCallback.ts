@@ -1,5 +1,4 @@
 import { Callback } from 'models'
-import { useMutation } from 'react-query'
 import supabase from 'supabase'
 
 type UpdateCallbackPayload = {
@@ -22,8 +21,4 @@ const updateCallback = async (payload: UpdateCallbackPayload) => {
   return data
 }
 
-export const useUpdateCallback = () => {
-  const { mutateAsync } = useMutation(updateCallback)
-
-  return (params: UpdateCallbackPayload) => mutateAsync(params)
-}
+export default updateCallback

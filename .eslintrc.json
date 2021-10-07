@@ -47,7 +47,8 @@
           "models/*",
           "pages/*",
           "providers/*",
-          "utils/*"
+          "utils/*",
+          "hooks/*"
         ]
       }
     ]

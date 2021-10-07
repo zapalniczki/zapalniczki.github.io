@@ -1,12 +1,12 @@
-import { useUpdateCallback } from 'api'
-import { loaderContext } from 'providers'
-import { useContext, useState } from 'react'
+import { updateCallback } from 'api'
+import {} from 'providers'
+import { useState } from 'react'
+import { useMutation } from 'react-query'
 
 import { object, string, boolean } from 'yup'
 
 const useForm = (id: string, done: boolean) => {
   const [view, setView] = useState<View>({ view: 'FORM' })
-  const { hide, show } = useContext(loaderContext)
 
   const initialValues = {
     id,
@@ -18,26 +18,13 @@ const useForm = (id: string, done: boolean) => {
     done: boolean()
   })
 
-  const mutateUpdateCallback = useUpdateCallback()
+  const useSubmit = () => {
+    const { mutateAsync } = useMutation(updateCallback)
 
-  const onSubmit = async (values: FormValues) => {
-    try {
-      show()
-
-      await mutateUpdateCallback({
-        id: values.id,
-        done: values.done
-      })
-
-      setView({
-        view: 'SUCCESS'
-      })
-    } catch (_e: unknown) {
-      console.log('error')
-    } finally {
-      hide()
-    }
+    return (values: FormValues) => mutateAsync(values)
   }
+
+  const onSubmit = useSubmit()
 
   return {
     initialValues,

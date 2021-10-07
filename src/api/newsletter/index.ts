@@ -1,3 +1,4 @@
 export * from './addEmail'
 export * from './getNewsletterUsers'
-export * from './updateConsent'
+
+export { default as updateNewsletterConsent } from './updateNewsletterConsent'

@@ -1,5 +1,4 @@
 import { Newsletter } from 'models'
-import { useMutation } from 'react-query'
 import supabase from 'supabase'
 
 type UpdateConsentPayload = {
@@ -7,7 +6,7 @@ type UpdateConsentPayload = {
   id: string
 }
 
-const updateConsent = async (payload: UpdateConsentPayload) => {
+const updateNewsletterConsent = async (payload: UpdateConsentPayload) => {
   const { data, error } = await supabase
     .from<Newsletter>('newsletter')
     .update({
@@ -22,8 +21,4 @@ const updateConsent = async (payload: UpdateConsentPayload) => {
   return data
 }
 
-export const useUpdateConsent = () => {
-  const { mutateAsync } = useMutation(updateConsent)
-
-  return (params: UpdateConsentPayload) => mutateAsync(params)
-}
+export default updateNewsletterConsent
