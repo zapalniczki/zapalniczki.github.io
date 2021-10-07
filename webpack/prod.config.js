@@ -1,7 +1,6 @@
 const { merge } = require('webpack-merge')
 const DotEnv = require('dotenv')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const workboxPlugin = require('workbox-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -22,21 +21,15 @@ module.exports = merge(baseConfig, {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        },
-        commons: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
+          name: 'vendors',
           chunks: 'all'
         }
       }
     },
     minimize: true,
-    minimizer: [new OptimizeCSSAssetsPlugin({}), new TerserPlugin()]
+    minimizer: [new TerserPlugin()]
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -93,18 +86,6 @@ module.exports = merge(baseConfig, {
           FIREBASE_APP_ID: JSON.stringify(process.env.FIREBASE_APP_ID)
         }
       }
-    }),
-
-    //  // keep module.id stable when vendor modules does not change
-    // new webpack.HashedModuleIdsPlugin(),
-    // // enable scope hoisting
-    // new webpack.optimize.ModuleConcatenationPlugin(),
-    // generate service worker
-    new workboxPlugin.InjectManifest({
-      swSrc: path.resolve(__dirname, '../src/sw-src.js'),
-      swDest: 'sw.js',
-      include: [/\.html$/, /\.js$/, /\.css$/, /\.woff2$/, /\.jpg$/, /\.png$/],
-      maximumFileSizeToCacheInBytes: 100 * 1024 * 1024
     })
   ]
 })

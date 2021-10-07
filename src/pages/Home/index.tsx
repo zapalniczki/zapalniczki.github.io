@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <Page>
-      <Carousel>{['YOUR_PLACE', 'YOUR_PLACE']}</Carousel>
+      <Carousel>{['YOUR_PLACE']}</Carousel>
 
       <Featured />
 
