@@ -1,7 +1,7 @@
 import { Newsletter } from 'models'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
-import { Email } from 'Types'
+import { Email } from 'types'
 
 type AddEmailPayload = {
   email: Email

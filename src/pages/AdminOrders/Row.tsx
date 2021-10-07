@@ -7,7 +7,7 @@ import uniq from 'lodash.uniq'
 import { parseISO, differenceInDays } from 'date-fns'
 import { useUpdateOrderStatus, useGetMolds, GetOrdersResponse } from 'api'
 import { MoldStatus, ORDER_STATUSES } from 'models'
-import { CurrentStatus } from 'Types'
+import { CurrentStatus } from 'types'
 
 type Props = {
   columns: AdminTableColumns[]

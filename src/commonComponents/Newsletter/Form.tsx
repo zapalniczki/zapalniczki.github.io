@@ -2,7 +2,7 @@ import { FieldWrapper, Button, Flexbox, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { Email } from 'Types'
+import { Email } from 'types'
 
 const Form = () => {
   const { t: commonT } = useTranslation('COMMON')

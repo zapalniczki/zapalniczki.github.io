@@ -2,7 +2,7 @@ import { FieldWrapper, Button, Flexbox, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { Phone } from 'Types'
+import { Phone } from 'types'
 import { FormValues } from './useForm'
 
 const Form = () => {

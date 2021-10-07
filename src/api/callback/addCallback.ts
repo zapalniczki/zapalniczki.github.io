@@ -1,12 +1,12 @@
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
-import { Phone } from 'Types'
+import { Phone } from 'types'
 
-type AddNumberlPayload = {
+type AddNumberPayload = {
   phone: Phone
 }
 
-const addNumber = async (payload: AddNumberlPayload) => {
+const addCallback = async (payload: AddNumberPayload) => {
   const { data, error } = await supabase.from('callback').insert({
     phone_number: payload.phone
   })
@@ -18,6 +18,6 @@ const addNumber = async (payload: AddNumberlPayload) => {
   return data
 }
 
-export const useAddNumber = () => useMutation(addNumber)
+export const useAddCallback = () => useMutation(addCallback)
 
-export default addNumber
+export default addCallback

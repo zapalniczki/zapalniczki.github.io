@@ -4,7 +4,7 @@ import { OrderStatus } from 'models'
 import { loaderContext } from 'providers'
 import { useContext, useEffect } from 'react'
 import { useMutation } from 'react-query'
-import { CurrentStatus } from 'Types'
+import { CurrentStatus } from 'types'
 import { GetOrdersResponse } from './getOrders'
 
 type UpdateOrderStatus = {

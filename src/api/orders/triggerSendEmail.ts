@@ -1,13 +1,13 @@
 import { useMutation } from 'react-query'
-import { Email, Fullname, Phone } from 'Types'
+import { Email, Fullname, Phone } from 'types'
 
 type EventType =
   | {
       content: {
-        name: Fullname,
-        order_id: string,
+        name: Fullname
+        order_id: string
         phone: Phone
-      },
+      }
       key: 'NEW_ORDER'
     }
   | {
@@ -15,7 +15,7 @@ type EventType =
     }
 
 type TriggerSendEmailPayload = {
-  to: Email,
+  to: Email
   type: EventType
 }
 

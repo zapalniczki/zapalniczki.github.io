@@ -1,4 +1,4 @@
-import { useAddNumber } from 'api'
+import { useAddCallback } from 'api'
 import { useSchema } from 'hooks'
 import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
@@ -17,7 +17,7 @@ const useForm = () => {
     phone: getSchema('phone')
   })
 
-  const { mutateAsync: mutateAddNumber } = useAddNumber()
+  const { mutateAsync: mutateAddNumber } = useAddCallback()
 
   const onSubmit = async (values: FormValues) => {
     try {
