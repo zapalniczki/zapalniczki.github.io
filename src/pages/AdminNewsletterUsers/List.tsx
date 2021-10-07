@@ -10,30 +10,32 @@ import { displayDate } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
-  const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
+  const { t } = useTranslation('ADMIN_MOLDS')
+  const { t: commonT } = useTranslation('COMMON')
+
   const { colors } = useTheme()
   const adminNewsletterUsersQuery = useGetNewsletterUsers()
 
   const columns = useMemo(
     () => [
       {
-        Header: t('LIST.HEADERS.email'),
+        Header: commonT('TABLE_HEADERS.email'),
         accessor: 'email' as const
       },
       {
-        Header: t('LIST.HEADERS.created_at'),
+        Header: commonT('TABLE_HEADERS.created_at'),
         accessor: 'created_at' as const
       },
       {
-        Header: t('LIST.HEADERS.updated_at'),
+        Header: commonT('TABLE_HEADERS.updated_at'),
         accessor: 'updated_at' as const
       },
       {
-        Header: t('LIST.HEADERS.consent'),
+        Header: commonT('TABLE_HEADERS.consent'),
         accessor: 'consent' as const
       },
       {
-        Header: t('LIST.HEADERS.edit'),
+        Header: commonT('TABLE_HEADERS.edit'),
         accessor: 'edit' as const
       }
     ],

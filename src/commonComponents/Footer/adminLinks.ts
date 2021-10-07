@@ -1,6 +1,7 @@
 import {
   ADMIN_CALLBACKS,
   ADMIN_DELIVERY_TYPES,
+  ADMIN_MOLDS,
   ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
   ADMIN_PAYMENT_TYPES
@@ -26,6 +27,10 @@ const adminLinks = [
   {
     label: 'paymentTypes',
     to: ADMIN_PAYMENT_TYPES
+  },
+  {
+    label: 'molds',
+    to: ADMIN_MOLDS
   }
 ]
 

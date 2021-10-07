@@ -3,7 +3,7 @@ import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
 import List from './List'
 
-const AdminNewsletterUsers = () => {
+const AdminMolds = () => {
   const { t } = useTranslation('ADMIN_MOLDS')
 
   useScrollTop()
@@ -23,4 +23,4 @@ const AdminNewsletterUsers = () => {
   )
 }
 
-export default AdminNewsletterUsers
+export default AdminMolds

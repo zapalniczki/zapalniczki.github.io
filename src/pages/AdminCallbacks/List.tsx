@@ -10,30 +10,30 @@ import { displayDate } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
-  const { t } = useTranslation('ADMIN_CALLBACKS')
+  const { t: commonT } = useTranslation('COMMON')
   const { colors } = useTheme()
 
   const callbacksQuery = useGetCallbacks()
   const columns = useMemo(
     () => [
       {
-        Header: t('LIST.HEADERS.created_at'),
+        Header: commonT('TABLE_HEADERS.created_at'),
         accessor: 'created_at' as const
       },
       {
-        Header: t('LIST.HEADERS.updated_at'),
+        Header: commonT('TABLE_HEADERS.updated_at'),
         accessor: 'updated_at' as const
       },
       {
-        Header: t('LIST.HEADERS.phone_number'),
+        Header: commonT('TABLE_HEADERS.phone_number'),
         accessor: 'phone_number' as const
       },
       {
-        Header: t('LIST.HEADERS.done'),
+        Header: commonT('TABLE_HEADERS.done'),
         accessor: 'done' as const
       },
       {
-        Header: t('LIST.HEADERS.edit'),
+        Header: commonT('TABLE_HEADERS.edit'),
         accessor: 'edit' as const
       }
     ],

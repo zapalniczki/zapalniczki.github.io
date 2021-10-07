@@ -20,4 +20,6 @@ const getMolds = async () => {
   return data
 }
 
-export const useGetMolds = () => useQuery('molds', getMolds)
+export const useGetMolds = () => useQuery(getMoldsQueryKey, getMolds)
+
+export const getMoldsQueryKey = 'molds'

@@ -2,6 +2,23 @@ const pl = {
   COMMON: {
     soon: 'Wkrótce',
 
+    TABLE_HEADERS: {
+      consent: 'Zgoda',
+      created_at: 'Data utworzenia',
+      done: 'Wykonano',
+      edit: 'Edycja',
+      email: 'Adres email',
+      frontend_icon_name: 'Ikona',
+      is_enabled: 'Włączone',
+      label: 'Etykieta',
+      phone_number: 'Numer telefonu',
+      price: 'Cena',
+      requires_address: 'Wymaga adresu',
+      status: 'Status',
+      time: 'Czas',
+      updated_at: 'Data modyfikacji'
+    },
+
     MODAL: {
       FOOTER: {
         primaryLabel: 'Zapisz',
@@ -29,7 +46,8 @@ const pl = {
         newsletterUsers: 'Użytkownicy newslettera',
         callbacks: 'Prośby o kontakt',
         deliveryTypes: 'Metody dostawy',
-        paymentTypes: 'Metody płatności'
+        paymentTypes: 'Metody płatności',
+        molds: 'Matryce'
       },
       allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
       documents: 'Dokumenty'
@@ -578,14 +596,7 @@ const pl = {
   ADMIN_NEWSLETTER_USERS: {
     title: 'Użytkownicy newslettera',
     LIST: {
-      title: 'Lista',
-      HEADERS: {
-        email: 'Adres email',
-        created_at: 'Data utworzenia',
-        updated_at: 'Data modyfikacji',
-        consent: 'Zgoda',
-        edit: 'Edycja'
-      }
+      title: 'Lista'
     },
     EDIT_MODAL: {
       buttonLabel: 'Edytuj',
@@ -600,15 +611,6 @@ const pl = {
 
   ADMIN_CALLBACKS: {
     title: 'Prośby o kontakt',
-    LIST: {
-      HEADERS: {
-        created_at: 'Data utworzenia',
-        updated_at: 'Data modyfikacji',
-        phone_number: 'Numer telefonu',
-        done: 'Wykonano',
-        edit: 'Edycja'
-      }
-    },
     EDIT_MODAL: {
       buttonLabel: 'Edytuj',
       title: 'Edycja prośby o kontakt',
@@ -622,19 +624,6 @@ const pl = {
 
   ADMIN_DELIVERY_TYPES: {
     title: 'Metody dostawy',
-    LIST: {
-      HEADERS: {
-        created_at: 'Data utworzenia',
-        updated_at: 'Data modyfikacji',
-        label: 'Etykieta',
-        price: 'Cena',
-        time: 'Czas',
-        requires_address: 'Wymaga adresu',
-        is_enabled: 'Włączone',
-        frontend_icon_name: 'Ikona',
-        edit: 'Edytuj'
-      }
-    },
     EDIT_MODAL: {
       buttonLabel: 'Edytuj',
       title: 'Edycja metody dostawy',
@@ -648,24 +637,28 @@ const pl = {
 
   ADMIN_PAYMENT_TYPES: {
     title: 'Metody płatności',
-    LIST: {
-      HEADERS: {
-        created_at: 'Data utworzenia',
-        updated_at: 'Data modyfikacji',
-        label: 'Etykieta',
-        price: 'Cena',
-        time: 'Czas',
-        is_enabled: 'Włączone',
-        frontend_icon_name: 'Ikona',
-        edit: 'Edytuj'
-      }
-    },
     EDIT_MODAL: {
       buttonLabel: 'Edytuj',
       title: 'Edycja użytkownika newslettera',
       FORM: {
         IS_ENABLED: {
           label: 'Użytkownik wyraża zgodę na przesyłanie newslettera'
+        }
+      }
+    }
+  },
+
+  ADMIN_MOLDS: {
+    title: 'Matryce',
+    LIST: {
+      title: 'Lista'
+    },
+    EDIT_MODAL: {
+      buttonLabel: 'Edytuj',
+      title: 'Edycja matrycy',
+      FORM: {
+        IS_ENABLED: {
+          label: 'Status matrycy'
         }
       }
     }

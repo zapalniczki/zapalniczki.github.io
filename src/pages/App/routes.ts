@@ -1,6 +1,7 @@
 import {
   ADMIN_CALLBACKS,
   ADMIN_DELIVERY_TYPES,
+  ADMIN_MOLDS,
   ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
   ADMIN_PAYMENT_TYPES,
@@ -19,108 +20,93 @@ import {
   VIEW_PRODUCT
 } from 'constants/routes'
 
-import {
-  AdminCallbacks,
-  AdminDeliveryTypes,
-  AdminNewsletterUsers,
-  AdminOrders,
-  AdminPaymentTypes,
-  CheckoutDelivery,
-  CheckoutDetails,
-  CheckoutPayment,
-  CheckoutProducts,
-  CheckoutResult,
-  CheckoutShipping,
-  Contact,
-  Documents,
-  HowToCreateOrder,
-  PageNotFound,
-  ViewProduct,
-  Products
-} from 'pages'
-
 import React from 'react'
 
 const routes = [
   {
-    component: Products,
+    component: React.lazy(() => import('pages/Products')),
     exact: true,
     path: PRODUCTS
   },
   {
-    component: ViewProduct,
+    component: React.lazy(() => import('pages/ViewProduct')),
     path: VIEW_PRODUCT
   },
   {
-    component: CheckoutProducts,
+    component: React.lazy(() => import('pages/checkout/CheckoutProducts')),
     path: CHECKOUT_PRODUCTS
   },
   {
-    component: CheckoutDetails,
+    component: React.lazy(() => import('pages/checkout/CheckoutDetails')),
     path: CHECKOUT_DETAILS
   },
   {
-    component: CheckoutDelivery,
+    component: React.lazy(() => import('pages/checkout/CheckoutDelivery')),
     path: CHECKOUT_DELIVERY
   },
   {
-    component: CheckoutShipping,
+    component: React.lazy(() => import('pages/checkout/CheckoutShipping')),
     path: CHECKOUT_SHIPPING
   },
   {
-    component: CheckoutPayment,
+    component: React.lazy(() => import('pages/checkout/CheckoutPayment')),
     path: CHECKOUT_PAYMENT
   },
   {
-    component: CheckoutResult,
+    component: React.lazy(() => import('pages/checkout/CheckoutResult')),
     path: CHECKOUT_RESULT
   },
   {
-    component: AdminOrders,
+    component: React.lazy(() => import('pages/AdminOrders')),
     path: ADMIN_ORDERS
   },
   {
-    component: Contact,
+    component: React.lazy(() => import('pages/Contact')),
     path: CONTACT
   },
   {
-    component: React.lazy(() => import('pages/DeliveryAndPayments')),
+    component: React.lazy(() => import('pages/Products')),
     path: DELIVERY_AND_PAYMENTS,
     exact: true
   },
   {
-    component: HowToCreateOrder,
+    component: React.lazy(() => import('pages/HowToCreateOrder')),
     path: HOW_TO_CREATE_ORDER
   },
   {
-    component: Documents,
+    component: React.lazy(() => import('pages/Documents')),
     path: DOCUMENTS
   },
 
   {
-    component: AdminOrders,
+    component: React.lazy(() => import('pages/AdminOrders')),
     admin: true,
     path: ADMIN_ORDERS
   },
   {
-    component: AdminNewsletterUsers,
+    component: React.lazy(() => import('pages/AdminNewsletterUsers')),
     admin: true,
     path: ADMIN_NEWSLETTER_USERS
   },
   {
-    component: AdminCallbacks,
+    component: React.lazy(() => import('pages/AdminCallbacks')),
     admin: true,
     path: ADMIN_CALLBACKS
   },
   {
-    component: AdminDeliveryTypes,
+    component: React.lazy(() => import('pages/AdminDeliveryTypes')),
     admin: true,
     path: ADMIN_DELIVERY_TYPES
   },
   {
-    component: AdminPaymentTypes,
+    component: React.lazy(() => import('pages/AdminPaymentTypes')),
     admin: true,
     path: ADMIN_PAYMENT_TYPES
+  },
+
+  {
+    component: React.lazy(() => import('pages/AdminMolds')),
+    path: ADMIN_MOLDS
   },
 
   {
@@ -130,7 +116,7 @@ const routes = [
   },
 
   {
-    component: PageNotFound,
+    component: React.lazy(() => import('pages/PageNotFound')),
     path: '*'
   }
 ]

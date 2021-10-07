@@ -8,45 +8,45 @@ import { displayDate, displayMoney } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
-  const { t } = useTranslation('ADMIN_DELIVERY_TYPES')
+  const { t: commonT } = useTranslation('COMMON')
 
   const callbacksQuery = useGetDeliveryTypes()
   const columns = useMemo(
     () => [
       {
-        Header: t('LIST.HEADERS.label'),
+        Header: commonT('TABLE_HEADERS.label'),
         accessor: 'label' as const
       },
       {
-        Header: t('LIST.HEADERS.created_at'),
+        Header: commonT('TABLE_HEADERS.created_at'),
         accessor: 'created_at' as const
       },
       {
-        Header: t('LIST.HEADERS.updated_at'),
+        Header: commonT('TABLE_HEADERS.updated_at'),
         accessor: 'updated_at' as const
       },
       {
-        Header: t('LIST.HEADERS.price'),
+        Header: commonT('TABLE_HEADERS.price'),
         accessor: 'price' as const
       },
       {
-        Header: t('LIST.HEADERS.time'),
+        Header: commonT('TABLE_HEADERS.time'),
         accessor: 'time' as const
       },
       {
-        Header: t('LIST.HEADERS.frontend_icon_name'),
+        Header: commonT('TABLE_HEADERS.frontend_icon_name'),
         accessor: 'frontend_icon_name' as const
       },
       {
-        Header: t('LIST.HEADERS.requires_address'),
+        Header: commonT('TABLE_HEADERS.requires_address'),
         accessor: 'requires_address' as const
       },
       {
-        Header: t('LIST.HEADERS.is_enabled'),
+        Header: commonT('TABLE_HEADERS.is_enabled'),
         accessor: 'is_enabled' as const
       },
       {
-        Header: t('LIST.HEADERS.edit'),
+        Header: commonT('TABLE_HEADERS.edit'),
         accessor: 'edit' as const
       }
     ],

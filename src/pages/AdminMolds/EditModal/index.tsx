@@ -1,3 +1,4 @@
+import { getMoldsQueryKey } from 'api'
 import { ModalResult, Modal, ModalFooter, ModalHeader } from 'components'
 import { Form as NativeForm, Formik } from 'formik'
 import { useTranslation } from 'hooks'
@@ -7,26 +8,23 @@ import Form from './Form'
 import useForm from './useForm'
 
 type Props = {
-  consent: boolean
   id: string
+  status: string
 }
 
-const EditModal = ({ consent, id }: Props) => {
+const EditModal = ({ id, status }: Props) => {
   const { t } = useTranslation('ADMIN_MOLDS')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { initialValues, onSubmit, schema, setView, view } = useForm(
-    id,
-    consent
-  )
+  const { initialValues, onSubmit, schema, setView, view } = useForm(id, status)
 
   const onClose = () => {
     setIsModalOpen(false)
     setView({ view: 'FORM' })
 
-    queryClient.invalidateQueries(['newsletterUsers'])
+    queryClient.invalidateQueries([getMoldsQueryKey])
   }
 
   let content
