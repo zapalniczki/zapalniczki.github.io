@@ -90,6 +90,7 @@
     "lodash.uniq": "^4.5.0",
     "mini-css-extract-plugin": "^2.2.2",
     "node-sass": "^6.0.1",
+    "openapi-typescript": "^4.3.0",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "react": "^17.0.2",
     "react-content-loader": "^6.0.3",
