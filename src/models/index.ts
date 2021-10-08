@@ -19,3 +19,9 @@ export * from './db/orderItem'
 
 export { default as newsletter } from './db/newsletter'
 export * from './db/newsletter'
+
+export { default as icon } from './icon'
+export * from './icon'
+
+export { default as label } from './label'
+export * from './label'

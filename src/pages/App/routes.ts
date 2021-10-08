@@ -1,6 +1,8 @@
 import {
   ADMIN_CALLBACKS,
   ADMIN_DELIVERY_TYPES,
+  ADMIN_ICONS,
+  ADMIN_LABELS,
   ADMIN_MOLDS,
   ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
@@ -87,6 +89,16 @@ const routes = [
     component: React.lazy(() => import('pages/AdminNewsletterUsers')),
     admin: true,
     path: ADMIN_NEWSLETTER_USERS
+  },
+  {
+    component: React.lazy(() => import('pages/AdminIcons')),
+    admin: true,
+    path: ADMIN_ICONS
+  },
+  {
+    component: React.lazy(() => import('pages/AdminLabels')),
+    admin: true,
+    path: ADMIN_LABELS
   },
   {
     component: React.lazy(() => import('pages/AdminCallbacks')),

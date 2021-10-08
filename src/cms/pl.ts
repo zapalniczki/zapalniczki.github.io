@@ -60,7 +60,9 @@ const pl = {
         callbacks: 'Prośby o kontakt',
         deliveryTypes: 'Metody dostawy',
         paymentTypes: 'Metody płatności',
-        molds: 'Matryce'
+        molds: 'Matryce',
+        icons: 'Ikony',
+        labels: 'Etykiety'
       },
       allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
       documents: 'Dokumenty'
@@ -633,6 +635,14 @@ const pl = {
         }
       }
     }
+  },
+
+  ADMIN_ICONS: {
+    title: 'Ikony'
+  },
+
+  ADMIN_LABELS: {
+    title: 'Etykiety'
   },
 
   ADMIN_DELIVERY_TYPES: {

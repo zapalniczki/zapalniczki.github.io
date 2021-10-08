@@ -18,3 +18,9 @@ export * from './callback'
 
 // MOLDS
 export * from './molds'
+
+// ICONS
+export * from './icon'
+
+// LABELS
+export * from './labels'

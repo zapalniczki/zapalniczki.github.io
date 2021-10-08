@@ -1,6 +1,8 @@
 import {
   ADMIN_CALLBACKS,
   ADMIN_DELIVERY_TYPES,
+  ADMIN_ICONS,
+  ADMIN_LABELS,
   ADMIN_MOLDS,
   ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
@@ -31,6 +33,14 @@ const adminLinks = [
   {
     label: 'molds',
     to: ADMIN_MOLDS
+  },
+  {
+    label: 'icons',
+    to: ADMIN_ICONS
+  },
+  {
+    label: 'labels',
+    to: ADMIN_LABELS
   }
 ]
 
