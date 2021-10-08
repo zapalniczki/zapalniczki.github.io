@@ -2,7 +2,10 @@ import { loaderContext } from 'providers'
 import { useContext } from 'react'
 
 const useFormSubmit = <T, TFormValues>(
-  submit: (values: TFormValues) => Promise<T>
+  submit: (values: TFormValues) => Promise<T>,
+  options?: {
+    onSuccess?: (values: TFormValues) => void
+  }
 ) => {
   const { hide, show } = useContext(loaderContext)
 
@@ -10,6 +13,12 @@ const useFormSubmit = <T, TFormValues>(
     try {
       show()
       const response = await submit(values)
+
+      if (options) {
+        if (options.onSuccess) {
+          options.onSuccess(values)
+        }
+      }
 
       hide()
       return response

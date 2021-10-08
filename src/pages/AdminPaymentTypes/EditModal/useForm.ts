@@ -1,42 +1,35 @@
-import { useUpdatePaymentType } from 'api'
-import { loaderContext } from 'providers'
-import { useContext, useState } from 'react'
+import { updatePaymentType } from 'api'
+import { useState } from 'react'
+import { useMutation } from 'react-query'
 
 import { object, string, boolean } from 'yup'
 
 const useForm = (id: string, is_enabled: boolean) => {
   const [view, setView] = useState<View>({ view: 'FORM' })
-  const { hide, show } = useContext(loaderContext)
 
   const initialValues = {
     id,
     is_enabled
   }
 
-  console.log(is_enabled)
-
   const schema = object({
     id: string(),
     is_enabled: boolean()
   })
 
-  const mutateUpdateConsent = useUpdatePaymentType()
+  const useSubmit = () => {
+    const { mutateAsync } = useMutation(updatePaymentType, {
+      onSuccess: () => {
+        setView({
+          view: 'SUCCESS'
+        })
+      }
+    })
 
-  const onSubmit = async (values: FormValues) => {
-    try {
-      show()
-
-      await mutateUpdateConsent(values)
-
-      setView({
-        view: 'SUCCESS'
-      })
-    } catch (_e: unknown) {
-      console.log('error')
-    } finally {
-      hide()
-    }
+    return (values: FormValues) => mutateAsync(values)
   }
+
+  const onSubmit = useSubmit()
 
   return {
     initialValues,

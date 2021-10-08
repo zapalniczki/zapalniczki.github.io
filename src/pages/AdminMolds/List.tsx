@@ -54,7 +54,7 @@ const shapeData = (data: Mold[]) =>
     created_at: displayDate(record.created_at),
     updated_at: displayDate(record.updated_at),
     status: record.status ?? '-',
-    edit: <EditModal id={record.id} status={record.status ?? '-'} />
+    edit: <EditModal id={record.id} status={record.status} />
   }))
 
 export default List

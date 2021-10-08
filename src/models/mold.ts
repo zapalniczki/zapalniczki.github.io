@@ -13,4 +13,6 @@ const mold = object({
 
 export type Mold = TypeOf<typeof mold>
 
+type fl = Mold['status']
+
 export default mold

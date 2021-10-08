@@ -8,26 +8,26 @@ import ModalResult from './ModalResult'
 import ModalContent from './ModalContent'
 
 type Props = {
-  children: ReactNode,
-  isOpen: boolean,
-  label: string,
+  children: ReactNode
+  isOpen: boolean
+  label: string
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
 const Modal = ({ children, isOpen, label, setIsOpen }: Props) => (
-    <>
-      <Button
-        onClick={() => setIsOpen((prev) => !prev)}
-        size="small"
-        variant="secondary"
-      >
-        {label}
-      </Button>
-      <NativeModal isOpen={isOpen} style={customStyles}>
-        {children}
-      </NativeModal>
-    </>
-  )
+  <>
+    <Button
+      onClick={() => setIsOpen((prev) => !prev)}
+      size="small"
+      variant="secondary"
+    >
+      {label}
+    </Button>
+    <NativeModal isOpen={isOpen} style={customStyles}>
+      {children}
+    </NativeModal>
+  </>
+)
 
 const customStyles = {
   content: {
@@ -35,7 +35,7 @@ const customStyles = {
     left: '50%',
     width: '60rem',
     minHeight: 'none',
-    height: 'auto',
+    height: 'unset',
     transform: 'translate(-50%, -50%)',
     zIndex: 10,
     display: 'flex',

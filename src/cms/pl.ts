@@ -3,20 +3,32 @@ const pl = {
     soon: 'Wkrótce',
 
     TABLE_HEADERS: {
+      boxes_count: 'Liczba pudełek',
       consent: 'Zgoda',
       created_at: 'Data utworzenia',
+      customer_email: 'Email',
+      customer_name: 'Nazwa klienta',
+      customer_phone: 'Telefon',
+      delivery_id: 'Numer paczki',
+      delivery_type: 'Typ dostawy',
       done: 'Wykonano',
       edit: 'Edycja',
       email: 'Adres email',
       frontend_icon_name: 'Ikona',
+      id: 'Numer referencyjny',
+      is_company: 'Czy firma?',
       is_enabled: 'Włączone',
       label: 'Etykieta',
+      order_time: 'Czas zamówienia',
       phone_number: 'Numer telefonu',
       price: 'Cena',
       requires_address: 'Wymaga adresu',
       status: 'Status',
+      sum: 'Suma',
       time: 'Czas',
       updated_at: 'Data modyfikacji'
+
+      // molds: 'Matryce'
     },
 
     MODAL: {
@@ -557,6 +569,8 @@ const pl = {
 
   ADMIN_ORDERS: {
     title: 'Zamówienia',
+    emptyState: 'Nie ma żadnych zamówień',
+
     STATUSES_INFO: {
       OPEN: 'Zamówienia, które dostały dopiero złożone. Oczekują na potwierdzenie przez nas zamówienia z klientem',
       CONFIRMED:
@@ -571,26 +585,19 @@ const pl = {
         'Zamówienia, które są odebrane przez kuriera. Zmiana statusu po otrzymaniu paczki przez klienta.',
       COMPLETED: 'Zamówienia, które są ukończone.'
     },
-    headers: {
-      id: 'Numer referencyjny',
-      status: 'Zmień status ',
-      customerName: 'Nazwa klienta',
-      customerPhone: 'Telefon',
-      customerEmail: 'Email',
-      createdAt: 'Data zamówienia',
-      updatedAt: 'Data modyfikacji',
-      deliveryType: 'Typ dostawy',
-      sum: 'Suma',
-      boxesCount: 'Liczba pudełek',
-      molds: 'Matryce',
-      orderTime: 'Czas zamówienia',
-      deliveryId: 'Numer paczki'
-    },
     IS_COMPANY: {
       yes: 'Tak',
       no: 'Nie'
     },
-    emptyState: 'Nie ma żadnych zamówień'
+    EDIT_MODAL: {
+      buttonLabel: 'Edytuj',
+      title: 'Edycja zamówienia',
+      FORM: {
+        STATUS: {
+          label: 'Status zamówienia'
+        }
+      }
+    }
   },
 
   ADMIN_NEWSLETTER_USERS: {

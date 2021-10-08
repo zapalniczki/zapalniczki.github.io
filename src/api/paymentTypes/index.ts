@@ -1,2 +1,2 @@
 export * from './getPaymentTypes'
-export { default as useUpdatePaymentType } from './updatePaymentType'
+export { default as updatePaymentType } from './updatePaymentType'

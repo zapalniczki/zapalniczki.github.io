@@ -1,14 +1,14 @@
-import { Order, OrderStatus } from 'models'
+import { Mold } from 'models'
 import supabase from 'supabase'
 
 type Payload = {
   id: string
-  status: OrderStatus
+  status: Mold['status']
 }
 
-export const updateOrderStatus = async (payload: Payload) => {
+const updateMold = async (payload: Payload) => {
   const { data, error } = await supabase
-    .from<Order>('order')
+    .from<Mold>('molds')
     .update({
       status: payload.status
     })
@@ -21,4 +21,4 @@ export const updateOrderStatus = async (payload: Payload) => {
   return data
 }
 
-export default updateOrderStatus
+export default updateMold

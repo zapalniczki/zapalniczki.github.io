@@ -5,3 +5,5 @@ export { default as useSchema } from './useSchema'
 export { default as useScrollTop } from './useScrollTop'
 export { default as useTabTitle } from './useTabTitle'
 export { default as useTranslation } from './useTranslation'
+
+export * from './useTranslation'

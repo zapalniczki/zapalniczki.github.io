@@ -1,12 +1,13 @@
-import { updateMold } from 'api'
+import { getOrdersQueryKey, updateOrderStatus } from 'api'
 import { useFormSubmit } from 'hooks'
-import { Mold } from 'models'
+import { queryClient } from 'index'
+import { Order, OrderStatus } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { object, string } from 'yup'
 
-const useForm = (id: string, status: Mold['status']) => {
+const useForm = (id: string, status: Order['status']) => {
   const [view, setView] = useState<View>({ view: 'FORM' })
 
   const initialValues: FormValues = {
@@ -20,14 +21,26 @@ const useForm = (id: string, status: Mold['status']) => {
   })
 
   const useSubmit = () => {
-    const { mutateAsync } = useMutation(updateMold, {
+    const { mutateAsync } = useMutation(updateOrderStatus, {
       onSuccess: () => {
         setView({
           view: 'SUCCESS'
         })
       }
     })
-    return useFormSubmit((values: FormValues) => mutateAsync(values))
+
+    return useFormSubmit(
+      (values: FormValues) =>
+        mutateAsync({
+          id: values.id,
+          status: values.status as OrderStatus
+        }),
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries([getOrdersQueryKey])
+        }
+      }
+    )
   }
 
   const onSubmit = useSubmit()
@@ -43,7 +56,7 @@ const useForm = (id: string, status: Mold['status']) => {
 
 export type FormValues = {
   id: string
-  status: Mold['status']
+  status: Order['status']
 }
 
 type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }

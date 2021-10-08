@@ -1,5 +1,4 @@
 import { PaymentType } from 'models'
-import { useMutation } from 'react-query'
 import supabase from 'supabase'
 
 type UpdatePaymentTypePayload = {
@@ -22,10 +21,4 @@ const updatePaymentType = async (payload: UpdatePaymentTypePayload) => {
   return data
 }
 
-const useUpdatePaymentType = () => {
-  const { mutateAsync } = useMutation(updatePaymentType)
-
-  return (params: UpdatePaymentTypePayload) => mutateAsync(params)
-}
-
-export default useUpdatePaymentType
+export default updatePaymentType

@@ -1,33 +1,27 @@
-import { getMoldsQueryKey } from 'api'
 import { ModalResult, Modal, ModalFooter, ModalHeader } from 'components'
 import { Form as NativeForm, Formik } from 'formik'
 import { useTranslation } from 'hooks'
-import { queryClient } from 'index'
-import { Mold } from 'models'
+import { Order } from 'models'
 import React, { useState } from 'react'
 import Form from './Form'
 import useForm from './useForm'
 
 type Props = {
   id: string
-  status: Mold['status']
+  status: Order['status']
 }
 
 const EditModal = ({ id, status }: Props) => {
-  const { t } = useTranslation('ADMIN_MOLDS')
+  const { t } = useTranslation('ADMIN_ORDERS')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const { initialValues, onSubmit, schema, setView, view } = useForm(id, status)
 
-  const onClose = (invalidate?: boolean) => {
+  const onClose = () => {
     setIsModalOpen(false)
     setView({ view: 'FORM' })
-
-    if (invalidate) {
-      queryClient.invalidateQueries([getMoldsQueryKey])
-    }
   }
 
   let content
@@ -70,7 +64,7 @@ const EditModal = ({ id, status }: Props) => {
   }
 
   if (view.view === 'ERROR') {
-    content = <ModalResult onClick={() => onClose(true)} variant={view.view} />
+    content = <ModalResult onClick={() => onClose()} variant={view.view} />
   }
 
   return (
@@ -79,7 +73,7 @@ const EditModal = ({ id, status }: Props) => {
       label={t('EDIT_MODAL.buttonLabel')}
       setIsOpen={setIsModalOpen}
     >
-      <ModalHeader onClick={() => onClose(true)}>
+      <ModalHeader onClick={() => onClose()}>
         {t('EDIT_MODAL.title')}
       </ModalHeader>
       {content}

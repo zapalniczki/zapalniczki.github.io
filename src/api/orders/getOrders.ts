@@ -5,12 +5,12 @@ import supabase from 'supabase'
 type Base = Pick<Order, 'id' | 'updated_at' | 'created_at' | 'total'>
 
 export type GetOrdersResponse = Base & {
-  customerEmail: { email: User['email'] },
-  customerName: { full_name: User['full_name'] },
-  customerPhone: { phone: User['phone'] },
-  deliveryType: { label: DeliveryType['label'] },
-  isCompany: { is_company: User['is_company'] },
-  products: Pick<OrderItem, 'id' | 'quantity'>[],
+  customerEmail: { email: User['email'] }
+  customerName: { full_name: User['full_name'] }
+  customerPhone: { phone: User['phone'] }
+  deliveryType: { label: DeliveryType['label'] }
+  isCompany: { is_company: User['is_company'] }
+  products: Pick<OrderItem, 'id' | 'quantity'>[]
   status: OrderStatus
 }
 
@@ -45,4 +45,7 @@ const getOrders = async (status: OrderStatus) => {
   return data
 }
 
-export const useGetOrders = (status: OrderStatus) => useQuery(['orders', { status }], () => getOrders(status))
+export const useGetOrders = (status: OrderStatus) =>
+  useQuery([getOrdersQueryKey, { status }], () => getOrders(status))
+
+export const getOrdersQueryKey = 'orders'

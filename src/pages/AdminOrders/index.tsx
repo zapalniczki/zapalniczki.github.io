@@ -1,11 +1,11 @@
-import { Banner, Box, Heading, Page, Text, Tile } from 'components'
+import { Banner, Heading, Page, Text } from 'components'
 import React from 'react'
 import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
-import { AdminTableColumns } from './Row'
 import Table from './Table'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
-import { OrderStatus, ORDER_STATUSES } from 'models'
+import { ORDER_STATUSES } from 'models'
+import statusToColumns from './statusToColumns'
 
 const AdminOrders = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -34,46 +34,16 @@ const AdminOrders = () => {
 
         {ORDER_STATUSES.map((status) => (
           <TabPanel key={status}>
-            <Tile>
-              <Heading level={6} marginY="l-size">
-                {t(`STATUSES_INFO.${status}`)}
-              </Heading>
-              <Box
-                minHeight="50rem"
-                overflowX="scroll"
-                overflowY="auto"
-                width="100%"
-              >
-                <Table columns={statusToColumns[status]} status={status} />
-              </Box>
-            </Tile>
+            <Table
+              columns={statusToColumns[status]}
+              key={status}
+              status={status}
+            />
           </TabPanel>
         ))}
       </Tabs>
     </Page>
   )
-}
-
-const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
-  OPEN: [
-    'id',
-    'createdAt',
-    'customerName',
-    'customerPhone',
-    'customerEmail',
-    'sum'
-  ],
-  CONFIRMED: ['id', 'updatedAt', 'sum'],
-  PAYMENT_RECEIVED: [
-    'id',
-    'updatedAt',
-    'boxesCount'
-    //  'molds'
-  ],
-  IN_PREPARATION: ['id', 'updatedAt', 'isCompany', 'deliveryType', 'sum'],
-  AWAITING_FOR_PICKUP: ['id', 'updatedAt', 'deliveryType', 'deliveryId'],
-  IN_DELIVERY: ['id', 'updatedAt', 'deliveryType', 'deliveryId'],
-  COMPLETED: ['id', 'createdAt', 'updatedAt', 'orderTime', 'sum']
 }
 
 export default AdminOrders
