@@ -31,3 +31,6 @@ export * from './product'
 
 export { default as image } from './image'
 export * from './image'
+
+export { default as collection } from './collection'
+export * from './collection'

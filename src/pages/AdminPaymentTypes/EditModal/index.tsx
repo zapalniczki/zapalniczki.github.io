@@ -1,5 +1,5 @@
-import { paymentTypesQueryKey } from 'api'
 import { ModalResult, Modal, ModalFooter, ModalHeader } from 'components'
+import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { Form as NativeForm, Formik } from 'formik'
 import { useTranslation } from 'hooks'
 import { queryClient } from 'index'
@@ -27,7 +27,7 @@ const EditModal = ({ id, is_enabled }: Props) => {
     setIsModalOpen(false)
     setView({ view: 'FORM' })
 
-    queryClient.invalidateQueries([paymentTypesQueryKey])
+    queryClient.invalidateQueries([PAYMENT_TYPE_TABLE])
   }
 
   let content

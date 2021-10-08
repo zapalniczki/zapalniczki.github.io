@@ -96,7 +96,8 @@ const pl = {
 
     MOLD_STATUSES: {
       IN_PROGRESS: 'Zamówiona',
-      DONE: 'Gotowa'
+      DONE: 'Gotowa',
+      UNDONE: 'Niezamówiona'
     },
 
     ORDER_STATUSES: {
@@ -655,10 +656,10 @@ const pl = {
     title: 'Metody płatności',
     EDIT_MODAL: {
       buttonLabel: 'Edytuj',
-      title: 'Edycja użytkownika newslettera',
+      title: 'Edycja metody płatności',
       FORM: {
         IS_ENABLED: {
-          label: 'Użytkownik wyraża zgodę na przesyłanie newslettera'
+          label: 'Metoda dostępna'
         }
       }
     }

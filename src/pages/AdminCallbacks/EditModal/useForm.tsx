@@ -1,4 +1,5 @@
 import { updateCallback } from 'api'
+import { CALLBACK_TABLE } from 'constants/db_tables'
 import { queryClient } from 'index'
 import {} from 'providers'
 import { useState } from 'react'
@@ -21,7 +22,7 @@ const useForm = (id: string, done: boolean) => {
 
   const useSubmit = () => {
     const { mutateAsync } = useMutation(updateCallback, {
-      onSuccess: () => queryClient.invalidateQueries(['callbacks'])
+      onSuccess: () => queryClient.invalidateQueries([CALLBACK_TABLE])
     })
 
     return (values: FormValues) => mutateAsync(values)

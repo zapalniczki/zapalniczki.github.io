@@ -8,7 +8,9 @@ const mold = object({
   id: string(),
   created_at: string(),
   updated_at: string(),
-  status: status
+  status: status,
+  label_id: string(),
+  icon_id: string()
 })
 
 export type Mold = TypeOf<typeof mold>

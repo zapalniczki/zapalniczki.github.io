@@ -1,3 +1,4 @@
+import { DELIVERY_TYPE_TABLE } from 'constants/db_tables'
 import { DeliveryType } from 'models'
 import supabase from 'supabase'
 
@@ -8,7 +9,7 @@ type UpdateDeliveryTypePayload = {
 
 const updateDeliveryType = async (payload: UpdateDeliveryTypePayload) => {
   const { data, error } = await supabase
-    .from<DeliveryType>('delivery_type')
+    .from<DeliveryType>(DELIVERY_TYPE_TABLE)
     .update({
       is_enabled: payload.is_enabled
     })

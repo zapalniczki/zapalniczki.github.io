@@ -1,3 +1,4 @@
+import { IMAGE_TABLE, PRODUCT_TABLE } from 'constants/db_tables'
 import { Product, Image as ImageModel } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -18,12 +19,23 @@ export type GetProductsResponseItem = Pick<
   image: Pick<ImageModel, 'tile' | 'long'>
 }
 
-export const getProductSelect2 =
-  'id, price, name, collection_id, image:image(tile, long), visible'
+export const getProductSelect2 = `
+  id,
+  price,
+  name,
+  collection_id,
+  visible,
+  ${IMAGE_TABLE} (
+    tile,
+    long
+  )
+  `
+
+console.log(getProductSelect2)
 
 const getProducts = async () => {
   const { data, error } = await supabase
-    .from<GetProductsResponseItem>('products')
+    .from<GetProductsResponseItem>(PRODUCT_TABLE)
     .select(getProductSelect2)
     .eq('visible', true)
 
@@ -41,4 +53,4 @@ const getProducts = async () => {
 export const getProductsSelect =
   'id, price, name, label_id, icon_id, collection_id, mainImage:image(tile, long)'
 
-export const useGetProducts = () => useQuery('products', getProducts)
+export const useGetProducts = () => useQuery('product', getProducts)

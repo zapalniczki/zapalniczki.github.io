@@ -1,8 +1,12 @@
+import { ICON_TABLE_NAME, LABEL_TABLE_NAME, MOLD_TABLE_NAME } from 'api'
 import { Mold } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 
-export type Payload = Mold & {
+export type GetMoldsResponseItem = Pick<
+  Mold,
+  'id' | 'created_at' | 'updated_at' | 'status'
+> & {
   icon: {
     label: string
   }
@@ -13,9 +17,19 @@ export type Payload = Mold & {
 
 const getMolds = async () => {
   const { data, error } = await supabase
-    .from<Payload>('molds')
+    .from<GetMoldsResponseItem>(MOLD_TABLE_NAME)
     .select(
-      'id, created_at, updated_at, status, label: labels(label), icon: icons(label)'
+      `id,
+      created_at,
+      updated_at,
+      status,
+      ${LABEL_TABLE_NAME} (
+        label
+      ),
+      ${ICON_TABLE_NAME} (
+        label
+      )
+      `
     )
 
   if (error) {

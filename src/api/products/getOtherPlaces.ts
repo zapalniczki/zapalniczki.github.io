@@ -1,3 +1,4 @@
+import { PRODUCT_TABLE } from 'constants/db_tables'
 import { Label, Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -14,7 +15,7 @@ type Params = {
 
 const getOtherPlaces = async (params: Params) => {
   const { data, error } = await supabase
-    .from<Model>('products')
+    .from<Model>(PRODUCT_TABLE)
     .select(getProductsSelect)
     .filter('collection_id', 'eq', params.collectionId)
     .filter('label_id', 'neq', params.labelId)
@@ -32,4 +33,4 @@ const getOtherPlaces = async (params: Params) => {
 }
 
 export const useGetOtherPlaces = (params: Params) =>
-  useQuery(['products', params], () => getOtherPlaces(params))
+  useQuery(['product', params], () => getOtherPlaces(params))

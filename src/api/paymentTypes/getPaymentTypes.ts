@@ -1,3 +1,4 @@
+import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { PaymentType } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -6,7 +7,7 @@ type GetPaymentTypesResponse = PaymentType
 
 const getPaymentTypes = async () => {
   const { data, error } = await supabase
-    .from<GetPaymentTypesResponse>('payment_type')
+    .from<GetPaymentTypesResponse>(PAYMENT_TYPE_TABLE)
     .select()
 
   if (error) {
@@ -21,6 +22,4 @@ const getPaymentTypes = async () => {
 }
 
 export const useGetPaymentTypes = () =>
-  useQuery(paymentTypesQueryKey, getPaymentTypes)
-
-export const paymentTypesQueryKey = 'paymentTypes'
+  useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)

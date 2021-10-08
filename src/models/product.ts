@@ -10,7 +10,8 @@ const product = object({
   collection_id: string(),
   visible: boolean().nullable(),
   featured: boolean().nullable(),
-  image_id: string()
+  image_id: string(),
+  description: string()
 })
 
 export type Product = TypeOf<typeof product>

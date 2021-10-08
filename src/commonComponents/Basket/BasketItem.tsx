@@ -38,7 +38,7 @@ const BasketItem = ({ product: basketProduct }: Props) => {
 
   const { id, quantity } = basketProduct
 
-  const productQuery = useGetProduct({ id })
+  const productQuery = useGetProduct(id)
 
   const productPath = generatePath(VIEW_PRODUCT, { id })
 
@@ -103,10 +103,7 @@ const BasketItem = ({ product: basketProduct }: Props) => {
                 position="relative"
                 width="9rem"
               >
-                <ImageLoader
-                  alt={product.name}
-                  src={product.mainImage.basket}
-                />
+                <ImageLoader alt={product.name} src={product.image.basket} />
               </Box>
 
               <Flexbox flexDirection="column" gridArea="name">

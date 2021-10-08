@@ -1,17 +1,16 @@
-import { ProductDetails } from 'api'
 import { Flexbox, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
+import { MoldStatus } from 'models'
 
 type Props = {
-  mold: ProductDetails['mold']
+  status: MoldStatus
 }
 
-const AvilabilityIndicator = ({ mold }: Props) => {
+const AvilabilityIndicator = ({ status }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
-  const status = !mold ? 'NULL' : mold.status
 
   return (
     <Flexbox alignItems="center" marginTop="s-size">
@@ -23,12 +22,12 @@ const AvilabilityIndicator = ({ mold }: Props) => {
   )
 }
 
-type DotProps = { status: 'NULL' | 'IN_PROGRESS' | 'DONE' }
+type DotProps = { status: MoldStatus }
 const Dot = styled.div<DotProps>`
   width: ${(props) => props.theme.space['m-size']};
   height: ${(props) => props.theme.space['m-size']};
   background: ${(props) => {
-    if (props.status === 'NULL') {
+    if (props.status === 'UNDONE') {
       return getColor('red')(props)
     } else if (props.status === 'IN_PROGRESS') {
       return getColor('yellow')(props)

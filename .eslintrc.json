@@ -36,7 +36,7 @@
     "react/jsx-pascal-case": 2,
     "react/jsx-wrap-multilines": 2,
     "react/jsx-tag-spacing": 2,
-
+    "no-useless-rename": 2,
     "no-restricted-imports": [
       "error",
       {

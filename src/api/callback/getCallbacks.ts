@@ -1,3 +1,4 @@
+import { CALLBACK_TABLE } from 'constants/db_tables'
 import { Callback } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -6,7 +7,7 @@ type GetCallbacksResponse = Callback
 
 const getCallbacks = async () => {
   const { data, error } = await supabase
-    .from<GetCallbacksResponse>('callback')
+    .from<GetCallbacksResponse>(CALLBACK_TABLE)
     .select()
     .order('updated_at')
 
@@ -21,4 +22,4 @@ const getCallbacks = async () => {
   return data
 }
 
-export const useGetCallbacks = () => useQuery('callbacks', getCallbacks)
+export const useGetCallbacks = () => useQuery(CALLBACK_TABLE, getCallbacks)

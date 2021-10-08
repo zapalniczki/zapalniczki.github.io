@@ -67,12 +67,9 @@ const List = () => {
 
 const shapeData = (data: DeliveryType[]) =>
   data.map((record) => {
-    const icon = (
+    const getIcon = (possitive: boolean | null) => (
       <Flexbox justifyContent="center">
-        <ResultIcon
-          size="2x"
-          variant={record.requires_address ? 'SUCCESS' : 'ERROR'}
-        />
+        <ResultIcon size="2x" variant={possitive ? 'SUCCESS' : 'ERROR'} />
       </Flexbox>
     )
 
@@ -82,8 +79,8 @@ const shapeData = (data: DeliveryType[]) =>
       label: record.label,
       price: displayMoney(record.price),
       time: record.time,
-      requires_address: icon,
-      is_enabled: icon,
+      requires_address: getIcon(record.requires_address),
+      is_enabled: getIcon(record.is_enabled),
       frontend_icon_name: record.frontend_icon_name ?? '-',
       edit: <EditModal id={record.id} is_enabled={record.is_enabled || false} />
     }

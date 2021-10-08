@@ -1,4 +1,4 @@
-import { ProductDetails } from 'api'
+import { GetProductResponse } from 'api'
 import { Flexbox, Heading, Separator, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
@@ -6,7 +6,7 @@ import { displayMoney } from 'utils'
 import NoTypeForm from './NoType'
 
 type Props = {
-  product: ProductDetails
+  product: GetProductResponse
 }
 
 const Info = ({ product }: Props) => {
@@ -28,14 +28,14 @@ const Info = ({ product }: Props) => {
       <Flexbox>
         <Text type="caption">{t('label')}</Text>
         <Text marginLeft="s-size" type="subtitle-2">
-          {product.label.label}
+          {product.mold.label.label}
         </Text>
       </Flexbox>
 
       <Flexbox>
         <Text type="caption">{t('icon')}</Text>
         <Text marginLeft="s-size" type="subtitle-2">
-          {product.icon.label}
+          {product.mold.icon.label}
         </Text>
       </Flexbox>
 

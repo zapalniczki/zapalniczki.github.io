@@ -1,4 +1,4 @@
-import { Payload as GetMoldsPayload, useGetMolds } from 'api'
+import { GetMoldsResponseItem, useGetMolds } from 'api'
 import { Heading, QueryLoader, Table, Tile } from 'components'
 import { TranslateFunc, useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
@@ -57,7 +57,7 @@ const List = () => {
   )
 }
 
-const shapeData = (data: GetMoldsPayload[], t: TranslateFunc) =>
+const shapeData = (data: GetMoldsResponseItem[], t: TranslateFunc) =>
   data.map((record) => ({
     created_at: displayDate(record.created_at),
     updated_at: displayDate(record.updated_at),

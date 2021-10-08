@@ -24,3 +24,6 @@ export * from './icon'
 
 // LABELS
 export * from './labels'
+
+// IMAGE
+export * from './image'

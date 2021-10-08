@@ -16,7 +16,7 @@ const ViewProduct = () => {
   const { id } = useParams<{ id: string }>()
   const { t } = useTranslation('VIEW_PRODUCT')
 
-  const productQuery = useGetProduct({ id })
+  const productQuery = useGetProduct(id)
 
   useScrollTop(id)
   useDocumentTitle(
@@ -42,11 +42,14 @@ const ViewProduct = () => {
               <Info product={product} />
             </Tile>
 
-            <OtherIcons iconId={product.icon.id} labelId={product.label.id} />
+            <OtherIcons
+              iconId={product.mold.icon.id}
+              labelId={product.mold.label.id}
+            />
 
             <OtherPlaces
               collectionId={product.collection.id}
-              labelId={product.label.id}
+              labelId={product.mold.label.id}
             />
           </>
         )}

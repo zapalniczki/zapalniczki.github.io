@@ -2,12 +2,12 @@ import { basketContext } from 'providers'
 import { useContext } from 'react'
 import { string, object } from 'yup'
 
-import { ProductDetails } from 'api'
+import { GetProductResponse } from 'api'
 import { checkoutContext } from 'providers'
 import subtract from 'lodash.subtract'
 import add from 'lodash.add'
 
-const useForm = (product: ProductDetails) => {
+const useForm = (product: GetProductResponse) => {
   const { getProductFromBasket, setBasket } = useContext(basketContext)
   const { setCheckout } = useContext(checkoutContext)
 

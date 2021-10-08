@@ -1,64 +1,54 @@
+import { PRODUCT_TABLE } from 'constants/db_tables'
+import { Collection, Icon, Label, Mold, Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { Image } from './getProducts'
 
-export type ProductDetails = {
-  collection: {
-    id: string,
-    label: string
-  },
-  description: string,
-  icon: {
-    id: string,
-    label: string
-  },
-  id: string,
-  label: {
-    id: string,
-    label: string
+export type GetProductResponse = Pick<
+  Product,
+  'description' | 'id' | 'name' | 'price'
+> & {
+  collection: Pick<Collection, 'id' | 'label'>
+  description: string
+  id: string
+  image: Pick<Image, 'large' | 'basket' | 'thumbnail'>
+  mold: Pick<Mold, 'id' | 'status'> & {
+    icon: Pick<Icon, 'id' | 'label'>
+    label: Pick<Label, 'id' | 'label'>
   }
-  mainImage: Pick<Image, 'thumbnail' | 'large' | 'basket'>,
-  mold: {
-    id: string,
-    status: 'DONE' | 'IN_PROGRESS'
-  } | null,
-  name: string,
+  name: string
   price: number
 }
 
-type GetProductPayload = {
-  id: string
-}
-
-const getProduct = async ({ id }: GetProductPayload) => {
+const getProduct = async (id: string) => {
   const { data, error } = await supabase
-    .from<ProductDetails>('products')
+    .from<GetProductResponse>(PRODUCT_TABLE)
     .select(
       `
-      id,
-      price,
-      name,
+      collection (
+        label,
+        id
+      ),
       description,
-      label: labels (
-        label,
-        id
-      ),
-      icon: icons (
-        label,
-        id
-      ),
-      collection: collections (
-        label,
-        id
-      ),
-      mold: molds (
+      id,
+      name,
+      price,
+      mold (
+        id,
         status,
-        id
+        label (
+          id,
+          label
+        ),
+        icon (
+          id,
+          label
+        )
       ),
-      mainImage: image(
-        large,
+      image (
+        basket,
         thumbnail,
-        basket
+        large
       )
       `
     )
@@ -76,4 +66,5 @@ const getProduct = async ({ id }: GetProductPayload) => {
   return data
 }
 
-export const useGetProduct = (payload: GetProductPayload) => useQuery(['product', payload], () => getProduct(payload))
+export const useGetProduct = (id: string) =>
+  useQuery(['product', { id }], () => getProduct(id))

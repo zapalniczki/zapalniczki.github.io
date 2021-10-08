@@ -1,3 +1,4 @@
+import { CALLBACK_TABLE } from 'constants/db_tables'
 import { Callback } from 'models'
 import supabase from 'supabase'
 
@@ -8,7 +9,7 @@ type UpdateCallbackPayload = {
 
 const updateCallback = async (payload: UpdateCallbackPayload) => {
   const { data, error } = await supabase
-    .from<Callback>('callback')
+    .from<Callback>(CALLBACK_TABLE)
     .update({
       done: payload.done
     })

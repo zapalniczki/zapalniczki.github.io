@@ -3,19 +3,19 @@ import { Flexbox } from 'components'
 import styled from 'styled-components'
 import React, { useEffect, useState } from 'react'
 import { ImageLoader } from 'components'
-import { ProductDetails } from 'api'
+import { GetProductResponse } from 'api'
 import getColor from 'styles/getColor'
 
 type Props = {
-  product: ProductDetails
+  product: GetProductResponse
 }
 
 const Images = ({ product }: Props) => {
-  const { mainImage, name } = product
-  const [selectedImage, setSelectedImage] = useState<string>(mainImage.large)
+  const { image, name } = product
+  const [selectedImage, setSelectedImage] = useState<string>(image.large)
 
   useEffect(() => {
-    const url = mainImage.large
+    const url = image.large
 
     if (url) {
       setSelectedImage(url)
@@ -33,7 +33,7 @@ const Images = ({ product }: Props) => {
     >
       <Flexbox display="flex">
         <Flexbox flexDirection="column" height="100%" width="6rem">
-          {[mainImage.thumbnail].map((image) => (
+          {[image.thumbnail].map((image) => (
             <GalleryImageWrapper
               key={image}
               onClick={() => setSelectedImage(image)}

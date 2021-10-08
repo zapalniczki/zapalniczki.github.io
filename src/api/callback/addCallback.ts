@@ -1,3 +1,4 @@
+import { CALLBACK_TABLE } from 'constants/db_tables'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
 import { Phone } from 'types'
@@ -7,7 +8,7 @@ type AddNumberPayload = {
 }
 
 const addCallback = async (payload: AddNumberPayload) => {
-  const { data, error } = await supabase.from('callback').insert({
+  const { data, error } = await supabase.from(CALLBACK_TABLE).insert({
     phone_number: payload.phone
   })
 

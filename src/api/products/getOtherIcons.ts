@@ -1,9 +1,11 @@
-import { Icon, Label, Product } from 'models'
+import { GetProductsResponseItem } from 'api'
+import { PRODUCT_TABLE } from 'constants/db_tables'
+import { Icon, Label } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { getProductsSelect } from './getProducts'
 
-type GetOtherIconsResponse = Product & {
+type GetOtherIconsResponse = GetProductsResponseItem & {
   icon_id: Pick<Icon, 'id'>
   label_id: Pick<Label, 'id'>
 }
@@ -15,7 +17,7 @@ type Params = {
 
 const getOtherIcons = async (params: Params) => {
   const { data, error } = await supabase
-    .from<GetOtherIconsResponse>('products')
+    .from<GetOtherIconsResponse>(PRODUCT_TABLE)
     .select(getProductsSelect)
     .filter('label_id', 'eq', params.labelId)
     .filter('icon_id', 'neq', params.iconId)
@@ -33,4 +35,4 @@ const getOtherIcons = async (params: Params) => {
 }
 
 export const useGetOtherIcons = (params: Params) =>
-  useQuery(['products', params], () => getOtherIcons(params))
+  useQuery(['product', params], () => getOtherIcons(params))
