@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useGetDeliveryTypes } from 'api'
-import { Flexbox, QueryLoader, Table, Tile } from 'components'
+import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
 import { DeliveryType } from 'models'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'hooks'
@@ -58,6 +57,7 @@ const List = () => {
       <QueryLoader query={callbacksQuery}>
         {(data) => {
           const shappedData = shapeData(data)
+
           return <Table columns={columns} data={shappedData} />
         }}
       </QueryLoader>
@@ -67,17 +67,14 @@ const List = () => {
 
 const shapeData = (data: DeliveryType[]) =>
   data.map((record) => {
-    const possitiveProps = {
-      color: 'green',
-      icon: 'check-circle' as const
-    }
-
-    const negativeProps = {
-      color: 'red',
-      icon: 'times-circle' as const
-    }
-
-    console.log(record)
+    const icon = (
+      <Flexbox justifyContent="center">
+        <ResultIcon
+          size="2x"
+          variant={record.requires_address ? 'SUCCESS' : 'ERROR'}
+        />
+      </Flexbox>
+    )
 
     return {
       created_at: displayDate(record.created_at),
@@ -85,20 +82,8 @@ const shapeData = (data: DeliveryType[]) =>
       label: record.label,
       price: displayMoney(record.price),
       time: record.time,
-      requires_address: (
-        <Flexbox justifyContent="center">
-          <FontAwesomeIcon
-            {...(record.requires_address ? possitiveProps : negativeProps)}
-          />
-        </Flexbox>
-      ),
-      is_enabled: (
-        <Flexbox justifyContent="center">
-          <FontAwesomeIcon
-            {...(record.is_enabled ? possitiveProps : negativeProps)}
-          />
-        </Flexbox>
-      ),
+      requires_address: icon,
+      is_enabled: icon,
       frontend_icon_name: record.frontend_icon_name ?? '-',
       edit: <EditModal id={record.id} is_enabled={record.is_enabled || false} />
     }

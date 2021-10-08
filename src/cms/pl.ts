@@ -26,7 +26,8 @@ const pl = {
       status: 'Status',
       sum: 'Suma',
       time: 'Czas',
-      updated_at: 'Data modyfikacji'
+      updated_at: 'Data modyfikacji',
+      icon: 'Ikona'
 
       // molds: 'Matryce'
     },
@@ -88,6 +89,11 @@ const pl = {
     customerTypes: {
       INDIVIDUAL: 'Klient indywidualny',
       COMPANY: 'Firma'
+    },
+
+    MOLD_STATUSES: {
+      IN_PROGRESS: 'Zamówiona',
+      DONE: 'Gotowa'
     },
 
     ORDER_STATUSES: {

@@ -1,12 +1,13 @@
-import { updateMold } from 'api'
+import { getMoldsQueryKey, updateMold } from 'api'
 import { useFormSubmit } from 'hooks'
-import { Mold } from 'models'
+import { queryClient } from 'index'
+import { MoldStatus } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { object, string } from 'yup'
 
-const useForm = (id: string, status: Mold['status']) => {
+const useForm = (id: string, status: MoldStatus) => {
   const [view, setView] = useState<View>({ view: 'FORM' })
 
   const initialValues: FormValues = {
@@ -25,8 +26,11 @@ const useForm = (id: string, status: Mold['status']) => {
         setView({
           view: 'SUCCESS'
         })
+
+        queryClient.invalidateQueries([getMoldsQueryKey])
       }
     })
+
     return useFormSubmit((values: FormValues) => mutateAsync(values))
   }
 
@@ -43,7 +47,7 @@ const useForm = (id: string, status: Mold['status']) => {
 
 export type FormValues = {
   id: string
-  status: Mold['status']
+  status: MoldStatus
 }
 
 type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }

@@ -1,5 +1,6 @@
 import { updateNewsletterConsent } from 'api'
 import { useFormSubmit } from 'hooks'
+import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 
@@ -24,6 +25,8 @@ const useForm = (id: string, consent: boolean) => {
         setView({
           view: 'SUCCESS'
         })
+
+        queryClient.invalidateQueries(['newsletterUsers'])
       }
     })
 

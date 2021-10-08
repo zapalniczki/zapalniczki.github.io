@@ -1,4 +1,5 @@
 import { updateDeliveryType } from 'api'
+import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 
@@ -7,7 +8,7 @@ import { object, string, boolean } from 'yup'
 const useForm = (id: string, is_enabled: boolean) => {
   const [view, setView] = useState<View>({ view: 'FORM' })
 
-  const initialValues = {
+  const initialValues: FormValues = {
     id,
     is_enabled
   }
@@ -23,6 +24,8 @@ const useForm = (id: string, is_enabled: boolean) => {
         setView({
           view: 'SUCCESS'
         })
+
+        queryClient.invalidateQueries(['deliveryTypes'])
       }
     })
 

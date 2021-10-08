@@ -2,12 +2,21 @@ import { Mold } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 
-type GetMoldsResponse = Mold
+export type Payload = Mold & {
+  icon: {
+    label: string
+  }
+  label: {
+    label: string
+  }
+}
 
 const getMolds = async () => {
   const { data, error } = await supabase
-    .from<GetMoldsResponse>('molds')
-    .select()
+    .from<Payload>('molds')
+    .select(
+      'id, created_at, updated_at, status, label: labels(label), icon: icons(label)'
+    )
 
   if (error) {
     throw new Error(error.message)

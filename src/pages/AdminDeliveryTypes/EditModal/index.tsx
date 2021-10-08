@@ -1,7 +1,6 @@
 import { ModalResult, Modal, ModalFooter, ModalHeader } from 'components'
 import { Form as NativeForm, Formik } from 'formik'
 import { useTranslation } from 'hooks'
-import { queryClient } from 'index'
 import React, { useState } from 'react'
 import Form from './Form'
 import useForm from './useForm'
@@ -25,12 +24,9 @@ const EditModal = ({ id, is_enabled }: Props) => {
   const onClose = () => {
     setIsModalOpen(false)
     setView({ view: 'FORM' })
-
-    queryClient.invalidateQueries(['deliveryTypes'])
   }
 
   let content
-
   if (view.view === 'FORM') {
     content = (
       <Formik

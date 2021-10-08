@@ -1,11 +1,15 @@
-import { IconName } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useGetNewsletterUsers } from 'api'
-import { Flexbox, Heading, QueryLoader, Table, Tile } from 'components'
+import {
+  Flexbox,
+  Heading,
+  QueryLoader,
+  ResultIcon,
+  Table,
+  Tile
+} from 'components'
 import { useTranslation } from 'hooks'
 import { Newsletter } from 'models'
 import React, { useMemo } from 'react'
-import { DefaultTheme, useTheme } from 'styled-components'
 import { displayDate } from 'utils'
 import EditModal from './EditModal'
 
@@ -13,9 +17,7 @@ const List = () => {
   const { t } = useTranslation('ADMIN_MOLDS')
   const { t: commonT } = useTranslation('COMMON')
 
-  const { colors } = useTheme()
   const adminNewsletterUsersQuery = useGetNewsletterUsers()
-
   const columns = useMemo(
     () => [
       {
@@ -49,7 +51,7 @@ const List = () => {
       </Heading>
       <QueryLoader query={adminNewsletterUsersQuery}>
         {(users) => {
-          const shappedData = shapeData(users, colors)
+          const shappedData = shapeData(users)
 
           return <Table columns={columns} data={shappedData} />
         }}
@@ -58,23 +60,17 @@ const List = () => {
   )
 }
 
-const shapeData = (data: Newsletter[], colors: DefaultTheme['colors']) =>
-  data.map((record) => {
-    const icon: IconName = record.consent ? 'check-circle' : 'times-circle'
-    const iconColor =
-      colors[record.consent ? ('green' as const) : ('red' as const)]
-
-    return {
-      email: record.email,
-      created_at: displayDate(record.created_at),
-      updated_at: displayDate(record.updated_at),
-      consent: (
-        <Flexbox justifyContent="center">
-          <FontAwesomeIcon color={iconColor} icon={icon} />
-        </Flexbox>
-      ),
-      edit: <EditModal consent={record.consent} id={record.id} />
-    }
-  })
+const shapeData = (data: Newsletter[]) =>
+  data.map((record) => ({
+    email: record.email,
+    created_at: displayDate(record.created_at),
+    updated_at: displayDate(record.updated_at),
+    consent: (
+      <Flexbox justifyContent="center">
+        <ResultIcon size="2x" variant={record.consent ? 'SUCCESS' : 'ERROR'} />
+      </Flexbox>
+    ),
+    edit: <EditModal consent={record.consent} id={record.id} />
+  }))
 
 export default List

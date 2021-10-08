@@ -1,7 +1,6 @@
-import { useGetMolds } from 'api'
+import { Payload as GetMoldsPayload, useGetMolds } from 'api'
 import { Heading, QueryLoader, Table, Tile } from 'components'
-import { useTranslation } from 'hooks'
-import { Mold } from 'models'
+import { TranslateFunc, useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { displayDate } from 'utils'
 import EditModal from './EditModal'
@@ -13,6 +12,14 @@ const List = () => {
   const query = useGetMolds()
   const columns = useMemo(
     () => [
+      {
+        Header: commonT('TABLE_HEADERS.label'),
+        accessor: 'label' as const
+      },
+      {
+        Header: commonT('TABLE_HEADERS.icon'),
+        accessor: 'icon' as const
+      },
       {
         Header: commonT('TABLE_HEADERS.created_at'),
         accessor: 'created_at' as const
@@ -38,9 +45,10 @@ const List = () => {
       <Heading level={4} marginBottom="s-size">
         {t('LIST.title')}
       </Heading>
+
       <QueryLoader query={query}>
         {(users) => {
-          const shappedData = shapeData(users)
+          const shappedData = shapeData(users, commonT)
 
           return <Table columns={columns} data={shappedData} />
         }}
@@ -49,12 +57,14 @@ const List = () => {
   )
 }
 
-const shapeData = (data: Mold[]) =>
+const shapeData = (data: GetMoldsPayload[], t: TranslateFunc) =>
   data.map((record) => ({
     created_at: displayDate(record.created_at),
     updated_at: displayDate(record.updated_at),
-    status: record.status ?? '-',
-    edit: <EditModal id={record.id} status={record.status} />
+    status: record.status ? t(`MOLD_STATUSES.${record.status}`) : '-',
+    label: record.label.label,
+    icon: record.icon.label,
+    edit: <EditModal id={record.id} status={record.status ?? 'IN_PROGRESS'} />
   }))
 
 export default List

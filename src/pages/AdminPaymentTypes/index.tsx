@@ -1,7 +1,7 @@
 import { Banner, Heading, Page } from 'components'
 import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
-import List from './List2'
+import List from './List'
 
 const AdminPaymentTypes = () => {
   const { t } = useTranslation('ADMIN_PAYMENT_TYPES')
