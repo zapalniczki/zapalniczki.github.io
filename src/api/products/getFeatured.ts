@@ -1,13 +1,19 @@
+import { GetProductsResponseItem } from 'api'
+import { Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-import { getProductsSelect, Product } from './getProducts'
+import { getProductSelect2 } from './getProducts'
 
-type Model = Product
+type GetFeaturedResponseItem = GetProductsResponseItem & {
+  featured: Product['featured']
+}
+
+const getFeaturedSelect = getProductSelect2 + ', featured'
 
 const getFeatured = async () => {
   const { data, error } = await supabase
-    .from<Model>('products')
-    .select(getProductsSelect)
+    .from<GetFeaturedResponseItem>('products')
+    .select(getFeaturedSelect)
     .eq('visible', true)
     .eq('featured', true)
 
@@ -22,4 +28,5 @@ const getFeatured = async () => {
   return data
 }
 
-export const useGetFeatured = () => useQuery('products/featured', () => getFeatured())
+export const useGetFeatured = () =>
+  useQuery('products/featured', () => getFeatured())

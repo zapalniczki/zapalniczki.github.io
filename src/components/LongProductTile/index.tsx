@@ -1,4 +1,3 @@
-import { Product } from 'api'
 import {
   ProductImageHover,
   Heading,
@@ -11,13 +10,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import getColor from 'styles/getColor'
+import { GetProductsResponseItem } from 'api'
 
 type Props = {
-  product: Product
+  product: GetProductsResponseItem
 } & SpaceProps
 
 const LongProductTile = ({ product, ...props }: Props) => {
-  const imageUrl = product.mainImage.long
+  const imageUrl = product.image.long
 
   return (
     <Container as={Link} to={`/view_product/${product.id}`} {...props}>

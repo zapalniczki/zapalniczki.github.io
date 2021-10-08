@@ -1,8 +1,11 @@
+import { Label, Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-import { getProductsSelect, Product } from './getProducts'
+import { getProductsSelect } from './getProducts'
 
-type Model = Product
+type Model = Product & {
+  label_id: Pick<Label, 'id'>
+}
 
 type Params = {
   collectionId: string
@@ -28,4 +31,5 @@ const getOtherPlaces = async (params: Params) => {
   return data
 }
 
-export const useGetOtherPlaces = (params: Params) => useQuery(['products', params], () => getOtherPlaces(params))
+export const useGetOtherPlaces = (params: Params) =>
+  useQuery(['products', params], () => getOtherPlaces(params))

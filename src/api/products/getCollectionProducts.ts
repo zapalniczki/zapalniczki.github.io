@@ -1,8 +1,9 @@
+import { Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-import { getProductsSelect, Product } from './getProducts'
+import { getProductsSelect } from './getProducts'
 
-type Model = Product
+type GetCollectionProductResponse = Product
 
 type Params = {
   collectionId: string
@@ -10,7 +11,7 @@ type Params = {
 
 const getCollectionProducts = async (params: Params) => {
   const { data, error } = await supabase
-    .from<Model>('products')
+    .from<GetCollectionProductResponse>('products')
     .select(getProductsSelect)
     .filter('collection_id', 'eq', params.collectionId)
     .eq('visible', true)
@@ -26,4 +27,5 @@ const getCollectionProducts = async (params: Params) => {
   return data
 }
 
-export const useGetCollectionProducts = (params: Params) => useQuery(['products', params], () => getCollectionProducts(params))
+export const useGetCollectionProducts = (params: Params) =>
+  useQuery(['products', params], () => getCollectionProducts(params))

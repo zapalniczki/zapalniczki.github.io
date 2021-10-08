@@ -25,3 +25,9 @@ export * from './icon'
 
 export { default as label } from './label'
 export * from './label'
+
+export { default as product } from './product'
+export * from './product'
+
+export { default as image } from './image'
+export * from './image'

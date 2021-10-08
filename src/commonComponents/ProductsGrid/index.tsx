@@ -1,4 +1,3 @@
-import { Product } from 'api'
 import {
   Flexbox,
   Grid,
@@ -12,6 +11,7 @@ import { UseQueryResult } from 'react-query'
 import { SpaceProps } from 'styled-system'
 import ProductsGridLoader from './index.loader'
 import ProductTile from './ProductTile'
+import { GetProductsResponseItem } from 'api'
 
 type Props = {
   link?: {
@@ -19,7 +19,7 @@ type Props = {
     to: LocationDescriptor
   }
   loaderCount?: number
-  query: UseQueryResult<Product[]>
+  query: UseQueryResult<GetProductsResponseItem[]>
   searchQuery?: string
   title?: string
   vertical?: boolean

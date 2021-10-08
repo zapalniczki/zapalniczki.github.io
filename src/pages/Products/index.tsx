@@ -7,8 +7,9 @@ import { useLocation } from 'react-router-dom'
 import { PRODUCTS } from 'constants/routes'
 import Search from './Search'
 import { useState } from 'react'
+import { Product } from 'models'
 import {
-  Product,
+  // Product,
   useGetCollectionProducts,
   useGetLabelProducts,
   useGetProducts
@@ -17,7 +18,7 @@ import { UseQueryResult } from 'react-query'
 import Loader from './index.loader'
 
 const Products = () => {
-  const { state } = useLocation<{ collectionId?: string, labelId?: string; }>()
+  const { state } = useLocation<{ collectionId?: string; labelId?: string }>()
   const { t } = useTranslation('PRODUCTS')
 
   useTabTitle(t('title'))
@@ -25,16 +26,18 @@ const Products = () => {
 
   const [query, setQuery] = useState('')
 
-  let productsQuery: UseQueryResult<Product[], unknown>
-  if (state?.labelId) {
-    productsQuery = useGetLabelProducts({ labelId: state.labelId })
-  } else if (state?.collectionId) {
-    productsQuery = useGetCollectionProducts({
-      collectionId: state.collectionId
-    })
-  } else {
-    productsQuery = useGetProducts()
-  }
+  // let productsQuery: UseQueryResult<Product[], unknown>
+  // if (state?.labelId) {
+  //   productsQuery = useGetLabelProducts({ labelId: state.labelId })
+  // } else if (state?.collectionId) {
+  //   productsQuery = useGetCollectionProducts({
+  //     collectionId: state.collectionId
+  //   })
+  // } else {
+  //   productsQuery = useGetProducts()
+  // }
+
+  const productsQuery = useGetProducts()
 
   const isFiltered = state?.labelId || state?.collectionId
 

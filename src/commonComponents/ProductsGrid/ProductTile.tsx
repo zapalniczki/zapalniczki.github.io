@@ -11,13 +11,13 @@ import { generatePath, Link } from 'react-router-dom'
 import styled, { useTheme } from 'styled-components'
 import { displayMoney } from 'utils'
 import { VIEW_PRODUCT } from 'constants/routes'
-import { Product } from 'api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { basketContext } from 'providers'
 import getColor from 'styles/getColor'
+import { GetProductsResponseItem } from 'api'
 
 type Props = {
-  product: Product
+  product: GetProductsResponseItem
 }
 
 const ProductTile = ({ product }: Props) => {
@@ -27,7 +27,7 @@ const ProductTile = ({ product }: Props) => {
   const { getProductFromBasket } = useContext(basketContext)
   const isInBasket = !!getProductFromBasket(product.id)
 
-  const image = product.mainImage.tile
+  const image = product.image.tile
 
   return (
     <Container as={Link} max-height="30rem" to={viewProductPath}>

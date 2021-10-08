@@ -1,31 +1,30 @@
+import { Product, Image as ImageModel } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 
 export type Image = {
-  basket: string,
-  id: string,
-  large: string,
-  long: string,
-  thumbnail: string,
+  basket: string
+  id: string
+  large: string
+  long: string
+  thumbnail: string
   tile: string
 }
 
-export type Product = {
-  collection_id: string,
-  featured: boolean | null,
-  icon_id: string,
-  id: string,
-  label_id: string,
-  mainImage: Pick<Image, 'tile' | 'long'>,
-  name: string,
-  price: number,
-  visible: boolean | null
+export type GetProductsResponseItem = Pick<
+  Product,
+  'id' | 'price' | 'name' | 'collection_id' | 'visible'
+> & {
+  image: Pick<ImageModel, 'tile' | 'long'>
 }
+
+export const getProductSelect2 =
+  'id, price, name, collection_id, image:image(tile, long), visible'
 
 const getProducts = async () => {
   const { data, error } = await supabase
-    .from<Product>('products')
-    .select(getProductsSelect)
+    .from<GetProductsResponseItem>('products')
+    .select(getProductSelect2)
     .eq('visible', true)
 
   if (error) {

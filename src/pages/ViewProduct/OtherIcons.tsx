@@ -4,7 +4,7 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 
 type Props = {
-  iconId: ProductDetails['icon']['label'],
+  iconId: ProductDetails['icon']['label']
   labelId: ProductDetails['label']['label']
 }
 
@@ -14,20 +14,21 @@ const OtherIcons = ({ iconId, labelId }: Props) => {
   const productsQuery = useGetOtherIcons({ labelId, iconId })
 
   return (
-    <ProductsGrid
-      link={{
-        to: {
-          pathname: '/products',
-          state: {
-            labelId
-          }
-        },
-        label: t('otherIcons.linkLabel')
-      }}
-      marginTop="xxl-size"
-      query={productsQuery}
-      title={t('otherIcons.title')}
-    />
+    <></>
+    // <ProductsGrid
+    //   link={{
+    //     to: {
+    //       pathname: '/products',
+    //       state: {
+    //         labelId
+    //       }
+    //     },
+    //     label: t('otherIcons.linkLabel')
+    //   }}
+    //   marginTop="xxl-size"
+    //   query={productsQuery}
+    //   title={t('otherIcons.title')}
+    // />
   )
 }
 

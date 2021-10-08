@@ -4,4 +4,5 @@ export * from './getOtherIcons'
 export * from './getOtherPlaces'
 export * from './getLabelProducts'
 export * from './getProduct'
+
 export * from './getProducts'

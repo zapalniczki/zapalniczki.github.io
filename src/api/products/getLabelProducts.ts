@@ -1,8 +1,11 @@
+import { Label, Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-import { getProductsSelect, Product } from './getProducts'
+import { getProductsSelect } from './getProducts'
 
-type Model = Product
+type Model = Product & {
+  label_id: Pick<Label, 'id'>
+}
 
 type Params = {
   labelId: string
@@ -26,4 +29,5 @@ const getLabelProducts = async (params: Params) => {
   return data
 }
 
-export const useGetLabelProducts = (params: Params) => useQuery(['products', params], () => getLabelProducts(params))
+export const useGetLabelProducts = (params: Params) =>
+  useQuery(['products', params], () => getLabelProducts(params))
