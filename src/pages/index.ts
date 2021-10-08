@@ -7,7 +7,10 @@ export { default as AdminNewsletterUsers } from './AdminNewsletterUsers'
 export { default as AdminPaymentTypes } from './AdminPaymentTypes'
 
 export { default as AdminMolds } from './AdminMolds'
+
 export { default as App } from './App'
+export * from './App'
+
 export { default as CheckoutDelivery } from './checkout/CheckoutDelivery'
 export { default as CheckoutDetails } from './checkout/CheckoutDetails'
 export { default as CheckoutPayment } from './checkout/CheckoutPayment'

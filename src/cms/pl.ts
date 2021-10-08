@@ -1,5 +1,24 @@
 const pl = {
   COMMON: {
+    LINKS: {
+      home: 'Strona Główna',
+      products: 'Produkty',
+      howToCreateOrder: 'Jak złożyć zamówienie',
+      deliveryAndPayments: 'Dostawa i płatności',
+      contact: 'Kontakt',
+      orders: 'Zamówienia',
+      documents: 'Dokumenty',
+
+      adminOrders: 'Zamówienia',
+      adminNewsletterUsers: 'Użytkownicy newslettera',
+      adminCallbacks: 'Prośby o kontakt',
+      adminDeliveryTypes: 'Metody dostawy',
+      adminPaymentTypes: 'Metody płatności',
+      adminMolds: 'Matryce',
+      adminIcons: 'Ikony',
+      adminLabels: 'Etykiety'
+    },
+
     soon: 'Wkrótce',
 
     TABLE_HEADERS: {
@@ -47,25 +66,7 @@ const pl = {
     },
 
     FOOTER: {
-      links: {
-        home: 'Strona Główna',
-        products: 'Produkty',
-        howToCreateOrder: 'Jak złożyć zamówienie',
-        deliveryAndPayments: 'Dostawa i płatności',
-        contact: 'Kontakt'
-      },
-      adminLinks: {
-        orders: 'Zamówienia',
-        newsletterUsers: 'Użytkownicy newslettera',
-        callbacks: 'Prośby o kontakt',
-        deliveryTypes: 'Metody dostawy',
-        paymentTypes: 'Metody płatności',
-        molds: 'Matryce',
-        icons: 'Ikony',
-        labels: 'Etykiety'
-      },
-      allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone',
-      documents: 'Dokumenty'
+      allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone'
     },
 
     checkoutSteps: {
@@ -106,14 +107,6 @@ const pl = {
       AWAITING_FOR_PICKUP: 'Oczekuje na kuriera',
       IN_DELIVERY: 'W dostawie',
       COMPLETED: 'Zakończone'
-    },
-
-    navigation: {
-      home: 'Strona Główna',
-      products: 'Produkty',
-      HOW_TO_CREATE_ORDER: 'Jak złożyć zamówienie',
-      deliveryAndPayments: 'Dostawa i płatności',
-      contact: 'Kontakt'
     },
 
     basket: {

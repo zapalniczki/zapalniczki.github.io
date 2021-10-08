@@ -28,7 +28,9 @@ const routes = [
   {
     component: React.lazy(() => import('pages/Products')),
     exact: true,
-    path: PRODUCTS
+    translationKey: 'products',
+    path: PRODUCTS,
+    order: 2
   },
   {
     component: React.lazy(() => import('pages/ViewProduct')),
@@ -60,75 +62,95 @@ const routes = [
   },
   {
     component: React.lazy(() => import('pages/AdminOrders')),
+    translationKey: 'adminOrders',
     path: ADMIN_ORDERS
   },
   {
     component: React.lazy(() => import('pages/Contact')),
-    path: CONTACT
+    translationKey: 'contact',
+    path: CONTACT,
+    order: 5
   },
   {
-    component: React.lazy(() => import('pages/Products')),
+    component: React.lazy(() => import('pages/DeliveryAndPayments')),
+    translationKey: 'deliveryAndPayments',
     path: DELIVERY_AND_PAYMENTS,
-    exact: true
+    exact: true,
+    order: 4
   },
   {
     component: React.lazy(() => import('pages/HowToCreateOrder')),
-    path: HOW_TO_CREATE_ORDER
+    translationKey: 'howToCreateOrder',
+    path: HOW_TO_CREATE_ORDER,
+    order: 3
   },
   {
     component: React.lazy(() => import('pages/Documents')),
+    translationKey: 'documents',
     path: DOCUMENTS
   },
 
   {
     component: React.lazy(() => import('pages/AdminOrders')),
     admin: true,
+    translationKey: 'adminOrders',
     path: ADMIN_ORDERS
   },
   {
     component: React.lazy(() => import('pages/AdminNewsletterUsers')),
     admin: true,
+    translationKey: 'adminNewsletterUsers',
     path: ADMIN_NEWSLETTER_USERS
   },
   {
     component: React.lazy(() => import('pages/AdminIcons')),
     admin: true,
+    translationKey: 'adminIcons',
     path: ADMIN_ICONS
   },
   {
     component: React.lazy(() => import('pages/AdminLabels')),
     admin: true,
+    translationKey: 'adminLabels',
     path: ADMIN_LABELS
   },
   {
     component: React.lazy(() => import('pages/AdminCallbacks')),
     admin: true,
+    translationKey: 'adminCallbacks',
     path: ADMIN_CALLBACKS
   },
   {
     component: React.lazy(() => import('pages/AdminDeliveryTypes')),
     admin: true,
+    translationKey: 'adminDeliveryTypes',
     path: ADMIN_DELIVERY_TYPES
   },
   {
     component: React.lazy(() => import('pages/AdminPaymentTypes')),
     admin: true,
+    translationKey: 'adminPaymentTypes',
     path: ADMIN_PAYMENT_TYPES
   },
 
   {
     component: React.lazy(() => import('pages/AdminMolds')),
+    translationKey: 'adminMolds',
+    admin: true,
     path: ADMIN_MOLDS
   },
 
   {
     component: React.lazy(() => import('pages/Home')),
     exact: true,
-    path: HOME
+    translationKey: 'home',
+    path: HOME,
+    order: 1
   },
 
   {
     component: React.lazy(() => import('pages/PageNotFound')),
+    translationKey: '',
     path: '*'
   }
 ]

@@ -3,8 +3,8 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 import { matchPath, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import mainMenuLinks from './mainMenuLinks'
 import getColor from 'styles/getColor'
+import { routes } from 'pages'
 
 const MainMenu = () => {
   const { t } = useTranslation('COMMON')
@@ -12,20 +12,25 @@ const MainMenu = () => {
 
   return (
     <Flexbox as="ul" flexGrow={1} marginX="m-size" marginY="0" paddingLeft={0}>
-      {mainMenuLinks.map(({ label, ...link }) => (
-        <Box as="li" display="inline-block" key={link.to}>
-          <StyledLink
-            isActive={
-              !!matchPath(pathname, { path: link.to, exact: link.exact })
-            }
-            {...link}
-          >
-            <Text fontWeight="bold" type="subtitle-2">
-              {t(label)}
-            </Text>
-          </StyledLink>
-        </Box>
-      ))}
+      {routes
+        .filter((route) => route.order)
+        .sort((prev, next) =>
+          (prev?.order || 1) < (next?.order || 1) ? -1 : 1
+        )
+        .map((route) => (
+          <Box as="li" display="inline-block" key={route.path}>
+            <StyledLink
+              isActive={
+                !!matchPath(pathname, { path: route.path, exact: route.exact })
+              }
+              to={route.path}
+            >
+              <Text fontWeight="bold" type="subtitle-2">
+                {t(`LINKS.${route.translationKey}`)}
+              </Text>
+            </StyledLink>
+          </Box>
+        ))}
     </Flexbox>
   )
 }

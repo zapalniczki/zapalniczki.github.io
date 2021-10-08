@@ -1,10 +1,9 @@
 import { Box, Flexbox, Link, Logo, MaxWidth, Separator, Text } from 'components'
 import { DOCUMENTS } from 'constants/routes'
 import { useAdmin, useTranslation } from 'hooks'
+import { routes } from 'pages'
 
 import React from 'react'
-import adminLinks from './adminLinks'
-import links from './links'
 
 const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -24,24 +23,31 @@ const Footer = () => {
 
         <Flexbox justifyContent="space-between" marginTop="l-size" width="100%">
           <Flexbox alignItems="flex-start" flexDirection="column">
-            {links.map((link) => (
-              <Link key={link.to} to={link.to}>
-                <Text marginY="xs-size" type="body-1">
-                  {commonT(`FOOTER.links.${link.label}`)}
-                </Text>
-              </Link>
-            ))}
+            {routes
+              .filter((route) => route.order)
+              .sort((prev, next) =>
+                (prev?.order || 1) < (next?.order || 1) ? -1 : 1
+              )
+              .map((route) => (
+                <Link key={route.path} to={route.path}>
+                  <Text marginY="xs-size" type="body-1">
+                    {commonT(`LINKS.${route.translationKey}`)}
+                  </Text>
+                </Link>
+              ))}
           </Flexbox>
 
           {isAdmin && (
             <Flexbox alignItems="flex-end" flexDirection="column">
-              {adminLinks.map((link) => (
-                <Link key={link.to} to={link.to}>
-                  <Text marginY="xs-size" type="body-1">
-                    {commonT(`FOOTER.adminLinks.${link.label}`)}
-                  </Text>
-                </Link>
-              ))}
+              {routes
+                .filter((route) => route.admin)
+                .map((route) => (
+                  <Link key={route.path} to={route.path}>
+                    <Text marginY="xs-size" type="body-1">
+                      {commonT(`LINKS.${route.translationKey}`)}
+                    </Text>
+                  </Link>
+                ))}
             </Flexbox>
           )}
         </Flexbox>
@@ -56,7 +62,7 @@ const Footer = () => {
           </Text>
 
           <Link to={DOCUMENTS}>
-            <Text type="caption">{commonT('FOOTER.documents')}</Text>
+            <Text type="caption">{commonT('LINKS.documents')}</Text>
           </Link>
         </Flexbox>
       </MaxWidth>

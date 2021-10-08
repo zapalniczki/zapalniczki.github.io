@@ -12,7 +12,7 @@ const AppRouter = () => (
     <Navigation />
     <Basket />
 
-    <Suspense fallback={<p>dfff</p>}>
+    <Suspense fallback={<p>...</p>}>
       <Switch>
         {routes.map(({ admin, ...props }, index) => {
           if (admin) {
