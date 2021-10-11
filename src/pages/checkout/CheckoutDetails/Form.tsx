@@ -13,7 +13,7 @@ import {
   HourseNr,
   AddressCdn,
   IsCompany
-} from 'types'
+} from 'types/index2'
 import { FormValues } from './useForm'
 import Row from '../common/Row'
 import FieldWrapper from '../common/FieldWrapper'

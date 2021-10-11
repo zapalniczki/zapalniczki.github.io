@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import { StepTitle, Actions, Wrapper, StepTracker } from '../common'
 import useForm from './useForm'
 import Form from './Form'
-import { IsCompany } from 'types'
+import { IsCompany } from 'types/index2'
 
 const CheckoutDetails = () => {
   const { t } = useTranslation('CHECKOUT_DETAILS')

@@ -11,7 +11,7 @@ import {
   Phone,
   Postcode,
   Street
-} from 'types'
+} from 'types/index2'
 import { BasketItem } from 'models'
 
 type Props = {

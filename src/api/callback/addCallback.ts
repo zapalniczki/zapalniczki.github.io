@@ -1,7 +1,7 @@
 import { CALLBACK_TABLE } from 'constants/db_tables'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
-import { Phone } from 'types'
+import { Phone } from 'types/index2'
 
 type AddNumberPayload = {
   phone: Phone

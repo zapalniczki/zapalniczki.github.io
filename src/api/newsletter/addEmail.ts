@@ -2,7 +2,7 @@ import { NEWSLETTER_TABLE } from 'constants/db_tables'
 import { Newsletter } from 'models'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
-import { Email } from 'types'
+import { Email } from 'types/index2'
 
 type AddEmailPayload = {
   email: Email

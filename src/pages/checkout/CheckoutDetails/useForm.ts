@@ -4,7 +4,7 @@ import { useTranslation } from 'hooks'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { useContext } from 'react'
 import { checkoutContext, ContactDetails2 } from 'providers'
-import { IsCompany } from 'types'
+import { IsCompany } from 'types/index2'
 
 export type FormValues = Omit<ContactDetails2, 'isCompany'>
 

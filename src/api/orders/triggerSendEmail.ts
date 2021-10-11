@@ -1,5 +1,5 @@
 import { useMutation } from 'react-query'
-import { Email, Fullname, Phone } from 'types'
+import { Email, Fullname, Phone } from 'types/index2'
 
 type EventType =
   | {
