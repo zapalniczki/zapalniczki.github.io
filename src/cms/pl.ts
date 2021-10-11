@@ -545,7 +545,7 @@ const pl = {
     avilability: {
       DONE: 'Produkt łatwo dostępny',
       IN_PROGRESS: 'Produkt średnio dostępny',
-      NULL: 'Minimalny czas realizacji to 7 dni'
+      UNDONE: 'Minimalny czas realizacji to 7 dni'
     },
 
     actions: {

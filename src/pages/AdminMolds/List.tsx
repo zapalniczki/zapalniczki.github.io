@@ -2,7 +2,7 @@ import { GetMoldsResponseItem, useGetMolds } from 'api'
 import { Heading, QueryLoader, Table, Tile } from 'components'
 import { TranslateFunc, useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
-import { displayDate } from 'utils'
+import { formatDate } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
@@ -59,8 +59,8 @@ const List = () => {
 
 const shapeData = (data: GetMoldsResponseItem[], t: TranslateFunc) =>
   data.map((record) => ({
-    created_at: displayDate(record.created_at),
-    updated_at: displayDate(record.updated_at),
+    created_at: formatDate(record.created_at),
+    updated_at: formatDate(record.updated_at),
     status: record.status ? t(`MOLD_STATUSES.${record.status}`) : '-',
     label: record.label.label,
     icon: record.icon.label,

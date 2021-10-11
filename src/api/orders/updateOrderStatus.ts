@@ -1,3 +1,4 @@
+import { ORDER_TABLE } from 'constants/db_tables'
 import { Order, OrderStatus } from 'models'
 import supabase from 'supabase'
 
@@ -8,7 +9,7 @@ type Payload = {
 
 export const updateOrderStatus = async (payload: Payload) => {
   const { data, error } = await supabase
-    .from<Order>('order')
+    .from<Order>(ORDER_TABLE)
     .update({
       status: payload.status
     })

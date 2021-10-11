@@ -4,7 +4,7 @@ import { useTranslation } from 'hooks'
 import { PaymentType } from 'models'
 import EditModal from './EditModal'
 import React, { useMemo } from 'react'
-import { displayDate, displayMoney } from 'utils'
+import { formatDate, displayMoney } from 'utils'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -59,8 +59,8 @@ const List = () => {
 
 const shapeData = (data: PaymentType[]) =>
   data.map((record) => ({
-    created_at: displayDate(record.created_at),
-    updated_at: displayDate(record.updated_at),
+    created_at: formatDate(record.created_at),
+    updated_at: formatDate(record.updated_at),
     label: record.label,
     price: displayMoney(record.price),
     time: record.time,

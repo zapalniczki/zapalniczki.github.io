@@ -1,3 +1,4 @@
+import { ORDER_TABLE } from 'constants/db_tables'
 import { OrderStatus, Order, User, DeliveryType, OrderItem } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -16,18 +17,28 @@ export type GetOrdersResponse = Base & {
 
 const getOrders = async (status: OrderStatus) => {
   const { data, error } = await supabase
-    .from<GetOrdersResponse>('order')
+    .from<GetOrdersResponse>(ORDER_TABLE)
     .select(
       `
       id,
-      deliveryType: delivery_type(label),
+      deliveryType: delivery_type(
+        label
+      ),
       total,
       updated_at,
       created_at,
-      isCompany: user(is_company),
-      customerName: user(full_name),
-      customerPhone: user(phone),
-      customerEmail: user(email),
+      isCompany: user(
+        is_company
+      ),
+      customerName: user(
+        full_name
+      ),
+      customerPhone: user(
+        phone
+      ),
+      customerEmail: user(
+        email
+      ),
       status
       `
     )

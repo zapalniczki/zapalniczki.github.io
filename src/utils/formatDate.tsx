@@ -1,7 +1,7 @@
 import { parseISO } from 'date-fns'
 import format from 'date-fns/format'
 
-export const displayDate = (date: Date | string) => {
+const formatDate = (date: Date | string) => {
   let parsedDate
 
   if (typeof date === 'string') {
@@ -13,4 +13,4 @@ export const displayDate = (date: Date | string) => {
   return format(parsedDate, 'HH:mm dd/MM/yyyy')
 }
 
-export default displayDate
+export default formatDate

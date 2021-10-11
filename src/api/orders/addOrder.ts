@@ -1,3 +1,4 @@
+import { ORDER_TABLE } from 'constants/db_tables'
 import {
   Address,
   DeliveryType,
@@ -10,14 +11,14 @@ import supabase from 'supabase'
 
 export type AddOrderPayload = {
   address: Omit<Address, 'id' | 'created_at' | 'updated_at'>
-  deliveryType: DeliveryType['id'],
-  email: User['email'],
-  fullname: User['full_name'],
-  isCompany?: User['is_company'],
+  deliveryType: DeliveryType['id']
+  email: User['email']
+  fullname: User['full_name']
+  isCompany?: User['is_company']
   paymentType: PaymentType['id']
-  phone: User['phone'],
+  phone: User['phone']
   products: Pick<OrderItem, 'id' | 'quantity'>[]
-  shipping: Omit<Address, 'id' | 'created_at' | 'updated_at'>,
+  shipping: Omit<Address, 'id' | 'created_at' | 'updated_at'>
   total: Order['total']
 }
 
@@ -92,7 +93,7 @@ export const addOrder = async (payload: AddOrderPayload) => {
 
   // ORDER
   const { data: order, error: orderError } = await supabase
-    .from<Order>('order')
+    .from<Order>(ORDER_TABLE)
     .insert([
       {
         status: 'OPEN',

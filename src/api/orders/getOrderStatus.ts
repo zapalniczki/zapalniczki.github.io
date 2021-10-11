@@ -1,3 +1,4 @@
+import { ORDER_TABLE } from 'constants/db_tables'
 import { OrderStatus } from 'models'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
@@ -13,7 +14,7 @@ type GetOrderStatusResponse = {
 
 export const getOrderStatus = async (params: Params) => {
   const { data, error } = await supabase
-    .from<GetOrderStatusResponse>('order')
+    .from<GetOrderStatusResponse>(ORDER_TABLE)
     .select('status')
     .eq('id', params.id)
     .single()

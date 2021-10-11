@@ -5,11 +5,11 @@ import { useDocumentTitle, useScrollTop } from 'hooks'
 
 import { useTranslation } from 'hooks'
 import Images from './Images'
-import OtherIcons from './OtherIcons'
+// import OtherIcons from './OtherIcons'
+// import OtherPlaces from './OtherPlaces'
 import { PRODUCTS } from 'constants/routes'
 import Info from './Info'
 import { useGetProduct } from 'api'
-import OtherPlaces from './OtherPlaces'
 import Loader from './index.loader'
 
 const ViewProduct = () => {
@@ -42,15 +42,15 @@ const ViewProduct = () => {
               <Info product={product} />
             </Tile>
 
-            <OtherIcons
+            {/* <OtherIcons
               iconId={product.mold.icon.id}
               labelId={product.mold.label.id}
-            />
+            /> */}
 
-            <OtherPlaces
+            {/* <OtherPlaces
               collectionId={product.collection.id}
               labelId={product.mold.label.id}
-            />
+            /> */}
           </>
         )}
       </QueryLoader>

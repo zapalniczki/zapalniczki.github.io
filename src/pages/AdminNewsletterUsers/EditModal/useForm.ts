@@ -1,4 +1,5 @@
 import { updateNewsletterConsent } from 'api'
+import { NEWSLETTER_TABLE } from 'constants/db_tables'
 import { useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
@@ -26,7 +27,7 @@ const useForm = (id: string, consent: boolean) => {
           view: 'SUCCESS'
         })
 
-        queryClient.invalidateQueries(['newsletterUsers'])
+        queryClient.invalidateQueries([NEWSLETTER_TABLE])
       }
     })
 

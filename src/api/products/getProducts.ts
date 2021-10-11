@@ -19,7 +19,7 @@ export type GetProductsResponseItem = Pick<
   image: Pick<ImageModel, 'tile' | 'long'>
 }
 
-export const getProductSelect2 = `
+export const getProductsSelect2 = `
   id,
   price,
   name,
@@ -31,12 +31,10 @@ export const getProductSelect2 = `
   )
   `
 
-console.log(getProductSelect2)
-
 const getProducts = async () => {
   const { data, error } = await supabase
     .from<GetProductsResponseItem>(PRODUCT_TABLE)
-    .select(getProductSelect2)
+    .select(getProductsSelect2)
     .eq('visible', true)
 
   if (error) {

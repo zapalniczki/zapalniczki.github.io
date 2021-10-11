@@ -1,3 +1,4 @@
+import { NEWSLETTER_TABLE } from 'constants/db_tables'
 import { Newsletter } from 'models'
 import { useMutation } from 'react-query'
 import supabase from 'supabase'
@@ -8,10 +9,12 @@ type AddEmailPayload = {
 }
 
 const addEmail = async (payload: AddEmailPayload) => {
-  const { data, error } = await supabase.from<Newsletter>('newsletter').insert({
-    consent: true,
-    email: payload.email
-  })
+  const { data, error } = await supabase
+    .from<Newsletter>(NEWSLETTER_TABLE)
+    .insert({
+      consent: true,
+      email: payload.email
+    })
 
   if (error) {
     throw new Error(error.code)

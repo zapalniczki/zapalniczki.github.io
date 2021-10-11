@@ -3,13 +3,13 @@ import { PRODUCT_TABLE } from 'constants/db_tables'
 import { Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-import { getProductSelect2 } from './getProducts'
+import { getProductsSelect2 } from './getProducts'
 
 type GetFeaturedResponseItem = GetProductsResponseItem & {
   featured: Product['featured']
 }
 
-const getFeaturedSelect = getProductSelect2 + ', featured'
+const getFeaturedSelect = getProductsSelect2 + ', featured'
 
 const getFeatured = async () => {
   const { data, error } = await supabase

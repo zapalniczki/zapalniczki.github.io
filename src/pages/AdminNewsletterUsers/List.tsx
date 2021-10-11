@@ -10,7 +10,7 @@ import {
 import { useTranslation } from 'hooks'
 import { Newsletter } from 'models'
 import React, { useMemo } from 'react'
-import { displayDate } from 'utils'
+import { formatDate } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
@@ -63,8 +63,8 @@ const List = () => {
 const shapeData = (data: Newsletter[]) =>
   data.map((record) => ({
     email: record.email,
-    created_at: displayDate(record.created_at),
-    updated_at: displayDate(record.updated_at),
+    created_at: formatDate(record.created_at),
+    updated_at: formatDate(record.updated_at),
     consent: (
       <Flexbox justifyContent="center">
         <ResultIcon size="2x" variant={record.consent ? 'SUCCESS' : 'ERROR'} />

@@ -28,12 +28,13 @@ const Images = ({ product }: Props) => {
     <Flexbox
       flexDirection="column"
       flexGrow={4}
+      height="100%"
       maxWidth={width}
       minWidth={width}
     >
-      <Flexbox display="flex">
+      <Flexbox display="flex" height="100%">
         <Flexbox flexDirection="column" height="100%" width="6rem">
-          {[image.thumbnail].map((image) => (
+          {/* {[image.thumbnail].map((image) => (
             <GalleryImageWrapper
               key={image}
               onClick={() => setSelectedImage(image)}
@@ -41,7 +42,7 @@ const Images = ({ product }: Props) => {
             >
               <ImageLoader src={image} />
             </GalleryImageWrapper>
-          ))}
+          ))} */}
         </Flexbox>
 
         <ImageWrapper>

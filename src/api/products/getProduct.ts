@@ -1,4 +1,11 @@
-import { PRODUCT_TABLE } from 'constants/db_tables'
+import {
+  COLLECTION_TABLE,
+  ICON_TABLE,
+  IMAGE_TABLE,
+  LABEL_TABLE,
+  MOLD_TABLE,
+  PRODUCT_TABLE
+} from 'constants/db_tables'
 import { Collection, Icon, Label, Mold, Product } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -25,27 +32,27 @@ const getProduct = async (id: string) => {
     .from<GetProductResponse>(PRODUCT_TABLE)
     .select(
       `
-      collection (
-        label,
-        id
+      ${COLLECTION_TABLE} (
+        id,
+        label
       ),
       description,
       id,
       name,
       price,
-      mold (
+      ${MOLD_TABLE} (
         id,
         status,
-        label (
+        ${LABEL_TABLE} (
           id,
           label
         ),
-        icon (
+        ${ICON_TABLE} (
           id,
           label
         )
       ),
-      image (
+      ${IMAGE_TABLE} (
         basket,
         thumbnail,
         large

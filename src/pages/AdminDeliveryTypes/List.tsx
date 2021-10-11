@@ -3,7 +3,7 @@ import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
 import { DeliveryType } from 'models'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'hooks'
-import { displayDate, displayMoney } from 'utils'
+import { formatDate, displayMoney } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
@@ -74,8 +74,8 @@ const shapeData = (data: DeliveryType[]) =>
     )
 
     return {
-      created_at: displayDate(record.created_at),
-      updated_at: displayDate(record.updated_at),
+      created_at: formatDate(record.created_at),
+      updated_at: formatDate(record.updated_at),
       label: record.label,
       price: displayMoney(record.price),
       time: record.time,

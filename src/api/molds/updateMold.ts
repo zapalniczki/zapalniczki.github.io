@@ -1,4 +1,4 @@
-import { MOLD_TABLE_NAME } from 'api'
+import { MOLD_TABLE } from 'constants/db_tables'
 import { Mold, MoldStatus } from 'models'
 import supabase from 'supabase'
 
@@ -9,7 +9,7 @@ type Payload = {
 
 const updateMold = async (payload: Payload) => {
   const { data, error } = await supabase
-    .from<Mold>(MOLD_TABLE_NAME)
+    .from<Mold>(MOLD_TABLE)
     .update({
       status: payload.status
     })

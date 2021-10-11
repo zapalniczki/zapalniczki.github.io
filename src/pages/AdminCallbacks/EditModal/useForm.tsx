@@ -22,7 +22,13 @@ const useForm = (id: string, done: boolean) => {
 
   const useSubmit = () => {
     const { mutateAsync } = useMutation(updateCallback, {
-      onSuccess: () => queryClient.invalidateQueries([CALLBACK_TABLE])
+      onSuccess: () => {
+        setView({
+          view: 'SUCCESS'
+        })
+
+        queryClient.invalidateQueries([CALLBACK_TABLE])
+      }
     })
 
     return (values: FormValues) => mutateAsync(values)

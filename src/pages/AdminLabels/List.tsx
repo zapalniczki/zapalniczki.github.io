@@ -1,15 +1,16 @@
 import { getLabels } from 'api'
 import { QueryLoader, Table, Tile } from 'components'
+import { LABEL_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
 import { Label } from 'models'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
-import { displayDate } from 'utils'
+import { formatDate } from 'utils'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const iconsQuery = useQuery('labels', getLabels)
+  const iconsQuery = useQuery(LABEL_TABLE, getLabels)
   const columns = useMemo(
     () => [
       {
@@ -43,8 +44,8 @@ const List = () => {
 
 const shapeData = (data: Label[]) =>
   data.map((record) => ({
-    created_at: displayDate(record.created_at),
-    updated_at: displayDate(record.updated_at),
+    created_at: formatDate(record.created_at),
+    updated_at: formatDate(record.updated_at),
     label: record.label
   }))
 

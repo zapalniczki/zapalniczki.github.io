@@ -3,7 +3,7 @@ import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { Callback } from 'models'
 import React, { useMemo } from 'react'
-import { displayDate } from 'utils'
+import { formatDate } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
@@ -51,8 +51,8 @@ const List = () => {
 
 const shapeData = (callbacks: Callback[]) =>
   callbacks.map((callback) => ({
-    created_at: displayDate(callback.created_at),
-    updated_at: displayDate(callback.updated_at),
+    created_at: formatDate(callback.created_at),
+    updated_at: formatDate(callback.updated_at),
     phone_number: callback.phone_number,
     done: (
       <Flexbox justifyContent="center">

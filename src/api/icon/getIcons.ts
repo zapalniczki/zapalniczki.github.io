@@ -1,3 +1,4 @@
+import { ICON_TABLE } from 'constants/db_tables'
 import { Icon } from 'models'
 import supabase from 'supabase'
 
@@ -5,7 +6,7 @@ type GetIconsResponse = Icon
 
 const getIcons = async () => {
   const { data, error } = await supabase
-    .from<GetIconsResponse>('icons')
+    .from<GetIconsResponse>(ICON_TABLE)
     .select()
 
   if (error) {

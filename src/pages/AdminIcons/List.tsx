@@ -1,15 +1,16 @@
 import { getIcons } from 'api'
 import { QueryLoader, Table, Tile } from 'components'
+import { ICON_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
 import { Icon } from 'models'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
-import { displayDate } from 'utils'
+import { formatDate } from 'utils'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const iconsQuery = useQuery('icons', getIcons)
+  const iconsQuery = useQuery(ICON_TABLE, getIcons)
   const columns = useMemo(
     () => [
       {
@@ -43,8 +44,8 @@ const List = () => {
 
 const shapeData = (data: Icon[]) =>
   data.map((record) => ({
-    created_at: displayDate(record.created_at),
-    updated_at: displayDate(record.updated_at),
+    created_at: formatDate(record.created_at),
+    updated_at: formatDate(record.updated_at),
     label: record.label
   }))
 

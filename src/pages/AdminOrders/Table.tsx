@@ -4,7 +4,8 @@ import {
   Heading,
   QueryLoader,
   Tile,
-  Table as NativeTable
+  Table as NativeTable,
+  DisplayDate
 } from 'components'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'hooks'
@@ -12,7 +13,7 @@ import { OrderStatus } from 'models'
 import { AdminTableColumns } from './statusToColumns'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
-import { displayMoney } from 'utils'
+import { formatDate, displayMoney, getDifferenceFromNow } from 'utils'
 import EditModal from './EditModal'
 
 type Props = {
@@ -58,7 +59,7 @@ const shapeData = (
   data: GetOrdersResponse[]
 ): Record<AdminTableColumns, string | boolean | number | JSX.Element>[] =>
   data.map((order) => ({
-    created_at: order.created_at,
+    created_at: <DisplayDate>{order.created_at}</DisplayDate>,
     customer_email: order.customerEmail.email,
     customer_name: order.customerName.full_name,
     customer_phone: order.customerPhone.phone,
@@ -68,7 +69,7 @@ const shapeData = (
     // products: order.products,
     status: order.status,
     total: order.total,
-    updated_at: order.updated_at,
+    updated_at: formatDate(order.updated_at),
     order_time: differenceInDays(
       parseISO(order.created_at),
       parseISO(order.updated_at)

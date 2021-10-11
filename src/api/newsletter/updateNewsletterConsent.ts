@@ -1,3 +1,4 @@
+import { NEWSLETTER_TABLE } from 'constants/db_tables'
 import { Newsletter } from 'models'
 import supabase from 'supabase'
 
@@ -8,7 +9,7 @@ type UpdateConsentPayload = {
 
 const updateNewsletterConsent = async (payload: UpdateConsentPayload) => {
   const { data, error } = await supabase
-    .from<Newsletter>('newsletter')
+    .from<Newsletter>(NEWSLETTER_TABLE)
     .update({
       consent: payload.consent
     })

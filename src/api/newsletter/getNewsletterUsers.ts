@@ -1,3 +1,4 @@
+import { NEWSLETTER_TABLE } from 'constants/db_tables'
 import { Newsletter } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -6,7 +7,7 @@ type GetNewsletterResponse = Newsletter
 
 const getNewsletterUsers = async () => {
   const { data, error } = await supabase
-    .from<GetNewsletterResponse>('newsletter')
+    .from<GetNewsletterResponse>(NEWSLETTER_TABLE)
     .select()
     .order('updated_at')
 
@@ -22,4 +23,4 @@ const getNewsletterUsers = async () => {
 }
 
 export const useGetNewsletterUsers = () =>
-  useQuery('newsletterUsers', getNewsletterUsers)
+  useQuery(NEWSLETTER_TABLE, getNewsletterUsers)
