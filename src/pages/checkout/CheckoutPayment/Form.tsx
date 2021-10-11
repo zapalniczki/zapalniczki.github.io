@@ -14,8 +14,7 @@ const Form = ({ paymentTypes }: Props) => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
 
   return (
-    <>
-      <Row flexDirection="column">
+    <Row flexDirection="column">
         {paymentTypes
           .filter((type) => type.is_enabled)
           .map((type, index) => (
@@ -33,7 +32,6 @@ const Form = ({ paymentTypes }: Props) => {
             </Field>
           ))}
       </Row>
-    </>
   )
 }
 

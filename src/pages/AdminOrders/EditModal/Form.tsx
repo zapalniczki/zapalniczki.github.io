@@ -10,8 +10,7 @@ const Form = () => {
   const { t: commonT } = useTranslation('COMMON')
 
   return (
-    <>
-      <ModalContent>
+    <ModalContent>
         <Field name="status">
           {(props: FieldProps<FormValues['status'], FormValues>) => {
             const currentValue = props.field.value as OrderStatus
@@ -39,7 +38,6 @@ const Form = () => {
           }}
         </Field>
       </ModalContent>
-    </>
   )
 }
 

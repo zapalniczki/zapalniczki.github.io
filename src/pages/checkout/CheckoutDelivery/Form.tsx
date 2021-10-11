@@ -15,8 +15,7 @@ const Form = ({ deliveryTypes }: Props) => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
 
   return (
-    <>
-      <Row flexDirection="column">
+    <Row flexDirection="column">
         {deliveryTypes
           .filter((type) => type.is_enabled)
           .map((type, index) => (
@@ -35,7 +34,6 @@ const Form = ({ deliveryTypes }: Props) => {
             </Field>
           ))}
       </Row>
-    </>
   )
 }
 

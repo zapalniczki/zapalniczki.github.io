@@ -10,10 +10,10 @@ type BaseProps = {
 }
 
 type Props = BaseProps &
-  ({ count: number, hasText?: false; } | { hasText: true; text: string })
+  ({ count: number; hasText?: false } | { hasText: true; text: string })
 
 const Badge = ({ children, stanalone = false, ...props }: Props) => {
-  let content = <></>
+  let content: JSX.Element | null = null
   if (props.hasText) {
     content = (
       <Count hasText={props.hasText} stanalone={stanalone}>
@@ -30,13 +30,13 @@ const Badge = ({ children, stanalone = false, ...props }: Props) => {
     <Flexbox alignItems="center" justifyContent="center" position="relative">
       {children}
 
-      {content}
+      {content && content}
     </Flexbox>
   )
 }
 
 type CountProps = {
-  hasText?: boolean,
+  hasText?: boolean
   stanalone: boolean
 }
 

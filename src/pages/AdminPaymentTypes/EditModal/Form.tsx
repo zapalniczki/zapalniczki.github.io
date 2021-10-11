@@ -8,8 +8,7 @@ const Form = () => {
   const { t } = useTranslation('ADMIN_PAYMENT_TYPES')
 
   return (
-    <>
-      <ModalContent>
+    <ModalContent>
         <Field name="is_enabled">
           {(props: FieldProps<boolean, FormValues>) => (
             <>
@@ -27,7 +26,6 @@ const Form = () => {
           )}
         </Field>
       </ModalContent>
-    </>
   )
 }
 

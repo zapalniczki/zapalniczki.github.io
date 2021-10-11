@@ -30,8 +30,29 @@ jobs:
           name: buildOutcome
           path: dist
 
-  DEPLOY:
+  LIGHTHOUSE:
     needs: [BUILD]
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: npm install -g @lhci/cli
+      - uses: actions/download-artifact@v1.0.0
+        with:
+          name: buildOutcome
+          path: ./
+      - run: lhci autorun
+      - run: dir
+
+      # - uses: actions/upload-artifact@v1
+      #   with:
+      #     name: lighthouse_report
+      #     path: lhci
+
+  DEPLOY:
+    needs: [LIGHTHOUSE]
     runs-on: [ubuntu-latest]
     steps:
       - run: git clone --branch master https://${{secrets.USERNAME}}:${{ secrets.TOKEN }}@github.com/${{secrets.USERNAME}}/${{secrets.REPO_NAME}}.git .

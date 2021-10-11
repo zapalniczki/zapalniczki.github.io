@@ -18,7 +18,7 @@ const CallMeBack = (props: Props) => {
   let title = commonT('CALL_ME_BACK.FORM.title')
   let subtitle = commonT('CALL_ME_BACK.FORM.subtitle')
 
-  let content = (
+  let content: JSX.Element | null = (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
@@ -34,7 +34,7 @@ const CallMeBack = (props: Props) => {
   )
 
   if (view.view === 'SUCCESS') {
-    content = <></>
+    content = null
     title = commonT('CALL_ME_BACK.SUCCESS.title')
     subtitle = commonT('CALL_ME_BACK.SUCCESS.subtitle')
   }
@@ -81,7 +81,7 @@ const CallMeBack = (props: Props) => {
           {subtitle}
         </Text>
 
-        {content}
+        {content && content}
       </Flexbox>
     </Banner>
   )

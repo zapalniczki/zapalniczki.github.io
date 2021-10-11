@@ -8,8 +8,7 @@ const Form = () => {
   const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
 
   return (
-    <>
-      <ModalContent>
+    <ModalContent>
         <Field name="consent">
           {(props: FieldProps<boolean, FormValues>) => (
             <>
@@ -27,7 +26,6 @@ const Form = () => {
           )}
         </Field>
       </ModalContent>
-    </>
   )
 }
 

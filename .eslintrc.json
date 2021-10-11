@@ -24,19 +24,11 @@
   ],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "react/self-closing-comp": 2,
-    "no-else-return": 2,
-    "react/jsx-sort-props": 2,
     "@typescript-eslint/no-empty-interface": 0,
+
     "arrow-body-style": 2,
-    "sort-destructure-keys/sort-destructure-keys": 2,
-    "typescript-sort-keys/interface": 2,
-    "typescript-sort-keys/string-enum": 2,
-    "react/jsx-no-target-blank": 2,
-    "react/jsx-pascal-case": 2,
-    "react/jsx-wrap-multilines": 2,
-    "react/jsx-tag-spacing": 2,
-    "no-useless-rename": 2,
+    "newline-before-return": 2,
+    "no-else-return": 2,
     "no-restricted-imports": [
       "error",
       {
@@ -52,7 +44,22 @@
         ]
       }
     ],
-    "newline-before-return": 2
+    "no-useless-rename": 2,
+
+    "react/jsx-boolean-value": 2,
+    "react/jsx-key": 2,
+    "react/jsx-no-duplicate-props": 2,
+    "react/jsx-no-target-blank": 2,
+    "react/jsx-no-useless-fragment": 2,
+    "react/jsx-pascal-case": 2,
+    "react/jsx-sort-props": 2,
+
+    "react/jsx-tag-spacing": 2,
+    "react/jsx-wrap-multilines": 2,
+    "react/self-closing-comp": 2,
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "typescript-sort-keys/interface": 2,
+    "typescript-sort-keys/string-enum": 2
   },
   "ignorePatterns": [
     "/node_modules",

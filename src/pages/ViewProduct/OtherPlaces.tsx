@@ -15,23 +15,21 @@ const OtherPlaces = ({ collectionId, labelId }: Props) => {
 
   const productsQuery = useGetOtherPlaces({ labelId, collectionId })
 
-  return (
-    <></>
-    // <ProductsGrid
-    //   link={{
-    //     to: {
-    //       pathname: '/products',
-    //       state: {
-    //         collectionId
-    //       }
-    //     },
-    //     label: t('otherIcons.linkLabel')
-    //   }}
-    //   marginTop="xxl-size"
-    //   query={productsQuery}
-    //   title={t('otherPlaces.title')}
-    // />
-  )
+  return null
+  // <ProductsGrid
+  //   link={{
+  //     to: {
+  //       pathname: '/products',
+  //       state: {
+  //         collectionId
+  //       }
+  //     },
+  //     label: t('otherIcons.linkLabel')
+  //   }}
+  //   marginTop="xxl-size"
+  //   query={productsQuery}
+  //   title={t('otherPlaces.title')}
+  // />
 }
 
 export default OtherPlaces

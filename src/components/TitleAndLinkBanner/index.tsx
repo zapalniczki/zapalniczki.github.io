@@ -14,8 +14,7 @@ const TitleAndLinkBanner = ({ link: { label, to }, title }: Props) => {
   const history = useHistory()
 
   return (
-    <>
-      <Banner
+    <Banner
         horizonal
         marginTop="xxl-size"
         small
@@ -25,7 +24,6 @@ const TitleAndLinkBanner = ({ link: { label, to }, title }: Props) => {
           {label}
         </Button>
       </Banner>
-    </>
   )
 }
 

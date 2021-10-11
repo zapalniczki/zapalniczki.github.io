@@ -15,7 +15,7 @@ const Newsletter = () => {
   let title = commonT('NEWSLETTER.FORM.title')
   let subtitle = commonT('NEWSLETTER.FORM.subtitle')
 
-  let content = (
+  let content: JSX.Element | null = (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
@@ -36,7 +36,7 @@ const Newsletter = () => {
   )
 
   if (view.view === 'SUCCESS') {
-    content = <></>
+    content = null
     title = commonT('NEWSLETTER.SUCCESS.title')
     subtitle = commonT('NEWSLETTER.SUCCESS.subtitle')
   }
@@ -87,7 +87,7 @@ const Newsletter = () => {
           {subtitle}
         </Text>
 
-        {content}
+        {content && content}
       </Flexbox>
     </Banner>
   )

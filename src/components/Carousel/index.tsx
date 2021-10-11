@@ -38,7 +38,7 @@ const Carousel = ({ children }: Props) => {
           />
         )}
         showArrows={!!multipleChildren}
-        showIndicators={true}
+        showIndicators
         showStatus={false}
         showThumbs={false}
         useKeyboardArrows
