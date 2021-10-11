@@ -45,11 +45,10 @@ jobs:
           path: ./
       - run: lhci autorun
       - run: dir
-
-      # - uses: actions/upload-artifact@v1
-      #   with:
-      #     name: lighthouse_report
-      #     path: lhci
+      - uses: actions/upload-artifact@v1
+        with:
+          name: lhci
+          path: lhci
 
   DEPLOY:
     needs: [LIGHTHOUSE]

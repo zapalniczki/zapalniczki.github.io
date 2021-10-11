@@ -16,39 +16,38 @@ import theme from 'styles/theme'
 import { I18nextProvider } from 'react-i18next'
 import i18n from 'i18n/config'
 
-import {
-  faTruck,
-  faUserClock,
-  faExchangeAlt,
-  faStar,
-  faBoxOpen,
-  faHandHoldingUsd,
-  faEnvelopeOpenText,
-  faMapMarkedAlt,
-  faUniversity,
-  faPhoneAlt,
-  faBox,
-  faCheckCircle,
-  faCheck,
-  faPlus,
-  faEquals,
-  faCalendarAlt,
-  faTruckLoading,
-  faBoxes,
-  faArrowRight,
-  faMinus,
-  faTimes,
-  faArrowLeft,
-  faStoreAlt,
-  faShoppingBasket,
-  faSpinner,
-  faQuestion,
-  faSearch,
-  faChevronLeft,
-  faChevronRight,
-  faTimesCircle,
-  faPencilAlt
-} from '@fortawesome/free-solid-svg-icons'
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons/faPencilAlt'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
+import { faMinus } from '@fortawesome/free-solid-svg-icons/faMinus'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
+import { faStoreAlt } from '@fortawesome/free-solid-svg-icons/faStoreAlt'
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons/faShoppingBasket'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons/faSpinner'
+import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion'
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons/faTimesCircle'
+import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons/faMapMarkedAlt'
+import { faUniversity } from '@fortawesome/free-solid-svg-icons/faUniversity'
+import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons/faPhoneAlt'
+import { faBox } from '@fortawesome/free-solid-svg-icons/faBox'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle'
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
+import { faEquals } from '@fortawesome/free-solid-svg-icons/faEquals'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons/faCalendarAlt'
+import { faTruckLoading } from '@fortawesome/free-solid-svg-icons/faTruckLoading'
+import { faBoxes } from '@fortawesome/free-solid-svg-icons/faBoxes'
+import { faTruck } from '@fortawesome/free-solid-svg-icons/faTruck'
+import { faUserClock } from '@fortawesome/free-solid-svg-icons/faUserClock'
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons/faExchangeAlt'
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar'
+import { faBoxOpen } from '@fortawesome/free-solid-svg-icons/faBoxOpen'
+import { faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons/faHandHoldingUsd'
+import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons/faEnvelopeOpenText'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { initializeApp } from '@firebase/app'
 import config from 'firebase/config'
