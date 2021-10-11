@@ -5,9 +5,9 @@ import { basketContext } from 'providers'
 import React, { useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { basketToggleContext } from 'providers'
-import { BasketItem, Product } from 'models'
+import { BasketItem } from 'models'
 import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
-import { useGetProducts } from 'api'
+import { GetProductsResponseItem, useGetProducts } from 'api'
 import { checkoutContext } from 'providers'
 import { useTranslation } from 'hooks'
 
@@ -25,11 +25,9 @@ const Checkout = () => {
   return (
     <QueryLoader query={productsQuery}>
       {(products) => {
-        // const total = calculateTotal(
-        //   basket.map((product) => getProductTotal(products, product))
-        // )
-
-        const total = 0
+        const total = calculateTotal(
+          basket.map((product) => getProductTotal(products, product))
+        )
 
         return (
           <Flexbox
@@ -80,7 +78,7 @@ const Checkout = () => {
 }
 
 export const getProductTotal = (
-  products: Product[],
+  products: GetProductsResponseItem[],
   basketItem: BasketItem
 ) => {
   const price = products.find((elem) => elem.id === basketItem.id)?.price || 0
