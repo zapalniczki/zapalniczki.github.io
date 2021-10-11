@@ -21,7 +21,7 @@ import FieldWrapper from '../common/FieldWrapper'
 type Props = {
   isCompany: IsCompany
 }
-const Form = ({ isCompany: isCompany }: Props) => {
+const Form = ({ isCompany }: Props) => {
   const { t } = useTranslation('CHECKOUT_DETAILS')
 
   return (

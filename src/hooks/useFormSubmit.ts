@@ -21,6 +21,7 @@ const useFormSubmit = <T, TFormValues>(
       }
 
       hide()
+
       return response
     } catch (e) {
       if (e) {
@@ -28,6 +29,7 @@ const useFormSubmit = <T, TFormValues>(
       }
 
       hide()
+
       return
     }
   }

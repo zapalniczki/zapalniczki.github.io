@@ -33,6 +33,7 @@ const ExternalLink = ({ children, to }: Props) => {
       </Badge>
     )
   }
+
   return link
 }
 

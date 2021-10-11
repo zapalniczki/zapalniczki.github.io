@@ -13,7 +13,7 @@ import { OrderStatus } from 'models'
 import { AdminTableColumns } from './statusToColumns'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
-import { formatDate, displayMoney, getDifferenceFromNow } from 'utils'
+import { formatDate, displayMoney } from 'utils'
 import EditModal from './EditModal'
 
 type Props = {
@@ -69,7 +69,7 @@ const shapeData = (
     // products: order.products,
     status: order.status,
     total: order.total,
-    updated_at: formatDate(order.updated_at),
+    updated_at: <DisplayDate>{formatDate(order.updated_at)}</DisplayDate>,
     order_time: differenceInDays(
       parseISO(order.created_at),
       parseISO(order.updated_at)

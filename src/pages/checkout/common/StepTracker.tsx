@@ -106,7 +106,7 @@ export const useCheckoutStep = () => {
 }
 
 type StepIconProps = {
-  done?: boolean,
+  done?: boolean
   selected?: boolean
 }
 
@@ -119,6 +119,7 @@ const StepIcon = styled.h4<StepIconProps>`
     } else if (props.selected) {
       return getColor('gray-10')(props)
     }
+
     return getColor('background-color')(props)
   }};
   border-radius: 50%;
@@ -131,6 +132,7 @@ const StepIcon = styled.h4<StepIconProps>`
     if (props.done || props.selected) {
       return getColor('white')(props)
     }
+
     return getColor('black')(props)
   }};
   border: 1px solid;
