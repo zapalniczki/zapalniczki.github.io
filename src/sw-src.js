@@ -25,11 +25,13 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       const validCacheSet = new Set(Object.values(currentCacheNames))
+
       return Promise.all(
         cacheNames
           .filter((cacheName) => !validCacheSet.has(cacheName))
           .map((cacheName) => {
             console.log('deleting cache', cacheName)
+
             return caches.delete(cacheName)
           })
       )

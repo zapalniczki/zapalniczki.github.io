@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import React, { useEffect, useState } from 'react'
 import { ImageLoader } from 'components'
 import { GetProductResponse } from 'api'
-import getColor from 'styles/getColor'
+// import getColor from 'styles/getColor'
 
 type Props = {
   product: GetProductResponse
@@ -61,19 +61,19 @@ const ImageWrapper = styled.div`
   padding: ${(props) => `0 ${props.theme.space['xxxl-size']}`};
 `
 
-const GalleryImageWrapper = styled.div`
-  min-width: 6rem;
-  max-width: 6rem;
-  min-height: 6rem;
-  max-height: 6rem;
-  border: 1px solid;
-  border-color: ${getColor('border-color')};
-  position: relative;
-  cursor: pointer;
+// const GalleryImageWrapper = styled.div`
+//   min-width: 6rem;
+//   max-width: 6rem;
+//   min-height: 6rem;
+//   max-height: 6rem;
+//   border: 1px solid;
+//   border-color: ${getColor('border-color')};
+//   position: relative;
+//   cursor: pointer;
 
-  &:not(:first-child) {
-    margin-top: ${(props) => props.theme.space['s-size']};
-  }
-`
+//   &:not(:first-child) {
+//     margin-top: ${(props) => props.theme.space['s-size']};
+//   }
+// `
 
 export default Images
