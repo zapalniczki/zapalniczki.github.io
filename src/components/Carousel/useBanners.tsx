@@ -1,7 +1,7 @@
 import { Button, Heading, BannerWithPicture } from 'components'
 import { PRODUCTS } from 'constants/routes'
 import { History } from 'history'
-import { TranslateFunc } from 'hooks/useTranslation'
+import { TranslateFunc } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { useHistory } from 'react-router-dom'
