@@ -16,7 +16,7 @@ export type GetProductsResponseItem = Pick<
   Product,
   'id' | 'price' | 'name' | 'collection_id' | 'visible'
 > & {
-  image: Pick<ImageModel, 'tile' | 'long'>
+  image: Pick<ImageModel, 'tile' | 'long' | 'tile_reverse'>
 }
 
 export const getProductsSelect2 = `
@@ -27,6 +27,7 @@ export const getProductsSelect2 = `
   visible,
   ${IMAGE_TABLE} (
     tile,
+    tile_reverse,
     long
   )
   `

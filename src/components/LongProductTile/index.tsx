@@ -1,10 +1,4 @@
-import {
-  ProductImageHover,
-  Heading,
-  Tile,
-  ImageLoader,
-  Flexbox
-} from 'components'
+import { Heading, Tile, ImageLoader, Flexbox } from 'components'
 import { Link } from 'react-router-dom'
 import React from 'react'
 import styled from 'styled-components'
@@ -53,8 +47,6 @@ const Container = styled(Tile)`
   background-color: ${getColor('white')};
   border: 1px solid;
   border-color: ${getColor('border-color')};
-
-  ${ProductImageHover}
 `
 
 export default LongProductTile

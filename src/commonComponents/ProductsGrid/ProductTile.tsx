@@ -27,12 +27,14 @@ const ProductTile = ({ product }: Props) => {
   const { getProductFromBasket } = useContext(basketContext)
   const isInBasket = !!getProductFromBasket(product.id)
 
-  const image = product.image.tile
+  const frontImage = product.image.tile
+  const backImage = product.image.tile_reverse
 
   return (
     <Container as={Link} max-height="30rem" to={viewProductPath}>
       <ImageWrapper>
-        <ImageLoader alt="" src={image} />
+        <ImageLoader alt="" src={frontImage} />
+        <ImageLoader alt="" src={backImage} />
       </ImageWrapper>
 
       <Flexbox

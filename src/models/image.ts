@@ -6,6 +6,7 @@ const image = object({
   updated_at: string(),
   large: string(),
   tile: string(),
+  tile_reverse: string(),
   thumbnail: string(),
   basket: string(),
   long: string()
