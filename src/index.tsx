@@ -60,8 +60,6 @@ webfontloader.load({
   }
 })
 
-console.log('f')
-
 library.add(
   faTruck,
   faUserClock,

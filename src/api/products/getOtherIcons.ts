@@ -54,8 +54,6 @@ const getOtherIcons = async (params: Params) => {
     throw new Error('No data in getOtherIcons')
   }
 
-  console.log(data)
-
   return data
 }
 
