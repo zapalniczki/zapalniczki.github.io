@@ -13,7 +13,6 @@ type Props = {
 
 const Carousel = ({ children }: Props) => {
   const { getBanner } = useBanners()
-
   const multipleChildren = children.length > 1
 
   return (
@@ -23,22 +22,34 @@ const Carousel = ({ children }: Props) => {
         dynamicHeight={false}
         infiniteLoop
         interval={7000}
-        renderArrowNext={(clickHandler) => (
-          <Chevron clickHandler={clickHandler} right />
-        )}
-        renderArrowPrev={(clickHandler) => (
-          <Chevron clickHandler={clickHandler} />
-        )}
-        renderIndicator={(clickHandler, isSelected, index, label) => (
-          <Indicator
-            clickHandler={clickHandler}
-            index={index}
-            isSelected={isSelected}
-            label={label}
-          />
-        )}
-        showArrows={!!multipleChildren}
-        showIndicators
+        renderArrowNext={(clickHandler) => {
+          if (!multipleChildren) {
+            return null
+          }
+
+          return <Chevron clickHandler={clickHandler} right />
+        }}
+        renderArrowPrev={(clickHandler) => {
+          if (!multipleChildren) {
+            return null
+          }
+
+          return <Chevron clickHandler={clickHandler} />
+        }}
+        renderIndicator={(clickHandler, isSelected, index, label) => {
+          if (!multipleChildren) {
+            return null
+          }
+
+          return (
+            <Indicator
+              clickHandler={clickHandler}
+              index={index}
+              isSelected={isSelected}
+              label={label}
+            />
+          )
+        }}
         showStatus={false}
         showThumbs={false}
         useKeyboardArrows
