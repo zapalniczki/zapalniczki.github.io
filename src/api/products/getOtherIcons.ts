@@ -29,6 +29,7 @@ const getOtherIcons = async (params: Params) => {
     )
     .eq('label_id', params.labelId)
     .neq('icon_id', params.iconId)
+    .limit(3)
 
   const data = parseApiResponse(array(getOtherIconsResponseItem), response)
 

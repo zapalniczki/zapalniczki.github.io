@@ -28,6 +28,7 @@ const getOtherPlaces = async (params: Params) => {
     )
     .eq('collection_id', params.collectionId)
     .neq('label_id', params.labelId)
+    .limit(3)
 
   const data = parseApiResponse(array(getOtherPlacesResponseItem), response)
 
