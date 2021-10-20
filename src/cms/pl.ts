@@ -71,7 +71,7 @@ const pl = {
 
     checkoutSteps: {
       1: 'Podsumowanie',
-      2: 'Dane kontaktowe',
+      2: 'Dane do faktury',
       3: 'Dostawa',
       5: 'Płatność'
     },
@@ -367,10 +367,17 @@ const pl = {
   },
 
   CHECKOUT_DETAILS: {
-    title: 'Dane kontaktowe',
+    title: 'Dane do faktury',
     form: {
       fullName: {
         label: 'Imię i nazwisko',
+        placeholder: '',
+        validations: {
+          required: 'To pole jest wymagane'
+        }
+      },
+      company: {
+        label: 'Nazwa firmy',
         placeholder: '',
         validations: {
           required: 'To pole jest wymagane'
@@ -737,7 +744,7 @@ const pl = {
       ADDRESS: {
         title: 'Adres',
         info: 'Wymiany, zwroty i odbiór osobisty',
-        address1: 'BRATY Przemysław Rychlewicz',
+        address1: 'Braty Przemysław Rychlewicz',
         address2: 'ul. Bora-Komorowskiego 12/1',
         address3: '80-366 Gdańsk',
         address4: 'Polska'

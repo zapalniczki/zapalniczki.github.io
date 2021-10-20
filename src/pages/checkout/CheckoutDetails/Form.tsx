@@ -24,6 +24,8 @@ type Props = {
 const Form = ({ isCompany }: Props) => {
   const { t } = useTranslation('CHECKOUT_DETAILS')
 
+  const name = isCompany ? 'company' : 'fullName'
+
   return (
     <>
       <Row>
@@ -32,8 +34,8 @@ const Form = ({ isCompany }: Props) => {
             {(props: FieldProps<FullName, FormValues>) => (
               <Input
                 {...props}
-                label={getRequiredOrNot(t(`form.fullName.label`), true)}
-                placeholder={t(`form.fullName.placeholder`)}
+                label={getRequiredOrNot(t(`form.${name}.label`), true)}
+                placeholder={t(`form.${name}.placeholder`)}
               />
             )}
           </Field>
