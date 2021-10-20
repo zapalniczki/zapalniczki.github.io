@@ -1,5 +1,5 @@
 import { updateMold } from 'api'
-import { MOLD_TABLE } from 'constants/db_tables'
+import { MOLDS_TABLE } from 'constants/db_tables'
 import { useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { MoldStatus } from 'models'
@@ -28,7 +28,7 @@ const useForm = (id: string, status: MoldStatus) => {
           view: 'SUCCESS'
         })
 
-        queryClient.invalidateQueries([MOLD_TABLE])
+        queryClient.invalidateQueries([MOLDS_TABLE])
       }
     })
 

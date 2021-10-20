@@ -1,17 +1,18 @@
-import { GetProductResponse, useGetOtherIcons } from 'api'
-import { ProductsGrid } from 'commonComponents'
+import { useGetOtherIcons } from 'api'
+import { Icon, Label } from 'models'
+import { ProductsGrid } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 
 type Props = {
-  iconId: GetProductResponse['mold']['icon']['id']
-  labelId: GetProductResponse['mold']['label']['label']
+  iconId: Icon['id']
+  labelId: Label['id']
 }
 
 const OtherIcons = ({ iconId, labelId }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
-  const productsQuery = useGetOtherIcons({ labelId, iconId })
+  const otherIconsQuery = useGetOtherIcons({ labelId, iconId })
 
   return (
     <ProductsGrid
@@ -25,7 +26,7 @@ const OtherIcons = ({ iconId, labelId }: Props) => {
         label: t('otherIcons.linkLabel')
       }}
       marginTop="xxl-size"
-      query={productsQuery}
+      query={otherIconsQuery}
       title={t('otherIcons.title')}
     />
   )

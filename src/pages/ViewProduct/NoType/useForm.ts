@@ -2,7 +2,7 @@ import { basketContext } from 'providers'
 import { useContext } from 'react'
 import { string, object } from 'yup'
 
-import { GetProductResponse } from 'api'
+import { GetProductResponse } from 'models'
 import { checkoutContext } from 'providers'
 import subtract from 'lodash.subtract'
 import add from 'lodash.add'

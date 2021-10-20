@@ -1,4 +1,4 @@
-import { GetProductResponse } from 'api'
+import { GetProductResponse } from 'models'
 import { Flexbox, Heading, Separator, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
@@ -28,14 +28,14 @@ const Info = ({ product }: Props) => {
       <Flexbox>
         <Text type="caption">{t('label')}</Text>
         <Text marginLeft="s-size" type="subtitle-2">
-          {product.mold.label.label}
+          {product.label.label}
         </Text>
       </Flexbox>
 
       <Flexbox>
         <Text type="caption">{t('icon')}</Text>
         <Text marginLeft="s-size" type="subtitle-2">
-          {product.mold.icon.label}
+          {product.icon.label}
         </Text>
       </Flexbox>
 

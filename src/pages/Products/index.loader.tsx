@@ -1,6 +1,5 @@
-import { ContentLoader, Flexbox } from 'components'
+import { ProductsGridLoader, ContentLoader, Flexbox } from 'components'
 import React from 'react'
-import { ProductsGridLoader } from 'commonComponents'
 
 const Loader = () => (
   <Flexbox flexDirection="column">

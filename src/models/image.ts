@@ -1,15 +1,21 @@
-import { string, object, TypeOf } from 'zod'
+import { string, object, TypeOf, enum as zenum } from 'zod'
+
+const size = zenum([
+  'TILE',
+  'LARGE',
+  'TILE_REVERSE',
+  'THUMBNAIL',
+  'BASKET',
+  'LONG'
+])
+export type Size = TypeOf<typeof size>
 
 const image = object({
   id: string(),
   created_at: string(),
   updated_at: string(),
-  large: string(),
-  tile: string(),
-  tile_reverse: string(),
-  thumbnail: string(),
-  basket: string(),
-  long: string()
+  src: string(),
+  size: size
 })
 
 export type Image = TypeOf<typeof image>

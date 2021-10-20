@@ -1,17 +1,11 @@
-import {
-  Flexbox,
-  Grid,
-  LongProductTile,
-  QueryLoader,
-  SectionHead
-} from 'components'
+import { Flexbox, Grid, QueryLoader, SectionHead } from 'components'
 import { LocationDescriptor } from 'history'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { SpaceProps } from 'styled-system'
 import ProductsGridLoader from './index.loader'
 import ProductTile from './ProductTile'
-import { GetProductsResponseItem } from 'api'
+import { GetFeaturedResponseItem, GetProductsResponseItem } from 'models'
 
 type Props = {
   link?: {
@@ -19,19 +13,17 @@ type Props = {
     to: LocationDescriptor
   }
   loaderCount?: number
-  query: UseQueryResult<GetProductsResponseItem[]>
+  query: UseQueryResult<(GetFeaturedResponseItem | GetProductsResponseItem)[]>
   searchQuery?: string
   title?: string
-  vertical?: boolean
 } & SpaceProps
 
-const ProductsList = ({
+const ProductsGrid = ({
   link,
   loaderCount,
   query,
   searchQuery,
   title,
-  vertical,
   ...props
 }: Props) => (
   <QueryLoader
@@ -41,11 +33,6 @@ const ProductsList = ({
     query={query}
   >
     {(products) => {
-      let Component = ProductTile
-      if (vertical) {
-        Component = LongProductTile
-      }
-
       if (!products.length) {
         return null
       }
@@ -53,7 +40,7 @@ const ProductsList = ({
       return (
         <Flexbox as="section" flexDirection="column" {...props}>
           <SectionHead link={link} title={title} />
-          <Grid gridTemplateColumns={vertical ? '1fr' : 'repeat(3, 1fr)'}>
+          <Grid gridTemplateColumns="repeat(3, 1fr)">
             {products
               .filter((product) => {
                 if (searchQuery) {
@@ -65,7 +52,7 @@ const ProductsList = ({
                 return true
               })
               .map((product) => (
-                <Component key={product.id} product={product} />
+                <ProductTile key={product.id} product={product} />
               ))}
           </Grid>
         </Flexbox>
@@ -74,5 +61,5 @@ const ProductsList = ({
   </QueryLoader>
 )
 
-export default ProductsList
+export default ProductsGrid
 export { ProductsGridLoader }

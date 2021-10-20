@@ -1,13 +1,13 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
-import { getFeaturedResponseItem, GetFeaturedResponseItem } from 'models'
+import { getBestsellersResponseItem, GetBestsellersResponseItem } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-const getFeatured = async () => {
+const getBestsellers = async () => {
   const response = await supabase
-    .from<GetFeaturedResponseItem>(PRODUCTS_TABLE)
+    .from<GetBestsellersResponseItem>(PRODUCTS_TABLE)
     .select(
       `
     id,
@@ -15,17 +15,18 @@ const getFeatured = async () => {
     name,
     collection_id,
     visible,
-    featured,
+    bestseller,
     ${IMAGES_TABLE} (
       *
     )
     `
     )
-    .eq('featured', true)
+    .eq('bestseller', true)
 
-  const data = parseApiResponse(array(getFeaturedResponseItem), response)
+  const data = parseApiResponse(array(getBestsellersResponseItem), response)
 
   return data
 }
 
-export const useGetFeatured = () => useQuery('featured', () => getFeatured())
+export const useGetBestsellers = () =>
+  useQuery('bestsellers', () => getBestsellers())

@@ -5,13 +5,15 @@ const product = object({
   created_at: string(),
   updated_at: string(),
   mold_id: string(),
+  label_id: string(),
+  icon_id: string(),
   name: string(),
+  description: string(),
   price: number(),
   collection_id: string(),
-  visible: boolean().nullable(),
-  featured: boolean().nullable(),
-  image_id: string(),
-  description: string()
+  bestseller: boolean(),
+  visible: boolean(),
+  featured: boolean()
 })
 
 export type Product = TypeOf<typeof product>

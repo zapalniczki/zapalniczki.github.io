@@ -1,22 +1,15 @@
-import {
-  Box,
-  Flexbox,
-  ImageLoader,
-  ProductImageHover,
-  Text,
-  Tile
-} from 'components'
+import { Box, Flexbox, ImageLoader, Text, Tile } from 'components'
 import React, { useContext } from 'react'
 import { generatePath, Link } from 'react-router-dom'
-import styled, { useTheme } from 'styled-components'
-import { displayMoney } from 'utils'
+import styled, { css, useTheme } from 'styled-components'
+import { displayMoney, findCorrectProductImageSize } from 'utils'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { basketContext } from 'providers'
 import getColor from 'styles/getColor'
-import { GetProductsResponseItem } from 'api'
+import { GetProductsResponseItem } from 'models'
 
-type Props = {
+export type Props = {
   product: GetProductsResponseItem
 }
 
@@ -27,13 +20,13 @@ const ProductTile = ({ product }: Props) => {
   const { getProductFromBasket } = useContext(basketContext)
   const isInBasket = !!getProductFromBasket(product.id)
 
-  const frontImage = product.image.tile
-  const backImage = product.image.tile_reverse
+  const tileImage = findCorrectProductImageSize(product.images, 'TILE')
+  const backImage = findCorrectProductImageSize(product.images, 'TILE_REVERSE')
 
   return (
     <Container as={Link} max-height="30rem" to={viewProductPath}>
       <ImageWrapper>
-        <ImageLoader alt="" src={frontImage} />
+        <ImageLoader alt="" src={tileImage} />
         <ImageLoader alt="" src={backImage} />
       </ImageWrapper>
 
@@ -65,6 +58,26 @@ const ProductTile = ({ product }: Props) => {
   )
 }
 
+const imageHover = css`
+  img {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  &:hover {
+    img {
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+`
+
 const Container = styled(Tile)`
   color: unset;
   cursor: pointer;
@@ -73,7 +86,7 @@ const Container = styled(Tile)`
   border: 1px solid;
   border-color: ${getColor('border-color')};
 
-  ${ProductImageHover}
+  ${imageHover}
 `
 
 const ImageWrapper = styled.div`

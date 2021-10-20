@@ -1,12 +1,9 @@
-import { PRODUCT_TABLE } from 'constants/db_tables'
-import { Label, Product } from 'models'
+import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
+import { GetOtherPlacesResponseItem, getOtherPlacesResponseItem } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-import { getProductsSelect } from './getProducts'
-
-type Model = Product & {
-  label_id: Pick<Label, 'id'>
-}
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
 type Params = {
   collectionId: string
@@ -14,23 +11,28 @@ type Params = {
 }
 
 const getOtherPlaces = async (params: Params) => {
-  const { data, error } = await supabase
-    .from<Model>(PRODUCT_TABLE)
-    .select(getProductsSelect)
-    .filter('collection_id', 'eq', params.collectionId)
-    .filter('label_id', 'neq', params.labelId)
-    .eq('visible', true)
+  const response = await supabase
+    .from<GetOtherPlacesResponseItem>(PRODUCTS_TABLE)
+    .select(
+      `
+    id,
+    price,
+    name,
+    collection_id,
+    visible,
+    label_id,
+    ${IMAGES_TABLE} (
+      *
+    )
+    `
+    )
+    .eq('collection_id', params.collectionId)
+    .neq('label_id', params.labelId)
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getOtherIcons')
-  }
+  const data = parseApiResponse(array(getOtherPlacesResponseItem), response)
 
   return data
 }
 
 export const useGetOtherPlaces = (params: Params) =>
-  useQuery(['product', params], () => getOtherPlaces(params))
+  useQuery(['products', params], () => getOtherPlaces(params))

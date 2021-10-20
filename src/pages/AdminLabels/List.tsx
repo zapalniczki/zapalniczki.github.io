@@ -1,6 +1,6 @@
 import { getLabels } from 'api'
 import { QueryLoader, Table, Tile } from 'components'
-import { LABEL_TABLE } from 'constants/db_tables'
+import { LABELS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
 import { Label } from 'models'
 import React, { useMemo } from 'react'
@@ -10,7 +10,7 @@ import { formatDate } from 'utils'
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const iconsQuery = useQuery(LABEL_TABLE, getLabels)
+  const iconsQuery = useQuery(LABELS_TABLE, getLabels)
   const columns = useMemo(
     () => [
       {

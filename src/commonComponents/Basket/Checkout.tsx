@@ -7,7 +7,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { basketToggleContext } from 'providers'
 import { BasketItem } from 'models'
 import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
-import { GetProductsResponseItem, useGetProducts } from 'api'
+import { GetProductsResponseItemOLD, useGetProducts } from 'api'
 import { checkoutContext } from 'providers'
 import { useTranslation } from 'hooks'
 
@@ -78,7 +78,7 @@ const Checkout = () => {
 }
 
 export const getProductTotal = (
-  products: GetProductsResponseItem[],
+  products: GetProductsResponseItemOLD[],
   basketItem: BasketItem
 ) => {
   const price = products.find((elem) => elem.id === basketItem.id)?.price || 0

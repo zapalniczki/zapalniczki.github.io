@@ -1,4 +1,4 @@
-import { ICON_TABLE, LABEL_TABLE, MOLD_TABLE } from 'constants/db_tables'
+import { ICONS_TABLE, LABELS_TABLE, MOLDS_TABLE } from 'constants/db_tables'
 import { Mold } from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
@@ -17,16 +17,16 @@ export type GetMoldsResponseItem = Pick<
 
 const getMolds = async () => {
   const { data, error } = await supabase
-    .from<GetMoldsResponseItem>(MOLD_TABLE)
+    .from<GetMoldsResponseItem>(MOLDS_TABLE)
     .select(
       `id,
       created_at,
       updated_at,
       status,
-      ${LABEL_TABLE} (
+      ${LABELS_TABLE} (
         label
       ),
-      ${ICON_TABLE} (
+      ${ICONS_TABLE} (
         label
       )
       `
@@ -43,4 +43,4 @@ const getMolds = async () => {
   return data
 }
 
-export const useGetMolds = () => useQuery(MOLD_TABLE, getMolds)
+export const useGetMolds = () => useQuery(MOLDS_TABLE, getMolds)

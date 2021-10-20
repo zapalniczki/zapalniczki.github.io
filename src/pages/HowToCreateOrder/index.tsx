@@ -6,7 +6,6 @@ import {
 import { Banner, Heading, Page } from 'components'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
-// import MakeOrderSteps from './MakeOrderSteps'
 
 const HowToCreateOrder = () => {
   const { t } = useTranslation('HOW_TO_CREATE_ORDER')
@@ -23,8 +22,6 @@ const HowToCreateOrder = () => {
       />
 
       <Features />
-
-      {/* <MakeOrderSteps /> */}
 
       <ReadTermsAndConditions />
 

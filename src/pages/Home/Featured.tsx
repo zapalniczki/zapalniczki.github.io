@@ -1,5 +1,5 @@
 import { useGetFeatured } from 'api'
-import { ProductsGrid } from 'commonComponents'
+import { ProductsGrid } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
 
@@ -13,7 +13,6 @@ const Featured = () => {
       marginTop="xxl-size"
       query={featuredQuery}
       title={commonT('FEATURED.title')}
-      vertical
     />
   )
 }

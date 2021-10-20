@@ -1,6 +1,6 @@
 import { getIcons } from 'api'
 import { QueryLoader, Table, Tile } from 'components'
-import { ICON_TABLE } from 'constants/db_tables'
+import { ICONS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
 import { Icon } from 'models'
 import React, { useMemo } from 'react'
@@ -10,7 +10,7 @@ import { formatDate } from 'utils'
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const iconsQuery = useQuery(ICON_TABLE, getIcons)
+  const iconsQuery = useQuery(ICONS_TABLE, getIcons)
   const columns = useMemo(
     () => [
       {

@@ -1,15 +1,25 @@
-import { BackButton, Flexbox, Page, QueryLoader, Text } from 'components'
+import {
+  BackButton,
+  ProductsGrid,
+  Flexbox,
+  Page,
+  QueryLoader,
+  Text
+} from 'components'
 import { useScrollTop, useTabTitle } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { CallMeBack, ProductsGrid } from 'commonComponents'
+import { CallMeBack } from 'commonComponents'
 import { useLocation } from 'react-router-dom'
 import { PRODUCTS } from 'constants/routes'
 import Search from './Search'
 import { useState } from 'react'
-import { Product } from 'models'
 import {
-  // Product,
+  GetCollectionProductsResponseItem,
+  GetLabelProductsResponseItem,
+  GetProductsResponseItem
+} from 'models'
+import {
   useGetCollectionProducts,
   useGetLabelProducts,
   useGetProducts
@@ -26,18 +36,24 @@ const Products = () => {
 
   const [query, setQuery] = useState('')
 
-  // let productsQuery: UseQueryResult<Product[], unknown>
-  // if (state?.labelId) {
-  //   productsQuery = useGetLabelProducts({ labelId: state.labelId })
-  // } else if (state?.collectionId) {
-  //   productsQuery = useGetCollectionProducts({
-  //     collectionId: state.collectionId
-  //   })
-  // } else {
-  //   productsQuery = useGetProducts()
-  // }
-
-  const productsQuery = useGetProducts()
+  let productsQuery: UseQueryResult<
+    (
+      | GetLabelProductsResponseItem
+      | GetProductsResponseItem
+      | GetCollectionProductsResponseItem
+    )[]
+  >
+  if (state?.labelId) {
+    productsQuery = useGetLabelProducts({
+      labelId: state.labelId
+    })
+  } else if (state?.collectionId) {
+    productsQuery = useGetCollectionProducts({
+      collectionId: state.collectionId
+    })
+  } else {
+    productsQuery = useGetProducts()
+  }
 
   const isFiltered = state?.labelId || state?.collectionId
 

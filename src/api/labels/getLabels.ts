@@ -1,4 +1,4 @@
-import { LABEL_TABLE } from 'constants/db_tables'
+import { LABELS_TABLE } from 'constants/db_tables'
 import { Label } from 'models'
 import supabase from 'supabase'
 
@@ -6,7 +6,7 @@ type GetLabelResponse = Label
 
 const getLabels = async () => {
   const { data, error } = await supabase
-    .from<GetLabelResponse>(LABEL_TABLE)
+    .from<GetLabelResponse>(LABELS_TABLE)
     .select()
 
   if (error) {

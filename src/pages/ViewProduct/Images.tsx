@@ -1,26 +1,21 @@
 import { Flexbox } from 'components'
 
 import styled from 'styled-components'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ImageLoader } from 'components'
-import { GetProductResponse } from 'api'
+import { GetProductResponse } from 'models'
 import getColor from 'styles/getColor'
+import { findCorrectProductImageSize } from 'utils'
 
 type Props = {
   product: GetProductResponse
 }
 
 const Images = ({ product }: Props) => {
-  const { image, name } = product
-  const [selectedImage, setSelectedImage] = useState<string>(image.large)
+  const { images, name } = product
 
-  useEffect(() => {
-    const url = image.large
-
-    if (url) {
-      setSelectedImage(url)
-    }
-  }, [product])
+  const largeImage = findCorrectProductImageSize(images, 'LARGE')
+  const thumbnailImage = findCorrectProductImageSize(images, 'THUMBNAIL')
 
   const width = '60%'
 
@@ -34,19 +29,15 @@ const Images = ({ product }: Props) => {
     >
       <Flexbox display="flex" height="100%">
         <Flexbox flexDirection="column" height="100%" width="6rem">
-          {[image.thumbnail].map((image) => (
-            <GalleryImageWrapper
-              key={image}
-              onClick={() => setSelectedImage(image)}
-              role="presentation"
-            >
+          {[thumbnailImage].map((image) => (
+            <GalleryImageWrapper key={image.toString()} role="presentation">
               <ImageLoader src={image} />
             </GalleryImageWrapper>
           ))}
         </Flexbox>
 
         <ImageWrapper>
-          <ImageLoader alt={name} src={selectedImage} />
+          <ImageLoader alt={name} src={largeImage} />
         </ImageWrapper>
       </Flexbox>
     </Flexbox>

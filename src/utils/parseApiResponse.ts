@@ -1,29 +1,30 @@
-import { DocumentData, DocumentSnapshot } from 'firebase/firestore'
+import {
+  PostgrestResponse,
+  PostgrestSingleResponse
+} from '@supabase/postgrest-js'
 import { Schema } from 'zod'
 
 function parseApiResponse<T>(
   schema: Schema<T>,
-  response: DocumentSnapshot<DocumentData>
+  response: PostgrestResponse<unknown> | PostgrestSingleResponse<unknown>
 ): T {
-  if (response.exists()) {
-    const data = response.data()
-    const { id } = response
+  const { data, error } = response
 
-    const obj = {
-      ...data,
-      id
-    }
-
-    const parsedResponse = schema.safeParse(obj)
-
-    if (parsedResponse.success) {
-      return parsedResponse.data
-    }
-
-    throw new Error(parsedResponse.error.message)
-  } else {
-    throw new Error('Error Parse')
+  if (error) {
+    throw new Error(error.message)
   }
+
+  if (!data) {
+    throw new Error('No data has been returned!')
+  }
+
+  const parsedResponse = schema.safeParse(data)
+
+  if (parsedResponse.success) {
+    return parsedResponse.data
+  }
+
+  throw new Error(parsedResponse.error.message)
 }
 
 export default parseApiResponse

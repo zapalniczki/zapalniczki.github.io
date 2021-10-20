@@ -1,11 +1,11 @@
-import { useGetProducts } from 'api'
-import { ProductsGrid } from 'commonComponents'
+import { useGetBestsellers } from 'api'
+import { ProductsGrid } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
 
 const Bestsellers = () => {
   const { t } = useTranslation('HOME')
-  const productsQuery = useGetProducts()
+  const productsQuery = useGetBestsellers()
 
   return (
     <ProductsGrid

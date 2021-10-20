@@ -26,11 +26,35 @@ export * from './icon'
 export { default as label } from './label'
 export * from './label'
 
-export { default as product } from './product'
-export * from './product'
+export { default as product } from './db2/product'
+export * from './db2/product'
 
 export { default as image } from './image'
 export * from './image'
 
 export { default as collection } from './collection'
 export * from './collection'
+
+export { default as getProductsResponseItem } from './getProductsResponseItem'
+export * from './getProductsResponseItem'
+
+export { default as getProductResponse } from './getProductResponse'
+export * from './getProductResponse'
+
+export { default as getFeaturedResponseItem } from './getFeaturedResponseItem'
+export * from './getFeaturedResponseItem'
+
+export { default as getBestsellersResponseItem } from './getBestsellersResponseItem'
+export * from './getBestsellersResponseItem'
+
+export { default as getOtherIconsResponseItem } from './getOtherIconsResponseItem'
+export * from './getOtherIconsResponseItem'
+
+export { default as getLabelProductsResponseItem } from './getLabelProductsResponseItem'
+export * from './getLabelProductsResponseItem'
+
+export { default as getOtherPlacesResponseItem } from './getOtherPlacesResponseItem'
+export * from './getOtherPlacesResponseItem'
+
+export { default as getCollectionProductsResponseItem } from './getCollectionProductsResponseItem'
+export * from './getCollectionProductsResponseItem'

@@ -16,9 +16,6 @@ const Logo = ({ expanded }: Props) => (
         fillRule: 'evenodd',
         clipRule: 'evenodd'
       }}
-      // width="120px"
-      // height="60px"
-      // preserveAspectRatio=""
       version="1.1"
       viewBox="0 0 6000 3000"
       width="auto"

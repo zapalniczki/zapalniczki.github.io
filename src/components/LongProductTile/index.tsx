@@ -4,14 +4,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import getColor from 'styles/getColor'
-import { GetProductsResponseItem } from 'api'
+import { GetFeaturedResponseItem } from 'models'
+import { findCorrectProductImageSize } from 'utils'
 
-type Props = {
-  product: GetProductsResponseItem
+export type Props = {
+  product: GetFeaturedResponseItem
 } & SpaceProps
 
 const LongProductTile = ({ product, ...props }: Props) => {
-  const imageUrl = product.image.long
+  const longImage = findCorrectProductImageSize(product.images, 'LONG')
 
   return (
     <Container as={Link} to={`/view_product/${product.id}`} {...props}>
@@ -19,19 +20,17 @@ const LongProductTile = ({ product, ...props }: Props) => {
         {product.name}
       </Heading>
 
-      {imageUrl && (
-        <Flexbox
-          alignItems="center"
-          height="100%"
-          justifyContent="center"
-          overflow="hidden"
-          padding="auto 0"
-          position="relative"
-          width="60rem"
-        >
-          <ImageLoader src={imageUrl} />
-        </Flexbox>
-      )}
+      <Flexbox
+        alignItems="center"
+        height="100%"
+        justifyContent="center"
+        overflow="hidden"
+        padding="auto 0"
+        position="relative"
+        width="60rem"
+      >
+        <ImageLoader src={longImage} />
+      </Flexbox>
     </Container>
   )
 }

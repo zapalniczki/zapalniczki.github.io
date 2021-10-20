@@ -1,23 +1,18 @@
-import { IMAGE_TABLE, PRODUCT_TABLE } from 'constants/db_tables'
-import { Product, Image as ImageModel } from 'models'
+import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
+import {
+  Product,
+  GetProductsResponseItem,
+  getProductsResponseItem
+} from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
-export type Image = {
-  basket: string
-  id: string
-  large: string
-  long: string
-  thumbnail: string
-  tile: string
-}
-
-export type GetProductsResponseItem = Pick<
+export type GetProductsResponseItemOLD = Pick<
   Product,
   'id' | 'price' | 'name' | 'collection_id' | 'visible'
-> & {
-  image: Pick<ImageModel, 'tile' | 'long' | 'tile_reverse'>
-}
+>
 
 export const getProductsSelect2 = `
   id,
@@ -25,31 +20,30 @@ export const getProductsSelect2 = `
   name,
   collection_id,
   visible,
-  ${IMAGE_TABLE} (
-    tile,
-    tile_reverse,
-    long
+  ${IMAGES_TABLE} (
+    *
   )
   `
 
 const getProducts = async () => {
-  const { data, error } = await supabase
-    .from<GetProductsResponseItem>(PRODUCT_TABLE)
-    .select(getProductsSelect2)
-    .eq('visible', true)
+  const response = await supabase.from<GetProductsResponseItem>(PRODUCTS_TABLE)
+    .select(`
+    id,
+    price,
+    name,
+    collection_id,
+    visible,
+    ${IMAGES_TABLE} (
+      *
+    )
+    `)
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getProducts')
-  }
+  const data = parseApiResponse(array(getProductsResponseItem), response)
 
   return data
 }
 
-export const getProductsSelect =
+export const getProductsSelectOLD =
   'id, price, name, label_id, icon_id, collection_id, mainImage:image(tile, long)'
 
-export const useGetProducts = () => useQuery('product', getProducts)
+export const useGetProducts = () => useQuery('products', getProducts)

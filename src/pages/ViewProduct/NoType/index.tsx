@@ -3,7 +3,7 @@ import { Formik, Form as FormikForm } from 'formik'
 import { basketContext } from 'providers'
 import useForm from './useForm'
 import { SubmitButton } from '../common'
-import { GetProductResponse } from 'api'
+import { GetProductResponse } from 'models'
 import AvilabilityIndicator from './AvilabilityIndicator'
 
 type Props = {
@@ -25,7 +25,7 @@ const Form = ({ product }: Props) => {
       {() => (
         <FormikForm>
           <SubmitButton isInBasket={isInBasket} />
-          <AvilabilityIndicator status={product.mold.status} />
+          {/* <AvilabilityIndicator status={product.mold.status} /> */}
         </FormikForm>
       )}
     </Formik>

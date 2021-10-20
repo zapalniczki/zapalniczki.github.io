@@ -15,7 +15,7 @@ import styled from 'styled-components'
 import { generatePath } from 'react-router-dom'
 
 import { basketContext } from 'providers'
-import { displayMoney } from 'utils'
+import { displayMoney, findCorrectProductImageSize } from 'utils'
 import { BasketItem as BasketItemType } from 'models'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { basketToggleContext } from 'providers'
@@ -78,6 +78,11 @@ const BasketItem = ({ product: basketProduct }: Props) => {
             })
           }
 
+          const basketImage = findCorrectProductImageSize(
+            product.images,
+            'BASKET'
+          )
+
           return (
             <>
               <SimpleButton
@@ -103,7 +108,7 @@ const BasketItem = ({ product: basketProduct }: Props) => {
                 position="relative"
                 width="9rem"
               >
-                <ImageLoader alt={product.name} src={product.image.basket} />
+                <ImageLoader alt={product.name} src={basketImage} />
               </Box>
 
               <Flexbox flexDirection="column" gridArea="name">

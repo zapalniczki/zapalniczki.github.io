@@ -19,9 +19,9 @@ const Home = () => {
 
       <Featured />
 
-      <Bestsellers />
-
       <Newsletter />
+
+      <Bestsellers />
     </Page>
   )
 }
