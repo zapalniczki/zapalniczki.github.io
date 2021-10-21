@@ -53,7 +53,7 @@
     "file-loader": "^6.2.0",
     "group-css-media-queries-loader": "^3.0.2",
     "html-webpack-plugin": "^5.3.1",
-    "husky": "^7.0.2",
+    "husky": "6",
     "jest": "^26.6.3",
     "live-server": "^1.2.1",
     "raf": "^3.4.1",
