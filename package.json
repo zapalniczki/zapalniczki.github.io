@@ -11,14 +11,12 @@
   ],
   "scripts": {
     "patch": "yarn version --new-version patch",
+    "prepush": "yarn run patch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --stats-error-details",
     "start": "webpack serve --config webpack/dev.config.js --hot",
     "lint": "eslint src/**/** --no-error-on-unmatched-pattern",
     "lint:fix": "yarn lint --fix"
   },
-  "pre-push": [
-    "start"
-  ],
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
@@ -87,6 +85,7 @@
     "firebase-admin": "^9.11.1",
     "formik": "^2.2.6",
     "history": "^4.10.0",
+    "husky": "^7.0.2",
     "i18next": "^20.3.5",
     "lodash.add": "^3.7.0",
     "lodash.subtract": "^4.2.0",
@@ -95,7 +94,6 @@
     "node-sass": "^6.0.1",
     "openapi-typescript": "^4.3.0",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
-    "pre-push": "^0.1.1",
     "react": "^17.0.2",
     "react-content-loader": "^6.0.3",
     "react-dom": "^17.0.2",
