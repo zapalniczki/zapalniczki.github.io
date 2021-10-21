@@ -11,7 +11,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-push": "yarn run patch"
+      "prepush": "yarn run patch"
     }
   },
   "scripts": {
