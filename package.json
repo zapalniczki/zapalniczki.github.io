@@ -1,6 +1,6 @@
 {
   "name": "ecommerce-react",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "index.js",
   "author": "grandalf6@gmail.com",
   "keywords": [
@@ -17,7 +17,7 @@
     "lint:fix": "yarn lint --fix"
   },
   "pre-push": [
-    "patch"
+    "start"
   ],
   "devDependencies": {
     "@babel/core": "^7.14.0",
