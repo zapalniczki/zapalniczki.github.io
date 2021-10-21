@@ -5,6 +5,7 @@ import PhoneInput from 'react-phone-input-2'
 import styled from 'styled-components'
 
 type Props = {
+  autocomplete?: string
   disabled?: boolean
   fieldProps: FieldProps<string>
   label: string
@@ -26,6 +27,7 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
       )}
 
       <StyledPhoneInput
+        autocompleteSearch
         country="pl"
         countryCodeEditable={false}
         disableDropdown

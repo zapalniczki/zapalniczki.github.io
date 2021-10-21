@@ -5,16 +5,17 @@ import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import getColor from 'styles/getColor'
 
-type Props = SpaceProps &
-  FieldProps<string> & {
-    disabled?: boolean
-    label?: string
-    maxLength?: number
-    placeholder?: string
-    type?: 'text' | 'password' | 'email'
-  }
+type Props = FieldProps<string> & {
+  autocomplete?: string
+  disabled?: boolean
+  label?: string
+  maxLength?: number
+  placeholder?: string
+  type?: 'text' | 'password' | 'email'
+} & SpaceProps
 
 const Input = ({
+  autocomplete,
   disabled,
   field,
   label,
@@ -37,6 +38,7 @@ const Input = ({
 
       <StyledInput
         {...field}
+        autoComplete={autocomplete}
         disabled={disabled}
         id={field.name}
         maxLength={maxLength}

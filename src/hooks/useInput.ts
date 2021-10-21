@@ -16,23 +16,28 @@ const useInput = () => {
     },
     FULL_NAME: {
       label: commonT('INPUTS.FULL_NAME.label'),
-      placeholder: commonT('INPUTS.FULL_NAME.placeholder')
+      placeholder: commonT('INPUTS.FULL_NAME.placeholder'),
+      autocomplete: 'name'
     },
     COMPANY: {
       label: commonT('INPUTS.COMPANY.label'),
-      placeholder: commonT('INPUTS.COMPANY.placeholder')
+      placeholder: commonT('INPUTS.COMPANY.placeholder'),
+      autocomplete: 'organization'
     },
     EMAIL: {
       label: commonT('INPUTS.EMAIL.label'),
-      placeholder: commonT('INPUTS.EMAIL.placeholder')
+      placeholder: commonT('INPUTS.EMAIL.placeholder'),
+      autocomplete: 'email'
     },
     PHONE: {
       label: commonT('INPUTS.PHONE.label'),
-      placeholder: commonT('INPUTS.PHONE.placeholder')
+      placeholder: commonT('INPUTS.PHONE.placeholder'),
+      autocomplete: 'tel'
     },
     STREET: {
       label: commonT('INPUTS.STREET.label'),
-      placeholder: commonT('INPUTS.STREET.placeholder')
+      placeholder: commonT('INPUTS.STREET.placeholder'),
+      autocomplete: 'address-line1'
     },
     STREET_NR: {
       label: commonT('INPUTS.STREET_NR.label'),
@@ -40,16 +45,19 @@ const useInput = () => {
     },
     ADDRESS_CDN: {
       label: commonT('INPUTS.ADDRESS_CDN.label'),
-      placeholder: commonT('INPUTS.ADDRESS_CDN.placeholder')
+      placeholder: commonT('INPUTS.ADDRESS_CDN.placeholder'),
+      autocomplete: 'address-line2'
     },
     POST_CODE: {
       label: commonT('INPUTS.POST_CODE.label'),
       placeholder: commonT('INPUTS.POST_CODE.placeholder'),
-      maxLength: 6
+      maxLength: 6,
+      autocomplete: 'postal-code'
     },
     CITY: {
       label: commonT('INPUTS.CITY.label'),
-      placeholder: commonT('INPUTS.CITY.placeholder')
+      placeholder: commonT('INPUTS.CITY.placeholder'),
+      autocomplete: 'address-level2'
     },
     NIP: {
       label: commonT('INPUTS.NIP.label'),
@@ -76,6 +84,7 @@ const useInput = () => {
 }
 
 type InputValue = {
+  autocomplete?: string
   label: string
   maxLength?: number
   placeholder?: string
