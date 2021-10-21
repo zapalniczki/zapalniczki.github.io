@@ -1,15 +1,16 @@
 import { useHistory } from 'react-router-dom'
-import { object, string } from 'yup'
+import { object } from 'yup'
 import { CHECKOUT_PAYMENT } from 'constants/routes'
-import { useTranslation } from 'hooks'
+import { useSchema } from 'hooks'
 import { useContext } from 'react'
 import { checkoutContext, Shipping2 } from 'providers'
 
 export type FormValues = Shipping2
 
 const useForm = () => {
-  const { t } = useTranslation('CHECKOUT_SHIPPING')
   const history = useHistory()
+
+  const { getSchema } = useSchema()
 
   const { checkout, setCheckout } = useContext(checkoutContext)
 
@@ -30,14 +31,11 @@ const useForm = () => {
   }
 
   const schema = object().shape({
-    street: string().required(t('form.street.validations.required')),
-    streetNo: string().required(t('form.streetNr.validations.required')),
-    addressCdn: string(),
-    postCode: string()
-      .trim()
-      .matches(/^(\d{2})-(\d{3})$/, t('form.postCode.validations.matches'))
-      .required(t('form.postCode.validations.required')),
-    city: string().required(t('form.city.validations.required'))
+    street: getSchema('STREET'),
+    streetNo: getSchema('STREET_NR'),
+    addressCdn: getSchema('ADDRESS_CDN'),
+    postCode: getSchema('POST_CODE'),
+    city: getSchema('CITY')
   })
 
   return {

@@ -14,7 +14,7 @@ const useForm = () => {
   const initialValues = { phone: '' }
 
   const schema = object({
-    phone: getSchema('phone')
+    phone: getSchema('PHONE')
   })
 
   const { mutateAsync: mutateAddNumber } = useAddCallback()

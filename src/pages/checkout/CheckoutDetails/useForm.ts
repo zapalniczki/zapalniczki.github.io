@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom'
-import { object, string } from 'yup'
-import { useTranslation } from 'hooks'
+import { object } from 'yup'
+import { useSchema } from 'hooks'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { useContext } from 'react'
 import { checkoutContext, ContactDetails2 } from 'providers'
@@ -9,7 +9,7 @@ import { IsCompany } from 'types/index2'
 export type FormValues = Omit<ContactDetails2, 'isCompany'>
 
 const useForm = () => {
-  const { t } = useTranslation('CHECKOUT_DETAILS')
+  const { getSchema: getNativeSchema } = useSchema()
 
   const history = useHistory()
   const { checkout, setCheckout } = useContext(checkoutContext)
@@ -40,28 +40,18 @@ const useForm = () => {
 
   const getSchema = (isCompany: IsCompany) => {
     const base = object().shape({
-      fullName: string().required(t('form.fullName.validations.required')),
-      email: string()
-        .email(t('form.email.validations.email'))
-        .required(t('form.email.validations.required')),
-      phone: string()
-        .min(11, t('form.phone.validations.min'))
-        .required(t('form.phone.validations.required')),
-      street: string().required(t('form.street.validations.required')),
-      streetNo: string().required(t('form.streetNr.validations.required')),
-      addressCdn: string(),
-      postCode: string()
-        .trim()
-        .matches(/^(\d{2})-(\d{3})$/, t('form.postCode.validations.matches'))
-        .required(t('form.postCode.validations.required')),
-      city: string().required(t('form.city.validations.required'))
+      fullName: getNativeSchema('FULL_NAME'),
+      street: getNativeSchema('STREET'),
+      streetNo: getNativeSchema('STREET_NR'),
+      addressCdn: getNativeSchema('ADDRESS_CDN'),
+      postCode: getNativeSchema('POST_CODE'),
+      city: getNativeSchema('CITY'),
+      email: getNativeSchema('EMAIL'),
+      phone: getNativeSchema('PHONE')
     })
 
     const companySchema = base.shape({
-      nip: string()
-        .required(t('form.nip.validations.required'))
-        .length(10, t('form.nip.validations.length'))
-        .matches(/^(\d{10})$/, t('form.nip.validations.matches'))
+      nip: getNativeSchema('NIP')
     })
 
     return isCompany ? companySchema : base

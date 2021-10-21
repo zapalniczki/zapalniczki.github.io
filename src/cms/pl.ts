@@ -165,6 +165,31 @@ const pl = {
     },
 
     VALIDATIONS: {
+      ADDRESS_CDN: {},
+      STREET: {
+        required: 'Proszę podać adres'
+      },
+      CITY: {
+        required: 'Proszę podać miejscowość'
+      },
+      NIP: {
+        required: 'Proszę podać prawidłowy NIP',
+        length: 'NIP powinien mieć 10 znaków',
+        matches: 'NIP powinien zawierać tylko cyfry'
+      },
+      POST_CODE: {
+        matches: 'Kod pocztowy powinien mieć format XX-XXX',
+        required: 'Proszę podać kod pocztowy'
+      },
+      STREET_NR: {
+        required: 'Proszę podać numer domu lub ulicy'
+      },
+      FULL_NAME: {
+        required: 'To pole jest wymagane'
+      },
+      COMPANY: {
+        required: 'To pole jest wymagane'
+      },
       EMAIL: {
         email: 'Wprowadzony email jest niepoprawny',
         required: 'Proszę podać adres e-mail'
@@ -379,76 +404,43 @@ const pl = {
     form: {
       fullName: {
         label: 'Imię i nazwisko',
-        placeholder: '',
-        validations: {
-          required: 'To pole jest wymagane'
-        }
+        placeholder: ''
       },
       company: {
         label: 'Nazwa firmy',
-        placeholder: '',
-        validations: {
-          required: 'To pole jest wymagane'
-        }
+        placeholder: ''
       },
       email: {
         label: 'Adres email',
-        placeholder: '',
-        validations: {
-          email: 'Wprowadzony email jest niepoprawny',
-          required: 'Proszę podać adres e-mail'
-        }
+        placeholder: ''
       },
       phone: {
         label: 'Numer telefonu',
-        placeholder: '',
-        validations: {
-          min: 'Numer telefonu powinien składać się z numeru kierunkowego i 9 cyfr',
-          required: 'Proszę podać numer telefonu'
-        }
+        placeholder: ''
       },
       street: {
         label: 'Ulica',
-        placeholder: '',
-        validations: {
-          required: 'Proszę podać adres'
-        }
+        placeholder: ''
       },
       streetNr: {
         label: 'Numer domu',
-        placeholder: '',
-        validations: {
-          required: 'Proszę podać numer domu lub ulicy'
-        }
+        placeholder: ''
       },
       addressCdn: {
         label: 'Adres c.d.',
-        placeholder: '',
-        validations: {}
+        placeholder: ''
       },
       postCode: {
         label: 'Kod pocztowy',
-        placeholder: '',
-        validations: {
-          matches: 'Kod pocztowy powinien mieć format XX-XXX',
-          required: 'Proszę podać kod pocztowy'
-        }
+        placeholder: ''
       },
       city: {
         label: 'Miasto',
-        placeholder: '',
-        validations: {
-          required: 'Proszę podać miejscowość'
-        }
+        placeholder: ''
       },
       nip: {
         label: 'NIP',
-        placeholder: '',
-        validations: {
-          required: 'Proszę podać prawidłowy NIP',
-          length: 'NIP powinien mieć 10 znaków',
-          matches: 'NIP powinien zawierać tylko cyfry'
-        }
+        placeholder: ''
       }
     }
   },
@@ -470,37 +462,23 @@ const pl = {
     form: {
       street: {
         label: 'Ulica',
-        placeholder: '',
-        validations: {
-          required: 'Proszę podać adres'
-        }
+        placeholder: ''
       },
       streetNr: {
         label: 'Numer domu',
-        placeholder: '',
-        validations: {
-          required: 'Proszę podać numer domu lub ulicy'
-        }
+        placeholder: ''
       },
       addressCdn: {
         label: 'Adres c.d.',
-        placeholder: '',
-        validations: {}
+        placeholder: ''
       },
       postCode: {
         label: 'Kod pocztowy',
-        placeholder: '',
-        validations: {
-          matches: 'Kod pocztowy powinien mieć format XX-XXX',
-          required: 'Proszę podać kod pocztowy'
-        }
+        placeholder: ''
       },
       city: {
         label: 'Miasto',
-        placeholder: '',
-        validations: {
-          required: 'Proszę podać miejscowość'
-        }
+        placeholder: ''
       }
     }
   },

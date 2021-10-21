@@ -14,7 +14,7 @@ const useForm = () => {
   const initialValues = { email: '' }
 
   const schema = object({
-    email: getSchema('email')
+    email: getSchema('EMAIL')
   })
 
   const { mutateAsync: mutateAddEmail } = useAddEmail()

@@ -23,7 +23,7 @@ const useForm = () => {
   const { hide, show } = useContext(loaderContext)
 
   const schema = object({
-    order_id: getSchema('order_id')
+    order_id: getSchema('ORDER_ID')
   })
 
   const onSubmit = async (formValues: FormValues) => {
