@@ -3,17 +3,6 @@
   "version": "1.2.5",
   "main": "index.js",
   "author": "grandalf6@gmail.com",
-  "keywords": [
-    "react-webpack",
-    "boilerplate",
-    "react-webpack-boilerplate",
-    "react-boilerplate"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn version --new-version patch"
-    }
-  },
   "scripts": {
     "patch": "yarn version --new-version patch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --stats-error-details",
