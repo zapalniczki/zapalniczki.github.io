@@ -13,7 +13,7 @@ const orderStatus = zenum([
 export type OrderStatus = TypeOf<typeof orderStatus>
 export const ORDER_STATUSES = orderStatus.options
 
-const order = object({
+export const order = object({
   created_at: string(),
   delivery_type: string().uuid(),
   id: string().uuid(),

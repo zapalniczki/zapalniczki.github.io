@@ -13,7 +13,11 @@ const useSchema = () => {
       .trim()
       .min(11, commonT('VALIDATIONS.PHONE.min'))
       .matches(/^(\+|\s|[0-9])+$/, commonT('VALIDATIONS.PHONE.matches'))
-      .required(commonT('VALIDATIONS.PHONE.required'))
+      .required(commonT('VALIDATIONS.PHONE.required')),
+
+    order_id: string()
+      .required(commonT('VALIDATIONS.ORDER_ID.required'))
+      .length(36, commonT('VALIDATIONS.ORDER_ID.length'))
   }
 
   const getSchema = (key: SchemaKey) => schemas[key]
@@ -21,6 +25,6 @@ const useSchema = () => {
   return { schemas, getSchema }
 }
 
-type SchemaKey = 'email' | 'phone'
+type SchemaKey = 'email' | 'phone' | 'order_id'
 
 export default useSchema

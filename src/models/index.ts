@@ -22,6 +22,15 @@ export * from './db/orderItem'
 export { default as newsletter } from './db/newsletter'
 export * from './db/newsletter'
 
+// BASE
+export { default as tableBase } from './db2/tableBase'
+export * from './db2/tableBase'
+
+// DB
+
+export { default as invoice } from './db2/invoice'
+export * from './db2/invoice'
+
 export { default as voucher } from './db/voucher'
 export * from './db/voucher'
 
@@ -68,3 +77,6 @@ export * from './getCollectionProductsResponseItem'
 
 export { default as getDeliveryTypesResponseItem } from './getDeliveryTypesResponseItem'
 export * from './getDeliveryTypesResponseItem'
+
+export { default as getInvoiceResponse } from './getInvoiceResponse'
+export * from './getInvoiceResponse'

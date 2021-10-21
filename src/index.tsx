@@ -47,6 +47,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons/faStar'
 import { faBoxOpen } from '@fortawesome/free-solid-svg-icons/faBoxOpen'
 import { faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons/faHandHoldingUsd'
 import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons/faEnvelopeOpenText'
+import { faReceipt } from '@fortawesome/free-solid-svg-icons/faReceipt'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { initializeApp } from '@firebase/app'
@@ -91,7 +92,8 @@ library.add(
   faChevronLeft,
   faChevronRight,
   faTimesCircle,
-  faPencilAlt
+  faPencilAlt,
+  faReceipt
 )
 
 export const queryClient = new QueryClient({

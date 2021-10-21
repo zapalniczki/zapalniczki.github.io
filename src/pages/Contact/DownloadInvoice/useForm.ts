@@ -1,4 +1,4 @@
-import { useGetOrderStatus } from 'api'
+import { useGetInvoice } from 'api'
 import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
 import { useSchema, useTranslation } from 'hooks'
@@ -14,7 +14,8 @@ const useForm = () => {
 
   const { getSchema } = useSchema()
 
-  const getOrderStatus = useGetOrderStatus()
+  const getInvoice = useGetInvoice()
+
   const initialValues: FormValues = {
     order_id: ''
   }
@@ -29,16 +30,16 @@ const useForm = () => {
     try {
       show()
 
-      const order = await getOrderStatus(formValues)
+      const order = await getInvoice(formValues)
 
       setView({
         view: 'RESULT',
-        status: order.status
+        url: order.url
       })
     } catch (e) {
       setView({
         view: 'ERROR',
-        message: t('items.CHECK_STATUS.error.info')
+        message: t('items.DOWNLOAD_INVOICE.error.info')
       })
     }
     hide()
@@ -55,7 +56,7 @@ const useForm = () => {
 
 export type View =
   | { view: 'FORM' }
-  | { status: string; view: 'RESULT' }
+  | { url: string; view: 'RESULT' }
   | { message: string; view: 'ERROR' }
 
 export default useForm

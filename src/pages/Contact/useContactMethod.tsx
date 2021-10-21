@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import { useTranslation } from 'hooks'
 import CheckStatus from './CheckStatus'
 import React from 'react'
+import DownloadInvoice from './DownloadInvoice'
 
 const useContactMethods = (): ContactMethod[] => {
   const { t } = useTranslation('CONTACT')
@@ -40,6 +41,13 @@ const useContactMethods = (): ContactMethod[] => {
           </Text>
         </>
       )
+    },
+
+    {
+      icon: 'receipt',
+      key: 'DOWNLOAD_INVOICE',
+      extended: true,
+      content: <DownloadInvoice />
     },
 
     {
@@ -87,10 +95,16 @@ const useContactMethods = (): ContactMethod[] => {
 }
 
 type ContactMethod = {
-  content: ReactNode,
-  extended?: boolean,
-  icon?: IconName,
-  key: string
+  content: ReactNode
+  extended?: boolean
+  icon?: IconName
+  key:
+    | 'CHECK_STATUS'
+    | 'EMAIL'
+    | 'DOWNLOAD_INVOICE'
+    | 'ADDRESS'
+    | 'PHONE'
+    | 'ACCOUNT'
 }
 
 export default useContactMethods

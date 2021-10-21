@@ -1,3 +1,7 @@
+const phoneNumer = '+48 792 531 179'
+const companyName = 'Braty'
+const domain = 'braty.co'
+
 const pl = {
   COMMON: {
     LINKS: {
@@ -67,8 +71,7 @@ const pl = {
     },
 
     FOOTER: {
-      allRightsReserved:
-        '{{version}} © {{year}} Braty - Wszelkie prawa zastrzeżone'
+      allRightsReserved: `{{version}} © {{year}} ${companyName} - Wszelkie prawa zastrzeżone`
     },
 
     checkoutSteps: {
@@ -137,7 +140,7 @@ const pl = {
       removeProductFromBasket: 'Usunięto produkt z koszyka'
     },
 
-    companyName: 'braty.co',
+    companyName: domain,
 
     features: {
       title: 'Dlaczego warto kupować u nas?',
@@ -170,6 +173,11 @@ const pl = {
         required: 'Proszę podać numer telefonu',
         matches: 'Numer telefonu może zawierać cyfry, spacje i znak +',
         min: 'Numer telefonu powinien składać się z numeru kierunkowego i 9 cyfr'
+      },
+
+      ORDER_ID: {
+        required: 'To pole jest wymagane',
+        length: 'Numer referencyjny zamówienia powinien składać się z 36 znaków'
       }
     },
 
@@ -198,8 +206,7 @@ const pl = {
         tryAgain: 'Spróbuj jeszcze raz',
         codes: {
           23505: 'Podany adres e-mail jest już zarejestrowany',
-          default:
-            'W tym momencie nie udało się ustalić przyczyny. Zadzwoń na 792 531 179, a my to dla Ciebie zrobimy.'
+          default: `W tym momencie nie udało się ustalić przyczyny. Zadzwoń na ${phoneNumer}, a my to dla Ciebie zrobimy.`
         }
       }
     },
@@ -207,8 +214,7 @@ const pl = {
     CALL_ME_BACK: {
       FORM: {
         title: 'Jeżeli masz jakikolwiek problem lub nie ma Twojego produktu...',
-        subtitle:
-          'Zadzwoń na +48 792 531 179 albo podaj swój numer telefonu, a my odzwonimy.',
+        subtitle: `Zadzwoń na ${phoneNumer} albo podaj swój numer telefonu, a my odzwonimy.`,
         FORM: {
           PHONE: {
             placeholder: 'Twój numer telefonu'
@@ -696,14 +702,9 @@ const pl = {
       CHECK_STATUS: {
         title: 'Sprawdź status zamówienia',
         form: {
-          id: {
+          order_id: {
             label: 'Numer referencyjny zamówienia',
-            placeholder: 'Znajduje się w tytule każdej wiadomości email',
-            validation: {
-              required: 'To pole jest wymagane',
-              length:
-                'Numer referencyjny zamówienia powinien składać się z 36 znaków'
-            }
+            placeholder: 'Znajduje się w tytule każdej wiadomości email'
           },
 
           submit: {
@@ -732,29 +733,51 @@ const pl = {
           tryNew: 'Spróbuj jeszcze raz'
         }
       },
+
       EMAIL: {
         title: 'E-mail',
         info: 'Kontakt w sprawie zamówień',
-        email: 'kontakt@braty.co'
+        email: `kontakt@${domain}`
       },
 
-      GET_INVOICE: {
-        title: 'Pobierz fakturę'
+      DOWNLOAD_INVOICE: {
+        title: 'Pobierz fakturę',
+        form: {
+          order_id: {
+            label: 'Numer referencyjny zamówienia',
+            placeholder: 'Znajduje się w tytule każdej wiadomości email'
+          },
+
+          submit: {
+            label: 'Sprawdź'
+          }
+        },
+        result: {
+          info: 'Faktura jest gotowa do pobrania',
+          followLink: 'Otwórz fakturę',
+          new: 'Sprawdź kolejną'
+        },
+        error: {
+          info: `Faktura dla podanego numeru referencyjnego nie została znaleziona. Sprawdź podany numer i spróbuj jeszcze raz. Możesz też skontaktować się z nami na ${phoneNumer}.`,
+          tryNew: 'Spróbuj jeszcze raz'
+        }
       },
 
       ADDRESS: {
         title: 'Adres',
         info: 'Wymiany, zwroty i odbiór osobisty',
-        address1: 'Braty Przemysław Rychlewicz',
+        address1: `${companyName} Przemysław Rychlewicz`,
         address2: 'ul. Bora-Komorowskiego 12/1',
         address3: '80-366 Gdańsk',
         address4: 'Polska'
       },
+
       PHONE: {
         title: 'Telefon',
         info: 'Czynne od poniedziałku do piątku, w godzinach 9:00 do 17:00.',
-        mobile: '+48 792 531 179'
+        mobile: phoneNumer
       },
+
       ACCOUNT: {
         title: 'Numer konta',
         info: 'Do wpłat',
@@ -781,8 +804,7 @@ const pl = {
           description: 'Wysyłka zazwyczaj następuje następnego dnia roboczego.'
         },
         TOTAL: {
-          description:
-            'Całkowity czas realizacji zależy od zamówienia. Zadzwoń na +48 792 531 179 i upewnj się, że zamówienie będzie na czas.'
+          description: `Całkowity czas realizacji zależy od zamówienia. Zadzwoń na ${phoneNumer} i upewnj się, że zamówienie będzie na czas.`
         }
       }
     },

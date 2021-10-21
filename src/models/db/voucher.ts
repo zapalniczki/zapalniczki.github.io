@@ -1,12 +1,7 @@
-import { TypeOf, object, string } from 'zod'
+import { tableBase } from 'models'
+import { TypeOf } from 'zod'
 
-const dbTableBase = object({
-  created_at: string(),
-  id: string().uuid(),
-  updated_at: string()
-})
-
-const voucher = dbTableBase.extend({})
+const voucher = tableBase.extend({})
 
 export type Voucher = TypeOf<typeof voucher>
 

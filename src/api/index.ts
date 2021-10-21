@@ -30,3 +30,6 @@ export * from './image'
 
 // VOUCHERS
 export * from './vouchers'
+
+// INVOICES
+export * from './invoices'

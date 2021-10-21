@@ -4,9 +4,9 @@ import { Flexbox, Heading, Tile as TileComponent } from 'components'
 import React, { ReactNode } from 'react'
 
 type Props = {
-  content: ReactNode,
-  extended?: boolean,
-  icon?: IconName,
+  content: ReactNode
+  extended?: boolean
+  icon?: IconName
   title: string
 }
 
