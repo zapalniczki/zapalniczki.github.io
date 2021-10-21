@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "patch": "yarn version --new-version patch",
-    "prepush": "yarn run patch",
+    "prepush": "yarn patch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --stats-error-details",
     "start": "webpack serve --config webpack/dev.config.js --hot",
     "lint": "eslint src/**/** --no-error-on-unmatched-pattern",
