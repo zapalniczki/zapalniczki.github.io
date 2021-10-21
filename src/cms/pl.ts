@@ -373,7 +373,11 @@ const pl = {
   CHECKOUT_RESULT: {
     title: 'Dziękujemy za złożenie zamówienia',
     orderId: 'Numer referencyjny zamówienia to:',
-    info: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Znajdują się tam informacje o szczegółach zamówienia, dostawy i danymi do płatności.',
+    info: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Znajduje się tam numer referencyjny zamówienia oraz link do strony zamówienia na której są informacje o zakupionych produktach i innych szczegółach.',
+    paymentInfoShort:
+      'Na stronie zamówienia znajdziesz informacje potrzebne do płatności. Po zaksięgowaniu środków na koncie, o czym Cię poinformujemy, przystąpimy do realizacji zamówienia.',
+    paymentInfoLong:
+      'W ciągu 24 godzin odzwonimy na podany numer telefonu (lub wyślemy wiadomość email gdybyśmy nie mogli się połączyć) i potwierdzimy czas realizacji zamówienia, ponieważ dla zamówień od nowych Klientów, czas zamówienia może być wydłużony.',
     actions: {
       backToHome: 'Wróć na stronę główną',
       backToShop: 'Kontynuuj zakupy',

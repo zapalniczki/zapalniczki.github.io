@@ -49,10 +49,14 @@ const CheckoutResult = () => {
             {t('info')}
           </Text>
 
+          <Text marginTop="l-size" type="body-1">
+            {t('paymentInfoShort')}
+          </Text>
+
           <Flexbox
             flexDirection="row-reverse"
             justifyContent="space-between"
-            marginTop="xxxl-size"
+            marginTop="xl-size"
             width="100%"
           >
             <Button onClick={() => history.push(PRODUCTS)} variant="primary">

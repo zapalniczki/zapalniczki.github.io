@@ -41,7 +41,7 @@ const Switch = ({ checked, onChange, size = 'medium' }: Props) => {
       handleDiameter={diameter}
       height={height}
       onChange={onChange}
-      onColor={colors['braty-red']}
+      onColor={colors['gray-01']}
       uncheckedIcon={false}
       width={width}
     />
