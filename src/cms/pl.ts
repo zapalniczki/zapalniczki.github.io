@@ -20,6 +20,7 @@ const pl = {
     },
 
     soon: 'Wkrótce',
+    emptyState: 'Nic nie znaleziono',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',
