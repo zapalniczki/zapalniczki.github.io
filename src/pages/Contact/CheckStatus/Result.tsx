@@ -1,11 +1,11 @@
-import { Button, Text } from 'components'
+import { Button, Text, Heading } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
 
 type Props = {
-  setView: React.Dispatch<React.SetStateAction<View>>,
+  setView: React.Dispatch<React.SetStateAction<View>>
   status: string
 }
 
@@ -15,12 +15,9 @@ const Result = ({ setView, status }: Props) => {
 
   return (
     <ViewWrapper flexDirection="column">
-      <Text type="body-2">
-        {t('items.CHECK_STATUS.result.info')}{' '}
-        <strong>{commonT(`ORDER_STATUSES.${status}`)}</strong>
-      </Text>
+      <Heading level={6}>{commonT(`ORDER_STATUSES.${status}`)}</Heading>
 
-      <Text type="caption">
+      <Text marginTop="m-size" type="body-2">
         {t(`items.CHECK_STATUS.result.statusesMeanings.${status}`)}
       </Text>
 

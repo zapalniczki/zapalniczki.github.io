@@ -711,7 +711,6 @@ const pl = {
           }
         },
         result: {
-          info: 'Status Twojego zamówienia to',
           statusesMeanings: {
             OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i niebawem skontaktujemy się z Tobą w celu potwierdzenia.',
             CONFIRMED:
