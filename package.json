@@ -78,7 +78,7 @@
     "firebase-admin": "^9.11.1",
     "formik": "^2.2.6",
     "history": "^4.10.0",
-    "husky": "^7.0.2",
+    "husky": "^7.0.4",
     "i18next": "^20.3.5",
     "lodash.add": "^3.7.0",
     "lodash.subtract": "^4.2.0",
