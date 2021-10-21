@@ -66,7 +66,8 @@ const pl = {
     },
 
     FOOTER: {
-      allRightsReserved: '© {{year}} Braty - Wszelkie prawa zastrzeżone'
+      allRightsReserved:
+        '{{version}} © {{year}} Braty - Wszelkie prawa zastrzeżone'
     },
 
     checkoutSteps: {

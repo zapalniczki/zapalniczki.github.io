@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 const baseConfig = require('./base.config.js')
+const pkg = require('../package.json')
 
 DotEnv.config({ path: '.env.dev' })
 
@@ -37,6 +38,7 @@ module.exports = merge(baseConfig, {
     new webpack.DefinePlugin({
       process: {
         env: {
+          VERSION: JSON.stringify(pkg.version),
           SUPABASE_URL: JSON.stringify(process.env.SUPABASE_URL),
           SUPABASE_PUBLIC_ANON_KEY: JSON.stringify(
             process.env.SUPABASE_PUBLIC_ANON_KEY
@@ -59,3 +61,5 @@ module.exports = merge(baseConfig, {
     })
   ]
 })
+
+console.log(pkg.version)

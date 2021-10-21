@@ -3,11 +3,11 @@ const DotEnv = require('dotenv')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 const baseConfig = require('./base.config.js')
 const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
+const pkg = require('../package.json')
 
 DotEnv.config({ path: '.env.prod' })
 
@@ -67,6 +67,7 @@ module.exports = merge(baseConfig, {
     new webpack.DefinePlugin({
       process: {
         env: {
+          VERSION: JSON.stringify(pkg.version),
           SUPABASE_URL: JSON.stringify(process.env.SUPABASE_URL),
           SUPABASE_PUBLIC_ANON_KEY: JSON.stringify(
             process.env.SUPABASE_PUBLIC_ANON_KEY

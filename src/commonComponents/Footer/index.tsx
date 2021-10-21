@@ -57,6 +57,7 @@ const Footer = () => {
         <Flexbox justifyContent="space-between" width="100%">
           <Text type="caption">
             {commonT('FOOTER.allRightsReserved', {
+              version: process.env.VERSION,
               year: new Date().getFullYear()
             })}
           </Text>
