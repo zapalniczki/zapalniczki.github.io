@@ -68,12 +68,12 @@ const BasketItem = ({ product: basketProduct }: Props) => {
 
               return {
                 ...checkoutPrev,
-                totalNew:
+                total:
                   addition === undefined
-                    ? subtract(checkoutPrev.totalNew, productTotal)
+                    ? subtract(checkoutPrev.total, productTotal)
                     : addition
-                    ? add(checkoutPrev.totalNew, product.price)
-                    : subtract(checkoutPrev.totalNew, product.price)
+                    ? add(checkoutPrev.total, product.price)
+                    : subtract(checkoutPrev.total, product.price)
               }
             })
           }

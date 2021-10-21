@@ -7,11 +7,6 @@ export * from './mold'
 export { default as basketItem } from './basketItem'
 export * from './basketItem'
 
-export * from './paymentType'
-
-export { default as deliveryType } from './db/deliveryType'
-export * from './db/deliveryType'
-
 export * from './order'
 
 export * from './db/address'
@@ -27,6 +22,12 @@ export { default as tableBase } from './db2/tableBase'
 export * from './db2/tableBase'
 
 // DB
+
+export { default as paymentType } from './paymentType'
+export * from './paymentType'
+
+export { default as deliveryType } from './db/deliveryType'
+export * from './db/deliveryType'
 
 export { default as invoice } from './db2/invoice'
 export * from './db2/invoice'

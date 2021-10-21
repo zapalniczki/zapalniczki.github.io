@@ -21,7 +21,7 @@ const CheckoutShipping = () => {
 
   const { initialValues, onSubmitForm, schema } = useForm()
 
-  if (!checkout.deliveryType2) {
+  if (!checkout.delivery_type) {
     return <Redirect to={CHECKOUT_DELIVERY} />
   }
 

@@ -36,9 +36,9 @@ const useForm = (product: GetProductResponse) => {
 
     setCheckout((prev) => ({
       ...prev,
-      totalNew: basketItem
-        ? subtract(prev.totalNew, basketItem.quantity * product.price)
-        : add(prev.totalNew, product.price)
+      total: basketItem
+        ? subtract(prev.total, basketItem.quantity * product.price)
+        : add(prev.total, product.price)
     }))
   }
 

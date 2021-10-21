@@ -3,10 +3,10 @@ import { object } from 'yup'
 import { useSchema } from 'hooks'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { useContext } from 'react'
-import { checkoutContext, ContactDetails2 } from 'providers'
+import { checkoutContext, ContactDetails } from 'providers'
 import { IsCompany } from 'types/index2'
 
-export type FormValues = Omit<ContactDetails2, 'isCompany'>
+export type FormValues = Omit<ContactDetails, 'is_company'>
 
 const useForm = () => {
   const { getSchema: getNativeSchema } = useSchema()
@@ -17,9 +17,9 @@ const useForm = () => {
   const onSubmitForm = (form: FormValues, isCompany: IsCompany) => {
     setCheckout((prev) => ({
       ...prev,
-      contactDetails2: {
+      contact_details: {
         ...form,
-        isCompany
+        is_company: isCompany
       }
     }))
 
@@ -27,24 +27,24 @@ const useForm = () => {
   }
 
   const initialValues: FormValues = {
-    fullName: checkout.contactDetails2?.fullName ?? '',
-    nip: checkout.contactDetails2?.nip ?? '',
-    street: checkout.contactDetails2?.street ?? '',
-    streetNo: checkout.contactDetails2?.streetNo ?? '',
-    addressCdn: checkout.contactDetails2?.addressCdn ?? '',
-    postCode: checkout.contactDetails2?.postCode ?? '',
-    city: checkout.contactDetails2?.city ?? '',
-    email: checkout.contactDetails2?.email ?? '',
-    phone: checkout.contactDetails2?.phone ?? ''
+    full_name: checkout.contact_details?.full_name ?? '',
+    nip: checkout.contact_details?.nip ?? '',
+    street: checkout.contact_details?.street ?? '',
+    street_nr: checkout.contact_details?.street_nr ?? '',
+    address_cdn: checkout.contact_details?.address_cdn ?? '',
+    post_code: checkout.contact_details?.post_code ?? '',
+    city: checkout.contact_details?.city ?? '',
+    email: checkout.contact_details?.email ?? '',
+    phone: checkout.contact_details?.phone ?? ''
   }
 
   const getSchema = (isCompany: IsCompany) => {
     const base = object().shape({
-      fullName: getNativeSchema('FULL_NAME'),
+      full_name: getNativeSchema('FULL_NAME'),
       street: getNativeSchema('STREET'),
-      streetNo: getNativeSchema('STREET_NR'),
-      addressCdn: getNativeSchema('ADDRESS_CDN'),
-      postCode: getNativeSchema('POST_CODE'),
+      street_nr: getNativeSchema('STREET_NR'),
+      address_cdn: getNativeSchema('ADDRESS_CDN'),
+      post_code: getNativeSchema('POST_CODE'),
       city: getNativeSchema('CITY'),
       email: getNativeSchema('EMAIL'),
       phone: getNativeSchema('PHONE')

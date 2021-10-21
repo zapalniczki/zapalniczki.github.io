@@ -14,7 +14,7 @@ const Total = ({ customDelivery, customProducts }: Props) => {
   const { t } = useTranslation('COMMON')
 
   const { checkout } = useContext(checkoutContext)
-  const { totalNew } = checkout
+  const { total: totalNew } = checkout
 
   const products = customProducts || totalNew
   const delivery = customDelivery || 0

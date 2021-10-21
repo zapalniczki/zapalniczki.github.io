@@ -12,3 +12,5 @@ const paymentType = object({
 })
 
 export type PaymentType = TypeOf<typeof paymentType>
+
+export default paymentType

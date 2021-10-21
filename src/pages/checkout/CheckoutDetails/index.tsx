@@ -21,12 +21,12 @@ const CheckoutDetails = () => {
   useScrollTop()
 
   const [isCompany, setIsCompany] = useState<IsCompany>(
-    checkout.contactDetails2?.isCompany || true
+    checkout.contact_details?.is_company || true
   )
 
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
-  if (!checkout.products2) {
+  if (!checkout.products) {
     // return <Redirect to={CHECKOUT_PRODUCTS} />
   }
 
@@ -63,12 +63,16 @@ const CheckoutDetails = () => {
           validateOnChange
           validationSchema={getSchema(isCompany)}
         >
-          {({ handleSubmit }) => (
-            <FormikForm onSubmit={handleSubmit}>
-              <Form isCompany={isCompany} />
-              <Actions />
-            </FormikForm>
-          )}
+          {({ handleSubmit, values }) => {
+            console.log(values)
+
+            return (
+              <FormikForm onSubmit={handleSubmit}>
+                <Form isCompany={isCompany} />
+                <Actions />
+              </FormikForm>
+            )
+          }}
         </Formik>
       </Wrapper>
     </Page>

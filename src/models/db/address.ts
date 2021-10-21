@@ -1,13 +1,13 @@
 import { object, string, TypeOf } from 'zod'
 
 const address = object({
-  adress_cdn: string(),
+  address_cdn: string(),
   city: string(),
   created_at: string(),
   id: string().uuid(),
   post_code: string(),
   street: string(),
-  street_no: string(),
+  street_nr: string(),
   updated_at: string()
 })
 

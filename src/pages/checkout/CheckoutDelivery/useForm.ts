@@ -25,8 +25,8 @@ const useForm = () => {
     if (selectedDeliveryType) {
       setCheckout((prev) => ({
         ...prev,
-        deliveryType2: selectedDeliveryType.id,
-        totalNew: add(prev.totalNew, selectedDeliveryType.price)
+        delivery_type: selectedDeliveryType.id,
+        total: add(prev.total, selectedDeliveryType.price)
       }))
     }
 
@@ -38,7 +38,7 @@ const useForm = () => {
   }
 
   const initialValues: FormValues = {
-    deliveryType: checkout.deliveryType2 ?? ''
+    deliveryType: checkout.delivery_type ?? ''
   }
 
   const schema = object().shape({

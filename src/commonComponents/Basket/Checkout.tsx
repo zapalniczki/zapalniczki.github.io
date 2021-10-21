@@ -59,8 +59,8 @@ const Checkout = () => {
               onClick={() => {
                 setCheckout((prev) => ({
                   ...prev,
-                  totalNew: total,
-                  products2: basket
+                  total: total,
+                  products: basket
                 }))
 
                 closeBasket()

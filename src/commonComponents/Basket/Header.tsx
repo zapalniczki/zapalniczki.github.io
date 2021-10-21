@@ -46,7 +46,7 @@ const Header = () => {
             clearBasket()
             setCheckout((prev) => ({
               ...prev,
-              totalNew: 0
+              total: 0
             }))
           }}
           size="medium"

@@ -3,9 +3,9 @@ import { object } from 'yup'
 import { CHECKOUT_PAYMENT } from 'constants/routes'
 import { useSchema } from 'hooks'
 import { useContext } from 'react'
-import { checkoutContext, Shipping2 } from 'providers'
+import { checkoutContext, Shipping } from 'providers'
 
-export type FormValues = Shipping2
+export type FormValues = Shipping
 
 const useForm = () => {
   const history = useHistory()
@@ -17,17 +17,17 @@ const useForm = () => {
   const onSubmitForm = (form: FormValues) => {
     setCheckout((prev) => ({
       ...prev,
-      shipping2: form
+      shipping: form
     }))
     history.push(CHECKOUT_PAYMENT)
   }
 
   const initialValues: FormValues = {
-    street: checkout.shipping2?.street ?? '',
-    streetNo: checkout.shipping2?.streetNo ?? '',
-    addressCdn: checkout.shipping2?.addressCdn ?? '',
-    postCode: checkout.shipping2?.postCode ?? '',
-    city: checkout.shipping2?.city ?? ''
+    street: checkout.shipping?.street ?? '',
+    street_nr: checkout.shipping?.street_nr ?? '',
+    address_cdn: checkout.shipping?.address_cdn ?? '',
+    post_code: checkout.shipping?.post_code ?? '',
+    city: checkout.shipping?.city ?? ''
   }
 
   const schema = object().shape({

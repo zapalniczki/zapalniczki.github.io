@@ -23,7 +23,7 @@ const CheckoutDelivery = () => {
   const { checkout } = useContext(checkoutContext)
   const { initialValues, onSubmitForm, schema } = useForm()
 
-  if (!checkout.contactDetails2) {
+  if (!checkout.contact_details) {
     return <Redirect to={CHECKOUT_DETAILS} />
   }
 

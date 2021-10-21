@@ -1,18 +1,13 @@
 import { createContext, ReactNode, useState } from 'react'
 import React from 'react'
 import {
-  AddressCdn,
-  City,
-  Email,
-  Fullname,
-  HourseNr,
-  IsCompany,
-  Nip,
-  Phone,
-  Postcode,
-  Street
-} from 'types/index2'
-import { BasketItem } from 'models'
+  Address,
+  User,
+  BasketItem,
+  DeliveryType,
+  Order,
+  PaymentType
+} from 'models'
 
 type Props = {
   children: ReactNode
@@ -28,38 +23,24 @@ const CheckoutProvider = ({ children }: Props) => {
   )
 }
 
-export type ContactDetails2 = {
-  addressCdn: AddressCdn
-  city: City
-  email: Email
-  fullName: Fullname
-  isCompany: IsCompany
-  nip: Nip
-  phone: Phone
-  postCode: Postcode
-  street: Street
-  streetNo: HourseNr
-}
+export type ContactDetails = Shipping &
+  Pick<User, 'is_company' | 'email' | 'full_name' | 'phone' | 'nip'>
 
-type DeliveryType2 = string
+type DeliveryTypeId = DeliveryType['id']
+type PaymentTypeId = PaymentType['id']
 
-export type Shipping2 = {
-  addressCdn: AddressCdn
-  city: City
-  postCode: Postcode
-  street: Street
-  streetNo: HourseNr
-}
-
-export type PaymentType2 = string
+export type Shipping = Pick<
+  Address,
+  'address_cdn' | 'city' | 'post_code' | 'street' | 'street_nr'
+>
 
 export type Checkout = {
-  contactDetails2: ContactDetails2 | null
-  deliveryType2: DeliveryType2 | null
-  paymentType2: PaymentType2 | null
-  products2: BasketItem[] | null
-  shipping2: Shipping2 | null
-  totalNew: number
+  contact_details: ContactDetails | null
+  delivery_type: DeliveryTypeId | null
+  payment_type: PaymentTypeId | null
+  products: BasketItem[] | null
+  shipping: Shipping | null
+  total: Order['total']
 }
 
 export type CheckoutContent = {
@@ -68,12 +49,12 @@ export type CheckoutContent = {
 }
 
 export const initState: Checkout = {
-  totalNew: 0,
-  products2: null,
-  contactDetails2: null,
-  deliveryType2: null,
-  shipping2: null,
-  paymentType2: null
+  contact_details: null,
+  total: 0,
+  products: null,
+  delivery_type: null,
+  shipping: null,
+  payment_type: null
 }
 
 export const checkoutContext = createContext<CheckoutContent>({
