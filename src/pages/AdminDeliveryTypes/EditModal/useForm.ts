@@ -1,5 +1,5 @@
 import { updateDeliveryType } from 'api'
-import { DELIVERY_TYPE_TABLE } from 'constants/db_tables'
+import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
@@ -26,7 +26,7 @@ const useForm = (id: string, is_enabled: boolean) => {
           view: 'SUCCESS'
         })
 
-        queryClient.invalidateQueries([DELIVERY_TYPE_TABLE])
+        queryClient.invalidateQueries([DELIVERY_TYPES_TABLE])
       }
     })
 

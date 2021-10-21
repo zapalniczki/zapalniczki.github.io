@@ -8,6 +8,8 @@ export { default as basketItem } from './basketItem'
 export * from './basketItem'
 
 export * from './paymentType'
+
+export { default as deliveryType } from './db/deliveryType'
 export * from './db/deliveryType'
 
 export * from './order'
@@ -58,3 +60,6 @@ export * from './getOtherPlacesResponseItem'
 
 export { default as getCollectionProductsResponseItem } from './getCollectionProductsResponseItem'
 export * from './getCollectionProductsResponseItem'
+
+export { default as getDeliveryTypesResponseItem } from './getDeliveryTypesResponseItem'
+export * from './getDeliveryTypesResponseItem'

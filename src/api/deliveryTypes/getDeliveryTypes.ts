@@ -1,22 +1,19 @@
-import { DELIVERY_TYPE_TABLE } from 'constants/db_tables'
-import { DeliveryType } from 'models'
+import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
+import {
+  getDeliveryTypesResponseItem,
+  GetDeliveryTypesResponseItem
+} from 'models'
 import { useQuery } from 'react-query'
 import supabase from 'supabase'
-
-type GetDeliveryTypesResponse = DeliveryType
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
 const getDeliveryTypes = async () => {
-  const { data, error } = await supabase
-    .from<GetDeliveryTypesResponse>(DELIVERY_TYPE_TABLE)
+  const response = await supabase
+    .from<GetDeliveryTypesResponseItem>(DELIVERY_TYPES_TABLE)
     .select()
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getDeliveryTypes')
-  }
+  const data = parseApiResponse(array(getDeliveryTypesResponseItem), response)
 
   return data
 }

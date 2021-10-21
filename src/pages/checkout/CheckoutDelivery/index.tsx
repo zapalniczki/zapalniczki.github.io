@@ -43,7 +43,7 @@ const CheckoutDelivery = () => {
             >
               {({ handleSubmit, values }) => {
                 const delivery = deliveryTypes.find(
-                  (type) => type.label === values.deliveryType
+                  (type) => type.id === values.deliveryType
                 )
 
                 return (
