@@ -61,5 +61,5 @@ const ProductsGrid = ({
   </QueryLoader>
 )
 
-export default ProductsGrid
 export { ProductsGridLoader }
+export default ProductsGrid
