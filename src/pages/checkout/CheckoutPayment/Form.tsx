@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, FieldProps } from 'formik'
-import { useTranslation } from 'hooks'
+import { useInput } from 'hooks'
 import { CheckboxField } from 'components'
 import { FormValues } from './useForm'
 import { Row } from '../common'
@@ -11,27 +11,27 @@ type Props = {
 }
 
 const Form = ({ paymentTypes }: Props) => {
-  const { t } = useTranslation('CHECKOUT_PAYMENT')
+  const { getInput } = useInput()
 
   return (
     <Row flexDirection="column">
-        {paymentTypes
-          .filter((type) => type.is_enabled)
-          .map((type, index) => (
-            <Field key={type.label} name="paymentType">
-              {(props: FieldProps<PaymentType, FormValues>) => (
-                <CheckboxField
-                  {...props}
-                  fieldLabel={t('form.paymentType.label')}
-                  id={type.id}
-                  isFirst={index === 0}
-                  subtitle={type.time}
-                  title={type.label}
-                />
-              )}
-            </Field>
-          ))}
-      </Row>
+      {paymentTypes
+        .filter((type) => type.is_enabled)
+        .map((type, index) => (
+          <Field key={type.label} name="payment_type">
+            {(props: FieldProps<PaymentType, FormValues>) => (
+              <CheckboxField
+                {...props}
+                {...getInput('PAYMENT_TYPE', true)}
+                id={type.id}
+                isFirst={index === 0}
+                subtitle={type.time}
+                title={type.label}
+              />
+            )}
+          </Field>
+        ))}
+    </Row>
   )
 }
 

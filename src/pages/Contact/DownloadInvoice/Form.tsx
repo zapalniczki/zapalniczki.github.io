@@ -2,34 +2,25 @@ import { FieldWrapper, Button, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 
 import React from 'react'
-import { useTranslation } from 'hooks'
-import { getRequiredOrNot } from 'utils'
+import { useInput } from 'hooks'
 import { ViewWrapper } from '.'
 import { FormValues } from './useForm'
 
 const Form = () => {
-  const { t } = useTranslation('CONTACT')
+  const { getInput } = useInput()
 
   return (
     <ViewWrapper alignItems="flex-end">
       <FieldWrapper>
         <Field name="order_id">
           {(props: FieldProps<string, FormValues>) => (
-            <Input
-              {...props}
-              label={getRequiredOrNot(
-                t('items.CHECK_STATUS.form.order_id.label'),
-                true
-              )}
-              maxLength={36}
-              placeholder={t('items.CHECK_STATUS.form.order_id.placeholder')}
-            />
+            <Input {...props} {...getInput('ORDER_ID', true)} />
           )}
         </Field>
       </FieldWrapper>
 
       <Button marginLeft="m-size" size="small" type="submit">
-        {t('items.CHECK_STATUS.form.submit.label')}
+        {getInput('SUBMIT').label}
       </Button>
     </ViewWrapper>
   )

@@ -165,6 +165,12 @@ const pl = {
     },
 
     VALIDATIONS: {
+      DELIVERY_TYPE: {
+        required: 'Wybierz aby przejść dalej.'
+      },
+      PAYMENT_TYPE: {
+        required: 'Wybierz aby przejść dalej.'
+      },
       ADDRESS_CDN: {},
       STREET: {
         required: 'Proszę podać adres'
@@ -203,6 +209,63 @@ const pl = {
       ORDER_ID: {
         required: 'To pole jest wymagane',
         length: 'Numer referencyjny zamówienia powinien składać się z 36 znaków'
+      }
+    },
+
+    INPUTS: {
+      SUBMIT: {
+        label: 'Sprawdź'
+      },
+      PAYMENT_TYPE: {
+        label: 'Wybierz sposób płatności'
+      },
+
+      DELIVERY_TYPE: {
+        label: 'Wybierz sposób dostawy'
+      },
+      FULL_NAME: {
+        label: 'Imię i nazwisko',
+        placeholder: ''
+      },
+      COMPANY: {
+        label: 'Nazwa firmy',
+        placeholder: ''
+      },
+      EMAIL: {
+        label: 'Adres email',
+        placeholder: ''
+      },
+      PHONE: {
+        label: 'Numer telefonu',
+        placeholder: ''
+      },
+      STREET: {
+        label: 'Ulica',
+        placeholder: ''
+      },
+      STREET_NR: {
+        label: 'Numer domu',
+        placeholder: ''
+      },
+      ADDRESS_CDN: {
+        label: 'Adres c.d.',
+        placeholder: ''
+      },
+      POST_CODE: {
+        label: 'Kod pocztowy',
+        placeholder: ''
+      },
+      CITY: {
+        label: 'Miasto',
+        placeholder: ''
+      },
+      NIP: {
+        label: 'NIP',
+        placeholder: ''
+      },
+      ORDER_ID: {
+        label: 'Numer referencyjny zamówienia',
+        placeholder: 'Znajduje się w tytule każdej wiadomości email'
       }
     },
 
@@ -263,115 +326,6 @@ const pl = {
     }
   },
 
-  // profilePage: {
-  //   tabs: {
-  //     account: 'Profil',
-  //     orders: 'Zamówienia'
-  //   },
-  //   account: {
-  //     noValue: 'Brak',
-
-  //     fields: {
-  //       customerType: 'Typ konta',
-  //       phone: 'Numer telefonu',
-  //       email: 'Email',
-  //       street: 'Adres',
-  //       postCode: 'Kod pocztowy',
-  //       city: 'Miasto',
-  //       dateJoined: 'Data założenia konta'
-  //     },
-
-  //     customerTypes: {
-  //       INDIVIDUAL: 'Klient Indywidualny',
-  //       COMPANY: 'Firma'
-  //     }
-  //   }
-  // },
-
-  // signUpPage: {
-  //   name: { label: 'Imię i nazwisko / Nazwa firmy', placeholder: 'Adam Nowak' },
-  //   email: { label: 'Adres email', placeholder: 'test@example.com' },
-  //   password: { label: 'Hasło', placeholder: 'Twoje hasło' },
-  //   signUp: 'Zarejestruj się',
-  //   signingUp: 'Poczekaj chwilę',
-  //   haveAccount: 'Masz konto?',
-  //   signIn: 'Zaloguj się',
-  //   title: 'Zarejestuj nowe konto',
-  //   validations: {
-  //     email: {
-  //       email: 'Email nie jest prawidłowy',
-  //       required: 'Email jest wymagany'
-  //     },
-  //     password: {
-  //       required: 'Hasło jest wymagane',
-  //       min: 'Minimalna liczba znaków to 8',
-  //       matches: 'Hasło powinno zawierać co najmniej 1 wielką literę'
-  //     }
-  //   }
-  // },
-
-  // signupConfirmationPage: {
-  //   title: 'Potwierdź adres email',
-  //   info: 'Na podany adres email wysłaliśmy wiadomość z linkiem do potwierdzenia konta.'
-  // },
-
-  // forgotPasswordPage: {
-  //   title: 'Nie pamiętasz hasła?',
-  //   info: 'Wprowadż adres e-mail a my wyślemy wiadomość z linkiem do zresetowania hasła.',
-  //   placeholder: 'Twój e-mail',
-  //   buttonLabel: 'Zresetuj hasło',
-  //   loadingLabel: 'Przetwarzanie'
-  // },
-
-  // signInPage: {
-  //   title: 'Zaloguj się',
-  //   form: {
-  //     email: {
-  //       label: 'Email',
-  //       placeholder: ''
-  //     },
-  //     password: {
-  //       label: 'Hasło',
-  //       placeholder: ''
-  //     }
-  //   },
-  //   forgotPassword: 'Nie pamiętasz hasła?',
-  //   notSignedup: 'Potrzebujesz konta?',
-  //   signIn: 'Zaloguj się',
-  //   signIning: 'Poczekaj chwilę',
-  //   signUp: 'Zarejestruj się'
-  // },
-
-  // ADD_PRODUCT_PAGE: {
-  //   title: 'Dodaj produkt',
-  //   form: {
-  //     productName: 'Nazwa produktu',
-  //     description: 'Opis',
-  //     price: 'Cena',
-  //     variants: {
-  //       label: 'Dostępne opcje',
-  //       placeholder: ''
-  //     },
-  //     mainPicture: {
-  //       label: 'Zdjęcie główne',
-  //       placeholder: 'Wybierz zdjęcie'
-  //     },
-  //     gallery: {
-  //       label: 'Galeria',
-  //       placeholder: 'Wybierz zdjęcia'
-  //     },
-  //     featured: {
-  //       label: 'Dodaj do nowych'
-  //     },
-  //     recommended: {
-  //       label: 'Dodaj do rekomendowanych'
-  //     }
-  //   },
-  //   actions: {
-  //     save: 'Zapisz'
-  //   }
-  // },
-
   HOME: {
     title: 'Strona Główna',
     banner: {
@@ -400,99 +354,19 @@ const pl = {
   },
 
   CHECKOUT_DETAILS: {
-    title: 'Dane do faktury',
-    form: {
-      fullName: {
-        label: 'Imię i nazwisko',
-        placeholder: ''
-      },
-      company: {
-        label: 'Nazwa firmy',
-        placeholder: ''
-      },
-      email: {
-        label: 'Adres email',
-        placeholder: ''
-      },
-      phone: {
-        label: 'Numer telefonu',
-        placeholder: ''
-      },
-      street: {
-        label: 'Ulica',
-        placeholder: ''
-      },
-      streetNr: {
-        label: 'Numer domu',
-        placeholder: ''
-      },
-      addressCdn: {
-        label: 'Adres c.d.',
-        placeholder: ''
-      },
-      postCode: {
-        label: 'Kod pocztowy',
-        placeholder: ''
-      },
-      city: {
-        label: 'Miasto',
-        placeholder: ''
-      },
-      nip: {
-        label: 'NIP',
-        placeholder: ''
-      }
-    }
+    title: 'Dane do faktury'
   },
 
   CHECKOUT_DELIVERY: {
-    title: 'Dostawa',
-    form: {
-      deliveryType: {
-        label: 'Wybierz sposób dostawy',
-        validations: {
-          required: 'Wybierz aby przejść dalej.'
-        }
-      }
-    }
+    title: 'Dostawa'
   },
 
   CHECKOUT_SHIPPING: {
-    title: 'Dane do dostawy',
-    form: {
-      street: {
-        label: 'Ulica',
-        placeholder: ''
-      },
-      streetNr: {
-        label: 'Numer domu',
-        placeholder: ''
-      },
-      addressCdn: {
-        label: 'Adres c.d.',
-        placeholder: ''
-      },
-      postCode: {
-        label: 'Kod pocztowy',
-        placeholder: ''
-      },
-      city: {
-        label: 'Miasto',
-        placeholder: ''
-      }
-    }
+    title: 'Dane do dostawy'
   },
 
   CHECKOUT_PAYMENT: {
-    title: 'Płatność',
-    form: {
-      paymentType: {
-        label: 'Wybierz sposób płatności',
-        validations: {
-          required: 'Wybierz, aby przejść dalej.'
-        }
-      }
-    }
+    title: 'Płatność'
   },
 
   CHECKOUT_RESULT: {
@@ -679,16 +553,6 @@ const pl = {
     items: {
       CHECK_STATUS: {
         title: 'Sprawdź status zamówienia',
-        form: {
-          order_id: {
-            label: 'Numer referencyjny zamówienia',
-            placeholder: 'Znajduje się w tytule każdej wiadomości email'
-          },
-
-          submit: {
-            label: 'Sprawdź'
-          }
-        },
         result: {
           statusesMeanings: {
             OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i niebawem skontaktujemy się z Tobą w celu potwierdzenia.',
@@ -720,16 +584,6 @@ const pl = {
 
       DOWNLOAD_INVOICE: {
         title: 'Pobierz fakturę',
-        form: {
-          order_id: {
-            label: 'Numer referencyjny zamówienia',
-            placeholder: 'Znajduje się w tytule każdej wiadomości email'
-          },
-
-          submit: {
-            label: 'Sprawdź'
-          }
-        },
         result: {
           info: 'Faktura jest gotowa do pobrania',
           followLink: 'Otwórz fakturę',

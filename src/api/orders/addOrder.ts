@@ -1,4 +1,9 @@
-import { ORDER_TABLE } from 'constants/db_tables'
+import {
+  ADDRESSES_TABLE,
+  ORDER_ITEMS,
+  ORDER_TABLE,
+  USERS_TABLE
+} from 'constants/db_tables'
 import {
   Address,
   DeliveryType,
@@ -17,21 +22,16 @@ export type AddOrderPayload = Pick<
   deliveryType: DeliveryType['id']
   paymentType: PaymentType['id']
   products: Pick<OrderItem, 'id' | 'quantity'>[]
-  shipping: Omit<Address, 'id' | 'created_at' | 'updated_at'>
+  shipping: Omit<Address, 'id' | 'created_at' | 'updated_at'> | null
   total: Order['total']
 }
 
 export const addOrder = async (payload: AddOrderPayload) => {
   // ADDRESS
+
   const { data: address, error: addressError } = await supabase
-    .from<Address>('address')
-    .upsert({
-      street: payload.address.street,
-      street_nr: payload.address.street_nr,
-      address_cdn: payload.address.address_cdn,
-      post_code: payload.address.post_code,
-      city: payload.address.city
-    })
+    .from<Address>(ADDRESSES_TABLE)
+    .upsert(payload.address)
     .single()
 
   if (addressError) {
@@ -42,38 +42,36 @@ export const addOrder = async (payload: AddOrderPayload) => {
     throw new Error('addOrderSupabase/address error')
   }
 
-  // SHIPPING
-  const { data: shipping, error: shippingError } = await supabase
-    .from<Address>('address')
-    .upsert({
-      street: payload.address.street,
-      street_nr: payload.address.street_nr,
-      address_cdn: payload.address.address_cdn,
-      post_code: payload.address.post_code,
-      city: payload.address.city
-    })
-    .single()
+  let shippingId: Order['shipping_id'] = null
+  if (payload.shipping) {
+    // SHIPPING
+    const { data: shipping, error: shippingError } = await supabase
+      .from<Address>(ADDRESSES_TABLE)
+      .upsert(payload.shipping)
+      .single()
 
-  if (shippingError) {
-    throw new Error(shippingError.message)
+    if (shippingError) {
+      throw new Error(shippingError.message)
+    }
+
+    if (!shipping) {
+      throw new Error('addOrderSupabase/shipping error')
+    }
+
+    shippingId = shipping.id
   }
-
-  if (!shipping) {
-    throw new Error('addOrderSupabase/shipping error')
-  }
-
   // USER
 
   type AddUserResponse = Omit<User, 'updated_at' | 'created_at'>
 
   const { data: userData, error: userError } = await supabase
-    .from<AddUserResponse>('user')
+    .from<AddUserResponse>(USERS_TABLE)
     .insert([
       {
         is_company: payload.is_company,
         full_name: payload.full_name,
         address_id: address.id,
-        shipping_id: shipping.id,
+        shipping_id: shippingId,
         nip: payload.nip,
         phone: payload.phone,
         email: payload.email,
@@ -98,7 +96,7 @@ export const addOrder = async (payload: AddOrderPayload) => {
       {
         status: 'OPEN',
         user_id: userData.id,
-        shipping_id: shipping.id,
+        shipping_id: shippingId,
         delivery_type: payload.deliveryType,
         payment_type: payload.paymentType,
         total: payload.total
@@ -116,7 +114,7 @@ export const addOrder = async (payload: AddOrderPayload) => {
 
   // ORDER_ITEM
   const { data: orderItem, error: orderItemError } = await supabase
-    .from<OrderItem>('order_item')
+    .from<OrderItem>(ORDER_ITEMS)
     .insert(
       payload.products.map((product) => ({
         product_id: product.id,

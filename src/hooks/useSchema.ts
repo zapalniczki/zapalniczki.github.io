@@ -5,6 +5,12 @@ const useSchema = () => {
   const { t: commonT } = useTranslation('COMMON')
 
   const schemas: Record<SchemaKey, StringSchema> = {
+    PAYMENT_TYPE: string().required(
+      commonT('VALIDATIONS.PAYMENT_TYPE.required')
+    ),
+    DELIVERY_TYPE: string().required(
+      commonT('VALIDATIONS.DELIVERY_TYPE.required')
+    ),
     EMAIL: string()
       .email(commonT('VALIDATIONS.EMAIL.email'))
       .required(commonT('VALIDATIONS.EMAIL.required')),
@@ -50,5 +56,7 @@ type SchemaKey =
   | 'POST_CODE'
   | 'CITY'
   | 'NIP'
+  | 'DELIVERY_TYPE'
+  | 'PAYMENT_TYPE'
 
 export default useSchema

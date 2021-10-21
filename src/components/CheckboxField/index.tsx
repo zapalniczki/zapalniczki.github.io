@@ -4,9 +4,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 type Props = FieldProps & {
-  fieldLabel: string
   id: string
   isFirst: boolean
+  label: string
   subtitle?: string
   title: string
   val?: string
@@ -14,9 +14,9 @@ type Props = FieldProps & {
 
 const CheckboxField = ({
   field: { name, onBlur, onChange, value },
-  fieldLabel,
   id,
   isFirst,
+  label,
   meta: { error, touched },
   subtitle,
   title,
@@ -28,7 +28,7 @@ const CheckboxField = ({
         {touched && error ? (
           <InputLabel error>{error}</InputLabel>
         ) : (
-          <InputLabel htmlFor={name}>{fieldLabel}</InputLabel>
+          <InputLabel htmlFor={name}>{label}</InputLabel>
         )}
       </Flexbox>
     )}

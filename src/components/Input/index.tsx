@@ -10,7 +10,7 @@ type Props = SpaceProps &
     disabled?: boolean
     label?: string
     maxLength?: number
-    placeholder: string
+    placeholder?: string
     type?: 'text' | 'password' | 'email'
   }
 
@@ -34,6 +34,7 @@ const Input = ({
       ) : (
         label && <InputLabel htmlFor={field.name}>{label}</InputLabel>
       )}
+
       <StyledInput
         {...field}
         disabled={disabled}

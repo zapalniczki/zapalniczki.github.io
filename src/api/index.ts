@@ -33,3 +33,6 @@ export * from './vouchers'
 
 // INVOICES
 export * from './invoices'
+
+// ADDRESSES
+export * from './addresses'

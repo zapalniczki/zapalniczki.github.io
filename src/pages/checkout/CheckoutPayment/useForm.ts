@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom'
 
-import { string, object } from 'yup'
-import { useTranslation } from 'hooks'
+import { object } from 'yup'
+import { useSchema } from 'hooks'
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useContext } from 'react'
 import { checkoutContext, initState } from 'providers'
@@ -13,16 +13,17 @@ import { loaderContext } from 'providers'
 import { PaymentType } from 'models'
 
 export type FormValues = {
-  paymentType: PaymentType['id']
+  payment_type: PaymentType['id']
 }
 
 const useForm = () => {
   const history = useHistory()
-  const { t } = useTranslation('CHECKOUT_PAYMENT')
   const { checkout, setCheckout } = useContext(checkoutContext)
   const { setBasket } = useContext(basketContext)
 
   const { hide, show } = useContext(loaderContext)
+
+  const { getSchema } = useSchema()
 
   const { isLoading, mutateAsync: mutateAddOrderSupabase } =
     useMutation(addOrder)
@@ -34,7 +35,7 @@ const useForm = () => {
     const order: AddOrderPayload = {
       email: checkout.contact_details?.email ?? '',
       deliveryType: checkout.delivery_type ?? '',
-      paymentType: form.paymentType ?? '',
+      paymentType: form.payment_type ?? '',
       total: checkout.total ?? 0,
       phone: checkout.contact_details?.phone ?? '',
       full_name: checkout.contact_details?.full_name ?? '',
@@ -48,13 +49,7 @@ const useForm = () => {
         post_code: checkout.contact_details?.post_code ?? '',
         city: checkout.contact_details?.city ?? ''
       },
-      shipping: {
-        street: checkout.shipping?.street ?? '',
-        street_nr: checkout.shipping?.street_nr ?? '',
-        address_cdn: checkout.shipping?.address_cdn ?? '',
-        post_code: checkout.shipping?.post_code ?? '',
-        city: checkout.shipping?.city ?? ''
-      }
+      shipping: checkout.shipping || null
     }
 
     const orderId = await mutateAddOrderSupabase(order)
@@ -82,11 +77,11 @@ const useForm = () => {
   }
 
   const initialValues: FormValues = {
-    paymentType: checkout.payment_type ?? ''
+    payment_type: checkout.payment_type ?? ''
   }
 
-  const schema = object().shape({
-    paymentType: string().required(t('form.paymentType.validations.required'))
+  const schema = object({
+    payment_type: getSchema('PAYMENT_TYPE')
   })
 
   return {

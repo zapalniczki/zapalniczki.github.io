@@ -18,7 +18,7 @@ export const order = object({
   delivery_type: string().uuid(),
   id: string().uuid(),
   payment_type: string().uuid(),
-  shipping_id: string().uuid(),
+  shipping_id: string().uuid().nullable(),
   status: string(),
   total: number(),
   updated_at: string(),

@@ -32,9 +32,9 @@ const useForm = () => {
 
   const schema = object().shape({
     street: getSchema('STREET'),
-    streetNo: getSchema('STREET_NR'),
-    addressCdn: getSchema('ADDRESS_CDN'),
-    postCode: getSchema('POST_CODE'),
+    street_nr: getSchema('STREET_NR'),
+    address_cdn: getSchema('ADDRESS_CDN'),
+    post_code: getSchema('POST_CODE'),
     city: getSchema('CITY')
   })
 
