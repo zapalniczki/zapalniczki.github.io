@@ -77,7 +77,7 @@ const pl = {
     checkoutSteps: {
       1: 'Podsumowanie',
       2: 'Dane do faktury',
-      3: 'Dostawa',
+      3: 'Dane do dostawy',
       5: 'Płatność'
     },
 
@@ -362,7 +362,8 @@ const pl = {
   },
 
   CHECKOUT_SHIPPING: {
-    title: 'Dane do dostawy'
+    title: 'Dane do dostawy',
+    info: 'Adres dostawy różni się od adresu na fakturze'
   },
 
   CHECKOUT_PAYMENT: {

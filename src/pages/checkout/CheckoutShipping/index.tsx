@@ -1,8 +1,8 @@
 import { useScrollTop, useTabTitle } from 'hooks'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useTranslation } from 'hooks'
 import { Formik, Form as FormikForm } from 'formik'
-import { Page } from 'components'
+import { Text, Page, Flexbox, Switch } from 'components'
 import { checkoutContext } from 'providers'
 import { Redirect } from 'react-router-dom'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
@@ -13,11 +13,14 @@ import Form from './Form'
 
 const CheckoutShipping = () => {
   const { t } = useTranslation('CHECKOUT_SHIPPING')
+  const { checkout } = useContext(checkoutContext)
 
   useTabTitle(t('title'))
   useScrollTop()
 
-  const { checkout } = useContext(checkoutContext)
+  const [sameAddressAsInvoice, setSameAddressAsInvoice] = useState(
+    checkout.same_address_as_invoice
+  )
 
   const { initialValues, onSubmitForm, schema } = useForm()
 
@@ -32,15 +35,25 @@ const CheckoutShipping = () => {
       <Wrapper>
         <StepTitle>{t('title')}</StepTitle>
 
+        <Flexbox alignItems="center" justifyContent="flex-end" marginY="l-size">
+          <Text marginRight="m-size" textAlign="center" type="body-2">
+            {t('info')}
+          </Text>
+          <Switch
+            checked={!sameAddressAsInvoice}
+            onChange={(checked) => setSameAddressAsInvoice(!checked)}
+          />
+        </Flexbox>
+
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmitForm}
+          onSubmit={(values) => onSubmitForm(values, sameAddressAsInvoice)}
           validateOnChange
           validationSchema={schema}
         >
           {({ handleSubmit }) => (
             <FormikForm onSubmit={handleSubmit}>
-              <Form />
+              {!sameAddressAsInvoice && <Form />}
               <Actions />
             </FormikForm>
           )}

@@ -4,9 +4,8 @@ import { useTranslation } from 'hooks'
 import { Redirect } from 'react-router-dom'
 import { Formik, Form as FormikForm } from 'formik'
 import { CHECKOUT_PRODUCTS } from 'constants/routes'
-import { Switch, Flexbox, Page } from 'components'
+import { Switch, Flexbox, Page, Text } from 'components'
 import { checkoutContext } from 'providers'
-import styled from 'styled-components'
 import { StepTitle, Actions, Wrapper, StepTracker } from '../common'
 import useForm from './useForm'
 import Form from './Form'
@@ -21,7 +20,7 @@ const CheckoutDetails = () => {
   useScrollTop()
 
   const [isCompany, setIsCompany] = useState<IsCompany>(
-    checkout.contact_details?.is_company || true
+    checkout.contact_details ? checkout.contact_details.is_company : true
   )
 
   const { getSchema, initialValues, onSubmitForm } = useForm()
@@ -37,24 +36,15 @@ const CheckoutDetails = () => {
       <Wrapper>
         <StepTitle>{t('title')}</StepTitle>
 
-        <Flexbox
-          alignItems="center"
-          justifyContent="center"
-          marginBottom="m-size"
-          marginTop="m-size"
-        >
-          <CustomTypeButton onClick={() => setIsCompany(true)}>
-            {commonT('customerTypes.COMPANY')}
-          </CustomTypeButton>
+        <Flexbox alignItems="center" justifyContent="flex-end" marginY="l-size">
+          <Text marginRight="m-size" type="body-2">
+            {commonT('customerTypes.INDIVIDUAL')}
+          </Text>
 
           <Switch
             checked={!isCompany}
             onChange={(checked) => setIsCompany(!checked)}
           />
-
-          <CustomTypeButton onClick={() => setIsCompany(false)}>
-            {commonT('customerTypes.INDIVIDUAL')}
-          </CustomTypeButton>
         </Flexbox>
 
         <Formik
@@ -63,29 +53,16 @@ const CheckoutDetails = () => {
           validateOnChange
           validationSchema={getSchema(isCompany)}
         >
-          {({ handleSubmit, values }) => {
-            console.log(values)
-
-            return (
-              <FormikForm onSubmit={handleSubmit}>
-                <Form isCompany={isCompany} />
-                <Actions />
-              </FormikForm>
-            )
-          }}
+          {({ handleSubmit }) => (
+            <FormikForm onSubmit={handleSubmit}>
+              <Form isCompany={isCompany} />
+              <Actions />
+            </FormikForm>
+          )}
         </Formik>
       </Wrapper>
     </Page>
   )
 }
-
-const CustomTypeButton = styled.button`
-  width: 50%;
-  height: 5rem;
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  letter-spacing: 0.1rem;
-`
 
 export default CheckoutDetails

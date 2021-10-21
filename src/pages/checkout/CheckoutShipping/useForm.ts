@@ -14,20 +14,26 @@ const useForm = () => {
 
   const { checkout, setCheckout } = useContext(checkoutContext)
 
-  const onSubmitForm = (form: FormValues) => {
+  const onSubmitForm = (form: FormValues, sameAddressAsInvoice: boolean) => {
     setCheckout((prev) => ({
       ...prev,
-      shipping: form
+      shipping: form,
+      same_address_as_invoice: sameAddressAsInvoice
     }))
     history.push(CHECKOUT_PAYMENT)
   }
 
   const initialValues: FormValues = {
-    street: checkout.shipping?.street ?? '',
-    street_nr: checkout.shipping?.street_nr ?? '',
-    address_cdn: checkout.shipping?.address_cdn ?? '',
-    post_code: checkout.shipping?.post_code ?? '',
-    city: checkout.shipping?.city ?? ''
+    street: checkout.shipping?.street ?? checkout.contact_details?.street ?? '',
+    street_nr:
+      checkout.shipping?.street_nr ?? checkout.contact_details?.street_nr ?? '',
+    address_cdn:
+      checkout.shipping?.address_cdn ??
+      checkout.contact_details?.address_cdn ??
+      '',
+    post_code:
+      checkout.shipping?.post_code ?? checkout.contact_details?.post_code ?? '',
+    city: checkout.shipping?.city ?? checkout.contact_details?.city ?? ''
   }
 
   const schema = object().shape({

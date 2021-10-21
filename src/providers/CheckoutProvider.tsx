@@ -39,6 +39,7 @@ export type Checkout = {
   delivery_type: DeliveryTypeId | null
   payment_type: PaymentTypeId | null
   products: BasketItem[] | null
+  same_address_as_invoice: boolean
   shipping: Shipping | null
   total: Order['total']
 }
@@ -54,7 +55,8 @@ export const initState: Checkout = {
   products: null,
   delivery_type: null,
   shipping: null,
-  payment_type: null
+  payment_type: null,
+  same_address_as_invoice: true
 }
 
 export const checkoutContext = createContext<CheckoutContent>({

@@ -29,7 +29,7 @@ const colors = {
   'color-success': '#000',
   'label-color': '#696868',
 
-  'braty-red': 'rgb(230, 7, 15)'
+  'braty-red': '#e6070f'
 }
 
 const zIndices = {
