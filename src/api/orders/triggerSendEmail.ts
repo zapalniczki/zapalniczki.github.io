@@ -1,3 +1,4 @@
+import { Voucher } from 'models'
 import { useMutation } from 'react-query'
 import { Email, Fullname, Phone } from 'types/index2'
 
@@ -11,6 +12,9 @@ type EventType =
       key: 'NEW_ORDER'
     }
   | {
+      content: {
+        voucher_id: Voucher['id']
+      }
       key: 'NEWSLETTER_SIGNUP'
     }
 

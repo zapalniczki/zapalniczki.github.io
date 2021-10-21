@@ -19,3 +19,5 @@ export const NEWSLETTER_TABLE = 'newsletter'
 export const ORDER_TABLE = 'order'
 
 export const COLLECTIONS_TABLE = 'collections'
+
+export const VOUCHERS_TABLE = 'vouchers'

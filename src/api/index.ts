@@ -27,3 +27,6 @@ export * from './labels'
 
 // IMAGE
 export * from './image'
+
+// VOUCHERS
+export * from './vouchers'

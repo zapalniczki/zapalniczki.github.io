@@ -22,6 +22,11 @@ export * from './db/orderItem'
 export { default as newsletter } from './db/newsletter'
 export * from './db/newsletter'
 
+export { default as voucher } from './db/voucher'
+export * from './db/voucher'
+
+// OTHERS
+
 export { default as icon } from './icon'
 export * from './icon'
 
