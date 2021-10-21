@@ -109,7 +109,7 @@ const pl = {
       OPEN: 'Nowe',
       CONFIRMED: 'Potwierdzone',
       PAYMENT_RECEIVED: 'Zapłacone',
-      IN_PREPARATION: 'W przygotowaniu',
+      PRODUCTION: 'Produkcja',
       AWAITING_FOR_PICKUP: 'Oczekuje na kuriera',
       IN_DELIVERY: 'W dostawie',
       COMPLETED: 'Zakończone'
@@ -594,7 +594,7 @@ const pl = {
         'Zamówienia, które zostały potwierdzone i oczekują na płatność. Zmiana statusu po zaksięgowaniu "SUMA" na koncie.',
       PAYMENT_RECEIVED:
         'Zamówienia, które zostały opłacone. Zmiana statusu po zazieleniu wszystkich w "MATRYCE".',
-      IN_PREPARATION:
+      PRODUCTION:
         'Zamówienia, które można zrealizować. Zmiana statusu po ukończeniu produkcji.',
       AWAITING_FOR_PICKUP:
         'Zamówienia, które są wyprodukowane. Zmiana statusu po wprowadzeniu "NUMER PACZKI".',
@@ -718,7 +718,7 @@ const pl = {
               'Co oznacza, ze zamówienie zostało potwierdzone i oczekujemy na wpłatę środków.',
             PAYMENT_RECEIVED:
               'Co oznacza, że otrzymaliśmy środki i niebawem przystąpimy do jego realizacji.',
-            IN_PREPARATION:
+            PRODUCTION:
               'Co oznacza, że zamówienie jest realizowane właśnie teraz.',
             AWAITING_FOR_PICKUP:
               'Co oznacza, że zamówienie zostało skompletowane i oczekuje na kuriera.',

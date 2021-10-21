@@ -59,20 +59,22 @@ const ProductTile = ({ product }: Props) => {
 }
 
 const imageHover = css`
-  img {
-    &:last-child {
-      display: none;
+  img,
+  aside {
+    display: none;
+
+    &:first-child {
+      display: block;
     }
   }
 
   &:hover {
-    img {
+    img,
+    aside {
+      display: block;
+
       &:first-child {
         display: none;
-      }
-
-      &:last-child {
-        display: block;
       }
     }
   }

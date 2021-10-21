@@ -54,7 +54,7 @@ const Image = styled.img<ImageProps>`
   opacity: ${(props) => (props.loaded ? 1 : 0)};
 `
 
-const SpinnerWrapper = styled.div`
+const SpinnerWrapper = styled.aside`
   position: absolute;
   top: 50%;
   left: 50%;

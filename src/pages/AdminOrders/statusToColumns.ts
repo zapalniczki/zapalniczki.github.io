@@ -18,7 +18,7 @@ const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
     //  'molds'
     'edit'
   ],
-  IN_PREPARATION: [
+  PRODUCTION: [
     'id',
     'updated_at',
     'is_company',

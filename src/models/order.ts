@@ -4,7 +4,7 @@ const orderStatus = zenum([
   'OPEN',
   'CONFIRMED',
   'PAYMENT_RECEIVED',
-  'IN_PREPARATION',
+  'PRODUCTION',
   'AWAITING_FOR_PICKUP',
   'IN_DELIVERY',
   'COMPLETED'
