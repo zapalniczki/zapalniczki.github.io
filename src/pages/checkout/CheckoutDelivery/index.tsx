@@ -1,9 +1,9 @@
 import { useScrollTop, useTabTitle } from 'hooks'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useTranslation } from 'hooks'
 import { Formik, Form as FormikForm } from 'formik'
 import { Redirect } from 'react-router-dom'
-import { Page, QueryLoader } from 'components'
+import { Page, QueryLoader, Switch } from 'components'
 import { CHECKOUT_DETAILS } from 'constants/routes'
 import { checkoutContext } from 'providers'
 import Actions from '../common/Actions'
@@ -20,11 +20,15 @@ const CheckoutDelivery = () => {
   useScrollTop()
 
   const deliveryTypesQuery = useGetDeliveryTypes()
-  const { checkout } = useContext(checkoutContext)
+  const { checkout, setCheckout } = useContext(checkoutContext)
   const { initialValues, onSubmitForm, schema } = useForm()
 
+  const [sameAddressAsInvoice, setSameAddressAsInvoice] = useState(
+    checkout.same_address_as_invoice
+  )
+
   if (!checkout.contact_details) {
-    // return <Redirect to={CHECKOUT_DETAILS} />
+    return <Redirect to={CHECKOUT_DETAILS} />
   }
 
   return (
@@ -38,7 +42,9 @@ const CheckoutDelivery = () => {
           {(deliveryTypes) => (
             <Formik
               initialValues={initialValues}
-              onSubmit={(values) => onSubmitForm(values, deliveryTypes)}
+              onSubmit={(values) =>
+                onSubmitForm(values, deliveryTypes, sameAddressAsInvoice)
+              }
               validateOnChange
               validationSchema={schema}
             >
@@ -47,9 +53,32 @@ const CheckoutDelivery = () => {
                   (type) => type.id === values.delivery_type
                 )
 
+                const shouldSwitchBeDisplayed = delivery?.requires_address
+
                 return (
                   <FormikForm onSubmit={handleSubmit}>
                     <Form deliveryTypes={deliveryTypes} />
+
+                    {shouldSwitchBeDisplayed && (
+                      <Switch
+                        checked={!sameAddressAsInvoice}
+                        flexDirection="row-reverse"
+                        justifyContent="flex-end"
+                        label={t('sameAddress')}
+                        marginBottom="l-size"
+                        marginTop="m-size"
+                        onChange={(checked) => {
+                          setSameAddressAsInvoice(!checked)
+
+                          if (!checked) {
+                            setCheckout((prev) => ({
+                              ...prev,
+                              shipping: null
+                            }))
+                          }
+                        }}
+                      />
+                    )}
 
                     <Total customDelivery={delivery?.price} />
 

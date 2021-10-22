@@ -18,7 +18,11 @@ const useForm = () => {
 
   const { checkout, setCheckout } = useContext(checkoutContext)
 
-  const onSubmitForm = (form: FormValues, deliveryTypes: DeliveryType[]) => {
+  const onSubmitForm = (
+    form: FormValues,
+    deliveryTypes: DeliveryType[],
+    sameAddressAsInvoice: boolean
+  ) => {
     const selectedDeliveryType = deliveryTypes.find(
       (method) => method.id === form.delivery_type
     )
@@ -27,11 +31,12 @@ const useForm = () => {
       setCheckout((prev) => ({
         ...prev,
         delivery_type: selectedDeliveryType.id,
+        same_address_as_invoice: sameAddressAsInvoice,
         total: add(prev.total, selectedDeliveryType.price)
       }))
     }
 
-    if (selectedDeliveryType?.requires_address) {
+    if (!sameAddressAsInvoice) {
       history.push(CHECKOUT_SHIPPING)
     } else {
       history.push(CHECKOUT_PAYMENT)

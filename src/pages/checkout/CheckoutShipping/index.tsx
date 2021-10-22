@@ -1,15 +1,13 @@
-import { useScrollTop, useTabTitle } from 'hooks'
-import React, { useContext, useState } from 'react'
-import { useTranslation } from 'hooks'
-import { Formik, Form as FormikForm } from 'formik'
-import { Page, Switch } from 'components'
-import { checkoutContext } from 'providers'
-import { Redirect } from 'react-router-dom'
+import { Page } from 'components'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
-import { StepTracker, Wrapper, Actions, StepTitle } from '../common'
-
-import useForm from './useForm'
+import { Form as FormikForm, Formik } from 'formik'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { checkoutContext } from 'providers'
+import React, { useContext } from 'react'
+import { Redirect } from 'react-router-dom'
+import { Actions, StepTitle, StepTracker, Wrapper } from '../common'
 import Form from './Form'
+import useForm from './useForm'
 
 const CheckoutShipping = () => {
   const { t } = useTranslation('CHECKOUT_SHIPPING')
@@ -17,10 +15,6 @@ const CheckoutShipping = () => {
 
   useTabTitle(t('title'))
   useScrollTop()
-
-  const [sameAddressAsInvoice, setSameAddressAsInvoice] = useState(
-    checkout.same_address_as_invoice
-  )
 
   const { initialValues, onSubmitForm, schema } = useForm()
 
@@ -37,37 +31,16 @@ const CheckoutShipping = () => {
 
         <Formik
           initialValues={initialValues}
-          onSubmit={(values) => onSubmitForm(values, sameAddressAsInvoice)}
+          onSubmit={onSubmitForm}
           validateOnChange
           validationSchema={schema}
         >
-          {({ handleSubmit, initialValues, setFieldValue }) => (
-            <>
-              <Switch
-                checked={!sameAddressAsInvoice}
-                justifyContent="flex-end"
-                label={t('info')}
-                marginY="l-size"
-                onChange={(checked) => {
-                  setSameAddressAsInvoice(!checked)
+          {({ handleSubmit }) => (
+            <FormikForm onSubmit={handleSubmit}>
+              <Form />
 
-                  if (!checked) {
-                    setFieldValue(
-                      'street_address',
-                      initialValues.street_address
-                    )
-                    setFieldValue('post_code', initialValues.post_code)
-                    setFieldValue('city', initialValues.city)
-                  }
-                }}
-              />
-
-              <FormikForm onSubmit={handleSubmit}>
-                {!sameAddressAsInvoice && <Form />}
-
-                <Actions />
-              </FormikForm>
-            </>
+              <Actions />
+            </FormikForm>
           )}
         </Formik>
       </Wrapper>

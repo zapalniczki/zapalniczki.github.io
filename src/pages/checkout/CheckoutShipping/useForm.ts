@@ -14,11 +14,10 @@ const useForm = () => {
 
   const { checkout, setCheckout } = useContext(checkoutContext)
 
-  const onSubmitForm = (form: FormValues, sameAddressAsInvoice: boolean) => {
+  const onSubmitForm = (form: FormValues) => {
     setCheckout((prev) => ({
       ...prev,
-      shipping: form,
-      same_address_as_invoice: sameAddressAsInvoice
+      shipping: form
     }))
     history.push(CHECKOUT_PAYMENT)
   }

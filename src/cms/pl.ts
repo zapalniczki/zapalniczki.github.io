@@ -75,9 +75,9 @@ const pl = {
     },
 
     checkoutSteps: {
-      1: 'Podsumowanie',
+      1: 'Produkty',
       2: 'Dane do faktury',
-      3: 'Dane do dostawy',
+      3: 'Dostawa',
       5: 'Płatność'
     },
 
@@ -333,9 +333,8 @@ const pl = {
   },
 
   CHECKOUT_PRODUCTS: {
-    title: 'Podsumowanie',
+    title: 'Produkty',
     desc: 'Sprawdź produkty w Twoim koszyku.',
-    productsTotal: 'Cena produktów:',
     emptyState:
       'Koszyk jest pusty. Dodaj produkty do koszyka i wróć tutaj później.'
   },
@@ -345,12 +344,12 @@ const pl = {
   },
 
   CHECKOUT_DELIVERY: {
-    title: 'Dostawa'
+    title: 'Dostawa',
+    sameAddress: 'Czy adres dostawy różni się od adresu na fakturze?'
   },
 
   CHECKOUT_SHIPPING: {
-    title: 'Dane do dostawy',
-    info: 'Adres dostawy różni się od adresu na fakturze'
+    title: 'Dane do dostawy'
   },
 
   CHECKOUT_PAYMENT: {
