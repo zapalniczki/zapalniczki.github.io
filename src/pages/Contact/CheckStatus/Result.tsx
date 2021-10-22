@@ -1,8 +1,9 @@
-import { Button, Text, Heading } from 'components'
+import { Button, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
+import TileHeading from '../TileHeading'
 
 type Props = {
   setView: React.Dispatch<React.SetStateAction<View>>
@@ -15,9 +16,13 @@ const Result = ({ setView, status }: Props) => {
 
   return (
     <ViewWrapper flexDirection="column">
-      <Heading level={6}>{commonT(`ORDER_STATUSES.${status}`)}</Heading>
+      <TileHeading
+        icon="check-circle"
+        status="POSITIVE"
+        title={commonT(`ORDER_STATUSES.${status}`)}
+      />
 
-      <Text marginTop="m-size" type="body-2">
+      <Text type="body-2">
         {t(`items.CHECK_STATUS.result.statusesMeanings.${status}`)}
       </Text>
 

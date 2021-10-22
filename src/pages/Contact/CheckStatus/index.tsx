@@ -10,43 +10,31 @@ import styled from 'styled-components'
 const CheckStatus = () => {
   const { initialValues, onSubmit, schema, setView, view } = useForm()
 
-  let content: JSX.Element
   if (view.view === 'RESULT') {
-    content = <Result setView={setView} status={view.status} />
+    return <Result setView={setView} status={view.status} />
   } else if (view.view === 'ERROR') {
-    content = <Error message={view.message} setView={setView} />
-  } else {
-    content = (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validateOnChange
-        validationSchema={schema}
-      >
-        {({ handleSubmit }) => (
-          <FormikForm onSubmit={handleSubmit} style={{ width: '100%' }}>
-            <Form />
-          </FormikForm>
-        )}
-      </Formik>
-    )
+    return <Error message={view.message} setView={setView} />
   }
 
   return (
-    <Flexbox justifyContent="space-between">
-      {content}
-
-      <Flexbox
-        alignItems="center"
-        justifyContent="center"
-        marginLeft="xxxl-size"
-      />
-    </Flexbox>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validateOnChange
+      validationSchema={schema}
+    >
+      {({ handleSubmit }) => (
+        <FormikForm onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <Form />
+        </FormikForm>
+      )}
+    </Formik>
   )
 }
 
-export const ViewWrapper = styled(Flexbox).attrs(() => ({
-  width: '100%'
-}))``
+export const ViewWrapper = styled(Flexbox)`
+  width: 100%;
+  flex-direction: column;
+`
 
 export default CheckStatus

@@ -564,8 +564,9 @@ const pl = {
           tryNew: 'Sprawdź kolejne'
         },
         error: {
-          info: 'Podany numer referencyjny nie został znaleziony. Sprawdź podany numer i spróbuj jeszcze raz.',
-          tryNew: 'Spróbuj jeszcze raz'
+          title: 'Podany numer referencyjny nie został znaleziony',
+          info: 'Sprawdź podany numer i spróbuj jeszcze raz.',
+          tryNew: 'Spróbuj ponownie'
         }
       },
 

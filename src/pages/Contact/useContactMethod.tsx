@@ -11,7 +11,7 @@ const useContactMethods = (): ContactMethod[] => {
 
   return [
     {
-      icon: 'question',
+      // icon: 'question',
       key: 'CHECK_STATUS',
       extended: true,
       content: <CheckStatus />
@@ -101,7 +101,7 @@ const useContactMethods = (): ContactMethod[] => {
 }
 
 type ContactMethod = {
-  content: ReactNode
+  content?: ReactNode
   extended?: boolean
   icon?: IconName
   key:

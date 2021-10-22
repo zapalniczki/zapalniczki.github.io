@@ -24,8 +24,13 @@ const Contact = () => {
       />
 
       <Grid gridTemplateColumns="repeat(3, 1fr)" marginTop="xxl-size">
-        {contactMethods.map(({ key, ...props }) => (
-          <Tile key={key} title={t(`items.${key}.title`)} {...props} />
+        {contactMethods.map(({ icon, key, ...props }) => (
+          <Tile
+            icon={icon}
+            key={key}
+            title={icon ? t(`items.${key}.title`) : undefined}
+            {...props}
+          />
         ))}
       </Grid>
 

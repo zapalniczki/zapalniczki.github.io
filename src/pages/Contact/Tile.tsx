@@ -1,13 +1,13 @@
 import { IconName } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Heading, Tile as TileComponent } from 'components'
+import { Tile as TileComponent } from 'components'
 import React, { ReactNode } from 'react'
+import TileHeading from './TileHeading'
 
 type Props = {
-  content: ReactNode
+  content?: ReactNode
   extended?: boolean
   icon?: IconName
-  title: string
+  title?: string
 }
 
 const Tile = ({ content, extended, icon, title }: Props) => (
@@ -15,13 +15,7 @@ const Tile = ({ content, extended, icon, title }: Props) => (
     flexDirection="column"
     gridColumn={extended ? 'auto / span 2' : 'auto'}
   >
-    <Flexbox alignItems="center" marginBottom="m-size">
-      {icon && <FontAwesomeIcon icon={icon} size="2x" />}
-
-      <Heading level={6} marginLeft={icon && 'm-size'}>
-        {title}
-      </Heading>
-    </Flexbox>
+    <TileHeading icon={icon} title={title} />
 
     {content}
   </TileComponent>
