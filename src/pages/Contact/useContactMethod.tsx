@@ -11,7 +11,6 @@ const useContactMethods = (): ContactMethod[] => {
 
   return [
     {
-      // icon: 'question',
       key: 'CHECK_STATUS',
       extended: true,
       content: <CheckStatus />
@@ -46,7 +45,6 @@ const useContactMethods = (): ContactMethod[] => {
     },
 
     {
-      icon: 'receipt',
       key: 'DOWNLOAD_INVOICE',
       extended: true,
       content: <DownloadInvoice />

@@ -580,12 +580,13 @@ const pl = {
         title: 'Pobierz fakturę',
         result: {
           info: 'Faktura jest gotowa do pobrania',
-          followLink: 'Otwórz fakturę',
+          followLink: 'Przejdź do faktury',
           new: 'Sprawdź kolejną'
         },
         error: {
-          info: `Faktura dla podanego numeru referencyjnego nie została znaleziona. Sprawdź podany numer i spróbuj jeszcze raz. Możesz też skontaktować się z nami na ${phoneNumer}.`,
-          tryNew: 'Spróbuj jeszcze raz'
+          title: 'Faktura nie jest gotowa',
+          info: `Dla podanego numeru referencyjnego nie znaleźliśmy faktury. Sprawdź podany numer i spróbuj jeszcze raz.`,
+          new: 'Spróbuj ponownie'
         }
       },
 

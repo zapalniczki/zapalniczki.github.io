@@ -3,6 +3,7 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
+import TileHeading from '../TileHeading'
 
 type Props = {
   message: string
@@ -14,6 +15,12 @@ const Error = ({ message, setView }: Props) => {
 
   return (
     <ViewWrapper flexDirection="column">
+      <TileHeading
+        icon="times-circle"
+        status="NEGATIVE"
+        title={t('items.DOWNLOAD_INVOICE.error.title')}
+      />
+
       <Text type="body-2">{message}</Text>
 
       <Button
@@ -21,7 +28,7 @@ const Error = ({ message, setView }: Props) => {
         onClick={() => setView({ view: 'FORM' })}
         size="small"
       >
-        {t('items.CHECK_STATUS.error.tryNew')}
+        {t('items.DOWNLOAD_INVOICE.error.new')}
       </Button>
     </ViewWrapper>
   )

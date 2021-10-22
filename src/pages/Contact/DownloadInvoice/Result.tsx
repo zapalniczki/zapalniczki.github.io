@@ -1,8 +1,9 @@
-import { Button, Text, ExternalLink, Box } from 'components'
+import { Button, ExternalLink, Box } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
+import TileHeading from '../TileHeading'
 
 type Props = {
   setView: React.Dispatch<React.SetStateAction<View>>
@@ -14,9 +15,11 @@ const Result = ({ setView, url }: Props) => {
 
   return (
     <ViewWrapper flexDirection="column">
-      <Text marginBottom="m-size" type="body-2">
-        {t('items.DOWNLOAD_INVOICE.result.info')}
-      </Text>
+      <TileHeading
+        icon="check-circle"
+        status="POSITIVE"
+        title={t('items.DOWNLOAD_INVOICE.result.info')}
+      />
 
       <Box>
         <ExternalLink to={url}>
