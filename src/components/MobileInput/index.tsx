@@ -2,7 +2,7 @@ import { Flexbox, InputLabel } from 'components'
 import { FieldProps, useField } from 'formik'
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
-import styled from 'styled-components'
+import { useTheme } from 'styled-components'
 
 type Props = {
   autocomplete?: string
@@ -18,38 +18,43 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
   const { error, touched } = meta
   const { setValue } = helpers
 
+  const { colors } = useTheme()
+
   return (
     <Flexbox flexDirection="column">
-      {error ? (
+      {touched && error ? (
         <InputLabel error>{error}</InputLabel>
       ) : (
-        <InputLabel htmlFor={field.name}>{label}</InputLabel>
+        label && <InputLabel htmlFor={field.name}>{label}</InputLabel>
       )}
 
-      <StyledPhoneInput
+      <PhoneInput
         autocompleteSearch
+        buttonStyle={{
+          border: '1px solid',
+          borderColor: colors['border-color'],
+          cursor: 'default',
+          background: colors['background-color-02']
+        }}
         country="pl"
         countryCodeEditable={false}
         disableDropdown
         disabled={disabled}
         inputClass="input-form d-block"
-        isError={!!touched && !!error}
+        inputStyle={{
+          width: '100%',
+          border: '1px solid',
+          borderColor: colors['border-color']
+        }}
         masks={{ pl: '... .. .. ..' }}
+        onBlur={field.onBlur}
         onChange={(value) => setValue(value)}
+        onFocus={() => helpers.setTouched(true)}
         placeholder={placeholder}
         value={field.value ?? ''}
       />
     </Flexbox>
   )
 }
-
-type StyledPhoneInputProps = {
-  isError?: boolean
-}
-
-const StyledPhoneInput = styled(PhoneInput)<StyledPhoneInputProps>`
-  border: ${(props) => (props.isError ? '1px solid red' : '1px solid blue')};
-  width: 100%;
-`
 
 export default MobileInput

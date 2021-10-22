@@ -6,6 +6,8 @@ const colors = {
   'paragraph-color': '#4a4a4a',
   'heading-color': '#1a1a1a',
 
+  'background-color-02': '#f5f5f5',
+
   'border-color': 'rgb(225, 225, 225)',
   'border-color-focus': '#c5c5c5',
 
