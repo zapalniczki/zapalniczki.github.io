@@ -28,12 +28,11 @@ const Result = ({ setView, url }: Props) => {
       </Box>
 
       <Button
+        label={t('items.DOWNLOAD_INVOICE.result.new')}
         marginTop="m-size"
         onClick={() => setView({ view: 'FORM' })}
         size="small"
-      >
-        {t('items.DOWNLOAD_INVOICE.result.new')}
-      </Button>
+      />
     </ViewWrapper>
   )
 }

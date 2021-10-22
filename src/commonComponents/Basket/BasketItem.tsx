@@ -89,17 +89,15 @@ const BasketItem = ({ product: basketProduct }: Props) => {
               <SimpleButton
                 disabled={quantity === 1}
                 gridArea="button-minus"
+                icon="minus"
                 onClick={() => modifyQuantity(false)}
-              >
-                <FontAwesomeIcon icon="minus" size="1x" />
-              </SimpleButton>
+              />
 
               <SimpleButton
                 gridArea="button-plus"
+                icon="plus"
                 onClick={() => modifyQuantity(true)}
-              >
-                <FontAwesomeIcon icon="plus" size="1x" />
-              </SimpleButton>
+              />
 
               <Box
                 border="1px solid"
@@ -128,10 +126,9 @@ const BasketItem = ({ product: basketProduct }: Props) => {
 
               <SimpleButton
                 gridArea="button-remove"
+                icon="trash-alt"
                 onClick={() => modifyQuantity(undefined)}
-              >
-                <FontAwesomeIcon icon="trash-alt" size="1x" />
-              </SimpleButton>
+              />
             </>
           )
         }}

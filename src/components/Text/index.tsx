@@ -1,16 +1,17 @@
 import { Box } from 'components'
 import React, { ReactNode } from 'react'
-import styled, { useTheme } from 'styled-components'
-import { SpaceProps, TypographyProps } from 'styled-system'
+import styled, { css, useTheme } from 'styled-components'
+import { LayoutProps, SpaceProps, TypographyProps } from 'styled-system'
 
 type Props = {
   children: ReactNode
-  span?: boolean,
-  type: Type,
-  white?: boolean,
+  span?: boolean
+  type: Type
+  white?: boolean
   wrap?: boolean
 } & SpaceProps &
-  TypographyProps
+  TypographyProps &
+  LayoutProps
 
 const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
   const { fontSizes, fontWeigths, letterSpacings } = useTheme()
@@ -79,7 +80,16 @@ const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
 
 type ContainerProps = Pick<Props, 'wrap'>
 const Container = styled(Box)<ContainerProps>`
-  white-space: ${(props) => (props.wrap ? 'normal' : 'nowrap')};
+  ${(props) =>
+    props.wrap
+      ? css`
+          white-space: normal;
+        `
+      : css`
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        `}
 `
 
 type Type =

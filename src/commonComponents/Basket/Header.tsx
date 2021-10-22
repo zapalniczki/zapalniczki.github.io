@@ -5,7 +5,6 @@ import { useTranslation } from 'hooks'
 import { basketContext } from 'providers'
 import { basketToggleContext } from 'providers'
 import { checkoutContext } from 'providers'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = () => {
   const { t } = useTranslation('COMMON')
@@ -41,6 +40,7 @@ const Header = () => {
 
         {!!basketLength && (
           <Button
+            label={t('basket.clear')}
             marginRight="s-size"
             onClick={() => {
               clearBasket()
@@ -52,21 +52,16 @@ const Header = () => {
             size="small"
             type="button"
             variant="ternary"
-          >
-            {t('basket.clear')}
-          </Button>
+          />
         )}
 
         <Button
+          icon="times"
           onClick={closeBasket}
           size="small"
           type="button"
           variant="secondary"
-        >
-          <FontAwesomeIcon icon="times" />
-
-          {/* {t('basket.close')} */}
-        </Button>
+        />
       </Flexbox>
 
       <Separator marginX="s-size" marginY="0" width="auto" />

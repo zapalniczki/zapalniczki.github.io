@@ -42,9 +42,10 @@ const CallMeBack = (props: Props) => {
   if (view.view === 'ERROR') {
     content = (
       <Box>
-        <Button size="small">
-          {commonT('CALL_ME_BACK.ERROR.buttonLabel')}
-        </Button>
+        <Button
+          label={commonT('CALL_ME_BACK.ERROR.buttonLabel')}
+          size="small"
+        />
       </Box>
     )
     title = commonT('CALL_ME_BACK.ERROR.title')
@@ -52,7 +53,7 @@ const CallMeBack = (props: Props) => {
   }
 
   return (
-    <Banner horizonal small {...props}>
+    <Banner horizonal medium {...props}>
       <Flexbox
         flexDirection="column"
         height="100%"

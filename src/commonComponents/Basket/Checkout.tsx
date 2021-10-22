@@ -48,6 +48,7 @@ const Checkout = () => {
               </Flexbox>
 
               <Button
+                label={t('basket.backToShop')}
                 marginLeft="auto"
                 onClick={() => {
                   closeBasket()
@@ -55,12 +56,11 @@ const Checkout = () => {
                 }}
                 size="medium"
                 variant="secondary"
-              >
-                {t('basket.backToShop')}
-              </Button>
+              />
 
               <Button
                 disabled={!basketLength || pathname === '/checkout'}
+                label={t('basket.checkout')}
                 marginLeft="m-size"
                 onClick={() => {
                   setCheckout((prev) => ({
@@ -73,9 +73,7 @@ const Checkout = () => {
                   history.push(CHECKOUT_PRODUCTS)
                 }}
                 size="medium"
-              >
-                {t('basket.checkout')}
-              </Button>
+              />
             </Flexbox>
           </Flexbox>
         )

@@ -21,9 +21,12 @@ const Form = () => {
         </Field>
       </FieldWrapper>
 
-      <Button marginLeft="m-size" size="small" type="submit">
-        {commonT('CALL_ME_BACK.FORM.FORM.SUBMIT.label')}
-      </Button>
+      <Button
+        label={commonT('CALL_ME_BACK.FORM.FORM.SUBMIT.label')}
+        marginLeft="m-size"
+        size="small"
+        type="submit"
+      />
     </Flexbox>
   )
 }

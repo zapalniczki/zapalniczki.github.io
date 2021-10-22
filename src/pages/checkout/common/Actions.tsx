@@ -61,25 +61,25 @@ const Actions = () => {
       marginTop="3rem"
     >
       <Button
+        label={t(
+          isFirstPage ? 'checkoutActions.backToShop' : 'checkoutActions.back'
+        )}
         onClick={onClickPrevious}
         size="medium"
         type="button"
         variant="secondary"
-      >
-        {t(isFirstPage ? 'checkoutActions.backToShop' : 'checkoutActions.back')}
-      </Button>
+      />
 
       <Button
         disabled={isBasketEmpty}
         icon="arrow-right"
+        label={t(
+          current === 5 ? 'checkoutActions.createOrder' : 'checkoutActions.next'
+        )}
         onClick={onClickNext}
         size="medium"
         type={isFirstPage ? 'button' : 'submit'}
-      >
-        {t(
-          current === 5 ? 'checkoutActions.createOrder' : 'checkoutActions.next'
-        )}
-      </Button>
+      />
     </Flexbox>
   )
 }

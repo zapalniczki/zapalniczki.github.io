@@ -46,12 +46,11 @@ const Newsletter = () => {
     content = (
       <Box>
         <Button
+          label={commonT('NEWSLETTER.ERROR.tryAgain')}
           onClick={() => setView({ view: 'FORM' })}
           size="small"
           variant="primary"
-        >
-          {commonT('NEWSLETTER.ERROR.tryAgain')}
-        </Button>
+        />
       </Box>
     )
     title = commonT('NEWSLETTER.ERROR.title')

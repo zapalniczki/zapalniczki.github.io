@@ -1,7 +1,7 @@
-import { Box, Flexbox, ImageLoader, Text, Tile } from 'components'
+import { Flexbox, ImageLoader, Text, Tile } from 'components'
 import React, { useContext } from 'react'
 import { generatePath, Link } from 'react-router-dom'
-import styled, { css, useTheme } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { displayMoney, findCorrectProductImageSize } from 'utils'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,10 +15,10 @@ export type Props = {
 
 const ProductTile = ({ product }: Props) => {
   const viewProductPath = generatePath(VIEW_PRODUCT, { id: product.id })
-  const { colors } = useTheme()
 
   const { getProductFromBasket } = useContext(basketContext)
-  const isInBasket = !!getProductFromBasket(product.id)
+  const isBasket = getProductFromBasket(product.id)
+  const isInBasket = getProductFromBasket(product.id)
 
   const tileImage = findCorrectProductImageSize(product.images, 'TILE')
   const backImage = findCorrectProductImageSize(product.images, 'TILE_REVERSE')
@@ -34,26 +34,35 @@ const ProductTile = ({ product }: Props) => {
       <Flexbox
         backgroundColor="background-color"
         justifyContent="space-between"
+        overflow="hidden"
         padding="m-size"
         width="100%"
       >
-        <Flexbox flexDirection="column">
-          <Text fontWeight="bold" type="subtitle-1">
+        <Flexbox flexDirection="column" maxWidth="100%" width="100%">
+          <Text
+            fontWeight="bold"
+            maxWidth="100%"
+            type="subtitle-1"
+            width="100%"
+            wrap={false}
+          >
             {product.name}
           </Text>
 
-          <Text type="body-2">{displayMoney(product.price)}</Text>
-        </Flexbox>
+          <Flexbox justifyContent="space-between" width="100%">
+            <Text type="body-2">{displayMoney(product.price)}</Text>
 
-        {isInBasket && (
-          <Flexbox alignItems="center" justifyContent="center">
-            <FontAwesomeIcon icon="shopping-basket" size="1x" />
+            {isInBasket && (
+              <Flexbox alignItems="center">
+                <FontAwesomeIcon icon="shopping-basket" size="1x" />
 
-            <Box marginLeft="xxs-size">
-              <FontAwesomeIcon color={colors.green} icon="check" size="1x" />
-            </Box>
+                <Text marginLeft="xxs-size" type="body-2">
+                  {isBasket?.quantity}
+                </Text>
+              </Flexbox>
+            )}
           </Flexbox>
-        )}
+        </Flexbox>
       </Flexbox>
     </Container>
   )
@@ -88,6 +97,9 @@ const Container = styled(Tile)`
   text-decoration: none;
   border: 1px solid;
   border-color: ${getColor('border-color')};
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 
   ${imageHover}
 `

@@ -17,12 +17,11 @@ type Props = {
 const Modal = ({ children, isOpen, label, setIsOpen }: Props) => (
   <>
     <Button
+      label={label}
       onClick={() => setIsOpen((prev) => !prev)}
       size="small"
       variant="secondary"
-    >
-      {label}
-    </Button>
+    />
 
     <NativeModal isOpen={isOpen} style={customStyles}>
       {children}

@@ -27,12 +27,11 @@ const Result = ({ setView, status }: Props) => {
       </Text>
 
       <Button
+        label={t('items.CHECK_STATUS.result.tryNew')}
         marginTop="m-size"
         onClick={() => setView({ view: 'FORM' })}
         size="small"
-      >
-        {t('items.CHECK_STATUS.result.tryNew')}
-      </Button>
+      />
     </ViewWrapper>
   )
 }

@@ -24,12 +24,11 @@ const PageNotFound = () => {
         <h1>{t('title')}</h1>
 
         <Button
+          label={t('buttonLabel')}
           marginTop="3rem"
           onClick={() => history.push(HOME)}
           type="button"
-        >
-          {t('buttonLabel')}
-        </Button>
+        />
       </Flexbox>
     </Page>
   )

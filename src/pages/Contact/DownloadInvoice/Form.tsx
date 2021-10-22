@@ -25,9 +25,12 @@ const Form = () => {
           </Field>
         </FieldWrapper>
 
-        <Button marginLeft="m-size" size="small" type="submit">
-          {getInput('SUBMIT').label}
-        </Button>
+        <Button
+          label={getInput('SUBMIT').label}
+          marginLeft="m-size"
+          size="small"
+          type="submit"
+        />
       </Flexbox>
     </ViewWrapper>
   )

@@ -20,9 +20,12 @@ const Form = () => {
         </Field>
       </FieldWrapper>
 
-      <Button marginLeft="m-size" size="small" type="submit">
-        {commonT('NEWSLETTER.FORM.FORM.SUBMIT.label')}
-      </Button>
+      <Button
+        label={commonT('NEWSLETTER.FORM.FORM.SUBMIT.label')}
+        marginLeft="m-size"
+        size="small"
+        type="submit"
+      />
     </Flexbox>
   )
 }

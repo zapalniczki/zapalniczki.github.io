@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom'
 
 type Props = {
   link: {
-    label: string,
+    label: string
     to: string
-  },
+  }
   title: string
 }
 
@@ -15,15 +15,17 @@ const TitleAndLinkBanner = ({ link: { label, to }, title }: Props) => {
 
   return (
     <Banner
-        horizonal
-        marginTop="xxl-size"
-        small
-        title={<Heading level={5}>{title}</Heading>}
-      >
-        <Button icon="arrow-right" onClick={() => history.push(to)}>
-          {label}
-        </Button>
-      </Banner>
+      horizonal
+      marginTop="xxl-size"
+      small
+      title={<Heading level={5}>{title}</Heading>}
+    >
+      <Button
+        icon="arrow-right"
+        label={label}
+        onClick={() => history.push(to)}
+      />
+    </Banner>
   )
 }
 

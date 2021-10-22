@@ -24,12 +24,11 @@ const Error = ({ message, setView }: Props) => {
       <Text type="body-2">{message}</Text>
 
       <Button
+        label={t('items.DOWNLOAD_INVOICE.error.new')}
         marginTop="m-size"
         onClick={() => setView({ view: 'FORM' })}
         size="small"
-      >
-        {t('items.DOWNLOAD_INVOICE.error.new')}
-      </Button>
+      />
     </ViewWrapper>
   )
 }

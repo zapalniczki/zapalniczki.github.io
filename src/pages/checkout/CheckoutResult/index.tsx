@@ -59,20 +59,18 @@ const CheckoutResult = () => {
             width="100%"
           >
             <Button
+              label={t('actions.backToShop')}
               onClick={() => history.push(PRODUCTS)}
               size="medium"
               variant="primary"
-            >
-              {t('actions.backToShop')}
-            </Button>
+            />
 
             <Button
+              label={t('actions.backToHome')}
               onClick={() => history.push(HOME)}
               size="medium"
               variant="secondary"
-            >
-              {t('actions.backToHome')}
-            </Button>
+            />
           </Flexbox>
         </Tile>
       </Wrapper>

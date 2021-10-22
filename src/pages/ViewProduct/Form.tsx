@@ -26,14 +26,15 @@ const Form = ({ product }: Props) => {
       {() => (
         <FormikForm>
           <Button
+            label={
+              isInBasket
+                ? t('actions.removeFromBasket')
+                : t('actions.addToBasket')
+            }
             size="medium"
             type="submit"
             variant={isInBasket ? 'secondary' : 'primary'}
-          >
-            {isInBasket
-              ? t('actions.removeFromBasket')
-              : t('actions.addToBasket')}
-          </Button>
+          />
         </FormikForm>
       )}
     </Formik>
