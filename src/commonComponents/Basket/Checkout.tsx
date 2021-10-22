@@ -1,4 +1,11 @@
-import { Button, Flexbox, Heading, QueryLoader, Text } from 'components'
+import {
+  Button,
+  Flexbox,
+  Heading,
+  QueryLoader,
+  Separator,
+  Text
+} from 'components'
 
 import { displayMoney, calculateTotal } from 'utils'
 import { basketContext } from 'providers'
@@ -30,47 +37,46 @@ const Checkout = () => {
         )
 
         return (
-          <Flexbox
-            alignItems="center"
-            background="white"
-            padding="m-size"
-            width="100%"
-          >
-            <Flexbox flexDirection="column">
-              <Text type="caption">{t('basket.total')}</Text>
+          <Flexbox background="white" flexDirection="column">
+            <Separator marginX="s-size" marginY="0" width="auto" />
 
-              <Heading level={5}>{displayMoney(total)}</Heading>
+            <Flexbox alignItems="center" padding="m-size" width="100%">
+              <Flexbox flexDirection="column">
+                <Text type="caption">{t('basket.total')}</Text>
+
+                <Heading level={5}>{displayMoney(total)}</Heading>
+              </Flexbox>
+
+              <Button
+                marginLeft="auto"
+                onClick={() => {
+                  closeBasket()
+                  history.push(PRODUCTS)
+                }}
+                size="medium"
+                variant="secondary"
+              >
+                {t('basket.backToShop')}
+              </Button>
+
+              <Button
+                disabled={!basketLength || pathname === '/checkout'}
+                marginLeft="m-size"
+                onClick={() => {
+                  setCheckout((prev) => ({
+                    ...prev,
+                    total: total,
+                    products: basket
+                  }))
+
+                  closeBasket()
+                  history.push(CHECKOUT_PRODUCTS)
+                }}
+                size="medium"
+              >
+                {t('basket.checkout')}
+              </Button>
             </Flexbox>
-
-            <Button
-              marginLeft="auto"
-              onClick={() => {
-                closeBasket()
-                history.push(PRODUCTS)
-              }}
-              size="medium"
-              variant="secondary"
-            >
-              {t('basket.backToShop')}
-            </Button>
-
-            <Button
-              disabled={!basketLength || pathname === '/checkout'}
-              marginLeft="m-size"
-              onClick={() => {
-                setCheckout((prev) => ({
-                  ...prev,
-                  total: total,
-                  products: basket
-                }))
-
-                closeBasket()
-                history.push(CHECKOUT_PRODUCTS)
-              }}
-              size="medium"
-            >
-              {t('basket.checkout')}
-            </Button>
           </Flexbox>
         )
       }}

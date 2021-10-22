@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
-import { Flexbox, Button, Text } from 'components'
+import { Flexbox, Button, Text, Separator } from 'components'
 import { useTranslation } from 'hooks'
 
 import { basketContext } from 'providers'
 import { basketToggleContext } from 'providers'
 import { checkoutContext } from 'providers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = () => {
   const { t } = useTranslation('COMMON')
@@ -13,7 +14,6 @@ const Header = () => {
   const { setCheckout } = useContext(checkoutContext)
 
   let countName = 'basket.products'
-
   if (basketLength > 4) {
     countName = 'basket.products_multiple'
   } else if (basketLength > 1) {
@@ -22,49 +22,54 @@ const Header = () => {
 
   return (
     <Flexbox
-      alignItems="center"
       backgroundColor="white"
-      padding="m-size"
-      width="100%"
       // TODO Which this is not accepted? zIndex="basket"
+      flexDirection="column"
+      width="100%"
       zIndex={60}
     >
-      <Text marginRight="auto" type="subtitle-1">
-        {t('basket.title')}
+      <Flexbox alignItems="center" padding="m-size">
+        <Text marginRight="auto" type="subtitle-1">
+          {t('basket.title')}
+
+          {!!basketLength && (
+            <Text marginLeft="s-size" span type="caption">
+              {t(countName, { count: basketLength })}
+            </Text>
+          )}
+        </Text>
 
         {!!basketLength && (
-          <Text marginLeft="s-size" span type="caption">
-            {t(countName, { count: basketLength })}
-          </Text>
+          <Button
+            marginRight="s-size"
+            onClick={() => {
+              clearBasket()
+              setCheckout((prev) => ({
+                ...prev,
+                total: 0
+              }))
+            }}
+            size="small"
+            type="button"
+            variant="ternary"
+          >
+            {t('basket.clear')}
+          </Button>
         )}
-      </Text>
 
-      {!!basketLength && (
         <Button
-          marginRight="s-size"
-          onClick={() => {
-            clearBasket()
-            setCheckout((prev) => ({
-              ...prev,
-              total: 0
-            }))
-          }}
-          size="medium"
+          onClick={closeBasket}
+          size="small"
           type="button"
           variant="secondary"
         >
-          {t('basket.clear')}
-        </Button>
-      )}
+          <FontAwesomeIcon icon="times" />
 
-      <Button
-        onClick={closeBasket}
-        size="medium"
-        type="button"
-        variant="secondary"
-      >
-        {t('basket.close')}
-      </Button>
+          {/* {t('basket.close')} */}
+        </Button>
+      </Flexbox>
+
+      <Separator marginX="s-size" marginY="0" width="auto" />
     </Flexbox>
   )
 }

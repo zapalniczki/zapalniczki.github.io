@@ -26,6 +26,7 @@ import { useGetProduct } from 'api'
 import add from 'lodash.add'
 import { checkoutContext } from 'providers'
 import subtract from 'lodash.subtract'
+import getSpace from 'styles/getSpace'
 
 type Props = {
   product: BasketItemType
@@ -129,7 +130,7 @@ const BasketItem = ({ product: basketProduct }: Props) => {
                 gridArea="button-remove"
                 onClick={() => modifyQuantity(undefined)}
               >
-                <FontAwesomeIcon icon="times" size="1x" />
+                <FontAwesomeIcon icon="trash-alt" size="1x" />
               </SimpleButton>
             </>
           )
@@ -149,14 +150,13 @@ const findBasketItem = (basket: BasketItemType[], product: BasketItemType) => {
 }
 
 const Container = styled(Tile)`
-  padding: ${(props) => props.theme.space['s-size']};
-  min-height: 11.6rem;
-  display: flex;
+  padding: ${getSpace('s-size')};
+  min-height: 12rem;
   align-items: center;
   /* @include bezier-transition(); */
   /* animation: slide-up 0.5s ease; */
   width: 100%;
-  margin-bottom: ${(props) => props.theme.space['m-size']};
+  margin-bottom: ${getSpace('m-size')};
   display: grid;
   grid-template-columns: max-content 9rem auto max-content;
   grid-template-rows: repeat(2, 4.6rem);
