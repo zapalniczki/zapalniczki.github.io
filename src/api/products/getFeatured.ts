@@ -16,12 +16,14 @@ const getFeatured = async () => {
     collection_id,
     visible,
     featured,
+    created_at,
     ${IMAGES_TABLE} (
       *
     )
     `
     )
-    .eq('featured', true)
+    .order('created_at', { ascending: false })
+    .limit(3)
 
   const data = parseApiResponse(array(getFeaturedResponseItem), response)
 
