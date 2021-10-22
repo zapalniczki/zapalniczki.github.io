@@ -357,7 +357,7 @@ const pl = {
   },
 
   CHECKOUT_RESULT: {
-    title: 'Dziękujemy za złożenie zamówienia',
+    title: 'Zamówienie zostało złożone',
     orderId: 'Numer referencyjny zamówienia to:',
     PAYMENT_INFO: {
       short:

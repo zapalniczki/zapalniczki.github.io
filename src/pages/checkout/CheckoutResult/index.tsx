@@ -6,7 +6,7 @@ import { Redirect, useHistory, useLocation } from 'react-router-dom'
 import { useScrollTop, useTabTitle } from 'hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'
-import { StepTitle, Wrapper } from '../common'
+import { Wrapper } from '../common'
 import { CheckoutResultLocationState } from '../CheckoutPayment/useForm'
 
 const CheckoutResult = () => {
@@ -27,39 +27,50 @@ const CheckoutResult = () => {
     <Page>
       <Wrapper>
         <Tile alignItems="center">
-          <Flexbox justifyContent="center" marginBottom="l-size">
+          <Flexbox
+            alignItems="center"
+            justifyContent="center"
+            marginBottom="l-size"
+            marginTop="xl-size"
+          >
             <FontAwesomeIcon
               color={colors.green}
               icon="check-circle"
-              size="5x"
+              size="7x"
             />
           </Flexbox>
 
-          <StepTitle>{t('title')}</StepTitle>
-
-          <Text marginTop="l-size" type="body-2">
-            {t('orderId')}
-          </Text>
+          <Heading color="green" fontWeight="bold" level={5}>
+            {t('title')}
+          </Heading>
 
           <Heading level={5} marginTop="l-size">
             {state.orderID}
           </Heading>
 
-          <Text marginTop="l-size" type="body-1">
+          <Text marginTop="l-size" type="body-2">
             {t(`PAYMENT_INFO.${state.productionTime.toLowerCase()}`)}
           </Text>
 
           <Flexbox
             flexDirection="row-reverse"
             justifyContent="space-between"
-            marginTop="xl-size"
+            marginTop="l-size"
             width="100%"
           >
-            <Button onClick={() => history.push(PRODUCTS)} variant="primary">
+            <Button
+              onClick={() => history.push(PRODUCTS)}
+              size="medium"
+              variant="primary"
+            >
               {t('actions.backToShop')}
             </Button>
 
-            <Button onClick={() => history.push(HOME)} variant="secondary">
+            <Button
+              onClick={() => history.push(HOME)}
+              size="medium"
+              variant="secondary"
+            >
               {t('actions.backToHome')}
             </Button>
           </Flexbox>
