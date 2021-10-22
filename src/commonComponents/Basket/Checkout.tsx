@@ -38,6 +38,7 @@ const Checkout = () => {
           >
             <Flexbox flexDirection="column">
               <Text type="caption">{t('basket.total')}</Text>
+
               <Heading level={5}>{displayMoney(total)}</Heading>
             </Flexbox>
 

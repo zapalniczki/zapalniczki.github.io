@@ -11,6 +11,7 @@ type Props = {
 const ListItem = ({ children, ...props }: Props) => (
   <Container {...props}>
     <Triangle />
+
     <Heading level={6} marginLeft="m-size">
       {children}
     </Heading>

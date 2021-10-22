@@ -54,6 +54,7 @@ const ProductsGrid = ({
         return (
           <Flexbox as="section" flexDirection="column" {...props}>
             <SectionHead link={link} title={title} />
+
             {filteredProducts.length === 0 && (
               <Flexbox
                 alignItems="center"

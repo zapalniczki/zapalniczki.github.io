@@ -10,6 +10,7 @@ const Features = () => {
   return (
     <>
       <SectionHead marginTop="xxl-size" title={commonT('features.title')} />
+
       <Grid>
         {features.map((feature) => (
           <FeatureItem

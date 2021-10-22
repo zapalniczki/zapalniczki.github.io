@@ -32,6 +32,7 @@ const CheckoutPayment = () => {
 
       <Wrapper>
         <StepTitle>{t('title')}</StepTitle>
+
         <QueryLoader query={paymentTypesQuery}>
           {(paymentTypes) => (
             <Formik
@@ -43,7 +44,9 @@ const CheckoutPayment = () => {
               {({ handleSubmit }) => (
                 <FormikForm onSubmit={handleSubmit}>
                   <Form paymentTypes={paymentTypes} />
+
                   <Total />
+
                   <Actions />
                 </FormikForm>
               )}

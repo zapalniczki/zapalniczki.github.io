@@ -68,6 +68,7 @@ const Actions = () => {
       >
         {t(isFirstPage ? 'checkoutActions.backToShop' : 'checkoutActions.back')}
       </Button>
+
       <Button
         disabled={isBasketEmpty}
         icon="arrow-right"

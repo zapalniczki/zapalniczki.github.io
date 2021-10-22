@@ -41,7 +41,7 @@ const CheckoutShipping = () => {
           validateOnChange
           validationSchema={schema}
         >
-          {({ handleSubmit, initialValues, setFieldValue, values }) => (
+          {({ handleSubmit, initialValues, setFieldValue }) => (
             <>
               <Switch
                 checked={!sameAddressAsInvoice}
@@ -64,6 +64,7 @@ const CheckoutShipping = () => {
 
               <FormikForm onSubmit={handleSubmit}>
                 {!sameAddressAsInvoice && <Form />}
+
                 <Actions />
               </FormikForm>
             </>

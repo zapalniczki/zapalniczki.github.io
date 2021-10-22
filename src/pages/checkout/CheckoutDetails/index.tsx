@@ -54,13 +54,13 @@ const CheckoutDetails = () => {
 
                   if (checked) {
                     setFieldValue('nip', '')
-                    console.log(checked)
                   }
                 }}
               />
 
               <FormikForm onSubmit={handleSubmit}>
                 <Form isCompany={isCompany} />
+
                 <Actions />
               </FormikForm>
             </>

@@ -10,6 +10,7 @@ export const history = createBrowserHistory()
 const AppRouter = () => (
   <Router history={history}>
     <Navigation />
+
     <Basket />
 
     <Suspense fallback={<p>...</p>}>

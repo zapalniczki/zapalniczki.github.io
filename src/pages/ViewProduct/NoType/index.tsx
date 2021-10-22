@@ -25,6 +25,7 @@ const Form = ({ product }: Props) => {
       {() => (
         <FormikForm>
           <SubmitButton isInBasket={isInBasket} />
+
           <AvilabilityIndicator status={product.mold.status} />
         </FormikForm>
       )}

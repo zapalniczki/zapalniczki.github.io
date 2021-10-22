@@ -13,6 +13,7 @@ const DisplayDate = ({ children, displayDiff = true }: Props) => {
   return (
     <>
       {formatDate(children)}
+
       {displayDiff ? diffString : ''}
     </>
   )

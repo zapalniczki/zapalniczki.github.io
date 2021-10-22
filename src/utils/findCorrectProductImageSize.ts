@@ -18,6 +18,7 @@ const findCorrectProductImageSize = (images: Image[], size: Size) => {
 
 const getPlaceholder = (size: Size) => {
   switch (size) {
+    default:
     case 'TILE':
       return tile
 

@@ -27,6 +27,7 @@ const ProductTile = ({ product }: Props) => {
     <Container as={Link} max-height="30rem" to={viewProductPath}>
       <ImageWrapper>
         <ImageLoader alt="" src={tileImage} />
+
         <ImageLoader alt="" src={backImage} />
       </ImageWrapper>
 

@@ -23,6 +23,7 @@ const useContactMethods = (): ContactMethod[] => {
       content: (
         <>
           <Text type="body-2">{t('items.EMAIL.info')}</Text>
+
           <Text marginTop="s-size" type="subtitle-2">
             {t('items.EMAIL.email')}
           </Text>
@@ -36,6 +37,7 @@ const useContactMethods = (): ContactMethod[] => {
       content: (
         <>
           <Text type="body-2">{t('items.PHONE.info')}</Text>
+
           <Text marginTop="s-size" type="subtitle-2">
             {t('items.PHONE.mobile')}
           </Text>
@@ -60,12 +62,15 @@ const useContactMethods = (): ContactMethod[] => {
           <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
             {t('items.ADDRESS.address1')}
           </Text>
+
           <Text lineHeight="1.21" type="subtitle-2">
             {t('items.ADDRESS.address2')}
           </Text>
+
           <Text lineHeight="1.21" type="subtitle-2">
             {t('items.ADDRESS.address3')}
           </Text>
+
           <Text lineHeight="1.21" type="subtitle-2">
             {t('items.ADDRESS.address4')}
           </Text>
@@ -87,6 +92,7 @@ const useContactMethods = (): ContactMethod[] => {
           <Text marginTop="s-size" type="body-2">
             {t('items.ACCOUNT.info2')}
           </Text>
+
           <Text type="body-2">{t('items.ACCOUNT.info3')}</Text>
         </>
       )

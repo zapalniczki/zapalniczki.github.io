@@ -119,6 +119,7 @@ render(
                 <BasketToggleProvider>
                   <LoaderProvider>
                     <GlobalStyle />
+
                     <App />
                   </LoaderProvider>
                 </BasketToggleProvider>

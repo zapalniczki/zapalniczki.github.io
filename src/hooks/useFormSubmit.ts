@@ -30,7 +30,7 @@ const useFormSubmit = <T, TFormValues>(
 
       hide()
 
-      return
+      return undefined
     }
   }
 }

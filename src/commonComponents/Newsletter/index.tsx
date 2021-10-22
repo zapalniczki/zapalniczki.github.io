@@ -27,6 +27,7 @@ const Newsletter = () => {
           <FormikForm onSubmit={handleSubmit} style={{ width: '100%' }}>
             <Form />
           </FormikForm>
+
           <Text marginTop="xxs-size" type="caption">
             {commonT('NEWSLETTER.FORM.info')}
           </Text>

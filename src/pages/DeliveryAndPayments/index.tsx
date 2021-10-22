@@ -36,6 +36,7 @@ const DeliveryAndPayments = () => {
       />
 
       <SectionHead marginTop="xxl-size" title={t('processingTime.title')} />
+
       <Grid gridTemplateColumns="1fr 5rem 1fr 5rem 1fr">
         <Option
           description={t('processingTime.items.PRODUCTION.description')}
@@ -64,6 +65,7 @@ const DeliveryAndPayments = () => {
       </Grid>
 
       <SectionHead marginTop="xxl-size" title={t('payments.title')} />
+
       <QueryLoader query={paymentTypesQuery}>
         {(paymentTypes) => (
           <Grid>
@@ -82,6 +84,7 @@ const DeliveryAndPayments = () => {
       </QueryLoader>
 
       <SectionHead marginTop="xxl-size" title={t('delivery.title')} />
+
       <QueryLoader query={deliveryTypesQuery}>
         {(deliveryTypes) => (
           <Grid>

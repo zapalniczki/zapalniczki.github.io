@@ -44,6 +44,7 @@ const CheckoutProducts = () => {
         </Flexbox>
 
         {!isBasketEmpty && <Total />}
+
         <Actions />
       </Wrapper>
     </Page>

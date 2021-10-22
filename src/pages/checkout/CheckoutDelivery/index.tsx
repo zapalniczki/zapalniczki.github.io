@@ -33,6 +33,7 @@ const CheckoutDelivery = () => {
 
       <Wrapper>
         <StepTitle>{t('title')}</StepTitle>
+
         <QueryLoader query={deliveryTypesQuery}>
           {(deliveryTypes) => (
             <Formik

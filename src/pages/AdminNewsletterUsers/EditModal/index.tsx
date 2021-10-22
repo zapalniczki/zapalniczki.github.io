@@ -77,6 +77,7 @@ const EditModal = ({ consent, id }: Props) => {
       <ModalHeader onClick={() => onClose()}>
         {t('EDIT_MODAL.title')}
       </ModalHeader>
+
       {content}
     </Modal>
   )

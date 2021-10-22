@@ -20,6 +20,7 @@ const Info = ({ product }: Props) => {
 
       <Flexbox>
         <Text type="caption">{t('color')}</Text>
+
         <Text marginLeft="s-size" type="subtitle-2">
           {t('colorValueTODO')}
         </Text>
@@ -27,6 +28,7 @@ const Info = ({ product }: Props) => {
 
       <Flexbox>
         <Text type="caption">{t('label')}</Text>
+
         <Text marginLeft="s-size" type="subtitle-2">
           {product.label.label}
         </Text>
@@ -34,6 +36,7 @@ const Info = ({ product }: Props) => {
 
       <Flexbox>
         <Text type="caption">{t('icon')}</Text>
+
         <Text marginLeft="s-size" type="subtitle-2">
           {product.icon.label}
         </Text>
@@ -46,6 +49,7 @@ const Info = ({ product }: Props) => {
       <Separator />
 
       <Heading level={5}>{displayMoney(product.price)}</Heading>
+
       <Text type="caption">{t('priceSubtitle')}</Text>
 
       <Separator />

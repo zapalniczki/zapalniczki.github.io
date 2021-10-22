@@ -25,7 +25,17 @@
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-unused-vars": 2,
 
+    "no-mixed-spaces-and-tabs": 2,
+    "consistent-return": 1,
+    "array-callback-return": 2,
+    "prefer-promise-reject-errors": 2,
+    "callback-return": 2,
+    "prefer-arrow-callback": 1,
+
+    "no-useless-rename": 2,
+    "no-console": 2,
     "arrow-body-style": 2,
     "newline-before-return": 2,
     "no-else-return": 2,
@@ -45,8 +55,8 @@
         ]
       }
     ],
-    "no-useless-rename": 2,
 
+    "react/jsx-newline": 2,
     "react/jsx-boolean-value": 2,
     "react/jsx-key": 2,
     "react/jsx-no-duplicate-props": 2,

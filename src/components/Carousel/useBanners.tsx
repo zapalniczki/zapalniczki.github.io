@@ -34,6 +34,7 @@ const getBanners = (
         <Heading level={3} textAlign="center">
           <strong>Twoje</strong>
           &nbsp;miejsce w&nbsp;
+
           <strong>Twoim</strong>
           &nbsp;punkcie
         </Heading>

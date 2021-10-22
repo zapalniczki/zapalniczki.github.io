@@ -20,6 +20,7 @@ const ModalResult = (props: Props) => {
     <>
       <ModalContent alignItems="center" justifyContent="center">
         <ResultIcon variant={props.variant} />
+
         <Heading level={5} marginTop="s-size">
           {commonT(`MODAL.${props.variant}.title`)}
         </Heading>

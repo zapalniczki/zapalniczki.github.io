@@ -23,6 +23,7 @@ const Modal = ({ children, isOpen, label, setIsOpen }: Props) => (
     >
       {label}
     </Button>
+
     <NativeModal isOpen={isOpen} style={customStyles}>
       {children}
     </NativeModal>

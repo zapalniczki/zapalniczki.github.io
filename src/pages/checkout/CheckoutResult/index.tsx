@@ -62,6 +62,7 @@ const CheckoutResult = () => {
             <Button onClick={() => history.push(PRODUCTS)} variant="primary">
               {t('actions.backToShop')}
             </Button>
+
             <Button onClick={() => history.push(HOME)} variant="secondary">
               {t('actions.backToHome')}
             </Button>

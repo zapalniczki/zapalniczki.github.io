@@ -49,6 +49,7 @@ const List = () => {
       <Heading level={4} marginBottom="s-size">
         {t('LIST.title')}
       </Heading>
+
       <QueryLoader query={adminNewsletterUsersQuery}>
         {(users) => {
           const shappedData = shapeData(users)

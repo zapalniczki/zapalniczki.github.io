@@ -29,11 +29,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames
           .filter((cacheName) => !validCacheSet.has(cacheName))
-          .map((cacheName) => {
-            console.log('deleting cache', cacheName)
-
-            return caches.delete(cacheName)
-          })
+          .map((cacheName) => caches.delete(cacheName))
       )
     })
   )

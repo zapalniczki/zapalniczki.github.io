@@ -28,6 +28,7 @@ const Total = ({ customDelivery, customProducts }: Props) => {
             <td>
               <span>{t('checkoutTotal.products')}</span>
             </td>
+
             <td>
               <Box as="h4" margin="0" marginLeft="m-size">
                 {displayMoney(products)}
@@ -39,6 +40,7 @@ const Total = ({ customDelivery, customProducts }: Props) => {
             <td>
               <span>{t('checkoutTotal.delivery')}</span>
             </td>
+
             <td>
               <Box as="h4" margin="0" marginLeft="m-size">
                 {displayMoney(delivery)}
@@ -50,6 +52,7 @@ const Total = ({ customDelivery, customProducts }: Props) => {
             <td>
               <span>{t('checkoutTotal.sum')}</span>
             </td>
+
             <td>
               <Box as="h3" margin="0" marginLeft="m-size">
                 {displayMoney(sum)}
