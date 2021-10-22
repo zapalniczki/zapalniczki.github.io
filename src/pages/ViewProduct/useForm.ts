@@ -1,6 +1,5 @@
 import { basketContext } from 'providers'
 import { useContext } from 'react'
-import { string, object } from 'yup'
 
 import { GetProductResponse } from 'models'
 import { checkoutContext } from 'providers'
@@ -12,10 +11,6 @@ const useForm = (product: GetProductResponse) => {
   const { setCheckout } = useContext(checkoutContext)
 
   const initialValues = {}
-
-  const schema = object({
-    variant: string()
-  })
 
   const submitForm = () => {
     const basketItem = getProductFromBasket(product.id)
@@ -44,7 +39,6 @@ const useForm = (product: GetProductResponse) => {
 
   return {
     initialValues,
-    schema,
     submitForm
   }
 }

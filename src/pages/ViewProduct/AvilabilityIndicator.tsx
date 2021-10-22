@@ -4,6 +4,7 @@ import { useTranslation } from 'hooks'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
 import { MoldStatus } from 'models'
+import getSpace from 'styles/getSpace'
 
 type Props = {
   status: MoldStatus
@@ -13,7 +14,7 @@ const AvilabilityIndicator = ({ status }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   return (
-    <Flexbox alignItems="center" marginTop="s-size">
+    <Flexbox alignItems="center">
       <Dot status={status} />
 
       <Text marginLeft="s-size" type="caption">
@@ -25,13 +26,13 @@ const AvilabilityIndicator = ({ status }: Props) => {
 
 type DotProps = { status: MoldStatus }
 const Dot = styled.div<DotProps>`
-  width: ${(props) => props.theme.space['m-size']};
-  height: ${(props) => props.theme.space['m-size']};
+  width: ${getSpace('m-size')};
+  height: ${getSpace('m-size')};
   background: ${(props) => {
     if (props.status === 'UNDONE') {
-      return getColor('red')(props)
-    } else if (props.status === 'IN_PROGRESS') {
       return getColor('yellow')(props)
+    } else if (props.status === 'IN_PROGRESS') {
+      return getColor('gray-01')(props)
     }
 
     return getColor('green')(props)

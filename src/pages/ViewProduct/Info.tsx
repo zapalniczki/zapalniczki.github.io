@@ -2,8 +2,9 @@ import { GetProductResponse } from 'models'
 import { Flexbox, Heading, Separator, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { displayMoney } from 'utils'
-import NoTypeForm from './NoType'
+import { displayMoney, removeSeparatorsFromLabel } from 'utils'
+import Form from './Form'
+import AvilabilityIndicator from './AvilabilityIndicator'
 
 type Props = {
   product: GetProductResponse
@@ -30,7 +31,7 @@ const Info = ({ product }: Props) => {
         <Text type="caption">{t('label')}</Text>
 
         <Text marginLeft="s-size" type="subtitle-2">
-          {product.label.label}
+          {removeSeparatorsFromLabel(product.label.label)}
         </Text>
       </Flexbox>
 
@@ -44,7 +45,11 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Text type="body-2">{product.description}</Text>
+      <Text marginBottom="m-size" type="body-2">
+        {product.description}
+      </Text>
+
+      <AvilabilityIndicator status={product.mold.status} />
 
       <Separator />
 
@@ -54,7 +59,7 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <NoTypeForm product={product} />
+      <Form product={product} />
     </Flexbox>
   )
 }

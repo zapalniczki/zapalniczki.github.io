@@ -404,8 +404,8 @@ const pl = {
     priceSubtitle: 'Cena za 50 sztuk - zawiera VAT',
     avilability: {
       DONE: 'Produkt łatwo dostępny',
-      IN_PROGRESS: 'Produkt średnio dostępny',
-      UNDONE: 'Minimalny czas realizacji to 7 dni'
+      IN_PROGRESS: 'Produkt dostępny',
+      UNDONE: 'Produkt średnio dostępny'
     },
 
     actions: {
