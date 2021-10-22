@@ -46,10 +46,6 @@ const CheckoutResult = () => {
           </Heading>
 
           <Text marginTop="l-size" type="body-1">
-            {t('info')}
-          </Text>
-
-          <Text marginTop="l-size" type="body-1">
             {t(`PAYMENT_INFO.${state.productionTime.toLowerCase()}`)}
           </Text>
 

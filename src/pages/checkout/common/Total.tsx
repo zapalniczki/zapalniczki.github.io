@@ -1,4 +1,4 @@
-import { Box, Flexbox } from 'components'
+import { Box, Flexbox, Text } from 'components'
 import { displayMoney } from 'utils'
 import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
@@ -26,37 +26,42 @@ const Total = ({ customDelivery, customProducts }: Props) => {
         <tbody>
           <tr>
             <td>
-              <span>{t('checkoutTotal.products')}</span>
+              <Text type="caption">{t('checkoutTotal.products')}</Text>
             </td>
 
             <td>
-              <Box as="h4" margin="0" marginLeft="m-size">
+              <Text marginLeft="auto" textAlign="right" type="body-2">
                 {displayMoney(products)}
-              </Box>
+              </Text>
             </td>
           </tr>
 
           <tr>
             <td>
-              <span>{t('checkoutTotal.delivery')}</span>
+              <Text type="caption">{t('checkoutTotal.delivery')}</Text>
             </td>
 
             <td>
-              <Box as="h4" margin="0" marginLeft="m-size">
+              <Text marginLeft="auto" textAlign="right" type="body-2">
                 {displayMoney(delivery)}
-              </Box>
+              </Text>
             </td>
           </tr>
 
           <tr>
             <td>
-              <span>{t('checkoutTotal.sum')}</span>
+              <Text type="caption">{t('checkoutTotal.sum')}</Text>
             </td>
 
             <td>
-              <Box as="h3" margin="0" marginLeft="m-size">
+              <Text
+                fontWeight="bold"
+                marginLeft="auto"
+                textAlign="right"
+                type="body-1"
+              >
                 {displayMoney(sum)}
-              </Box>
+              </Text>
             </td>
           </tr>
         </tbody>

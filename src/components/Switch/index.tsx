@@ -45,7 +45,7 @@ const Switch = ({
   }
 
   return (
-    <Flexbox {...props} alignItems="center">
+    <Flexbox as="label" {...props} alignItems="center">
       {label && (
         <Text
           marginLeft={props.flexDirection !== 'row-reverse' ? 0 : 'm-size'}

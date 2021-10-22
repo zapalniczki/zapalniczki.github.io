@@ -1,7 +1,6 @@
 import { StyledInput, Text, Flexbox, InputLabel } from 'components'
 import { FieldProps } from 'formik'
 import React from 'react'
-import styled from 'styled-components'
 
 type Props = FieldProps & {
   id: string
@@ -33,7 +32,7 @@ const CheckboxField = ({
       </Flexbox>
     )}
 
-    <Container
+    <Flexbox
       alignItems="center"
       backgroundColor="background-color-01"
       marginBottom="m-size"
@@ -64,14 +63,8 @@ const CheckboxField = ({
           </Text>
         )}
       </Flexbox>
-    </Container>
+    </Flexbox>
   </>
 )
-
-const Container = styled(Flexbox)`
-  label {
-    cursor: pointer;
-  }
-`
 
 export default CheckboxField

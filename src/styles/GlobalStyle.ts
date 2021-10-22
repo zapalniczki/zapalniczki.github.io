@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+label {
+  cursor: pointer;
+}
+
 html {
   font-size: 0.625em;
 }

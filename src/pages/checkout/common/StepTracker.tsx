@@ -12,6 +12,7 @@ import { useTranslation } from 'hooks'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
+import getSpace from 'styles/getSpace'
 
 const StepTracker = () => {
   const { t } = useTranslation('COMMON')
@@ -63,12 +64,12 @@ const Wrapper = styled.ul`
   :before {
     content: '';
     position: absolute;
-    top: 15px;
+    top: 1.5rem;
     left: 0;
     right: 0;
     margin: auto;
-    width: 85%;
-    height: 3px;
+    width: 75%;
+    height: 2px;
     background: ${(props) =>
       `${changeColorAlpha(getColor('border-color')(props), 0.6)}`};
   }
@@ -112,32 +113,25 @@ type StepIconProps = {
 
 const StepIcon = styled.h4<StepIconProps>`
   margin: 0;
-  padding: ${(props) => props.theme.space['m-size']};
-  background: ${(props) => {
-    if (props.done) {
-      return getColor('green')(props)
-    } else if (props.selected) {
-      return getColor('gray-10')(props)
-    }
-
-    return getColor('background-color')(props)
-  }};
+  padding: ${getSpace('m-size')};
+  background: ${getColor('background-color')};
   border-radius: 50%;
   width: 3px;
   height: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${(props) => {
-    if (props.done || props.selected) {
-      return getColor('white')(props)
+  color: ${getColor('black')};
+  border: 1px solid;
+  border-color: ${(props) => {
+    if (props.done) {
+      return getColor('green')(props)
+    } else if (props.selected) {
+      return undefined
     }
 
-    return getColor('black')(props)
+    return getColor('border-color')(props)
   }};
-  border: 1px solid;
-  border-color: ${(props) =>
-    !props.done && !props.selected && getColor('gray-10')(props)};
 `
 
 export default StepTracker
