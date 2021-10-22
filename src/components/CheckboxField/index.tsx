@@ -1,4 +1,4 @@
-import { StyledInput, Flexbox, Box, InputLabel } from 'components'
+import { StyledInput, Text, Flexbox, InputLabel } from 'components'
 import { FieldProps } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
@@ -34,9 +34,9 @@ const CheckboxField = ({
     )}
 
     <Container
+      alignItems="center"
       backgroundColor="background-color-01"
       marginBottom="m-size"
-      padding="s-size"
       position="relative"
     >
       <StyledInput
@@ -49,31 +49,29 @@ const CheckboxField = ({
         value={id}
       />
 
-      <Flexbox
-        as="label"
-        htmlFor={id}
-        justifyContent="space-between"
-        padding="0"
-        width="100%"
-      >
-        <Flexbox alignItems="center" as="h4" marginRight="auto">
-          {title}
+      <Flexbox as="label" htmlFor={id} padding="m-size" width="100%">
+        <Text type="body-2">{title}</Text>
 
-          {subtitle && (
-            <Box as="span" fontStyle="italic" marginLeft="s-size">
-              {subtitle}
-            </Box>
-          )}
-        </Flexbox>
+        {subtitle && (
+          <Text marginLeft="s-size" type="caption">
+            {subtitle}
+          </Text>
+        )}
 
-        {val && <h4>{val}</h4>}
+        {val && (
+          <Text marginLeft="auto" type="body-1">
+            {val}
+          </Text>
+        )}
       </Flexbox>
     </Container>
   </>
 )
 
 const Container = styled(Flexbox)`
-  cursor: pointer;
+  label {
+    cursor: pointer;
+  }
 `
 
 export default CheckboxField

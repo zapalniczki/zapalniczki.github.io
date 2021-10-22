@@ -99,7 +99,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     display: block;
     position: absolute;
     top: 0;
-    left: 2.2rem;
+    left: 2.6rem;
     bottom: 0;
     margin: auto;
     width: 3px;
@@ -120,8 +120,8 @@ export const StyledInput = styled.input<StyledInputProps>`
   &[type='checkbox']:checked + label:before,
   &[type='radio']:checked + label:before {
     border: 2px solid;
-    border-color: ${getColor('black')};
-    background: ${getColor('black')};
+    border-color: ${getColor('gray-01')};
+    background: ${getColor('gray-01')};
   }
 
   &[type='checkbox']:checked + label:after,
