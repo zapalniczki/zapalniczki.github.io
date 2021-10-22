@@ -34,19 +34,10 @@ const useInput = () => {
       placeholder: commonT('INPUTS.PHONE.placeholder'),
       autocomplete: 'tel'
     },
-    STREET: {
-      label: commonT('INPUTS.STREET.label'),
-      placeholder: commonT('INPUTS.STREET.placeholder'),
-      autocomplete: 'address-line1'
-    },
-    STREET_NR: {
-      label: commonT('INPUTS.STREET_NR.label'),
-      placeholder: commonT('INPUTS.STREET_NR.placeholder')
-    },
-    ADDRESS_CDN: {
-      label: commonT('INPUTS.ADDRESS_CDN.label'),
-      placeholder: commonT('INPUTS.ADDRESS_CDN.placeholder'),
-      autocomplete: 'address-line2'
+    STREET_ADDRESS: {
+      label: commonT('INPUTS.STREET_ADDRESS.label'),
+      placeholder: commonT('INPUTS.STREET_ADDRESS.placeholder'),
+      autocomplete: 'street-address'
     },
     POST_CODE: {
       label: commonT('INPUTS.POST_CODE.label'),
@@ -95,9 +86,7 @@ type InputKey =
   | 'PHONE'
   | 'ORDER_ID'
   | 'FULL_NAME'
-  | 'STREET'
-  | 'STREET_NR'
-  | 'ADDRESS_CDN'
+  | 'STREET_ADDRESS'
   | 'POST_CODE'
   | 'CITY'
   | 'COMPANY'

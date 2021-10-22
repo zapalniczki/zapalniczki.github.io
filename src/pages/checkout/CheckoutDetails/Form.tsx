@@ -37,28 +37,14 @@ const Form = ({ isCompany }: Props) => {
       </Row>
 
       <Row>
-        <FieldWrapper width="75%">
-          <Field name="street" type="text">
-            {(props: FieldProps<FormValues['street'], FormValues>) => (
-              <Input {...props} {...getInput('STREET', true)} />
-            )}
-          </Field>
-        </FieldWrapper>
-
-        <FieldWrapper width="25%">
-          <Field name="street_nr" type="text">
-            {(props: FieldProps<FormValues['street_nr'], FormValues>) => (
-              <Input {...props} {...getInput('STREET_NR', true)} />
-            )}
-          </Field>
-        </FieldWrapper>
-      </Row>
-
-      <Row>
         <FieldWrapper>
-          <Field name="address_cdn" type="text">
-            {(props: FieldProps<FormValues['address_cdn'], FormValues>) => (
-              <Input {...props} {...getInput('ADDRESS_CDN')} />
+          <Field name="street_address" type="text">
+            {(props: FieldProps<FormValues['street_address'], FormValues>) => (
+              <Input
+                textarea
+                {...props}
+                {...getInput('STREET_ADDRESS', true)}
+              />
             )}
           </Field>
         </FieldWrapper>

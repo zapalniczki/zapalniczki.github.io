@@ -24,12 +24,9 @@ const useForm = () => {
   }
 
   const initialValues: FormValues = {
-    street: checkout.shipping?.street ?? checkout.contact_details?.street ?? '',
-    street_nr:
-      checkout.shipping?.street_nr ?? checkout.contact_details?.street_nr ?? '',
-    address_cdn:
-      checkout.shipping?.address_cdn ??
-      checkout.contact_details?.address_cdn ??
+    street_address:
+      checkout.shipping?.street_address ??
+      checkout.contact_details?.street_address ??
       '',
     post_code:
       checkout.shipping?.post_code ?? checkout.contact_details?.post_code ?? '',
@@ -37,9 +34,7 @@ const useForm = () => {
   }
 
   const schema = object().shape({
-    street: getSchema('STREET'),
-    street_nr: getSchema('STREET_NR'),
-    address_cdn: getSchema('ADDRESS_CDN'),
+    street_address: getSchema('STREET_ADDRESS'),
     post_code: getSchema('POST_CODE'),
     city: getSchema('CITY')
   })

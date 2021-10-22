@@ -26,9 +26,9 @@ const useSchema = () => {
       .length(36, commonT('VALIDATIONS.ORDER_ID.length')),
 
     FULL_NAME: string().required(commonT('VALIDATIONS.FULL_NAME.required')),
-    STREET: string().required(commonT('VALIDATIONS.STREET.required')),
-    STREET_NR: string().required(commonT('VALIDATIONS.STREET_NR.required')),
-    ADDRESS_CDN: string(),
+    STREET_ADDRESS: string().required(
+      commonT('VALIDATIONS.STREET_ADDRESS.required')
+    ),
     POST_CODE: string()
       .trim()
       .matches(/^(\d{2})-(\d{3})$/, commonT('VALIDATIONS.POST_CODE.matches'))
@@ -50,9 +50,7 @@ type SchemaKey =
   | 'PHONE'
   | 'ORDER_ID'
   | 'FULL_NAME'
-  | 'STREET'
-  | 'STREET_NR'
-  | 'ADDRESS_CDN'
+  | 'STREET_ADDRESS'
   | 'POST_CODE'
   | 'CITY'
   | 'NIP'

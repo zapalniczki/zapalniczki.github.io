@@ -23,15 +23,15 @@ const useForm = () => {
       }
     }))
 
+    console.log(form)
+
     history.push(CHECKOUT_DELIVERY)
   }
 
   const initialValues: FormValues = {
     full_name: checkout.contact_details?.full_name ?? '',
     nip: checkout.contact_details?.nip ?? '',
-    street: checkout.contact_details?.street ?? '',
-    street_nr: checkout.contact_details?.street_nr ?? '',
-    address_cdn: checkout.contact_details?.address_cdn ?? '',
+    street_address: checkout.contact_details?.street_address ?? '',
     post_code: checkout.contact_details?.post_code ?? '',
     city: checkout.contact_details?.city ?? '',
     email: checkout.contact_details?.email ?? '',
@@ -41,9 +41,7 @@ const useForm = () => {
   const getSchema = (isCompany: IsCompany) => {
     const base = object().shape({
       full_name: getNativeSchema('FULL_NAME'),
-      street: getNativeSchema('STREET'),
-      street_nr: getNativeSchema('STREET_NR'),
-      address_cdn: getNativeSchema('ADDRESS_CDN'),
+      street_address: getNativeSchema('STREET_ADDRESS'),
       post_code: getNativeSchema('POST_CODE'),
       city: getNativeSchema('CITY'),
       email: getNativeSchema('EMAIL'),

@@ -26,7 +26,7 @@ const CheckoutDetails = () => {
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
   if (!checkout.products) {
-    return <Redirect to={CHECKOUT_PRODUCTS} />
+    // return <Redirect to={CHECKOUT_PRODUCTS} />
   }
 
   return (

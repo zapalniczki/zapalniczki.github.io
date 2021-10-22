@@ -11,6 +11,7 @@ type Props = FieldProps<string> & {
   label?: string
   maxLength?: number
   placeholder?: string
+  textarea?: boolean
   type?: 'text' | 'password' | 'email'
 } & SpaceProps
 
@@ -22,6 +23,7 @@ const Input = ({
   maxLength,
   meta,
   placeholder,
+  textarea,
   type = 'text',
   ...props
 }: Props) => {
@@ -38,19 +40,25 @@ const Input = ({
 
       <StyledInput
         {...field}
+        as={textarea ? 'textarea' : 'input'}
         autoComplete={autocomplete}
         disabled={disabled}
         id={field.name}
         maxLength={maxLength}
         placeholder={placeholder}
+        textarea={textarea}
         type={type}
       />
     </Flexbox>
   )
 }
 
-export const StyledInput = styled.input`
-  height: 3.5rem;
+const INPUT_HEIGHT = '3.5rem'
+
+type StyledInputProps = Pick<Props, 'textarea'>
+export const StyledInput = styled.input<StyledInputProps>`
+  height: ${(props) =>
+    props.textarea ? `calc(3 * ${INPUT_HEIGHT})` : INPUT_HEIGHT};
   position: relative;
   cursor: pointer;
   border: 1px solid;

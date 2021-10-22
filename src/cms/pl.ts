@@ -171,8 +171,7 @@ const pl = {
       PAYMENT_TYPE: {
         required: 'Wybierz aby przejść dalej.'
       },
-      ADDRESS_CDN: {},
-      STREET: {
+      STREET_ADDRESS: {
         required: 'Proszę podać adres'
       },
       CITY: {
@@ -186,9 +185,6 @@ const pl = {
       POST_CODE: {
         matches: 'Kod pocztowy powinien mieć format XX-XXX',
         required: 'Proszę podać kod pocztowy'
-      },
-      STREET_NR: {
-        required: 'Proszę podać numer domu lub ulicy'
       },
       FULL_NAME: {
         required: 'To pole jest wymagane'
@@ -205,7 +201,6 @@ const pl = {
         matches: 'Numer telefonu może zawierać cyfry, spacje i znak +',
         min: 'Numer telefonu powinien składać się z numeru kierunkowego i 9 cyfr'
       },
-
       ORDER_ID: {
         required: 'To pole jest wymagane',
         length: 'Numer referencyjny zamówienia powinien składać się z 36 znaków'
@@ -239,16 +234,8 @@ const pl = {
         label: 'Numer telefonu',
         placeholder: ''
       },
-      STREET: {
-        label: 'Ulica',
-        placeholder: ''
-      },
-      STREET_NR: {
-        label: 'Numer domu',
-        placeholder: ''
-      },
-      ADDRESS_CDN: {
-        label: 'Adres c.d.',
+      STREET_ADDRESS: {
+        label: 'Adres (ulica, numer domu/mieszkania)',
         placeholder: ''
       },
       POST_CODE: {

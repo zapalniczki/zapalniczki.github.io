@@ -29,10 +29,7 @@ export type ContactDetails = Shipping &
 type DeliveryTypeId = DeliveryType['id']
 type PaymentTypeId = PaymentType['id']
 
-export type Shipping = Pick<
-  Address,
-  'address_cdn' | 'city' | 'post_code' | 'street' | 'street_nr'
->
+export type Shipping = Omit<Address, 'id' | 'created_at' | 'updated_at'>
 
 export type Checkout = {
   contact_details: ContactDetails | null

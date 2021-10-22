@@ -44,9 +44,7 @@ const useForm = () => {
       nip: checkout.contact_details?.nip ? checkout.contact_details.nip : null,
       is_company: checkout.contact_details?.is_company ?? false,
       address: {
-        street: checkout.contact_details?.street ?? '',
-        street_nr: checkout.contact_details?.street_nr ?? '',
-        address_cdn: checkout.contact_details?.address_cdn ?? '',
+        street_address: checkout.contact_details?.street_address ?? '',
         post_code: checkout.contact_details?.post_code ?? '',
         city: checkout.contact_details?.city ?? ''
       },
