@@ -1,6 +1,7 @@
 const phoneNumer = '+48 792 531 179'
 const companyName = 'Braty'
 const domain = 'braty.co'
+export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
@@ -572,7 +573,8 @@ const pl = {
       EMAIL: {
         title: 'E-mail',
         info: 'Kontakt w sprawie zamówień',
-        email: `kontakt@${domain}`
+        email: email,
+        link: `mailto:${email}?subject=Kontakt ze strony internetowej`
       },
 
       DOWNLOAD_INVOICE: {

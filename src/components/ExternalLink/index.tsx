@@ -3,14 +3,15 @@ import { useTranslation } from 'hooks'
 import React from 'react'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
+import { space, SpaceProps } from 'styled-system'
 import getColor from 'styles/getColor'
 
 type Props = {
   children: ReactNode
   to: string
-}
+} & SpaceProps
 
-const ExternalLink = ({ children, to }: Props) => {
+const ExternalLink = ({ children, to, ...props }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const isDisabled = to.length === 0
 
@@ -21,6 +22,7 @@ const ExternalLink = ({ children, to }: Props) => {
       href={isDisabled ? undefined : to}
       rel="noopener noreferrer"
       target={isDisabled ? '_self' : '_blank'}
+      {...props}
     >
       {children}
     </Container>
@@ -37,7 +39,10 @@ const ExternalLink = ({ children, to }: Props) => {
   return link
 }
 
-type ContainerProps = { disabled?: boolean }
+type ContainerProps = {
+  disabled?: boolean
+} & SpaceProps
+
 const Container = styled.a<ContainerProps>`
   color: ${(props) =>
     props.disabled ? getColor('gray-01')(props) : getColor('black')(props)};
@@ -47,6 +52,8 @@ const Container = styled.a<ContainerProps>`
   &:hover {
     text-decoration: ${(props) => !props.disabled && 'underline'};
   }
+
+  ${space}
 `
 
 export default ExternalLink

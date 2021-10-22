@@ -1,5 +1,5 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
-import { Text } from 'components'
+import { ExternalLink, Text } from 'components'
 import { ReactNode } from 'react'
 import { useTranslation } from 'hooks'
 import CheckStatus from './CheckStatus'
@@ -23,9 +23,9 @@ const useContactMethods = (): ContactMethod[] => {
         <>
           <Text type="body-2">{t('items.EMAIL.info')}</Text>
 
-          <Text marginTop="s-size" type="subtitle-2">
-            {t('items.EMAIL.email')}
-          </Text>
+          <ExternalLink marginTop="s-size" to={t('items.EMAIL.link')}>
+            <Text type="subtitle-2">{t('items.EMAIL.email')}</Text>
+          </ExternalLink>
         </>
       )
     },
