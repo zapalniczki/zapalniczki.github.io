@@ -7,3 +7,4 @@ export * from './getProduct'
 
 export * from './getProducts'
 export * from './getBestsellers'
+export * from './getProductsById'

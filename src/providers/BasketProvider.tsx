@@ -3,9 +3,9 @@ import React, { createContext, ReactNode, useState } from 'react'
 
 type BasketContex = {
   basket: BasketItem[]
-  basketLength: number,
+  basketLength: number
   clearBasket: () => void
-  getProductFromBasket: (id: string) => BasketItem | undefined,
+  getProductFromBasket: (id: string) => BasketItem | undefined
   setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
 }
 

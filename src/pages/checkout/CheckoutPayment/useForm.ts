@@ -32,6 +32,7 @@ const useForm = () => {
 
   const onSubmit = async (form: FormValues) => {
     show()
+
     const order: AddOrderPayload = {
       email: checkout.contact_details?.email ?? '',
       deliveryType: checkout.delivery_type ?? '',

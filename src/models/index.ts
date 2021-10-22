@@ -81,3 +81,6 @@ export * from './getDeliveryTypesResponseItem'
 
 export { default as getInvoiceResponse } from './getInvoiceResponse'
 export * from './getInvoiceResponse'
+
+export { default as getProductsByIdResponseItem } from './getProductsByIdResponseItem'
+export * from './getProductsByIdResponseItem'
