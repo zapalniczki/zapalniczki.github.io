@@ -1,19 +1,29 @@
-import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { MOLDS_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import {
   getProductsByIdResponseItem,
-  GetProductsByIdResponseItem
+  GetProductsByIdResponseItem,
+  Product
 } from 'models'
 import { useMutation, useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-const getProductsById = async () => {
-  const response = await supabase.from<GetProductsByIdResponseItem>(
-    PRODUCTS_TABLE
-  ).select(`
-      price
-    `)
+type Payload = Product['id'][]
+
+const getProductsById = async (payload: Payload) => {
+  const response = await supabase
+    .from<GetProductsByIdResponseItem>(PRODUCTS_TABLE)
+    .select(
+      `
+        id,
+        price,
+        mold: ${MOLDS_TABLE} (
+          status
+        )
+      `
+    )
+    .in('id', payload)
 
   const data = parseApiResponse(array(getProductsByIdResponseItem), response)
 
@@ -21,10 +31,10 @@ const getProductsById = async () => {
 }
 
 export const useGetProductsById = () =>
-  useQuery('products', () => getProductsById())
+  useQuery('products', () => getProductsById([]))
 
 export const useGetProductsById2 = () => {
   const { mutateAsync } = useMutation(getProductsById)
 
-  return () => mutateAsync()
+  return (payload: Payload) => mutateAsync(payload)
 }

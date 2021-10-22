@@ -3,11 +3,12 @@ import {
   useAddOrder,
   useAddOrderItem,
   useAddUser,
+  useGetProductsById2,
   useTriggerSendEmail
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useSchema } from 'hooks'
-import { PaymentType } from 'models'
+import { MoldStatus, PaymentType } from 'models'
 import {
   basketContext,
   checkoutContext,
@@ -35,6 +36,7 @@ const useForm = () => {
   const addOrder = useAddOrder()
   const addOrderItem = useAddOrderItem()
   const triggerSendEmail = useTriggerSendEmail()
+  const getProductsById2 = useGetProductsById2()
 
   const onSubmit = async (form: FormValues) => {
     show()
@@ -81,16 +83,24 @@ const useForm = () => {
       status: 'OPEN'
     })
 
-    const products = checkout?.products?.map((product) => ({
-      product_id: product.id,
-      order_id: orderId,
-      quantity: product.quantity
-    }))
+    const products =
+      checkout?.products?.map((product) => ({
+        product_id: product.id,
+        order_id: orderId,
+        quantity: product.quantity
+      })) || []
 
-    await addOrderItem(products || [])
+    await addOrderItem(products)
+
+    const productIds = products.map((product) => product.product_id)
+    const productsData = await getProductsById2(productIds)
+    const productionTime = calculateProductionTime(
+      productsData.map((product) => product.mold.status)
+    )
 
     const locationState: CheckoutResultLocationState = {
-      orderID: orderId
+      orderID: orderId,
+      productionTime
     }
 
     triggerSendEmail({
@@ -127,6 +137,19 @@ const useForm = () => {
   }
 }
 
-export type CheckoutResultLocationState = { orderID: string }
+export type CheckoutResultLocationState = {
+  orderID: string
+  productionTime: 'LONG' | 'SHORT'
+}
 
 export default useForm
+
+const calculateProductionTime = (
+  statuses: MoldStatus[]
+): CheckoutResultLocationState['productionTime'] => {
+  if (statuses.includes('UNDONE')) {
+    return 'LONG'
+  }
+
+  return 'SHORT'
+}

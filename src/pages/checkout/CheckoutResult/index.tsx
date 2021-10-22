@@ -50,7 +50,7 @@ const CheckoutResult = () => {
           </Text>
 
           <Text marginTop="l-size" type="body-1">
-            {t('paymentInfoShort')}
+            {t(`PAYMENT_INFO.${state.productionTime.toLowerCase()}`)}
           </Text>
 
           <Flexbox
