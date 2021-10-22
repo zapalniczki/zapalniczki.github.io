@@ -7,7 +7,7 @@ import {
   useTriggerSendEmail
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
-import { useSchema } from 'hooks'
+import { useIsDev, useSchema } from 'hooks'
 import { MoldStatus, PaymentType } from 'models'
 import {
   basketContext,
@@ -26,6 +26,7 @@ export type FormValues = {
 const useForm = () => {
   const history = useHistory()
   const { getSchema } = useSchema()
+  const isDev = useIsDev()
 
   const { checkout, setCheckout } = useContext(checkoutContext)
   const { setBasket } = useContext(basketContext)
@@ -103,17 +104,19 @@ const useForm = () => {
       productionTime
     }
 
-    triggerSendEmail({
-      to: email,
-      type: {
-        key: 'NEW_ORDER',
-        content: {
-          name: full_name,
-          order_id: orderId,
-          phone: phone
+    if (!isDev) {
+      triggerSendEmail({
+        to: email,
+        type: {
+          key: 'NEW_ORDER',
+          content: {
+            name: full_name,
+            order_id: orderId,
+            phone: phone
+          }
         }
-      }
-    })
+      })
+    }
 
     setCheckout(initState)
     setBasket([])
