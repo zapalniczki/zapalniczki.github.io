@@ -1,15 +1,14 @@
-import { useScrollTop, useTabTitle } from 'hooks'
-import React, { useContext, useState } from 'react'
-import { useTranslation } from 'hooks'
-import { Redirect } from 'react-router-dom'
-import { Formik, Form as FormikForm } from 'formik'
+import { Page, Switch } from 'components'
 import { CHECKOUT_PRODUCTS } from 'constants/routes'
-import { Switch, Flexbox, Page, Text } from 'components'
+import { Form as FormikForm, Formik } from 'formik'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
-import { StepTitle, Actions, Wrapper, StepTracker } from '../common'
-import useForm from './useForm'
-import Form from './Form'
+import React, { useContext, useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import { IsCompany } from 'types/index2'
+import { Actions, StepTitle, StepTracker, Wrapper } from '../common'
+import Form from './Form'
+import useForm from './useForm'
 
 const CheckoutDetails = () => {
   const { t } = useTranslation('CHECKOUT_DETAILS')
@@ -26,7 +25,7 @@ const CheckoutDetails = () => {
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
   if (!checkout.products) {
-    // return <Redirect to={CHECKOUT_PRODUCTS} />
+    return <Redirect to={CHECKOUT_PRODUCTS} />
   }
 
   return (
@@ -36,28 +35,35 @@ const CheckoutDetails = () => {
       <Wrapper>
         <StepTitle>{t('title')}</StepTitle>
 
-        <Flexbox alignItems="center" justifyContent="flex-end" marginY="l-size">
-          <Text marginRight="m-size" type="body-2">
-            {commonT('customerTypes.INDIVIDUAL')}
-          </Text>
-
-          <Switch
-            checked={!isCompany}
-            onChange={(checked) => setIsCompany(!checked)}
-          />
-        </Flexbox>
-
         <Formik
           initialValues={initialValues}
           onSubmit={(form) => onSubmitForm(form, isCompany)}
           validateOnChange
           validationSchema={getSchema(isCompany)}
         >
-          {({ handleSubmit }) => (
-            <FormikForm onSubmit={handleSubmit}>
-              <Form isCompany={isCompany} />
-              <Actions />
-            </FormikForm>
+          {({ handleSubmit, setFieldValue }) => (
+            <>
+              <Switch
+                checked={!isCompany}
+                justifyContent="flex-end"
+                label={commonT('customerTypes.INDIVIDUAL')}
+                marginY="l-size"
+                onChange={(checked) => {
+                  // TODO Add eslint for curly brackets in arraow functions
+                  setIsCompany(!checked)
+
+                  if (checked) {
+                    setFieldValue('nip', '')
+                    console.log(checked)
+                  }
+                }}
+              />
+
+              <FormikForm onSubmit={handleSubmit}>
+                <Form isCompany={isCompany} />
+                <Actions />
+              </FormikForm>
+            </>
           )}
         </Formik>
       </Wrapper>

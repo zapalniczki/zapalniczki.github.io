@@ -11,11 +11,7 @@ import {
 import { Flexbox, Button } from 'components'
 import { useCheckoutStep } from './StepTracker'
 
-type Props = {
-  primaryDisabled?: boolean
-}
-
-const Actions = ({ primaryDisabled }: Props) => {
+const Actions = () => {
   const { t } = useTranslation('COMMON')
   const history = useHistory()
 
@@ -73,7 +69,7 @@ const Actions = ({ primaryDisabled }: Props) => {
         {t(isFirstPage ? 'checkoutActions.backToShop' : 'checkoutActions.back')}
       </Button>
       <Button
-        disabled={isBasketEmpty || primaryDisabled}
+        disabled={isBasketEmpty}
         icon="arrow-right"
         onClick={onClickNext}
         size="medium"

@@ -23,8 +23,6 @@ const useForm = () => {
       }
     }))
 
-    console.log(form)
-
     history.push(CHECKOUT_DELIVERY)
   }
 

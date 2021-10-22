@@ -16,6 +16,8 @@ type Props = {
 const CheckoutProvider = ({ children }: Props) => {
   const [checkout, setCheckout] = useState(initState)
 
+  console.log(checkout)
+
   return (
     <checkoutContext.Provider value={{ checkout, setCheckout }}>
       {children}

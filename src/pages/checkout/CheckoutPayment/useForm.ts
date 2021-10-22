@@ -1,16 +1,22 @@
-import { useHistory } from 'react-router-dom'
-
-import { object } from 'yup'
-import { useSchema } from 'hooks'
+import {
+  useAddAddress,
+  useAddOrder,
+  useAddOrderItem,
+  useAddUser,
+  useTriggerSendEmail
+} from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
-import { useContext } from 'react'
-import { checkoutContext, initState } from 'providers'
-import { useMutation } from 'react-query'
-import { AddOrderPayload, addOrder, useTriggerSendEmail } from 'api'
-import { basketContext } from 'providers'
-
-import { loaderContext } from 'providers'
+import { useSchema } from 'hooks'
 import { PaymentType } from 'models'
+import {
+  basketContext,
+  checkoutContext,
+  initState,
+  loaderContext
+} from 'providers'
+import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import { object } from 'yup'
 
 export type FormValues = {
   payment_type: PaymentType['id']
@@ -18,52 +24,83 @@ export type FormValues = {
 
 const useForm = () => {
   const history = useHistory()
-  const { checkout, setCheckout } = useContext(checkoutContext)
-  const { setBasket } = useContext(basketContext)
-
-  const { hide, show } = useContext(loaderContext)
-
   const { getSchema } = useSchema()
 
-  const { isLoading, mutateAsync: mutateAddOrderSupabase } =
-    useMutation(addOrder)
+  const { checkout, setCheckout } = useContext(checkoutContext)
+  const { setBasket } = useContext(basketContext)
+  const { hide, show } = useContext(loaderContext)
 
+  const addAddress = useAddAddress()
+  const addUser = useAddUser()
+  const addOrder = useAddOrder()
+  const addOrderItem = useAddOrderItem()
   const triggerSendEmail = useTriggerSendEmail()
 
   const onSubmit = async (form: FormValues) => {
     show()
 
-    const order: AddOrderPayload = {
-      email: checkout.contact_details?.email ?? '',
-      deliveryType: checkout.delivery_type ?? '',
-      paymentType: form.payment_type ?? '',
-      total: checkout.total ?? 0,
-      phone: checkout.contact_details?.phone ?? '',
-      full_name: checkout.contact_details?.full_name ?? '',
-      products: checkout.products || [],
-      nip: checkout.contact_details?.nip ? checkout.contact_details.nip : null,
-      is_company: checkout.contact_details?.is_company ?? false,
-      address: {
-        street_address: checkout.contact_details?.street_address ?? '',
-        post_code: checkout.contact_details?.post_code ?? '',
-        city: checkout.contact_details?.city ?? ''
-      },
-      shipping: checkout.shipping || null
+    const { id: address_id } = await addAddress({
+      street_address: checkout.contact_details?.street_address ?? '',
+      post_code: checkout.contact_details?.post_code ?? '',
+      city: checkout.contact_details?.city ?? ''
+    })
+
+    let shipping_id: null | string = null
+    const shipping = checkout.shipping || null
+    if (shipping) {
+      const shippingResponse = await addAddress(shipping)
+      shipping_id = shippingResponse.id
     }
 
-    const orderId = await mutateAddOrderSupabase(order)
+    const deliveryType = checkout.delivery_type ?? ''
+    const paymentType = form.payment_type ?? ''
+
+    const {
+      email,
+      full_name,
+      id: user_id,
+      phone
+    } = await addUser({
+      email: checkout.contact_details?.email ?? '',
+      phone: checkout.contact_details?.phone ?? '',
+      full_name: checkout.contact_details?.full_name ?? '',
+      nip: checkout.contact_details?.nip ? checkout.contact_details.nip : null,
+      is_company: checkout.contact_details?.is_company ?? false,
+      address_id,
+      shipping_id,
+      preferred_delivery: deliveryType,
+      preferred_payment: paymentType
+    })
+
+    const { id: orderId } = await addOrder({
+      delivery_type: deliveryType,
+      payment_type: paymentType,
+      total: checkout.total ?? 0,
+      shipping_id,
+      user_id,
+      status: 'OPEN'
+    })
+
+    const products = checkout?.products?.map((product) => ({
+      product_id: product.id,
+      order_id: orderId,
+      quantity: product.quantity
+    }))
+
+    await addOrderItem(products || [])
+
     const locationState: CheckoutResultLocationState = {
       orderID: orderId
     }
 
     triggerSendEmail({
-      to: order.email,
+      to: email,
       type: {
         key: 'NEW_ORDER',
         content: {
-          name: order.full_name,
+          name: full_name,
           order_id: orderId,
-          phone: order.phone
+          phone: phone
         }
       }
     })
@@ -86,8 +123,7 @@ const useForm = () => {
   return {
     onSubmit,
     initialValues,
-    schema,
-    isLoading
+    schema
   }
 }
 

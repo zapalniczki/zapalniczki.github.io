@@ -20,7 +20,7 @@ const CheckoutPayment = () => {
 
   const paymentTypesQuery = useGetPaymentTypes()
   const { checkout } = useContext(checkoutContext)
-  const { initialValues, isLoading, onSubmit, schema } = useForm()
+  const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {
     return <Redirect to={CHECKOUT_DELIVERY} />
@@ -44,7 +44,7 @@ const CheckoutPayment = () => {
                 <FormikForm onSubmit={handleSubmit}>
                   <Form paymentTypes={paymentTypes} />
                   <Total />
-                  <Actions primaryDisabled={isLoading} />
+                  <Actions />
                 </FormikForm>
               )}
             </Formik>

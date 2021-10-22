@@ -1,22 +1,24 @@
 import { ADDRESSES_TABLE } from 'constants/db_tables'
-import { Address } from 'models'
+import { addAddressResponse, AddAddressResponse, Address } from 'models'
+import { useMutation } from 'react-query'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
 type Payload = Omit<Address, 'created_at' | 'updated_at' | 'id'>
 
-const addAddress = async (payload: Payload) => {
-  const { data: address, error: addressError } = await supabase
-    .from<Address>(ADDRESSES_TABLE)
+export const addAddress = async (payload: Payload) => {
+  const response = await supabase
+    .from<AddAddressResponse>(ADDRESSES_TABLE)
     .upsert(payload)
     .single()
 
-  if (addressError) {
-    throw new Error(addressError.message)
-  }
+  const data = parseApiResponse(addAddressResponse, response)
 
-  if (!address) {
-    throw new Error('addOrderSupabase/address error')
-  }
+  return data
 }
 
-export default addAddress
+export const useAddAddress = () => {
+  const { mutateAsync } = useMutation(addAddress)
+
+  return async (payload: Payload) => await mutateAsync(payload)
+}
