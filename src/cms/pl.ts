@@ -232,7 +232,11 @@ const pl = {
       },
       PHONE: {
         label: 'Numer telefonu',
-        placeholder: ''
+        placeholder: 'Twój '
+      },
+      PHONE_NOT_MOBILE: {
+        label: '',
+        placeholder: 'Twój numer telefonu'
       },
       STREET_ADDRESS: {
         label: 'Adres (ulica, numer domu/mieszkania)',
@@ -291,9 +295,6 @@ const pl = {
         title: 'Jeżeli masz jakikolwiek problem lub nie ma Twojego produktu...',
         subtitle: `Zadzwoń na ${phoneNumer} albo podaj swój numer telefonu, a my odzwonimy.`,
         FORM: {
-          PHONE: {
-            placeholder: 'Twój numer telefonu'
-          },
           SUBMIT: {
             label: 'Potwierdzam i wysyłam'
           }

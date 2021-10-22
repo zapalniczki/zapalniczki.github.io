@@ -11,6 +11,7 @@ const useInput = () => {
     PAYMENT_TYPE: {
       label: commonT('INPUTS.PAYMENT_TYPE.label')
     },
+
     DELIVERY_TYPE: {
       label: commonT('INPUTS.DELIVERY_TYPE.label')
     },
@@ -33,6 +34,11 @@ const useInput = () => {
       label: commonT('INPUTS.PHONE.label'),
       placeholder: commonT('INPUTS.PHONE.placeholder'),
       autocomplete: 'tel'
+    },
+    PHONE_NOT_MOBILE: {
+      label: commonT('INPUTS.PHONE_NOT_MOBILE.label'),
+      placeholder: commonT('INPUTS.PHONE_NOT_MOBILE.placeholder'),
+      maxLength: 15
     },
     STREET_ADDRESS: {
       label: commonT('INPUTS.STREET_ADDRESS.label'),
@@ -94,5 +100,6 @@ type InputKey =
   | 'DELIVERY_TYPE'
   | 'PAYMENT_TYPE'
   | 'SUBMIT'
+  | 'PHONE_NOT_MOBILE'
 
 export default useInput
