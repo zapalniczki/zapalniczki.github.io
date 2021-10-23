@@ -72,7 +72,7 @@ const pl = {
     },
 
     FOOTER: {
-      allRightsReserved: `{{version}} © {{year}} ${companyName} - Wszelkie prawa zastrzeżone`
+      allRightsReserved: `© {{year}} ${companyName} - Wszelkie prawa zastrzeżone`
     },
 
     checkoutSteps: {

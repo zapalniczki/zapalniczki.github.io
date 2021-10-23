@@ -1,4 +1,13 @@
-import { Box, Flexbox, Link, Logo, MaxWidth, Separator, Text } from 'components'
+import {
+  Box,
+  Flexbox,
+  ImageLoader,
+  Link,
+  Logo,
+  MaxWidth,
+  Separator,
+  Text
+} from 'components'
 import { DOCUMENTS } from 'constants/routes'
 import { useAdmin, useTranslation } from 'hooks'
 import { routes } from 'pages'
@@ -55,9 +64,16 @@ const Footer = () => {
         <Separator marginY="l-size" />
 
         <Flexbox justifyContent="space-between" width="100%">
+          <Flexbox alignItems="center" height="100%">
+            <ImageLoader src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg" />
+
+            <Text marginLeft="m-size" type="caption">
+              {process.env.VERSION}
+            </Text>
+          </Flexbox>
+
           <Text type="caption">
             {commonT('FOOTER.allRightsReserved', {
-              version: process.env.VERSION,
               year: new Date().getFullYear()
             })}
           </Text>
