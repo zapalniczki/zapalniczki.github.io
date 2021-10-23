@@ -166,6 +166,11 @@ const pl = {
     },
 
     VALIDATIONS: {
+      PRODUCT_QUANTITY: {
+        required: 'error',
+        min: 'error',
+        max: 'error'
+      },
       DELIVERY_TYPE: {
         required: 'Wybierz aby przejść dalej.'
       },

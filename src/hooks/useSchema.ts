@@ -1,10 +1,14 @@
-import { string, StringSchema } from 'yup'
+import { number, NumberSchema, string, StringSchema } from 'yup'
 import useTranslation from './useTranslation'
 
 const useSchema = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const schemas: Record<SchemaKey, StringSchema> = {
+  const schemas: Record<SchemaKey, StringSchema | NumberSchema> = {
+    PRODUCT_QUANTITY: number()
+      .min(1, commonT('VALIDATIONS.PRODUCT_QUANTITY.min'))
+      .max(100, commonT('VALIDATIONS.PRODUCT_QUANTITY.max'))
+      .required(commonT('VALIDATIONS.PRODUCT_QUANTITY.required')),
     PAYMENT_TYPE: string().required(
       commonT('VALIDATIONS.PAYMENT_TYPE.required')
     ),
@@ -56,5 +60,6 @@ type SchemaKey =
   | 'NIP'
   | 'DELIVERY_TYPE'
   | 'PAYMENT_TYPE'
+  | 'PRODUCT_QUANTITY'
 
 export default useSchema

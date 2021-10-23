@@ -46,15 +46,12 @@ span {
   position: relative;
 }
 
-
-
 #app {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-
 
 .control-dots {
   top: 0;
@@ -71,8 +68,6 @@ span {
   margin-bottom: 0;
   border-bottom: none;
 }
-
-
 `
 
 export default GlobalStyle

@@ -53,7 +53,7 @@ const Input = ({
   )
 }
 
-const INPUT_HEIGHT = '3.5rem'
+export const INPUT_HEIGHT = '3.5rem'
 
 type StyledInputProps = Pick<Props, 'textarea'>
 export const StyledInput = styled.input<StyledInputProps>`
@@ -65,6 +65,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   border-color: ${getColor('border-color')};
   padding: ${(props) =>
     `${props.theme.space['xs-size']} ${props.theme.space['xs-size']}`};
+  font-family: 'Roboto';
 
   &[type='checkbox'],
   &[type='radio'] {
