@@ -1,7 +1,7 @@
-import { useGetOrderStatus } from 'api'
-import { loaderContext } from 'providers'
-import { useContext, useState } from 'react'
-import { useSchema, useTranslation } from 'hooks'
+import { getOrderStatus } from 'api'
+import { useFormSubmit, useSchema, useTranslation } from 'hooks'
+import { useState } from 'react'
+import { useMutation } from 'react-query'
 import { object } from 'yup'
 
 export type FormValues = {
@@ -14,35 +14,34 @@ const useForm = () => {
 
   const { getSchema } = useSchema()
 
-  const getOrderStatus = useGetOrderStatus()
   const initialValues: FormValues = {
     order_id: ''
   }
-
-  const { hide, show } = useContext(loaderContext)
 
   const schema = object({
     order_id: getSchema('ORDER_ID')
   })
 
-  const onSubmit = async (formValues: FormValues) => {
-    try {
-      show()
+  const useSubmit = () => {
+    const { mutateAsync: mutateGetOrderStatus } = useMutation(getOrderStatus, {
+      onSuccess: (order) => {
+        setView({
+          view: 'RESULT',
+          status: order.status
+        })
+      },
+      onError: () => {
+        setView({
+          view: 'ERROR',
+          message: t('items.CHECK_STATUS.error.info')
+        })
+      }
+    })
 
-      const order = await getOrderStatus(formValues)
-
-      setView({
-        view: 'RESULT',
-        status: order.status
-      })
-    } catch (e) {
-      setView({
-        view: 'ERROR',
-        message: t('items.CHECK_STATUS.error.info')
-      })
-    }
-    hide()
+    return useFormSubmit((values: FormValues) => mutateGetOrderStatus(values))
   }
+
+  const onSubmit = useSubmit()
 
   return {
     initialValues,

@@ -31,7 +31,6 @@ const useSchema = () => {
     ORDER_ID: string()
       .required(commonT('VALIDATIONS.ORDER_ID.required'))
       .length(36, commonT('VALIDATIONS.ORDER_ID.length')),
-
     FULL_NAME: string().required(commonT('VALIDATIONS.FULL_NAME.required')),
     STREET_ADDRESS: string().required(
       commonT('VALIDATIONS.STREET_ADDRESS.required')

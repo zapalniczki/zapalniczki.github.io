@@ -99,3 +99,6 @@ export * from './addOrderItemResponse'
 
 export { default as addCallbackResponse } from './addCallbackResponse'
 export * from './addCallbackResponse'
+
+export { default as getOrderStatusResponse } from './getOrderStatusResponse'
+export * from './getOrderStatusResponse'

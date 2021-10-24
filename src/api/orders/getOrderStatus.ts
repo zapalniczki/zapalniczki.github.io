@@ -1,37 +1,20 @@
 import { ORDER_TABLE } from 'constants/db_tables'
-import { Order, OrderStatus } from 'models'
-import { useMutation } from 'react-query'
+import { getOrderStatusResponse, GetOrderStatusResponse, Order } from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
 type Params = {
   order_id: Order['id']
 }
 
-type GetOrderStatusResponse = {
-  id: string
-  status: OrderStatus
-}
-
 export const getOrderStatus = async (params: Params) => {
-  const { data, error } = await supabase
+  const response = await supabase
     .from<GetOrderStatusResponse>(ORDER_TABLE)
-    .select('status')
+    .select('id, status')
     .eq('id', params.order_id)
     .single()
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getOrderStatus')
-  }
+  const data = parseApiResponse(getOrderStatusResponse, response)
 
   return data
-}
-
-export const useGetOrderStatus = () => {
-  const { mutateAsync } = useMutation(getOrderStatus)
-
-  return (params: Params) => mutateAsync(params)
 }
