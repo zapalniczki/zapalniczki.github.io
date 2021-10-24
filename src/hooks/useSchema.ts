@@ -5,6 +5,7 @@ const useSchema = () => {
   const { t: commonT } = useTranslation('COMMON')
 
   const schemas: Record<SchemaKey, StringSchema | NumberSchema> = {
+    VOUCHER: string().length(36, commonT('VALIDATIONS.VOUCHER.length')),
     PRODUCT_QUANTITY: number()
       .min(1, commonT('VALIDATIONS.PRODUCT_QUANTITY.min'))
       .max(100, commonT('VALIDATIONS.PRODUCT_QUANTITY.max'))
@@ -61,5 +62,6 @@ type SchemaKey =
   | 'DELIVERY_TYPE'
   | 'PAYMENT_TYPE'
   | 'PRODUCT_QUANTITY'
+  | 'VOUCHER'
 
 export default useSchema

@@ -166,6 +166,9 @@ const pl = {
     },
 
     VALIDATIONS: {
+      VOUCHER: {
+        length: 'Kod rabatowy powinień mieć 36 znaków'
+      },
       PRODUCT_QUANTITY: {
         required: 'error',
         min: 'error',
@@ -214,6 +217,10 @@ const pl = {
     },
 
     INPUTS: {
+      VOUCHER: {
+        label: 'Kod rabatowy',
+        placeholder: 'placeholder'
+      },
       SUBMIT: {
         label: 'Sprawdź'
       },
@@ -360,7 +367,10 @@ const pl = {
   },
 
   CHECKOUT_PAYMENT: {
-    title: 'Płatność'
+    title: 'Płatność',
+    voucher: {
+      applyVoucher: 'Wykorzystaj kod'
+    }
   },
 
   CHECKOUT_RESULT: {

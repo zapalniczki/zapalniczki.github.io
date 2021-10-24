@@ -1,8 +1,9 @@
-import { useGetInvoice } from 'api'
+import { getInvoice } from 'api'
 import { loaderContext } from 'providers'
 import { useContext, useState } from 'react'
 import { useSchema, useTranslation } from 'hooks'
 import { object } from 'yup'
+import { useMutation } from 'react-query'
 
 export type FormValues = {
   order_id: string
@@ -14,7 +15,7 @@ const useForm = () => {
 
   const { getSchema } = useSchema()
 
-  const getInvoice = useGetInvoice()
+  const { mutateAsync: mutateGetInvoice } = useMutation(getInvoice)
 
   const initialValues: FormValues = {
     order_id: ''
@@ -30,7 +31,7 @@ const useForm = () => {
     try {
       show()
 
-      const order = await getInvoice(formValues)
+      const order = await mutateGetInvoice(formValues)
 
       setView({
         view: 'RESULT',

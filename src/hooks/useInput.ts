@@ -4,80 +4,18 @@ import useTranslation from './useTranslation'
 const useInput = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const inputs: Record<InputKey, InputValue> = {
-    SUBMIT: {
-      label: commonT('INPUTS.SUBMIT.label')
-    },
-    PAYMENT_TYPE: {
-      label: commonT('INPUTS.PAYMENT_TYPE.label')
-    },
-
-    DELIVERY_TYPE: {
-      label: commonT('INPUTS.DELIVERY_TYPE.label')
-    },
-    FULL_NAME: {
-      label: commonT('INPUTS.FULL_NAME.label'),
-      placeholder: commonT('INPUTS.FULL_NAME.placeholder'),
-      autocomplete: 'name'
-    },
-    COMPANY: {
-      label: commonT('INPUTS.COMPANY.label'),
-      placeholder: commonT('INPUTS.COMPANY.placeholder'),
-      autocomplete: 'organization'
-    },
-    EMAIL: {
-      label: commonT('INPUTS.EMAIL.label'),
-      placeholder: commonT('INPUTS.EMAIL.placeholder'),
-      autocomplete: 'email'
-    },
-    PHONE: {
-      label: commonT('INPUTS.PHONE.label'),
-      placeholder: commonT('INPUTS.PHONE.placeholder'),
-      autocomplete: 'tel'
-    },
-    PHONE_NOT_MOBILE: {
-      label: commonT('INPUTS.PHONE_NOT_MOBILE.label'),
-      placeholder: commonT('INPUTS.PHONE_NOT_MOBILE.placeholder'),
-      maxLength: 15
-    },
-    STREET_ADDRESS: {
-      label: commonT('INPUTS.STREET_ADDRESS.label'),
-      placeholder: commonT('INPUTS.STREET_ADDRESS.placeholder'),
-      autocomplete: 'street-address'
-    },
-    POST_CODE: {
-      label: commonT('INPUTS.POST_CODE.label'),
-      placeholder: commonT('INPUTS.POST_CODE.placeholder'),
-      maxLength: 6,
-      autocomplete: 'postal-code'
-    },
-    CITY: {
-      label: commonT('INPUTS.CITY.label'),
-      placeholder: commonT('INPUTS.CITY.placeholder'),
-      autocomplete: 'address-level2'
-    },
-    NIP: {
-      label: commonT('INPUTS.NIP.label'),
-      placeholder: commonT('INPUTS.NIP.placeholder'),
-      maxLength: 10
-    },
-    ORDER_ID: {
-      label: commonT('INPUTS.ORDER_ID.label'),
-      placeholder: commonT('INPUTS.ORDER_ID.placeholder'),
-      maxLength: 36
-    }
-  }
-
   const getInput = (key: InputKey, required?: boolean): InputValue => {
-    const { label, ...rest } = inputs[key]
+    const value: InputValue = inputs[key]
+    const { label, ...rest } = value
 
     return {
       ...rest,
-      label: getRequiredOrNot(label, required)
+      ...(rest.placeholder && { placeholder: commonT(rest.placeholder) }),
+      label: getRequiredOrNot(commonT(label), required)
     }
   }
 
-  return { inputs, getInput }
+  return { getInput }
 }
 
 type InputValue = {
@@ -87,19 +25,75 @@ type InputValue = {
   placeholder?: string
 }
 
-type InputKey =
-  | 'EMAIL'
-  | 'PHONE'
-  | 'ORDER_ID'
-  | 'FULL_NAME'
-  | 'STREET_ADDRESS'
-  | 'POST_CODE'
-  | 'CITY'
-  | 'COMPANY'
-  | 'NIP'
-  | 'DELIVERY_TYPE'
-  | 'PAYMENT_TYPE'
-  | 'SUBMIT'
-  | 'PHONE_NOT_MOBILE'
+const inputs = {
+  SUBMIT: {
+    label: 'INPUTS.SUBMIT.label',
+    placeholder: 'INPUTS.SUBMIT.placeholder'
+  },
+  VOUCHER: {
+    label: 'INPUTS.VOUCHER.label',
+    maxLength: 36
+  },
+  PAYMENT_TYPE: {
+    label: 'INPUTS.PAYMENT_TYPE.label'
+  },
+
+  DELIVERY_TYPE: {
+    label: 'INPUTS.DELIVERY_TYPE.label'
+  },
+  FULL_NAME: {
+    label: 'INPUTS.FULL_NAME.label',
+    placeholder: 'INPUTS.FULL_NAME.placeholder',
+    autocomplete: 'name'
+  },
+  COMPANY: {
+    label: 'INPUTS.COMPANY.label',
+    placeholder: 'INPUTS.COMPANY.placeholder',
+    autocomplete: 'organization'
+  },
+  EMAIL: {
+    label: 'INPUTS.EMAIL.label',
+    placeholder: 'INPUTS.EMAIL.placeholder',
+    autocomplete: 'email'
+  },
+  PHONE: {
+    label: 'INPUTS.PHONE.label',
+    placeholder: 'INPUTS.PHONE.placeholder',
+    autocomplete: 'tel'
+  },
+  PHONE_NOT_MOBILE: {
+    label: 'INPUTS.PHONE_NOT_MOBILE.label',
+    placeholder: 'INPUTS.PHONE_NOT_MOBILE.placeholder',
+    maxLength: 15
+  },
+  STREET_ADDRESS: {
+    label: 'INPUTS.STREET_ADDRESS.label',
+    placeholder: 'INPUTS.STREET_ADDRESS.placeholder',
+    autocomplete: 'street-address'
+  },
+  POST_CODE: {
+    label: 'INPUTS.POST_CODE.label',
+    placeholder: 'INPUTS.POST_CODE.placeholder',
+    maxLength: 6,
+    autocomplete: 'postal-code'
+  },
+  CITY: {
+    label: 'INPUTS.CITY.label',
+    placeholder: 'INPUTS.CITY.placeholder',
+    autocomplete: 'address-level2'
+  },
+  NIP: {
+    label: 'INPUTS.NIP.label',
+    placeholder: 'INPUTS.NIP.placeholder',
+    maxLength: 10
+  },
+  ORDER_ID: {
+    label: 'INPUTS.ORDER_ID.label',
+    placeholder: 'INPUTS.ORDER_ID.placeholder',
+    maxLength: 36
+  }
+}
+
+type InputKey = keyof typeof inputs
 
 export default useInput

@@ -1,7 +1,7 @@
 import {
-  useAddAddress,
-  useAddOrder,
-  useAddOrderItem,
+  addAddress,
+  addOrder,
+  addOrderItem,
   useAddUser,
   useGetProductsById2,
   useTriggerSendEmail
@@ -17,6 +17,7 @@ import {
   loaderContext
 } from 'providers'
 import { useContext } from 'react'
+import { useMutation } from 'react-query'
 import { useHistory } from 'react-router-dom'
 import { object } from 'yup'
 
@@ -33,17 +34,17 @@ const useForm = () => {
   const { setBasket } = useContext(basketContext)
   const { hide, show } = useContext(loaderContext)
 
-  const addAddress = useAddAddress()
+  const { mutateAsync: mutateAddAddress } = useMutation(addAddress)
   const addUser = useAddUser()
-  const addOrder = useAddOrder()
-  const addOrderItem = useAddOrderItem()
+  const { mutateAsync: mutateAddOrder } = useMutation(addOrder)
+  const { mutateAsync: mutateAddOrderItem } = useMutation(addOrderItem)
   const triggerSendEmail = useTriggerSendEmail()
   const getProductsById2 = useGetProductsById2()
 
   const onSubmit = async (form: FormValues) => {
     show()
 
-    const { id: address_id } = await addAddress({
+    const { id: address_id } = await mutateAddAddress({
       street_address: checkout.contact_details?.street_address ?? '',
       post_code: checkout.contact_details?.post_code ?? '',
       city: checkout.contact_details?.city ?? ''
@@ -76,7 +77,7 @@ const useForm = () => {
       preferred_payment: paymentType
     })
 
-    const { id: orderId } = await addOrder({
+    const { id: orderId } = await mutateAddOrder({
       delivery_type: deliveryType,
       payment_type: paymentType,
       total:
@@ -96,7 +97,7 @@ const useForm = () => {
         quantity: product.quantity
       })) || []
 
-    await addOrderItem(products)
+    await mutateAddOrderItem(products)
 
     const productIds = products.map((product) => product.product_id)
     const productsData = await getProductsById2(productIds)

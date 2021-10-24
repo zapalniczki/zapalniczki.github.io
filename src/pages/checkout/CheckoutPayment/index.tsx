@@ -11,6 +11,7 @@ import useForm from './useForm'
 
 import Form from './Form'
 import { useGetPaymentTypes } from 'api'
+import Voucher from './Voucher'
 
 const CheckoutPayment = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
@@ -23,7 +24,7 @@ const CheckoutPayment = () => {
   const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {
-    return <Redirect to={CHECKOUT_DELIVERY} />
+    // return <Redirect to={CHECKOUT_DELIVERY} />
   }
 
   return (
@@ -44,6 +45,8 @@ const CheckoutPayment = () => {
               {({ handleSubmit }) => (
                 <FormikForm onSubmit={handleSubmit}>
                   <Form paymentTypes={paymentTypes} />
+
+                  <Voucher />
 
                   <Total />
 

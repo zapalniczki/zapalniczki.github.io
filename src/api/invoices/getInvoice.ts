@@ -8,7 +8,7 @@ type Params = {
   order_id: Order['id']
 }
 
-const getInvoice = async (params: Params) => {
+export const getInvoice = async (params: Params) => {
   const response = await supabase
     .from<GetInvoiceResponse>(INVOICES_TABLE)
     .select()
@@ -19,11 +19,3 @@ const getInvoice = async (params: Params) => {
 
   return data
 }
-
-export const useGetInvoice = () => {
-  const { mutateAsync } = useMutation(getInvoice)
-
-  return (params: Params) => mutateAsync(params)
-}
-
-export default useGetInvoice
