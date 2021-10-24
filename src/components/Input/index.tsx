@@ -48,7 +48,7 @@ const Input = ({
         maxLength={maxLength}
         placeholder={placeholder}
         textarea={textarea}
-        type={type}
+        type={type.toString()}
       />
     </Flexbox>
   )
