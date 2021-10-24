@@ -1,8 +1,9 @@
 import { IconName } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FeatureItem, Grid, SectionHead } from 'components'
+import { FeatureItem, Flexbox, Grid, SectionHead } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
+import styled, { keyframes } from 'styled-components'
 
 const Features = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -17,7 +18,9 @@ const Features = () => {
             key={feature.key}
             title={commonT(`features.items.${feature.key}`)}
           >
-            <FontAwesomeIcon icon={feature.icon} size="3x" />
+            <IconWrapper padding="m-size">
+              <FontAwesomeIcon icon={feature.icon} size="3x" />
+            </IconWrapper>
           </FeatureItem>
         ))}
       </Grid>
@@ -25,7 +28,24 @@ const Features = () => {
   )
 }
 
-const features: { icon: IconName, key: string; }[] = [
+const rotateX = keyframes`
+  0% {
+    transform: rotateY(0);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+
+`
+
+const IconWrapper = styled(Flexbox)`
+  &:hover {
+    animation: ${rotateX} 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  }
+`
+
+const features: { icon: IconName; key: string }[] = [
   {
     key: 'FREE_DELIVERY',
     icon: 'truck'

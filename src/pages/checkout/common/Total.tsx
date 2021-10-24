@@ -1,9 +1,10 @@
-import { Box, Flexbox, Text } from 'components'
+import { Flexbox, Text } from 'components'
 import { displayMoney } from 'utils'
 import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
 import add from 'lodash.add'
+import { sumArray } from '../CheckoutPayment/useForm'
 
 type Props = {
   customDelivery?: number
@@ -16,8 +17,10 @@ const Total = ({ customDelivery, customProducts }: Props) => {
   const { checkout } = useContext(checkoutContext)
   const { total: totalNew } = checkout
 
-  const products = customProducts || totalNew
-  const delivery = customDelivery || 0
+  const products =
+    customProducts ||
+    sumArray(totalNew.products.map((product) => product.total))
+  const delivery = customDelivery || totalNew.delivery || 0
   const sum = add(products, delivery)
 
   return (

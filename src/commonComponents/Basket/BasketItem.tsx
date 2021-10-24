@@ -20,12 +20,9 @@ import { BasketItem as BasketItemType } from 'models'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { basketToggleContext } from 'providers'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SimpleButton from './SimpleButton'
 import { useGetProduct } from 'api'
-import add from 'lodash.add'
 import { checkoutContext } from 'providers'
-import subtract from 'lodash.subtract'
 import getSpace from 'styles/getSpace'
 
 type Props = {
@@ -57,6 +54,7 @@ const BasketItem = ({ product: basketProduct }: Props) => {
 
                 return prev.filter((elem) => elem !== productInBasket)
               }
+
               const index = findBasketItem(prev, basketProduct).index
               const result = [...prev]
               result[index].quantity = quantity + (addition ? 1 : -1)
@@ -64,17 +62,32 @@ const BasketItem = ({ product: basketProduct }: Props) => {
               return result
             })
 
-            setCheckout((checkoutPrev) => {
+            setCheckout((prev) => {
               const productTotal = product.price * basketProduct.quantity
 
+              let products = prev.total.products
+              if (addition === undefined) {
+                products = products.filter((p) => p.id !== product.id)
+              } else {
+                const index = products.findIndex(
+                  (prod) => prod.id === product.id
+                )
+                const newProducts = [...products]
+
+                newProducts[index] = {
+                  id: product.id,
+                  total: productTotal
+                }
+
+                products = newProducts
+              }
+
               return {
-                ...checkoutPrev,
-                total:
-                  addition === undefined
-                    ? subtract(checkoutPrev.total, productTotal)
-                    : addition
-                    ? add(checkoutPrev.total, product.price)
-                    : subtract(checkoutPrev.total, product.price)
+                ...prev,
+                total: {
+                  ...prev.total,
+                  products
+                }
               }
             })
           }

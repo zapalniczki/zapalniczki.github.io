@@ -4,7 +4,6 @@ import { CHECKOUT_PAYMENT, CHECKOUT_SHIPPING } from 'constants/routes'
 import { useSchema } from 'hooks'
 import { useContext } from 'react'
 import { checkoutContext } from 'providers'
-import add from 'lodash.add'
 import { DeliveryType } from 'models'
 
 export type FormValues = {
@@ -32,7 +31,10 @@ const useForm = () => {
         ...prev,
         delivery_type: selectedDeliveryType.id,
         same_address_as_invoice: sameAddressAsInvoice,
-        total: add(prev.total, selectedDeliveryType.price)
+        total: {
+          ...prev.total,
+          delivery: selectedDeliveryType.price
+        }
       }))
     }
 

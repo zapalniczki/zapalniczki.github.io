@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const BasketToggle = () => {
   const { pathname } = useLocation()
-  const { basket } = useContext(basketContext)
+  const { productCount } = useContext(basketContext)
   const { setIsOpen } = useContext(basketToggleContext)
 
   return (
@@ -26,7 +26,7 @@ const BasketToggle = () => {
       type="button"
       variant="quaternary"
     >
-      <Badge count={basket.length}>
+      <Badge count={productCount}>
         <FontAwesomeIcon icon="shopping-basket" size="2x" />
       </Badge>
     </Button>

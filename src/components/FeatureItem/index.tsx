@@ -2,7 +2,7 @@ import { Flexbox, Tile, Text } from 'components'
 import React, { ReactNode } from 'react'
 
 type Props = {
-  children: ReactNode,
+  children: ReactNode
   subtitle?: string
   title?: string
 }

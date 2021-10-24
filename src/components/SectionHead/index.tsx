@@ -5,9 +5,9 @@ import { SpaceProps } from 'styled-system'
 
 type Props = {
   link?: {
-    label: string,
+    label: string
     to: LocationDescriptor
-  },
+  }
   title?: string
 } & SpaceProps
 
@@ -26,7 +26,7 @@ const SectionHead = ({ link, title, ...props }: Props) => {
       {title && <Heading level={5}>{title}</Heading>}
 
       {link && (
-        <Link to={link.to} underline>
+        <Link showUnderline to={link.to}>
           {link.label}
         </Link>
       )}

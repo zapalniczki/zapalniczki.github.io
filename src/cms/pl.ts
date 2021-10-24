@@ -121,7 +121,7 @@ const pl = {
       clear: 'Wyczyść',
       empty: 'Twój koszyk jest pusty',
       title: 'Mój koszyk ',
-      total: 'Suma',
+      total: 'Produkty',
       checkout: 'Złóż zamówienie',
       backToShop: 'Wróć do sklepu',
       products: '({{count}} produkt)',
@@ -406,17 +406,22 @@ const pl = {
     color: 'kolor',
     colorValueTODO: 'drewno mix',
 
-    priceSubtitle: 'Cena za 50 sztuk - zawiera VAT',
+    priceSubtitle: 'Cena za 1 pudełko (50 sztuk) - zawiera VAT',
     avilability: {
       DONE: 'Produkt łatwo dostępny',
       IN_PROGRESS: 'Produkt dostępny',
       UNDONE: 'Produkt średnio dostępny'
     },
 
+    boxes: 'pudełko',
+    boxes_plural: 'pudełka',
+    boxes_multiple: 'pudełek',
+
     actions: {
       goBack: 'Wróć',
       addToBasket: 'Dodaj do koszyka',
-      removeFromBasket: 'Usuń z koszyka'
+      inBasket: 'Produkt w koszyku',
+      updateInBasket: 'Zaktualizuj koszyk'
     },
 
     max10characters: 'Maksymalnie 10 znaków',

@@ -4,7 +4,7 @@ import { basketContext } from 'providers'
 import useForm, { FormValues } from './useForm'
 import { GetProductResponse } from 'models'
 import { useTranslation } from 'hooks'
-import { Button, Flexbox, NumberInput } from 'components'
+import { Button, Flexbox, NumberInput, Text } from 'components'
 
 type Props = {
   product: GetProductResponse
@@ -24,37 +24,48 @@ const Form = ({ product }: Props) => {
       validateOnChange
       validationSchema={schema}
     >
-      {({ errors, isValid }) => {
-        console.log(errors)
+      {({ isValid, values }) => (
+        <FormikForm>
+          <Flexbox alignItems="center">
+            <Field name="product_quantity" type="numer">
+              {(
+                props: FieldProps<FormValues['product_quantity'], FormValues>
+              ) => <NumberInput {...props} max={100} min={1} />}
+            </Field>
 
-        return (
-          <FormikForm>
-            <Flexbox>
-              <Field name="product_quantity" type="numer">
-                {(
-                  props: FieldProps<FormValues['product_quantity'], FormValues>
-                ) => <NumberInput {...props} max={100} min={1} />}
-              </Field>
+            <Text marginLeft="m-size" type="caption">
+              {t(getPlural('boxes', values.product_quantity))}
+            </Text>
+          </Flexbox>
 
-              <Button
-                disabled={!isValid}
-                label={
-                  // isInBasket
-                  //   ? t('actions.removeFromBasket')
-                  // :
-                  t('actions.addToBasket')
-                }
-                marginLeft="m-size"
-                size="medium"
-                type="submit"
-                variant="primary"
-              />
-            </Flexbox>
-          </FormikForm>
-        )
-      }}
+          <Button
+            disabled={!isValid}
+            label={t(
+              isInBasket
+                ? isInBasket.quantity === values.product_quantity
+                  ? 'actions.inBasket'
+                  : 'actions.updateInBasket'
+                : 'actions.addToBasket'
+            )}
+            marginTop="m-size"
+            size="medium"
+            type="submit"
+            variant="primary"
+          />
+        </FormikForm>
+      )}
     </Formik>
   )
+}
+
+const getPlural = (key: string, count: number) => {
+  if (count > 4) {
+    return `${key}_multiple`
+  } else if (count > 1) {
+    return `${key}_plural`
+  }
+
+  return key
 }
 
 export default Form

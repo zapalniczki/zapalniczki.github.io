@@ -5,8 +5,8 @@ import {
   User,
   BasketItem,
   DeliveryType,
-  Order,
-  PaymentType
+  PaymentType,
+  Product
 } from 'models'
 
 type Props = {
@@ -38,7 +38,13 @@ export type Checkout = {
   products: BasketItem[] | null
   same_address_as_invoice: boolean
   shipping: Shipping | null
-  total: Order['total']
+  total: {
+    delivery: number
+    products: {
+      id: Product['id']
+      total: number
+    }[]
+  }
 }
 
 export type CheckoutContent = {
@@ -48,7 +54,10 @@ export type CheckoutContent = {
 
 export const initState: Checkout = {
   contact_details: null,
-  total: 0,
+  total: {
+    products: [],
+    delivery: 0
+  },
   products: null,
   delivery_type: null,
   shipping: null,

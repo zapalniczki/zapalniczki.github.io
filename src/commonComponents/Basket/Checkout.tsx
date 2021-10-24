@@ -32,7 +32,7 @@ const Checkout = () => {
   return (
     <QueryLoader query={productsQuery}>
       {(products) => {
-        const total = calculateTotal(
+        const productsTotal = calculateTotal(
           basket.map((product) => getProductTotal(products, product))
         )
 
@@ -44,7 +44,7 @@ const Checkout = () => {
               <Flexbox flexDirection="column">
                 <Text type="caption">{t('basket.total')}</Text>
 
-                <Heading level={5}>{displayMoney(total)}</Heading>
+                <Heading level={5}>{displayMoney(productsTotal)}</Heading>
               </Flexbox>
 
               <Button
@@ -65,7 +65,14 @@ const Checkout = () => {
                 onClick={() => {
                   setCheckout((prev) => ({
                     ...prev,
-                    total: total,
+
+                    total: {
+                      ...prev.total,
+                      products: basket.map((e) => ({
+                        id: e.id,
+                        total: getProductTotal(products, e)
+                      }))
+                    },
                     products: basket
                   }))
 

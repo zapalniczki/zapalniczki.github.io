@@ -8,6 +8,7 @@ import {
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useIsDev, useSchema } from 'hooks'
+import { add } from 'lodash'
 import { MoldStatus, PaymentType } from 'models'
 import {
   basketContext,
@@ -78,7 +79,11 @@ const useForm = () => {
     const { id: orderId } = await addOrder({
       delivery_type: deliveryType,
       payment_type: paymentType,
-      total: checkout.total ?? 0,
+      total:
+        add(
+          sumArray(checkout.total.products.map((product) => product.total)),
+          checkout.total.delivery
+        ) ?? 0,
       shipping_id,
       user_id,
       status: 'OPEN'
@@ -156,3 +161,6 @@ const calculateProductionTime = (
 
   return 'SHORT'
 }
+
+export const sumArray = (numbers: number[]) =>
+  numbers.reduce((acc, curr) => add(acc, curr), 0)

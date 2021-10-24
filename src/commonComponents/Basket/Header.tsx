@@ -9,36 +9,36 @@ import { checkoutContext } from 'providers'
 const Header = () => {
   const { t } = useTranslation('COMMON')
   const { closeBasket } = useContext(basketToggleContext)
-  const { basketLength, clearBasket } = useContext(basketContext)
+  const { clearBasket, productCount } = useContext(basketContext)
   const { setCheckout } = useContext(checkoutContext)
 
   let countName = 'basket.products'
-  if (basketLength > 4) {
+  if (productCount > 4) {
     countName = 'basket.products_multiple'
-  } else if (basketLength > 1) {
+  } else if (productCount > 1) {
     countName = 'basket.products_plural'
   }
 
   return (
     <Flexbox
       backgroundColor="white"
-      // TODO Which this is not accepted? zIndex="basket"
       flexDirection="column"
       width="100%"
+      // TODO Which this is not accepted? zIndex="basket"
       zIndex={60}
     >
       <Flexbox alignItems="center" padding="m-size">
         <Text marginRight="auto" type="subtitle-1">
           {t('basket.title')}
 
-          {!!basketLength && (
+          {!!productCount && (
             <Text marginLeft="s-size" span type="caption">
-              {t(countName, { count: basketLength })}
+              {t(countName, { count: productCount })}
             </Text>
           )}
         </Text>
 
-        {!!basketLength && (
+        {!!productCount && (
           <Button
             label={t('basket.clear')}
             marginRight="s-size"
@@ -46,7 +46,10 @@ const Header = () => {
               clearBasket()
               setCheckout((prev) => ({
                 ...prev,
-                total: 0
+                total: {
+                  ...prev.total,
+                  products: []
+                }
               }))
             }}
             size="small"

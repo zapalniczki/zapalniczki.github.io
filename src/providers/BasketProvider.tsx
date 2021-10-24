@@ -6,6 +6,7 @@ type BasketContex = {
   basketLength: number
   clearBasket: () => void
   getProductFromBasket: (id: string) => BasketItem | undefined
+  productCount: number
   setBasket: React.Dispatch<React.SetStateAction<BasketItem[]>>
 }
 
@@ -14,7 +15,8 @@ export const basketContext = createContext<BasketContex>({
   setBasket: () => undefined,
   clearBasket: () => undefined,
   basketLength: 0,
-  getProductFromBasket: () => undefined
+  getProductFromBasket: () => undefined,
+  productCount: 0
 })
 
 type Props = {
@@ -33,6 +35,10 @@ const BasketProvider = ({ children }: Props) => {
     return basketItem
   }
 
+  const productCount = basket
+    .map((product) => product.quantity)
+    .reduce((prev, curr) => prev + curr, 0)
+
   return (
     <basketContext.Provider
       value={{
@@ -40,7 +46,8 @@ const BasketProvider = ({ children }: Props) => {
         setBasket,
         clearBasket,
         basketLength,
-        getProductFromBasket
+        getProductFromBasket,
+        productCount
       }}
     >
       {children}

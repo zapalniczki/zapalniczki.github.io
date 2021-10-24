@@ -8,12 +8,12 @@ import getColor from 'styles/getColor'
 
 type Props = LinkProps & {
   className?: string
-  icon?: IconName,
-  underline?: boolean
+  icon?: IconName
+  showUnderline?: boolean
 }
 
-const Link = ({ children, icon, ...props }: Props) => (
-  <Container {...props}>
+const Link = ({ children, icon, showUnderline, ...props }: Props) => (
+  <Container $showUnderline={showUnderline} {...props}>
     {icon && <FontAwesomeIcon icon={icon} />}
 
     <Text
@@ -26,11 +26,11 @@ const Link = ({ children, icon, ...props }: Props) => (
   </Container>
 )
 
-type ContainerProps = { underline?: boolean }
+type ContainerProps = { $showUnderline?: boolean }
 const Container = styled(RouterLink)<ContainerProps>`
   display: flex;
   align-items: center;
-  text-decoration: ${(props) => (props.underline ? 'underline' : 'none')};
+  text-decoration: ${(props) => (props.$showUnderline ? 'underline' : 'none')};
   color: ${getColor('black')};
 `
 

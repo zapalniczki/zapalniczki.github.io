@@ -3,19 +3,17 @@ import { useScrollTop, useTabTitle } from 'hooks'
 import React, { Fragment, useContext } from 'react'
 import { useTranslation } from 'hooks'
 import { BasketItem } from 'commonComponents'
-import { basketContext } from 'providers'
+import { checkoutContext } from 'providers'
 import { Actions, StepTracker, Total, Wrapper } from '../common'
 import StepTitle from '../common/StepTitle'
 
 const CheckoutProducts = () => {
   const { t } = useTranslation('CHECKOUT_PRODUCTS')
 
-  const { basket, basketLength } = useContext(basketContext)
+  const { checkout } = useContext(checkoutContext)
 
   useTabTitle(t('title'))
   useScrollTop()
-
-  const isBasketEmpty = !basketLength
 
   return (
     <Page>
@@ -30,20 +28,20 @@ const CheckoutProducts = () => {
           marginTop="2rem"
           minHeight="20rem"
         >
-          {isBasketEmpty && (
+          {checkout.products ? (
+            checkout.products.map((product) => (
+              <Fragment key={product.id}>
+                <BasketItem product={product} />
+              </Fragment>
+            ))
+          ) : (
             <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
               <Text type="caption">{t('emptyState')}</Text>
             </Flexbox>
           )}
-
-          {basket.map((product) => (
-            <Fragment key={product.id}>
-              <BasketItem product={product} />
-            </Fragment>
-          ))}
         </Flexbox>
 
-        {!isBasketEmpty && <Total />}
+        {checkout.products?.length && <Total />}
 
         <Actions />
       </Wrapper>

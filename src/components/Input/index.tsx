@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import getColor from 'styles/getColor'
+import getSpace from 'styles/getSpace'
 
 type Props = FieldProps<string> & {
   autocomplete?: string
@@ -63,8 +64,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   cursor: pointer;
   border: 1px solid;
   border-color: ${getColor('border-color')};
-  padding: ${(props) =>
-    `${props.theme.space['xs-size']} ${props.theme.space['xs-size']}`};
+  padding: ${getSpace('xs-size')};
   font-family: 'Roboto';
 
   &[type='checkbox'],
