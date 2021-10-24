@@ -32,9 +32,8 @@ const getBanners = (
       description={t('banner.description')}
       title={
         <Heading level={3} textAlign="center">
-          <strong>Twoje</strong>
-          &nbsp;miejsce w&nbsp;
-          <strong>Twoim</strong>
+          {/* eslint-disable-next-line react/jsx-newline */}
+          <strong>Twoje</strong> miejsce w <strong>Twoim</strong>
           &nbsp;punkcie
         </Heading>
       }
