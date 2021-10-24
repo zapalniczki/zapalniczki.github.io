@@ -1,9 +1,8 @@
 import { getInvoice } from 'api'
-import { loaderContext } from 'providers'
-import { useContext, useState } from 'react'
-import { useSchema, useTranslation } from 'hooks'
-import { object } from 'yup'
+import { useFormSubmit, useSchema, useTranslation } from 'hooks'
+import { useState } from 'react'
 import { useMutation } from 'react-query'
+import { object } from 'yup'
 
 export type FormValues = {
   order_id: string
@@ -15,36 +14,34 @@ const useForm = () => {
 
   const { getSchema } = useSchema()
 
-  const { mutateAsync: mutateGetInvoice } = useMutation(getInvoice)
-
   const initialValues: FormValues = {
     order_id: ''
   }
-
-  const { hide, show } = useContext(loaderContext)
 
   const schema = object({
     order_id: getSchema('ORDER_ID')
   })
 
-  const onSubmit = async (formValues: FormValues) => {
-    try {
-      show()
+  const useSubmit = () => {
+    const { mutateAsync: mutateGetInvoice } = useMutation(getInvoice, {
+      onSuccess: (order) => {
+        setView({
+          view: 'RESULT',
+          url: order.url
+        })
+      },
+      onError: () => {
+        setView({
+          view: 'ERROR',
+          message: t('items.DOWNLOAD_INVOICE.error.info')
+        })
+      }
+    })
 
-      const order = await mutateGetInvoice(formValues)
-
-      setView({
-        view: 'RESULT',
-        url: order.url
-      })
-    } catch (e) {
-      setView({
-        view: 'ERROR',
-        message: t('items.DOWNLOAD_INVOICE.error.info')
-      })
-    }
-    hide()
+    return useFormSubmit((values: FormValues) => mutateGetInvoice(values))
   }
+
+  const onSubmit = useSubmit()
 
   return {
     initialValues,

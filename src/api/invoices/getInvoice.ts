@@ -1,6 +1,5 @@
 import { INVOICES_TABLE } from 'constants/db_tables'
 import { getInvoiceResponse, GetInvoiceResponse, Order } from 'models'
-import { useMutation } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 
