@@ -16,9 +16,3 @@ export const addUser = async (payload: Payload) => {
 
   return data
 }
-
-export const useAddUser = () => {
-  const { mutateAsync } = useMutation(addUser)
-
-  return async (payload: Payload) => await mutateAsync(payload)
-}

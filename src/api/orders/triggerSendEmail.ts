@@ -1,5 +1,4 @@
 import { Voucher } from 'models'
-import { useMutation } from 'react-query'
 import { Email, Fullname, Phone } from 'types/index2'
 
 type EventType =
@@ -35,10 +34,4 @@ export const triggerSendEmail = (payload: TriggerSendEmailPayload) => {
   }
 
   return fetch(path, options)
-}
-
-export const useTriggerSendEmail = () => {
-  const { mutateAsync } = useMutation(triggerSendEmail)
-
-  return (payload: TriggerSendEmailPayload) => mutateAsync(payload)
 }

@@ -2,9 +2,9 @@ import {
   addAddress,
   addOrder,
   addOrderItem,
-  useAddUser,
-  useGetProductsById2,
-  useTriggerSendEmail
+  addUser,
+  getProductsById,
+  triggerSendEmail
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useIsDev, useSchema } from 'hooks'
@@ -35,11 +35,11 @@ const useForm = () => {
   const { hide, show } = useContext(loaderContext)
 
   const { mutateAsync: mutateAddAddress } = useMutation(addAddress)
-  const addUser = useAddUser()
+  const { mutateAsync: mutateAddUser } = useMutation(addUser)
   const { mutateAsync: mutateAddOrder } = useMutation(addOrder)
   const { mutateAsync: mutateAddOrderItem } = useMutation(addOrderItem)
-  const triggerSendEmail = useTriggerSendEmail()
-  const getProductsById2 = useGetProductsById2()
+  const { mutateAsync: mutateTriggerSendEmail } = useMutation(triggerSendEmail)
+  const { mutateAsync: mutateGetProductsById } = useMutation(getProductsById)
 
   const onSubmit = async (form: FormValues) => {
     show()
@@ -65,7 +65,7 @@ const useForm = () => {
       full_name,
       id: user_id,
       phone
-    } = await addUser({
+    } = await mutateAddUser({
       email: checkout.contact_details?.email ?? '',
       phone: checkout.contact_details?.phone ?? '',
       full_name: checkout.contact_details?.full_name ?? '',
@@ -100,7 +100,7 @@ const useForm = () => {
     await mutateAddOrderItem(products)
 
     const productIds = products.map((product) => product.product_id)
-    const productsData = await getProductsById2(productIds)
+    const productsData = await mutateGetProductsById(productIds)
     const productionTime = calculateProductionTime(
       productsData.map((product) => product.mold.status)
     )
@@ -111,7 +111,7 @@ const useForm = () => {
     }
 
     if (!isDev) {
-      triggerSendEmail({
+      mutateTriggerSendEmail({
         to: email,
         type: {
           key: 'NEW_ORDER',

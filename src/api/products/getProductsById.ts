@@ -11,7 +11,7 @@ import { array } from 'zod'
 
 type Payload = Product['id'][]
 
-const getProductsById = async (payload: Payload) => {
+export const getProductsById = async (payload: Payload) => {
   const response = await supabase
     .from<GetProductsByIdResponseItem>(PRODUCTS_TABLE)
     .select(
@@ -32,9 +32,3 @@ const getProductsById = async (payload: Payload) => {
 
 export const useGetProductsById = () =>
   useQuery('products', () => getProductsById([]))
-
-export const useGetProductsById2 = () => {
-  const { mutateAsync } = useMutation(getProductsById)
-
-  return (payload: Payload) => mutateAsync(payload)
-}
