@@ -11,7 +11,7 @@ function parseApiResponse<T>(
   const { data, error } = response
 
   if (error) {
-    throw new Error(error.message)
+    throw new Error(error.code)
   }
 
   if (!data) {

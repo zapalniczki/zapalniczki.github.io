@@ -1,22 +1,15 @@
 import { VOUCHERS_TABLE } from 'constants/db_tables'
-import { voucher, Voucher } from 'models'
-import { useMutation } from 'react-query'
+import { addVoucherResponse, AddVoucherResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 
-const addVoucher = async () => {
+export const addVoucher = async () => {
   const response = await supabase
-    .from<Voucher>(VOUCHERS_TABLE)
+    .from<AddVoucherResponse>(VOUCHERS_TABLE)
     .insert({})
     .single()
 
-  const data = parseApiResponse(voucher, response)
+  const data = parseApiResponse(addVoucherResponse, response)
 
   return data
-}
-
-export const useAddVoucher = () => {
-  const { mutateAsync } = useMutation(addVoucher)
-
-  return () => mutateAsync()
 }

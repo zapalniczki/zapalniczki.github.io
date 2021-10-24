@@ -1,14 +1,12 @@
-import { useAddEmail, useAddVoucher, useTriggerSendEmail } from 'api'
-import { useSchema, useTranslation } from 'hooks'
-import { loaderContext } from 'providers'
-import { useContext, useState } from 'react'
-
+import { addEmail, addVoucher, triggerSendEmail } from 'api'
+import { useFormSubmit, useSchema, useTranslation } from 'hooks'
+import { useState } from 'react'
+import { useMutation } from 'react-query'
 import { object } from 'yup'
 
 const useForm = () => {
   const [view, setView] = useState<View>({ view: 'FORM' })
   const { getSchema } = useSchema()
-  const { hide, show } = useContext(loaderContext)
   const { t: commonT } = useTranslation('COMMON')
 
   const initialValues = { email: '' }
@@ -17,43 +15,37 @@ const useForm = () => {
     email: getSchema('EMAIL')
   })
 
-  const { mutateAsync: mutateAddEmail } = useAddEmail()
-  const triggerSendEmail = useTriggerSendEmail()
-  const addVoucher = useAddVoucher()
+  const useSubmit = () => {
+    const { mutateAsync: mutateTriggerSendEmail } =
+      useMutation(triggerSendEmail)
+    const { mutateAsync: mutateAddVoucher } = useMutation(addVoucher)
+    const { mutateAsync: mutateAddEmail } = useMutation(addEmail, {
+      onSuccess: async (response) => {
+        const { id } = await mutateAddVoucher()
 
-  const onSubmit = async (values: FormValues) => {
-    try {
-      show()
-
-      await mutateAddEmail({
-        email: values.email
-      })
-
-      const { id } = await addVoucher()
-
-      triggerSendEmail({
-        to: values.email,
-        type: {
-          key: 'NEWSLETTER_SIGNUP',
-          content: {
-            voucher_id: id
+        mutateTriggerSendEmail({
+          to: response.email,
+          type: {
+            key: 'NEWSLETTER_SIGNUP',
+            content: {
+              voucher_id: id
+            }
           }
-        }
-      })
+        })
 
-      setView({
-        view: 'SUCCESS'
-      })
-    } catch (_e: unknown) {
-      if (_e instanceof Error) {
-        let message: string
-        switch (_e.message) {
-          case '23505':
-            message = commonT('NEWSLETTER.ERROR.codes.23505')
-            break
+        setView({
+          view: 'SUCCESS'
+        })
+      },
+      onError: (error) => {
+        let message = commonT('NEWSLETTER.ERROR.codes.default')
 
-          default:
-            message = commonT('NEWSLETTER.ERROR.codes.default')
+        if (error instanceof Error) {
+          switch (error.message) {
+            case '23505':
+              message = commonT('NEWSLETTER.ERROR.codes.23505')
+              break
+          }
         }
 
         setView({
@@ -61,9 +53,12 @@ const useForm = () => {
           message
         })
       }
-    }
-    hide()
+    })
+
+    return useFormSubmit((values: FormValues) => mutateAddEmail(values))
   }
+
+  const onSubmit = useSubmit()
 
   return {
     initialValues,

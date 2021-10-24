@@ -23,7 +23,7 @@ type TriggerSendEmailPayload = {
   type: EventType
 }
 
-const triggerSendEmail = (payload: TriggerSendEmailPayload) => {
+export const triggerSendEmail = (payload: TriggerSendEmailPayload) => {
   const headers = new Headers()
   headers.append('Content-Type', 'application/json')
 

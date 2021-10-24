@@ -102,3 +102,9 @@ export * from './addCallbackResponse'
 
 export { default as getOrderStatusResponse } from './getOrderStatusResponse'
 export * from './getOrderStatusResponse'
+
+export { default as addEmailResponse } from './addEmailResponse'
+export * from './addEmailResponse'
+
+export { default as addVoucherResponse } from './addVoucherResponse'
+export * from './addVoucherResponse'

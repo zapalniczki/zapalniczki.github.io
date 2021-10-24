@@ -1,26 +1,23 @@
 import { NEWSLETTER_TABLE } from 'constants/db_tables'
-import { Newsletter } from 'models'
-import { useMutation } from 'react-query'
+import { addEmailResponse, AddEmailResponse } from 'models'
 import supabase from 'supabase'
 import { Email } from 'types/index2'
+import { parseApiResponse } from 'utils'
 
-type AddEmailPayload = {
+type Payload = {
   email: Email
 }
 
-const addEmail = async (payload: AddEmailPayload) => {
-  const { data, error } = await supabase
-    .from<Newsletter>(NEWSLETTER_TABLE)
+export const addEmail = async (payload: Payload) => {
+  const response = await supabase
+    .from<AddEmailResponse>(NEWSLETTER_TABLE)
     .insert({
       consent: true,
       email: payload.email
     })
+    .single()
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(addEmailResponse, response)
 
   return data
 }
-
-export const useAddEmail = () => useMutation(addEmail)
