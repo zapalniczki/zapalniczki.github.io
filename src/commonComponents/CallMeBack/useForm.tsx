@@ -1,43 +1,39 @@
-import { useAddCallback } from 'api'
-import { useSchema } from 'hooks'
-import { loaderContext } from 'providers'
-import { useContext, useState } from 'react'
-
+import { addCallback } from 'api'
+import { useFormSubmit, useSchema } from 'hooks'
+import { useState } from 'react'
+import { useMutation } from 'react-query'
 import { object } from 'yup'
 
 const useForm = () => {
   const [view, setView] = useState<View>({ view: 'FORM' })
 
   const { getSchema } = useSchema()
-  const { hide, show } = useContext(loaderContext)
 
-  const initialValues = { phone: '' }
+  const initialValues: FormValues = {
+    phone: ''
+  }
 
   const schema = object({
     phone: getSchema('PHONE')
   })
 
-  const { mutateAsync: mutateAddNumber } = useAddCallback()
+  const useSubmit = () => {
+    const { mutateAsync: mutateAddNumber } = useMutation(addCallback, {
+      onSuccess: () => {
+        setView({
+          view: 'SUCCESS'
+        })
+      },
+      onError: () => {
+        setView({
+          view: 'ERROR'
+        })
+      }
+    })
 
-  const onSubmit = async (values: FormValues) => {
-    try {
-      show()
-
-      await mutateAddNumber({
-        phone: values.phone
-      })
-
-      setView({
-        view: 'SUCCESS'
-      })
-    } catch (_e: unknown) {
-      setView({
-        view: 'ERROR'
-      })
-    } finally {
-      hide()
-    }
+    return useFormSubmit((values: FormValues) => mutateAddNumber(values))
   }
+  const onSubmit = useSubmit()
 
   return {
     initialValues,
@@ -52,6 +48,15 @@ export type FormValues = {
   phone: string
 }
 
-type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }
+type View =
+  | {
+      view: 'FORM'
+    }
+  | {
+      view: 'SUCCESS'
+    }
+  | {
+      view: 'ERROR'
+    }
 
 export default useForm

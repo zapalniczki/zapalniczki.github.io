@@ -12,6 +12,7 @@ const useFormSubmit = <T, TFormValues>(
   return async (values: TFormValues) => {
     try {
       show()
+
       const response = await submit(values)
 
       if (options) {
@@ -24,11 +25,11 @@ const useFormSubmit = <T, TFormValues>(
 
       return response
     } catch (e) {
+      hide()
+
       if (e) {
         throw new Error('error')
       }
-
-      hide()
 
       return undefined
     }

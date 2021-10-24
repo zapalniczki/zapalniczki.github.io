@@ -207,8 +207,8 @@ const pl = {
       },
       PHONE: {
         required: 'Proszę podać numer telefonu',
-        matches: 'Numer telefonu może zawierać cyfry, spacje i znak +',
-        min: 'Numer telefonu powinien składać się z numeru kierunkowego i 9 cyfr'
+        matches:
+          'Numer telefonu powinien składać się z numeru kierunkowego (48) i 9 cyfr'
       },
       ORDER_ID: {
         required: 'To pole jest wymagane',

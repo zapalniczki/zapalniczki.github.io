@@ -5,7 +5,7 @@ import supabase from 'supabase'
 
 type GetCallbacksResponse = Callback
 
-const getCallbacks = async () => {
+export const getCallbacks = async () => {
   const { data, error } = await supabase
     .from<GetCallbacksResponse>(CALLBACK_TABLE)
     .select()

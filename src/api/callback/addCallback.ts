@@ -1,24 +1,22 @@
 import { CALLBACK_TABLE } from 'constants/db_tables'
-import { useMutation } from 'react-query'
+import { addCallbackResponse, AddCallbackResponse } from 'models'
 import supabase from 'supabase'
 import { Phone } from 'types/index2'
+import { parseApiResponse } from 'utils'
 
 type AddNumberPayload = {
   phone: Phone
 }
 
-const addCallback = async (payload: AddNumberPayload) => {
-  const { data, error } = await supabase.from(CALLBACK_TABLE).insert({
-    phone_number: payload.phone
-  })
+export const addCallback = async (payload: AddNumberPayload) => {
+  const response = await supabase
+    .from<AddCallbackResponse>(CALLBACK_TABLE)
+    .insert({
+      phone_number: payload.phone
+    })
+    .single()
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(addCallbackResponse, response)
 
   return data
 }
-
-export const useAddCallback = () => useMutation(addCallback)
-
-export default addCallback

@@ -64,7 +64,7 @@ const inputs = {
   PHONE_NOT_MOBILE: {
     label: 'INPUTS.PHONE_NOT_MOBILE.label',
     placeholder: 'INPUTS.PHONE_NOT_MOBILE.placeholder',
-    maxLength: 15
+    maxLength: 11
   },
   STREET_ADDRESS: {
     label: 'INPUTS.STREET_ADDRESS.label',

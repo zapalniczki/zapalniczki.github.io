@@ -12,7 +12,7 @@ type Props = SpaceProps
 
 const CallMeBack = (props: Props) => {
   const { t: commonT } = useTranslation('COMMON')
-  const { initialValues, onSubmit, schema, view } = useForm()
+  const { initialValues, onSubmit, schema, setView, view } = useForm()
   const { colors } = useTheme()
 
   let title = commonT('CALL_ME_BACK.FORM.title')
@@ -44,6 +44,7 @@ const CallMeBack = (props: Props) => {
       <Box>
         <Button
           label={commonT('CALL_ME_BACK.ERROR.buttonLabel')}
+          onClick={() => setView({ view: 'FORM' })}
           size="small"
         />
       </Box>
