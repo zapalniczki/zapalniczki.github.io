@@ -12,9 +12,17 @@ type Props = FieldProps<string> & {
   label?: string
   maxLength?: number
   placeholder?: string
-  textarea?: boolean
-  type?: 'text' | 'password' | 'email'
-} & SpaceProps
+} & (
+    | {
+        textarea?: false
+        type?: 'text' | 'password' | 'email'
+      }
+    | {
+        textarea?: true
+        type?: undefined
+      }
+  ) &
+  SpaceProps
 
 const Input = ({
   autocomplete,
@@ -48,7 +56,7 @@ const Input = ({
         maxLength={maxLength}
         placeholder={placeholder}
         textarea={textarea}
-        type={type.toString()}
+        {...(!textarea && { type })}
       />
     </Flexbox>
   )
