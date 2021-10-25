@@ -1,15 +1,17 @@
-import { useGetPaymentTypes } from 'api'
+import { getPaymentTypes } from 'api'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { PaymentType } from 'models'
 import EditModal from './EditModal'
 import React, { useMemo } from 'react'
 import { formatDate, displayMoney } from 'utils'
+import { useQuery } from 'react-query'
+import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const callbacksQuery = useGetPaymentTypes()
+  const paymentTypesQuery = useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)
   const columns = useMemo(
     () => [
       {
@@ -46,7 +48,7 @@ const List = () => {
 
   return (
     <Tile>
-      <QueryLoader query={callbacksQuery}>
+      <QueryLoader query={paymentTypesQuery}>
         {(data) => {
           const shappedData = shapeData(data)
 

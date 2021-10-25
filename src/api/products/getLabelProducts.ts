@@ -1,18 +1,18 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import {
   getLabelProductsResponseItem,
-  GetLabelProductsResponseItem
+  GetLabelProductsResponseItem,
+  Label
 } from 'models'
-import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
 type Params = {
-  labelId: string
+  labelId: Label['id']
 }
 
-const getLabelProducts = async (params: Params) => {
+export const getLabelProducts = async (params: Params) => {
   const response = await supabase
     .from<GetLabelProductsResponseItem>(PRODUCTS_TABLE)
     .select(
@@ -34,6 +34,3 @@ const getLabelProducts = async (params: Params) => {
 
   return data
 }
-
-export const useGetLabelProducts = (params: Params) =>
-  useQuery(['products', params], () => getLabelProducts(params))

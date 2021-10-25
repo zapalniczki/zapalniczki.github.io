@@ -1,25 +1,19 @@
 import { MOLDS_TABLE } from 'constants/db_tables'
-import { Mold, MoldStatus } from 'models'
+import { Mold, updateMoldResponse, UpdateMoldResponse } from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
-type Payload = {
-  id: string
-  status: MoldStatus
-}
+type Payload = Pick<Mold, 'id' | 'status'>
 
-const updateMold = async (payload: Payload) => {
-  const { data, error } = await supabase
-    .from<Mold>(MOLDS_TABLE)
+export const updateMold = async (payload: Payload) => {
+  const response = await supabase
+    .from<UpdateMoldResponse>(MOLDS_TABLE)
     .update({
       status: payload.status
     })
     .eq('id', payload.id)
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(updateMoldResponse, response)
 
   return data
 }
-
-export default updateMold

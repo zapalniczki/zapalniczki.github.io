@@ -1,11 +1,12 @@
-import { useGetFeatured } from 'api'
+import { getFeatured } from 'api'
 import { ProductsGrid } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
+import { useQuery } from 'react-query'
 
 const Featured = () => {
   const { t: commonT } = useTranslation('HOME')
-  const featuredQuery = useGetFeatured()
+  const featuredQuery = useQuery('featured', () => getFeatured())
 
   return (
     <ProductsGrid

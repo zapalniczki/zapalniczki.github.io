@@ -11,7 +11,9 @@ import { StepTracker, Wrapper, Total, StepTitle } from '../common'
 
 import useForm from './useForm'
 import Form from './Form'
-import { useGetDeliveryTypes } from 'api'
+import { getDeliveryTypes } from 'api'
+import { useQuery } from 'react-query'
+import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
 
 const CheckoutDelivery = () => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
@@ -19,7 +21,7 @@ const CheckoutDelivery = () => {
   useTabTitle(t('title'))
   useScrollTop()
 
-  const deliveryTypesQuery = useGetDeliveryTypes()
+  const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
   const { checkout, setCheckout } = useContext(checkoutContext)
   const { initialValues, onSubmitForm, schema } = useForm()
 

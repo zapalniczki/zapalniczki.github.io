@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import callback from './db/callback'
+import { callback } from 'models'
 
 const addCallbackResponse = callback
 

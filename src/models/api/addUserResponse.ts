@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import user from './db/user'
+import { user } from 'models'
 
 const addUserResponse = user
 

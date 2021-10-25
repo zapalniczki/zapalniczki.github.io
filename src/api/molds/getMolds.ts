@@ -1,22 +1,11 @@
 import { ICONS_TABLE, LABELS_TABLE, MOLDS_TABLE } from 'constants/db_tables'
-import { Mold } from 'models'
-import { useQuery } from 'react-query'
+import { getMoldsResponseItem, GetMoldsResponseItem } from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
-export type GetMoldsResponseItem = Pick<
-  Mold,
-  'id' | 'created_at' | 'updated_at' | 'status'
-> & {
-  icon: {
-    label: string
-  }
-  label: {
-    label: string
-  }
-}
-
-const getMolds = async () => {
-  const { data, error } = await supabase
+export const getMolds = async () => {
+  const response = await supabase
     .from<GetMoldsResponseItem>(MOLDS_TABLE)
     .select(
       `id,
@@ -32,15 +21,7 @@ const getMolds = async () => {
       `
     )
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getMolds')
-  }
+  const data = parseApiResponse(array(getMoldsResponseItem), response)
 
   return data
 }
-
-export const useGetMolds = () => useQuery(MOLDS_TABLE, getMolds)

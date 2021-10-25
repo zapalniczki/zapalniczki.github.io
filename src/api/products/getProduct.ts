@@ -5,12 +5,15 @@ import {
   MOLDS_TABLE,
   PRODUCTS_TABLE
 } from 'constants/db_tables'
-import { GetProductResponse, getProductResponse } from 'models'
-import { useQuery } from 'react-query'
+import { GetProductResponse, getProductResponse, Product } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 
-const getProduct = async (id: string) => {
+type Params = {
+  id: Product['id']
+}
+
+export const getProduct = async (params: Params) => {
   const response = await supabase
     .from<GetProductResponse>(PRODUCTS_TABLE)
     .select(
@@ -37,13 +40,10 @@ const getProduct = async (id: string) => {
       )
       `
     )
-    .eq('id', id)
+    .eq('id', params.id)
     .single()
 
   const data = parseApiResponse(getProductResponse, response)
 
   return data
 }
-
-export const useGetProduct = (id: string) =>
-  useQuery(['product', { id }], () => getProduct(id))

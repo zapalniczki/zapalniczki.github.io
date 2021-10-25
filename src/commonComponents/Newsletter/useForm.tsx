@@ -1,5 +1,6 @@
 import { addEmail, addVoucher, triggerSendEmail } from 'api'
 import { useFormSubmit, useSchema, useTranslation } from 'hooks'
+import { User } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
@@ -70,7 +71,7 @@ const useForm = () => {
 }
 
 export type FormValues = {
-  email: string
+  email: User['email']
 }
 
 type View =

@@ -1,11 +1,10 @@
 import { NEWSLETTER_TABLE } from 'constants/db_tables'
-import { addEmailResponse, AddEmailResponse } from 'models'
+import { addEmailResponse, AddEmailResponse, Newsletter } from 'models'
 import supabase from 'supabase'
-import { Email } from 'types/index2'
 import { parseApiResponse } from 'utils'
 
 type Payload = {
-  email: Email
+  email: Newsletter['email']
 }
 
 export const addEmail = async (payload: Payload) => {

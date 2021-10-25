@@ -1,16 +1,17 @@
-import { useGetBestsellers } from 'api'
+import { getBestsellers } from 'api'
 import { ProductsGrid } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
+import { useQuery } from 'react-query'
 
 const Bestsellers = () => {
   const { t } = useTranslation('HOME')
-  const productsQuery = useGetBestsellers()
+  const bestsellersQuery = useQuery('bestsellers', getBestsellers)
 
   return (
     <ProductsGrid
       marginTop="xxl-size"
-      query={productsQuery}
+      query={bestsellersQuery}
       title={t('bestsellers.title')}
     />
   )

@@ -1,11 +1,10 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import { GetProductsResponseItem, getProductsResponseItem } from 'models'
-import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-const getProducts = async () => {
+export const getProducts = async () => {
   const response = await supabase.from<GetProductsResponseItem>(PRODUCTS_TABLE)
     .select(`
     id,
@@ -22,5 +21,3 @@ const getProducts = async () => {
 
   return data
 }
-
-export const useGetProducts = () => useQuery('products', getProducts)

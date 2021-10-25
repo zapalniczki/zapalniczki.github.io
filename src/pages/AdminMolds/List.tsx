@@ -1,7 +1,10 @@
-import { GetMoldsResponseItem, useGetMolds } from 'api'
+import { getMolds } from 'api'
 import { Heading, QueryLoader, Table, Tile } from 'components'
+import { MOLDS_TABLE } from 'constants/db_tables'
 import { TranslateFunc, useTranslation } from 'hooks'
+import { GetMoldsResponseItem } from 'models'
 import React, { useMemo } from 'react'
+import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
 import EditModal from './EditModal'
 
@@ -9,7 +12,7 @@ const List = () => {
   const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('ADMIN_MOLDS')
 
-  const query = useGetMolds()
+  const moldsQuery = useQuery(MOLDS_TABLE, getMolds)
   const columns = useMemo(
     () => [
       {
@@ -46,7 +49,7 @@ const List = () => {
         {t('LIST.title')}
       </Heading>
 
-      <QueryLoader query={query}>
+      <QueryLoader query={moldsQuery}>
         {(users) => {
           const shappedData = shapeData(users, commonT)
 

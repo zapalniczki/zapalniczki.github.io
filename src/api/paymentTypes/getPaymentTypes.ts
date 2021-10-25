@@ -1,25 +1,18 @@
 import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
-import { PaymentType } from 'models'
-import { useQuery } from 'react-query'
+import {
+  getPaymentTypesResponseItem,
+  GetPaymentTypesResponseItem
+} from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
-type GetPaymentTypesResponse = PaymentType
-
-const getPaymentTypes = async () => {
-  const { data, error } = await supabase
-    .from<GetPaymentTypesResponse>(PAYMENT_TYPE_TABLE)
+export const getPaymentTypes = async () => {
+  const response = await supabase
+    .from<GetPaymentTypesResponseItem>(PAYMENT_TYPE_TABLE)
     .select()
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getPaymentTypes')
-  }
+  const data = parseApiResponse(array(getPaymentTypesResponseItem), response)
 
   return data
 }
-
-export const useGetPaymentTypes = () =>
-  useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)

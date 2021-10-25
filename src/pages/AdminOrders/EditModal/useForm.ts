@@ -1,10 +1,10 @@
-import { getOrdersQueryKey, updateOrderStatus } from 'api'
+import { updateOrderStatus } from 'api'
+import { ORDER_TABLE } from 'constants/db_tables'
 import { useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { Order, OrderStatus } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
-
 import { object, string } from 'yup'
 
 const useForm = (id: string, status: Order['status']) => {
@@ -37,7 +37,7 @@ const useForm = (id: string, status: Order['status']) => {
         }),
       {
         onSuccess: () => {
-          queryClient.invalidateQueries([getOrdersQueryKey])
+          queryClient.invalidateQueries([ORDER_TABLE])
         }
       }
     )

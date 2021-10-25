@@ -1,23 +1,15 @@
 import { LABELS_TABLE } from 'constants/db_tables'
-import { Label } from 'models'
+import { getLabelsResponseItem, GetLabelsResponseItem } from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
-type GetLabelResponse = Label
-
-const getLabels = async () => {
-  const { data, error } = await supabase
-    .from<GetLabelResponse>(LABELS_TABLE)
+export const getLabels = async () => {
+  const response = await supabase
+    .from<GetLabelsResponseItem>(LABELS_TABLE)
     .select()
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getLabels')
-  }
+  const data = parseApiResponse(array(getLabelsResponseItem), response)
 
   return data
 }
-
-export default getLabels

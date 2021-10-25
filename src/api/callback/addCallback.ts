@@ -1,14 +1,13 @@
 import { CALLBACK_TABLE } from 'constants/db_tables'
-import { addCallbackResponse, AddCallbackResponse } from 'models'
+import { addCallbackResponse, AddCallbackResponse, Callback } from 'models'
 import supabase from 'supabase'
-import { Phone } from 'types/index2'
 import { parseApiResponse } from 'utils'
 
-type AddNumberPayload = {
-  phone: Phone
+type Payload = {
+  phone: Callback['phone_number']
 }
 
-export const addCallback = async (payload: AddNumberPayload) => {
+export const addCallback = async (payload: Payload) => {
   const response = await supabase
     .from<AddCallbackResponse>(CALLBACK_TABLE)
     .insert({

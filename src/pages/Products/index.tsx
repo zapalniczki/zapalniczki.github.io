@@ -19,13 +19,10 @@ import {
   GetLabelProductsResponseItem,
   GetProductsResponseItem
 } from 'models'
-import {
-  useGetCollectionProducts,
-  useGetLabelProducts,
-  useGetProducts
-} from 'api'
-import { UseQueryResult } from 'react-query'
+import { getCollectionProducts, getLabelProducts, getProducts } from 'api'
+import { useQuery, UseQueryResult } from 'react-query'
 import Loader from './index.loader'
+import { PRODUCTS_TABLE } from 'constants/db_tables'
 
 const Products = () => {
   const { state } = useLocation<{ collectionId?: string; labelId?: string }>()
@@ -44,15 +41,23 @@ const Products = () => {
     )[]
   >
   if (state?.labelId) {
-    productsQuery = useGetLabelProducts({
+    const params = {
       labelId: state.labelId
-    })
+    }
+
+    productsQuery = useQuery([PRODUCTS_TABLE, params], () =>
+      getLabelProducts(params)
+    )
   } else if (state?.collectionId) {
-    productsQuery = useGetCollectionProducts({
+    const params = {
       collectionId: state.collectionId
-    })
+    }
+
+    productsQuery = useQuery([PRODUCTS_TABLE, params], () =>
+      getCollectionProducts(params)
+    )
   } else {
-    productsQuery = useGetProducts()
+    productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
   }
 
   const isFiltered = state?.labelId || state?.collectionId

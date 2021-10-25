@@ -1,4 +1,4 @@
-import { useGetNewsletterUsers } from 'api'
+import { getNewsletterUsers } from 'api'
 import {
   Flexbox,
   Heading,
@@ -7,9 +7,11 @@ import {
   Table,
   Tile
 } from 'components'
+import { NEWSLETTER_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
 import { Newsletter } from 'models'
 import React, { useMemo } from 'react'
+import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
 import EditModal from './EditModal'
 
@@ -17,7 +19,7 @@ const List = () => {
   const { t } = useTranslation('ADMIN_MOLDS')
   const { t: commonT } = useTranslation('COMMON')
 
-  const adminNewsletterUsersQuery = useGetNewsletterUsers()
+  const newsletterUsersQuery = useQuery(NEWSLETTER_TABLE, getNewsletterUsers)
   const columns = useMemo(
     () => [
       {
@@ -50,7 +52,7 @@ const List = () => {
         {t('LIST.title')}
       </Heading>
 
-      <QueryLoader query={adminNewsletterUsersQuery}>
+      <QueryLoader query={newsletterUsersQuery}>
         {(users) => {
           const shappedData = shapeData(users)
 

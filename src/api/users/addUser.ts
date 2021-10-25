@@ -1,6 +1,5 @@
 import { USERS_TABLE } from 'constants/db_tables'
 import { AddUserResponse, addUserResponse, User } from 'models'
-import { useMutation } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 

@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import address from './db/address'
+import { address } from 'models'
 
 const addAddressResponse = address
 

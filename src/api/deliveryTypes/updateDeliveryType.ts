@@ -1,25 +1,23 @@
 import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
-import { DeliveryType } from 'models'
+import {
+  DeliveryType,
+  updateDeliveryTypeResponse,
+  UpdateDeliveryTypeResponse
+} from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
-type UpdateDeliveryTypePayload = {
-  id: string
-  is_enabled: boolean
-}
+type Payload = Pick<DeliveryType, 'id' | 'is_enabled'>
 
-const updateDeliveryType = async (payload: UpdateDeliveryTypePayload) => {
-  const { data, error } = await supabase
-    .from<DeliveryType>(DELIVERY_TYPES_TABLE)
+export const updateDeliveryType = async (payload: Payload) => {
+  const response = await supabase
+    .from<UpdateDeliveryTypeResponse>(DELIVERY_TYPES_TABLE)
     .update({
       is_enabled: payload.is_enabled
     })
     .eq('id', payload.id)
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(updateDeliveryTypeResponse, response)
 
   return data
 }
-
-export default updateDeliveryType

@@ -3,9 +3,7 @@ import { voucher, Voucher } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 
-type Payload = {
-  id: Voucher['id']
-}
+type Payload = Pick<Voucher, 'id'>
 
 export const getVoucher = async (payload: Payload) => {
   const response = await supabase

@@ -1,15 +1,17 @@
-import { useGetDeliveryTypes } from 'api'
+import { getDeliveryTypes } from 'api'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
+import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
+import { useTranslation } from 'hooks'
 import { DeliveryType } from 'models'
 import React, { useMemo } from 'react'
-import { useTranslation } from 'hooks'
-import { formatDate, displayMoney } from 'utils'
+import { useQuery } from 'react-query'
+import { displayMoney, formatDate } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const callbacksQuery = useGetDeliveryTypes()
+  const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
   const columns = useMemo(
     () => [
       {
@@ -54,7 +56,7 @@ const List = () => {
 
   return (
     <Tile>
-      <QueryLoader query={callbacksQuery}>
+      <QueryLoader query={deliveryTypesQuery}>
         {(data) => {
           const shappedData = shapeData(data)
 

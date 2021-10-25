@@ -1,1 +1,1 @@
-export { default as getIcons } from './getIcons'
+export * from './getIcons'

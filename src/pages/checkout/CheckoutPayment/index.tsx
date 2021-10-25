@@ -10,8 +10,10 @@ import { StepTracker, Actions, StepTitle, Total, Wrapper } from '../common'
 import useForm from './useForm'
 
 import Form from './Form'
-import { useGetPaymentTypes } from 'api'
+import { getPaymentTypes } from 'api'
 import Voucher from './Voucher'
+import { useQuery } from 'react-query'
+import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 
 const CheckoutPayment = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
@@ -19,12 +21,12 @@ const CheckoutPayment = () => {
   useTabTitle(t('title'))
   useScrollTop()
 
-  const paymentTypesQuery = useGetPaymentTypes()
+  const paymentTypesQuery = useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)
   const { checkout } = useContext(checkoutContext)
   const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {
-    // return <Redirect to={CHECKOUT_DELIVERY} />
+    return <Redirect to={CHECKOUT_DELIVERY} />
   }
 
   return (

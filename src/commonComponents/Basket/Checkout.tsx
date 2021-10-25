@@ -14,9 +14,11 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { basketToggleContext } from 'providers'
 import { BasketItem, GetProductsResponseItem } from 'models'
 import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
-import { useGetProducts } from 'api'
+import { getProducts } from 'api'
 import { checkoutContext } from 'providers'
 import { useTranslation } from 'hooks'
+import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { useQuery } from 'react-query'
 
 const Checkout = () => {
   const { t } = useTranslation('COMMON')
@@ -27,7 +29,7 @@ const Checkout = () => {
   const { closeBasket } = useContext(basketToggleContext)
   const { setCheckout } = useContext(checkoutContext)
 
-  const productsQuery = useGetProducts()
+  const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
 
   return (
     <QueryLoader query={productsQuery}>

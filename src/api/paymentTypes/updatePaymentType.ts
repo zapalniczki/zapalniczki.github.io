@@ -1,25 +1,23 @@
 import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
-import { PaymentType } from 'models'
+import {
+  PaymentType,
+  updatePaymentTypeResponse,
+  UpdatePaymentTypeResponse
+} from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
-type UpdatePaymentTypePayload = {
-  id: string
-  is_enabled: boolean
-}
+type Payload = Pick<PaymentType, 'id' | 'is_enabled'>
 
-const updatePaymentType = async (payload: UpdatePaymentTypePayload) => {
-  const { data, error } = await supabase
-    .from<PaymentType>(PAYMENT_TYPE_TABLE)
+export const updatePaymentType = async (payload: Payload) => {
+  const response = await supabase
+    .from<UpdatePaymentTypeResponse>(PAYMENT_TYPE_TABLE)
     .update({
       is_enabled: payload.is_enabled
     })
     .eq('id', payload.id)
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(updatePaymentTypeResponse, response)
 
   return data
 }
-
-export default updatePaymentType

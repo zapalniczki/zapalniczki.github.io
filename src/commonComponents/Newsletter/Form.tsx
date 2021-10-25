@@ -2,7 +2,7 @@ import { FieldWrapper, Button, Flexbox, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { Email } from 'types/index2'
+import { FormValues } from './useForm'
 
 const Form = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -11,7 +11,7 @@ const Form = () => {
     <Flexbox alignItems="flex-end">
       <FieldWrapper>
         <Field name="email">
-          {(props: FieldProps<Email>) => (
+          {(props: FieldProps<FormValues['email'], FormValues>) => (
             <Input
               {...props}
               placeholder={commonT('NEWSLETTER.FORM.FORM.EMAIL.placeholder')}

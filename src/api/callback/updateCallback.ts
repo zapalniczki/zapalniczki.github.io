@@ -1,25 +1,23 @@
 import { CALLBACK_TABLE } from 'constants/db_tables'
-import { Callback } from 'models'
+import {
+  Callback,
+  updateCallbackResponse,
+  UpdateCallbackResponse
+} from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
-type UpdateCallbackPayload = {
-  done: boolean
-  id: string
-}
+type Payload = Pick<Callback, 'done' | 'id'>
 
-const updateCallback = async (payload: UpdateCallbackPayload) => {
-  const { data, error } = await supabase
-    .from<Callback>(CALLBACK_TABLE)
+export const updateCallback = async (payload: Payload) => {
+  const response = await supabase
+    .from<UpdateCallbackResponse>(CALLBACK_TABLE)
     .update({
       done: payload.done
     })
     .eq('id', payload.id)
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(updateCallbackResponse, response)
 
   return data
 }
-
-export default updateCallback

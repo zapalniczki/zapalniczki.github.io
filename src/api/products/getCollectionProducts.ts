@@ -1,18 +1,18 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import {
+  Collection,
   getCollectionProductsResponseItem,
   GetCollectionProductsResponseItem
 } from 'models'
-import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
 type Params = {
-  collectionId: string
+  collectionId: Collection['id']
 }
 
-const getCollectionProducts = async (params: Params) => {
+export const getCollectionProducts = async (params: Params) => {
   const response = await supabase
     .from<GetCollectionProductsResponseItem>(PRODUCTS_TABLE)
     .select(
@@ -36,6 +36,3 @@ const getCollectionProducts = async (params: Params) => {
 
   return data
 }
-
-export const useGetCollectionProducts = (params: Params) =>
-  useQuery(['products', params], () => getCollectionProducts(params))

@@ -2,7 +2,6 @@ import { FieldWrapper, Button, Flexbox, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useInput, useTranslation } from 'hooks'
-import { Phone } from 'types/index2'
 import { FormValues } from './useForm'
 
 const Form = () => {
@@ -14,7 +13,7 @@ const Form = () => {
     <Flexbox alignItems="flex-end">
       <FieldWrapper>
         <Field name="phone">
-          {(props: FieldProps<Phone, FormValues>) => (
+          {(props: FieldProps<FormValues['phone'], FormValues>) => (
             <Input {...props} {...getInput('PHONE_NOT_MOBILE')} />
           )}
         </Field>

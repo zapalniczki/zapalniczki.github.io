@@ -1,6 +1,5 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import { GetOtherPlacesResponseItem, getOtherPlacesResponseItem } from 'models'
-import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
@@ -10,7 +9,7 @@ type Params = {
   labelId: string
 }
 
-const getOtherPlaces = async (params: Params) => {
+export const getOtherPlaces = async (params: Params) => {
   const response = await supabase
     .from<GetOtherPlacesResponseItem>(PRODUCTS_TABLE)
     .select(
@@ -34,6 +33,3 @@ const getOtherPlaces = async (params: Params) => {
 
   return data
 }
-
-export const useGetOtherPlaces = (params: Params) =>
-  useQuery(['products', params], () => getOtherPlaces(params))

@@ -1,4 +1,4 @@
-import { GetOrdersResponse, useGetOrders } from 'api'
+import { getOrders } from 'api'
 import {
   Box,
   Heading,
@@ -9,12 +9,14 @@ import {
 } from 'components'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'hooks'
-import { OrderStatus } from 'models'
+import { GetOrderResponseItem, OrderStatus } from 'models'
 import { AdminTableColumns } from './statusToColumns'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
 import { formatDate, displayMoney } from 'utils'
 import EditModal from './EditModal'
+import { useQuery } from 'react-query'
+import { ORDER_TABLE } from 'constants/db_tables'
 
 type Props = {
   columns: AdminTableColumns[]
@@ -25,7 +27,10 @@ const Table = ({ columns, status }: Props) => {
   const { t } = useTranslation('ADMIN_ORDERS')
   const { t: commonT } = useTranslation('COMMON')
 
-  const ordersQuery = useGetOrders(status)
+  const ordersQuery = useQuery([ORDER_TABLE, { status }], () =>
+    getOrders(status)
+  )
+
   const columnsMemo = useMemo(
     () =>
       columns.map((column) => ({
@@ -56,7 +61,7 @@ const Table = ({ columns, status }: Props) => {
 }
 
 const shapeData = (
-  data: GetOrdersResponse[]
+  data: GetOrderResponseItem[]
 ): Record<AdminTableColumns, string | boolean | number | JSX.Element>[] =>
   data.map((order) => ({
     created_at: <DisplayDate>{order.created_at}</DisplayDate>,

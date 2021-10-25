@@ -1,25 +1,23 @@
 import { ORDER_TABLE } from 'constants/db_tables'
-import { Order, OrderStatus } from 'models'
+import {
+  Order,
+  updateOrderStatusResponse,
+  UpdateOrderStatusResponse
+} from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
-type Payload = {
-  id: string
-  status: OrderStatus
-}
+type Payload = Pick<Order, 'id' | 'status'>
 
 export const updateOrderStatus = async (payload: Payload) => {
-  const { data, error } = await supabase
-    .from<Order>(ORDER_TABLE)
+  const response = await supabase
+    .from<UpdateOrderStatusResponse>(ORDER_TABLE)
     .update({
       status: payload.status
     })
     .eq('id', payload.id)
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(updateOrderStatusResponse, response)
 
   return data
 }
-
-export default updateOrderStatus

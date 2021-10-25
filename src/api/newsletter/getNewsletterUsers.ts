@@ -1,26 +1,19 @@
 import { NEWSLETTER_TABLE } from 'constants/db_tables'
-import { Newsletter } from 'models'
-import { useQuery } from 'react-query'
+import {
+  getNewsletterUsersResponseItem,
+  GetNewsletterUsersResponseItem
+} from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
-type GetNewsletterResponse = Newsletter
-
-const getNewsletterUsers = async () => {
-  const { data, error } = await supabase
-    .from<GetNewsletterResponse>(NEWSLETTER_TABLE)
+export const getNewsletterUsers = async () => {
+  const response = await supabase
+    .from<GetNewsletterUsersResponseItem>(NEWSLETTER_TABLE)
     .select()
     .order('updated_at')
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getNewsletterUsers')
-  }
+  const data = parseApiResponse(array(getNewsletterUsersResponseItem), response)
 
   return data
 }
-
-export const useGetNewsletterUsers = () =>
-  useQuery(NEWSLETTER_TABLE, getNewsletterUsers)

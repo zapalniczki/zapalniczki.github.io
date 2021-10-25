@@ -1,6 +1,5 @@
-export * from './getOrderStatus'
 export * from './addOrder'
-export * from './triggerSendEmail'
+export * from './getOrderStatus'
 export * from './getOrders'
 export * from './updateOrderStatus'
-export { default as updateOrderStatus } from './updateOrderStatus'
+export * from './updateOrderStatus'

@@ -1,6 +1,6 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useGetDeliveryTypes, useGetPaymentTypes } from 'api'
+import { getDeliveryTypes, getPaymentTypes } from 'api'
 import { ReadTermsAndConditions } from 'commonComponents'
 import {
   Banner,
@@ -17,6 +17,8 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 import { displayMoney } from 'utils'
 import Option from './Option'
+import { useQuery } from 'react-query'
+import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 
 const DeliveryAndPayments = () => {
   const { t } = useTranslation('DELIVERY_AND_PAYMENTS')
@@ -24,8 +26,8 @@ const DeliveryAndPayments = () => {
   useScrollTop()
   useTabTitle(t('title'))
 
-  const deliveryTypesQuery = useGetDeliveryTypes()
-  const paymentTypesQuery = useGetPaymentTypes()
+  const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
+  const paymentTypesQuery = useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)
 
   return (
     <Page>

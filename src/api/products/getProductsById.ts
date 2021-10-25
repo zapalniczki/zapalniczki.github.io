@@ -4,7 +4,6 @@ import {
   GetProductsByIdResponseItem,
   Product
 } from 'models'
-import { useMutation, useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
@@ -29,6 +28,3 @@ export const getProductsById = async (payload: Payload) => {
 
   return data
 }
-
-export const useGetProductsById = () =>
-  useQuery('products', () => getProductsById([]))

@@ -1,25 +1,23 @@
 import { NEWSLETTER_TABLE } from 'constants/db_tables'
-import { Newsletter } from 'models'
+import {
+  Newsletter,
+  updateNewsletterConsentResponse,
+  UpdateNewsletterConsentResponse
+} from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
 
-type UpdateConsentPayload = {
-  consent: boolean
-  id: string
-}
+type Payload = Pick<Newsletter, 'id' | 'consent'>
 
-const updateNewsletterConsent = async (payload: UpdateConsentPayload) => {
-  const { data, error } = await supabase
-    .from<Newsletter>(NEWSLETTER_TABLE)
+export const updateNewsletterConsent = async (payload: Payload) => {
+  const response = await supabase
+    .from<UpdateNewsletterConsentResponse>(NEWSLETTER_TABLE)
     .update({
       consent: payload.consent
     })
     .eq('id', payload.id)
 
-  if (error) {
-    throw new Error(error.code)
-  }
+  const data = parseApiResponse(updateNewsletterConsentResponse, response)
 
   return data
 }
-
-export default updateNewsletterConsent

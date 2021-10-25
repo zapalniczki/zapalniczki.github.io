@@ -1,23 +1,15 @@
 import { ICONS_TABLE } from 'constants/db_tables'
-import { Icon } from 'models'
+import { getIconsResponseItem, GetIconsResponseItem } from 'models'
 import supabase from 'supabase'
+import { parseApiResponse } from 'utils'
+import { array } from 'zod'
 
-type GetIconsResponse = Icon
-
-const getIcons = async () => {
-  const { data, error } = await supabase
-    .from<GetIconsResponse>(ICONS_TABLE)
+export const getIcons = async () => {
+  const response = await supabase
+    .from<GetIconsResponseItem>(ICONS_TABLE)
     .select()
 
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (!data) {
-    throw new Error('No data in getIcons')
-  }
+  const data = parseApiResponse(array(getIconsResponseItem), response)
 
   return data
 }
-
-export default getIcons

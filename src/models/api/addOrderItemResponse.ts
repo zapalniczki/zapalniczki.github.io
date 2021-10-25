@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import orderItem from './db/orderItem'
+import { orderItem } from 'models'
 
 const addOrderItemResponse = orderItem
 

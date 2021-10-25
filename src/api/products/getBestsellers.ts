@@ -1,11 +1,10 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import { getBestsellersResponseItem, GetBestsellersResponseItem } from 'models'
-import { useQuery } from 'react-query'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-const getBestsellers = async () => {
+export const getBestsellers = async () => {
   const response = await supabase
     .from<GetBestsellersResponseItem>(PRODUCTS_TABLE)
     .select(
@@ -27,6 +26,3 @@ const getBestsellers = async () => {
 
   return data
 }
-
-export const useGetBestsellers = () =>
-  useQuery('bestsellers', () => getBestsellers())

@@ -21,9 +21,11 @@ import { VIEW_PRODUCT } from 'constants/routes'
 import { basketToggleContext } from 'providers'
 
 import SimpleButton from './SimpleButton'
-import { useGetProduct } from 'api'
 import { checkoutContext } from 'providers'
 import getSpace from 'styles/getSpace'
+import { useQuery } from 'react-query'
+import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { getProduct } from 'api'
 
 type Props = {
   product: BasketItemType
@@ -36,9 +38,12 @@ const BasketItem = ({ product: basketProduct }: Props) => {
 
   const { id, quantity } = basketProduct
 
-  const productQuery = useGetProduct(id)
+  const params = { id }
+  const productQuery = useQuery([PRODUCTS_TABLE, params], () =>
+    getProduct(params)
+  )
 
-  const productPath = generatePath(VIEW_PRODUCT, { id })
+  const productPath = generatePath(VIEW_PRODUCT, params)
 
   return (
     <Container>
