@@ -1,9 +1,7 @@
-import { string, object, TypeOf, number, boolean } from 'zod'
+import tableBase from './tableBase'
+import { string, TypeOf, number, boolean } from 'zod'
 
-const product = object({
-  id: string(),
-  created_at: string(),
-  updated_at: string(),
+const product = tableBase.extend({
   mold_id: string(),
   label_id: string(),
   icon_id: string(),

@@ -1,10 +1,7 @@
-import { number, object, string, TypeOf } from 'zod'
+import { number, string, TypeOf } from 'zod'
+import tableBase from './tableBase'
 
-const orderItem = object({
-  created_at: string(),
-  id: string().uuid(),
-  updated_at: string(),
-
+const orderItem = tableBase.extend({
   order_id: string().uuid(),
   product_id: string().uuid(),
   quantity: number()

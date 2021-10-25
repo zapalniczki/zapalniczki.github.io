@@ -1,5 +1,5 @@
-import { getProductsResponseItem } from 'models'
 import { TypeOf } from 'zod'
+import getProductsResponseItem from './getProductsResponseItem'
 
 const getCollectionProductsResponseItem = getProductsResponseItem
 

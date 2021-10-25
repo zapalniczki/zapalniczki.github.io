@@ -1,9 +1,7 @@
-import { boolean, number, object, string, TypeOf } from 'zod'
+import tableBase from './tableBase'
+import { boolean, number, string, TypeOf } from 'zod'
 
-const paymentType = object({
-  id: string().uuid(),
-  created_at: string(),
-  updated_at: string(),
+const paymentType = tableBase.extend({
   label: string(),
   price: number(),
   time: string(),

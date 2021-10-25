@@ -1,9 +1,7 @@
-import { boolean, object, string, TypeOf } from 'zod'
+import tableBase from './tableBase'
+import { boolean, string, TypeOf } from 'zod'
 
-const callback = object({
-  created_at: string(),
-  updated_at: string(),
-  id: string(),
+const callback = tableBase.extend({
   phone_number: string(),
   done: boolean().nullable()
 })

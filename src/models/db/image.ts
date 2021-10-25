@@ -1,4 +1,5 @@
-import { string, object, TypeOf, enum as zenum } from 'zod'
+import tableBase from './tableBase'
+import { string, TypeOf, enum as zenum } from 'zod'
 
 const size = zenum([
   'TILE',
@@ -10,10 +11,7 @@ const size = zenum([
 ])
 export type Size = TypeOf<typeof size>
 
-const image = object({
-  id: string(),
-  created_at: string(),
-  updated_at: string(),
+const image = tableBase.extend({
   src: string(),
   size: size
 })

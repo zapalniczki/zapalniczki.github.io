@@ -1,4 +1,4 @@
-import { tableBase } from 'models'
+import tableBase from './tableBase'
 import { string, TypeOf } from 'zod'
 
 const invoice = tableBase.extend({

@@ -1,5 +1,6 @@
-import { getProductsResponseItem, product } from 'models'
+import { product } from 'models'
 import { TypeOf } from 'zod'
+import getProductsResponseItem from './getProductsResponseItem'
 
 const getOtherIconsResponseItem = product
   .pick({ label_id: true, icon_id: true })

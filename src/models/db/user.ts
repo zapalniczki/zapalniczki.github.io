@@ -1,10 +1,5 @@
-import { boolean, object, string, TypeOf } from 'zod'
-
-const tableBase = object({
-  created_at: string(),
-  id: string().uuid(),
-  updated_at: string()
-})
+import tableBase from './tableBase'
+import { boolean, string, TypeOf } from 'zod'
 
 const user = tableBase.extend({
   address_id: string().uuid(),

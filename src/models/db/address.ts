@@ -1,12 +1,10 @@
-import { object, string, TypeOf } from 'zod'
+import tableBase from './tableBase'
+import { string, TypeOf } from 'zod'
 
-const address = object({
+const address = tableBase.extend({
   city: string(),
-  created_at: string(),
-  id: string().uuid(),
   post_code: string(),
-  street_address: string(),
-  updated_at: string()
+  street_address: string()
 })
 
 export type Address = TypeOf<typeof address>

@@ -1,4 +1,4 @@
-import { tableBase } from 'models'
+import tableBase from './tableBase'
 import { TypeOf } from 'zod'
 
 const voucher = tableBase.extend({})

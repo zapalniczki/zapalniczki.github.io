@@ -1,15 +1,13 @@
-import { string, number, boolean, object, TypeOf } from 'zod'
+import tableBase from './tableBase'
+import { string, number, boolean, TypeOf } from 'zod'
 
-const deliveryType = object({
-  created_at: string(),
+const deliveryType = tableBase.extend({
   frontend_icon_name: string().nullable(),
-  id: string(),
   is_enabled: boolean(),
   label: string(),
   price: number(),
   requires_address: boolean(),
-  time: string(),
-  updated_at: string()
+  time: string()
 })
 
 export type DeliveryType = TypeOf<typeof deliveryType>

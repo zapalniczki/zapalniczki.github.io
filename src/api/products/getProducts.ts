@@ -1,5 +1,6 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import { GetProductsResponseItem, getProductsResponseItem } from 'models'
+
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'

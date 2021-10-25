@@ -1,4 +1,5 @@
-import { string, object, TypeOf, enum as zenum, number } from 'zod'
+import tableBase from './tableBase'
+import { string, TypeOf, enum as zenum, number } from 'zod'
 
 const orderStatus = zenum([
   'OPEN',
@@ -13,15 +14,12 @@ const orderStatus = zenum([
 export type OrderStatus = TypeOf<typeof orderStatus>
 export const ORDER_STATUSES = orderStatus.options
 
-const order = object({
-  created_at: string(),
+const order = tableBase.extend({
   delivery_type: string().uuid(),
-  id: string().uuid(),
   payment_type: string().uuid(),
   shipping_id: string().uuid().nullable(),
   status: orderStatus,
   total: number(),
-  updated_at: string(),
   user_id: string().uuid()
 })
 

@@ -1,9 +1,7 @@
-import { object, string, TypeOf } from 'zod'
+import tableBase from './tableBase'
+import { string, TypeOf } from 'zod'
 
-const collection = object({
-  id: string(),
-  created_at: string(),
-  updated_at: string(),
+const collection = tableBase.extend({
   label: string()
 })
 
