@@ -1,4 +1,4 @@
-export const displayMoney = (n: number) => {
+const displayMoney = (n: number) => {
   const format = new Intl.NumberFormat('pl-PL', {
     style: 'currency',
     currency: 'PLN'

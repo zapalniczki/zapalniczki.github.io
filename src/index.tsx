@@ -40,7 +40,8 @@ import {
   BasketProvider,
   BasketToggleProvider,
   CheckoutProvider,
-  LoaderProvider
+  LoaderProvider,
+  ToastProvider
 } from 'providers'
 import React, { StrictMode } from 'react'
 import { render } from 'react-dom'
@@ -117,9 +118,11 @@ render(
               <CheckoutProvider>
                 <BasketToggleProvider>
                   <LoaderProvider>
-                    <GlobalStyle />
+                    <ToastProvider>
+                      <GlobalStyle />
 
-                    <App />
+                      <App />
+                    </ToastProvider>
                   </LoaderProvider>
                 </BasketToggleProvider>
               </CheckoutProvider>

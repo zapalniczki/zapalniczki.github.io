@@ -26,7 +26,7 @@ const CheckoutPayment = () => {
   const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {
-    return <Redirect to={CHECKOUT_DELIVERY} />
+    // return <Redirect to={CHECKOUT_DELIVERY} />
   }
 
   return (
