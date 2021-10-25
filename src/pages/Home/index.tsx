@@ -10,10 +10,6 @@ import Featured from './Featured'
 const Home = () => {
   const { t } = useTranslation('HOME')
 
-  const alfa = useTranslation('CHECKOUT_PAYMENT')
-
-  console.log(alfa)
-
   useTabTitle(t('title'))
   useScrollTop()
 
