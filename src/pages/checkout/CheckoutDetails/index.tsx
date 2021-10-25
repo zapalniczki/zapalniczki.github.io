@@ -49,7 +49,7 @@ const CheckoutDetails = () => {
                 label={commonT('customerTypes.INDIVIDUAL')}
                 marginY="l-size"
                 onChange={(checked) => {
-                  // TODO Add eslint for curly brackets in arraow functions
+                  // TODO Add eslint for curly brackets in arrow functions
                   setIsCompany(!checked)
 
                   if (checked) {

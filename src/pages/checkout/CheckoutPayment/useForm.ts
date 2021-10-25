@@ -9,7 +9,7 @@ import {
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useIsDev, useSchema } from 'hooks'
 import { add } from 'lodash'
-import { MoldStatus, PaymentType } from 'models'
+import { MoldStatus, PaymentType, Voucher } from 'models'
 import {
   basketContext,
   checkoutContext,
@@ -23,6 +23,7 @@ import { object } from 'yup'
 
 export type FormValues = {
   payment_type: PaymentType['id']
+  voucher_id: Voucher['id']
 }
 
 const useForm = () => {
@@ -132,7 +133,8 @@ const useForm = () => {
   }
 
   const initialValues: FormValues = {
-    payment_type: checkout.payment_type ?? ''
+    payment_type: checkout.payment_type ?? '',
+    voucher_id: checkout.voucher_id ?? ''
   }
 
   const schema = object({

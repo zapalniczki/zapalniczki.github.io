@@ -8,7 +8,7 @@ import { FormValues } from './useForm'
 const Form = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
   const { getInput } = useInput()
-  const { submitForm, values } = useFormikContext<FormValues>()
+  const { isValid, submitForm, values } = useFormikContext<FormValues>()
 
   return (
     <Flexbox alignItems="flex-end">
@@ -21,7 +21,7 @@ const Form = () => {
       </FieldWrapper>
 
       <Button
-        disabled={!values.voucher}
+        disabled={!values.voucher || !isValid}
         label={t('voucher.applyVoucher')}
         marginLeft="m-size"
         onClick={submitForm}

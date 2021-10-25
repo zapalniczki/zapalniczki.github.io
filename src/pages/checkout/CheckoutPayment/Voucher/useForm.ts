@@ -1,13 +1,12 @@
 import { Voucher } from 'models'
 import { object } from 'yup'
-import { useFormSubmit, useSchema } from 'hooks'
+import { useFormSubmit, useSchema, useTranslation } from 'hooks'
 import { getVoucher } from 'api'
 import { useMutation } from 'react-query'
+import { FormikHelpers, useField, useFormikContext } from 'formik'
 
 const useForm = () => {
   const { getSchema } = useSchema()
-
-  const onSubmit = useSubmit()
 
   const initialValues: FormValues = {
     voucher: ''
@@ -16,6 +15,27 @@ const useForm = () => {
   const schema = object({
     voucher: getSchema('VOUCHER')
   })
+
+  const useSubmit = () => {
+    const t = useTranslation('CHECKOUT_PAYMENT').withBase('voucher')
+    const { mutateAsync: mutateGetVoucher } = useMutation(getVoucher, {
+      onSuccess: (response) => {
+        console.log('hurra', response.id)
+      }
+    })
+
+    return useFormSubmit(
+      (values: FormValues) => mutateGetVoucher({ id: values.voucher }),
+      {
+        onError: (values, form: FormikHelpers<FormValues>) => {
+          form.setFieldError('voucher', t('error'))
+        },
+        successToastMessage: t('successToastMessage')
+      }
+    )
+  }
+
+  const onSubmit = useSubmit()
 
   return {
     initialValues,
@@ -26,18 +46,6 @@ const useForm = () => {
 
 export type FormValues = {
   voucher: Voucher['id']
-}
-
-const useSubmit = () => {
-  const { mutateAsync: mutateGetVoucher } = useMutation(getVoucher, {
-    onSuccess: () => {
-      console.log('hurra')
-    }
-  })
-
-  return useFormSubmit((values: FormValues) =>
-    mutateGetVoucher({ id: values.voucher })
-  )
 }
 
 export default useForm

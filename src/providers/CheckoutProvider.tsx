@@ -6,7 +6,8 @@ import {
   BasketItem,
   DeliveryType,
   PaymentType,
-  Product
+  Product,
+  Voucher
 } from 'models'
 
 type Props = {
@@ -45,6 +46,7 @@ export type Checkout = {
       total: number
     }[]
   }
+  voucher_id: Voucher['id'] | null
 }
 
 export type CheckoutContent = {
@@ -62,6 +64,7 @@ export const initState: Checkout = {
   delivery_type: null,
   shipping: null,
   payment_type: null,
+  voucher_id: null,
   same_address_as_invoice: true
 }
 

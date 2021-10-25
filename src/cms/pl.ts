@@ -5,6 +5,11 @@ export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
+    TOAST: {
+      success: 'Udało się!',
+      error: 'Nie udało się'
+    },
+
     LINKS: {
       home: 'Strona Główna',
       products: 'Produkty',
@@ -369,7 +374,9 @@ const pl = {
   CHECKOUT_PAYMENT: {
     title: 'Płatność',
     voucher: {
-      applyVoucher: 'Wykorzystaj kod'
+      applyVoucher: 'Wykorzystaj kod',
+      error: 'Kod jest nieprawidłowy',
+      successToastMessage: 'Kod został zaakceptowany'
     }
   },
 
