@@ -23,7 +23,7 @@ body {
   min-height: 100vh;
   height: 100%;
 
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: ${(props) => props.theme.fontSizes.baseFontSize};
 
   background: ${getColor('background-color')};

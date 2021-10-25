@@ -73,7 +73,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   border: 1px solid;
   border-color: ${getColor('border-color')};
   padding: ${getSpace('xs-size')};
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
 
   &[type='checkbox'],
   &[type='radio'] {
