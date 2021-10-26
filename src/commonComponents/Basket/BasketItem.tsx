@@ -3,9 +3,9 @@ import {
   ImageLoader,
   Link,
   Box,
-  Badge,
   Flexbox,
-  Tile
+  Tile,
+  Text
 } from 'components'
 
 import React, { useContext } from 'react'
@@ -26,6 +26,7 @@ import getSpace from 'styles/getSpace'
 import { useQuery } from 'react-query'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { getProduct } from 'api'
+import { useTranslation } from 'hooks'
 
 type Props = {
   product: BasketItemType
@@ -35,6 +36,8 @@ const BasketItem = ({ product: basketProduct }: Props) => {
   const { setBasket } = useContext(basketContext)
   const { closeBasket } = useContext(basketToggleContext)
   const { setCheckout } = useContext(checkoutContext)
+
+  const t = useTranslation('COMMON').withBase('basket')
 
   const { id, quantity } = basketProduct
 
@@ -104,19 +107,6 @@ const BasketItem = ({ product: basketProduct }: Props) => {
 
           return (
             <>
-              <SimpleButton
-                disabled={quantity === 1}
-                gridArea="button-minus"
-                icon="minus"
-                onClick={() => modifyQuantity(false)}
-              />
-
-              <SimpleButton
-                gridArea="button-plus"
-                icon="plus"
-                onClick={() => modifyQuantity(true)}
-              />
-
               <Box
                 border="1px solid"
                 borderColor="border-color"
@@ -135,18 +125,44 @@ const BasketItem = ({ product: basketProduct }: Props) => {
               </Flexbox>
 
               <Flexbox alignItems="center">
-                <Box as="h4" margin="0" marginRight="m-size">
-                  {displayMoney(product.price)}
-                </Box>
+                <SimpleButton
+                  disabled={quantity === 1}
+                  icon="minus"
+                  onClick={() => modifyQuantity(false)}
+                />
 
-                <Badge count={quantity} stanalone />
+                <Text marginX="s-size" type="subtitle-1">
+                  {quantity}
+                </Text>
+
+                <SimpleButton
+                  icon="plus"
+                  onClick={() => modifyQuantity(true)}
+                />
+
+                <SimpleButton
+                  icon="trash-alt"
+                  marginLeft="s-size"
+                  onClick={() => modifyQuantity(undefined)}
+                />
               </Flexbox>
 
-              <SimpleButton
+              <Flexbox
+                alignItems="flex-end"
+                flexDirection="column"
                 gridArea="button-remove"
-                icon="trash-alt"
-                onClick={() => modifyQuantity(undefined)}
-              />
+              >
+                <Text fontWeight="bold" type="subtitle-1">
+                  {displayMoney(basketProduct.quantity * product.price)}
+                </Text>
+
+                {basketProduct.quantity > 1 && (
+                  <Text type="caption">
+                    {/* eslint-disable-next-line react/jsx-newline */}
+                    {displayMoney(product.price)} {t('each')}
+                  </Text>
+                )}
+              </Flexbox>
             </>
           )
         }}
@@ -173,12 +189,12 @@ const Container = styled(Tile)`
   width: 100%;
   margin-bottom: ${getSpace('m-size')};
   display: grid;
-  grid-template-columns: max-content 9rem auto max-content;
+  grid-template-columns: 9rem auto max-content;
   grid-template-rows: repeat(2, 4.6rem);
   grid-gap: 0.5rem 2rem;
   grid-template-areas:
-    'button-plus picture name button-remove'
-    'button-minus picture alba button-remove';
+    'picture name button-remove'
+    'picture alba button-remove';
 `
 
 export default BasketItem

@@ -1,25 +1,24 @@
 import React from 'react'
-import { GridAreaProps } from 'styled-system'
-import { Box, Button } from 'components'
+import { SpaceProps } from 'styled-system'
+import { Button } from 'components'
 import { IconName } from '@fortawesome/fontawesome-common-types'
 
 type Props = {
   disabled?: boolean
   icon: IconName
   onClick: () => void
-} & GridAreaProps
+} & SpaceProps
 
 const SimpleButton = ({ disabled, icon, onClick, ...props }: Props) => (
-  <Box {...props}>
-    <Button
-      disabled={disabled}
-      icon={icon}
-      onClick={onClick}
-      size="medium"
-      type="button"
-      variant="ternary"
-    />
-  </Box>
+  <Button
+    disabled={disabled}
+    icon={icon}
+    onClick={onClick}
+    size="medium"
+    type="button"
+    variant="quaternary"
+    {...props}
+  />
 )
 
 export default SimpleButton

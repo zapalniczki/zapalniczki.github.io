@@ -6,8 +6,7 @@ import {
   CHECKOUT_PRODUCTS,
   CHECKOUT_SHIPPING
 } from 'constants/routes'
-import { changeColorAlpha } from 'utils'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useTranslation } from 'hooks'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
@@ -27,23 +26,30 @@ const StepTracker = () => {
           }
 
           return (
-            <Flexbox justifyContent="center" key={step}>
+            <Fragment key={step}>
               <Flexbox
-                alignItems="center"
-                flexDirection="column"
                 justifyContent="center"
-                width="10rem"
+                key={step}
+                width={step !== 1 ? '100%' : 'auto'}
                 zIndex={1}
               >
-                <StepIcon {...getProps(current, step)}>
-                  {step === 5 ? 4 : step}
-                </StepIcon>
+                {step !== 1 && <Line />}
 
-                <Text marginTop="s-size" type="caption">
-                  {t(`checkoutSteps.${step}`)}
-                </Text>
+                <Flexbox
+                  alignItems="center"
+                  flexDirection="column"
+                  width="100%"
+                >
+                  <StepIcon {...getProps(current, step)}>
+                    {step === 5 ? 4 : step}
+                  </StepIcon>
+
+                  <Text marginTop="s-size" type="caption" wrap={false}>
+                    {t(`checkoutSteps.${step}`)}
+                  </Text>
+                </Flexbox>
               </Flexbox>
-            </Flexbox>
+            </Fragment>
           )
         })}
       </Wrapper>
@@ -60,19 +66,6 @@ const Wrapper = styled.ul`
   padding: 0;
   margin: auto;
   position: relative;
-
-  :before {
-    content: '';
-    position: absolute;
-    top: 1.5rem;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 75%;
-    height: 2px;
-    background: ${(props) =>
-      `${changeColorAlpha(getColor('border-color')(props), 0.6)}`};
-  }
 `
 const getProps = (current: number, step: number) => {
   if (current === step || (current === 4 && step === 3)) {
@@ -106,6 +99,14 @@ export const useCheckoutStep = () => {
   return current
 }
 
+const Line = styled.hr`
+  width: 100%;
+  height: 0.1px;
+  margin-top: 1.8rem;
+  border: 1px solid;
+  border-color: ${getColor('border-color')};
+`
+
 type StepIconProps = {
   done?: boolean
   selected?: boolean
@@ -116,6 +117,7 @@ const StepIcon = styled.h4<StepIconProps>`
   padding: ${getSpace('m-size')};
   background: ${getColor('background-color')};
   border-radius: 50%;
+  margin: ${(props) => `0 ${getSpace('s-size')(props)}`};
   width: 3px;
   height: 3px;
   display: flex;

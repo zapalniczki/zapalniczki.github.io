@@ -132,6 +132,7 @@ const pl = {
       products: '({{count}} produkt)',
       products_plural: '({{count}} produkty)',
       products_multiple: '({{count}} produktów)',
+      each: 'pudełko',
       modal: {
         info: 'Musisz się zalogować żeby kontynuować',
         continue: 'Wróć do sklepu',

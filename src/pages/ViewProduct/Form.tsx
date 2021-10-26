@@ -24,36 +24,41 @@ const Form = ({ product }: Props) => {
       validateOnChange
       validationSchema={schema}
     >
-      {({ isValid, values }) => (
-        <FormikForm>
-          <Flexbox alignItems="center">
-            <Field name="product_quantity" type="numer">
-              {(
-                props: FieldProps<FormValues['product_quantity'], FormValues>
-              ) => <NumberInput {...props} max={100} min={1} />}
-            </Field>
+      {({ isValid, values }) => {
+        const quantityCorrectInBasket =
+          isInBasket && isInBasket.quantity === values.product_quantity
 
-            <Text marginLeft="m-size" type="caption">
-              {t(getPlural('boxes', values.product_quantity))}
-            </Text>
-          </Flexbox>
+        return (
+          <FormikForm>
+            <Flexbox alignItems="center">
+              <Field name="product_quantity" type="numer">
+                {(
+                  props: FieldProps<FormValues['product_quantity'], FormValues>
+                ) => <NumberInput {...props} max={100} min={1} />}
+              </Field>
 
-          <Button
-            disabled={!isValid}
-            label={t(
-              isInBasket
-                ? isInBasket.quantity === values.product_quantity
-                  ? 'actions.inBasket'
-                  : 'actions.updateInBasket'
-                : 'actions.addToBasket'
-            )}
-            marginTop="m-size"
-            size="medium"
-            type="submit"
-            variant="primary"
-          />
-        </FormikForm>
-      )}
+              <Text marginLeft="m-size" type="caption">
+                {t(getPlural('boxes', values.product_quantity))}
+              </Text>
+            </Flexbox>
+
+            <Button
+              disabled={!isValid || quantityCorrectInBasket}
+              label={t(
+                isInBasket
+                  ? quantityCorrectInBasket
+                    ? 'actions.inBasket'
+                    : 'actions.updateInBasket'
+                  : 'actions.addToBasket'
+              )}
+              marginTop="m-size"
+              size="medium"
+              type="submit"
+              variant="primary"
+            />
+          </FormikForm>
+        )
+      }}
     </Formik>
   )
 }
