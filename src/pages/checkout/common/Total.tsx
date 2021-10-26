@@ -15,11 +15,11 @@ const Total = ({ customDelivery, customProducts }: Props) => {
   const { t } = useTranslation('COMMON')
 
   const { checkout } = useContext(checkoutContext)
-  const { total: totalNew } = checkout
+  const { basket, total: totalNew } = checkout
 
   const products =
     customProducts ||
-    sumArray(totalNew.products.map((product) => product.total))
+    sumArray(basket.map((product) => product.quantity * product.price))
   const delivery = customDelivery || totalNew.delivery || 0
   const sum = add(products, delivery)
 

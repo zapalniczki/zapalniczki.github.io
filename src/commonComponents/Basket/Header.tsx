@@ -8,9 +8,7 @@ import { checkoutContext } from 'providers'
 const Header = () => {
   const { t } = useTranslation('COMMON')
   const { closeBasket } = useContext(basketToggleContext)
-  const { checkout, setCheckout } = useContext(checkoutContext)
-
-  const productCount = checkout.basket.length
+  const { clearBasket, productCount } = useContext(checkoutContext)
 
   let countName = 'basket.products'
   if (productCount > 4) {
@@ -42,15 +40,7 @@ const Header = () => {
           <Button
             label={t('basket.clear')}
             marginRight="s-size"
-            onClick={() => {
-              setCheckout((prev) => ({
-                ...prev,
-                total: {
-                  ...prev.total,
-                  products: []
-                }
-              }))
-            }}
+            onClick={() => clearBasket()}
             size="small"
             type="button"
             variant="ternary"

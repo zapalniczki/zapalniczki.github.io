@@ -3,7 +3,8 @@ import { object } from 'yup'
 import { CHECKOUT_PAYMENT } from 'constants/routes'
 import { useSchema } from 'hooks'
 import { useContext } from 'react'
-import { checkoutContext, Shipping } from 'providers'
+import { checkoutContext } from 'providers'
+import { Shipping } from 'models'
 
 export type FormValues = Shipping
 
@@ -19,6 +20,7 @@ const useForm = () => {
       ...prev,
       shipping: form
     }))
+
     history.push(CHECKOUT_PAYMENT)
   }
 

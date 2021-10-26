@@ -25,7 +25,7 @@ const Checkout = () => {
   const history = useHistory()
 
   const { closeBasket } = useContext(basketToggleContext)
-  const { checkout } = useContext(checkoutContext)
+  const { basket, isBasketEmpty } = useContext(checkoutContext)
 
   const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
 
@@ -33,7 +33,7 @@ const Checkout = () => {
     <QueryLoader query={productsQuery}>
       {(products) => {
         const productsTotal = calculateTotal(
-          checkout.basket.map((product) => getProductTotal(products, product))
+          basket.map((product) => getProductTotal(products, product))
         )
 
         return (
@@ -59,7 +59,7 @@ const Checkout = () => {
               />
 
               <Button
-                disabled={!checkout.basket.length || pathname === '/checkout'}
+                disabled={isBasketEmpty || pathname === '/checkout'}
                 label={t('basket.checkout')}
                 marginLeft="m-size"
                 onClick={() => {

@@ -1,15 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
-import React from 'react'
-import {
-  Address,
-  User,
-  BasketItem,
-  DeliveryType,
-  PaymentType,
-  Product,
-  Voucher
-} from 'models'
 import { useLocalStorage } from 'hooks'
+import { BasketItem, Checkout, checkout as checkoutModel } from 'models'
+import React, { createContext, ReactNode, useEffect, useState } from 'react'
 
 type Props = {
   children: ReactNode
@@ -20,13 +11,37 @@ const CheckoutProvider = ({ children }: Props) => {
     type: 'GET',
     key: LOCAL_STORAGE_CHECKOUT_KEY
   })
+  const parseResult = checkoutModel.safeParse(localCheckout)
 
-  const [checkout, setCheckout] = useState(
-    // localCheckout ? localCheckout : initState
-    initState
-  )
+  let trueInitState: Checkout
+  if (parseResult.success) {
+    trueInitState = parseResult.data
+  } else {
+    trueInitState = initState
+  }
 
-  console.log(checkout)
+  const [checkout, setCheckout] = useState(trueInitState)
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      LOCAL_STORAGE_CHECKOUT_KEY,
+      JSON.stringify(checkout)
+    )
+  }, [checkout])
+
+  const basket = checkout.basket
+  const basketLength = basket.length
+  const isBasketEmpty = !basketLength
+
+  const productCount = basket
+    .map((basketItem) => basketItem.quantity)
+    .reduce((prev, curr) => prev + curr, 0)
+
+  const clearBasket = () =>
+    setCheckout((prev) => ({
+      ...prev,
+      basket: []
+    }))
 
   const getProductFromBasket = (id: string) => {
     const basketItem = checkout.basket.find(
@@ -36,16 +51,18 @@ const CheckoutProvider = ({ children }: Props) => {
     return basketItem
   }
 
-  // useEffect(() => {
-  //   window.localStorage.setItem(
-  //     LOCAL_STORAGE_CHECKOUT_KEY,
-  //     JSON.stringify(checkout)
-  //   )
-  // }, [checkout])
-
   return (
     <checkoutContext.Provider
-      value={{ checkout, setCheckout, getProductFromBasket }}
+      value={{
+        checkout,
+        setCheckout,
+        clearBasket,
+        getProductFromBasket,
+        basketLength,
+        productCount,
+        basket,
+        isBasketEmpty
+      }}
     >
       {children}
     </checkoutContext.Provider>
@@ -54,42 +71,20 @@ const CheckoutProvider = ({ children }: Props) => {
 
 const LOCAL_STORAGE_CHECKOUT_KEY = 'checkout'
 
-export type ContactDetails = Shipping &
-  Pick<User, 'is_company' | 'email' | 'full_name' | 'phone' | 'nip'>
-
-type DeliveryTypeId = DeliveryType['id']
-type PaymentTypeId = PaymentType['id']
-
-export type Shipping = Omit<Address, 'id' | 'created_at' | 'updated_at'>
-
-export type Checkout = {
+type CheckoutContent = {
   basket: BasketItem[]
-  contact_details: ContactDetails | null
-  delivery_type: DeliveryTypeId | null
-  payment_type: PaymentTypeId | null
-  same_address_as_invoice: boolean
-  shipping: Shipping | null
-  total: {
-    delivery: number
-    products: {
-      id: Product['id']
-      total: number
-    }[]
-  }
-  voucher_id: Voucher['id'] | null
-}
-
-export type CheckoutContent = {
+  basketLength: number
   checkout: Checkout
+  clearBasket: () => void
   getProductFromBasket: (id: string) => BasketItem | undefined
-
+  isBasketEmpty: boolean
+  productCount: number
   setCheckout: React.Dispatch<React.SetStateAction<Checkout>>
 }
 
 export const initState: Checkout = {
   contact_details: null,
   total: {
-    products: [],
     delivery: 0
   },
   basket: [],
@@ -103,6 +98,11 @@ export const initState: Checkout = {
 export const checkoutContext = createContext<CheckoutContent>({
   checkout: initState,
   getProductFromBasket: () => undefined,
+  clearBasket: () => undefined,
+  basketLength: 0,
+  basket: [],
+  productCount: 0,
+  isBasketEmpty: true,
   setCheckout: () => undefined
 })
 

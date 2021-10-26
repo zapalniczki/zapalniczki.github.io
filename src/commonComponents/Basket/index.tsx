@@ -1,22 +1,14 @@
-import React, { useContext, useRef, useEffect } from 'react'
-import { Flexbox, Text } from 'components'
-
-import { checkoutContext } from 'providers'
-import styled from 'styled-components'
 import { basketToggleContext } from 'providers'
-import { useTranslation } from 'hooks'
-
-import Header from './Header'
-import Checkout from './Checkout'
-import BasketItem from './BasketItem'
+import React, { useContext, useEffect, useRef } from 'react'
+import styled from 'styled-components'
 import getColor from 'styles/getColor'
+import BasketContent from './BasketContent'
+import BasketItem from './BasketItem'
+import Checkout from './Checkout'
+import Header from './Header'
 
 const Basket = () => {
-  const { t } = useTranslation('COMMON')
-
   const { isOpen, setIsOpen } = useContext(basketToggleContext)
-  const { checkout } = useContext(checkoutContext)
-
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -37,22 +29,7 @@ const Basket = () => {
     <Container isOpen={isOpen} ref={ref}>
       <Header />
 
-      <Flexbox
-        flexDirection="column"
-        flexGrow={1}
-        overflowY="auto"
-        padding="s-size"
-      >
-        {!checkout.basket.length && (
-          <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
-            <Text type="caption">{t('basket.empty')}</Text>
-          </Flexbox>
-        )}
-
-        {checkout.basket.map((product) => (
-          <BasketItem key={product.id} product={product} />
-        ))}
-      </Flexbox>
+      <BasketContent />
 
       <Checkout />
     </Container>

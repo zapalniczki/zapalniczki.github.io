@@ -15,10 +15,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const BasketToggle = () => {
   const { pathname } = useLocation()
-  const { checkout } = useContext(checkoutContext)
+  const { productCount } = useContext(checkoutContext)
   const { setIsOpen } = useContext(basketToggleContext)
-
-  const productCount = checkout.basket.length
 
   return (
     <Button

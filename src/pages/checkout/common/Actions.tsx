@@ -16,9 +16,7 @@ const Actions = () => {
   const history = useHistory()
 
   const current = useCheckoutStep()
-  const { checkout } = useContext(checkoutContext)
-
-  const isBasketEmpty = checkout.basket.length === 0
+  const { isBasketEmpty } = useContext(checkoutContext)
 
   const onClickPrevious = () => {
     switch (current) {

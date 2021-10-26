@@ -1,12 +1,10 @@
 export * from './AuthProvider'
-export * from './BasketProvider'
 export * from './BasketToggleProvider'
 export * from './CheckoutProvider'
 export * from './LoaderProvider'
 export * from './ToastProvider'
 
 export { default as AuthProvider } from './AuthProvider'
-export { default as BasketProvider } from './BasketProvider'
 export { default as BasketToggleProvider } from './BasketToggleProvider'
 export { default as CheckoutProvider } from './CheckoutProvider'
 export { default as LoaderProvider } from './LoaderProvider'

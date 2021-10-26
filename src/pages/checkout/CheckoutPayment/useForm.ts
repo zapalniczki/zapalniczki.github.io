@@ -26,7 +26,7 @@ const useForm = () => {
   const { getSchema } = useSchema()
   const isDev = useIsDev()
 
-  const { checkout, setCheckout } = useContext(checkoutContext)
+  const { basket, checkout, setCheckout } = useContext(checkoutContext)
   const { hide, show } = useContext(loaderContext)
 
   const { mutateAsync: mutateAddAddress } = useMutation(addAddress)
@@ -77,7 +77,9 @@ const useForm = () => {
       payment_type: paymentType,
       total:
         add(
-          sumArray(checkout.total.products.map((product) => product.total)),
+          sumArray(
+            checkout.basket.map((product) => product.price * product.quantity)
+          ),
           checkout.total.delivery
         ) ?? 0,
       shipping_id,
@@ -85,12 +87,11 @@ const useForm = () => {
       status: 'OPEN'
     })
 
-    const products =
-      checkout?.basket?.map((product) => ({
-        product_id: product.id,
-        order_id: orderId,
-        quantity: product.quantity
-      })) || []
+    const products = basket.map((product) => ({
+      product_id: product.id,
+      order_id: orderId,
+      quantity: product.quantity
+    }))
 
     await mutateAddOrderItem(products)
 

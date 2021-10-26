@@ -37,7 +37,6 @@ import config from 'firebase/config'
 import i18n from 'i18n/config'
 import {
   AuthProvider,
-  BasketProvider,
   BasketToggleProvider,
   CheckoutProvider,
   LoaderProvider,
@@ -111,25 +110,23 @@ const root = document.getElementById('app')
 render(
   <StrictMode>
     <AuthProvider>
-      <BasketProvider>
-        <QueryClientProvider client={queryClient}>
-          <ThemeProvider theme={theme}>
-            <I18nextProvider i18n={i18n}>
-              <CheckoutProvider>
-                <BasketToggleProvider>
-                  <LoaderProvider>
-                    <ToastProvider>
-                      <GlobalStyle />
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <I18nextProvider i18n={i18n}>
+            <CheckoutProvider>
+              <BasketToggleProvider>
+                <LoaderProvider>
+                  <ToastProvider>
+                    <GlobalStyle />
 
-                      <App />
-                    </ToastProvider>
-                  </LoaderProvider>
-                </BasketToggleProvider>
-              </CheckoutProvider>
-            </I18nextProvider>
-          </ThemeProvider>
-        </QueryClientProvider>
-      </BasketProvider>
+                    <App />
+                  </ToastProvider>
+                </LoaderProvider>
+              </BasketToggleProvider>
+            </CheckoutProvider>
+          </I18nextProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
     </AuthProvider>
   </StrictMode>,
   root

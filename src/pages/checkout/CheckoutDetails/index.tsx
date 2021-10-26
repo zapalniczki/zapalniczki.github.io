@@ -13,7 +13,7 @@ import useForm from './useForm'
 const CheckoutDetails = () => {
   const { t } = useTranslation('CHECKOUT_DETAILS')
   const { t: commonT } = useTranslation('COMMON')
-  const { checkout } = useContext(checkoutContext)
+  const { checkout, isBasketEmpty } = useContext(checkoutContext)
 
   useTabTitle(t('title'))
   useScrollTop()
@@ -24,7 +24,7 @@ const CheckoutDetails = () => {
 
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
-  if (!checkout.basket) {
+  if (isBasketEmpty) {
     return <Redirect to={CHECKOUT_PRODUCTS} />
   }
 

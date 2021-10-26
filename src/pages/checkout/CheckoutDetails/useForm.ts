@@ -3,8 +3,8 @@ import { object } from 'yup'
 import { useSchema } from 'hooks'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { useContext } from 'react'
-import { checkoutContext, ContactDetails } from 'providers'
-import { User } from 'models'
+import { checkoutContext } from 'providers'
+import { ContactDetails, User } from 'models'
 
 export type FormValues = Omit<ContactDetails, 'is_company'>
 

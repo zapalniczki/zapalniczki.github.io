@@ -26,51 +26,33 @@ const useForm = (product: GetProductResponse) => {
 
   const submitForm = (values: FormValues) => {
     setCheckout((prev) => {
-      const productInCheckoutTotalProducts = prev.total.products.find(
+      const basketItemIndex = prev.basket.findIndex(
         (elem) => elem.id === product.id
       )
 
-      const newProduct = {
-        id: product.id,
-        total: product.price * values.product_quantity
-      }
-      const prevProducts = prev.basket ? prev.basket : []
+      if (basketItemIndex > -1) {
+        const newBasket = [...prev.basket]
 
-      if (productInCheckoutTotalProducts) {
-        const newCheckoutTotalProducts = [...prev.total.products]
-        const index = prev.total.products.indexOf(
-          productInCheckoutTotalProducts
-        )
-
-        newCheckoutTotalProducts[index] = newProduct
-
-        const newCheckoutProducts = prevProducts
-        newCheckoutProducts[index] = {
+        newBasket[basketItemIndex] = {
           id: product.id,
-          quantity: values.product_quantity
+          quantity: values.product_quantity,
+          price: product.price
         }
 
         return {
           ...prev,
-          total: {
-            ...prev.total,
-            products: newCheckoutTotalProducts
-          },
-          product: newCheckoutProducts
+          basket: newBasket
         }
       }
 
       return {
         ...prev,
-        total: {
-          ...prev.total,
-          products: [...prev.total.products, newProduct]
-        },
-        products: [
-          ...prevProducts,
+        basket: [
+          ...prev.basket,
           {
             id: product.id,
-            quantity: values.product_quantity
+            quantity: values.product_quantity,
+            price: product.price
           }
         ]
       }
