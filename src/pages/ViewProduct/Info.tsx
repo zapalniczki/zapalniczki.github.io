@@ -19,6 +19,16 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
+      <Heading level={5}>{displayMoney(product.price)}</Heading>
+
+      <Text type="caption">{t('priceSubtitle')}</Text>
+
+      <Separator />
+
+      <Form product={product} />
+
+      <Separator />
+
       <Flexbox>
         <Text type="caption">{t('color')}</Text>
 
@@ -50,16 +60,6 @@ const Info = ({ product }: Props) => {
       </Text>
 
       <AvilabilityIndicator status={product.mold.status} />
-
-      <Separator />
-
-      <Heading level={5}>{displayMoney(product.price)}</Heading>
-
-      <Text type="caption">{t('priceSubtitle')}</Text>
-
-      <Separator />
-
-      <Form product={product} />
     </Flexbox>
   )
 }

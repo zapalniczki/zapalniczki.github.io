@@ -13,6 +13,10 @@ type Props = {
 const AvilabilityIndicator = ({ status }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
+  if (status === 'UNDONE') {
+    return null
+  }
+
   return (
     <Flexbox alignItems="center">
       <Dot status={status} />
