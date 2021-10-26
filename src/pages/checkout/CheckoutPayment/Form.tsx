@@ -5,6 +5,7 @@ import { CheckboxField } from 'components'
 import { FormValues } from './useForm'
 import { Row } from '../common'
 import { PaymentType } from 'models'
+import Voucher from './Voucher'
 
 type Props = {
   paymentTypes: PaymentType[]
@@ -31,6 +32,8 @@ const Form = ({ paymentTypes }: Props) => {
             )}
           </Field>
         ))}
+
+      <Field component={Voucher} name="voucher_id" />
     </Row>
   )
 }

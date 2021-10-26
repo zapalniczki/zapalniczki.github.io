@@ -3,12 +3,13 @@ import {
   addOrder,
   addOrderItem,
   addUser,
+  editVoucher,
   getProductsById,
   triggerSendEmail
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useIsDev, useSchema } from 'hooks'
-import { add } from 'lodash'
+import { add, multiply } from 'lodash'
 import { MoldStatus, PaymentType, Voucher } from 'models'
 import { checkoutContext, initState, loaderContext } from 'providers'
 import { useContext } from 'react'
@@ -35,9 +36,15 @@ const useForm = () => {
   const { mutateAsync: mutateAddOrderItem } = useMutation(addOrderItem)
   const { mutateAsync: mutateTriggerSendEmail } = useMutation(triggerSendEmail)
   const { mutateAsync: mutateGetProductsById } = useMutation(getProductsById)
+  const { mutateAsync: mutateEditVoucher } = useMutation(editVoucher)
 
   const onSubmit = async (form: FormValues) => {
     show()
+
+    const { id: voucher_id } = await mutateEditVoucher({
+      id: form.voucher_id,
+      is_used: true
+    })
 
     const { id: address_id } = await mutateAddAddress({
       street_address: checkout.contact_details?.street_address ?? '',
@@ -78,13 +85,16 @@ const useForm = () => {
       total:
         add(
           sumArray(
-            checkout.basket.map((product) => product.price * product.quantity)
+            checkout.basket.map((product) =>
+              multiply(product.price, product.quantity)
+            )
           ),
           checkout.total.delivery
         ) ?? 0,
       shipping_id,
       user_id,
-      status: 'OPEN'
+      status: 'OPEN',
+      voucher_id: voucher_id ?? null
     })
 
     const products = basket.map((product) => ({

@@ -90,6 +90,7 @@ const pl = {
     checkoutTotal: {
       delivery: 'Dostawa',
       products: 'Produkty',
+      discount: 'Obniżka',
       sum: 'Suma'
     },
 
@@ -172,7 +173,7 @@ const pl = {
     },
 
     VALIDATIONS: {
-      VOUCHER: {
+      VOUCHER_ID: {
         length: 'Kod rabatowy powinień mieć 36 znaków'
       },
       PRODUCT_QUANTITY: {
@@ -223,7 +224,7 @@ const pl = {
     },
 
     INPUTS: {
-      VOUCHER: {
+      VOUCHER_ID: {
         label: 'Kod rabatowy',
         placeholder: 'placeholder'
       },

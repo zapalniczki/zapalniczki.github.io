@@ -4,6 +4,8 @@ import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
 import add from 'lodash.add'
+import subtract from 'lodash.subtract'
+import multiply from 'lodash.multiply'
 import { sumArray } from '../CheckoutPayment/useForm'
 
 type Props = {
@@ -14,14 +16,25 @@ type Props = {
 const Total = ({ customDelivery, customProducts }: Props) => {
   const { t } = useTranslation('COMMON')
 
-  const { checkout } = useContext(checkoutContext)
-  const { basket, total: totalNew } = checkout
+  const { checkout, voucher } = useContext(checkoutContext)
+  const { basket, total } = checkout
 
   const products =
     customProducts ||
-    sumArray(basket.map((product) => product.quantity * product.price))
-  const delivery = customDelivery || totalNew.delivery || 0
-  const sum = add(products, delivery)
+    sumArray(basket.map((product) => multiply(product.quantity, product.price)))
+
+  const delivery = customDelivery || total.delivery || 0
+
+  const cost = add(products, delivery)
+
+  let discount = 0
+  if (voucher) {
+    discount = voucher.is_fixed
+      ? voucher.discount
+      : multiply(cost, voucher.discount)
+  }
+
+  const grandTotal = subtract(cost, discount)
 
   return (
     <Flexbox alignItems="center" justifyContent="flex-end" marginTop="2rem">
@@ -51,6 +64,20 @@ const Total = ({ customDelivery, customProducts }: Props) => {
             </td>
           </tr>
 
+          {discount ? (
+            <tr>
+              <td>
+                <Text type="caption">{t('checkoutTotal.discount')}</Text>
+              </td>
+
+              <td>
+                <Text marginLeft="auto" textAlign="right" type="body-2">
+                  {displayMoney(discount)}
+                </Text>
+              </td>
+            </tr>
+          ) : null}
+
           <tr>
             <td>
               <Text type="caption">{t('checkoutTotal.sum')}</Text>
@@ -63,7 +90,7 @@ const Total = ({ customDelivery, customProducts }: Props) => {
                 textAlign="right"
                 type="body-1"
               >
-                {displayMoney(sum)}
+                {displayMoney(grandTotal)}
               </Text>
             </td>
           </tr>

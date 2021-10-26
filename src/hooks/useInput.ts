@@ -30,8 +30,8 @@ const inputs = {
     label: 'INPUTS.SUBMIT.label',
     placeholder: 'INPUTS.SUBMIT.placeholder'
   },
-  VOUCHER: {
-    label: 'INPUTS.VOUCHER.label',
+  VOUCHER_ID: {
+    label: 'INPUTS.VOUCHER_ID.label',
     maxLength: 36
   },
   PAYMENT_TYPE: {

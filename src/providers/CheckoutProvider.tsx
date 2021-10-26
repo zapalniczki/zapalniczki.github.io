@@ -1,5 +1,10 @@
 import { useLocalStorage } from 'hooks'
-import { BasketItem, Checkout, checkout as checkoutModel } from 'models'
+import {
+  BasketItem,
+  Checkout,
+  checkout as checkoutModel,
+  Voucher
+} from 'models'
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
 
 type Props = {
@@ -51,6 +56,8 @@ const CheckoutProvider = ({ children }: Props) => {
     return basketItem
   }
 
+  const voucher = checkout.voucher
+
   return (
     <checkoutContext.Provider
       value={{
@@ -61,7 +68,8 @@ const CheckoutProvider = ({ children }: Props) => {
         basketLength,
         productCount,
         basket,
-        isBasketEmpty
+        isBasketEmpty,
+        voucher
       }}
     >
       {children}
@@ -80,6 +88,7 @@ type CheckoutContent = {
   isBasketEmpty: boolean
   productCount: number
   setCheckout: React.Dispatch<React.SetStateAction<Checkout>>
+  voucher: Checkout['voucher']
 }
 
 export const initState: Checkout = {
@@ -92,6 +101,7 @@ export const initState: Checkout = {
   shipping: null,
   payment_type: null,
   voucher_id: null,
+  voucher: null,
   same_address_as_invoice: true
 }
 
@@ -103,7 +113,8 @@ export const checkoutContext = createContext<CheckoutContent>({
   basket: [],
   productCount: 0,
   isBasketEmpty: true,
-  setCheckout: () => undefined
+  setCheckout: () => undefined,
+  voucher: null
 })
 
 export default CheckoutProvider

@@ -11,7 +11,6 @@ import useForm from './useForm'
 
 import Form from './Form'
 import { getPaymentTypes } from 'api'
-import Voucher from './Voucher'
 import { useQuery } from 'react-query'
 import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 
@@ -44,17 +43,19 @@ const CheckoutPayment = () => {
               validateOnChange
               validationSchema={schema}
             >
-              {({ handleSubmit }) => (
-                <FormikForm onSubmit={handleSubmit}>
-                  <Form paymentTypes={paymentTypes} />
+              {({ handleSubmit, values }) => {
+                console.log('upperValues', values)
 
-                  <Voucher />
+                return (
+                  <FormikForm onSubmit={handleSubmit}>
+                    <Form paymentTypes={paymentTypes} />
 
-                  <Total />
+                    <Total />
 
-                  <Actions />
-                </FormikForm>
-              )}
+                    <Actions />
+                  </FormikForm>
+                )
+              }}
             </Formik>
           )}
         </QueryLoader>

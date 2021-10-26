@@ -10,6 +10,7 @@ export const getVoucher = async (payload: Payload) => {
     .from<Voucher>(VOUCHERS_TABLE)
     .select()
     .eq('id', payload.id)
+    .eq('is_used', false)
     .single()
 
   const data = parseApiResponse(voucher, response)

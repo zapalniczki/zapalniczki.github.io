@@ -1,5 +1,6 @@
 import tableBase from './tableBase'
 import { string, TypeOf, enum as zenum, number } from 'zod'
+import voucher from './voucher'
 
 const orderStatus = zenum([
   'OPEN',
@@ -20,7 +21,8 @@ const order = tableBase.extend({
   shipping_id: string().uuid().nullable(),
   status: orderStatus,
   total: number(),
-  user_id: string().uuid()
+  user_id: string().uuid(),
+  voucher_id: voucher.shape.id.nullable()
 })
 
 export type Order = TypeOf<typeof order>

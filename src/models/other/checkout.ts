@@ -14,7 +14,8 @@ const checkout = object({
   total: object({
     delivery: number()
   }),
-  voucher_id: voucher.shape.id.nullable()
+  voucher_id: voucher.shape.id.nullable(),
+  voucher: voucher.pick({ is_fixed: true, discount: true }).nullable()
 })
 
 export type Checkout = TypeOf<typeof checkout>
