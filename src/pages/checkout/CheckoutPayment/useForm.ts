@@ -10,12 +10,7 @@ import { CHECKOUT_RESULT } from 'constants/routes'
 import { useIsDev, useSchema } from 'hooks'
 import { add } from 'lodash'
 import { MoldStatus, PaymentType, Voucher } from 'models'
-import {
-  basketContext,
-  checkoutContext,
-  initState,
-  loaderContext
-} from 'providers'
+import { checkoutContext, initState, loaderContext } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useHistory } from 'react-router-dom'
@@ -32,7 +27,6 @@ const useForm = () => {
   const isDev = useIsDev()
 
   const { checkout, setCheckout } = useContext(checkoutContext)
-  const { setBasket } = useContext(basketContext)
   const { hide, show } = useContext(loaderContext)
 
   const { mutateAsync: mutateAddAddress } = useMutation(addAddress)
@@ -92,7 +86,7 @@ const useForm = () => {
     })
 
     const products =
-      checkout?.products?.map((product) => ({
+      checkout?.basket?.map((product) => ({
         product_id: product.id,
         order_id: orderId,
         quantity: product.quantity
@@ -126,7 +120,6 @@ const useForm = () => {
     }
 
     setCheckout(initState)
-    setBasket([])
     hide()
 
     history.push(CHECKOUT_RESULT, locationState)

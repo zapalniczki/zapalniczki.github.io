@@ -7,5 +7,6 @@ export { default as useScrollTop } from './useScrollTop'
 export { default as useTabTitle } from './useTabTitle'
 export { default as useTranslation } from './useTranslation'
 export { default as useIsDev } from './useIsDev'
+export { default as useLocalStorage } from './useLocalStorage'
 
 export * from './useTranslation'

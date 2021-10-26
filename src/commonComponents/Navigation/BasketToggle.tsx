@@ -1,4 +1,4 @@
-import { basketContext } from 'providers'
+import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Badge, Button } from 'components'
@@ -15,8 +15,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const BasketToggle = () => {
   const { pathname } = useLocation()
-  const { productCount } = useContext(basketContext)
+  const { checkout } = useContext(checkoutContext)
   const { setIsOpen } = useContext(basketToggleContext)
+
+  const productCount = checkout.basket.length
 
   return (
     <Button

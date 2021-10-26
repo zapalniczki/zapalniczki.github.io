@@ -28,8 +28,8 @@ const CheckoutProducts = () => {
           marginTop="2rem"
           minHeight="20rem"
         >
-          {checkout.products ? (
-            checkout.products.map((product) => (
+          {checkout.basket ? (
+            checkout.basket.map((product) => (
               <Fragment key={product.id}>
                 <BasketItem product={product} />
               </Fragment>
@@ -41,7 +41,7 @@ const CheckoutProducts = () => {
           )}
         </Flexbox>
 
-        {checkout.products?.length && <Total />}
+        {checkout.basket?.length && <Total />}
 
         <Actions />
       </Wrapper>

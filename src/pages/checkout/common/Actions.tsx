@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom'
 import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
-import { basketContext } from 'providers'
+import { checkoutContext } from 'providers'
 import {
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
@@ -16,9 +16,9 @@ const Actions = () => {
   const history = useHistory()
 
   const current = useCheckoutStep()
-  const { basketLength } = useContext(basketContext)
+  const { checkout } = useContext(checkoutContext)
 
-  const isBasketEmpty = basketLength === 0
+  const isBasketEmpty = checkout.basket.length === 0
 
   const onClickPrevious = () => {
     switch (current) {

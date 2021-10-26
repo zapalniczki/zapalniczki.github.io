@@ -1,4 +1,4 @@
-import { basketContext, checkoutContext } from 'providers'
+import { checkoutContext } from 'providers'
 import { useContext } from 'react'
 
 import { GetProductResponse } from 'models'
@@ -10,7 +10,7 @@ export type FormValues = {
 }
 
 const useForm = (product: GetProductResponse) => {
-  const { getProductFromBasket, setBasket } = useContext(basketContext)
+  const { getProductFromBasket } = useContext(checkoutContext)
   const { setCheckout } = useContext(checkoutContext)
   const isInBasket = getProductFromBasket(product.id)
 
@@ -25,23 +25,6 @@ const useForm = (product: GetProductResponse) => {
   }
 
   const submitForm = (values: FormValues) => {
-    setBasket((prev) => {
-      const productInBasket = getProductFromBasket(product.id)
-      const newBasketItem = {
-        id: product.id,
-        quantity: values.product_quantity
-      }
-      if (productInBasket) {
-        const index = prev.findIndex((elem) => elem.id === product.id)
-        const newBasket = [...prev]
-        newBasket[index] = newBasketItem
-
-        return newBasket
-      }
-
-      return [...prev, newBasketItem]
-    })
-
     setCheckout((prev) => {
       const productInCheckoutTotalProducts = prev.total.products.find(
         (elem) => elem.id === product.id
@@ -51,7 +34,7 @@ const useForm = (product: GetProductResponse) => {
         id: product.id,
         total: product.price * values.product_quantity
       }
-      const prevProducts = prev.products ? prev.products : []
+      const prevProducts = prev.basket ? prev.basket : []
 
       if (productInCheckoutTotalProducts) {
         const newCheckoutTotalProducts = [...prev.total.products]

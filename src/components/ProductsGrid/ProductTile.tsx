@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 import { displayMoney, findCorrectProductImageSize } from 'utils'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { basketContext } from 'providers'
+import { checkoutContext } from 'providers'
 import getColor from 'styles/getColor'
 import { GetProductsResponseItem } from 'models'
 
@@ -16,7 +16,7 @@ export type Props = {
 const ProductTile = ({ product }: Props) => {
   const viewProductPath = generatePath(VIEW_PRODUCT, { id: product.id })
 
-  const { getProductFromBasket } = useContext(basketContext)
+  const { getProductFromBasket } = useContext(checkoutContext)
   const isBasket = getProductFromBasket(product.id)
   const isInBasket = getProductFromBasket(product.id)
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Formik, Form as FormikForm, Field, FieldProps } from 'formik'
-import { basketContext } from 'providers'
+import { checkoutContext } from 'providers'
 import useForm, { FormValues } from './useForm'
 import { GetProductResponse } from 'models'
 import { useTranslation } from 'hooks'
@@ -12,7 +12,7 @@ type Props = {
 
 const Form = ({ product }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
-  const { getProductFromBasket } = useContext(basketContext)
+  const { getProductFromBasket } = useContext(checkoutContext)
   const isInBasket = getProductFromBasket(product.id)
 
   const { initialValues, schema, submitForm } = useForm(product)

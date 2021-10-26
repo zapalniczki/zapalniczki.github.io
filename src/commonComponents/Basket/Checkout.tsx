@@ -8,7 +8,6 @@ import {
 } from 'components'
 
 import { displayMoney, calculateTotal } from 'utils'
-import { basketContext } from 'providers'
 import React, { useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { basketToggleContext } from 'providers'
@@ -25,9 +24,8 @@ const Checkout = () => {
   const { pathname } = useLocation()
   const history = useHistory()
 
-  const { basket, basketLength } = useContext(basketContext)
   const { closeBasket } = useContext(basketToggleContext)
-  const { setCheckout } = useContext(checkoutContext)
+  const { checkout } = useContext(checkoutContext)
 
   const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
 
@@ -35,7 +33,7 @@ const Checkout = () => {
     <QueryLoader query={productsQuery}>
       {(products) => {
         const productsTotal = calculateTotal(
-          basket.map((product) => getProductTotal(products, product))
+          checkout.basket.map((product) => getProductTotal(products, product))
         )
 
         return (
@@ -61,23 +59,10 @@ const Checkout = () => {
               />
 
               <Button
-                disabled={!basketLength || pathname === '/checkout'}
+                disabled={!checkout.basket.length || pathname === '/checkout'}
                 label={t('basket.checkout')}
                 marginLeft="m-size"
                 onClick={() => {
-                  setCheckout((prev) => ({
-                    ...prev,
-
-                    total: {
-                      ...prev.total,
-                      products: basket.map((e) => ({
-                        id: e.id,
-                        total: getProductTotal(products, e)
-                      }))
-                    },
-                    products: basket
-                  }))
-
                   closeBasket()
                   history.push(CHECKOUT_PRODUCTS)
                 }}

@@ -14,7 +14,6 @@ import styled from 'styled-components'
 
 import { generatePath } from 'react-router-dom'
 
-import { basketContext } from 'providers'
 import { displayMoney, findCorrectProductImageSize } from 'utils'
 import { BasketItem as BasketItemType } from 'models'
 import { VIEW_PRODUCT } from 'constants/routes'
@@ -33,7 +32,6 @@ type Props = {
 }
 
 const BasketItem = ({ product: basketProduct }: Props) => {
-  const { setBasket } = useContext(basketContext)
   const { closeBasket } = useContext(basketToggleContext)
   const { setCheckout } = useContext(checkoutContext)
 
@@ -53,23 +51,6 @@ const BasketItem = ({ product: basketProduct }: Props) => {
       <QueryLoader query={productQuery}>
         {(product) => {
           const modifyQuantity = (addition?: boolean) => {
-            setBasket((prev) => {
-              if (addition === undefined) {
-                const productInBasket = findBasketItem(
-                  prev,
-                  basketProduct
-                ).product
-
-                return prev.filter((elem) => elem !== productInBasket)
-              }
-
-              const index = findBasketItem(prev, basketProduct).index
-              const result = [...prev]
-              result[index].quantity = quantity + (addition ? 1 : -1)
-
-              return result
-            })
-
             setCheckout((prev) => {
               const productTotal = product.price * basketProduct.quantity
 
@@ -169,15 +150,6 @@ const BasketItem = ({ product: basketProduct }: Props) => {
       </QueryLoader>
     </Container>
   )
-}
-
-const findBasketItem = (basket: BasketItemType[], product: BasketItemType) => {
-  const index = basket.findIndex((elem) => elem.id === product.id)
-
-  return {
-    product: basket[index],
-    index
-  }
 }
 
 const Container = styled(Tile)`

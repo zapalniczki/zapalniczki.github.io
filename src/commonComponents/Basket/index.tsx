@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect } from 'react'
 import { Flexbox, Text } from 'components'
 
-import { basketContext } from 'providers'
+import { checkoutContext } from 'providers'
 import styled from 'styled-components'
 import { basketToggleContext } from 'providers'
 import { useTranslation } from 'hooks'
@@ -15,7 +15,8 @@ const Basket = () => {
   const { t } = useTranslation('COMMON')
 
   const { isOpen, setIsOpen } = useContext(basketToggleContext)
-  const { basket, basketLength } = useContext(basketContext)
+  const { checkout } = useContext(checkoutContext)
+
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -42,13 +43,13 @@ const Basket = () => {
         overflowY="auto"
         padding="s-size"
       >
-        {!basketLength && (
+        {!checkout.basket.length && (
           <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
             <Text type="caption">{t('basket.empty')}</Text>
           </Flexbox>
         )}
 
-        {basket.map((product) => (
+        {checkout.basket.map((product) => (
           <BasketItem key={product.id} product={product} />
         ))}
       </Flexbox>

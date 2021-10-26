@@ -2,15 +2,15 @@ import React, { useContext } from 'react'
 import { Flexbox, Button, Text, Separator } from 'components'
 import { useTranslation } from 'hooks'
 
-import { basketContext } from 'providers'
 import { basketToggleContext } from 'providers'
 import { checkoutContext } from 'providers'
 
 const Header = () => {
   const { t } = useTranslation('COMMON')
   const { closeBasket } = useContext(basketToggleContext)
-  const { clearBasket, productCount } = useContext(basketContext)
-  const { setCheckout } = useContext(checkoutContext)
+  const { checkout, setCheckout } = useContext(checkoutContext)
+
+  const productCount = checkout.basket.length
 
   let countName = 'basket.products'
   if (productCount > 4) {
@@ -43,7 +43,6 @@ const Header = () => {
             label={t('basket.clear')}
             marginRight="s-size"
             onClick={() => {
-              clearBasket()
               setCheckout((prev) => ({
                 ...prev,
                 total: {
