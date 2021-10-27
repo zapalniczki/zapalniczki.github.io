@@ -10,7 +10,7 @@ import {
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useIsDev, useSchema } from 'hooks'
 import { add, multiply } from 'lodash'
-import { MoldStatus, PaymentType, Voucher } from 'models'
+import { MoldStatus, Order, PaymentType, Voucher } from 'models'
 import { checkoutContext, initState, loaderContext } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
@@ -41,10 +41,15 @@ const useForm = () => {
   const onSubmit = async (form: FormValues) => {
     show()
 
-    const { id: voucher_id } = await mutateEditVoucher({
-      id: form.voucher_id,
-      is_used: true
-    })
+    let voucher_id: Order['voucher_id'] = null
+    if (form.voucher_id) {
+      const { id } = await mutateEditVoucher({
+        id: form.voucher_id,
+        is_used: true
+      })
+
+      voucher_id = id
+    }
 
     const { id: address_id } = await mutateAddAddress({
       street_address: checkout.contact_details?.street_address ?? '',
@@ -94,7 +99,7 @@ const useForm = () => {
       shipping_id,
       user_id,
       status: 'OPEN',
-      voucher_id: voucher_id ?? null
+      voucher_id
     })
 
     const products = basket.map((product) => ({
@@ -116,7 +121,7 @@ const useForm = () => {
       productionTime
     }
 
-    if (!isDev) {
+    if (isDev) {
       mutateTriggerSendEmail({
         to: email,
         type: {
@@ -124,7 +129,8 @@ const useForm = () => {
           content: {
             name: full_name,
             order_id: orderId,
-            phone: phone
+            phone: phone,
+            is_long: productionTime === 'LONG'
           }
         }
       })

@@ -22,6 +22,7 @@ export const triggerSendEmail = (payload: Payload) => {
 type EventType =
   | {
       content: {
+        is_long?: boolean
         name: User['full_name']
         order_id: Order['id']
         phone: User['phone']
