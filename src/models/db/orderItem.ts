@@ -4,7 +4,8 @@ import tableBase from './tableBase'
 const orderItem = tableBase.extend({
   order_id: string().uuid(),
   product_id: string().uuid(),
-  quantity: number()
+  quantity: number(),
+  price: number()
 })
 
 export type OrderItem = TypeOf<typeof orderItem>

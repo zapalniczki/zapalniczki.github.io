@@ -105,7 +105,8 @@ const useForm = () => {
     const products = basket.map((product) => ({
       product_id: product.id,
       order_id: orderId,
-      quantity: product.quantity
+      quantity: product.quantity,
+      price: product.price
     }))
 
     await mutateAddOrderItem(products)
@@ -121,7 +122,7 @@ const useForm = () => {
       productionTime
     }
 
-    if (isDev) {
+    if (!isDev) {
       mutateTriggerSendEmail({
         to: email,
         type: {
