@@ -25,7 +25,7 @@ const CheckoutPayment = () => {
   const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {
-    // return <Redirect to={CHECKOUT_DELIVERY} />
+    return <Redirect to={CHECKOUT_DELIVERY} />
   }
 
   return (
@@ -43,19 +43,15 @@ const CheckoutPayment = () => {
               validateOnChange
               validationSchema={schema}
             >
-              {({ handleSubmit, values }) => {
-                console.log('upperValues', values)
+              {({ handleSubmit }) => (
+                <FormikForm onSubmit={handleSubmit}>
+                  <Form paymentTypes={paymentTypes} />
 
-                return (
-                  <FormikForm onSubmit={handleSubmit}>
-                    <Form paymentTypes={paymentTypes} />
+                  <Total />
 
-                    <Total />
-
-                    <Actions />
-                  </FormikForm>
-                )
-              }}
+                  <Actions />
+                </FormikForm>
+              )}
             </Formik>
           )}
         </QueryLoader>

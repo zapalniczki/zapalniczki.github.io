@@ -1,10 +1,5 @@
 import { useLocalStorage } from 'hooks'
-import {
-  BasketItem,
-  Checkout,
-  checkout as checkoutModel,
-  Voucher
-} from 'models'
+import { BasketItem, Checkout, checkout as checkoutModel } from 'models'
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
 
 type Props = {
@@ -13,7 +8,6 @@ type Props = {
 
 const CheckoutProvider = ({ children }: Props) => {
   const localCheckout: Checkout | null = useLocalStorage({
-    type: 'GET',
     key: LOCAL_STORAGE_CHECKOUT_KEY
   })
   const parseResult = checkoutModel.safeParse(localCheckout)
