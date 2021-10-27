@@ -3,4 +3,5 @@
 . "$(dirname "$0")/common.sh"
 
 
+yarn run lint:fix
 yarn run patch
