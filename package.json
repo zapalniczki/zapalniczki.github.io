@@ -3,6 +3,7 @@
   "version": "1.2.16",
   "main": "index.js",
   "author": "grandalf6@gmail.com",
+  "license": "NOLICENCE",
   "scripts": {
     "patch": "yarn version --new-version patch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --stats-error-details",
