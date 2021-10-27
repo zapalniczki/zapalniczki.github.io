@@ -57,7 +57,13 @@ const pl = {
       sum: 'Suma',
       time: 'Czas',
       updated_at: 'Data modyfikacji',
-      icon: 'Ikona'
+      icon: 'Ikona',
+
+      // NEW
+      product_name: 'Nazwa produktu',
+      product_image: '',
+      product_price: 'Cena',
+      product_total: 'Total'
 
       // molds: 'Matryce'
     },
@@ -117,9 +123,23 @@ const pl = {
       CONFIRMED: 'Potwierdzone',
       PAYMENT_RECEIVED: 'Zapłacone',
       PRODUCTION: 'Produkcja',
-      AWAITING_FOR_PICKUP: 'Oczekuje na kuriera',
+      AWAITING_FOR_PICKUP: 'Oczekuje na dostawę',
       IN_DELIVERY: 'W dostawie',
       COMPLETED: 'Zakończone'
+    },
+
+    STATUS_MEANINGS: {
+      OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i oczekuje na potwierdzenie.',
+      CONFIRMED:
+        'Co oznacza, ze zamówienie zostało potwierdzone i oczekujemy na wpłatę środków.',
+      PAYMENT_RECEIVED:
+        'Co oznacza, że otrzymaliśmy środki i niebawem przystąpimy do jego realizacji.',
+      PRODUCTION: 'Co oznacza, że zamówienie jest realizowane właśnie teraz.',
+      AWAITING_FOR_PICKUP:
+        'Co oznacza, że zamówienie zostało skompletowane i oczekuje na kuriera.',
+      IN_DELIVERY: 'Co oznacza, że zamówienie jest w drodze.',
+      COMPLETED:
+        'Co oznacza, że zamówienie zostało skompletowane i dostarczone.'
     },
 
     basket: {
@@ -576,20 +596,6 @@ const pl = {
       CHECK_STATUS: {
         title: 'Sprawdź status zamówienia',
         result: {
-          statusesMeanings: {
-            OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i niebawem skontaktujemy się z Tobą w celu potwierdzenia.',
-            CONFIRMED:
-              'Co oznacza, ze zamówienie zostało potwierdzone i oczekujemy na wpłatę środków.',
-            PAYMENT_RECEIVED:
-              'Co oznacza, że otrzymaliśmy środki i niebawem przystąpimy do jego realizacji.',
-            PRODUCTION:
-              'Co oznacza, że zamówienie jest realizowane właśnie teraz.',
-            AWAITING_FOR_PICKUP:
-              'Co oznacza, że zamówienie zostało skompletowane i oczekuje na kuriera.',
-            IN_DELIVERY: 'Co oznacza, że zamówienie jest w drodze.',
-            COMPLETED:
-              'Co oznacza, że zamówienie zostało skompletowane i dostarczone.'
-          },
           tryNew: 'Sprawdź kolejne'
         },
         error: {
@@ -695,6 +701,34 @@ const pl = {
       termsAndConditions: 'Regulamin',
       privacyPolicy: 'Polityka prywatności',
       cookiesPolicy: 'Polityka Cookies'
+    }
+  },
+
+  ORDER: {
+    title: 'Zamówienie',
+    SECTIONS: {
+      ORDER_ID: {
+        label: 'Numer referencyjny zamówienia'
+      },
+
+      PRODUCTS: {
+        title: 'Produkty'
+      },
+
+      STATUS: {
+        title: 'Status zamówienia'
+      },
+
+      CONTACT_DETAILS: {
+        title: 'Dane kontaktowe',
+        address: 'Adres',
+        shippings: 'Adres do wysyłki',
+        nip: 'NIP'
+      },
+
+      SHIPPING: {
+        title: 'Adres dostawy'
+      }
     }
   }
 }

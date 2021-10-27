@@ -1,5 +1,6 @@
 export * from './addOrder'
 export * from './getOrderStatus'
 export * from './getOrders'
+export * from './getOrder'
 export * from './updateOrderStatus'
 export * from './updateOrderStatus'

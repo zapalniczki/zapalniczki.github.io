@@ -22,9 +22,7 @@ const Result = ({ setView, status }: Props) => {
         title={commonT(`ORDER_STATUSES.${status}`)}
       />
 
-      <Text type="body-2">
-        {t(`items.CHECK_STATUS.result.statusesMeanings.${status}`)}
-      </Text>
+      <Text type="body-2">{commonT(`STATUS_MEANINGS.${status}`)}</Text>
 
       <Button
         label={t('items.CHECK_STATUS.result.tryNew')}

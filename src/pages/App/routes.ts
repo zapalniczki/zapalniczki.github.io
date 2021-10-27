@@ -19,7 +19,8 @@ import {
   HOME,
   HOW_TO_CREATE_ORDER,
   PRODUCTS,
-  VIEW_PRODUCT
+  VIEW_PRODUCT,
+  ORDERS
 } from 'constants/routes'
 
 import React from 'react'
@@ -59,6 +60,10 @@ const routes = [
   {
     component: React.lazy(() => import('pages/checkout/CheckoutResult')),
     path: CHECKOUT_RESULT
+  },
+  {
+    component: React.lazy(() => import('pages/Order')),
+    path: ORDERS
   },
   {
     component: React.lazy(() => import('pages/AdminOrders')),

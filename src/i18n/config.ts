@@ -27,6 +27,7 @@ export const config: InitOptions = {
       DOCUMENTS: pl.DOCUMENTS,
       HOME: pl.HOME,
       HOW_TO_CREATE_ORDER: pl.HOW_TO_CREATE_ORDER,
+      ORDER: pl.ORDER,
       PAGE_NOT_FOUND: pl.PAGE_NOT_FOUND,
       PRODUCTS: pl.PRODUCTS,
       VIEW_PRODUCT: pl.VIEW_PRODUCT

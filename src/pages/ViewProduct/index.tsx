@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { BackButton, Page, Tile, QueryLoader } from 'components'
-import { useDocumentTitle, useScrollTop } from 'hooks'
+import { useScrollTop, useTabTitle } from 'hooks'
 
 import { useTranslation } from 'hooks'
 import Images from './Images'
@@ -21,7 +21,7 @@ const ViewProduct = () => {
   const productQuery = useQuery(['product', params], () => getProduct(params))
 
   useScrollTop(params.id)
-  useDocumentTitle(
+  useTabTitle(
     t('title', {
       productName: productQuery.data ? productQuery.data.name : 'Produkt'
     })

@@ -1,6 +1,10 @@
+import { Box } from 'components'
 import React from 'react'
 import { Column, useTable } from 'react-table'
 import styled from 'styled-components'
+import { SpaceProps } from 'styled-system'
+import getColor from 'styles/getColor'
+import getSpace from 'styles/getSpace'
 
 type DataConstraint = Record<
   string,
@@ -11,9 +15,13 @@ type Props<D extends DataConstraint> = {
   columns: Column<D>[]
   data: D[]
   temp?: boolean
-}
+} & SpaceProps
 
-function Table<T extends DataConstraint>({ columns, data }: Props<T>) {
+function Table<T extends DataConstraint>({
+  columns,
+  data,
+  ...props
+}: Props<T>) {
   const { getTableBodyProps, getTableProps, headerGroups, prepareRow, rows } =
     useTable({
       columns,
@@ -21,7 +29,7 @@ function Table<T extends DataConstraint>({ columns, data }: Props<T>) {
     })
 
   return (
-    <Container>
+    <Container {...props}>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -55,23 +63,23 @@ function Table<T extends DataConstraint>({ columns, data }: Props<T>) {
   )
 }
 
-const Container = styled.div`
+const Container = styled(Box)`
   width: 100%;
 
   table {
     border: 1px solid;
-    border-color: ${(props) => props.theme.colors['border-color']};
+    border-color: ${getColor('border-color')};
     width: 100%;
 
     th {
       text-align: left;
-      background: ${(props) => props.theme.colors['background-color-01']};
+      background: ${getColor('background-color-01')};
     }
 
     th,
     td {
       margin: 0;
-      padding: ${(props) => props.theme.space['m-size']};
+      padding: ${getSpace('m-size')};
     }
   }
 `
