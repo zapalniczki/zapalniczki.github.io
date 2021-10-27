@@ -98,7 +98,11 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
           {quantity}
         </Text>
 
-        <SimpleButton icon="plus" onClick={() => modifyQuantity(true)} />
+        <SimpleButton
+          disabled={quantity === 100}
+          icon="plus"
+          onClick={() => modifyQuantity(true)}
+        />
 
         <SimpleButton
           icon="trash-alt"
