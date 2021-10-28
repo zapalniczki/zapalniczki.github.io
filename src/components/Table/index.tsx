@@ -32,8 +32,8 @@ function Table<T extends DataConstraint>({
     <Container {...props}>
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
+          {headerGroups.map((headerGroup, headerGroupIndex) => (
+            <tr {...headerGroup.getHeaderGroupProps()} key={headerGroupIndex}>
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps()} key={column.id}>
                   {column.render('Header')}
@@ -44,13 +44,13 @@ function Table<T extends DataConstraint>({
         </thead>
 
         <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {rows.map((row, rowIndex) => {
             prepareRow(row)
 
             return (
-              <tr {...row.getRowProps()} key={i}>
-                {row.cells.map((cell, index) => (
-                  <td {...cell.getCellProps()} key={index}>
+              <tr {...row.getRowProps()} key={rowIndex}>
+                {row.cells.map((cell, cellIndex) => (
+                  <td {...cell.getCellProps()} key={cellIndex}>
                     {cell.render('Cell')}
                   </td>
                 ))}
