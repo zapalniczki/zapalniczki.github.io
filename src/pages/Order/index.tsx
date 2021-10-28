@@ -8,6 +8,7 @@ import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
 import ContactDetails from './ContactDetails'
 import OrderId from './OrderId'
+import Payment from './Payment'
 import ProductsTable from './ProductsTable'
 import Shipping from './Shipping'
 import Status from './Status'
@@ -32,6 +33,10 @@ const Order = () => {
               <OrderId id={order.id} />
 
               <Status status={order.status} />
+
+              {order.status === 'CONFIRMED' && (
+                <Payment amount={order.total} id={order.id} />
+              )}
 
               <ProductsTable products={order.products} />
             </div>

@@ -6,7 +6,8 @@ import {
   SectionHead,
   Text,
   Tile,
-  UserAvatar
+  UserAvatar,
+  LabelledItem
 } from 'components'
 import { USERS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
@@ -58,21 +59,20 @@ const ContactDetails = ({ userId }: Props) => {
 
           <Separator />
 
-          {data.is_company && (
-            <>
-              <Text type="body-2">{t('nip')}</Text>
-
-              <Text marginBottom="m-size" type="body-1">
-                {data.nip}
-              </Text>
-            </>
+          {data.is_company && data.nip && (
+            <LabelledItem
+              item={data.nip}
+              label={t('nip')}
+              marginBottom="m-size"
+            />
           )}
 
-          <Text type="body-2">{t('address')}</Text>
+          <LabelledItem
+            item={data.address.street_address}
+            label={t('address')}
+          />
 
-          <Text type="body-1">{data.address.street_address}</Text>
-
-          <Text type="body-1">
+          <Text fontWeight="bold" type="body-1">
             {/* eslint-disable-next-line react/jsx-newline */}
             {data.address.post_code}, {data.address.city}
           </Text>

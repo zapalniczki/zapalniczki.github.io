@@ -1,6 +1,9 @@
 const phoneNumer = '+48 792 531 179'
 const companyName = 'Braty'
+const fullCompanyName = `${companyName} Przemysław Rychlewicz`
 const domain = 'braty.co'
+const nrb = '31 1140 2004 0000 3402 8090 0648'
+const bankName = 'mBank S.A.'
 export const email = `kontakt@${domain}`
 
 const pl = {
@@ -29,6 +32,9 @@ const pl = {
       adminLabels: 'Etykiety'
     },
 
+    nrb,
+    bankName,
+    fullCompanyName,
     basketToggleLabel: 'Koszyk',
     soon: 'Wkrótce',
     emptyState: 'Nic nie znaleziono',
@@ -630,7 +636,7 @@ const pl = {
       ADDRESS: {
         title: 'Adres',
         info: 'Wymiany, zwroty i odbiór osobisty',
-        address1: `${companyName} Przemysław Rychlewicz`,
+        address1: fullCompanyName,
         address2: 'ul. Bora-Komorowskiego 12/1',
         address3: '80-366 Gdańsk',
         address4: 'Polska'
@@ -645,8 +651,8 @@ const pl = {
       ACCOUNT: {
         title: 'Numer konta',
         info: 'Do wpłat',
-        nrb: '31 1140 2004 0000 3402 8090 0648',
-        info2: 'Nazwa banku: mBank S.A.',
+        nrb: nrb,
+        info2: `Nazwa banku: ${bankName}`,
         info3: 'Tytuł: Numer referencyjny zamówienia'
       }
     }
@@ -718,6 +724,18 @@ const pl = {
 
       STATUS: {
         title: 'Status zamówienia'
+      },
+
+      PAYMENT: {
+        title: 'Dane do płatności',
+        info: 'Zamówienie należy opłacić w ciągu 5 dni roboczych od potwierdzenia przez nas czasu realizacji.',
+        LABELS: {
+          nrb: 'Numer konta',
+          amount: 'Kwota do zapłaty',
+          title: 'Tytuł płatności',
+          recipient: 'Odbiorca płatności',
+          bankName: 'Nazwa banku'
+        }
       },
 
       CONTACT_DETAILS: {
