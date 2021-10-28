@@ -13,7 +13,6 @@
         "installable-manifest": ["warn"],
         "maskable-icon": ["warn"],
         "meta-description": ["warn"],
-        "meta-viewport": ["warn"],
         "service-worker": ["warn"],
         "splash-screen": ["warn"],
         "themed-omnibox": ["warn"],
