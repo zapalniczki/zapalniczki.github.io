@@ -61,5 +61,3 @@ module.exports = merge(baseConfig, {
     })
   ]
 })
-
-console.log(pkg.version)

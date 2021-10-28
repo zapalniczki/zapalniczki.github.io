@@ -37,7 +37,7 @@ const Basket = () => {
 }
 
 type ContainerProps = { isOpen: boolean }
-const Container = styled.div<ContainerProps>`
+const Container = styled.aside<ContainerProps>`
   width: 60rem;
   height: 100vh;
   background: ${getColor('white')};

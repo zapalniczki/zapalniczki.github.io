@@ -1,6 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
+const createStyledComponentsTransformer =
+  require('typescript-plugin-styled-components').default
+const styledComponentsTransformer = createStyledComponentsTransformer()
+
 const resolve = (dir) => {
   return path.join(__dirname, '..', dir)
 }
@@ -17,7 +21,12 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        options: {
+          getCustomTransformers: () => ({
+            before: [styledComponentsTransformer]
+          })
+        }
       },
       {
         test: /\.(js|jsx)$/,
