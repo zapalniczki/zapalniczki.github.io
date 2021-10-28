@@ -44,17 +44,7 @@ module.exports = merge(baseConfig, {
       },
       chunksSortMode: 'auto'
     }),
-    new HtmlWebpackPlugin({
-      filename: path.resolve(__dirname, '../dist/404.html'),
-      template: '404.html',
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-      },
-      chunksSortMode: 'auto'
-    }),
+
     new CopyWebpackPlugin({
       patterns: [
         {

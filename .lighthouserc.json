@@ -7,9 +7,7 @@
       "preset": "lighthouse:recommended",
       "assertions": {
         "apple-touch-icon": ["warn"],
-        "color-contrast": ["warn"],
         "csp-xss": ["warn"],
-        "errors-in-console": ["warn"],
         "font-display": ["warn"],
         "frame-title": ["warn"],
         "installable-manifest": ["warn"],

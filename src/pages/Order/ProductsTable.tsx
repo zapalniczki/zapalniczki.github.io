@@ -101,9 +101,7 @@ const shapeData = (
         </Box>
       ),
       product_name: (
-        <Link showUnderline to={productPath}>
-          {product.name}
-        </Link>
+        <Link label={product.name} showUnderline to={productPath} />
       ),
       boxes_count: product.quantity,
       product_price: displayMoney(product.price),

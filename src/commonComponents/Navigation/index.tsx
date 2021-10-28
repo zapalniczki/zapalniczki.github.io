@@ -56,7 +56,7 @@ const Container = styled.nav<ContainerProps>`
       return getColor('nav-bg-scrolled')(props)
     }
 
-    return getColor('nav-bg')(props)
+    return undefined
   }};
   display: flex;
   align-items: center;

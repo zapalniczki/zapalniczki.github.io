@@ -82,9 +82,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
       </Box>
 
       <Flexbox flexDirection="column" gridArea="name">
-        <Link onClick={closeBasket} to={productPath}>
-          {name}
-        </Link>
+        <Link label={name} onClick={closeBasket} to={productPath} />
       </Flexbox>
 
       <Flexbox alignItems="center">

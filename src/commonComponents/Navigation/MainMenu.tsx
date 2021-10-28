@@ -1,10 +1,11 @@
-import { Box, Flexbox, Link, Text } from 'components'
+import { Box, Flexbox, Link } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { matchPath, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
 import { routes } from 'pages'
+import getSpace from 'styles/getSpace'
 
 const MainMenu = () => {
   const { t } = useTranslation('COMMON')
@@ -17,32 +18,29 @@ const MainMenu = () => {
         .sort((prev, next) =>
           (prev?.order || 1) < (next?.order || 1) ? -1 : 1
         )
-        .map((route) => (
-          <Box as="li" display="inline-block" key={route.path}>
-            <StyledLink
-              isActive={
-                !!matchPath(pathname, { path: route.path, exact: route.exact })
-              }
-              to={route.path}
-            >
-              <Text fontWeight="bold" type="subtitle-2">
-                {t(`LINKS.${route.translationKey}`)}
-              </Text>
-            </StyledLink>
-          </Box>
-        ))}
+        .map((route) => {
+          const isActive = !!matchPath(pathname, {
+            path: route.path,
+            exact: route.exact
+          })
+
+          return (
+            <Box as="li" display="inline-block" key={route.path}>
+              <StyledLink
+                active={isActive}
+                label={t(`LINKS.${route.translationKey}`)}
+                to={route.path}
+              />
+            </Box>
+          )
+        })}
     </Flexbox>
   )
 }
 
-type StyledLinkProps = {
-  isActive: boolean
-}
-
-const StyledLink = styled(Link)<StyledLinkProps>`
-  opacity: ${(props) => (props.isActive ? 1 : 0.5)};
+const StyledLink = styled(Link)`
   padding: ${(props) =>
-    `${props.theme.space['xs-size']} ${props.theme.space['m-size']}`};
+    `${getSpace('xs-size')(props)} ${getSpace('m-size')(props)}`};
 
   &:hover {
     background: ${getColor('background-color-01')};

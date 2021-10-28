@@ -64,13 +64,13 @@ const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
 
   return (
     <Container
+      $wrap={wrap}
       as={span ? 'span' : 'p'}
       color={props.white ? 'white' : 'black'}
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}
       margin={0}
-      wrap={wrap}
       {...props}
     >
       {children}
@@ -78,10 +78,12 @@ const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
   )
 }
 
-type ContainerProps = Pick<Props, 'wrap'>
+type ContainerProps = {
+  $wrap: Props['wrap']
+}
 const Container = styled(Box)<ContainerProps>`
   ${(props) =>
-    props.wrap
+    props.$wrap
       ? css`
           white-space: normal;
         `

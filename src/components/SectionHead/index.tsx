@@ -26,11 +26,7 @@ const SectionHead = ({ link, separator, title, ...props }: Props) => {
       >
         {title && <Heading level={5}>{title}</Heading>}
 
-        {link && (
-          <Link showUnderline to={link.to}>
-            {link.label}
-          </Link>
-        )}
+        {link && <Link label={link.label} showUnderline to={link.to} />}
       </Flexbox>
 
       {separator && <Separator marginBottom="0" />}

@@ -31,31 +31,57 @@ const Footer = () => {
         </Box>
 
         <Flexbox justifyContent="space-between" marginTop="l-size" width="100%">
-          <Flexbox alignItems="flex-start" flexDirection="column">
+          <Flexbox
+            alignItems="flex-start"
+            as="ul"
+            flexDirection="column"
+            margin="0"
+            padding="0"
+          >
             {routes
               .filter((route) => route.order)
               .sort((prev, next) =>
                 (prev?.order || 1) < (next?.order || 1) ? -1 : 1
               )
               .map((route) => (
-                <Link key={route.path} to={route.path}>
-                  <Text marginY="xs-size" type="body-1">
-                    {commonT(`LINKS.${route.translationKey}`)}
-                  </Text>
-                </Link>
+                <Box
+                  as="li"
+                  display="inline-block"
+                  key={route.path}
+                  marginY="xxs-size"
+                >
+                  <Link
+                    key={route.path}
+                    label={commonT(`LINKS.${route.translationKey}`)}
+                    // marginY="xxs-size"
+                    to={route.path}
+                  />
+                </Box>
               ))}
           </Flexbox>
 
           {isAdmin && (
-            <Flexbox alignItems="flex-end" flexDirection="column">
+            <Flexbox
+              alignItems="flex-end"
+              as="ul"
+              flexDirection="column"
+              margin="0"
+              padding="0"
+            >
               {routes
                 .filter((route) => route.admin)
                 .map((route) => (
-                  <Link key={route.path} to={route.path}>
-                    <Text marginY="xs-size" type="body-1">
-                      {commonT(`LINKS.${route.translationKey}`)}
-                    </Text>
-                  </Link>
+                  <Box
+                    as="li"
+                    display="inline-block"
+                    key={route.path}
+                    marginY="xxs-size"
+                  >
+                    <Link
+                      label={commonT(`LINKS.${route.translationKey}`)}
+                      to={route.path}
+                    />
+                  </Box>
                 ))}
             </Flexbox>
           )}
