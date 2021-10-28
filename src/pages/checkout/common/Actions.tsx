@@ -9,7 +9,7 @@ import {
   PRODUCTS
 } from 'constants/routes'
 import { Flexbox, Button } from 'components'
-import { useCheckoutStep } from './StepTracker'
+import { useCheckoutStep } from '.'
 
 const Actions = () => {
   const { t } = useTranslation('COMMON')
