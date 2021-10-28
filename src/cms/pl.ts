@@ -29,6 +29,7 @@ const pl = {
       adminLabels: 'Etykiety'
     },
 
+    basketToggleLabel: 'Koszyk',
     soon: 'Wkrótce',
     emptyState: 'Nic nie znaleziono',
 

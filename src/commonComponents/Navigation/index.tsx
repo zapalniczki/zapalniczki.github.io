@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Logo, MaxWidth } from 'components'
+import { Link, Logo, MaxWidth } from 'components'
 import { HOME } from 'constants/routes'
 import BasketToggle from './BasketToggle'
 import MainMenu from './MainMenu'
-import { Link } from 'react-router-dom'
 import getColor from 'styles/getColor'
+import { useTranslation } from 'hooks'
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
+
+  const { t: commonT } = useTranslation('COMMON')
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -27,7 +29,7 @@ const Navigation = () => {
   return (
     <Container isExpanded={isExpanded}>
       <MaxWidth alignItems="center" flexDirection="row">
-        <Link to={HOME}>
+        <Link title={commonT('LINKS.home')} to={HOME}>
           <Logo expanded={isExpanded} />
         </Link>
 

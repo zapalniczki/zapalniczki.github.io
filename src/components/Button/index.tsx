@@ -13,29 +13,21 @@ type Props = {
   label?: string
   onClick?: () => void
   size?: Size
+  title?: string
   type?: 'button' | 'submit' | 'reset'
   variant?: Variant
 } & SpaceProps
 
 const Button = ({
   children,
-  disabled,
   icon,
   label,
-  onClick,
   size = 'large',
   type = 'button',
   variant = 'primary',
   ...props
 }: Props) => (
-  <Container
-    {...props}
-    disabled={disabled}
-    onClick={onClick}
-    size={size}
-    type={type}
-    variant={variant}
-  >
+  <Container {...props} size={size} type={type} variant={variant}>
     {label && (
       <Text type="button" white={variant === 'primary'} wrap={false}>
         {label}

@@ -12,8 +12,11 @@ import {
   CHECKOUT_RESULT
 } from 'constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useTranslation } from 'hooks'
 
 const BasketToggle = () => {
+  const { t: commonT } = useTranslation('COMMON')
+
   const { pathname } = useLocation()
   const { productCount } = useContext(checkoutContext)
   const { setIsOpen } = useContext(basketToggleContext)
@@ -23,6 +26,7 @@ const BasketToggle = () => {
       disabled={basketDisabledpathnames.includes(pathname)}
       onClick={() => setIsOpen((prev) => !prev)}
       padding="s-size"
+      title={commonT('basketToggleLabel')}
       type="button"
       variant="quaternary"
     >
