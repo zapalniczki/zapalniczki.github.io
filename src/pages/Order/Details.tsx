@@ -13,15 +13,17 @@ const Details = ({ created_at, updated_at }: Props) => {
     <Tile marginBottom="m-size">
       <SectionHead separator title={t('title')} />
 
-      <LabelledItem
-        item={<DisplayDate>{updated_at}</DisplayDate>}
-        label={t('LABELS.updated_at')}
-      />
+      {created_at !== updated_at && (
+        <LabelledItem
+          item={<DisplayDate>{updated_at}</DisplayDate>}
+          label={t('LABELS.updated_at')}
+          marginBottom="m-size"
+        />
+      )}
 
       <LabelledItem
         item={formatDate(created_at)}
         label={t('LABELS.created_at')}
-        marginTop="m-size"
       />
     </Tile>
   )

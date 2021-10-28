@@ -12,6 +12,7 @@ import Details from './Details'
 import Invoice from './Invoice'
 import OrderId from './OrderId'
 import Payment from './Payment'
+import Voucher from './Voucher'
 import ProductsTable from './ProductsTable'
 import Shipping from './Shipping'
 import Status from './Status'
@@ -30,48 +31,46 @@ const Order = () => {
   return (
     <Page columns>
       <QueryLoader query={orderQuery}>
-        {(order) => {
-          console.log(order)
+        {(order) => (
+          <>
+            <div>
+              <OrderId id={order.id} />
 
-          return (
-            <>
-              <div>
-                <OrderId id={order.id} />
+              <Status status={order.status} />
 
-                <Status status={order.status} />
+              {order.status === 'CONFIRMED' && (
+                <Payment amount={order.total} id={order.id} />
+              )}
 
-                {order.status === 'CONFIRMED' && (
-                  <Payment amount={order.total} id={order.id} />
-                )}
+              <Billing
+                delivery_price={order.delivery_price}
+                discount={order.discount}
+                products_price={order.products_price}
+                total={order.total}
+              />
 
-                <Billing
-                  delivery_price={order.delivery_price}
-                  discount={order.discount}
-                  products_price={order.products_price}
-                  total={order.total}
-                />
+              <Voucher voucher={order.voucher} />
 
-                <ProductsTable products={order.products} />
+              <ProductsTable products={order.products} />
 
-                <Invoice invoice={order.invoice} />
-              </div>
+              <Invoice invoice={order.invoice} />
+            </div>
 
-              <div>
-                <Details
-                  created_at={order.created_at}
-                  updated_at={order.updated_at}
-                />
+            <div>
+              <Details
+                created_at={order.created_at}
+                updated_at={order.updated_at}
+              />
 
-                <Shipping
-                  deliveryType={order.delivery_type}
-                  shipping={order.shipping}
-                />
+              <Shipping
+                deliveryType={order.delivery_type}
+                shipping={order.shipping}
+              />
 
-                <ContactDetails userId={order.user_id} />
-              </div>
-            </>
-          )
-        }}
+              <ContactDetails userId={order.user_id} />
+            </div>
+          </>
+        )}
       </QueryLoader>
     </Page>
   )

@@ -3,7 +3,8 @@ import {
   DELIVERY_TYPES_TABLE,
   INVOICES_TABLE,
   ORDER_ITEMS,
-  ORDER_TABLE
+  ORDER_TABLE,
+  VOUCHERS_TABLE
 } from 'constants/db_tables'
 import { getOrderResponse, GetOrderResponse, Order } from 'models'
 import supabase from 'supabase'
@@ -34,6 +35,11 @@ export const getOrder = async ({ id }: Props) => {
       delivery_type: ${DELIVERY_TYPES_TABLE} (
         label,
         time
+      ),
+      voucher: ${VOUCHERS_TABLE} (
+        id,
+        discount,
+        is_fixed
       )
       `
     )

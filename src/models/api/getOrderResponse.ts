@@ -1,4 +1,11 @@
-import { order, orderItem, address, invoice, deliveryType } from '../db'
+import {
+  order,
+  orderItem,
+  voucher,
+  address,
+  invoice,
+  deliveryType
+} from '../db'
 import { array, TypeOf } from 'zod'
 
 const getOrderResponse = order.extend({
@@ -27,7 +34,15 @@ const getOrderResponse = order.extend({
   delivery_type: deliveryType.pick({
     label: true,
     time: true
-  })
+  }),
+
+  voucher: voucher
+    .pick({
+      id: true,
+      is_fixed: true,
+      discount: true
+    })
+    .nullable()
 })
 
 export type GetOrderResponse = TypeOf<typeof getOrderResponse>

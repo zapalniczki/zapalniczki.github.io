@@ -114,7 +114,6 @@ const useForm = () => {
       total,
       shipping_id,
       user_id,
-      status: 'OPEN',
       voucher_id
     })
 

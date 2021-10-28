@@ -767,7 +767,7 @@ const pl = {
       DETAILS: {
         title: 'Szczegóły',
         LABELS: {
-          created_at: 'Data złożenia zamówienia',
+          created_at: 'Złożenie zamówienia',
           updated_at: 'Ostatnia modyfikacja'
         }
       },
@@ -775,8 +775,16 @@ const pl = {
       SHIPPING: {
         title: 'Dostawa',
         LABELS: {
-          delivery_type: 'Typ dostawy',
+          delivery_type: 'Typ',
           shipping_address: 'Adres'
+        }
+      },
+
+      VOUCHER: {
+        title: 'Wykorzystany kod rabatowy',
+        LABELS: {
+          voucher_id: 'Kod',
+          voucher_value: 'Wartość'
         }
       }
     }
