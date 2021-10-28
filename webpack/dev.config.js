@@ -7,7 +7,7 @@ const webpack = require('webpack')
 const baseConfig = require('./base.config.js')
 const pkg = require('../package.json')
 
-DotEnv.config({ path: '.env.dev' })
+DotEnv.config({ path: '.env' })
 
 module.exports = merge(baseConfig, {
   mode: 'development',
