@@ -6,6 +6,7 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
+        "content-width": ["warn"],
         "apple-touch-icon": ["warn"],
         "csp-xss": ["warn"],
         "font-display": ["warn"],

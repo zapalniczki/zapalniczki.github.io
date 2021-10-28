@@ -19,8 +19,7 @@ const Container = styled(Flexbox)`
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: ${(props) =>
-    `${props.theme.space.top} ${props.theme.space['pad-desktop']}`};
+  padding: ${(props) => `${getSpace('top')(props)} 0`};
   padding-top: calc(12rem + 2rem);
   flex-direction: column;
   align-items: center;
