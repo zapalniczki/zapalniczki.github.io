@@ -49,12 +49,6 @@ module.exports = {
           },
           {
             loader: 'group-css-media-queries-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
           }
         ]
       },
@@ -67,19 +61,6 @@ module.exports = {
               limit: 10000,
               outputPath: 'images',
               name: '[name].[hash].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              limit: 10000,
-              name: '[name].[hash].[ext]',
-              outputPath: 'fonts'
             }
           }
         ]

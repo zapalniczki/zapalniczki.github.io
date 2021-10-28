@@ -6,7 +6,6 @@ import { useTranslation } from 'hooks'
 import Bestsellers from './Bestsellers'
 import { Newsletter } from 'commonComponents'
 import Featured from './Featured'
-import 'react-toastify/dist/ReactToastify.css'
 
 const Home = () => {
   const { t } = useTranslation('HOME')
