@@ -50,14 +50,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'styles/GlobalStyle'
 import theme from 'styles/theme'
-import webfontloader from 'webfontloader'
 import { App } from './pages'
-
-webfontloader.load({
-  google: {
-    families: ['Roboto:300,400,500,700']
-  }
-})
 
 library.add(
   faTruck,
