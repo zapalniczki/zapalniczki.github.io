@@ -57,6 +57,7 @@ module.exports = merge(baseConfig, {
     new webpack.DefinePlugin({
       process: {
         env: {
+          MEASUREMENT_ID: Json.stringify(process.env.MEASUREMENT_ID),
           VERSION: JSON.stringify(pkg.version),
           SUPABASE_URL: JSON.stringify(process.env.SUPABASE_URL),
           SUPABASE_PUBLIC_ANON_KEY: JSON.stringify(

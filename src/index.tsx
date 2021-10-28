@@ -51,6 +51,10 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'styles/GlobalStyle'
 import theme from 'styles/theme'
 import { App } from './pages'
+import ReactGA from 'react-ga'
+
+ReactGA.initialize(process.env.MEASUREMENT_ID)
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 library.add(
   faTruck,

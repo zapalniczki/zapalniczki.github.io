@@ -130,7 +130,7 @@ const pl = {
     },
 
     STATUS_MEANINGS: {
-      OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i oczekuje na potwierdzenie.',
+      OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i oczekuje na potwierdzenie czasu realizacji zamówienia.',
       CONFIRMED:
         'Co oznacza, ze zamówienie zostało potwierdzone i oczekujemy na wpłatę środków.',
       PAYMENT_RECEIVED:

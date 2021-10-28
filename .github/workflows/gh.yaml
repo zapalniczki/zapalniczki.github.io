@@ -25,6 +25,7 @@ jobs:
           FIREBASE_DB_URL: ${{ secrets.REACT_APP_DATEBASE_URL }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_PUBLIC_ANON_KEY: ${{ secrets.SUPABASE_PUBLIC_ANON_KEY }}
+          MEASUREMENT_ID: ${{secrets.MEASUREMENT_ID}}
       - uses: actions/upload-artifact@v1
         with:
           name: buildOutcome
