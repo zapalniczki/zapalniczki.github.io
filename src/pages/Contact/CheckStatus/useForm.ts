@@ -1,5 +1,6 @@
 import { getOrderStatus } from 'api'
 import { useFormSubmit, useSchema, useTranslation } from 'hooks'
+import { Order } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
@@ -27,7 +28,8 @@ const useForm = () => {
       onSuccess: (order) => {
         setView({
           view: 'RESULT',
-          status: order.status
+          status: order.status,
+          id: order.id
         })
       },
       onError: () => {
@@ -54,7 +56,11 @@ const useForm = () => {
 
 export type View =
   | { view: 'FORM' }
-  | { status: string; view: 'RESULT' }
+  | {
+      id: Order['id']
+      status: Order['status']
+      view: 'RESULT'
+    }
   | { message: string; view: 'ERROR' }
 
 export default useForm

@@ -24,7 +24,7 @@ const Error = ({ message, setView }: Props) => {
       <Text type="body-2">{message}</Text>
 
       <Button
-        label={t('items.CHECK_STATUS.error.tryNew')}
+        label={t('items.CHECK_STATUS.error.tryAgain')}
         marginTop="m-size"
         onClick={() => setView({ view: 'FORM' })}
         size="small"

@@ -104,7 +104,7 @@ const pl = {
       delivery: 'Dostawa',
       products: 'Produkty',
       discount: 'Obniżka',
-      sum: 'Suma'
+      sum: 'Łącznie do zapłaty'
     },
 
     checkoutActions: {
@@ -419,7 +419,7 @@ const pl = {
     },
     actions: {
       backToHome: 'Wróć na stronę główną',
-      backToShop: 'Kontynuuj zakupy',
+      seeOrder: 'Zobacz zamówienie',
       orders: 'Przejdź do zamówień',
       confirmation: 'Zobacz zamówienie'
     }
@@ -603,12 +603,13 @@ const pl = {
       CHECK_STATUS: {
         title: 'Sprawdź status zamówienia',
         result: {
-          tryNew: 'Sprawdź kolejne'
+          tryNew: 'Sprawdź kolejne',
+          seeOrder: 'Zobacz zamówienie'
         },
         error: {
           title: 'Podany numer referencyjny nie został znaleziony',
           info: 'Sprawdź podany numer i spróbuj jeszcze raz.',
-          tryNew: 'Spróbuj ponownie'
+          tryAgain: 'Spróbuj ponownie'
         }
       },
 
@@ -726,6 +727,16 @@ const pl = {
         title: 'Status zamówienia'
       },
 
+      BILLING: {
+        title: 'Szczegóły rozliczenia',
+        LABELS: {
+          products_price: 'Cena produktów',
+          delivery_price: 'Dostawa',
+          discount: 'Rabat',
+          grand_total: 'Łącznie to zapłaty'
+        }
+      },
+
       PAYMENT: {
         title: 'Dane do płatności',
         info: 'Zamówienie należy opłacić w ciągu 5 dni roboczych od potwierdzenia przez nas czasu realizacji.',
@@ -738,6 +749,14 @@ const pl = {
         }
       },
 
+      INVOICE: {
+        title: 'Faktura',
+        empty:
+          'Dokument nie jest jeszcze dostępny. Wróć tutaj ponownie za kilka dni.',
+        info: 'Dokument jest dostępny.',
+        goToInvoice: 'Przejdź do faktury'
+      },
+
       CONTACT_DETAILS: {
         title: 'Dane kontaktowe',
         address: 'Adres',
@@ -745,8 +764,20 @@ const pl = {
         nip: 'NIP'
       },
 
+      DETAILS: {
+        title: 'Szczegóły',
+        LABELS: {
+          created_at: 'Data złożenia zamówienia',
+          updated_at: 'Ostatnia modyfikacja'
+        }
+      },
+
       SHIPPING: {
-        title: 'Adres dostawy'
+        title: 'Dostawa',
+        LABELS: {
+          delivery_type: 'Typ dostawy',
+          shipping_address: 'Adres'
+        }
       }
     }
   }

@@ -21,6 +21,9 @@ const order = tableBase.extend({
   shipping_id: string().uuid().nullable(),
   status: orderStatus,
   total: number(),
+  products_price: number(),
+  delivery_price: number(),
+  discount: number(),
   user_id: string().uuid(),
   voucher_id: voucher.shape.id.nullable()
 })

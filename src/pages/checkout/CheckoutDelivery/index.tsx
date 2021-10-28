@@ -25,8 +25,8 @@ const CheckoutDelivery = () => {
   const { checkout, setCheckout } = useContext(checkoutContext)
   const { initialValues, onSubmitForm, schema } = useForm()
 
-  const [sameAddressAsInvoice, setSameAddressAsInvoice] = useState(
-    checkout.same_address_as_invoice
+  const [sameAddressAsInvoice, setSameAddressAsInvoice] = useState<boolean>(
+    checkout.same_address_as_invoice ? checkout.same_address_as_invoice : true
   )
 
   if (!checkout.contact_details) {

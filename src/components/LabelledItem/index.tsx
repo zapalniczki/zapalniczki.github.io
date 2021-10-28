@@ -1,9 +1,9 @@
 import { Flexbox, Text } from 'components'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { SpaceProps } from 'styled-system'
 
 type Props = {
-  item: string
+  item: ReactNode
   label: string
 } & SpaceProps
 

@@ -1,4 +1,5 @@
 export { default as calculateTotal } from './calculateTotal'
+export { default as calculateDiscount } from './calculateDiscount'
 export { default as changeColorAlpha } from './changeColorAlpha'
 export { default as displayMoney } from './displayMoney'
 export { default as findCorrectProductImageSize } from './findCorrectProductImageSize'

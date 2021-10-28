@@ -14,7 +14,7 @@ const Status = ({ status }: Props) => {
 
   return (
     <Tile marginTop="m-size">
-      <SectionHead title={t('title')} />
+      <SectionHead separator title={t('title')} />
 
       <Flexbox alignItems="center">
         <StatusIndicator status={status} />

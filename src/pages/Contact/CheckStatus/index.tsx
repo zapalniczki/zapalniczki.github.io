@@ -11,7 +11,7 @@ const CheckStatus = () => {
   const { initialValues, onSubmit, schema, setView, view } = useForm()
 
   if (view.view === 'RESULT') {
-    return <Result setView={setView} status={view.status} />
+    return <Result id={view.id} setView={setView} status={view.status} />
   } else if (view.view === 'ERROR') {
     return <Error message={view.message} setView={setView} />
   }

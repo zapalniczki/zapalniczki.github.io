@@ -8,13 +8,12 @@ type Props = {
 
 const DisplayDate = ({ children, displayDiff = true }: Props) => {
   const diff = getDifferenceFromNow(children)
-  const diffString = diff > 0 ? ` (+${diff})` : ` (${diff})`
 
   return (
     <>
       {formatDate(children)}
 
-      {displayDiff ? diffString : ''}
+      {displayDiff ? diff : ''}
     </>
   )
 }

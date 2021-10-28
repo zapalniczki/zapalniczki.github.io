@@ -6,7 +6,10 @@ import { Order } from 'models'
 import React from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
+import Billing from './Billing'
 import ContactDetails from './ContactDetails'
+import Details from './Details'
+import Invoice from './Invoice'
 import OrderId from './OrderId'
 import Payment from './Payment'
 import ProductsTable from './ProductsTable'
@@ -27,27 +30,48 @@ const Order = () => {
   return (
     <Page columns>
       <QueryLoader query={orderQuery}>
-        {(order) => (
-          <>
-            <div>
-              <OrderId id={order.id} />
+        {(order) => {
+          console.log(order)
 
-              <Status status={order.status} />
+          return (
+            <>
+              <div>
+                <OrderId id={order.id} />
 
-              {order.status === 'CONFIRMED' && (
-                <Payment amount={order.total} id={order.id} />
-              )}
+                <Status status={order.status} />
 
-              <ProductsTable products={order.products} />
-            </div>
+                {order.status === 'CONFIRMED' && (
+                  <Payment amount={order.total} id={order.id} />
+                )}
 
-            <div>
-              <Shipping shipping={order.shipping} />
+                <Billing
+                  delivery_price={order.delivery_price}
+                  discount={order.discount}
+                  products_price={order.products_price}
+                  total={order.total}
+                />
 
-              <ContactDetails userId={order.user_id} />
-            </div>
-          </>
-        )}
+                <ProductsTable products={order.products} />
+
+                <Invoice invoice={order.invoice} />
+              </div>
+
+              <div>
+                <Details
+                  created_at={order.created_at}
+                  updated_at={order.updated_at}
+                />
+
+                <Shipping
+                  deliveryType={order.delivery_type}
+                  shipping={order.shipping}
+                />
+
+                <ContactDetails userId={order.user_id} />
+              </div>
+            </>
+          )
+        }}
       </QueryLoader>
     </Page>
   )

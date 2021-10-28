@@ -1,4 +1,10 @@
-import { ADDRESSES_TABLE, ORDER_ITEMS, ORDER_TABLE } from 'constants/db_tables'
+import {
+  ADDRESSES_TABLE,
+  DELIVERY_TYPES_TABLE,
+  INVOICES_TABLE,
+  ORDER_ITEMS,
+  ORDER_TABLE
+} from 'constants/db_tables'
 import { getOrderResponse, GetOrderResponse, Order } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
@@ -21,6 +27,13 @@ export const getOrder = async ({ id }: Props) => {
         post_code,
         street_address,
         city
+      ),
+      invoice: ${INVOICES_TABLE} (
+        url
+      ),
+      delivery_type: ${DELIVERY_TYPES_TABLE} (
+        label,
+        time
       )
       `
     )

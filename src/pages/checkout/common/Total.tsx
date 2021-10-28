@@ -1,5 +1,5 @@
 import { Flexbox, Text } from 'components'
-import { displayMoney } from 'utils'
+import { calculateDiscount, displayMoney } from 'utils'
 import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
@@ -29,9 +29,7 @@ const Total = ({ customDelivery, customProducts }: Props) => {
 
   let discount = 0
   if (voucher) {
-    discount = voucher.is_fixed
-      ? voucher.discount
-      : multiply(cost, voucher.discount)
+    discount = calculateDiscount(voucher.discount, voucher.is_fixed, cost)
   }
 
   const grandTotal = subtract(cost, discount)

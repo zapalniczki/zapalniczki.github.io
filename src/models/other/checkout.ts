@@ -9,7 +9,7 @@ const checkout = object({
   contact_details: contactDetails.nullable(),
   delivery_type: deliveryType.shape.id.nullable(),
   payment_type: paymentType.shape.id.nullable(),
-  same_address_as_invoice: boolean(),
+  same_address_as_invoice: boolean().nullable(),
   shipping: shipping.nullable(),
   total: object({
     delivery: number()

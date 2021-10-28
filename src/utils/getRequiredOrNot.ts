@@ -1,4 +1,4 @@
 const getRequiredOrNot = (label: string, required?: boolean) =>
-  `${required ? '* ' : ''}${label}`
+  `${label}${required ? ' *' : ''}`
 
 export default getRequiredOrNot

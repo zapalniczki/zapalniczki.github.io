@@ -30,7 +30,9 @@ const useForm = () => {
       setCheckout((prev) => ({
         ...prev,
         delivery_type: selectedDeliveryType.id,
-        same_address_as_invoice: sameAddressAsInvoice,
+        same_address_as_invoice: selectedDeliveryType.requires_address
+          ? sameAddressAsInvoice
+          : null,
         total: {
           ...prev.total,
           delivery: selectedDeliveryType.price

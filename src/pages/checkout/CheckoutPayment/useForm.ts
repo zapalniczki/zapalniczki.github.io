@@ -9,13 +9,16 @@ import {
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useIsDev, useSchema } from 'hooks'
-import { add, multiply } from 'lodash'
+import multiply from 'lodash/multiply'
+import add from 'lodash/add'
 import { MoldStatus, Order, PaymentType, Voucher } from 'models'
 import { checkoutContext, initState, loaderContext } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useHistory } from 'react-router-dom'
+import { calculateDiscount } from 'utils'
 import { object } from 'yup'
+import { subtract } from 'lodash'
 
 export type FormValues = {
   payment_type: PaymentType['id']
@@ -42,13 +45,17 @@ const useForm = () => {
     show()
 
     let voucher_id: Order['voucher_id'] = null
+    let isFixed = true
+    let discount_amount = 0
     if (form.voucher_id) {
-      const { id } = await mutateEditVoucher({
+      const { discount, id, is_fixed } = await mutateEditVoucher({
         id: form.voucher_id,
         is_used: true
       })
 
       voucher_id = id
+      isFixed = is_fixed
+      discount_amount = discount
     }
 
     const { id: address_id } = await mutateAddAddress({
@@ -62,6 +69,10 @@ const useForm = () => {
     if (shipping) {
       const shippingResponse = await addAddress(shipping)
       shipping_id = shippingResponse.id
+    }
+
+    if (checkout.same_address_as_invoice) {
+      shipping_id = address_id
     }
 
     const deliveryType = checkout.delivery_type ?? ''
@@ -84,18 +95,23 @@ const useForm = () => {
       preferred_payment: paymentType
     })
 
+    const productsPrice = sumArray(
+      checkout.basket.map((product) =>
+        multiply(product.price, product.quantity)
+      )
+    )
+
+    const costsSum = add(productsPrice, checkout.total.delivery)
+    const discount = calculateDiscount(discount_amount, isFixed, costsSum)
+    const total = subtract(costsSum, discount)
+
     const { id: orderId } = await mutateAddOrder({
       delivery_type: deliveryType,
       payment_type: paymentType,
-      total:
-        add(
-          sumArray(
-            checkout.basket.map((product) =>
-              multiply(product.price, product.quantity)
-            )
-          ),
-          checkout.total.delivery
-        ) ?? 0,
+      products_price: productsPrice,
+      delivery_price: checkout.total.delivery,
+      discount,
+      total,
       shipping_id,
       user_id,
       status: 'OPEN',

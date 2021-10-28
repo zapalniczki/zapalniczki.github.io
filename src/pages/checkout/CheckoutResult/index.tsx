@@ -1,8 +1,13 @@
 import { Button, Flexbox, Tile, Page, Text, Heading } from 'components'
-import { PRODUCTS, HOME } from 'constants/routes'
+import { HOME, ORDERS } from 'constants/routes'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { Redirect, useHistory, useLocation } from 'react-router-dom'
+import {
+  Redirect,
+  useHistory,
+  useLocation,
+  generatePath
+} from 'react-router-dom'
 import { useScrollTop, useTabTitle } from 'hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'
@@ -59,8 +64,11 @@ const CheckoutResult = () => {
             width="100%"
           >
             <Button
-              label={t('actions.backToShop')}
-              onClick={() => history.push(PRODUCTS)}
+              label={t('actions.seeOrder')}
+              onClick={() => {
+                const orderPath = generatePath(ORDERS, { id: state.orderID })
+                history.push(orderPath)
+              }}
               size="medium"
               variant="primary"
             />

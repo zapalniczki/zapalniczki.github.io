@@ -13,7 +13,7 @@ export const getDifferenceFromNow = (date: Date | string) => {
   const now = new Date()
   const diff = differenceInDays(now, parsedDate)
 
-  return diff
+  return diff > 0 ? ` (+${diff})` : ``
 }
 
 export default getDifferenceFromNow

@@ -21,6 +21,8 @@ const CheckoutProvider = ({ children }: Props) => {
 
   const [checkout, setCheckout] = useState(trueInitState)
 
+  console.log(checkout)
+
   useEffect(() => {
     window.localStorage.setItem(
       LOCAL_STORAGE_CHECKOUT_KEY,
@@ -96,7 +98,7 @@ export const initState: Checkout = {
   payment_type: null,
   voucher_id: null,
   voucher: null,
-  same_address_as_invoice: true
+  same_address_as_invoice: null
 }
 
 export const checkoutContext = createContext<CheckoutContent>({
