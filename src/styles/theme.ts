@@ -17,7 +17,7 @@ const colors = {
   'off-white': '#f0f0f0',
 
   red: 'rgba(247, 45, 45, 0.986)',
-  green: 'rgb(59, 150, 32)',
+  green: '#3b9620',
   yellow: 'rgb(228, 165, 31)',
   'yellow-outline': 'rgb(255, 221, 0)',
 

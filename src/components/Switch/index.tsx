@@ -62,7 +62,7 @@ const Switch = ({
         handleDiameter={diameter}
         height={height}
         onChange={onChange}
-        onColor={colors['gray-01']}
+        onColor={colors['green']}
         uncheckedIcon={false}
         width={width}
       />
