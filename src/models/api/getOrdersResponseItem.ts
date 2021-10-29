@@ -16,7 +16,6 @@ const getOrdersResponseItem = order
     customerName: user.pick({ full_name: true }),
     customerPhone: user.pick({ phone: true }),
     deliveryType: deliveryType.pick({ label: true }),
-    isCompany: user.pick({ is_company: true }),
     products: array(orderItem.pick({ id: true, quantity: true }))
   })
 

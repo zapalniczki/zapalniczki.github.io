@@ -18,8 +18,8 @@ const CheckoutDetails = () => {
   useTabTitle(t('title'))
   useScrollTop()
 
-  const [isCompany, setIsCompany] = useState<User['is_company']>(
-    checkout.contact_details ? checkout.contact_details.is_company : true
+  const [isCompany, setIsCompany] = useState<boolean>(
+    checkout.contact_details ? !!checkout.contact_details.nip : true
   )
 
   const { getSchema, initialValues, onSubmitForm } = useForm()
@@ -37,7 +37,7 @@ const CheckoutDetails = () => {
 
         <Formik
           initialValues={initialValues}
-          onSubmit={(form) => onSubmitForm(form, isCompany)}
+          onSubmit={onSubmitForm}
           validateOnChange
           validationSchema={getSchema(isCompany)}
         >

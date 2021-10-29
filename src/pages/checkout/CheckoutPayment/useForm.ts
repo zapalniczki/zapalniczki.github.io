@@ -70,10 +70,7 @@ const useForm = () => {
         email: email,
         phone: phone,
         full_name: fullName,
-        nip: checkout.contact_details?.nip
-          ? checkout.contact_details.nip
-          : null,
-        is_company: checkout.contact_details?.is_company ?? false
+        nip: checkout.contact_details?.nip ? checkout.contact_details.nip : null
       }),
 
       products_price: productsPrice

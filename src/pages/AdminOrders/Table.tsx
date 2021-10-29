@@ -70,7 +70,7 @@ const shapeData = (
     customer_phone: order.customerPhone.phone,
     delivery_yype: order.deliveryType.label,
     id: order.id,
-    is_company: order.isCompany.is_company ?? false,
+    is_company: true,
     // products: order.products,
     status: order.status,
     total: order.total,

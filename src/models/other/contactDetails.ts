@@ -4,7 +4,6 @@ import shipping from '../other/shipping'
 
 const contactDetails = user
   .pick({
-    is_company: true,
     email: true,
     full_name: true,
     phone: true,

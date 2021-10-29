@@ -7,7 +7,6 @@ const getUserResponse = user
     email: true,
     phone: true,
     id: true,
-    is_company: true,
     nip: true
   })
   .extend({

@@ -16,9 +16,6 @@ export const getOrders = async (status: Order['status']) => {
       total,
       updated_at,
       created_at,
-      isCompany: user(
-        is_company
-      ),
       customerName: user(
         full_name
       ),

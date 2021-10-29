@@ -4,9 +4,9 @@ import { useSchema } from 'hooks'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { useContext } from 'react'
 import { checkoutContext } from 'providers'
-import { ContactDetails, User } from 'models'
+import { ContactDetails } from 'models'
 
-export type FormValues = Omit<ContactDetails, 'is_company'>
+export type FormValues = ContactDetails
 
 const useForm = () => {
   const { getSchema: getNativeSchema } = useSchema()
@@ -14,12 +14,11 @@ const useForm = () => {
   const history = useHistory()
   const { checkout, setCheckout } = useContext(checkoutContext)
 
-  const onSubmitForm = (form: FormValues, isCompany: User['is_company']) => {
+  const onSubmitForm = (form: FormValues) => {
     setCheckout((prev) => ({
       ...prev,
       contact_details: {
-        ...form,
-        is_company: isCompany
+        ...form
       }
     }))
 
@@ -36,7 +35,7 @@ const useForm = () => {
     phone: checkout.contact_details?.phone ?? ''
   }
 
-  const getSchema = (isCompany: User['is_company']) => {
+  const getSchema = (isCompany: boolean) => {
     const base = object().shape({
       full_name: getNativeSchema('FULL_NAME'),
       street_address: getNativeSchema('STREET_ADDRESS'),

@@ -45,9 +45,7 @@ const ContactDetails = ({ userId }: Props) => {
             </Text>
 
             <Text type="caption">
-              {commonT(
-                `customerTypes.${data.is_company ? 'COMPANY' : 'INDIVIDUAL'}`
-              )}
+              {commonT(`customerTypes.${data.nip ? 'COMPANY' : 'INDIVIDUAL'}`)}
             </Text>
 
             <Text marginTop="m-size" type="body-1">
@@ -59,7 +57,7 @@ const ContactDetails = ({ userId }: Props) => {
 
           <Separator />
 
-          {data.is_company && data.nip && (
+          {data.nip && (
             <LabelledItem
               item={data.nip}
               label={t('nip')}

@@ -5,10 +5,9 @@ import { useInput } from 'hooks'
 import { FormValues } from './useForm'
 import Row from '../common/Row'
 import FieldWrapper from '../common/FieldWrapper'
-import { User } from 'models'
 
 type Props = {
-  isCompany: User['is_company']
+  isCompany: boolean
 }
 const Form = ({ isCompany }: Props) => {
   const { getInput } = useInput()
