@@ -76,8 +76,6 @@ const useForm = () => {
       products_price: productsPrice
     })
 
-    console.log(orderId)
-
     const products = basket.map((product) => ({
       product_id: product.id,
       order_id: orderId,

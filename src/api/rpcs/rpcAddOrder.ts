@@ -14,7 +14,6 @@ type Payload = {
 }
 
 export const rpcAddOrder = async (payload: Payload) => {
-  console.log(payload)
   const response = await supabase.rpc('add_order_function', payload)
 
   const data = parseApiResponse(rpcAddOrderResponse, response)
