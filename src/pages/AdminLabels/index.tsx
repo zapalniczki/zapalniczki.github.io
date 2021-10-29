@@ -1,5 +1,5 @@
 import { Banner, Heading, Page } from 'components'
-import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
 import List from './List'
 
@@ -7,7 +7,7 @@ const AdminLabels = () => {
   const { t } = useTranslation('ADMIN_LABELS')
 
   useScrollTop()
-  useDocumentTitle(t('title'))
+  useTabTitle(t('title'))
 
   return (
     <Page>

@@ -32,7 +32,9 @@ const useForm = (id: string, status: MoldStatus) => {
       }
     })
 
-    return useFormSubmit((values: FormValues) => mutateAsync(values))
+    return useFormSubmit((values: FormValues) => mutateAsync(values), {
+      showSuccessToastMessage: true
+    })
   }
 
   const onSubmit = useSubmit()

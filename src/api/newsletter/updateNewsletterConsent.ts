@@ -16,6 +16,7 @@ export const updateNewsletterConsent = async (payload: Payload) => {
       consent: payload.consent
     })
     .eq('id', payload.id)
+    .single()
 
   const data = parseApiResponse(updateNewsletterConsentResponse, response)
 

@@ -1,4 +1,7 @@
 import { updatePaymentType } from 'api'
+import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
+import { useFormSubmit } from 'hooks'
+import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 
@@ -23,10 +26,14 @@ const useForm = (id: string, is_enabled: boolean) => {
         setView({
           view: 'SUCCESS'
         })
+
+        queryClient.invalidateQueries([PAYMENT_TYPE_TABLE])
       }
     })
 
-    return (values: FormValues) => mutateAsync(values)
+    return useFormSubmit((values: FormValues) => mutateAsync(values), {
+      showSuccessToastMessage: true
+    })
   }
 
   const onSubmit = useSubmit()

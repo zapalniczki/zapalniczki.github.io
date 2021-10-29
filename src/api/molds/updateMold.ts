@@ -12,6 +12,7 @@ export const updateMold = async (payload: Payload) => {
       status: payload.status
     })
     .eq('id', payload.id)
+    .single()
 
   const data = parseApiResponse(updateMoldResponse, response)
 

@@ -10,13 +10,14 @@ const useFormSubmit = <T, TFormValues>(
     hideErrorToastMessage?: boolean
     onError?: (values: TFormValues, form: FormikHelpers<TFormValues>) => void
     onSuccess?: (values: TFormValues, form: FormikHelpers<TFormValues>) => void
+    showSuccessToastMessage?: boolean
     successToastMessage?: string
   }
 ) => {
   const { hide, show } = useContext(loaderContext)
   const { addToast } = useContext(toastContext)
 
-  const t = useTranslation('COMMON').withBase('TOAST')
+  const commonT = useTranslation('COMMON').withBase('TOAST')
 
   return async (values: TFormValues, form: FormikHelpers<TFormValues>) => {
     try {
@@ -25,9 +26,9 @@ const useFormSubmit = <T, TFormValues>(
       const response = await submit(values)
 
       if (options) {
-        if (options.successToastMessage) {
+        if (options.successToastMessage || options.showSuccessToastMessage) {
           addToast({
-            message: options.successToastMessage,
+            message: options.successToastMessage || commonT('success'),
             variant: 'SUCCESS'
           })
         }
@@ -45,7 +46,7 @@ const useFormSubmit = <T, TFormValues>(
 
       if (!options?.hideErrorToastMessage) {
         addToast({
-          message: (options && options.errorToastMessage) ?? t('error'),
+          message: (options && options.errorToastMessage) ?? commonT('error'),
           variant: 'ERROR'
         })
       }

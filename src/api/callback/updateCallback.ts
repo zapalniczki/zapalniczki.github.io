@@ -16,6 +16,7 @@ export const updateCallback = async (payload: Payload) => {
       done: payload.done
     })
     .eq('id', payload.id)
+    .single()
 
   const data = parseApiResponse(updateCallbackResponse, response)
 

@@ -1,5 +1,6 @@
 import { updateDeliveryType } from 'api'
 import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
+import { useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
@@ -30,7 +31,9 @@ const useForm = (id: string, is_enabled: boolean) => {
       }
     })
 
-    return (values: FormValues) => mutateAsync(values)
+    return useFormSubmit((values: FormValues) => mutateAsync(values), {
+      showSuccessToastMessage: true
+    })
   }
 
   const onSubmit = useSubmit()

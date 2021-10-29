@@ -16,6 +16,7 @@ export const updateDeliveryType = async (payload: Payload) => {
       is_enabled: payload.is_enabled
     })
     .eq('id', payload.id)
+    .single()
 
   const data = parseApiResponse(updateDeliveryTypeResponse, response)
 

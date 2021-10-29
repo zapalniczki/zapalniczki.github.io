@@ -1,13 +1,13 @@
 import { Banner, Heading, Page } from 'components'
-import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
 import List from './List'
 
 const AdminNewsletterUsers = () => {
-  const { t } = useTranslation('ADMIN_MOLDS')
+  const { t } = useTranslation('ADMIN_NEWSLETTER_USERS')
 
   useScrollTop()
-  useDocumentTitle(t('title'))
+  useTabTitle(t('title'))
 
   return (
     <Page>

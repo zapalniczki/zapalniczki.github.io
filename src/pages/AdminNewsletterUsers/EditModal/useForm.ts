@@ -31,11 +31,15 @@ const useForm = (id: string, consent: boolean) => {
       }
     })
 
-    return useFormSubmit((values: FormValues) =>
-      mutateAsync({
-        id: values.id,
-        consent: values.consent
-      })
+    return useFormSubmit(
+      (values: FormValues) =>
+        mutateAsync({
+          id: values.id,
+          consent: values.consent
+        }),
+      {
+        showSuccessToastMessage: true
+      }
     )
   }
 
