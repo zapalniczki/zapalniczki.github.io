@@ -42,6 +42,10 @@ const Order = () => {
                 <Payment amount={order.total} id={order.id} />
               )}
 
+              {order.status === 'COMPLETED' && (
+                <Invoice invoice={order.invoice} />
+              )}
+
               <Billing
                 delivery_price={order.delivery_price}
                 discount={order.discount}
@@ -53,7 +57,9 @@ const Order = () => {
 
               <ProductsTable products={order.products} />
 
-              <Invoice invoice={order.invoice} />
+              {order.status !== 'COMPLETED' && (
+                <Invoice invoice={order.invoice} />
+              )}
             </div>
 
             <div>

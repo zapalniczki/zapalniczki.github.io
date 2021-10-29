@@ -6,6 +6,7 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
+        "aria-hidden-focus": ["warn"],
         "content-width": ["warn"],
         "apple-touch-icon": ["warn"],
         "csp-xss": ["warn"],

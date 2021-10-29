@@ -14,7 +14,7 @@ const Invoice = ({ invoice }: Props) => {
     <Tile marginTop="m-size">
       <SectionHead separator title={t('title')} />
 
-      {invoice ? (
+      {invoice?.length ? (
         <>
           <Text type="body-2">{t('info')}</Text>
 

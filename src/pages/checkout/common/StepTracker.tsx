@@ -113,7 +113,7 @@ const StepIcon = styled.div<StepIconProps>`
     if (props.done) {
       return getColor('green')(props)
     } else if (props.selected) {
-      return getColor('braty-red')(props)
+      return undefined
     }
 
     return getColor('border-color')(props)

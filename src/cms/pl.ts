@@ -623,9 +623,10 @@ const pl = {
       DOWNLOAD_INVOICE: {
         title: 'Pobierz fakturę',
         result: {
-          info: 'Faktura jest gotowa do pobrania',
-          followLink: 'Przejdź do faktury',
-          new: 'Sprawdź kolejną'
+          title: 'Faktura jest gotowa do pobrania',
+          info: 'Dokument możesz obejrzeć odwiedzając poniższy link',
+          new: 'Sprawdź kolejną',
+          followLink: 'Przejdź do faktury'
         },
         error: {
           title: 'Faktura nie jest gotowa',

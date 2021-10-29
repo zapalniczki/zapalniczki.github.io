@@ -40,7 +40,9 @@ const useForm = () => {
       }
     })
 
-    return useFormSubmit((values: FormValues) => mutateGetOrderStatus(values))
+    return useFormSubmit((values: FormValues) => mutateGetOrderStatus(values), {
+      hideErrorToastMessage: true
+    })
   }
 
   const onSubmit = useSubmit()

@@ -1,9 +1,9 @@
-import { Button, ExternalLink, Box } from 'components'
-import React from 'react'
+import { Button, Flexbox, Text } from 'components'
 import { useTranslation } from 'hooks'
+import React from 'react'
 import { ViewWrapper } from '.'
-import { View } from './useForm'
 import TileHeading from '../TileHeading'
+import { View } from './useForm'
 
 type Props = {
   setView: React.Dispatch<React.SetStateAction<View>>
@@ -11,28 +11,29 @@ type Props = {
 }
 
 const Result = ({ setView, url }: Props) => {
-  const { t } = useTranslation('CONTACT')
+  const t = useTranslation('CONTACT').withBase('items.DOWNLOAD_INVOICE.result')
 
   return (
     <ViewWrapper flexDirection="column">
-      <TileHeading
-        icon="check-circle"
-        status="POSITIVE"
-        title={t('items.DOWNLOAD_INVOICE.result.info')}
-      />
+      <TileHeading icon="check-circle" status="POSITIVE" title={t('title')} />
 
-      <Box>
-        <ExternalLink to={url}>
-          {t('items.DOWNLOAD_INVOICE.result.followLink')}
-        </ExternalLink>
-      </Box>
+      <Text type="body-2">{t('info')}</Text>
 
-      <Button
-        label={t('items.DOWNLOAD_INVOICE.result.new')}
-        marginTop="m-size"
-        onClick={() => setView({ view: 'FORM' })}
-        size="small"
-      />
+      <Flexbox marginTop="m-size">
+        <Button
+          label={t('new')}
+          onClick={() => setView({ view: 'FORM' })}
+          size="small"
+          variant="secondary"
+        />
+
+        <Button
+          label={t('followLink')}
+          marginLeft="m-size"
+          onClick={() => window.open(url, '_blank')}
+          size="small"
+        />
+      </Flexbox>
     </ViewWrapper>
   )
 }

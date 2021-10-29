@@ -38,7 +38,9 @@ const useForm = () => {
       }
     })
 
-    return useFormSubmit((values: FormValues) => mutateGetInvoice(values))
+    return useFormSubmit((values: FormValues) => mutateGetInvoice(values), {
+      hideErrorToastMessage: true
+    })
   }
 
   const onSubmit = useSubmit()
