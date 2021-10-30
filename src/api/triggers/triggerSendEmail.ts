@@ -35,3 +35,11 @@ type EventType =
       }
       key: 'NEWSLETTER_SIGNUP'
     }
+  | {
+      content: {
+        name: User['full_name']
+        order_id: Order['id']
+        order_status: Order['status']
+      }
+      key: 'ORDER_STATUS_CHANGE'
+    }

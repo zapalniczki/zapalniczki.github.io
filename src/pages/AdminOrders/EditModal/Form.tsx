@@ -24,27 +24,16 @@ const Form = () => {
                 label={t('EDIT_MODAL.FORM.CURRENT_STATUS.label')}
               />
 
-              <Button
-                label={t('EDIT_MODAL.FORM.CHANGE_STATUS.label', {
-                  status: commonT(`ORDER_STATUSES.${newValue}`)
-                })}
-                marginTop="m-size"
-                onClick={() => props.form.setFieldValue('status', newValue)}
-                size="medium"
-              />
-
-              {/* <Select
-                onChange={(option) => {
-                  if (option) {
-                    props.form.setFieldValue('status', option.value)
-                  }
-                }}
-                options={getStatusesWithLabels(currentValue, commonT)}
-                value={{
-                  value: currentValue,
-                  label: commonT(`ORDER_STATUSES.${currentValue}`)
-                }}
-              /> */}
+              {currentValue !== 'COMPLETED' && (
+                <Button
+                  label={t('EDIT_MODAL.FORM.CHANGE_STATUS.label', {
+                    status: commonT(`ORDER_STATUSES.${newValue}`)
+                  })}
+                  marginTop="m-size"
+                  onClick={() => props.form.setFieldValue('status', newValue)}
+                  size="medium"
+                />
+              )}
             </>
           )
         }}
