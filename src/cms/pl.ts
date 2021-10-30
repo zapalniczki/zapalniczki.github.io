@@ -511,8 +511,11 @@ const pl = {
       buttonLabel: 'Edytuj',
       title: 'Edycja zamówienia',
       FORM: {
-        STATUS: {
-          label: 'Status zamówienia'
+        CURRENT_STATUS: {
+          label: 'Obecny status'
+        },
+        CHANGE_STATUS: {
+          label: 'Zmień na {{status}}'
         }
       }
     }

@@ -1,4 +1,4 @@
-import { ORDER_TABLE } from 'constants/db_tables'
+import { ORDER_TABLE, USERS_TABLE } from 'constants/db_tables'
 import { GetOrderResponseItem, getOrdersResponseItem, Order } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
@@ -16,13 +16,13 @@ export const getOrders = async (status: Order['status']) => {
       total,
       updated_at,
       created_at,
-      customerName: user(
+      customerName: ${USERS_TABLE} (
         full_name
       ),
-      customerPhone: user(
+      customerPhone: ${USERS_TABLE} (
         phone
       ),
-      customerEmail: user(
+      customerEmail: ${USERS_TABLE} (
         email
       ),
       status

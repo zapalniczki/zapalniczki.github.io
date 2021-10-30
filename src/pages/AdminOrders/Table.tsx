@@ -5,7 +5,8 @@ import {
   QueryLoader,
   Tile,
   Table as NativeTable,
-  DisplayDate
+  DisplayDate,
+  Link
 } from 'components'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'hooks'
@@ -13,7 +14,7 @@ import { GetOrderResponseItem, OrderStatus } from 'models'
 import { AdminTableColumns } from './statusToColumns'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
-import { formatDate, displayMoney } from 'utils'
+import { displayMoney, getOrderPath } from 'utils'
 import EditModal from './EditModal'
 import { useQuery } from 'react-query'
 import { ORDER_TABLE } from 'constants/db_tables'
@@ -69,22 +70,22 @@ const shapeData = (
     customer_name: order.customerName.full_name,
     customer_phone: order.customerPhone.phone,
     delivery_yype: order.deliveryType.label,
-    id: order.id,
+    id: <Link label={order.id} showUnderline to={getOrderPath(order.id)} />,
     is_company: true,
     // products: order.products,
     status: order.status,
     total: order.total,
-    updated_at: <DisplayDate>{formatDate(order.updated_at)}</DisplayDate>,
+    updated_at: <DisplayDate>{order.updated_at}</DisplayDate>,
     order_time: differenceInDays(
       parseISO(order.created_at),
       parseISO(order.updated_at)
     ),
     sum: displayMoney(order.total),
     delivery_type: order.deliveryType.label,
-    boxes_count:
-      order.products
-        ?.map((product) => product.quantity)
-        .reduce((prev, curr) => prev + curr, 0) || 0,
+    boxes_count: 0,
+    // order.products
+    //   ?.map((product) => product.quantity)
+    //   .reduce((prev, curr) => prev + curr, 0) || 0,
     delivery_id: 'XXX XXX XXX XXX XXX',
 
     molds: 'modls',

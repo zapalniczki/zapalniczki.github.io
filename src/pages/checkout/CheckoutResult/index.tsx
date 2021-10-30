@@ -1,18 +1,13 @@
-import { Button, Flexbox, Tile, Page, Text, Heading } from 'components'
-import { HOME, ORDERS } from 'constants/routes'
-import React from 'react'
-import { useTranslation } from 'hooks'
-import {
-  Redirect,
-  useHistory,
-  useLocation,
-  generatePath
-} from 'react-router-dom'
-import { useScrollTop, useTabTitle } from 'hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, Flexbox, Heading, Page, Text, Tile } from 'components'
+import { HOME } from 'constants/routes'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import React from 'react'
+import { Redirect, useHistory, useLocation } from 'react-router-dom'
 import { useTheme } from 'styled-components'
-import { Wrapper } from '../common'
+import { getOrderPath } from 'utils'
 import { CheckoutResultLocationState } from '../CheckoutPayment/useForm'
+import { Wrapper } from '../common'
 
 const CheckoutResult = () => {
   const { colors } = useTheme()
@@ -66,8 +61,8 @@ const CheckoutResult = () => {
             <Button
               label={t('actions.seeOrder')}
               onClick={() => {
-                const orderPath = generatePath(ORDERS, { id: state.orderID })
-                history.push(orderPath)
+                const path = getOrderPath(state.orderID)
+                history.push(path)
               }}
               size="medium"
               variant="primary"

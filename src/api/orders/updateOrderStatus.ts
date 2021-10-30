@@ -16,6 +16,7 @@ export const updateOrderStatus = async (payload: Payload) => {
       status: payload.status
     })
     .eq('id', payload.id)
+    .single()
 
   const data = parseApiResponse(updateOrderStatusResponse, response)
 

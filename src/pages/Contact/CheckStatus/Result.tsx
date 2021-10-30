@@ -4,9 +4,9 @@ import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
 import TileHeading from '../TileHeading'
-import { useHistory, generatePath } from 'react-router'
-import { ORDERS } from 'constants/routes'
+import { useHistory } from 'react-router'
 import { Order } from 'models'
+import { getOrderPath } from 'utils'
 
 type Props = {
   id: Order['id']
@@ -41,8 +41,8 @@ const Result = ({ id, setView, status }: Props) => {
           label={t('items.CHECK_STATUS.result.seeOrder')}
           marginLeft="m-size"
           onClick={() => {
-            const orderPath = generatePath(ORDERS, { id })
-            history.push(orderPath)
+            const path = getOrderPath(id)
+            history.push(path)
           }}
           size="small"
         />

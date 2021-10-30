@@ -1,18 +1,18 @@
 import { Banner, Heading, Page, Text } from 'components'
-import React from 'react'
-import { useDocumentTitle, useScrollTop, useTranslation } from 'hooks'
-import Table from './Table'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import 'react-tabs/style/react-tabs.css'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { ORDER_STATUSES } from 'models'
+import React from 'react'
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
 import statusToColumns from './statusToColumns'
+import Table from './Table'
 
 const AdminOrders = () => {
   const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('ADMIN_ORDERS')
 
   useScrollTop()
-  useDocumentTitle(t('title'))
+  useTabTitle(t('title'))
 
   return (
     <Page>

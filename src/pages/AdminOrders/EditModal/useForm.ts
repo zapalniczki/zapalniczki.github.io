@@ -36,6 +36,7 @@ const useForm = (id: string, status: Order['status']) => {
           status: values.status as OrderStatus
         }),
       {
+        showSuccessToastMessage: true,
         onSuccess: () => {
           queryClient.invalidateQueries([ORDER_TABLE])
         }
