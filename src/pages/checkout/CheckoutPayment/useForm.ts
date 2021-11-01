@@ -41,6 +41,14 @@ const useForm = () => {
       basket.map((product) => multiply(product.price, product.quantity))
     )
 
+    const productIds = basket.map((product) => product.id)
+    const productsData = await mutateGetProductsById(productIds)
+    const productionTime = calculateProductionTime(
+      productsData.map((product) => product.mold.status)
+    )
+
+    const orderWillTakeLong = productionTime === 'LONG'
+
     const email = checkout.contact_details?.email ?? ''
     const phone = checkout.contact_details?.phone ?? ''
     const fullName = checkout.contact_details?.full_name ?? ''
@@ -73,7 +81,9 @@ const useForm = () => {
         nip: checkout.contact_details?.nip ? checkout.contact_details.nip : null
       }),
 
-      products_price: productsPrice
+      products_price: productsPrice,
+
+      order_will_take_long: orderWillTakeLong
     })
 
     const products = basket.map((product) => ({
@@ -84,12 +94,6 @@ const useForm = () => {
     }))
 
     await mutateAddOrderItem(products)
-
-    const productIds = products.map((product) => product.product_id)
-    const productsData = await mutateGetProductsById(productIds)
-    const productionTime = calculateProductionTime(
-      productsData.map((product) => product.mold.status)
-    )
 
     const locationState: CheckoutResultLocationState = {
       orderID: orderId,
@@ -105,7 +109,7 @@ const useForm = () => {
             name: fullName,
             order_id: orderId,
             phone: phone,
-            is_long: productionTime === 'LONG'
+            is_long: orderWillTakeLong
           }
         }
       })

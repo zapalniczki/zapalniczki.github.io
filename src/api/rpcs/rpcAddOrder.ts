@@ -6,6 +6,7 @@ type Payload = {
   address: string
   contact_details: string
   delivery_type: string
+  order_will_take_long: boolean
   payment_type: string
   products_price: number
   same_address_as_invoice: boolean | null
