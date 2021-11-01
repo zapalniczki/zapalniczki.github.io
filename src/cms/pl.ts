@@ -756,7 +756,7 @@ const pl = {
       INVOICE: {
         title: 'Faktura',
         empty:
-          'Dokument nie jest jeszcze dostępny. Wróć tutaj ponownie za kilka dni.',
+          'Dokument nie jest jeszcze dostępny. Wróć tutaj ponownie za jakiś czas.',
         info: 'Dokument jest dostępny.',
         goToInvoice: 'Przejdź do faktury'
       },

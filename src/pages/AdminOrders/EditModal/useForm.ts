@@ -1,4 +1,4 @@
-import { triggerSendEmail, updateOrderStatus } from 'api'
+import { getUser, triggerSendEmail, updateOrderStatus } from 'api'
 import { ORDER_TABLE } from 'constants/db_tables'
 import { useFormSubmit, useIsDev } from 'hooks'
 import { queryClient } from 'index'
@@ -22,41 +22,48 @@ const useForm = (id: string, status: Order['status']) => {
 
   const useSubmit = () => {
     const isDev = useIsDev()
+
     const { mutateAsync: mutateTriggerSendEmail } =
       useMutation(triggerSendEmail)
+    const { mutateAsync: mutateGetUser } = useMutation(getUser)
+    const { mutateAsync: mutateUpdateOrderStatus } =
+      useMutation(updateOrderStatus)
 
-    const { mutateAsync } = useMutation(updateOrderStatus, {
-      onSuccess: (values) => {
-        setView({
-          view: 'SUCCESS'
+    return useFormSubmit(
+      async (values: FormValues) => {
+        const orderResponse = await mutateUpdateOrderStatus({
+          id: values.id,
+          status: values.status as OrderStatus
+        })
+
+        const userResponse = await mutateGetUser({
+          id: orderResponse.user_id
         })
 
         if (!isDev) {
           mutateTriggerSendEmail({
-            to: 'grandalf6@gmail.com',
+            to: userResponse.email,
             type: {
               key: 'ORDER_STATUS_CHANGE',
               content: {
-                order_id: values.id,
-                order_status: values.status,
-                name: 'Przemek R'
+                order_id: orderResponse.id,
+                order_status: orderResponse.status,
+                name: userResponse.full_name
               }
             }
           })
         }
-      }
-    })
 
-    return useFormSubmit(
-      (values: FormValues) =>
-        mutateAsync({
-          id: values.id,
-          status: values.status as OrderStatus
-        }),
+        return userResponse
+      },
       {
         showSuccessToastMessage: true,
         onSuccess: () => {
           queryClient.invalidateQueries([ORDER_TABLE])
+
+          setView({
+            view: 'SUCCESS'
+          })
         }
       }
     )
