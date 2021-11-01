@@ -16,6 +16,7 @@ import Voucher from './Voucher'
 import ProductsTable from './ProductsTable'
 import Shipping from './Shipping'
 import Status from './Status'
+import ParcelDetails from './ParcelDetails'
 
 const Order = () => {
   const { t } = useTranslation('ORDER')
@@ -67,6 +68,8 @@ const Order = () => {
                 created_at={order.created_at}
                 updated_at={order.updated_at}
               />
+
+              <ParcelDetails parcel={order.parcel} />
 
               <Shipping
                 deliveryType={order.delivery_type}

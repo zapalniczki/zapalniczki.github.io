@@ -4,6 +4,7 @@ import {
   voucher,
   address,
   invoice,
+  parcel,
   deliveryType
 } from '../db'
 import { array, TypeOf } from 'zod'
@@ -41,6 +42,13 @@ const getOrderResponse = order.extend({
       id: true,
       is_fixed: true,
       discount: true
+    })
+    .nullable(),
+
+  parcel: parcel
+    .pick({
+      link: true,
+      ref: true
     })
     .nullable()
 })

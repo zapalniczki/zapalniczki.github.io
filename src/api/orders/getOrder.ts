@@ -4,6 +4,7 @@ import {
   INVOICES_TABLE,
   ORDER_ITEMS,
   ORDER_TABLE,
+  PARCELS_TABLE,
   VOUCHERS_TABLE
 } from 'constants/db_tables'
 import { getOrderResponse, GetOrderResponse, Order } from 'models'
@@ -40,6 +41,10 @@ export const getOrder = async ({ id }: Props) => {
         id,
         discount,
         is_fixed
+      ),
+      parcel: ${PARCELS_TABLE} (
+        ref,
+        link
       )
       `
     )

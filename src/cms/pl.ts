@@ -776,6 +776,14 @@ const pl = {
         }
       },
 
+      PARCEL_DETAILS: {
+        title: 'Przesyłka',
+        LABELS: {
+          parcel_id: 'Numer referencyjny',
+          follow_parcel: 'Śledź paczkę'
+        }
+      },
+
       SHIPPING: {
         title: 'Dostawa',
         LABELS: {
