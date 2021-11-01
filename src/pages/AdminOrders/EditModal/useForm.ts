@@ -35,8 +35,6 @@ const useForm = (id: string, status: Order['status']) => {
 
     return useFormSubmit(
       async (values: FormValues) => {
-        console.log(values)
-
         let parcelId: Order['parcel_id'] = null
         if (values.parcel_link && values.parcel_ref) {
           const parcelResponse = await mutateAddParcel({
