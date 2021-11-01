@@ -7,13 +7,14 @@ import {
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 
-type Payload = Pick<Order, 'id' | 'status'>
+type Payload = Pick<Order, 'id' | 'status' | 'parcel_id'>
 
 export const updateOrderStatus = async (payload: Payload) => {
   const response = await supabase
     .from<UpdateOrderStatusResponse>(ORDER_TABLE)
     .update({
-      status: payload.status
+      status: payload.status,
+      parcel_id: payload.parcel_id
     })
     .eq('id', payload.id)
     .single()

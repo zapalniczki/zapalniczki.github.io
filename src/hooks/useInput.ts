@@ -26,6 +26,14 @@ type InputValue = {
 }
 
 const inputs = {
+  PARCEL_LINK: {
+    label: 'INPUTS.PARCEL_LINK.label',
+    placeholder: 'INPUTS.PARCEL_LINK.placeholder'
+  },
+  PARCEL_REF: {
+    label: 'INPUTS.PARCEL_REF.label',
+    placeholder: 'INPUTS.PARCEL_REF.placeholder'
+  },
   SUBMIT: {
     label: 'INPUTS.SUBMIT.label',
     placeholder: 'INPUTS.SUBMIT.placeholder'

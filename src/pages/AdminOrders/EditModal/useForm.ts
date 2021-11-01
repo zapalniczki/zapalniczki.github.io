@@ -1,8 +1,8 @@
-import { getUser, triggerSendEmail, updateOrderStatus } from 'api'
+import { addParcel, getUser, triggerSendEmail, updateOrderStatus } from 'api'
 import { ORDER_TABLE } from 'constants/db_tables'
 import { useFormSubmit, useIsDev } from 'hooks'
 import { queryClient } from 'index'
-import { Order, OrderStatus } from 'models'
+import { Order, OrderStatus, Parcel } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object, string } from 'yup'
@@ -12,7 +12,9 @@ const useForm = (id: string, status: Order['status']) => {
 
   const initialValues: FormValues = {
     id,
-    status
+    status,
+    parcel_link: '',
+    parcel_ref: ''
   }
 
   const schema = object({
@@ -29,11 +31,26 @@ const useForm = (id: string, status: Order['status']) => {
     const { mutateAsync: mutateUpdateOrderStatus } =
       useMutation(updateOrderStatus)
 
+    const { mutateAsync: mutateAddParcel } = useMutation(addParcel)
+
     return useFormSubmit(
       async (values: FormValues) => {
+        console.log(values)
+
+        let parcelId: Order['parcel_id'] = null
+        if (values.parcel_link && values.parcel_ref) {
+          const parcelResponse = await mutateAddParcel({
+            ref: values.parcel_ref,
+            link: values.parcel_link
+          })
+
+          parcelId = parcelResponse.id
+        }
+
         const orderResponse = await mutateUpdateOrderStatus({
           id: values.id,
-          status: values.status as OrderStatus
+          status: values.status as OrderStatus,
+          parcel_id: parcelId
         })
 
         const userResponse = await mutateGetUser({
@@ -82,6 +99,8 @@ const useForm = (id: string, status: Order['status']) => {
 
 export type FormValues = {
   id: string
+  parcel_link: Parcel['link']
+  parcel_ref: Parcel['ref']
   status: Order['status']
 }
 

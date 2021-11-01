@@ -251,6 +251,14 @@ const pl = {
     },
 
     INPUTS: {
+      PARCEL_REF: {
+        label: 'Numer paczki',
+        placeholder: ''
+      },
+      PARCEL_LINK: {
+        label: 'Link do statusu paczki',
+        placeholder: ''
+      },
       VOUCHER_ID: {
         label: 'Kod rabatowy',
         placeholder: 'placeholder'
