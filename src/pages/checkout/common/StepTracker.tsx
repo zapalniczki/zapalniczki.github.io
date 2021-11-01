@@ -45,7 +45,12 @@ const StepTracker = () => {
             >
               <StepIcon {...stepProps}>{stepContent}</StepIcon>
 
-              <Text marginTop="s-size" type="caption" wrap={false}>
+              <Text
+                fontWeight={stepProps.selected ? 'bold' : 'unset'}
+                marginTop="s-size"
+                type="caption"
+                wrap={false}
+              >
                 {t(`checkoutSteps.${step}`)}
               </Text>
             </Flexbox>
