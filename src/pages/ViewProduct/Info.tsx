@@ -29,29 +29,14 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Flexbox>
-        <Text type="caption">{t('color')}</Text>
+      <Detail
+        label={t('label')}
+        value={removeSeparatorsFromLabel(product.label.label)}
+      />
 
-        <Text marginLeft="s-size" type="subtitle-2">
-          {t('colorValueTODO')}
-        </Text>
-      </Flexbox>
+      <Detail label={t('icon')} value={product.icon.label} />
 
-      <Flexbox>
-        <Text type="caption">{t('label')}</Text>
-
-        <Text marginLeft="s-size" type="subtitle-2">
-          {removeSeparatorsFromLabel(product.label.label)}
-        </Text>
-      </Flexbox>
-
-      <Flexbox>
-        <Text type="caption">{t('icon')}</Text>
-
-        <Text marginLeft="s-size" type="subtitle-2">
-          {product.icon.label}
-        </Text>
-      </Flexbox>
+      <Detail label={t('color')} value={t('colorValueTODO')} />
 
       <Separator />
 
@@ -63,5 +48,20 @@ const Info = ({ product }: Props) => {
     </Flexbox>
   )
 }
+
+type DetailProps = {
+  label: string
+  value: string
+}
+
+const Detail = ({ label, value }: DetailProps) => (
+  <Flexbox>
+    <Text type="caption">{label}</Text>
+
+    <Text marginLeft="s-size" type="subtitle-2">
+      {value}
+    </Text>
+  </Flexbox>
+)
 
 export default Info

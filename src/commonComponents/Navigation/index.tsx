@@ -6,6 +6,7 @@ import BasketToggle from './BasketToggle'
 import MainMenu from './MainMenu'
 import getColor from 'styles/getColor'
 import { useTranslation } from 'hooks'
+import getSpace from 'styles/getSpace'
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -14,7 +15,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const scrollHandler = () => {
-      if (window.pageYOffset >= 70) {
+      if (window.pageYOffset >= 5) {
         setIsExpanded(true)
       } else {
         setIsExpanded(false)
@@ -63,10 +64,10 @@ const Container = styled.nav<ContainerProps>`
   justify-content: center;
   padding: ${(props) => {
     if (props.isExpanded) {
-      return 0
+      return `${getSpace('xxs-size')(props)} 0`
     }
 
-    return `${props.theme.space['l-size']} 0`
+    return `${getSpace('l-size')(props)} 0`
   }};
 
   position: ${(props) => (props.isExpanded ? 'fixed' : 'absolute')};

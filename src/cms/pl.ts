@@ -65,14 +65,14 @@ const pl = {
       time: 'Czas',
       updated_at: 'Data modyfikacji',
       icon: 'Ikona',
+      client: 'Klient',
 
       // NEW
       product_name: 'Nazwa produktu',
       product_image: '',
       product_price: 'Cena',
-      product_total: 'Total'
-
-      // molds: 'Matryce'
+      product_total: 'Total',
+      molds: 'Matryce'
     },
 
     MODAL: {
@@ -132,7 +132,8 @@ const pl = {
       PRODUCTION: 'Produkcja',
       AWAITING_FOR_PICKUP: 'Oczekuje na dostawę',
       IN_DELIVERY: 'W dostawie',
-      COMPLETED: 'Zakończone'
+      COMPLETED: 'Zakończone',
+      REJECTED: 'Odrzucone'
     },
 
     STATUS_MEANINGS: {
@@ -146,7 +147,8 @@ const pl = {
         'Co oznacza, że zamówienie zostało skompletowane i oczekuje na kuriera.',
       IN_DELIVERY: 'Co oznacza, że zamówienie jest w drodze.',
       COMPLETED:
-        'Co oznacza, że zamówienie zostało skompletowane i dostarczone.'
+        'Co oznacza, że zamówienie zostało skompletowane i dostarczone.',
+      REJECTED: 'Co oznacza, że zamówienie nie będzie realizowane'
     },
 
     basket: {
@@ -374,7 +376,7 @@ const pl = {
     banner: {
       title: 'Twoje miejsce w Twoim punkcie',
       description:
-        'Buying eyewear should leave you happy and good-looking, with money in your pocket. Glasses, sunglasses, and contacts—we’ve got your eyes covered.',
+        'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.',
       buttonLabel: 'Produkty'
     },
 
@@ -457,10 +459,10 @@ const pl = {
 
     icon: 'ikona',
     label: 'napis',
-    color: 'kolor',
+    color: 'wzór',
     colorValueTODO: 'drewno mix',
 
-    priceSubtitle: 'Cena za 1 pudełko (50 sztuk) - zawiera VAT',
+    priceSubtitle: 'Cena za 1 pudełko (50 sztuk) - zawiera 23% VAT',
     avilability: {
       DONE: 'Produkt łatwo dostępny',
       IN_PROGRESS: 'Produkt dostępny',
@@ -509,7 +511,8 @@ const pl = {
         'Zamówienia, które są wyprodukowane. Zmiana statusu po wprowadzeniu "NUMER PACZKI".',
       IN_DELIVERY:
         'Zamówienia, które są odebrane przez kuriera. Zmiana statusu po otrzymaniu paczki przez klienta.',
-      COMPLETED: 'Zamówienia, które są ukończone.'
+      COMPLETED: 'Zamówienia, które są ukończone.',
+      REJECTED: 'Zamówienia, które zostały odrzucone i nie będą realizowane'
     },
     IS_COMPANY: {
       yes: 'Tak',
@@ -780,7 +783,8 @@ const pl = {
         title: 'Szczegóły',
         LABELS: {
           created_at: 'Złożenie zamówienia',
-          updated_at: 'Ostatnia modyfikacja'
+          updated_at: 'Ostatnia modyfikacja',
+          product_count: 'Liczba pudełek'
         }
       },
 

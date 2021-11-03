@@ -1,15 +1,7 @@
 import { OrderStatus } from 'models'
 
 const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
-  OPEN: [
-    'id',
-    'created_at',
-    'customer_name',
-    'customer_phone',
-    'customer_email',
-    'sum',
-    'edit'
-  ],
+  OPEN: ['id', 'created_at', 'client', 'molds', 'sum', 'edit'],
   CONFIRMED: ['id', 'updated_at', 'sum', 'edit'],
   PAYMENT_RECEIVED: [
     'id',
@@ -18,14 +10,7 @@ const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
     //  'molds'
     'edit'
   ],
-  PRODUCTION: [
-    'id',
-    'updated_at',
-    'is_company',
-    'delivery_type',
-    'sum',
-    'edit'
-  ],
+  PRODUCTION: ['id', 'updated_at', 'boxes_count', 'delivery_type', 'edit'],
   AWAITING_FOR_PICKUP: [
     'id',
     'updated_at',
@@ -34,7 +19,8 @@ const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
     'edit'
   ],
   IN_DELIVERY: ['id', 'updated_at', 'delivery_type', 'delivery_id', 'edit'],
-  COMPLETED: ['id', 'created_at', 'updated_at', 'order_time', 'sum', 'edit']
+  COMPLETED: ['id', 'created_at', 'updated_at', 'order_time', 'sum', 'edit'],
+  REJECTED: ['id', 'updated_at', 'client', 'boxes_count', 'edit']
 }
 
 export type AdminTableColumns =
@@ -52,5 +38,6 @@ export type AdminTableColumns =
   | 'delivery_id'
   | 'molds'
   | 'edit'
+  | 'client'
 
 export default statusToColumns

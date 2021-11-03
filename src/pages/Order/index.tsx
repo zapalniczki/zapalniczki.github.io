@@ -39,9 +39,11 @@ const Order = () => {
 
               <Status status={order.status} />
 
-              {order.status === 'CONFIRMED' && (
-                <Payment amount={order.total} id={order.id} />
-              )}
+              <Payment
+                id={order.id}
+                status={order.status}
+                total={order.total}
+              />
 
               {order.status === 'COMPLETED' && (
                 <Invoice invoice={order.invoice} />
@@ -66,6 +68,7 @@ const Order = () => {
             <div>
               <Details
                 created_at={order.created_at}
+                products={order.products}
                 updated_at={order.updated_at}
               />
 

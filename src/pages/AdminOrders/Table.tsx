@@ -6,11 +6,14 @@ import {
   Tile,
   Table as NativeTable,
   DisplayDate,
-  Link
+  Link,
+  Flexbox,
+  Text,
+  ExternalLink
 } from 'components'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'hooks'
-import { GetOrderResponseItem, OrderStatus } from 'models'
+import { GetOrdersResponseItem, OrderStatus } from 'models'
 import { AdminTableColumns } from './statusToColumns'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
@@ -62,7 +65,7 @@ const Table = ({ columns, status }: Props) => {
 }
 
 const shapeData = (
-  data: GetOrderResponseItem[]
+  data: GetOrdersResponseItem[]
 ): Record<AdminTableColumns, string | boolean | number | JSX.Element>[] =>
   data.map((order) => ({
     created_at: <DisplayDate>{order.created_at}</DisplayDate>,
@@ -70,6 +73,18 @@ const shapeData = (
     customer_name: order.customerName.full_name,
     customer_phone: order.customerPhone.phone,
     delivery_yype: order.deliveryType.label,
+    client: (
+      <Flexbox flexDirection="column">
+        <Text fontWeight="bold" type="body-2">
+          {order.customerName.full_name}
+        </Text>
+
+        <Text type="body-2">{order.customerPhone.phone}</Text>
+
+        <Text type="body-2">{order.customerEmail.email}</Text>
+      </Flexbox>
+    ),
+
     id: <Link label={order.id} showUnderline to={getOrderPath(order.id)} />,
     is_company: true,
     // products: order.products,
@@ -82,13 +97,22 @@ const shapeData = (
     ),
     sum: displayMoney(order.total),
     delivery_type: order.deliveryType.label,
-    boxes_count: 0,
-    // order.products
-    //   ?.map((product) => product.quantity)
-    //   .reduce((prev, curr) => prev + curr, 0) || 0,
-    delivery_id: 'XXX XXX XXX XXX XXX',
-
-    molds: 'modls',
+    boxes_count:
+      order.products
+        ?.map((product) => product.quantity)
+        .reduce((prev, curr) => prev + curr, 0) || 0,
+    delivery_id: order.parcel ? (
+      <ExternalLink to={order.parcel.link}>{order.parcel.ref}</ExternalLink>
+    ) : (
+      '-'
+    ),
+    molds: (
+      <>
+        {order.products.map((product) => (
+          <p key={product.id}>{product.id}</p>
+        ))}
+      </>
+    ),
     edit: <EditModal id={order.id} status={order.status} />
 
     // molds: uniq(

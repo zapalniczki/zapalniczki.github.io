@@ -3,9 +3,7 @@ import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import React from 'react'
 
-type Props = {
-  invoice: GetOrderResponse['invoice']
-}
+type Props = Pick<GetOrderResponse, 'invoice'>
 
 const Invoice = ({ invoice }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.INVOICE')

@@ -4,10 +4,14 @@ import { GetOrderResponse } from 'models'
 import React from 'react'
 import { formatDate } from 'utils'
 
-type Props = Pick<GetOrderResponse, 'created_at' | 'updated_at'>
+type Props = Pick<GetOrderResponse, 'created_at' | 'updated_at' | 'products'>
 
-const Details = ({ created_at, updated_at }: Props) => {
+const Details = ({ created_at, products, updated_at }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.DETAILS')
+
+  const productCount = products
+    .map((product) => product.quantity)
+    .reduce((prev, curr) => prev + curr, 0)
 
   return (
     <Tile marginBottom="m-size">
@@ -24,6 +28,12 @@ const Details = ({ created_at, updated_at }: Props) => {
       <LabelledItem
         item={formatDate(created_at)}
         label={t('LABELS.created_at')}
+      />
+
+      <LabelledItem
+        item={productCount}
+        label={t('LABELS.product_count')}
+        marginTop="m-size"
       />
     </Tile>
   )

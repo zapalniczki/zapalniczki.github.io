@@ -89,6 +89,7 @@ const fontWeigths = {
 const space = {
   'nav-height': '6rem',
 
+  'xxxs-size': '0.25rem',
   'xxs-size': '0.5rem',
   'xs-size': '1rem',
   's-size': '1.2rem',

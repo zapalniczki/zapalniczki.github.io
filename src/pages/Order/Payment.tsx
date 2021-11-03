@@ -1,17 +1,18 @@
 import { SectionHead, Tile, Text, LabelledItem } from 'components'
 import { useTranslation } from 'hooks'
-import { Order } from 'models'
+import { GetOrderResponse } from 'models'
 import React from 'react'
 import { displayMoney } from 'utils'
 
-type Props = {
-  amount: Order['total']
-  id: Order['id']
-}
+type Props = Pick<GetOrderResponse, 'id' | 'total' | 'status'>
 
-const Payment = ({ amount, id }: Props) => {
+const Payment = ({ id, status, total }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PAYMENT')
+
+  if (status !== 'CONFIRMED') {
+    return null
+  }
 
   return (
     <Tile marginTop="m-size">
@@ -40,7 +41,7 @@ const Payment = ({ amount, id }: Props) => {
       <LabelledItem item={id} label={t('LABELS.title')} marginTop="m-size" />
 
       <LabelledItem
-        item={displayMoney(amount)}
+        item={displayMoney(total)}
         label={t('LABELS.amount')}
         marginTop="m-size"
       />

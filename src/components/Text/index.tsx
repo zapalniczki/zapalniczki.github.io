@@ -86,6 +86,7 @@ const Container = styled(Box)<ContainerProps>`
     props.$wrap
       ? css`
           white-space: normal;
+          white-space: pre-line;
         `
       : css`
           white-space: nowrap;

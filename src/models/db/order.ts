@@ -10,7 +10,8 @@ const orderStatus = zenum([
   'PRODUCTION',
   'AWAITING_FOR_PICKUP',
   'IN_DELIVERY',
-  'COMPLETED'
+  'COMPLETED',
+  'REJECTED'
 ])
 
 export type OrderStatus = TypeOf<typeof orderStatus>
