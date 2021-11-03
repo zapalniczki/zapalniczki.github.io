@@ -30,7 +30,7 @@ const ExternalLink = ({ children, to, ...props }: Props) => {
 
   if (isDisabled) {
     return (
-      <Badge hasText text={commonT('soon')}>
+      <Badge hasText text={commonT('soon')} top={-100}>
         {link}
       </Badge>
     )

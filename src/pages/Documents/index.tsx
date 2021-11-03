@@ -1,4 +1,4 @@
-import { ExternalLink, Banner, Heading, Page } from 'components'
+import { ExternalLink, Banner, Heading, Page, Box, Flexbox } from 'components'
 import { useScrollTop, useTabTitle } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'
@@ -18,19 +18,41 @@ const Documents = () => {
         title={<Heading level={4}>{t('title')}</Heading>}
       />
 
-      <ListItem marginTop="l-size">
-        <ExternalLink to="https://docs.google.com/document/d/1PfnUmbE0uZpxnne0Sz6eHPhT9Risc_YtnbygORBi5DA/edit?usp=sharing">
-          {t('TYPES.termsAndConditions')}
+      <Flexbox alignItems="flex-start" flexDirection="column">
+        <ListItem marginTop="xl-size">{t('TYPES.termsAndConditions')}</ListItem>
+
+        <ExternalLink
+          marginLeft="l-size"
+          marginTop="m-size"
+          to="https://docs.google.com/document/d/1PfnUmbE0uZpxnne0Sz6eHPhT9Risc_YtnbygORBi5DA/edit?usp=sharing"
+        >
+          Aktualna wersja
         </ExternalLink>
-      </ListItem>
 
-      <ListItem marginTop="l-size">
-        <ExternalLink to="">{t('TYPES.privacyPolicy')}</ExternalLink>
-      </ListItem>
+        <ListItem marginTop="xl-size">{t('TYPES.newsletter')}</ListItem>
 
-      <ListItem marginTop="l-size">
-        <ExternalLink to="">{t('TYPES.cookiesPolicy')}</ExternalLink>
-      </ListItem>
+        <Box marginTop="l-size" position="relative">
+          <ExternalLink marginLeft="l-size" to="">
+            Aktualna wersja
+          </ExternalLink>
+        </Box>
+
+        <ListItem marginTop="xl-size">{t('TYPES.privacyPolicy')}</ListItem>
+
+        <Box marginTop="l-size" position="relative">
+          <ExternalLink marginLeft="l-size" to="">
+            Aktualna wersja
+          </ExternalLink>
+        </Box>
+
+        <ListItem marginTop="xl-size">{t('TYPES.cookiesPolicy')}</ListItem>
+
+        <Box marginTop="l-size" position="relative">
+          <ExternalLink marginLeft="l-size" to="">
+            Aktualna wersja
+          </ExternalLink>
+        </Box>
+      </Flexbox>
     </Page>
   )
 }

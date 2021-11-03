@@ -322,7 +322,7 @@ const pl = {
         title: 'Zapisz się do newslettera i zyskaj 10zł rabatu',
         subtitle:
           'Będziesz na bieżąco z nowymi produktami oraz ofertami specjalnymi',
-        info: 'Naciskając przycisk "Potwierdzam i wysyłam" wyrażasz zgodę na przesyłanie informacji handlowych.',
+        info: 'Naciskając przycisk "Potwierdzam i wysyłam" potwierdzasz, że akceptujesz z Regulamin newslettera.',
         FORM: {
           EMAIL: {
             placeholder: 'Twój adres email'
@@ -351,6 +351,7 @@ const pl = {
       FORM: {
         title: 'Jeżeli masz jakikolwiek problem lub nie ma Twojego produktu...',
         subtitle: `Zadzwoń na ${phoneNumer} albo podaj swój numer telefonu, a my odzwonimy.`,
+        info: 'Naciskając przycisk "Potwierdzam i wysyłam" potwierdzasz, że akceptujesz Politykę prywatności.',
         FORM: {
           SUBMIT: {
             label: 'Potwierdzam i wysyłam'
@@ -723,7 +724,8 @@ const pl = {
     TYPES: {
       termsAndConditions: 'Regulamin',
       privacyPolicy: 'Polityka prywatności',
-      cookiesPolicy: 'Polityka Cookies'
+      cookiesPolicy: 'Polityka Cookies',
+      newsletter: 'Regulamin newslettera'
     }
   },
 

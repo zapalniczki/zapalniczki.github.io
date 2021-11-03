@@ -11,12 +11,12 @@ import { useTheme } from 'styled-components'
 type Props = SpaceProps
 
 const CallMeBack = (props: Props) => {
-  const { t: commonT } = useTranslation('COMMON')
+  const commonT = useTranslation('COMMON').withBase('CALL_ME_BACK')
   const { initialValues, onSubmit, schema, setView, view } = useForm()
   const { colors } = useTheme()
 
-  let title = commonT('CALL_ME_BACK.FORM.title')
-  let subtitle = commonT('CALL_ME_BACK.FORM.subtitle')
+  let title = commonT('FORM.title')
+  let subtitle = commonT('FORM.subtitle')
 
   let content: JSX.Element | null = (
     <Formik
@@ -26,31 +26,37 @@ const CallMeBack = (props: Props) => {
       validationSchema={schema}
     >
       {({ handleSubmit }) => (
-        <FormikForm onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <Form />
-        </FormikForm>
+        <>
+          <FormikForm onSubmit={handleSubmit} style={{ width: '100%' }}>
+            <Form />
+          </FormikForm>
+
+          <Text marginTop="xxs-size" type="caption">
+            {commonT('FORM.info')}
+          </Text>
+        </>
       )}
     </Formik>
   )
 
   if (view.view === 'SUCCESS') {
     content = null
-    title = commonT('CALL_ME_BACK.SUCCESS.title')
-    subtitle = commonT('CALL_ME_BACK.SUCCESS.subtitle')
+    title = commonT('SUCCESS.title')
+    subtitle = commonT('SUCCESS.subtitle')
   }
 
   if (view.view === 'ERROR') {
     content = (
       <Box>
         <Button
-          label={commonT('CALL_ME_BACK.ERROR.buttonLabel')}
+          label={commonT('ERROR.buttonLabel')}
           onClick={() => setView({ view: 'FORM' })}
           size="small"
         />
       </Box>
     )
-    title = commonT('CALL_ME_BACK.ERROR.title')
-    subtitle = commonT('CALL_ME_BACK.ERROR.subtitle')
+    title = commonT('ERROR.title')
+    subtitle = commonT('ERROR.subtitle')
   }
 
   return (
