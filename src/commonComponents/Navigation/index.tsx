@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link, Logo, MaxWidth } from 'components'
 import { HOME } from 'constants/routes'
-import BasketToggle from './BasketToggle'
 import MainMenu from './MainMenu'
 import getColor from 'styles/getColor'
 import { useTranslation } from 'hooks'
 import getSpace from 'styles/getSpace'
+import NavigationMenu from './NavigationMenu'
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -36,11 +36,7 @@ const Navigation = () => {
 
         <MainMenu />
 
-        <NavigationMenu>
-          <NavigationMenuItem>
-            <BasketToggle />
-          </NavigationMenuItem>
-        </NavigationMenu>
+        <NavigationMenu />
       </MaxWidth>
     </Container>
   )
@@ -51,6 +47,8 @@ type ContainerProps = {
 }
 
 const Container = styled.nav<ContainerProps>`
+  border: 2px solid greenyellow;
+
   width: 100%;
   background: ${(props) => {
     if (props.isExpanded) {
@@ -76,22 +74,6 @@ const Container = styled.nav<ContainerProps>`
   z-index: ${(props) => props.theme.zIndices.navigation};
   box-shadow: ${(props) =>
     props.isExpanded && '0 5px 10px rgba(0, 0, 0, 0.02)'};
-`
-
-const NavigationMenu = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0;
-  margin: 0;
-  text-align: right;
-`
-
-export const NavigationMenuItem = styled.li`
-  display: inline-block;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
 `
 
 export default Navigation

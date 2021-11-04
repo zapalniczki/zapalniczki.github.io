@@ -24,6 +24,7 @@ const Container = styled(Flexbox)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  border: 2px solid blueviolet;
 `
 
 type StyledMaxWidthProps = Pick<Props, 'columns'>
@@ -32,6 +33,7 @@ const StyledMaxWidth = styled(MaxWidth)<StyledMaxWidthProps>`
     props.columns &&
     css`
       flex-direction: row;
+      box-sizing: border-box;
 
       & > * {
         &:first-child {
@@ -41,8 +43,8 @@ const StyledMaxWidth = styled(MaxWidth)<StyledMaxWidthProps>`
 
         &:last-child {
           margin-left: ${getSpace('m-size')};
-          min-width: 30%;
-          max-width: 30%;
+          min-width: ${(props) => `calc(30% - ${getSpace('m-size')(props)})`};
+          max-width: ${(props) => `calc(30% - ${getSpace('m-size')(props)})`};
         }
       }
     `}

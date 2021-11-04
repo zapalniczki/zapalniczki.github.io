@@ -6,6 +6,7 @@ const MaxWidth = styled(Flexbox)`
   max-width: 120rem;
   width: 100%;
   flex-direction: column;
+  border: 2px solid red;
 
   ${flexbox}
 `

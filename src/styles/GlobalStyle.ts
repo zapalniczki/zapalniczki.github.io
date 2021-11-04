@@ -46,6 +46,10 @@ span {
   position: relative;
 }
 
+li {
+  list-style-type: none;
+}
+
 #app {
   width: 100%;
   height: 100%;

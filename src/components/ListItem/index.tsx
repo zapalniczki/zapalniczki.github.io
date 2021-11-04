@@ -9,13 +9,13 @@ type Props = {
 } & SpaceProps
 
 const ListItem = ({ children, ...props }: Props) => (
-  <Container {...props}>
+  <Flexbox alignItems="center" {...props}>
     <Triangle />
 
     <Heading level={6} marginLeft="m-size">
       {children}
     </Heading>
-  </Container>
+  </Flexbox>
 )
 
 const Triangle = styled.div`
@@ -25,11 +25,6 @@ const Triangle = styled.div`
   border-left: 1rem solid;
   border-left-color: ${getColor('braty-red')};
   border-bottom: 0.5rem solid transparent;
-`
-
-const Container = styled(Flexbox)`
-  list-style-type: none;
-  align-items: center;
 `
 
 export default ListItem
