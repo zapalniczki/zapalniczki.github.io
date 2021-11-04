@@ -107,13 +107,16 @@ const space = {
   'pad-desktop': '10rem'
 }
 
+const breakpoints = ['40em', '52em', '64em', '80em']
+
 const theme = {
   colors,
   space,
   zIndices,
   fontSizes,
   fontWeigths,
-  letterSpacings
+  letterSpacings,
+  breakpoints
 }
 
 export type Theme = typeof theme
