@@ -1,4 +1,4 @@
-import { image, product } from 'models'
+import { image, product } from '../db'
 import { TypeOf, array } from 'zod'
 
 const getProductsResponseItem = product

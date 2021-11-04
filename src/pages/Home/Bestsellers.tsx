@@ -10,6 +10,7 @@ const Bestsellers = () => {
 
   return (
     <ProductsGrid
+      loaderCount={6}
       marginTop="xxl-size"
       query={bestsellersQuery}
       title={t('bestsellers.title')}

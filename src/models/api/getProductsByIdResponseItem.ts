@@ -1,4 +1,4 @@
-import { mold, product } from 'models'
+import { mold, product } from '../db'
 import { TypeOf } from 'zod'
 
 const getProductsByIdResponseItem = product

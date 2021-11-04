@@ -1,6 +1,5 @@
 import { array, object, TypeOf } from 'zod'
-import { deliveryType, mold, order, orderItem, parcel } from 'models'
-import { user } from 'models'
+import { user, deliveryType, mold, order, orderItem, parcel } from '../db'
 
 const getOrdersResponseItem = order
   .pick({
@@ -16,17 +15,19 @@ const getOrdersResponseItem = order
     customerPhone: user.pick({ phone: true }),
     deliveryType: deliveryType.pick({ label: true }),
     products: array(
-      orderItem.pick({
-        id: true,
-        quantity: true,
-        product: object({
-          mold: mold.pick({
-            status: true
+      orderItem
+        .pick({
+          id: true,
+          quantity: true
+        })
+        .extend({
+          product: object({
+            mold: mold.pick({
+              status: true
+            })
           })
         })
-      })
     ),
-    molds: array(orderItem.pick({ id: true })),
     parcel: parcel
       .pick({
         ref: true,

@@ -185,9 +185,9 @@ const pl = {
         FREE_DELIVERY: 'Darmowa dostawa',
         QUICK_SERVICE: 'Szybka obsługa',
         RETURNS: '14 dni na zwrot',
-        QUALITY: 'Gwarancja jakości',
+        QUALITY: 'Największy wybór miejscowości',
         PICK_UP: 'Możliwość odbioru osobistego',
-        CLUB: 'Zniżki dla stałych klientów'
+        CLUB: 'Newsletter'
       }
     },
 
