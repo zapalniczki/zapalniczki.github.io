@@ -33,6 +33,8 @@ import { faTruck } from '@fortawesome/free-solid-svg-icons/faTruck'
 import { faTruckLoading } from '@fortawesome/free-solid-svg-icons/faTruckLoading'
 import { faUniversity } from '@fortawesome/free-solid-svg-icons/faUniversity'
 import { faUserClock } from '@fortawesome/free-solid-svg-icons/faUserClock'
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
+
 import config from 'firebase/config'
 import i18n from 'i18n/config'
 import {
@@ -91,7 +93,8 @@ library.add(
   faTimesCircle,
   faPencilAlt,
   faReceipt,
-  faTrashAlt
+  faTrashAlt,
+  faBars
 )
 
 export const queryClient = new QueryClient({

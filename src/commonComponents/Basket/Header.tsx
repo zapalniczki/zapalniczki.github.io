@@ -21,11 +21,11 @@ const Header = () => {
     <Flexbox
       backgroundColor="white"
       flexDirection="column"
-      width="100%"
       // TODO Which this is not accepted? zIndex="basket"
+      width="100%"
       zIndex={60}
     >
-      <Flexbox alignItems="center" padding="m-size">
+      <Flexbox alignItems="center" paddingX="m-size" paddingY="s-size">
         <Text marginRight="auto" type="subtitle-1">
           {t('basket.title')}
 
@@ -52,7 +52,7 @@ const Header = () => {
           onClick={closeBasket}
           size="small"
           type="button"
-          variant="secondary"
+          variant="ternary"
         />
       </Flexbox>
 

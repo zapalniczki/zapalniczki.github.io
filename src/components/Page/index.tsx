@@ -3,6 +3,7 @@ import Flexbox from '../Flexbox'
 import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import getSpace from 'styles/getSpace'
+import breakpoints from 'styles/breakpoints'
 
 type Props = {
   children: ReactNode
@@ -24,7 +25,6 @@ const Container = styled(Flexbox)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid blueviolet;
 `
 
 type StyledMaxWidthProps = Pick<Props, 'columns'>
@@ -32,21 +32,39 @@ const StyledMaxWidth = styled(MaxWidth)<StyledMaxWidthProps>`
   ${(props) =>
     props.columns &&
     css`
-      flex-direction: row;
-      box-sizing: border-box;
+      flex-direction: column;
 
       & > * {
         &:first-child {
-          min-width: 70%;
-          max-width: 70%;
+          min-width: 100%;
+          max-width: 100%;
         }
 
         &:last-child {
-          margin-left: ${getSpace('m-size')};
-          min-width: ${(props) => `calc(30% - ${getSpace('m-size')(props)})`};
-          max-width: ${(props) => `calc(30% - ${getSpace('m-size')(props)})`};
+          margin-top: ${getSpace('m-size')(props)};
+          margin-left: 0;
+          min-width: 100%;
+          max-width: 100%;
         }
       }
+
+      ${(props) => breakpoints('desktop')`
+        flex-direction: row;
+
+        & > * {
+          &:first-child {
+            min-width: 70%;
+            max-width: 70%;
+          }
+
+          &:last-child {
+            margin-top: 0;
+            margin-left: ${getSpace('m-size')(props)};
+            min-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
+            max-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
+          }
+        }
+      `}
     `}
 `
 

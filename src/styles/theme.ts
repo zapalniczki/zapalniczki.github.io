@@ -107,7 +107,11 @@ const space = {
   'pad-desktop': '10rem'
 }
 
-const breakpoints = ['40em', '52em', '64em', '80em']
+export const breakpoints = {
+  mobile: 0,
+  tablet: 768,
+  desktop: 1024
+}
 
 const theme = {
   colors,
@@ -116,11 +120,12 @@ const theme = {
   fontSizes,
   fontWeigths,
   letterSpacings,
-  breakpoints
+  breakpoints: Object.values(breakpoints).map((val) => `${val}px`)
 }
 
 export type Theme = typeof theme
 export type Color = keyof typeof colors
 export type Space = keyof typeof space
+export type Breakpoint = keyof typeof breakpoints
 
 export default theme

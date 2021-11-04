@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link, Logo, MaxWidth } from 'components'
 import { HOME } from 'constants/routes'
@@ -7,9 +7,11 @@ import getColor from 'styles/getColor'
 import { useTranslation } from 'hooks'
 import getSpace from 'styles/getSpace'
 import NavigationMenu from './NavigationMenu'
+import { basketToggleContext } from 'providers'
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const { isOpen } = useContext(basketToggleContext)
 
   const { t: commonT } = useTranslation('COMMON')
 
@@ -27,9 +29,19 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', scrollHandler)
   }, [])
 
+  useEffect(() => {
+    if (isOpen) {
+      setIsExpanded(true)
+    }
+  }, [isOpen])
+
   return (
     <Container isExpanded={isExpanded}>
-      <MaxWidth alignItems="center" flexDirection="row">
+      <MaxWidth
+        alignItems="center"
+        flexDirection="row"
+        justifyContent="space-between"
+      >
         <Link title={commonT('LINKS.home')} to={HOME}>
           <Logo expanded={isExpanded} />
         </Link>
@@ -47,8 +59,6 @@ type ContainerProps = {
 }
 
 const Container = styled.nav<ContainerProps>`
-  border: 2px solid greenyellow;
-
   width: 100%;
   background: ${(props) => {
     if (props.isExpanded) {

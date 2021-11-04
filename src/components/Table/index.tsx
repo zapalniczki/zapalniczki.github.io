@@ -65,6 +65,7 @@ function Table<T extends DataConstraint>({
 
 const Container = styled(Box)`
   width: 100%;
+  overflow-x: auto;
 
   table {
     border: 1px solid;

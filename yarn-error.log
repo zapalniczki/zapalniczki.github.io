@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add husky@6 --dev \
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/lodash.memonize lodash.memoize
 
 PATH: 
-  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Git\cmd;C:\Users\Przemek Rychlewicz\selenium;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\php-8.0.1;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs\;C:\TDM-GCC-64\bin;C:\Program Files\Go\bin;C:\Program Files\Tesseract-OCR;C:\Users\Przemek Rychlewicz\AppData\Local\Microsoft\WindowsApps;C:\Users\Przemek Rychlewicz\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\Przemek Rychlewicz\AppData\Local\Yarn\bin;;C:\Users\Przemek Rychlewicz\AppData\Roaming\npm;C:\Users\Przemek Rychlewicz\go\bin
+  C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Git\cmd;C:\Users\Przemek Rychlewicz\selenium;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\php-8.0.1;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs\;C:\TDM-GCC-64\bin;C:\Program Files\Go\bin;C:\Program Files\Tesseract-OCR;C:\Users\Przemek Rychlewicz\AppData\Local\Microsoft\WindowsApps;C:\Users\Przemek Rychlewicz\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\Przemek Rychlewicz\AppData\Local\Yarn\bin;;C:\Users\Przemek Rychlewicz\AppData\Roaming\npm;C:\Users\Przemek Rychlewicz\go\bin
 
 Yarn version: 
   1.22.5
@@ -14,25 +14,26 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, lstat 'C:\Config.Msi'
+  Error: https://registry.yarnpkg.com/@types%2flodash.memonize: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66097:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140749:22)
+      at Request.emit (events.js:375:28)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141721:10)
+      at Request.emit (events.js:375:28)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141643:12)
+      at Object.onceWrapper (events.js:481:28)
+      at IncomingMessage.emit (events.js:387:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
 
 npm manifest: 
   {
     "name": "ecommerce-react",
-    "version": "1.2.5",
+    "version": "1.2.42",
     "main": "index.js",
     "author": "grandalf6@gmail.com",
-    "keywords": [
-      "react-webpack",
-      "boilerplate",
-      "react-webpack-boilerplate",
-      "react-boilerplate"
-    ],
-    "husky": {
-      "hooks": {
-        "pre-push": "yarn run patch"
-      }
-    },
+    "license": "UNLICENSED",
+    "private": true,
     "scripts": {
       "patch": "yarn version --new-version patch",
       "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --stats-error-details",
@@ -72,11 +73,11 @@ npm manifest:
       "file-loader": "^6.2.0",
       "group-css-media-queries-loader": "^3.0.2",
       "html-webpack-plugin": "^5.3.1",
-      "husky": "^7.0.2",
       "jest": "^26.6.3",
       "live-server": "^1.2.1",
       "raf": "^3.4.1",
       "terser-webpack-plugin": "^5.2.4",
+      "typescript-plugin-styled-components": "^2.0.0",
       "uglifyjs-webpack-plugin": "^2.2.0",
       "url-loader": "^4.1.1",
       "webpack": "^5.36.2",
@@ -93,6 +94,8 @@ npm manifest:
       "@fortawesome/react-fontawesome": "^0.1.15",
       "@supabase/supabase-js": "^1.22.6",
       "@types/lodash.add": "^3.7.6",
+      "@types/lodash.debounce": "^4.0.6",
+      "@types/lodash.multiply": "^4.9.1",
       "@types/lodash.subtract": "^4.2.6",
       "@types/lodash.uniq": "^4.5.6",
       "@types/react-modal": "^3.12.1",
@@ -102,15 +105,17 @@ npm manifest:
       "@types/react-tabs": "^2.3.3",
       "@types/styled-components": "^5.1.11",
       "@types/styled-system": "^5.1.12",
-      "@types/webfontloader": "^1.6.33",
       "date-fns": "^2.23.0",
       "eslint-plugin-sort-destructure-keys": "^1.3.5",
       "firebase": "^9.0.0",
       "firebase-admin": "^9.11.1",
       "formik": "^2.2.6",
       "history": "^4.10.0",
+      "husky": "^7.0.4",
       "i18next": "^20.3.5",
       "lodash.add": "^3.7.0",
+      "lodash.debounce": "^4.0.8",
+      "lodash.multiply": "^4.9.0",
       "lodash.subtract": "^4.2.0",
       "lodash.uniq": "^4.5.0",
       "mini-css-extract-plugin": "^2.2.2",
@@ -120,6 +125,7 @@ npm manifest:
       "react": "^17.0.2",
       "react-content-loader": "^6.0.3",
       "react-dom": "^17.0.2",
+      "react-ga": "^3.3.0",
       "react-hot-loader": "^4.13.0",
       "react-i18next": "^11.11.4",
       "react-modal": "^3.14.3",
@@ -131,13 +137,13 @@ npm manifest:
       "react-switch": "^6.0.0",
       "react-table": "^7.7.0",
       "react-tabs": "^3.2.2",
-      "sass-loader": "^12.1.0",
+      "react-toastify": "^8.0.3",
       "styled-components": "^5.3.0",
       "styled-system": "^5.1.5",
       "svg-url-loader": "^7.1.1",
       "ts-loader": "^9.2.4",
       "typescript": "^4.4.3",
-      "webfontloader": "^1.6.28",
+      "use-breakpoints": "^0.0.7",
       "yup": "^0.32.9",
       "zod": "^3.5.1"
     }
@@ -2455,6 +2461,20 @@ Lockfile:
     dependencies:
       "@types/lodash" "*"
   
+  "@types/lodash.debounce@^4.0.6":
+    version "4.0.6"
+    resolved "https://registry.yarnpkg.com/@types/lodash.debounce/-/lodash.debounce-4.0.6.tgz#c5a2326cd3efc46566c47e4c0aa248dc0ee57d60"
+    integrity sha512-4WTmnnhCfDvvuLMaF3KV4Qfki93KebocUF45msxhYyjMttZDQYzHkO639ohhk8+oco2cluAFL3t5+Jn4mleylQ==
+    dependencies:
+      "@types/lodash" "*"
+  
+  "@types/lodash.multiply@^4.9.1":
+    version "4.9.1"
+    resolved "https://registry.yarnpkg.com/@types/lodash.multiply/-/lodash.multiply-4.9.1.tgz#f8818fe2318f1a1c0726e8217e9ce278e14fc0ab"
+    integrity sha512-fSYlSMm4JGFTF2T80XwuDUnvaoLuQs5Ku9jLV3dshrA6e7XM1Ik4mYeU480fWdBME+veT3ihM7r8cLP2mEuD9w==
+    dependencies:
+      "@types/lodash" "*"
+  
   "@types/lodash.subtract@^4.2.6":
     version "4.2.6"
     resolved "https://registry.yarnpkg.com/@types/lodash.subtract/-/lodash.subtract-4.2.6.tgz#3bd1bb351a7a2ea8149ea77e43c696c11b726809"
@@ -2657,11 +2677,6 @@ Lockfile:
     integrity sha512-O3MmRAk6ZuAKa9CHgg0Pr0+lUOqoMLpc9AS4R8ano2auvsg7IE8syF3Xh/NPr26TWklxYcqoEEFdzLLs1fV9PQ==
     dependencies:
       source-map "^0.6.1"
-  
-  "@types/webfontloader@^1.6.33":
-    version "1.6.33"
-    resolved "https://registry.yarnpkg.com/@types/webfontloader/-/webfontloader-1.6.33.tgz#cdef66b53341193ce1b4d4ad771703689db77708"
-    integrity sha512-2oOYQp0UBo/+NFsxdlF9ZwS1rq1q/wGnLsZMN7X+/xArRZoLPQhOGecesaRYJ2uhHyJ53TgitDORu2IV47FhHw==
   
   "@types/webpack-sources@*":
     version "2.1.1"
@@ -4050,7 +4065,7 @@ Lockfile:
       kind-of "^6.0.2"
       shallow-clone "^3.0.0"
   
-  clsx@^1.1.0:
+  clsx@^1.1.0, clsx@^1.1.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
     integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
@@ -6645,10 +6660,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
     integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
   
-  husky@^7.0.2:
-    version "7.0.2"
-    resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.2.tgz#21900da0f30199acca43a46c043c4ad84ae88dff"
-    integrity sha512-8yKEWNX4z2YsofXAMT7KvA1g8p+GxtB1ffV8XtpAEGuXNAbCV5wdNKH+qTpw8SM9fh4aMPDR+yQuKfgnreyZlg==
+  husky@^7.0.4:
+    version "7.0.4"
+    resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.4.tgz#242048245dc49c8fb1bf0cc7cfb98dd722531535"
+    integrity sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==
   
   i18next@^20.3.5:
     version "20.3.5"
@@ -7868,11 +7883,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/kleur/-/kleur-4.1.4.tgz#8c202987d7e577766d039a8cd461934c01cda04d"
     integrity sha512-8QADVssbrFjivHWQU7KkMgptGTl6WAcSdlbBPY4uNF+mWr6DGcKrvY2w4FQJoXch7+fKMjj0dRrL75vk3k23OA==
   
-  klona@^2.0.4:
-    version "2.0.4"
-    resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
-    integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
-  
   language-subtag-registry@~0.3.2:
     version "0.3.21"
     resolved "https://registry.yarnpkg.com/language-subtag-registry/-/language-subtag-registry-0.3.21.tgz#04ac218bea46f04cb039084602c6da9e788dd45a"
@@ -8090,6 +8100,11 @@ Lockfile:
     version "4.6.2"
     resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
     integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+  
+  lodash.multiply@^4.9.0:
+    version "4.9.0"
+    resolved "https://registry.yarnpkg.com/lodash.multiply/-/lodash.multiply-4.9.0.tgz#21f734df8d05be7723b5b330238c295ac00457c2"
+    integrity sha1-Ifc0340FvncjtbMwI4wpWsAEV8I=
   
   lodash.once@^4.0.0:
     version "4.1.1"
@@ -9860,6 +9875,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
     integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
   
+  react-ga@^3.3.0:
+    version "3.3.0"
+    resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-3.3.0.tgz#c91f407198adcb3b49e2bc5c12b3fe460039b3ca"
+    integrity sha512-o8RScHj6Lb8cwy3GMrVH6NJvL+y0zpJvKtc0+wmH7Bt23rszJmnqEQxRbyrqUzk9DTJIHoP42bfO5rswC9SWBQ==
+  
   react-hot-loader@^4.13.0:
     version "4.13.0"
     resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.13.0.tgz#c27e9408581c2a678f5316e69c061b226dc6a202"
@@ -10016,6 +10036,13 @@ Lockfile:
       react-is "^16.8.6"
       scheduler "^0.19.1"
   
+  react-toastify@^8.0.3:
+    version "8.0.3"
+    resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-8.0.3.tgz#7fbf65f69ec357aab8dd03c1496f9177aa92409a"
+    integrity sha512-rv3koC7f9lKKSkdpYgo/TGzgWlrB/aaiUInF1DyV7BpiM4kyTs+uhu6/r8XDMtBY2FOIHK+FlK3Iv7OzpA/tCA==
+    dependencies:
+      clsx "^1.1.1"
+  
   react-transition-group@^4.3.0:
     version "4.4.2"
     resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
@@ -10024,6 +10051,15 @@ Lockfile:
       "@babel/runtime" "^7.5.5"
       dom-helpers "^5.0.1"
       loose-envify "^1.4.0"
+      prop-types "^15.6.2"
+  
+  react@^16.7.0-alpha.2:
+    version "16.14.0"
+    resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+    integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+    dependencies:
+      loose-envify "^1.1.0"
+      object-assign "^4.1.1"
       prop-types "^15.6.2"
   
   react@^17.0.2:
@@ -10459,14 +10495,6 @@ Lockfile:
       lodash "^4.0.0"
       scss-tokenizer "^0.2.3"
       yargs "^13.3.2"
-  
-  sass-loader@^12.1.0:
-    version "12.1.0"
-    resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-12.1.0.tgz#b73324622231009da6fba61ab76013256380d201"
-    integrity sha512-FVJZ9kxVRYNZTIe2xhw93n3xJNYZADr+q69/s98l9nTCrWASo+DR2Ot0s5xTKQDDEosUkatsGeHxcH4QBp5bSg==
-    dependencies:
-      klona "^2.0.4"
-      neo-async "^2.6.2"
   
   saxes@^5.0.1:
     version "5.0.1"
@@ -11758,6 +11786,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
+  typescript-plugin-styled-components@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/typescript-plugin-styled-components/-/typescript-plugin-styled-components-2.0.0.tgz#97e94187cca0f3058c6ad8fefffbca6766c56123"
+    integrity sha512-Wu7F96dwuphgiACHfu63vTbRRg6tkPwLnpFJwdxM70Y0PLfeKLRnvs2Yo5MAySMwE120ODMKk9W4TtJgY1ZumA==
+  
   typescript@^4.4.3:
     version "4.4.3"
     resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
@@ -11930,6 +11963,13 @@ Lockfile:
       punycode "1.3.2"
       querystring "0.2.0"
   
+  use-breakpoints@^0.0.7:
+    version "0.0.7"
+    resolved "https://registry.yarnpkg.com/use-breakpoints/-/use-breakpoints-0.0.7.tgz#485645d339481a2d9d79d8c333ac56f4df38be8f"
+    integrity sha512-5e03HWavF4PHyXqldgjadJVFisL/C7tfuSmVG5WOugKpBTj+2yS+bxReGL+VrXkdz37DIu+BxevHrB962K5eGw==
+    dependencies:
+      react "^16.7.0-alpha.2"
+  
   use@^3.1.0:
     version "3.1.1"
     resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
@@ -12060,11 +12100,6 @@ Lockfile:
     integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
     dependencies:
       minimalistic-assert "^1.0.0"
-  
-  webfontloader@^1.6.28:
-    version "1.6.28"
-    resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
-    integrity sha1-23hhKSU8tujq5UwvsF+HCvZnW64=
   
   webidl-conversions@^3.0.0:
     version "3.0.1"

@@ -1,8 +1,8 @@
-import React, { createContext, ReactNode, useState } from 'react'
+import React, { createContext, ReactNode, useEffect, useState } from 'react'
 
 type BasketToggleContext = {
-  closeBasket: () => void,
-  isOpen: boolean,
+  closeBasket: () => void
+  isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -20,6 +20,14 @@ const BasketToggleProvider = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const closeBasket = () => setIsOpen(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
 
   return (
     <basketToggleContext.Provider

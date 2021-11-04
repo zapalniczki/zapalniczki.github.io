@@ -1,6 +1,6 @@
 import { Box, Flexbox, Link } from 'components'
 import React from 'react'
-import { useTranslation } from 'hooks'
+import { useBreakpoints, useTranslation } from 'hooks'
 import { matchPath, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
@@ -11,8 +11,21 @@ const MainMenu = () => {
   const { t } = useTranslation('COMMON')
   const { pathname } = useLocation()
 
+  const isDesktop = useBreakpoints('desktop')
+
+  if (!isDesktop) {
+    return null
+  }
+
   return (
-    <Flexbox as="ul" flexGrow={1} marginX="m-size" marginY="0" paddingLeft={0}>
+    <Flexbox
+      as="ul"
+      border="2px solid blue"
+      flexGrow={1}
+      marginX="m-size"
+      marginY="0"
+      paddingLeft={0}
+    >
       {routes
         .filter((route) => route.order)
         .sort((prev, next) =>
