@@ -30,7 +30,12 @@ const Footer = () => {
           <Logo />
         </Box>
 
-        <Flexbox justifyContent="space-between" marginTop="l-size" width="100%">
+        <Flexbox
+          flexDirection={['unset', 'column', 'column', 'row']}
+          justifyContent="space-between"
+          marginTop="l-size"
+          width="100%"
+        >
           <Flexbox
             alignItems="flex-start"
             as="ul"
@@ -62,10 +67,11 @@ const Footer = () => {
 
           {isAdmin && (
             <Flexbox
-              alignItems="flex-end"
+              alignItems={['unset', 'flex-start', 'flex-start', 'flex-end']}
               as="ul"
               flexDirection="column"
               margin="0"
+              marginTop={['unset', 'm-size', 'm-size', 'unset']}
               padding="0"
             >
               {routes
@@ -89,16 +95,29 @@ const Footer = () => {
 
         <Separator marginY="l-size" />
 
-        <Flexbox justifyContent="space-between" width="100%">
+        <Flexbox
+          flexDirection={['unset', 'column-reverse', 'column-reverse', 'row']}
+          justifyContent="space-between"
+          width="100%"
+        >
           <Flexbox alignItems="center" height="100%">
-            <ImageLoader src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg" />
+            <Flexbox
+              alignItems="center"
+              height="2rem"
+              marginTop={['unset', 's-size', 's-size', 'unset']}
+            >
+              <ImageLoader src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg" />
 
-            <Text marginLeft="m-size" type="caption">
-              {process.env.VERSION}
-            </Text>
+              <Text marginLeft="m-size" type="caption">
+                {process.env.VERSION}
+              </Text>
+            </Flexbox>
           </Flexbox>
 
-          <Text type="caption">
+          <Text
+            marginTop={['unset', 's-size', 's-size', 'unset']}
+            type="caption"
+          >
             {commonT('FOOTER.allRightsReserved', {
               year: new Date().getFullYear()
             })}
