@@ -1,9 +1,8 @@
-import { User } from 'firebase/auth'
 import React, { createContext, ReactNode, useState } from 'react'
 
 type AuthContexType = {
-  auth?: User | null
-  setAuth: React.Dispatch<React.SetStateAction<User | null | undefined>>
+  auth?: null
+  setAuth: React.Dispatch<React.SetStateAction<null | undefined>>
 }
 
 export const authContext = createContext<AuthContexType>({
