@@ -1,7 +1,7 @@
 import { Box, ContentLoader, Flexbox, Grid } from 'components'
 import React from 'react'
 import { SpaceProps } from 'styled-system'
-import TileLoader from './TIle.loader'
+import ProductTileLoader from './ProductTIle.loader'
 
 type Props = SpaceProps & {
   count?: number
@@ -25,7 +25,7 @@ const ProductsGridLoader = ({ count = 3, title, ...props }: Props) => (
 
     <Grid {...props}>
       {[...Array(count).keys()].map((n) => (
-        <TileLoader key={n} />
+        <ProductTileLoader key={n} />
       ))}
     </Grid>
   </Flexbox>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ContentLoader } from 'components'
 
-const TileLoader = () => (
+const ProductTileLoader = () => (
   <ContentLoader
     gradientRatio={1}
     height={300}
@@ -12,4 +12,4 @@ const TileLoader = () => (
   </ContentLoader>
 )
 
-export default TileLoader
+export default ProductTileLoader

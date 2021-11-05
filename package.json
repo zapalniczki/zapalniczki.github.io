@@ -98,6 +98,7 @@
     "react-ga": "^3.3.0",
     "react-hot-loader": "^4.13.0",
     "react-i18next": "^11.11.4",
+    "react-image": "^4.0.3",
     "react-modal": "^3.14.3",
     "react-phone-input-2": "^2.14.0",
     "react-query": "^3.21.0",

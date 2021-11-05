@@ -1,4 +1,4 @@
-import { Box, Flexbox, ImageLoader, Link, Text, Tile } from 'components'
+import { Box, Flexbox, Image, Link, Text, Tile } from 'components'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { BasketItem, GetProductsResponseItem } from 'models'
@@ -79,7 +79,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
         position="relative"
         width={['unset', '3rem', '3rem', '9rem']}
       >
-        <ImageLoader alt={name} src={basketImage} />
+        <Image alt={name} size="BASKET" src={basketImage} />
       </Box>
 
       <Flexbox flexDirection="column" gridArea="name" overflowX="hidden">

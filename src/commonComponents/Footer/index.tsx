@@ -1,7 +1,7 @@
 import {
   Box,
   Flexbox,
-  ImageLoader,
+  Image,
   Link,
   Logo,
   MaxWidth,
@@ -106,7 +106,7 @@ const Footer = () => {
               height="2rem"
               marginTop={['unset', 's-size', 's-size', 'unset']}
             >
-              <ImageLoader src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg" />
+              <Image src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg" />
 
               <Text marginLeft="m-size" type="caption">
                 {process.env.VERSION}

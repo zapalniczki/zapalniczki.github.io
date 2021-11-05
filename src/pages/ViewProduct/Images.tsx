@@ -1,8 +1,7 @@
-import { Flexbox } from 'components'
+import { Flexbox, Image } from 'components'
 
 import styled from 'styled-components'
 import React from 'react'
-import { ImageLoader } from 'components'
 import { GetProductResponse } from 'models'
 import getColor from 'styles/getColor'
 import { findCorrectProductImageSize } from 'utils'
@@ -31,13 +30,13 @@ const Images = ({ product }: Props) => {
         <Flexbox flexDirection="column" height="100%" width="6rem">
           {[thumbnailImage].map((image) => (
             <GalleryImageWrapper key={image.toString()} role="presentation">
-              <ImageLoader src={image} />
+              <Image size="THUMBNAIL" src={image} />
             </GalleryImageWrapper>
           ))}
         </Flexbox>
 
         <ImageWrapper>
-          <ImageLoader alt={name} src={largeImage} />
+          <Image alt={name} size="LARGE" src={largeImage} />
         </ImageWrapper>
       </Flexbox>
     </Flexbox>

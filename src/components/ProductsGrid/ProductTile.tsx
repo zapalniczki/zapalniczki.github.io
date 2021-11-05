@@ -1,13 +1,13 @@
-import { Flexbox, ImageLoader, Text, Tile } from 'components'
-import React, { useContext } from 'react'
-import { generatePath, Link } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import { displayMoney, findCorrectProductImageSize } from 'utils'
-import { VIEW_PRODUCT } from 'constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { checkoutContext } from 'providers'
-import getColor from 'styles/getColor'
+import { Flexbox, Image, Text, Tile } from 'components'
+import { VIEW_PRODUCT } from 'constants/routes'
 import { GetProductsResponseItem } from 'models'
+import { checkoutContext } from 'providers'
+import React, { useContext, useState } from 'react'
+import { generatePath, Link } from 'react-router-dom'
+import styled from 'styled-components'
+import getColor from 'styles/getColor'
+import { displayMoney, findCorrectProductImageSize } from 'utils'
 
 export type Props = {
   product: GetProductsResponseItem
@@ -23,12 +23,26 @@ const ProductTile = ({ product }: Props) => {
   const tileImage = findCorrectProductImageSize(product.images, 'TILE')
   const backImage = findCorrectProductImageSize(product.images, 'TILE_REVERSE')
 
+  const [alfa, setAlfa] = useState(false)
+
   return (
     <Container as={Link} max-height="30rem" to={viewProductPath}>
       <ImageWrapper>
-        <ImageLoader alt="" src={tileImage} />
+        {!alfa && (
+          <Image
+            onPointerEnter={() => setAlfa(true)}
+            size="TILE"
+            src={tileImage}
+          />
+        )}
 
-        <ImageLoader alt="" src={backImage} />
+        {alfa && (
+          <Image
+            onPointerLeave={() => setAlfa(false)}
+            size="TILE"
+            src={backImage}
+          />
+        )}
       </ImageWrapper>
 
       <Flexbox
@@ -68,28 +82,6 @@ const ProductTile = ({ product }: Props) => {
   )
 }
 
-const imageHover = css`
-  img,
-  aside {
-    display: none;
-
-    &:first-child {
-      display: block;
-    }
-  }
-
-  &:hover {
-    img,
-    aside {
-      display: block;
-
-      &:first-child {
-        display: none;
-      }
-    }
-  }
-`
-
 const Container = styled(Tile)`
   color: unset;
   cursor: pointer;
@@ -100,8 +92,6 @@ const Container = styled(Tile)`
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-
-  ${imageHover}
 `
 
 const ImageWrapper = styled.div`

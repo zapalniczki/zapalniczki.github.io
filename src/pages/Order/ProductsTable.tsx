@@ -1,7 +1,7 @@
 import { getProducts } from 'api'
 import {
   Box,
-  ImageLoader,
+  Image,
   Link,
   QueryLoader,
   SectionHead,
@@ -97,7 +97,7 @@ const shapeData = (
     return {
       product_image: (
         <Box maxHeight="9rem" maxWidth="9rem" minHeight="9rem" minWidth="9rem">
-          <ImageLoader src={basketImage} />
+          <Image src={basketImage} />
         </Box>
       ),
       product_name: (
