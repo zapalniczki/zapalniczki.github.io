@@ -1,11 +1,8 @@
-import { Box, Flexbox, Link } from 'components'
-import React from 'react'
+import { Box, Flexbox, NavigationLink } from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
-import { matchPath, useLocation } from 'react-router-dom'
-import styled from 'styled-components'
-import getColor from 'styles/getColor'
 import { routes } from 'pages'
-import getSpace from 'styles/getSpace'
+import React from 'react'
+import { matchPath, useLocation } from 'react-router-dom'
 
 const MainMenu = () => {
   const commonT = useTranslation('COMMON').withBase('LINKS')
@@ -36,7 +33,7 @@ const MainMenu = () => {
 
           return (
             <Box as="li" display="inline-block" key={route.path}>
-              <StyledLink
+              <NavigationLink
                 active={isActive}
                 label={commonT(route.translationKey)}
                 to={route.path}
@@ -47,14 +44,5 @@ const MainMenu = () => {
     </Flexbox>
   )
 }
-
-export const StyledLink = styled(Link)`
-  padding: ${(props) =>
-    `${getSpace('xs-size')(props)} ${getSpace('m-size')(props)}`};
-
-  &:hover {
-    background: ${getColor('background-color-01')};
-  }
-`
 
 export default MainMenu

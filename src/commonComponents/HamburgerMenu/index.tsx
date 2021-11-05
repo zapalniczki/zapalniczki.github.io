@@ -1,6 +1,4 @@
-// eslint-disable-next-line no-restricted-imports
-import { StyledLink } from 'commonComponents/Navigation/MainMenu'
-import { Flexbox, Box } from 'components'
+import { Flexbox, Box, NavigationLink } from 'components'
 import { useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { togglesContext } from 'providers'
@@ -49,7 +47,7 @@ const HamburgerMenu = () => {
 
           return (
             <Box as="li" display="inline-block" key={route.path}>
-              <StyledLink
+              <NavigationLink
                 active={isActive}
                 label={commonT(route.translationKey)}
                 to={route.path}
