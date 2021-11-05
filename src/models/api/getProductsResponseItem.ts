@@ -7,7 +7,10 @@ const getProductsResponseItem = product
     price: true,
     name: true,
     collection_id: true,
-    visible: true
+    label_id: true,
+    icon_id: true,
+    visible: true,
+    bestseller: true
   })
   .extend({
     images: array(image)

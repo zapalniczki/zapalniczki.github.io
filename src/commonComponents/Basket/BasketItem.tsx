@@ -79,7 +79,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
         position="relative"
         width={['unset', '3rem', '3rem', '9rem']}
       >
-        <Image alt={name} size="BASKET" src={basketImage} />
+        <ImageStyled alt={name} size="BASKET" src={basketImage} />
       </Box>
 
       <Flexbox flexDirection="column" gridArea="name" overflowX="hidden">
@@ -157,6 +157,11 @@ const Container = styled(Tile)`
 
 
     `}
+`
+
+const ImageStyled = styled(Image)`
+  width: 100%;
+  height: 100%;
 `
 
 export default BasketItem

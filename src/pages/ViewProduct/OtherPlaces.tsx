@@ -1,10 +1,9 @@
 import { getOtherPlaces } from 'api'
-import { Collection, Label } from 'models'
 import { ProductsGrid } from 'components'
-import React from 'react'
 import { useTranslation } from 'hooks'
+import { Collection, Label } from 'models'
+import React from 'react'
 import { useQuery } from 'react-query'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
 
 type Props = {
   collectionId: Collection['id']
@@ -15,7 +14,7 @@ const OtherPlaces = ({ collectionId, labelId }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const params = { labelId, collectionId }
-  const otherPlacesQuery = useQuery([PRODUCTS_TABLE, params], () =>
+  const otherPlacesQuery = useQuery(['other_places', params], () =>
     getOtherPlaces(params)
   )
 

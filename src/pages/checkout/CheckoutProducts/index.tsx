@@ -14,7 +14,7 @@ const CheckoutProducts = () => {
   const { t } = useTranslation('CHECKOUT_PRODUCTS')
 
   const { basket, isBasketEmpty } = useContext(checkoutContext)
-  const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
+  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
 
   useTabTitle(t('title'))
   useScrollTop()

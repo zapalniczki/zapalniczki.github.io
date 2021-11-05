@@ -29,7 +29,7 @@ const Checkout = () => {
   const { closeBasket } = useContext(togglesContext)
   const { basket, isBasketEmpty } = useContext(checkoutContext)
 
-  const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
+  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
 
   return (
     <QueryLoader query={productsQuery}>

@@ -1,10 +1,9 @@
 import { getOtherIcons } from 'api'
-import { Icon, Label } from 'models'
 import { ProductsGrid } from 'components'
-import React from 'react'
 import { useTranslation } from 'hooks'
+import { Icon, Label } from 'models'
+import React from 'react'
 import { useQuery } from 'react-query'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
 
 type Props = {
   iconId: Icon['id']
@@ -15,7 +14,7 @@ const OtherIcons = ({ iconId, labelId }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const params = { labelId, iconId }
-  const otherIconsQuery = useQuery([PRODUCTS_TABLE, params], () =>
+  const otherIconsQuery = useQuery(['other_icons', params], () =>
     getOtherIcons(params)
   )
 

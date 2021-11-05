@@ -5,7 +5,7 @@ import { UseQueryResult } from 'react-query'
 import { SpaceProps } from 'styled-system'
 import ProductsGridLoader from './index.loader'
 import ProductTile from './ProductTile'
-import { GetFeaturedResponseItem, GetProductsResponseItem } from 'models'
+import { GetProductsResponseItem } from 'models'
 import { useTranslation } from 'hooks'
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
     to: LocationDescriptor
   }
   loaderCount?: number
-  query: UseQueryResult<(GetFeaturedResponseItem | GetProductsResponseItem)[]>
+  query: UseQueryResult<GetProductsResponseItem[]>
   searchQuery?: string
   title?: string
 } & SpaceProps

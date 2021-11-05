@@ -10,7 +10,7 @@ import { useQuery } from 'react-query'
 const BasketContent = () => {
   const commonT = useTranslation('COMMON').withBase('BASKET')
   const { basket, isBasketEmpty } = useContext(checkoutContext)
-  const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
+  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
 
   return (
     <QueryLoader query={productsQuery}>

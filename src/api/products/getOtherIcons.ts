@@ -1,7 +1,7 @@
 import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import {
-  getOtherIconsResponseItem,
-  GetOtherIconsResponseItem,
+  getProductsResponseItem,
+  GetProductsResponseItem,
   Icon,
   Label
 } from 'models'
@@ -16,26 +16,28 @@ type Params = {
 
 export const getOtherIcons = async (params: Params) => {
   const response = await supabase
-    .from<GetOtherIconsResponseItem>(PRODUCTS_TABLE)
+    .from<GetProductsResponseItem>(PRODUCTS_TABLE)
     .select(
       `
-    id,
-    price,
-    name,
-    collection_id,
-    visible,
-    icon_id,
-    label_id,
-    ${IMAGES_TABLE} (
-      *
-    )
+      id,
+      price,
+      name,
+      visible,
+      bestseller,
+      featured,
+      collection_id,
+      label_id,
+      icon_id,
+      ${IMAGES_TABLE} (
+        *
+      )
     `
     )
     .eq('label_id', params.labelId)
     .neq('icon_id', params.iconId)
     .limit(3)
 
-  const data = parseApiResponse(array(getOtherIconsResponseItem), response)
+  const data = parseApiResponse(array(getProductsResponseItem), response)
 
   return data
 }

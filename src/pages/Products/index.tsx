@@ -1,31 +1,24 @@
+import { getProducts } from 'api'
+import { CallMeBack } from 'commonComponents'
 import {
   BackButton,
-  ProductsGrid,
   Flexbox,
   Page,
+  ProductsGrid,
   QueryLoader,
   Text
 } from 'components'
-import { useScrollTop, useTabTitle } from 'hooks'
-import React from 'react'
-import { useTranslation } from 'hooks'
-import { CallMeBack } from 'commonComponents'
-import { useLocation } from 'react-router-dom'
-import { PRODUCTS } from 'constants/routes'
-import Search from './Search'
-import { useState } from 'react'
-import {
-  GetCollectionProductsResponseItem,
-  GetLabelProductsResponseItem,
-  GetProductsResponseItem
-} from 'models'
-import { getCollectionProducts, getLabelProducts, getProducts } from 'api'
-import { useQuery, UseQueryResult } from 'react-query'
-import Loader from './index.loader'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { PRODUCTS } from 'constants/routes'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import React, { useState } from 'react'
+import { useQuery } from 'react-query'
+import { useLocation } from 'react-router-dom'
+import Loader from './index.loader'
+import Search from './Search'
 
 const Products = () => {
-  const { state } = useLocation<{ collectionId?: string; labelId?: string }>()
+  const { state } = useLocation<LocationState>()
   const { t } = useTranslation('PRODUCTS')
 
   useTabTitle(t('title'))
@@ -33,32 +26,9 @@ const Products = () => {
 
   const [query, setQuery] = useState('')
 
-  let productsQuery: UseQueryResult<
-    (
-      | GetLabelProductsResponseItem
-      | GetProductsResponseItem
-      | GetCollectionProductsResponseItem
-    )[]
-  >
-  if (state?.labelId) {
-    const params = {
-      labelId: state.labelId
-    }
-
-    productsQuery = useQuery([PRODUCTS_TABLE, params], () =>
-      getLabelProducts(params)
-    )
-  } else if (state?.collectionId) {
-    const params = {
-      collectionId: state.collectionId
-    }
-
-    productsQuery = useQuery([PRODUCTS_TABLE, params], () =>
-      getCollectionProducts(params)
-    )
-  } else {
-    productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
-  }
+  const productsQuery = useQuery([PRODUCTS_TABLE, state], () =>
+    getProducts(state)
+  )
 
   const isFiltered = state?.labelId || state?.collectionId
 
@@ -116,6 +86,11 @@ const Products = () => {
       </QueryLoader>
     </Page>
   )
+}
+
+type LocationState = {
+  collectionId?: string
+  labelId?: string
 }
 
 export default Products

@@ -26,7 +26,7 @@ const ProductsTable = ({ products }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PRODUCTS')
 
-  const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
+  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
 
   const columns: OrderProductsTableColumns[] = [
     'product_image',
@@ -97,7 +97,7 @@ const shapeData = (
     return {
       product_image: (
         <Box maxHeight="9rem" maxWidth="9rem" minHeight="9rem" minWidth="9rem">
-          <Image src={basketImage} />
+          <Image size="BASKET" src={basketImage} />
         </Box>
       ),
       product_name: (
