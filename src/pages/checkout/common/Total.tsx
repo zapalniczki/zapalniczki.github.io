@@ -70,7 +70,7 @@ const Total = ({ customDelivery, customProducts }: Props) => {
 
               <td>
                 <Text marginLeft="auto" textAlign="right" type="body-2">
-                  {displayMoney(discount)}
+                  {displayMoney(discount, true)}
                 </Text>
               </td>
             </tr>

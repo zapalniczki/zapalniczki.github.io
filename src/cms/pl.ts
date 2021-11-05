@@ -344,7 +344,7 @@ const pl = {
       ERROR: {
         title: 'Nie udało się!',
         tryAgain: 'Spróbuj jeszcze raz',
-        codes: {
+        CODES: {
           23505: 'Podany adres e-mail jest już zarejestrowany',
           default: `W tym momencie nie udało się ustalić przyczyny. Zadzwoń na ${phoneNumer}, a my to dla Ciebie zrobimy.`
         }
@@ -353,7 +353,8 @@ const pl = {
 
     CALL_ME_BACK: {
       FORM: {
-        title: 'Jeżeli masz jakikolwiek problem lub nie ma Twojego produktu...',
+        title:
+          'Jeżeli masz jakiekolwiek pytanie lub nie ma Twojego produktu...',
         subtitle: `Zadzwoń na ${phoneNumer} albo podaj swój numer telefonu, a my odzwonimy.`,
         info: 'Naciskając przycisk "Potwierdzam i wysyłam" potwierdzasz, że akceptujesz Politykę prywatności.',
         FORM: {
