@@ -8,10 +8,14 @@ const App = () => {
   const { auth, setAuth } = useContext(authContext)
 
   useEffect(() => {
-    getAuth().onAuthStateChanged(async (user) => {
-      if (user) {
-        // setAuth(user)
-      } else {
+    const firebaseAuth = getAuth()
+    // eslint-disable-next-line no-console
+    console.log(firebaseAuth)
+
+    firebaseAuth.onAuthStateChanged(async (user) => {
+      // eslint-disable-next-line no-console
+      console.log(user)
+      if (!user) {
         setAuth(null)
       }
     })
