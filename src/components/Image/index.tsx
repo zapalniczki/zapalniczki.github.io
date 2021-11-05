@@ -19,7 +19,6 @@ const Image = ({ alt = '', size, src, ...props }: Props) => (
     loader={
       <Flexbox
         alignItems="center"
-        border="2px solid red"
         height="100%"
         justifyContent="center"
         width="100%"

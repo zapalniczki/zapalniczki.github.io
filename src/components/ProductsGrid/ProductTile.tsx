@@ -5,6 +5,7 @@ import { GetProductsResponseItem } from 'models'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
 import { generatePath, Link } from 'react-router-dom'
+import ReactVisibilitySensor from 'react-visibility-sensor'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
 import { displayMoney, findCorrectProductImageSize } from 'utils'
@@ -23,62 +24,70 @@ const ProductTile = ({ product }: Props) => {
   const tileImage = findCorrectProductImageSize(product.images, 'TILE')
   const backImage = findCorrectProductImageSize(product.images, 'TILE_REVERSE')
 
-  const [alfa, setAlfa] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <Container as={Link} max-height="30rem" to={viewProductPath}>
-      <ImageWrapper>
-        {!alfa && (
-          <Image
-            onPointerEnter={() => setAlfa(true)}
-            size="TILE"
-            src={tileImage}
-          />
-        )}
+    <ReactVisibilitySensor partialVisibility scrollCheck>
+      {({ isVisible }) => (
+        <Container as={Link} max-height="30rem" to={viewProductPath}>
+          <ImageWrapper>
+            {isVisible && (
+              <>
+                {!isHovered && (
+                  <Image
+                    onPointerEnter={() => setIsHovered(true)}
+                    size="TILE"
+                    src={tileImage}
+                  />
+                )}
 
-        {alfa && (
-          <Image
-            onPointerLeave={() => setAlfa(false)}
-            size="TILE"
-            src={backImage}
-          />
-        )}
-      </ImageWrapper>
-
-      <Flexbox
-        backgroundColor="background-color"
-        justifyContent="space-between"
-        overflow="hidden"
-        padding="m-size"
-        width="100%"
-      >
-        <Flexbox flexDirection="column" maxWidth="100%" width="100%">
-          <Text
-            fontWeight="bold"
-            maxWidth="100%"
-            type="subtitle-1"
-            width="100%"
-            wrap={false}
-          >
-            {product.name}
-          </Text>
-
-          <Flexbox justifyContent="space-between" width="100%">
-            <Text type="body-2">{displayMoney(product.price)}</Text>
-
-            {isInBasket && (
-              <Flexbox alignItems="center">
-                <FontAwesomeIcon icon="shopping-basket" size="1x" />
-
-                <Text marginLeft="xxs-size" type="body-2">
-                  {isBasket?.quantity}
-                </Text>
-              </Flexbox>
+                {isHovered && (
+                  <Image
+                    onPointerLeave={() => setIsHovered(false)}
+                    size="TILE"
+                    src={backImage}
+                  />
+                )}
+              </>
             )}
+          </ImageWrapper>
+
+          <Flexbox
+            backgroundColor="background-color"
+            justifyContent="space-between"
+            overflow="hidden"
+            padding="m-size"
+            width="100%"
+          >
+            <Flexbox flexDirection="column" maxWidth="100%" width="100%">
+              <Text
+                fontWeight="bold"
+                maxWidth="100%"
+                type="subtitle-1"
+                width="100%"
+                wrap={false}
+              >
+                {product.name}
+              </Text>
+
+              <Flexbox justifyContent="space-between" width="100%">
+                <Text type="body-2">{displayMoney(product.price)}</Text>
+
+                {isInBasket && (
+                  <Flexbox alignItems="center">
+                    <FontAwesomeIcon icon="shopping-basket" size="1x" />
+
+                    <Text marginLeft="xxs-size" type="body-2">
+                      {isBasket?.quantity}
+                    </Text>
+                  </Flexbox>
+                )}
+              </Flexbox>
+            </Flexbox>
           </Flexbox>
-        </Flexbox>
-      </Flexbox>
-    </Container>
+        </Container>
+      )}
+    </ReactVisibilitySensor>
   )
 }
 
