@@ -1,4 +1,3 @@
-// import { initializeApp } from '@firebase/app'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight'
@@ -35,7 +34,6 @@ import { faUniversity } from '@fortawesome/free-solid-svg-icons/faUniversity'
 import { faUserClock } from '@fortawesome/free-solid-svg-icons/faUserClock'
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 
-// import config from 'firebase/config'
 import i18n from 'i18n/config'
 import {
   AuthProvider,
