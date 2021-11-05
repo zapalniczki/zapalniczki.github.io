@@ -1,4 +1,4 @@
-import { basketToggleContext } from 'providers'
+import { togglesContext } from 'providers'
 import React, { useContext, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
@@ -8,7 +8,7 @@ import Checkout from './Checkout'
 import Header from './Header'
 
 const Basket = () => {
-  const { isOpen, setIsOpen } = useContext(basketToggleContext)
+  const { basketOpen, closeBasket } = useContext(togglesContext)
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Basket = () => {
         event.target instanceof HTMLElement &&
         !ref.current?.contains(event.target)
       ) {
-        setIsOpen(false)
+        closeBasket()
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -26,7 +26,7 @@ const Basket = () => {
   })
 
   return (
-    <Container isOpen={isOpen} ref={ref}>
+    <Container isOpen={basketOpen} ref={ref}>
       <Header />
 
       <BasketContent />
@@ -39,6 +39,7 @@ const Basket = () => {
 type ContainerProps = { isOpen: boolean }
 const Container = styled.aside<ContainerProps>`
   width: 60rem;
+  max-width: 100vw;
   height: 100vh;
   background: ${getColor('white')};
   position: fixed;

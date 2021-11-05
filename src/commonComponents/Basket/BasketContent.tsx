@@ -8,7 +8,7 @@ import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 
 const BasketContent = () => {
-  const { t } = useTranslation('COMMON')
+  const commonT = useTranslation('COMMON').withBase('BASKET')
   const { basket, isBasketEmpty } = useContext(checkoutContext)
   const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
 
@@ -23,7 +23,7 @@ const BasketContent = () => {
         >
           {isBasketEmpty && (
             <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
-              <Text type="caption">{t('basket.empty')}</Text>
+              <Text type="caption">{commonT('empty')}</Text>
             </Flexbox>
           )}
 

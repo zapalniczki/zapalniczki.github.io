@@ -10,21 +10,23 @@ import {
 import { displayMoney, calculateTotal } from 'utils'
 import React, { useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import { basketToggleContext } from 'providers'
+import { togglesContext } from 'providers'
 import { BasketItem, GetProductsResponseItem } from 'models'
 import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
 import { getProducts } from 'api'
 import { checkoutContext } from 'providers'
-import { useTranslation } from 'hooks'
+import { useBreakpoints, useTranslation } from 'hooks'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { useQuery } from 'react-query'
 
 const Checkout = () => {
-  const { t } = useTranslation('COMMON')
+  const commonT = useTranslation('COMMON').withBase('BASKET')
+  const isDesktop = useBreakpoints('desktop')
+
   const { pathname } = useLocation()
   const history = useHistory()
 
-  const { closeBasket } = useContext(basketToggleContext)
+  const { closeBasket } = useContext(togglesContext)
   const { basket, isBasketEmpty } = useContext(checkoutContext)
 
   const productsQuery = useQuery(PRODUCTS_TABLE, getProducts)
@@ -40,34 +42,41 @@ const Checkout = () => {
           <Flexbox background="white" flexDirection="column">
             <Separator marginX="s-size" marginY="0" width="auto" />
 
-            <Flexbox alignItems="center" padding="m-size" width="100%">
+            <Flexbox alignItems="center" padding="s-size" width="100%">
               <Flexbox flexDirection="column">
-                <Text type="caption">{t('basket.total')}</Text>
+                <Text type="caption">{commonT('total')}</Text>
 
                 <Heading level={5}>{displayMoney(productsTotal)}</Heading>
               </Flexbox>
 
-              <Button
-                label={t('basket.backToShop')}
+              <Flexbox
+                flexDirection={['unset', 'column', 'column', 'row']}
                 marginLeft="auto"
-                onClick={() => {
-                  closeBasket()
-                  history.push(PRODUCTS)
-                }}
-                size="medium"
-                variant="secondary"
-              />
+              >
+                <Button
+                  label={commonT('backToShop')}
+                  onClick={() => {
+                    closeBasket()
+                    history.push(PRODUCTS)
+                  }}
+                  size={isDesktop ? 'medium' : 'small'}
+                  variant="secondary"
+                  width="100%"
+                />
 
-              <Button
-                disabled={isBasketEmpty || pathname === '/checkout'}
-                label={t('basket.checkout')}
-                marginLeft="m-size"
-                onClick={() => {
-                  closeBasket()
-                  history.push(CHECKOUT_PRODUCTS)
-                }}
-                size="medium"
-              />
+                <Button
+                  disabled={isBasketEmpty || pathname === '/checkout'}
+                  label={commonT('checkout')}
+                  marginLeft={['unset', 'unset', 'unset', 'm-size']}
+                  marginTop={['unset', 'xxxs-size', 'xxxs-size', 'unset']}
+                  onClick={() => {
+                    closeBasket()
+                    history.push(CHECKOUT_PRODUCTS)
+                  }}
+                  size={isDesktop ? 'medium' : 'small'}
+                  width="100%"
+                />
+              </Flexbox>
             </Flexbox>
           </Flexbox>
         )

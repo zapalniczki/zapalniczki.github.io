@@ -1,26 +1,39 @@
-import { Box, Flexbox, Link } from 'components'
-import React from 'react'
-import { useBreakpoints, useTranslation } from 'hooks'
-import { matchPath, useLocation } from 'react-router-dom'
-import styled from 'styled-components'
-import getColor from 'styles/getColor'
+// eslint-disable-next-line no-restricted-imports
+import { StyledLink } from 'commonComponents/Navigation/MainMenu'
+import { Flexbox, Box } from 'components'
+import { useTranslation } from 'hooks'
 import { routes } from 'pages'
-import getSpace from 'styles/getSpace'
+import { togglesContext } from 'providers'
+import React, { useContext } from 'react'
+import { matchPath, useLocation } from 'react-router'
+import Header from './Header'
 
-const MainMenu = () => {
+const HamburgerMenu = () => {
   const commonT = useTranslation('COMMON').withBase('LINKS')
+  const { hamburgerOpen } = useContext(togglesContext)
+
   const { pathname } = useLocation()
 
-  const isDesktop = useBreakpoints('desktop')
-
-  if (!isDesktop) {
+  if (!hamburgerOpen) {
     return null
   }
 
   return (
-    <Flexbox as="ul" flexGrow={1} marginX="m-size" marginY="0" paddingLeft={0}>
+    <Flexbox
+      backgroundColor="white"
+      flexDirection="column"
+      height="100vh"
+      position="fixed"
+      right="0"
+      top="0"
+      width="100vw"
+      zIndex={70}
+    >
+      <Header />
+
       {routes
         .filter((route) => route.order)
+        .filter((route) => route.translationKey)
         .sort((prev, next) =>
           (prev?.order || 1) < (next?.order || 1) ? -1 : 1
         )
@@ -48,13 +61,4 @@ const MainMenu = () => {
   )
 }
 
-export const StyledLink = styled(Link)`
-  padding: ${(props) =>
-    `${getSpace('xs-size')(props)} ${getSpace('m-size')(props)}`};
-
-  &:hover {
-    background: ${getColor('background-color-01')};
-  }
-`
-
-export default MainMenu
+export default HamburgerMenu

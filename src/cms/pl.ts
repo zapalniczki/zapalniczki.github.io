@@ -151,11 +151,11 @@ const pl = {
       REJECTED: 'Co oznacza, że zamówienie nie będzie realizowane'
     },
 
-    basket: {
+    BASKET: {
       close: 'Zamknij',
       clear: 'Wyczyść',
       empty: 'Twój koszyk jest pusty',
-      title: 'Mój koszyk ',
+      title: 'Koszyk ',
       total: 'Produkty',
       checkout: 'Złóż zamówienie',
       backToShop: 'Wróć do sklepu',
@@ -168,6 +168,10 @@ const pl = {
         continue: 'Wróć do sklepu',
         signIn: 'Zaloguj się'
       }
+    },
+
+    HAMBURGER_MENU: {
+      title: 'Menu'
     },
 
     loading: 'Ładowanie',

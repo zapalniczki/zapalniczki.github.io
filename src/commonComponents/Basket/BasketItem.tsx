@@ -2,10 +2,11 @@ import { Box, Flexbox, ImageLoader, Link, Text, Tile } from 'components'
 import { VIEW_PRODUCT } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { BasketItem, GetProductsResponseItem } from 'models'
-import { basketToggleContext, checkoutContext } from 'providers'
+import { togglesContext, checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { generatePath } from 'react-router-dom'
 import styled from 'styled-components'
+import breakpoints from 'styles/breakpoints'
 import getSpace from 'styles/getSpace'
 import { displayMoney, findCorrectProductImageSize } from 'utils'
 import SimpleButton from './SimpleButton'
@@ -17,10 +18,10 @@ type Props = {
 }
 
 const BasketItem = ({ originalId, product, quantity }: Props) => {
-  const { closeBasket } = useContext(basketToggleContext)
-  const { setCheckout } = useContext(checkoutContext)
+  const commonT = useTranslation('COMMON').withBase('BASKET')
 
-  const t = useTranslation('COMMON').withBase('basket')
+  const { closeBasket } = useContext(togglesContext)
+  const { setCheckout } = useContext(checkoutContext)
 
   if (!product) {
     setCheckout((prev) => ({
@@ -74,18 +75,18 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
         border="1px solid"
         borderColor="border-color"
         gridArea="picture"
-        height="9rem"
+        height={['unset', '3rem', '3rem', '9rem']}
         position="relative"
-        width="9rem"
+        width={['unset', '3rem', '3rem', '9rem']}
       >
         <ImageLoader alt={name} src={basketImage} />
       </Box>
 
-      <Flexbox flexDirection="column" gridArea="name">
+      <Flexbox flexDirection="column" gridArea="name" overflowX="hidden">
         <Link label={name} onClick={closeBasket} to={productPath} />
       </Flexbox>
 
-      <Flexbox alignItems="center">
+      <Flexbox alignItems="center" gridArea="controls">
         <SimpleButton
           disabled={quantity === 1}
           icon="minus"
@@ -121,7 +122,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
         {quantity > 1 && (
           <Text type="caption">
             {/* eslint-disable-next-line react/jsx-newline */}
-            {displayMoney(price)} {t('each')}
+            {displayMoney(price)} {commonT('each')}
           </Text>
         )}
       </Flexbox>
@@ -133,17 +134,29 @@ const Container = styled(Tile)`
   padding: ${getSpace('s-size')};
   min-height: 12rem;
   align-items: center;
+  overflow-x: auto;
   /* @include bezier-transition(); */
   /* animation: slide-up 0.5s ease; */
   width: 100%;
   margin-bottom: ${getSpace('m-size')};
   display: grid;
-  grid-template-columns: 9rem auto max-content;
-  grid-template-rows: repeat(2, 4.6rem);
-  grid-gap: 0.5rem 2rem;
+  grid-template-columns: 3rem auto max-content;
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 0.5rem;
   grid-template-areas:
-    'picture name button-remove'
-    'picture alba button-remove';
+    'picture name name'
+    'controls controls button-remove';
+
+  ${breakpoints('desktop')`
+      grid-gap: 0.5rem 2rem;
+      grid-template-columns: 9rem auto max-content;
+      grid-template-areas:
+        'picture name button-remove'
+        'picture controls button-remove';
+      grid-template-rows: repeat(2, 4.6rem);
+
+
+    `}
 `
 
 export default BasketItem

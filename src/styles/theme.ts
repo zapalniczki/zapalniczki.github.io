@@ -38,6 +38,7 @@ const zIndices = {
   toast: 100,
   modal: 80,
   basket: 60,
+  hamburgerMenu: 70,
   navigation: 55,
   filter: 40,
   search: 30,

@@ -2,7 +2,7 @@ import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Badge, Button } from 'components'
-import { basketToggleContext } from 'providers'
+import { togglesContext } from 'providers'
 import {
   CHECKOUT_PAYMENT,
   CHECKOUT_DELIVERY,
@@ -19,12 +19,12 @@ const BasketToggle = () => {
 
   const { pathname } = useLocation()
   const { productCount } = useContext(checkoutContext)
-  const { setIsOpen } = useContext(basketToggleContext)
+  const { setBasketOpen } = useContext(togglesContext)
 
   return (
     <Button
       disabled={basketDisabledpathnames.includes(pathname)}
-      onClick={() => setIsOpen((prev) => !prev)}
+      onClick={() => setBasketOpen((prev) => !prev)}
       padding="s-size"
       title={commonT('basketToggleLabel')}
       type="button"

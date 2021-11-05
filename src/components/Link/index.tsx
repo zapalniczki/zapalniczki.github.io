@@ -30,6 +30,7 @@ const Link = ({
         fontWeight={icon || active ? 'bold' : 'unset'}
         marginLeft={icon ? 's-size' : 0}
         type="subtitle-2"
+        wrap={false}
       >
         {label}
       </Text>

@@ -7,11 +7,11 @@ import getColor from 'styles/getColor'
 import { useTranslation } from 'hooks'
 import getSpace from 'styles/getSpace'
 import NavigationMenu from './NavigationMenu'
-import { basketToggleContext } from 'providers'
+import { togglesContext } from 'providers'
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
-  const { isOpen } = useContext(basketToggleContext)
+  const { basketOpen } = useContext(togglesContext)
 
   const { t: commonT } = useTranslation('COMMON')
 
@@ -30,10 +30,10 @@ const Navigation = () => {
   }, [])
 
   useEffect(() => {
-    if (isOpen) {
+    if (basketOpen) {
       setIsExpanded(true)
     }
-  }, [isOpen])
+  }, [basketOpen])
 
   return (
     <Container isExpanded={isExpanded}>

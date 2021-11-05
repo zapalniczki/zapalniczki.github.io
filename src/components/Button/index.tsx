@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Text, Box } from 'components'
 import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { SpaceProps, space } from 'styled-system'
+import { SpaceProps, space, WidthProps, width } from 'styled-system'
 import getColor from 'styles/getColor'
 
 type Props = {
@@ -16,7 +16,8 @@ type Props = {
   title?: string
   type?: 'button' | 'submit' | 'reset'
   variant?: Variant
-} & SpaceProps
+} & SpaceProps &
+  WidthProps
 
 const Button = ({
   children,
@@ -140,6 +141,7 @@ const Container = styled.button<ContainerProps>`
     `}
 
   ${space}
+  ${width}
 `
 
 type Size = 'large' | 'medium' | 'small'

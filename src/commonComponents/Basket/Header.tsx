@@ -2,19 +2,19 @@ import React, { useContext } from 'react'
 import { Flexbox, Button, Text, Separator } from 'components'
 import { useTranslation } from 'hooks'
 
-import { basketToggleContext } from 'providers'
+import { togglesContext } from 'providers'
 import { checkoutContext } from 'providers'
 
 const Header = () => {
-  const { t } = useTranslation('COMMON')
-  const { closeBasket } = useContext(basketToggleContext)
+  const commonT = useTranslation('COMMON').withBase('BASKET')
+  const { closeBasket } = useContext(togglesContext)
   const { clearBasket, productCount } = useContext(checkoutContext)
 
-  let countName = 'basket.products'
+  let countName = 'products'
   if (productCount > 4) {
-    countName = 'basket.products_multiple'
+    countName = 'products_multiple'
   } else if (productCount > 1) {
-    countName = 'basket.products_plural'
+    countName = 'products_plural'
   }
 
   return (
@@ -25,22 +25,30 @@ const Header = () => {
       width="100%"
       zIndex={60}
     >
-      <Flexbox alignItems="center" paddingX="m-size" paddingY="s-size">
-        <Text marginRight="auto" type="subtitle-1">
-          {t('basket.title')}
+      <Flexbox alignItems="center" padding="s-size">
+        <Flexbox
+          alignItems={['unset', 'flex-start', 'flex-start', 'center']}
+          flexDirection={['unset', 'column', 'column', 'row']}
+          marginRight="auto"
+        >
+          <Text type="subtitle-1">{commonT('title')}</Text>
 
           {!!productCount && (
-            <Text marginLeft="s-size" span type="caption">
-              {t(countName, { count: productCount })}
+            <Text
+              marginLeft={['unset', 'unset', 'unset', 's-size']}
+              span
+              type="caption"
+            >
+              {commonT(countName, { count: productCount })}
             </Text>
           )}
-        </Text>
+        </Flexbox>
 
         {!!productCount && (
           <Button
-            label={t('basket.clear')}
+            label={commonT('clear')}
             marginRight="s-size"
-            onClick={() => clearBasket()}
+            onClick={clearBasket}
             size="small"
             type="button"
             variant="ternary"

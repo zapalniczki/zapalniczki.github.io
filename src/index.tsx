@@ -39,7 +39,7 @@ import config from 'firebase/config'
 import i18n from 'i18n/config'
 import {
   AuthProvider,
-  BasketToggleProvider,
+  TogglesProvider,
   CheckoutProvider,
   LoaderProvider,
   ToastProvider
@@ -116,7 +116,7 @@ render(
         <ThemeProvider theme={theme}>
           <I18nextProvider i18n={i18n}>
             <CheckoutProvider>
-              <BasketToggleProvider>
+              <TogglesProvider>
                 <LoaderProvider>
                   <ToastProvider>
                     <GlobalStyle />
@@ -124,7 +124,7 @@ render(
                     <App />
                   </ToastProvider>
                 </LoaderProvider>
-              </BasketToggleProvider>
+              </TogglesProvider>
             </CheckoutProvider>
           </I18nextProvider>
         </ThemeProvider>
