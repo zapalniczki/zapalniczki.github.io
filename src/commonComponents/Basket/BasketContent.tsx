@@ -1,4 +1,4 @@
-import { getProducts } from 'api'
+import { getProductsById } from 'api'
 import { BasketItem } from 'commonComponents'
 import { Flexbox, QueryLoader, Text } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
@@ -10,12 +10,17 @@ import { useQuery } from 'react-query'
 const BasketContent = () => {
   const commonT = useTranslation('COMMON').withBase('BASKET')
   const { basket, isBasketEmpty } = useContext(checkoutContext)
-  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
+
+  const ids = basket.map((e) => e.id)
+  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
+    getProductsById(ids)
+  )
 
   return (
     <QueryLoader query={productsQuery}>
       {(products) => (
         <Flexbox
+          border="5px solid blue"
           flexDirection="column"
           flexGrow={1}
           overflowY="auto"
@@ -28,7 +33,7 @@ const BasketContent = () => {
           )}
 
           {basket.map((basketItem) => {
-            const thisProduct = products.find(
+            const productDetails = products.find(
               (product) => product.id === basketItem.id
             )
 
@@ -36,7 +41,7 @@ const BasketContent = () => {
               <BasketItem
                 key={basketItem.id}
                 originalId={basketItem.id}
-                product={thisProduct}
+                product={productDetails}
                 quantity={basketItem.quantity}
               />
             )

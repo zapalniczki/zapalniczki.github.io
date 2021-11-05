@@ -1,4 +1,4 @@
-import { getProducts } from 'api'
+import { getProductsById } from 'api'
 import {
   Box,
   Image,
@@ -26,7 +26,10 @@ const ProductsTable = ({ products }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PRODUCTS')
 
-  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
+  const ids = products.map((e) => e.product_id)
+  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
+    getProductsById(ids)
+  )
 
   const columns: OrderProductsTableColumns[] = [
     'product_image',

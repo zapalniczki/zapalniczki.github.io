@@ -1,12 +1,19 @@
-import { mold, product } from '../db'
-import { TypeOf } from 'zod'
+import { image, mold, product } from '../db'
+import { array, TypeOf } from 'zod'
 
 const getProductsByIdResponseItem = product
   .pick({
+    id: true,
     price: true,
-    id: true
+    name: true,
+    collection_id: true,
+    label_id: true,
+    icon_id: true,
+    visible: true,
+    bestseller: true
   })
   .extend({
+    images: array(image),
     mold: mold.pick({
       status: true
     })

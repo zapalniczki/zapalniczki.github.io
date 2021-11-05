@@ -1,20 +1,23 @@
-import { Flexbox, Page, QueryLoader, Text } from 'components'
-import { useScrollTop, useTabTitle } from 'hooks'
-import React, { useContext } from 'react'
-import { useTranslation } from 'hooks'
+import { getProductsById } from 'api'
 import { BasketItem } from 'commonComponents'
+import { Flexbox, Page, QueryLoader, Text } from 'components'
+import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
+import React, { useContext } from 'react'
+import { useQuery } from 'react-query'
 import { Actions, StepTracker, Total, Wrapper } from '../common'
 import StepTitle from '../common/StepTitle'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
-import { getProducts } from 'api'
-import { useQuery } from 'react-query'
 
 const CheckoutProducts = () => {
   const { t } = useTranslation('CHECKOUT_PRODUCTS')
 
   const { basket, isBasketEmpty } = useContext(checkoutContext)
-  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
+
+  const ids = basket.map((e) => e.id)
+  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
+    getProductsById(ids)
+  )
 
   useTabTitle(t('title'))
   useScrollTop()

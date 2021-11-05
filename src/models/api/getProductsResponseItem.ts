@@ -1,4 +1,4 @@
-import { image, product } from '../db'
+import { image, mold, product } from '../db'
 import { TypeOf, array } from 'zod'
 
 const getProductsResponseItem = product
@@ -13,7 +13,10 @@ const getProductsResponseItem = product
     bestseller: true
   })
   .extend({
-    images: array(image)
+    images: array(image),
+    mold: mold.pick({
+      status: true
+    })
   })
 
 export type GetProductsResponseItem = TypeOf<typeof getProductsResponseItem>

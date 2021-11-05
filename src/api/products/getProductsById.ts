@@ -1,4 +1,4 @@
-import { MOLDS_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
+import { IMAGES_TABLE, MOLDS_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import {
   getProductsByIdResponseItem,
   GetProductsByIdResponseItem,
@@ -15,11 +15,21 @@ export const getProductsById = async (payload: Payload) => {
     .from<GetProductsByIdResponseItem>(PRODUCTS_TABLE)
     .select(
       `
-        id,
-        price,
-        mold: ${MOLDS_TABLE} (
-          status
-        )
+      id,
+      price,
+      name,
+      visible,
+      bestseller,
+      featured,
+      collection_id,
+      label_id,
+      icon_id,
+      ${IMAGES_TABLE} (
+        *
+      ),
+      mold: ${MOLDS_TABLE} (
+        status
+      )
       `
     )
     .in('id', payload)

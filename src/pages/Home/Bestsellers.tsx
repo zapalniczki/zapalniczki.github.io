@@ -8,9 +8,7 @@ import { useQuery } from 'react-query'
 const Bestsellers = () => {
   const { t } = useTranslation('HOME')
 
-  const params = {
-    bestseller: true
-  }
+  const params = { bestseller: true }
   const bestsellersQuery = useQuery([PRODUCTS_TABLE, params], () =>
     getProducts(params)
   )

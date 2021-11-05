@@ -1,3 +1,4 @@
+import { getProductsById } from 'api'
 import {
   Button,
   Flexbox,
@@ -6,18 +7,15 @@ import {
   Separator,
   Text
 } from 'components'
-
-import { displayMoney, calculateTotal } from 'utils'
-import React, { useContext } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import { togglesContext } from 'providers'
-import { BasketItem, GetProductsResponseItem } from 'models'
-import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
-import { getProducts } from 'api'
-import { checkoutContext } from 'providers'
-import { useBreakpoints, useTranslation } from 'hooks'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
+import { useBreakpoints, useTranslation } from 'hooks'
+import { BasketItem, GetProductsResponseItem } from 'models'
+import { checkoutContext, togglesContext } from 'providers'
+import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
+import { useHistory, useLocation } from 'react-router-dom'
+import { calculateTotal, displayMoney } from 'utils'
 
 const Checkout = () => {
   const commonT = useTranslation('COMMON').withBase('BASKET')
@@ -29,7 +27,10 @@ const Checkout = () => {
   const { closeBasket } = useContext(togglesContext)
   const { basket, isBasketEmpty } = useContext(checkoutContext)
 
-  const productsQuery = useQuery(PRODUCTS_TABLE, () => getProducts())
+  const ids = basket.map((e) => e.id)
+  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
+    getProductsById(ids)
+  )
 
   return (
     <QueryLoader query={productsQuery}>

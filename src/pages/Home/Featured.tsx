@@ -6,11 +6,9 @@ import React from 'react'
 import { useQuery } from 'react-query'
 
 const Featured = () => {
-  const { t: commonT } = useTranslation('HOME')
+  const commonT = useTranslation('HOME').withBase('FEATURED')
 
-  const params = {
-    featured: true
-  }
+  const params = { featured: true }
   const featuredQuery = useQuery([PRODUCTS_TABLE, params], () =>
     getProducts(params)
   )
@@ -20,7 +18,7 @@ const Featured = () => {
       loaderCount={3}
       marginTop="xxl-size"
       query={featuredQuery}
-      title={commonT('FEATURED.title')}
+      title={commonT('title')}
     />
   )
 }

@@ -1,4 +1,4 @@
-import { IMAGES_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
+import { IMAGES_TABLE, MOLDS_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
 import {
   getProductsResponseItem,
   GetProductsResponseItem,
@@ -30,6 +30,9 @@ export const getOtherIcons = async (params: Params) => {
       icon_id,
       ${IMAGES_TABLE} (
         *
+      ),
+      mold: ${MOLDS_TABLE} (
+        status
       )
     `
     )
