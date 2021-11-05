@@ -106,7 +106,12 @@ export const queryClient = new QueryClient({
   }
 })
 
-initializeApp(config)
+const alfa = initializeApp(config)
+
+// eslint-disable-next-line no-console
+console.log(config)
+// eslint-disable-next-line no-console
+console.log(alfa)
 
 const root = document.getElementById('app')
 render(
