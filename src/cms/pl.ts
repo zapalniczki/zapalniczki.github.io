@@ -430,7 +430,7 @@ const pl = {
     PAYMENT_INFO: {
       short:
         'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem, w której znajdziesz informacje potrzebne do płatności. Po zaksięgowaniu środków na koncie, poinformujemy Cię o tym i przystąpimy do realizacji zamówienia.',
-      long: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Skontaktujemy się z Tobą następnego dnia roboczego i potwierdziny czas realizacji zamówienia.'
+      long: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Skontaktujemy się z Tobą w następnym dniu roboczym i potwierdzimy czas realizacji zamówienia.'
     },
     actions: {
       backToHome: 'Wróć na stronę główną',
@@ -446,7 +446,7 @@ const pl = {
     productsSingle: '{{count}} produkt',
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',
-    searchPlaceholder: 'Wyszukaj',
+    searchPlaceholder: 'Wyszukaj produkt',
     CALLBACK: {
       title: 'Nie widzisz potrzebnego produktu?',
       subtitle: 'Wpisz swój numer, a my odzwonimy.'

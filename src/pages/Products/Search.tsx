@@ -5,7 +5,7 @@ import React from 'react'
 import getColor from 'styles/getColor'
 
 type Props = {
-  onChange: (value: string) => void,
+  onChange: (value: string) => void
   value: string
 }
 
@@ -13,7 +13,7 @@ const Search = ({ onChange, value }: Props) => {
   const { t } = useTranslation('PRODUCTS')
 
   return (
-    <Flexbox width="25rem">
+    <Flexbox width="35rem">
       <StyledInput
         onChange={(e) => onChange(e.target.value)}
         placeholder={t('searchPlaceholder')}
