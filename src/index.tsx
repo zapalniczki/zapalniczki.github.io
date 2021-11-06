@@ -33,6 +33,7 @@ import { faTruckLoading } from '@fortawesome/free-solid-svg-icons/faTruckLoading
 import { faUniversity } from '@fortawesome/free-solid-svg-icons/faUniversity'
 import { faUserClock } from '@fortawesome/free-solid-svg-icons/faUserClock'
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
+import { faFileInvoice } from '@fortawesome/free-solid-svg-icons/faFileInvoice'
 
 import i18n from 'i18n/config'
 import {
@@ -92,7 +93,8 @@ library.add(
   faPencilAlt,
   faReceipt,
   faTrashAlt,
-  faBars
+  faBars,
+  faFileInvoice
 )
 
 export const queryClient = new QueryClient({
@@ -103,11 +105,6 @@ export const queryClient = new QueryClient({
     }
   }
 })
-
-// eslint-disable-next-line no-console
-// console.log(config)
-// eslint-disable-next-line no-console
-// console.log(alfa)
 
 const root = document.getElementById('app')
 render(

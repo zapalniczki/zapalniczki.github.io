@@ -41,6 +41,7 @@ const pl = {
     productsSingle: '{{count}} produkt',
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',
+    preloaderInfo: 'Ładowanie strony',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',

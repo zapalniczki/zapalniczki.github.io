@@ -14,7 +14,10 @@ const Form = () => {
 
   return (
     <ViewWrapper>
-      <TileHeading icon="receipt" title={t(`items.DOWNLOAD_INVOICE.title`)} />
+      <TileHeading
+        icon="file-invoice"
+        title={t(`items.DOWNLOAD_INVOICE.title`)}
+      />
 
       <Flexbox alignItems="flex-end" justifyContent="flex-end">
         <FieldWrapper>
