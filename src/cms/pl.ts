@@ -37,7 +37,7 @@ const pl = {
     fullCompanyName,
     basketToggleLabel: 'Koszyk',
     soon: 'Wkrótce',
-    emptyState: 'Nic nie znaleziono',
+    productsEmptyState: 'Nie znaleziono żadnych produktów',
     productsSingle: '{{count}} produkt',
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',

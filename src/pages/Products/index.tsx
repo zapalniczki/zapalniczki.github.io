@@ -53,6 +53,7 @@ const Products = () => {
       )}
 
       <ProductsGrid
+        hideWhenEmpty={false}
         marginTop="l-size"
         query={productsQuery}
         sectionHeadChildren={

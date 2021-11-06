@@ -25,7 +25,7 @@ const SectionHead = ({
 }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
-  if (!title && !link && !count && !children) {
+  if (!title && !link && count === undefined && !children) {
     return null
   }
 
@@ -34,7 +34,9 @@ const SectionHead = ({
       <Flexbox
         alignItems="center"
         flexDirection={
-          count && !link && !title && !children ? 'row-reverse' : 'row'
+          count !== undefined && !link && !title && !children
+            ? 'row-reverse'
+            : 'row'
         }
         justifyContent="space-between"
       >
@@ -42,8 +44,8 @@ const SectionHead = ({
 
         {title && <Heading level={5}>{title}</Heading>}
 
-        {count && (
-          <Text fontWeight="bold" marginRight="m-size" type="subtitle-1">
+        {count !== undefined && (
+          <Text fontWeight="bold" type="subtitle-1">
             {count === 1
               ? commonT('productsSingle', { count })
               : count && count < 5

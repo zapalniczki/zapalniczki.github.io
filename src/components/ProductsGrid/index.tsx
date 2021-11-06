@@ -1,4 +1,11 @@
-import { Flexbox, Grid, Text, QueryLoader, SectionHead } from 'components'
+import {
+  Flexbox,
+  Grid,
+  Text,
+  QueryLoader,
+  SectionHead,
+  ResultIcon
+} from 'components'
 import { LocationDescriptor } from 'history'
 import React, { ReactNode } from 'react'
 import { UseQueryResult } from 'react-query'
@@ -9,6 +16,7 @@ import { GetProductsResponseItem } from 'models'
 import { useTranslation } from 'hooks'
 
 type Props = {
+  hideWhenEmpty?: boolean
   link?: {
     label: string
     to: LocationDescriptor
@@ -21,6 +29,7 @@ type Props = {
 } & SpaceProps
 
 const ProductsGrid = ({
+  hideWhenEmpty = true,
   link,
   loaderCount,
   query,
@@ -45,7 +54,7 @@ const ProductsGrid = ({
       {(products) => {
         const count = products.length
 
-        if (!count) {
+        if (hideWhenEmpty && !count) {
           return null
         }
 
@@ -62,11 +71,16 @@ const ProductsGrid = ({
             {!count && (
               <Flexbox
                 alignItems="center"
-                height="200px"
+                flexDirection="column"
+                height="25rem"
                 justifyContent="center"
                 width="100%"
               >
-                <Text type="body-1">{commonT('emptyState')}</Text>
+                <ResultIcon size="3x" variant="INFO" />
+
+                <Text marginTop="m-size" type="body-1">
+                  {commonT('productsEmptyState')}
+                </Text>
               </Flexbox>
             )}
 

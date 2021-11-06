@@ -34,6 +34,7 @@ import { faUniversity } from '@fortawesome/free-solid-svg-icons/faUniversity'
 import { faUserClock } from '@fortawesome/free-solid-svg-icons/faUserClock'
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 import { faFileInvoice } from '@fortawesome/free-solid-svg-icons/faFileInvoice'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle'
 
 import i18n from 'i18n/config'
 import {
@@ -94,7 +95,8 @@ library.add(
   faReceipt,
   faTrashAlt,
   faBars,
-  faFileInvoice
+  faFileInvoice,
+  faInfoCircle
 )
 
 export const queryClient = new QueryClient({
