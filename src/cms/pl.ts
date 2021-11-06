@@ -21,6 +21,7 @@ const pl = {
       contact: 'Kontakt',
       orders: 'Zamówienia',
       documents: 'Dokumenty',
+      christmas2021: 'Oferta Świąteczna',
 
       adminOrders: 'Zamówienia',
       adminNewsletterUsers: 'Użytkownicy newslettera',
@@ -821,6 +822,20 @@ const pl = {
           voucher_value: 'Wartość'
         }
       }
+    }
+  },
+
+  CHRISTMAS_2021: {
+    title: 'Oferta Świąteczna 2021',
+    HALF_BANNER: {
+      title: 'Nie zwlekaj ze swoim zamówieniem',
+      info: 'Oferta obowiązuje do wyczerpania zapasów'
+    },
+    CHRISTMAS_PRODUCTS: {
+      title: 'Boże Narodzenie'
+    },
+    NEW_YEAR_PRODUCTS: {
+      title: 'Nowy Rok'
     }
   }
 }

@@ -27,7 +27,7 @@ const Link = ({
 
     {label && (
       <Text
-        fontWeight={icon || active ? 'bold' : 'unset'}
+        fontWeight={active ? 'bold' : 'unset'}
         marginLeft={icon ? 's-size' : 0}
         type="subtitle-2"
         wrap={false}

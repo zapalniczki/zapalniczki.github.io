@@ -1,22 +1,25 @@
 import React, { ReactNode } from 'react'
 import { Box, Flexbox, Text } from 'components'
 import { SpaceProps } from 'styled-system'
+import { Color } from 'styles/theme'
 
 export type BasicProps = {
-  background?: ReactNode,
+  background?: ReactNode
+  backgroundColor?: Color
   description?: string
   title?: ReactNode
 } & SpaceProps
 
 type Props = BasicProps & {
-  children?: ReactNode,
-  horizonal?: boolean,
-  medium?: boolean,
+  children?: ReactNode
+  horizonal?: boolean
+  medium?: boolean
   small?: boolean
 }
 
 const Banner = ({
   background,
+  backgroundColor,
   children,
   description,
   horizonal,
@@ -28,7 +31,7 @@ const Banner = ({
   <Flexbox
     {...props}
     alignItems="center"
-    backgroundColor="background-color-01"
+    backgroundColor={backgroundColor ?? 'background-color-01'}
     height={small ? '20rem' : medium ? '30rem' : '40rem'}
     justifyContent="center"
     position="relative"

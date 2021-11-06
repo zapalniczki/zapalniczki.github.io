@@ -29,6 +29,7 @@ const OtherPlaces = ({ collectionId, labelId }: Props) => {
         },
         label: t('otherIcons.linkLabel')
       }}
+      loaderCount={3}
       marginTop="xxl-size"
       query={otherPlacesQuery}
       title={t('otherPlaces.title')}

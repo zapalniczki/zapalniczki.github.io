@@ -1,3 +1,4 @@
+import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { Box, Flexbox, NavigationLink } from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
 import { routes } from 'pages'
@@ -35,6 +36,7 @@ const MainMenu = () => {
             <Box as="li" display="inline-block" key={route.path}>
               <NavigationLink
                 active={isActive}
+                icon={route.icon as IconName}
                 label={commonT(route.translationKey)}
                 to={route.path}
               />

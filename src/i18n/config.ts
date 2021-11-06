@@ -30,7 +30,8 @@ export const config: InitOptions = {
       ORDER: pl.ORDER,
       PAGE_NOT_FOUND: pl.PAGE_NOT_FOUND,
       PRODUCTS: pl.PRODUCTS,
-      VIEW_PRODUCT: pl.VIEW_PRODUCT
+      VIEW_PRODUCT: pl.VIEW_PRODUCT,
+      CHRISTMAS_2021: pl.CHRISTMAS_2021
     }
   }
 }

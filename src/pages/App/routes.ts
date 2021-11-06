@@ -20,7 +20,8 @@ import {
   HOW_TO_CREATE_ORDER,
   PRODUCTS,
   VIEW_PRODUCT,
-  ORDERS
+  ORDERS,
+  CHRISTMAS_2021
 } from 'constants/routes'
 
 import React from 'react'
@@ -74,25 +75,32 @@ const routes = [
     component: React.lazy(() => import('pages/Contact')),
     translationKey: 'contact',
     path: CONTACT,
-    order: 5
+    order: 6
   },
   {
     component: React.lazy(() => import('pages/DeliveryAndPayments')),
     translationKey: 'deliveryAndPayments',
     path: DELIVERY_AND_PAYMENTS,
     exact: true,
-    order: 4
+    order: 5
   },
   {
     component: React.lazy(() => import('pages/HowToCreateOrder')),
     translationKey: 'howToCreateOrder',
     path: HOW_TO_CREATE_ORDER,
-    order: 3
+    order: 4
   },
   {
     component: React.lazy(() => import('pages/Documents')),
     translationKey: 'documents',
     path: DOCUMENTS
+  },
+  {
+    component: React.lazy(() => import('pages/Christmas2021')),
+    translationKey: 'christmas2021',
+    path: CHRISTMAS_2021,
+    order: 3,
+    icon: 'gift'
   },
 
   {
