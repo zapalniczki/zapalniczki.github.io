@@ -6,6 +6,7 @@ import { useTranslation } from 'hooks'
 import Bestsellers from './Bestsellers'
 import { CallMeBack, Newsletter } from 'commonComponents'
 import Featured from './Featured'
+import Christmas2021 from './Christmas2021'
 
 const Home = () => {
   const { t } = useTranslation('HOME')
@@ -16,6 +17,8 @@ const Home = () => {
   return (
     <Page>
       <Carousel>{['YOUR_PLACE']}</Carousel>
+
+      <Christmas2021 />
 
       <Featured />
 

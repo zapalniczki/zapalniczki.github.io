@@ -8,7 +8,9 @@ import { useQuery } from 'react-query'
 const ChristmasProducts = () => {
   const t = useTranslation('CHRISTMAS_2021').withBase('CHRISTMAS_PRODUCTS')
 
-  const params = { newYear: false }
+  const params = {
+    collectionId: '3eb90808-0d57-4173-ac0a-2fb8bc66c049'
+  }
   const christmasProductsQuery = useQuery([PRODUCTS_TABLE, params], () =>
     getChristmasProducts(params)
   )

@@ -398,6 +398,11 @@ const pl = {
     bestsellers: {
       title: 'Bestsellery',
       linkLabel: 'Zobacz wszystkie'
+    },
+
+    CHRISTMAS_2021: {
+      title: 'Oferta świąteczna',
+      linkLabel: 'Zobacz wszystkie'
     }
   },
 

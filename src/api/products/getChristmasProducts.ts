@@ -1,16 +1,24 @@
 import { IMAGES_TABLE, MOLDS_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
-import { getProductsResponseItem, GetProductsResponseItem } from 'models'
+import {
+  Collection,
+  getProductsResponseItem,
+  GetProductsResponseItem
+} from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
 type Params = {
+  collectionId: Collection['id']
   newYear?: boolean
+  short?: boolean
 }
 
 export const getChristmasProducts = async (params: Params) => {
   const from = params.newYear ? 6 : 0
   const to = params.newYear ? 1000 : 6
+
+  const limit = params.short ? 3 : 1000
 
   const response = await supabase
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
@@ -33,8 +41,9 @@ export const getChristmasProducts = async (params: Params) => {
       )
     `
     )
-    .eq('collection_id', '3eb90808-0d57-4173-ac0a-2fb8bc66c049')
+    .eq('collection_id', params.collectionId)
     .range(from, to)
+    .limit(limit)
 
   const data = parseApiResponse(array(getProductsResponseItem), response)
 
