@@ -4,17 +4,39 @@ import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import getSpace from 'styles/getSpace'
 import breakpoints from 'styles/breakpoints'
+import { matchPath, useLocation } from 'react-router-dom'
+import Snowfall from 'react-snowfall'
 
 type Props = {
   children: ReactNode
   columns?: boolean
 }
 
-const Page = ({ children, columns }: Props) => (
-  <Container as="main">
-    <StyledMaxWidth columns={columns}>{children}</StyledMaxWidth>
-  </Container>
-)
+const Page = ({ children, columns }: Props) => {
+  const { pathname } = useLocation()
+  const isProductsPage = matchPath(pathname, {
+    path: '/products'
+  })
+
+  return (
+    <Container as="main">
+      <StyledMaxWidth columns={columns}>{children}</StyledMaxWidth>
+
+      {!isProductsPage && (
+        <Snowfall
+          color="white"
+          radius={[1, 7.5]}
+          snowflakeCount={25}
+          style={{
+            top: '0',
+            bottom: '0',
+            position: 'absolute'
+          }}
+        />
+      )}
+    </Container>
+  )
+}
 
 const Container = styled(Flexbox)`
   width: 100%;

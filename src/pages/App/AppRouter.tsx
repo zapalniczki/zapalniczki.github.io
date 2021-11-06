@@ -1,10 +1,10 @@
+import { Basket, Footer, Navigation } from 'commonComponents'
+import { HamburgerMenu } from 'commonComponents/'
+import { AdminRoute } from 'components'
 import { createBrowserHistory } from 'history'
 import React, { Suspense } from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
-import { Basket, Footer, Navigation } from 'commonComponents'
-import { AdminRoute } from 'components'
 import routes from './routes'
-import { HamburgerMenu } from 'commonComponents/'
 
 export const history = createBrowserHistory()
 

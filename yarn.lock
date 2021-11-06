@@ -8615,6 +8615,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+react-fast-compare@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
 react-ga@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-3.3.0.tgz#c91f407198adcb3b49e2bc5c12b3fe460039b3ca"
@@ -8750,6 +8755,13 @@ react-select@^4.3.0:
     prop-types "^15.6.0"
     react-input-autosize "^3.0.0"
     react-transition-group "^4.3.0"
+
+react-snowfall@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-snowfall/-/react-snowfall-1.1.0.tgz#96f5ecfacc67677c78f47170c1fda57c934f9961"
+  integrity sha512-AhV9EIuOIvYM2XJFpYaEZCqcS4XUmNwsOfImZhzQQ4DTcYuJwJJAehQn6eaCfu3uMPtwb6Ya6musAD7s4BkFZA==
+  dependencies:
+    react-fast-compare "^3.2.0"
 
 react-switch@^6.0.0:
   version "6.0.0"
