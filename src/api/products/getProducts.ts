@@ -17,30 +17,13 @@ type Params = {
   featured?: Product['featured']
   iconId?: Icon['id']
   labelId?: Label['id']
+  name?: Product['name']
 }
 
 export const getProducts = async (params: Params = {}) => {
   const response = await supabase
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
-    .select(
-      `
-    id,
-    price,
-    name,
-    visible,
-    bestseller,
-    featured,
-    collection_id,
-    label_id,
-    icon_id,
-    ${IMAGES_TABLE} (
-      *
-    ),
-    mold: ${MOLDS_TABLE} (
-      status
-    )
-    `
-    )
+    .select(selectQuery)
     .match({
       ...(params?.labelId && { label_id: params.labelId }),
       ...(params?.collectionId && { collection_id: params.collectionId }),
@@ -48,8 +31,27 @@ export const getProducts = async (params: Params = {}) => {
       ...(params?.bestseller && { bestseller: params.bestseller }),
       ...(params?.featured && { featured: params.featured })
     })
+    .ilike('name', `%${params.name ? params.name : ''}%`)
 
   const data = parseApiResponse(array(getProductsResponseItem), response)
 
   return data
 }
+
+const selectQuery = `
+id,
+price,
+name,
+visible,
+bestseller,
+featured,
+collection_id,
+label_id,
+icon_id,
+${IMAGES_TABLE} (
+  *
+),
+mold: ${MOLDS_TABLE} (
+  status
+)
+`

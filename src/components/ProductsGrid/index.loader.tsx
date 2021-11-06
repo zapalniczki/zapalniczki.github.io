@@ -9,9 +9,9 @@ type Props = SpaceProps & {
 }
 
 const ProductsGridLoader = ({ count = 3, title, ...props }: Props) => (
-  <Flexbox flexDirection="column">
+  <Flexbox flexDirection="column" {...props}>
     {title && (
-      <Box marginBottom="m-size" marginTop="xxl-size">
+      <Box marginBottom="m-size">
         <ContentLoader
           gradientRatio={1}
           height={30}
@@ -23,7 +23,7 @@ const ProductsGridLoader = ({ count = 3, title, ...props }: Props) => (
       </Box>
     )}
 
-    <Grid {...props}>
+    <Grid>
       {[...Array(count).keys()].map((n) => (
         <ProductTileLoader key={n} />
       ))}

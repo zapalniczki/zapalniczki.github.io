@@ -4,7 +4,7 @@ import { Carousel, Page } from 'components'
 
 import { useTranslation } from 'hooks'
 import Bestsellers from './Bestsellers'
-import { Newsletter } from 'commonComponents'
+import { CallMeBack, Newsletter } from 'commonComponents'
 import Featured from './Featured'
 
 const Home = () => {
@@ -22,6 +22,8 @@ const Home = () => {
       <Newsletter />
 
       <Bestsellers />
+
+      <CallMeBack />
     </Page>
   )
 }

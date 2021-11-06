@@ -60,7 +60,7 @@ const CallMeBack = (props: Props) => {
   }
 
   return (
-    <Banner horizonal medium {...props}>
+    <Banner horizonal marginTop="xxl-size" medium {...props}>
       <Flexbox
         flexDirection="column"
         height="100%"

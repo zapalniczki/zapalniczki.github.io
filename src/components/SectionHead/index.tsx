@@ -1,9 +1,12 @@
-import { Link, Flexbox, Heading, Separator } from 'components'
+import { Link, Flexbox, Heading, Separator, Text } from 'components'
 import { LocationDescriptor } from 'history'
-import React from 'react'
+import { useTranslation } from 'hooks'
+import React, { ReactNode } from 'react'
 import { SpaceProps } from 'styled-system'
 
 type Props = {
+  children?: ReactNode
+  count?: number
   link?: {
     label: string
     to: LocationDescriptor
@@ -12,8 +15,17 @@ type Props = {
   title?: string
 } & SpaceProps
 
-const SectionHead = ({ link, separator, title, ...props }: Props) => {
-  if (!title && !link) {
+const SectionHead = ({
+  children,
+  count,
+  link,
+  separator,
+  title,
+  ...props
+}: Props) => {
+  const { t: commonT } = useTranslation('COMMON')
+
+  if (!title && !link && !count && !children) {
     return null
   }
 
@@ -21,10 +33,24 @@ const SectionHead = ({ link, separator, title, ...props }: Props) => {
     <Flexbox flexDirection="column" marginBottom="m-size" {...props}>
       <Flexbox
         alignItems="center"
+        flexDirection={
+          count && !link && !title && !children ? 'row-reverse' : 'row'
+        }
         justifyContent="space-between"
-        // marginBottom="m-size"
       >
+        {children}
+
         {title && <Heading level={5}>{title}</Heading>}
+
+        {count && (
+          <Text fontWeight="bold" marginRight="m-size" type="subtitle-1">
+            {count === 1
+              ? commonT('productsSingle', { count })
+              : count && count < 5
+              ? commonT('productsFew', { count })
+              : commonT('productsMultiple', { count })}
+          </Text>
+        )}
 
         {link && <Link label={link.label} showUnderline to={link.to} />}
       </Flexbox>

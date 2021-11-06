@@ -1,6 +1,6 @@
 import { Flexbox, Grid, Text, QueryLoader, SectionHead } from 'components'
 import { LocationDescriptor } from 'history'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { UseQueryResult } from 'react-query'
 import { SpaceProps } from 'styled-system'
 import ProductsGridLoader from './index.loader'
@@ -15,7 +15,8 @@ type Props = {
   }
   loaderCount?: number
   query: UseQueryResult<GetProductsResponseItem[]>
-  searchQuery?: string
+  sectionHeadChildren?: ReactNode
+  showCount?: true
   title?: string
 } & SpaceProps
 
@@ -23,7 +24,8 @@ const ProductsGrid = ({
   link,
   loaderCount,
   query,
-  searchQuery,
+  sectionHeadChildren,
+  showCount,
   title,
   ...props
 }: Props) => {
@@ -32,30 +34,32 @@ const ProductsGrid = ({
   return (
     <QueryLoader
       Loader={
-        <ProductsGridLoader count={loaderCount} title={!!title || !!link} />
+        <ProductsGridLoader
+          count={loaderCount}
+          title={!!title || !!link || !!showCount || !!sectionHeadChildren}
+          {...props}
+        />
       }
       query={query}
     >
       {(products) => {
-        if (!products.length) {
+        const count = products.length
+
+        if (!count) {
           return null
         }
 
-        const filteredProducts = products.filter((product) => {
-          if (searchQuery) {
-            return product.name
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase())
-          }
-
-          return true
-        })
-
         return (
           <Flexbox as="section" flexDirection="column" {...props}>
-            <SectionHead link={link} title={title} />
+            <SectionHead
+              count={showCount ? count : undefined}
+              link={link}
+              title={title}
+            >
+              {sectionHeadChildren || undefined}
+            </SectionHead>
 
-            {filteredProducts.length === 0 && (
+            {!count && (
               <Flexbox
                 alignItems="center"
                 height="200px"
@@ -67,7 +71,7 @@ const ProductsGrid = ({
             )}
 
             <Grid gridTemplateColumns="repeat(3, 1fr)">
-              {filteredProducts.map((product) => (
+              {products.map((product) => (
                 <ProductTile key={product.id} product={product} />
               ))}
             </Grid>

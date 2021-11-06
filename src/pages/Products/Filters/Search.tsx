@@ -10,10 +10,10 @@ type Props = {
 }
 
 const Search = ({ onChange, value }: Props) => {
-  const { t } = useTranslation('PRODUCTS')
+  const t = useTranslation('PRODUCTS').withBase('FILTERS')
 
   return (
-    <Flexbox width="35rem">
+    <Flexbox>
       <StyledInput
         onChange={(e) => onChange(e.target.value)}
         placeholder={t('searchPlaceholder')}
@@ -25,7 +25,7 @@ const Search = ({ onChange, value }: Props) => {
         marginLeft="m-size"
         onClick={() => onChange('')}
         size="medium"
-        variant="ternary"
+        variant="primary"
       />
     </Flexbox>
   )

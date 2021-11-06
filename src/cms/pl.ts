@@ -38,6 +38,9 @@ const pl = {
     basketToggleLabel: 'Koszyk',
     soon: 'Wkrótce',
     emptyState: 'Nic nie znaleziono',
+    productsSingle: '{{count}} produkt',
+    productsFew: '{{count}} produkty',
+    productsMultiple: '{{count}} produktów',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',
@@ -444,13 +447,12 @@ const pl = {
   PRODUCTS: {
     title: 'Produkty',
     showAllLabel: 'Pokaż wszystkie',
-    productsSingle: '{{count}} produkt',
-    productsFew: '{{count}} produkty',
-    productsMultiple: '{{count}} produktów',
-    searchPlaceholder: 'Wyszukaj produkt',
-    CALLBACK: {
-      title: 'Nie widzisz potrzebnego produktu?',
-      subtitle: 'Wpisz swój numer, a my odzwonimy.'
+
+    FILTERS: {
+      title: 'Wyszukaj swój produkt',
+      searchPlaceholder: 'Wpisz nazwę produktu, miejscowość lub ikonę',
+      collections: 'Kolekcje',
+      icons: 'Ikony'
     }
   },
 

@@ -1,4 +1,5 @@
 import { Flexbox, Spinner } from 'components'
+import { useIsDev } from 'hooks'
 import { Size } from 'models'
 import React from 'react'
 import { Img } from 'react-image'
@@ -13,22 +14,31 @@ type Props = {
   src: any
 }
 
-const Image = ({ alt = '', size, src, ...props }: Props) => (
-  <Img
-    alt={alt}
-    loader={
-      <Flexbox
-        alignItems="center"
-        height="100%"
-        justifyContent="center"
-        width="100%"
-      >
-        <Spinner small />
-      </Flexbox>
-    }
-    src={[src, getProductImagePlaceholder(size || 'TILE')]}
-    {...props}
-  />
-)
+const Image = ({ alt = '', size, src, ...props }: Props) => {
+  const isDev = useIsDev()
+
+  let imageSrc = [src, getProductImagePlaceholder(size || 'TILE')]
+  if (isDev && size) {
+    imageSrc = [getProductImagePlaceholder(size || 'TILE')]
+  }
+
+  return (
+    <Img
+      alt={alt}
+      loader={
+        <Flexbox
+          alignItems="center"
+          height="100%"
+          justifyContent="center"
+          width="100%"
+        >
+          <Spinner small />
+        </Flexbox>
+      }
+      src={imageSrc}
+      {...props}
+    />
+  )
+}
 
 export default Image

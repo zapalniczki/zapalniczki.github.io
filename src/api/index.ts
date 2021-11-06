@@ -1,5 +1,6 @@
 export * from './addresses'
 export * from './callback'
+export * from './collections'
 export * from './deliveryTypes'
 export * from './icon'
 export * from './image'

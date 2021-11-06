@@ -9,7 +9,7 @@ type Props = {
 } & SpaceProps
 
 const BackButton = ({ label, to, ...props }: Props) => (
-  <Box paddingY="xs-size" {...props}>
+  <Box {...props}>
     <Link icon="arrow-left" label={label} to={to} />
   </Box>
 )

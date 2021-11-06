@@ -7,15 +7,25 @@ type Props<T> = {
   Loader?: ReactElement
   children: (data: T) => ReactNode
   query: UseQueryResult<T>
+  showLoading?: boolean
 }
 
-function QueryLoader<T>({ Loader, children, query }: Props<T>): JSX.Element {
+function QueryLoader<T>({
+  Loader,
+  children,
+  query,
+  showLoading = true
+}: Props<T>): JSX.Element | null {
   if (query.isFetching) {
     if (Loader) {
       return Loader
     }
 
-    return <p>ładowanie...</p>
+    if (showLoading) {
+      return <p>ładowanie...</p>
+    }
+
+    return null
   } else if (query.isSuccess) {
     return <>{children(query.data as T)}</>
   }

@@ -20,7 +20,6 @@ const BasketContent = () => {
     <QueryLoader query={productsQuery}>
       {(products) => (
         <Flexbox
-          border="5px solid blue"
           flexDirection="column"
           flexGrow={1}
           overflowY="auto"
