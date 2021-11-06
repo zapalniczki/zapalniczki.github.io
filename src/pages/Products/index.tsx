@@ -3,7 +3,8 @@ import { BackButton, Page, ProductsGrid } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { PRODUCTS } from 'constants/routes'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
-import React, { useState } from 'react'
+import debounce from 'lodash.debounce'
+import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 import { useLocation } from 'react-router-dom'
 import Filters from './Filters'
@@ -16,19 +17,26 @@ const Products = () => {
   useScrollTop()
 
   const [searchQuery, setSearchQuery] = useState('')
+  const [debouncedSearchQuery, setDebuncedSearchQuery] = useState('')
   const [filters, setFilters] = useState<Filters>({})
 
   const params = {
     collectionId: filters.collectionId || state?.collectionId,
     labelId: state?.labelId,
     iconId: filters.iconId,
-    name: searchQuery
+    name: debouncedSearchQuery
   }
   const productsQuery = useQuery([PRODUCTS_TABLE, params], () =>
     getProducts(params)
   )
 
   const isFiltered = state?.labelId || state?.collectionId
+
+  const changeHandler = (value: React.SetStateAction<string>) => {
+    setDebuncedSearchQuery(value)
+  }
+
+  const debouncedChangeHandler = useMemo(() => debounce(changeHandler, 300), [])
 
   return (
     <Page>
@@ -37,7 +45,10 @@ const Products = () => {
           filters={filters}
           searchQuery={searchQuery}
           setFilters={setFilters}
-          setSearchQuery={setSearchQuery}
+          setSearchQuery={(value) => {
+            setSearchQuery(value)
+            debouncedChangeHandler(value)
+          }}
         />
       )}
 
