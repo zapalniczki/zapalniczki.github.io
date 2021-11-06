@@ -135,6 +135,7 @@ const Container = styled(Tile)`
   min-height: 12rem;
   align-items: center;
   overflow-x: auto;
+  overflow-y: hidden;
   /* @include bezier-transition(); */
   /* animation: slide-up 0.5s ease; */
   width: 100%;
