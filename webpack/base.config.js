@@ -50,8 +50,28 @@ module.exports = {
         ],
         sideEffects: true
       },
+
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgoConfig: {
+                plugins: [
+                  {
+                    cleanupIDs: false,
+                    prefixIds: false
+                  }
+                ]
+              }
+            }
+          },
+          'url-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
         use: [
           {
             loader: 'file-loader',

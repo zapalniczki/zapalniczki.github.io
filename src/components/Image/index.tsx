@@ -8,10 +8,12 @@ import { getProductImagePlaceholder } from 'utils'
 type Props = {
   alt?: string
   className?: string
+  height?: number
   onPointerEnter?: React.PointerEventHandler<HTMLImageElement>
   onPointerLeave?: React.PointerEventHandler<HTMLImageElement>
   size?: Size
   src: any
+  width?: number
 }
 
 const Image = ({ alt = '', size, src, ...props }: Props) => {

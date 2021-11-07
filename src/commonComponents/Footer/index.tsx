@@ -58,7 +58,6 @@ const Footer = () => {
                   <Link
                     key={route.path}
                     label={commonT(`LINKS.${route.translationKey}`)}
-                    // marginY="xxs-size"
                     to={route.path}
                   />
                 </Box>
@@ -106,7 +105,11 @@ const Footer = () => {
               height="2rem"
               marginTop={['unset', 's-size', 's-size', 'unset']}
             >
-              <Image src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg" />
+              <Image
+                height={20}
+                src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg"
+                width={105}
+              />
 
               <Text marginLeft="m-size" type="caption">
                 {process.env.VERSION}
