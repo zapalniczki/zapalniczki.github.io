@@ -19,8 +19,8 @@ import {
   HOME,
   HOW_TO_CREATE_ORDER,
   PRODUCTS,
-  VIEW_PRODUCT,
-  ORDERS,
+  PRODUCTS_ID,
+  ORDERS_ID,
   CHRISTMAS_2021
 } from 'constants/routes'
 
@@ -36,7 +36,7 @@ const routes = [
   },
   {
     component: React.lazy(() => import('pages/ViewProduct')),
-    path: VIEW_PRODUCT
+    path: PRODUCTS_ID
   },
   {
     component: React.lazy(() => import('pages/checkout/CheckoutProducts')),
@@ -64,7 +64,7 @@ const routes = [
   },
   {
     component: React.lazy(() => import('pages/Order')),
-    path: ORDERS
+    path: ORDERS_ID
   },
   {
     component: React.lazy(() => import('pages/AdminOrders')),

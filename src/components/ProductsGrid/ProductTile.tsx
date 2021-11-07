@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Flexbox, Image, Text, Tile } from 'components'
-import { VIEW_PRODUCT } from 'constants/routes'
+import { PRODUCTS_ID } from 'constants/routes'
 import { GetProductsResponseItem } from 'models'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
@@ -15,7 +15,7 @@ export type Props = {
 }
 
 const ProductTile = ({ product }: Props) => {
-  const viewProductPath = generatePath(VIEW_PRODUCT, { id: product.id })
+  const viewProductPath = generatePath(PRODUCTS_ID, { id: product.id })
 
   const { getProductFromBasket } = useContext(checkoutContext)
   const isBasket = getProductFromBasket(product.id)

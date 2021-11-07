@@ -1,8 +1,8 @@
-import { ORDERS } from 'constants/routes'
+import { ORDERS_ID } from 'constants/routes'
 import { generatePath } from 'react-router'
 
 const getOrderPath = (id: string) => {
-  const path = generatePath(ORDERS, { id })
+  const path = generatePath(ORDERS_ID, { id })
 
   return path
 }

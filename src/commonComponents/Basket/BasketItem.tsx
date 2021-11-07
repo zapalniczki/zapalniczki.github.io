@@ -1,5 +1,5 @@
 import { Box, Flexbox, Image, Link, Text, Tile } from 'components'
-import { VIEW_PRODUCT } from 'constants/routes'
+import { PRODUCTS_ID } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { BasketItem, GetProductsResponseItem } from 'models'
 import { togglesContext, checkoutContext } from 'providers'
@@ -34,7 +34,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
 
   const { id, images, name, price } = product
 
-  const productPath = generatePath(VIEW_PRODUCT, { id })
+  const productPath = generatePath(PRODUCTS_ID, { id })
 
   const modifyQuantity = (addition?: boolean) => {
     setCheckout((prev) => {

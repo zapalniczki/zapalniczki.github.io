@@ -9,7 +9,7 @@ import {
   Tile
 } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
-import { VIEW_PRODUCT } from 'constants/routes'
+import { PRODUCTS_ID } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { multiply } from 'lodash'
 import { GetOrderResponse, GetProductsResponseItem } from 'models'
@@ -94,7 +94,7 @@ const shapeData = (
   string | boolean | number | JSX.Element
 >[] =>
   data.map((product) => {
-    const productPath = generatePath(VIEW_PRODUCT, { id: product.id })
+    const productPath = generatePath(PRODUCTS_ID, { id: product.id })
     const basketImage = findCorrectProductImageSize(product.images, 'BASKET')
 
     return {
