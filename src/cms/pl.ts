@@ -33,6 +33,9 @@ const pl = {
       adminLabels: 'Etykiety'
     },
 
+    QUERY_LOADER: {
+      loading: 'ładowanie...'
+    },
     nrb,
     bankName,
     fullCompanyName,

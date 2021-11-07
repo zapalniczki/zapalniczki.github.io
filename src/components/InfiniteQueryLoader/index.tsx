@@ -1,3 +1,4 @@
+import { useTranslation } from 'hooks'
 import React from 'react'
 import { ReactElement } from 'react'
 import { ReactNode } from 'react'
@@ -16,13 +17,15 @@ function InfiniteQueryLoader<T>({
   query,
   showLoading = true
 }: Props<T>): JSX.Element | null {
+  const commonT = useTranslation('COMMON').withBase('QUERY_LOADER')
+
   if (query.isFetching && !query.isFetchingNextPage) {
     if (Loader) {
       return Loader
     }
 
     if (showLoading) {
-      return <p>ładowanie...</p>
+      return <p>{commonT('loading')}</p>
     }
 
     return null
