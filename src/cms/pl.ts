@@ -837,9 +837,9 @@ const pl = {
   },
 
   CHRISTMAS_2021: {
-    title: 'Oferta Świąteczna 2021',
+    title: 'OFERTA ŚWIĄTECZNA 2021',
     HALF_BANNER: {
-      title: 'Nie zwlekaj ze swoim zamówieniem',
+      title: 'NIE ZWLEKAJ ZE SWOIM ZAMÓWIENIEM',
       info: 'Oferta obowiązuje do wyczerpania zapasów'
     },
     CHRISTMAS_PRODUCTS: {

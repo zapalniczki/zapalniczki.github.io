@@ -17,7 +17,7 @@ const Contact = () => {
         horizonal
         small
         title={
-          <Heading color="white" fontFamily="Handlee" level={3}>
+          <Heading color="white" fontFamily="Caveat Brush" level={3}>
             {t('title')}
           </Heading>
         }
@@ -32,7 +32,7 @@ const Contact = () => {
         small
         title={
           <Flexbox flexDirection="column">
-            <Heading color="white" fontFamily="Handlee" level={3}>
+            <Heading color="white" fontFamily="Caveat Brush" level={4}>
               {t('HALF_BANNER.title')}
             </Heading>
 
