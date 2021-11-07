@@ -39,6 +39,7 @@ const pl = {
     nrb,
     bankName,
     fullCompanyName,
+    hamburgetMenuToggleLabel: 'Menu',
     basketToggleLabel: 'Koszyk',
     soon: 'Wkrótce',
     productsEmptyState: 'Nie znaleziono żadnych produktów',
