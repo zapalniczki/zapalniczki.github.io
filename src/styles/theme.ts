@@ -31,10 +31,7 @@ const colors = {
   'color-success': '#000',
   'label-color': '#696868',
 
-  'braty-red': '#e6070f',
-
-  // TEMP
-  'christmas-red': 'rgb(200, 16, 46)'
+  'braty-red': '#e6070f'
 }
 
 const zIndices = {

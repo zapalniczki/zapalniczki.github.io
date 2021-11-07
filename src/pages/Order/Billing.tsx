@@ -2,7 +2,7 @@ import { LabelledItem, SectionHead, Separator, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import React from 'react'
-import { displayMoney } from 'utils'
+import { displayMoney, getVatAmount } from 'utils'
 
 type Props = Pick<
   GetOrderResponse,
@@ -17,6 +17,8 @@ const Billing = ({
 }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.BILLING')
 
+  const vat = getVatAmount(total)
+
   return (
     <Tile marginTop="m-size">
       <SectionHead separator title={t('title')} />
@@ -26,11 +28,13 @@ const Billing = ({
         label={t('LABELS.products_price')}
       />
 
-      <LabelledItem
-        item={displayMoney(delivery_price)}
-        label={t('LABELS.delivery_price')}
-        marginTop="m-size"
-      />
+      {delivery_price ? (
+        <LabelledItem
+          item={displayMoney(delivery_price)}
+          label={t('LABELS.delivery_price')}
+          marginTop="m-size"
+        />
+      ) : null}
 
       {discount ? (
         <LabelledItem
@@ -45,6 +49,12 @@ const Billing = ({
       <LabelledItem
         item={displayMoney(total)}
         label={t('LABELS.grand_total')}
+      />
+
+      <LabelledItem
+        item={displayMoney(vat)}
+        label={t('LABELS.vat')}
+        marginTop="m-size"
       />
     </Tile>
   )

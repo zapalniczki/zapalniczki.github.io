@@ -109,7 +109,8 @@ const pl = {
       delivery: 'Dostawa',
       products: 'Produkty',
       discount: 'Obniżka',
-      sum: 'Łącznie do zapłaty'
+      sum: 'Łącznie do zapłaty',
+      vat: '(w tym VAT)'
     },
 
     checkoutActions: {
@@ -764,7 +765,8 @@ const pl = {
           products_price: 'Cena produktów',
           delivery_price: 'Dostawa',
           discount: 'Rabat',
-          grand_total: 'Łącznie to zapłaty'
+          grand_total: 'Łącznie to zapłaty',
+          vat: 'W tym VAT'
         }
       },
 

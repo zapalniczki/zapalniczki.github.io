@@ -1,5 +1,5 @@
 import { Flexbox, Text } from 'components'
-import { calculateDiscount, displayMoney } from 'utils'
+import { calculateDiscount, displayMoney, getVatAmount } from 'utils'
 import React, { useContext } from 'react'
 import { useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
@@ -34,6 +34,8 @@ const Total = ({ customDelivery, customProducts }: Props) => {
 
   const grandTotal = subtract(cost, discount)
 
+  const vat = getVatAmount(grandTotal)
+
   return (
     <Flexbox alignItems="center" justifyContent="flex-end" marginTop="2rem">
       <table>
@@ -50,17 +52,19 @@ const Total = ({ customDelivery, customProducts }: Props) => {
             </td>
           </tr>
 
-          <tr>
-            <td>
-              <Text type="caption">{t('checkoutTotal.delivery')}</Text>
-            </td>
+          {delivery ? (
+            <tr>
+              <td>
+                <Text type="caption">{t('checkoutTotal.delivery')}</Text>
+              </td>
 
-            <td>
-              <Text marginLeft="auto" textAlign="right" type="body-2">
-                {displayMoney(delivery)}
-              </Text>
-            </td>
-          </tr>
+              <td>
+                <Text marginLeft="auto" textAlign="right" type="body-2">
+                  {displayMoney(delivery)}
+                </Text>
+              </td>
+            </tr>
+          ) : null}
 
           {discount ? (
             <tr>
@@ -84,11 +88,23 @@ const Total = ({ customDelivery, customProducts }: Props) => {
             <td>
               <Text
                 fontWeight="bold"
-                marginLeft="auto"
+                marginLeft="m-size"
                 textAlign="right"
                 type="body-1"
               >
                 {displayMoney(grandTotal)}
+              </Text>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <Text type="caption">{t('checkoutTotal.vat')}</Text>
+            </td>
+
+            <td>
+              <Text marginLeft="auto" textAlign="right" type="body-2">
+                {displayMoney(vat)}
               </Text>
             </td>
           </tr>
