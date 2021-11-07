@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { BackButton, Page, Tile, QueryLoader } from 'components'
 import { useScrollTop, useTabTitle } from 'hooks'
 
@@ -15,10 +15,13 @@ import { useQuery } from 'react-query'
 import { Product } from 'models'
 
 const ViewProduct = () => {
+  const history = useHistory()
   const params = useParams<{ id: Product['id'] }>()
   const { t } = useTranslation('VIEW_PRODUCT')
 
-  const productQuery = useQuery(['product', params], () => getProduct(params))
+  const productQuery = useQuery(['product', params], () => getProduct(params), {
+    onError: () => history.push('/404')
+  })
 
   useScrollTop(params.id)
   useTabTitle(

@@ -36,6 +36,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 import { faFileInvoice } from '@fortawesome/free-solid-svg-icons/faFileInvoice'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle'
 import { faGift } from '@fortawesome/free-solid-svg-icons/faGift'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle'
 
 import i18n from 'i18n/config'
 import {
@@ -100,7 +101,8 @@ library.add(
   faBars,
   faFileInvoice,
   faInfoCircle,
-  faGift
+  faGift,
+  faExclamationTriangle
 )
 
 export const queryClient = new QueryClient({

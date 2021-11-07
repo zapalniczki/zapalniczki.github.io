@@ -469,8 +469,8 @@ const pl = {
   },
 
   PAGE_NOT_FOUND: {
-    title: '404 ',
-    heading: ':( Strona, której szukasz, nie istnieje.',
+    title: '404',
+    heading: 'Ups! Nie znaleziono strony.',
     buttonLabel: 'Przejdź na stronę główną'
   },
 

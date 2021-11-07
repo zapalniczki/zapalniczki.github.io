@@ -13,7 +13,7 @@ const Contact = () => {
   return (
     <Page>
       <Banner
-        backgroundColor="braty-red"
+        backgroundColor="christmas-red"
         horizonal
         small
         title={
@@ -26,7 +26,7 @@ const Contact = () => {
       <ChristmasProducts />
 
       <Banner
-        backgroundColor="braty-red"
+        backgroundColor="christmas-red"
         horizonal
         marginTop="xxl-size"
         small
