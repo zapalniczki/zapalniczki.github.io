@@ -3,7 +3,6 @@ import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { ORDER_STATUSES } from 'models'
 import React from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
-import 'react-tabs/style/react-tabs.css'
 import statusToColumns from './statusToColumns'
 import Table from './Table'
 

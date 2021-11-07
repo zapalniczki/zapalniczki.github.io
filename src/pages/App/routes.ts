@@ -66,11 +66,7 @@ const routes = [
     component: React.lazy(() => import('pages/Order')),
     path: ORDERS_ID
   },
-  {
-    component: React.lazy(() => import('pages/AdminOrders')),
-    translationKey: 'adminOrders',
-    path: ADMIN_ORDERS
-  },
+
   {
     component: React.lazy(() => import('pages/Contact')),
     translationKey: 'contact',

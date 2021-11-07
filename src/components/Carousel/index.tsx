@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel as CarouselLib } from 'react-responsive-carousel'
 import { Box } from 'components'
 import useBanners, { BannerKey } from './useBanners'

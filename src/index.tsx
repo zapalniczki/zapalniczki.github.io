@@ -49,7 +49,6 @@ import {
 import React, { StrictMode } from 'react'
 import { render } from 'react-dom'
 import { I18nextProvider } from 'react-i18next'
-import 'react-phone-input-2/lib/style.css'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'styles/GlobalStyle'

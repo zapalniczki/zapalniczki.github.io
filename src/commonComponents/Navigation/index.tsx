@@ -8,7 +8,6 @@ import { useTranslation } from 'hooks'
 import getSpace from 'styles/getSpace'
 import NavigationMenu from './NavigationMenu'
 import { togglesContext } from 'providers'
-import { changeColorAlpha } from 'utils'
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -84,12 +83,8 @@ const Container = styled.nav<ContainerProps>`
   transform: translateY(0);
   z-index: ${(props) => props.theme.zIndices.navigation};
   box-shadow: ${(props) =>
-    props.isExpanded && '0 5px 10px rgba(0, 0, 0, 0.02)'};
-
-  border: ${(props) =>
-    props.isExpanded
-      ? `${changeColorAlpha(getColor('black')(props), 0.1)}`
-      : 'none'};
+    props.isExpanded &&
+    '0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);'};
 `
 
 export default Navigation

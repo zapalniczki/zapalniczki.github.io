@@ -1,6 +1,5 @@
 import { createContext, ReactNode, ReactText, useMemo } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import React from 'react'
 import { Flexbox, Text, ResultIcon } from 'components'
 
