@@ -1,38 +1,47 @@
 import {
+  Button,
   Flexbox,
-  Grid,
-  Text,
+  InfiniteQueryLoader,
   QueryLoader,
-  SectionHead,
-  ResultIcon
+  Spinner
 } from 'components'
 import { LocationDescriptor } from 'history'
-import React, { ReactNode } from 'react'
-import { UseQueryResult } from 'react-query'
-import { SpaceProps } from 'styled-system'
-import ProductsGridLoader from './index.loader'
-import ProductTile from './ProductTile'
-import { GetProductsResponseItem } from 'models'
 import { useTranslation } from 'hooks'
+import { GetProductsResponseItem } from 'models'
+import React, { ReactNode } from 'react'
+import { UseInfiniteQueryResult, UseQueryResult } from 'react-query'
+import { SpaceProps } from 'styled-system'
+import Content from './Content'
+import ProductsGridLoader from './index.loader'
 
-type Props = {
+export type BaseProps = {
   hideWhenEmpty?: boolean
   link?: {
     label: string
     to: LocationDescriptor
   }
   loaderCount?: number
-  query: UseQueryResult<GetProductsResponseItem[]>
   sectionHeadChildren?: ReactNode
   showCount?: true
   title?: string
 } & SpaceProps
 
+type Props = BaseProps &
+  (
+    | {
+        paginated?: false
+        query: UseQueryResult<GetProductsResponseItem[]>
+      }
+    | {
+        paginated: true
+        query: UseInfiniteQueryResult<InfiniteGetProductsResponse>
+      }
+  )
+
 const ProductsGrid = ({
   hideWhenEmpty = true,
   link,
   loaderCount,
-  query,
   sectionHeadChildren,
   showCount,
   title,
@@ -40,60 +49,79 @@ const ProductsGrid = ({
 }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
-  return (
-    <QueryLoader
-      Loader={
-        <ProductsGridLoader
-          count={loaderCount}
-          title={!!title || !!link || !!showCount || !!sectionHeadChildren}
-          {...props}
-        />
-      }
-      query={query}
-    >
-      {(products) => {
-        const count = products.length
+  const loader = (
+    <ProductsGridLoader
+      count={loaderCount}
+      title={!!title || !!link || !!showCount || !!sectionHeadChildren}
+      {...props}
+    />
+  )
 
-        if (hideWhenEmpty && !count) {
-          return null
-        }
+  if (!props.paginated) {
+    return (
+      <QueryLoader Loader={loader} query={props.query}>
+        {(products) => (
+          <Content
+            hideWhenEmpty={hideWhenEmpty}
+            link={link}
+            products={products}
+            sectionHeadChildren={sectionHeadChildren}
+            showCount={showCount}
+            title={title}
+            {...props}
+          />
+        )}
+      </QueryLoader>
+    )
+  }
+
+  return (
+    <InfiniteQueryLoader Loader={loader} query={props.query}>
+      {(products) => {
+        const productsFlatten = products.map((p) => p.data).flat()
 
         return (
-          <Flexbox as="section" flexDirection="column" {...props}>
-            <SectionHead
-              count={showCount ? count : undefined}
+          <>
+            <Content
+              count={products[0].count}
+              hideWhenEmpty={hideWhenEmpty}
               link={link}
+              products={productsFlatten}
+              sectionHeadChildren={sectionHeadChildren}
+              showCount={showCount}
               title={title}
-            >
-              {sectionHeadChildren || undefined}
-            </SectionHead>
+              {...props}
+            />
 
-            {!count && (
+            {props.query.hasNextPage && (
               <Flexbox
                 alignItems="center"
-                flexDirection="column"
-                height="25rem"
                 justifyContent="center"
-                width="100%"
+                marginTop="l-size"
               >
-                <ResultIcon size="3x" variant="INFO" />
+                <Button
+                  disabled={props.query.isFetchingNextPage}
+                  label={commonT('productsLoadMore')}
+                  marginRight="s-size"
+                  onClick={() => props.query.fetchNextPage()}
+                  size="medium"
+                />
 
-                <Text marginTop="m-size" type="body-1">
-                  {commonT('productsEmptyState')}
-                </Text>
+                {props.query.isFetchingNextPage && <Spinner small />}
               </Flexbox>
             )}
-
-            <Grid gridTemplateColumns="repeat(3, 1fr)">
-              {products.map((product) => (
-                <ProductTile key={product.id} product={product} />
-              ))}
-            </Grid>
-          </Flexbox>
+          </>
         )
       }}
-    </QueryLoader>
+    </InfiniteQueryLoader>
   )
+}
+
+type InfiniteGetProductsResponse = {
+  count: number
+  data: GetProductsResponseItem[]
+  hasNextPage: boolean
+  page: number
 }
 
 export { ProductsGridLoader }

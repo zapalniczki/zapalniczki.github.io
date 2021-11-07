@@ -39,6 +39,7 @@ const pl = {
     basketToggleLabel: 'Koszyk',
     soon: 'Wkrótce',
     productsEmptyState: 'Nie znaleziono żadnych produktów',
+    productsLoadMore: 'Pokaż więcej produktów',
     productsSingle: '{{count}} produkt',
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',

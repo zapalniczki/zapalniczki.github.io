@@ -11,7 +11,7 @@ import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-type Params = {
+export type Params = {
   bestseller?: Product['bestseller']
   collectionId?: Collection['id']
   featured?: Product['featured']
@@ -21,24 +21,22 @@ type Params = {
 }
 
 export const getProducts = async (params: Params = {}) => {
+  const match = getProductsMatch(params)
+  const ilike = getProductsIlike(params)
+
   const response = await supabase
+
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
-    .select(selectQuery)
-    .match({
-      ...(params?.labelId && { label_id: params.labelId }),
-      ...(params?.collectionId && { collection_id: params.collectionId }),
-      ...(params?.iconId && { icon_id: params.iconId }),
-      ...(params?.bestseller && { bestseller: params.bestseller }),
-      ...(params?.featured && { featured: params.featured })
-    })
-    .ilike('name', `%${params.name ? params.name : ''}%`)
+    .select(getProductsSelectQuery)
+    .match(match)
+    .ilike(ilike.column, ilike.patern)
 
   const data = parseApiResponse(array(getProductsResponseItem), response)
 
   return data
 }
 
-const selectQuery = `
+export const getProductsSelectQuery = `
 id,
 price,
 name,
@@ -55,3 +53,16 @@ mold: ${MOLDS_TABLE} (
   status
 )
 `
+
+export const getProductsMatch = (params: Params) => ({
+  ...(params?.labelId && { label_id: params.labelId }),
+  ...(params?.collectionId && { collection_id: params.collectionId }),
+  ...(params?.iconId && { icon_id: params.iconId }),
+  ...(params?.bestseller && { bestseller: params.bestseller }),
+  ...(params?.featured && { featured: params.featured })
+})
+
+export const getProductsIlike = (params: Params) => ({
+  column: 'name' as const,
+  patern: `%${params.name ? params.name : ''}%`
+})
