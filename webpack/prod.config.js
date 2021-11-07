@@ -8,6 +8,7 @@ const baseConfig = require('./base.config.js')
 const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const pkg = require('../package.json')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 DotEnv.config({ path: '.env.prod' })
 
@@ -29,7 +30,7 @@ module.exports = merge(baseConfig, {
       }
     },
     minimize: true,
-    minimizer: [new TerserPlugin()]
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()]
   },
   plugins: [
     new CleanWebpackPlugin(),

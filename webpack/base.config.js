@@ -46,11 +46,9 @@ module.exports = {
             options: {
               sourceMap: true
             }
-          },
-          {
-            loader: 'group-css-media-queries-loader'
           }
-        ]
+        ],
+        sideEffects: true
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
