@@ -1,15 +1,12 @@
 import { Basket, Footer, Navigation } from 'commonComponents'
 import { HamburgerMenu } from 'commonComponents/'
 import { AdminRoute } from 'components'
-import { createBrowserHistory } from 'history'
 import React, { Suspense } from 'react'
-import { Route, Router, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import routes from './routes'
 
-export const history = createBrowserHistory()
-
 const AppRouter = () => (
-  <Router history={history}>
+  <>
     <Navigation />
 
     <Basket />
@@ -29,7 +26,7 @@ const AppRouter = () => (
     </Suspense>
 
     <Footer />
-  </Router>
+  </>
 )
 
 export default AppRouter

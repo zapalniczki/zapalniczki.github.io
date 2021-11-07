@@ -14,10 +14,6 @@ function parseApiResponse<T>(
     throw new Error(error.code)
   }
 
-  if (!data) {
-    throw new Error('No data has been returned!')
-  }
-
   const parsedResponse = schema.safeParse(data)
 
   if (parsedResponse.success) {
