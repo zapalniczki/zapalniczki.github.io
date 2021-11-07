@@ -1,4 +1,5 @@
-import { Flexbox, Grid, ResultIcon, SectionHead, Text } from 'components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Flexbox, Grid, SectionHead, Text } from 'components'
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import React from 'react'
@@ -46,7 +47,7 @@ const Content = ({
           justifyContent="center"
           width="100%"
         >
-          <ResultIcon size="3x" variant="INFO" />
+          <FontAwesomeIcon icon="search" size="3x" />
 
           <Text marginTop="m-size" type="body-1">
             {commonT('productsEmptyState')}
