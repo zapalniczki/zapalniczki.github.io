@@ -10,7 +10,6 @@ type Props = {
 const ToastProvider = ({ children }: Props) => {
   const value = useMemo(
     () => ({
-      alfa: 2,
       addToast: (props: ToastProps) => toast(<Toast {...props} />)
     }),
     []
@@ -20,18 +19,23 @@ const ToastProvider = ({ children }: Props) => {
     <toastContext.Provider value={value}>
       {children}
 
-      <ToastContainer draggable={false} hideProgressBar />
+      <ToastContainer
+        autoClose={5000}
+        closeOnClick
+        draggable={false}
+        hideProgressBar
+        newestOnTop
+        pauseOnHover
+      />
     </toastContext.Provider>
   )
 }
 
 type ToastContext = {
   addToast: (props: ToastProps) => ReactText
-  alfa: number
 }
 
 export const toastContext = createContext<ToastContext>({
-  alfa: 0,
   addToast: () => ''
 })
 
