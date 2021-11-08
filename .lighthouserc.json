@@ -6,8 +6,6 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
-        "unsized-images": ["warn"],
-        "button-name": ["warn"],
         "preload-lcp-image": ["warn"],
         "timing-budget": ["warn"],
         "errors-in-console": ["warn"],
