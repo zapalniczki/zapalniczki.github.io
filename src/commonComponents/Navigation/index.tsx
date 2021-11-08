@@ -11,7 +11,7 @@ import { togglesContext } from 'providers'
 
 const Navigation = () => {
   const [isExpanded, setIsExpanded] = useState(false)
-  const { basketOpen } = useContext(togglesContext)
+  const { basketOpen, hamburgerOpen } = useContext(togglesContext)
 
   const { t: commonT } = useTranslation('COMMON')
 
@@ -30,10 +30,10 @@ const Navigation = () => {
   }, [])
 
   useEffect(() => {
-    if (basketOpen) {
+    if (basketOpen || hamburgerOpen) {
       setIsExpanded(true)
     }
-  }, [basketOpen])
+  }, [basketOpen, hamburgerOpen])
 
   return (
     <Container isExpanded={isExpanded}>
