@@ -1,4 +1,4 @@
-import { Banner, Heading, Page } from 'components'
+import { Banner, Page } from 'components'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
 import List from './List'
@@ -11,12 +11,7 @@ const AdminNewsletterUsers = () => {
 
   return (
     <Page>
-      <Banner
-        horizonal
-        marginBottom="xxl-size"
-        small
-        title={<Heading level={4}>{t('title')}</Heading>}
-      />
+      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
       <List />
     </Page>

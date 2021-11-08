@@ -206,12 +206,12 @@ const pl = {
       }
     },
 
-    readTermAndConditions: {
+    READ_TERMS_AND_CONDITIONS: {
       title: 'Koniecznie przeczytaj regulamin',
       buttonLabel: 'Przejdź do regulaminu'
     },
 
-    readPrivacyPolicy: {
+    READ_PRIVACY_POLICY: {
       title: 'Koniecznie przeczytaj politykę prywatności',
       buttonLabel: 'Przejdź do polityki prywatnści'
     },

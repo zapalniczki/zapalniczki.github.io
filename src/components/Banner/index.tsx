@@ -1,69 +1,60 @@
+import { Box, Flexbox, Heading } from 'components'
 import React, { ReactNode } from 'react'
-import { Box, Flexbox, Text } from 'components'
 import { SpaceProps } from 'styled-system'
 import { Color } from 'styles/theme'
 
-export type BasicProps = {
+export type Props = {
   background?: ReactNode
   backgroundColor?: Color
-  description?: string
-  title?: ReactNode
-} & SpaceProps
-
-type Props = BasicProps & {
+  // description?: string
   children?: ReactNode
-  horizonal?: boolean
-  medium?: boolean
-  small?: boolean
-}
+  size?: Size
+  title?: string
+} & SpaceProps
 
 const Banner = ({
   background,
   backgroundColor,
   children,
-  description,
-  horizonal,
-  medium,
-  small,
+  size,
   title,
   ...props
 }: Props) => (
   <Flexbox
     {...props}
-    alignItems="center"
     backgroundColor={backgroundColor ?? 'background-color-01'}
-    height={small ? '20rem' : medium ? '30rem' : '40rem'}
+    flexDirection="column"
+    height={size ? sizeToHeight[size] : 'auto'}
     justifyContent="center"
+    minHeight={sizeToHeight['SMALL']}
+    padding="l-size"
     position="relative"
   >
-    <Flexbox
-      alignItems="center"
-      flexDirection={horizonal ? 'row' : 'column'}
-      justifyContent={horizonal ? 'space-between' : 'center'}
-      paddingX={horizonal ? 'xxl-size' : 0}
-      width={horizonal ? '100%' : '70rem'}
-      zIndex={1}
-    >
-      {title && title}
+    {title && <Heading level={4}>{title}</Heading>}
 
-      {description && (
-        <Text
-          marginBottom="l-size"
-          marginTop="m-size"
-          textAlign="center"
-          type="body-2"
-        >
-          {description}
-        </Text>
-      )}
+    {children}
 
-      {children}
-    </Flexbox>
-
-    <Box height="100%" left="0" position="absolute" top="0" width="100%">
-      {background}
-    </Box>
+    {background && (
+      <Box
+        height="100%"
+        left="0"
+        position="absolute"
+        top="0"
+        width="100%"
+        zIndex={0}
+      >
+        {background}
+      </Box>
+    )}
   </Flexbox>
 )
+
+const sizeToHeight: Record<Size, string> = {
+  SMALL: '20rem',
+  MEDIUM: '30rem',
+  LARGE: '40rem'
+}
+
+type Size = 'SMALL' | 'MEDIUM' | 'LARGE'
 
 export default Banner

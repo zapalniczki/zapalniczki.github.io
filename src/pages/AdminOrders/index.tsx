@@ -1,4 +1,4 @@
-import { Banner, Heading, Page, Text } from 'components'
+import { Banner, Page, Text } from 'components'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { ORDER_STATUSES } from 'models'
 import React from 'react'
@@ -15,12 +15,7 @@ const AdminOrders = () => {
 
   return (
     <Page>
-      <Banner
-        horizonal
-        marginBottom="xxl-size"
-        small
-        title={<Heading level={4}>{t('title')}</Heading>}
-      />
+      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
       <Tabs>
         <TabList>

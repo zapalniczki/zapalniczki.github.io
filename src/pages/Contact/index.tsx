@@ -1,10 +1,7 @@
 import { CallMeBack, ReadTermsAndConditions } from 'commonComponents'
-import { Page, Banner, Grid, Heading } from 'components'
-import { useScrollTop, useTabTitle } from 'hooks'
-
+import { Banner, Grid, Page } from 'components'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
-import { useTranslation } from 'hooks'
-
 import Tile from './Tile'
 import useContactMethods from './useContactMethod'
 
@@ -17,11 +14,7 @@ const Contact = () => {
 
   return (
     <Page>
-      <Banner
-        horizonal
-        small
-        title={<Heading level={4}>{t('title')}</Heading>}
-      />
+      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
       <Grid gridTemplateColumns="repeat(3, 1fr)" marginTop="xxl-size">
         {contactMethods.map(({ icon, key, ...props }) => (

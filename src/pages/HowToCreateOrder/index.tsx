@@ -3,7 +3,7 @@ import {
   ReadPrivacyPolicy,
   ReadTermsAndConditions
 } from 'commonComponents'
-import { Banner, Heading, Page } from 'components'
+import { Banner, Page } from 'components'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
 
@@ -15,11 +15,7 @@ const HowToCreateOrder = () => {
 
   return (
     <Page>
-      <Banner
-        horizonal
-        small
-        title={<Heading level={4}>{t('title')}</Heading>}
-      />
+      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
       <Features />
 

@@ -1,18 +1,18 @@
-import { TitleAndLinkBanner } from 'components'
+import { BannerWithTitleAndLink } from 'components'
 import { DOCUMENTS } from 'constants/routes'
 import React from 'react'
 import { useTranslation } from 'hooks'
 
 const ReadPrivacyPolicy = () => {
-  const { t: commonT } = useTranslation('COMMON')
+  const commonT = useTranslation('COMMON').withBase('READ_PRIVACY_POLICY')
 
   return (
-    <TitleAndLinkBanner
+    <BannerWithTitleAndLink
       link={{
         to: DOCUMENTS,
-        label: commonT('readPrivacyPolicy.buttonLabel')
+        label: commonT('buttonLabel')
       }}
-      title={commonT('readPrivacyPolicy.title')}
+      title={commonT('title')}
     />
   )
 }

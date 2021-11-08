@@ -1,8 +1,6 @@
-import { ExternalLink, Banner, Heading, Page, Box, Flexbox } from 'components'
-import { useScrollTop, useTabTitle } from 'hooks'
+import { Banner, Box, ExternalLink, Flexbox, ListItem, Page } from 'components'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
-import { useTranslation } from 'hooks'
-import { ListItem } from 'components'
 
 const Documents = () => {
   const { t } = useTranslation('DOCUMENTS')
@@ -12,11 +10,7 @@ const Documents = () => {
 
   return (
     <Page>
-      <Banner
-        horizonal
-        small
-        title={<Heading level={4}>{t('title')}</Heading>}
-      />
+      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
       <Flexbox alignItems="flex-start" flexDirection="column">
         <ListItem marginTop="xl-size">{t('TYPES.termsAndConditions')}</ListItem>

@@ -4,21 +4,19 @@ import { getDeliveryTypes, getPaymentTypes } from 'api'
 import { ReadTermsAndConditions } from 'commonComponents'
 import {
   Banner,
+  FeatureItem,
   Flexbox,
   Grid,
   Page,
   QueryLoader,
-  SectionHead,
-  FeatureItem,
-  Heading
+  SectionHead
 } from 'components'
-import { useScrollTop, useTabTitle } from 'hooks'
+import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
-import { useTranslation } from 'hooks'
+import { useQuery } from 'react-query'
 import { displayMoney } from 'utils'
 import Option from './Option'
-import { useQuery } from 'react-query'
-import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 
 const DeliveryAndPayments = () => {
   const { t } = useTranslation('DELIVERY_AND_PAYMENTS')
@@ -31,11 +29,7 @@ const DeliveryAndPayments = () => {
 
   return (
     <Page>
-      <Banner
-        horizonal
-        small
-        title={<Heading level={4}>{t('title')}</Heading>}
-      />
+      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
       <SectionHead marginTop="xxl-size" title={t('processingTime.title')} />
 
