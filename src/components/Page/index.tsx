@@ -1,11 +1,12 @@
 import MaxWidth from '../MaxWidth'
 import Flexbox from '../Flexbox'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import getSpace from 'styles/getSpace'
 import breakpoints from 'styles/breakpoints'
 import { matchPath, useLocation } from 'react-router-dom'
 import Snowfall from 'react-snowfall'
+import { usePageView } from 'hooks'
 
 type Props = {
   children: ReactNode
@@ -17,6 +18,12 @@ const Page = ({ children, columns }: Props) => {
   const isProductsPage = matchPath(pathname, {
     path: '/products'
   })
+
+  const triggerPageView = usePageView()
+
+  useEffect(() => {
+    triggerPageView()
+  }, [])
 
   return (
     <Container as="main">

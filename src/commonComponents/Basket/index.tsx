@@ -23,10 +23,14 @@ const Basket = () => {
     document.addEventListener('mousedown', handleClickOutside)
 
     return () => document.removeEventListener('mousedown', handleClickOutside)
-  })
+  }, [])
+
+  if (!basketOpen) {
+    return null
+  }
 
   return (
-    <Container isOpen={basketOpen} ref={ref}>
+    <Container ref={ref}>
       <Header />
 
       <BasketContent />
@@ -36,8 +40,7 @@ const Basket = () => {
   )
 }
 
-type ContainerProps = { isOpen: boolean }
-const Container = styled.aside<ContainerProps>`
+const Container = styled.aside`
   width: 60rem;
   max-width: 100vw;
   height: 100vh;
@@ -45,10 +48,9 @@ const Container = styled.aside<ContainerProps>`
   position: fixed;
   top: 0;
   right: 0;
-  display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+  display: flex;
   flex-direction: column;
-
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.08);
   z-index: ${(props) => props.theme.zIndices.basket};
 `
 

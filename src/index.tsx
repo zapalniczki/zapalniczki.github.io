@@ -60,11 +60,7 @@ import { Router } from 'react-router-dom'
 
 if (process.env.MEASUREMENT_ID) {
   ReactGA.initialize(process.env.MEASUREMENT_ID)
-  ReactGA.pageview(window.location.pathname + window.location.search)
 }
-
-// eslint-disable-next-line no-console
-console.log(process.env.MEASUREMENT_ID)
 
 library.add(
   faTruck,

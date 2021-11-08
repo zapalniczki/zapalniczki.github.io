@@ -2,14 +2,20 @@ import { getProductsById } from 'api'
 import { BasketItem } from 'commonComponents'
 import { Flexbox, QueryLoader, Text } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
-import { useTranslation } from 'hooks'
+import { useModalView, useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 const BasketContent = () => {
   const commonT = useTranslation('COMMON').withBase('BASKET')
   const { basket, isBasketEmpty } = useContext(checkoutContext)
+
+  const triggerModalView = useModalView('basket')
+
+  useEffect(() => {
+    triggerModalView()
+  }, [])
 
   const ids = basket.map((e) => e.id)
   const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>

@@ -1,12 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Flexbox, Button, Text, Separator } from 'components'
-import { useTranslation } from 'hooks'
+import { useModalView, useTranslation } from 'hooks'
 
 import { togglesContext } from 'providers'
 
 const Header = () => {
   const commonT = useTranslation('COMMON').withBase('HAMBURGER_MENU')
   const { closeHamburger } = useContext(togglesContext)
+
+  const triggerModalView = useModalView('hamburgerMenu')
+
+  useEffect(() => {
+    triggerModalView()
+  }, [])
 
   return (
     <Flexbox
