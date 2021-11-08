@@ -13,7 +13,7 @@ type Props = {
 const Tile = ({ content, extended, icon, title }: Props) => (
   <TileComponent
     flexDirection="column"
-    gridColumn={extended ? 'auto / span 2' : 'auto'}
+    gridColumn={['unset', '1fr', '1fr', extended ? 'auto / span 2' : 'auto']}
   >
     <TileHeading icon={icon} title={title} />
 

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Banner, Box, Button, Flexbox, Heading, Text } from 'components'
 import { Form as FormikForm, Formik } from 'formik'
-import { useTranslation } from 'hooks'
+import { useBreakpoints, useTranslation } from 'hooks'
 import React from 'react'
 import { useTheme } from 'styled-components'
 import { SpaceProps } from 'styled-system'
@@ -14,6 +14,8 @@ const CallMeBack = (props: Props) => {
   const commonT = useTranslation('COMMON').withBase('CALL_ME_BACK')
   const { initialValues, onSubmit, schema, setView, view } = useForm()
   const { colors } = useTheme()
+
+  const isDesktop = useBreakpoints('desktop')
 
   let title = commonT('FORM.title')
   let subtitle = commonT('FORM.subtitle')
@@ -59,18 +61,35 @@ const CallMeBack = (props: Props) => {
     subtitle = commonT('ERROR.subtitle')
   }
 
+  const iconSize = isDesktop ? '2x' : '5x'
+
   return (
     <Banner marginTop="xxl-size" size="MEDIUM" {...props}>
-      <Flexbox alignItems="center">
+      <Flexbox
+        alignItems="center"
+        flexDirection={['unset', 'column', 'column', 'row']}
+      >
         {view.view === 'SUCCESS' && (
-          <FontAwesomeIcon color={colors.green} icon="check-circle" size="2x" />
+          <FontAwesomeIcon
+            color={colors.green}
+            icon="check-circle"
+            size={iconSize}
+          />
         )}
 
         {view.view === 'ERROR' && (
-          <FontAwesomeIcon color={colors.red} icon="times-circle" size="2x" />
+          <FontAwesomeIcon
+            color={colors.red}
+            icon="times-circle"
+            size={iconSize}
+          />
         )}
 
-        <Heading level={4} marginLeft={view.view === 'FORM' ? 0 : 'm-size'}>
+        <Heading
+          level={4}
+          marginLeft={['unset', 0, 0, view.view === 'FORM' ? 0 : 'm-size']}
+          marginTop={['unset', 'm-size', 'm-size', 0]}
+        >
           {title}
         </Heading>
       </Flexbox>

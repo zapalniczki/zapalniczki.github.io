@@ -15,7 +15,11 @@ const Form = () => {
     <ViewWrapper>
       <TileHeading icon="question" title={t(`items.CHECK_STATUS.title`)} />
 
-      <Flexbox alignItems="flex-end" justifyContent="flex-end">
+      <Flexbox
+        alignItems={['unset', 'flex-start', 'flex-start', 'flex-end']}
+        flexDirection={['unset', 'column', 'column', 'row']}
+        justifyContent="flex-end"
+      >
         <FieldWrapper>
           <Field name="order_id">
             {(props: FieldProps<string, FormValues>) => (
@@ -26,7 +30,8 @@ const Form = () => {
 
         <Button
           label={getInput('SUBMIT').label}
-          marginLeft="m-size"
+          marginLeft={['unset', 0, 0, 'm-size']}
+          marginTop={['unset', 'm-size', 'm-size', 0]}
           size="small"
           type="submit"
         />

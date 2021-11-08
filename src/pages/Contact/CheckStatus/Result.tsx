@@ -29,7 +29,10 @@ const Result = ({ id, setView, status }: Props) => {
 
       <Text type="body-2">{commonT(`STATUS_MEANINGS.${status}`)}</Text>
 
-      <Flexbox marginTop="m-size">
+      <Flexbox
+        flexDirection={['unset', 'column', 'column', 'row']}
+        marginTop="m-size"
+      >
         <Button
           label={t('items.CHECK_STATUS.result.tryNew')}
           onClick={() => setView({ view: 'FORM' })}
@@ -39,7 +42,8 @@ const Result = ({ id, setView, status }: Props) => {
 
         <Button
           label={t('items.CHECK_STATUS.result.seeOrder')}
-          marginLeft="m-size"
+          marginLeft={['unset', 0, 0, 'm-size']}
+          marginTop={['unset', 'm-size', 'm-size', 0]}
           onClick={() => {
             const path = getOrderPath(id)
             history.push(path)

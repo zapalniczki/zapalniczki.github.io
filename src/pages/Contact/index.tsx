@@ -16,7 +16,15 @@ const Contact = () => {
     <Page>
       <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
-      <Grid gridTemplateColumns="repeat(3, 1fr)" marginTop="xxl-size">
+      <Grid
+        gridTemplateColumns={[
+          'unset',
+          'repeat(1, 1fr)',
+          'repeat(1, 1fr)',
+          'repeat(3, 1fr)'
+        ]}
+        marginTop="xxl-size"
+      >
         {contactMethods.map(({ icon, key, ...props }) => (
           <Tile
             icon={icon}

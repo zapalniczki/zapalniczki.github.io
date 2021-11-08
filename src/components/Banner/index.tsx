@@ -24,9 +24,8 @@ const Banner = ({
     {...props}
     backgroundColor={backgroundColor ?? 'background-color-01'}
     flexDirection="column"
-    height={size ? sizeToHeight[size] : 'auto'}
     justifyContent="center"
-    minHeight={sizeToHeight['SMALL']}
+    minHeight={size ? sizeToHeight[size] : sizeToHeight['SMALL']}
     padding="l-size"
     position="relative"
   >

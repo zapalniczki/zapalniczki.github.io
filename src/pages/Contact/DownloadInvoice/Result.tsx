@@ -19,7 +19,10 @@ const Result = ({ setView, url }: Props) => {
 
       <Text type="body-2">{t('info')}</Text>
 
-      <Flexbox marginTop="m-size">
+      <Flexbox
+        flexDirection={['unset', 'column', 'column', 'row']}
+        marginTop="m-size"
+      >
         <Button
           label={t('new')}
           onClick={() => setView({ view: 'FORM' })}
@@ -29,7 +32,8 @@ const Result = ({ setView, url }: Props) => {
 
         <Button
           label={t('followLink')}
-          marginLeft="m-size"
+          marginLeft={['unset', 0, 0, 'm-size']}
+          marginTop={['unset', 'm-size', 'm-size', 0]}
           onClick={() => window.open(url, '_blank')}
           size="small"
         />
