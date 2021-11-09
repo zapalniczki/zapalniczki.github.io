@@ -25,7 +25,11 @@ const DeliveryAndPayments = () => {
   useTabTitle(t('title'))
 
   const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
-  const paymentTypesQuery = useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)
+
+  const params = {}
+  const paymentTypesQuery = useQuery([PAYMENT_TYPE_TABLE, params], () =>
+    getPaymentTypes(params)
+  )
 
   return (
     <Page>

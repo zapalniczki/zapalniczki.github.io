@@ -11,7 +11,10 @@ import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const paymentTypesQuery = useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)
+  const params = {}
+  const paymentTypesQuery = useQuery([PAYMENT_TYPE_TABLE, params], () =>
+    getPaymentTypes(params)
+  )
   const columns = useMemo(
     () => [
       {

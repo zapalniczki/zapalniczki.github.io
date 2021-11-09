@@ -97,7 +97,8 @@ export const initState: Checkout = {
   payment_type: null,
   voucher_id: null,
   voucher: null,
-  same_address_as_invoice: null
+  same_address_as_invoice: null,
+  delivery_type_allows_cash_payment: null
 }
 
 export const checkoutContext = createContext<CheckoutContent>({

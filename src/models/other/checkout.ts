@@ -10,6 +10,7 @@ const checkout = object({
   delivery_type: deliveryType.shape.id.nullable(),
   payment_type: paymentType.shape.id.nullable(),
   same_address_as_invoice: boolean().nullable(),
+  delivery_type_allows_cash_payment: boolean().nullable(),
   shipping: shipping.nullable(),
   total: object({
     delivery: number(),

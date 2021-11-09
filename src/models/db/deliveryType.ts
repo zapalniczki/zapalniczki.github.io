@@ -7,7 +7,8 @@ const deliveryType = tableBase.extend({
   label: string(),
   price: number(),
   requires_address: boolean(),
-  time: string()
+  time: string(),
+  allows_cash_payment: boolean()
 })
 
 export type DeliveryType = TypeOf<typeof deliveryType>

@@ -20,8 +20,13 @@ const CheckoutPayment = () => {
   useTabTitle(t('title'))
   useScrollTop()
 
-  const paymentTypesQuery = useQuery(PAYMENT_TYPE_TABLE, getPaymentTypes)
   const { checkout } = useContext(checkoutContext)
+
+  const params = { in_person: !!checkout.delivery_type_allows_cash_payment }
+
+  const paymentTypesQuery = useQuery([PAYMENT_TYPE_TABLE, params], () =>
+    getPaymentTypes(params)
+  )
   const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {

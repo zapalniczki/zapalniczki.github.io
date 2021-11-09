@@ -6,7 +6,8 @@ const paymentType = tableBase.extend({
   price: number(),
   time: string(),
   frontend_icon_name: string(),
-  is_enabled: boolean()
+  is_enabled: boolean(),
+  in_person: boolean()
 })
 
 export type PaymentType = TypeOf<typeof paymentType>
