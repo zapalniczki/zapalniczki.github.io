@@ -1,16 +1,34 @@
-import { Box } from 'components'
+import { Flexbox } from 'components'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useTheme } from 'styled-components'
 
-const UserAvatar = () => (
-  <Box
-    backgroundColor="border-color"
-    borderRadius="50%"
-    maxHeight={SIZE}
-    maxWidth={SIZE}
-    minHeight={SIZE}
-    minWidth={SIZE}
-  />
-)
+type Props = {
+  company?: boolean
+}
+
+const UserAvatar = ({ company }: Props) => {
+  const { colors } = useTheme()
+
+  return (
+    <Flexbox
+      alignItems="center"
+      backgroundColor="border-color"
+      borderRadius="50%"
+      justifyContent="center"
+      maxHeight={SIZE}
+      maxWidth={SIZE}
+      minHeight={SIZE}
+      minWidth={SIZE}
+    >
+      <FontAwesomeIcon
+        color={colors.white}
+        icon={company ? 'building' : 'user-alt'}
+        size="3x"
+      />
+    </Flexbox>
+  )
+}
 
 const SIZE = '13rem'
 

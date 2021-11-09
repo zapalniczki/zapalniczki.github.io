@@ -28,54 +28,54 @@ const ContactDetails = ({ userId }: Props) => {
 
   return (
     <QueryLoader query={userQuery}>
-      {(data) => (
-        <Tile>
-          <SectionHead separator title={t('title')} />
+      {(data) => {
+        const nip = data.nip
 
-          <Flexbox alignItems="center" flexDirection="column">
-            <UserAvatar />
+        return (
+          <Tile>
+            <SectionHead separator title={t('title')} />
 
-            <Text
-              fontWeight="bold"
-              marginTop="m-size"
-              textAlign="center"
-              type="subtitle-1"
-            >
-              {data.full_name}
-            </Text>
+            <Flexbox alignItems="center" flexDirection="column">
+              <UserAvatar company={!!nip} />
 
-            <Text type="caption">
-              {commonT(`customerTypes.${data.nip ? 'COMPANY' : 'INDIVIDUAL'}`)}
-            </Text>
+              <Text
+                fontWeight="bold"
+                marginTop="m-size"
+                textAlign="center"
+                type="subtitle-1"
+              >
+                {data.full_name}
+              </Text>
 
-            <Text marginTop="m-size" type="body-1">
-              {data.email}
-            </Text>
+              <Text type="caption">
+                {commonT(`customerTypes.${nip ? 'COMPANY' : 'INDIVIDUAL'}`)}
+              </Text>
 
-            <Text type="body-2">{data.phone}</Text>
-          </Flexbox>
+              <Text marginTop="m-size" type="body-1">
+                {data.email}
+              </Text>
 
-          <Separator />
+              <Text type="body-2">{data.phone}</Text>
+            </Flexbox>
 
-          {data.nip && (
+            <Separator />
+
+            {nip && (
+              <LabelledItem item={nip} label={t('nip')} marginBottom="m-size" />
+            )}
+
             <LabelledItem
-              item={data.nip}
-              label={t('nip')}
-              marginBottom="m-size"
+              item={data.address.street_address}
+              label={t('address')}
             />
-          )}
 
-          <LabelledItem
-            item={data.address.street_address}
-            label={t('address')}
-          />
-
-          <Text fontWeight="bold" type="body-1">
-            {/* eslint-disable-next-line react/jsx-newline */}
-            {data.address.post_code}, {data.address.city}
-          </Text>
-        </Tile>
-      )}
+            <Text fontWeight="bold" type="body-1">
+              {/* eslint-disable-next-line react/jsx-newline */}
+              {data.address.post_code}, {data.address.city}
+            </Text>
+          </Tile>
+        )
+      }}
     </QueryLoader>
   )
 }
