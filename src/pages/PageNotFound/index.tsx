@@ -40,7 +40,7 @@ const PageNotFound = () => {
           label={t('buttonLabel')}
           marginTop="xxxl-size"
           onClick={() => history.push(HOME)}
-          size="small"
+          size="medium"
           type="button"
         />
       </Flexbox>

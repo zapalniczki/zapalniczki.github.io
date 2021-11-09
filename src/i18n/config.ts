@@ -21,6 +21,8 @@ export const config: InitOptions = {
       CHECKOUT_PRODUCTS: pl.CHECKOUT_PRODUCTS,
       CHECKOUT_RESULT: pl.CHECKOUT_RESULT,
       CHECKOUT_SHIPPING: pl.CHECKOUT_SHIPPING,
+
+      CHRISTMAS_2021: pl.CHRISTMAS_2021,
       COMMON: pl.COMMON,
       CONTACT: pl.CONTACT,
       DELIVERY_AND_PAYMENTS: pl.DELIVERY_AND_PAYMENTS,
@@ -31,7 +33,7 @@ export const config: InitOptions = {
       PAGE_NOT_FOUND: pl.PAGE_NOT_FOUND,
       PRODUCTS: pl.PRODUCTS,
       VIEW_PRODUCT: pl.VIEW_PRODUCT,
-      CHRISTMAS_2021: pl.CHRISTMAS_2021
+      USER: pl.USER
     }
   }
 }

@@ -1,19 +1,17 @@
-import MaxWidth from '../MaxWidth'
-import Flexbox from '../Flexbox'
+import { usePageView } from 'hooks'
 import React, { ReactNode, useEffect } from 'react'
-import styled, { css } from 'styled-components'
-import getSpace from 'styles/getSpace'
-import breakpoints from 'styles/breakpoints'
 import { matchPath, useLocation } from 'react-router-dom'
 import Snowfall from 'react-snowfall'
-import { usePageView } from 'hooks'
+import styled from 'styled-components'
+import getSpace from 'styles/getSpace'
+import Flexbox from '../Flexbox'
+import MaxWidth from '../MaxWidth'
 
 type Props = {
   children: ReactNode
-  columns?: boolean
 }
 
-const Page = ({ children, columns }: Props) => {
+const Page = ({ children }: Props) => {
   const { pathname } = useLocation()
   const isProductsPage = matchPath(pathname, {
     path: '/products'
@@ -27,7 +25,7 @@ const Page = ({ children, columns }: Props) => {
 
   return (
     <Container as="main">
-      <StyledMaxWidth columns={columns}>{children}</StyledMaxWidth>
+      <MaxWidth>{children}</MaxWidth>
 
       {!isProductsPage && (
         <Snowfall
@@ -54,47 +52,6 @@ const Container = styled(Flexbox)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-`
-
-type StyledMaxWidthProps = Pick<Props, 'columns'>
-const StyledMaxWidth = styled(MaxWidth)<StyledMaxWidthProps>`
-  ${(props) =>
-    props.columns &&
-    css`
-      flex-direction: column;
-
-      & > * {
-        &:first-child {
-          min-width: 100%;
-          max-width: 100%;
-        }
-
-        &:last-child {
-          margin-top: ${getSpace('m-size')(props)};
-          margin-left: 0;
-          min-width: 100%;
-          max-width: 100%;
-        }
-      }
-
-      ${(props) => breakpoints('desktop')`
-        flex-direction: row;
-
-        & > * {
-          &:first-child {
-            min-width: 70%;
-            max-width: 70%;
-          }
-
-          &:last-child {
-            margin-top: 0;
-            margin-left: ${getSpace('m-size')(props)};
-            min-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
-            max-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
-          }
-        }
-      `}
-    `}
 `
 
 export default Page

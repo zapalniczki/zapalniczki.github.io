@@ -1,6 +1,6 @@
 import { Basket, Footer, Navigation } from 'commonComponents'
 import { HamburgerMenu } from 'commonComponents/'
-import { AdminRoute } from 'components'
+import { AdminRoute, UserRoute } from 'components'
 import React, { Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import routes from './routes'
@@ -15,7 +15,11 @@ const AppRouter = () => (
 
     <Suspense fallback={<p>...</p>}>
       <Switch>
-        {routes.map(({ admin, ...props }, index) => {
+        {routes.map(({ admin, user, ...props }, index) => {
+          if (user) {
+            return <UserRoute key={index} {...props} />
+          }
+
           if (admin) {
             return <AdminRoute key={index} {...props} />
           }

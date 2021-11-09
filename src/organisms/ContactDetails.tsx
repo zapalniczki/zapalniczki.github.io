@@ -21,7 +21,6 @@ type Props = {
 
 const ContactDetails = ({ userId }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
-  const t = useTranslation('ORDER').withBase('SECTIONS.CONTACT_DETAILS')
 
   const params = { id: userId }
   const userQuery = useQuery([USERS_TABLE, params], () => getUser(params))
@@ -33,7 +32,7 @@ const ContactDetails = ({ userId }: Props) => {
 
         return (
           <Tile>
-            <SectionHead separator title={t('title')} />
+            <SectionHead separator title={commonT('CONTACT_DETAILS.title')} />
 
             <Flexbox alignItems="center" flexDirection="column">
               <UserAvatar company={!!nip} />
@@ -61,12 +60,16 @@ const ContactDetails = ({ userId }: Props) => {
             <Separator />
 
             {nip && (
-              <LabelledItem item={nip} label={t('nip')} marginBottom="m-size" />
+              <LabelledItem
+                item={nip}
+                label={commonT('CONTACT_DETAILS.nip')}
+                marginBottom="m-size"
+              />
             )}
 
             <LabelledItem
               item={data.address.street_address}
-              label={t('address')}
+              label={commonT('CONTACT_DETAILS.address')}
             />
 
             <Text fontWeight="bold" type="body-1">

@@ -51,7 +51,8 @@
           "pages/*",
           "providers/*",
           "utils/*",
-          "hooks/*"
+          "hooks/*",
+          "organisms/*"
         ]
       }
     ],

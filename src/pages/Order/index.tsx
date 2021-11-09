@@ -1,5 +1,5 @@
 import { getOrder } from 'api'
-import { Page, QueryLoader } from 'components'
+import { Columns, Page, QueryLoader } from 'components'
 import { ORDER_TABLE } from 'constants/db_tables'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { Order } from 'models'
@@ -7,7 +7,7 @@ import React from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
 import Billing from './Billing'
-import ContactDetails from './ContactDetails'
+import { ContactDetails } from 'organisms'
 import Details from './Details'
 import Invoice from './Invoice'
 import OrderId from './OrderId'
@@ -30,10 +30,10 @@ const Order = () => {
   const orderQuery = useQuery([ORDER_TABLE, params], () => getOrder(params))
 
   return (
-    <Page columns>
+    <Page>
       <QueryLoader query={orderQuery}>
         {(order) => (
-          <>
+          <Columns>
             <div>
               <OrderId id={order.id} />
 
@@ -82,7 +82,7 @@ const Order = () => {
 
               <ContactDetails userId={order.user_id} />
             </div>
-          </>
+          </Columns>
         )}
       </QueryLoader>
     </Page>

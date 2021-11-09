@@ -8,6 +8,13 @@ export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
+    CONTACT_DETAILS: {
+      title: 'Dane kontaktowe',
+      address: 'Adres',
+      shippings: 'Adres do wysyłki',
+      nip: 'NIP'
+    },
+
     TOAST: {
       success: 'Udało się!',
       error: 'Nie udało się'
@@ -475,8 +482,12 @@ const pl = {
 
   PAGE_NOT_FOUND: {
     title: '404',
-    heading: 'Ups! Nie znaleziono strony.',
+    heading: 'Ups! Nie znaleziono strony',
     buttonLabel: 'Przejdź na stronę główną'
+  },
+
+  USER: {
+    title: 'Konto użytkownika'
   },
 
   VIEW_PRODUCT: {
@@ -798,13 +809,6 @@ const pl = {
           'Dokument nie jest jeszcze dostępny. Wróć tutaj ponownie za jakiś czas.',
         info: 'Dokument jest dostępny.',
         goToInvoice: 'Przejdź do faktury'
-      },
-
-      CONTACT_DETAILS: {
-        title: 'Dane kontaktowe',
-        address: 'Adres',
-        shippings: 'Adres do wysyłki',
-        nip: 'NIP'
       },
 
       DETAILS: {

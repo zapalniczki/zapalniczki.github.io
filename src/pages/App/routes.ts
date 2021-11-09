@@ -21,7 +21,8 @@ import {
   PRODUCTS,
   PRODUCTS_ID,
   ORDERS_ID,
-  CHRISTMAS_2021
+  CHRISTMAS_2021,
+  USER
 } from 'constants/routes'
 
 import React from 'react'
@@ -91,6 +92,14 @@ const routes = [
     translationKey: 'documents',
     path: DOCUMENTS
   },
+
+  {
+    component: React.lazy(() => import('pages/Customer')),
+    translationKey: 'customer',
+    path: USER,
+    user: true
+  },
+
   {
     component: React.lazy(() => import('pages/Christmas2021')),
     translationKey: 'christmas2021',
