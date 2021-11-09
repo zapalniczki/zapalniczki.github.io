@@ -22,6 +22,7 @@ const Search = ({ onChange, value }: Props) => {
 
       <Button
         icon={value ? 'times' : 'search'}
+        label={value ? 'clear' : 'search'}
         marginLeft={['unset', 0, 0, 'm-size']}
         marginTop={['unset', 'm-size', 'm-size', 0]}
         onClick={() => onChange('')}
@@ -34,7 +35,7 @@ const Search = ({ onChange, value }: Props) => {
 
 const StyledInput = styled.input`
   border: none;
-  height: 4rem;
+  height: 4.6rem;
   width: 100%;
   padding: ${(props) => `0 ${props.theme.space['s-size']}`};
   border: 1px solid;

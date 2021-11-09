@@ -465,7 +465,9 @@ const pl = {
       title: 'Wyszukaj swój produkt',
       searchPlaceholder: 'Wpisz nazwę produktu, miejscowość lub ikonę',
       collections: 'Kolekcje',
-      icons: 'Ikony'
+      icons: 'Ikony',
+      search: 'Wyszukaj',
+      clear: 'Wyczyść'
     }
   },
 
