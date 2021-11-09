@@ -88,7 +88,8 @@ type CheckoutContent = {
 export const initState: Checkout = {
   contact_details: null,
   total: {
-    delivery: 0
+    delivery: 0,
+    payment: 0
   },
   basket: [],
   delivery_type: null,

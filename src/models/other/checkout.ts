@@ -12,7 +12,8 @@ const checkout = object({
   same_address_as_invoice: boolean().nullable(),
   shipping: shipping.nullable(),
   total: object({
-    delivery: number()
+    delivery: number(),
+    payment: number()
   }),
   voucher_id: voucher.shape.id.nullable(),
   voucher: voucher.pick({ is_fixed: true, discount: true }).nullable()

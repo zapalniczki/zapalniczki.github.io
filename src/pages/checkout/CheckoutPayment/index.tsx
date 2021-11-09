@@ -43,15 +43,21 @@ const CheckoutPayment = () => {
               validateOnChange
               validationSchema={schema}
             >
-              {({ handleSubmit }) => (
-                <FormikForm onSubmit={handleSubmit}>
-                  <Form paymentTypes={paymentTypes} />
+              {({ handleSubmit, values }) => {
+                const paymentType = paymentTypes.find(
+                  (type) => type.id === values.payment_type
+                )
 
-                  <Total />
+                return (
+                  <FormikForm onSubmit={handleSubmit}>
+                    <Form paymentTypes={paymentTypes} />
 
-                  <Actions />
-                </FormikForm>
-              )}
+                    <Total customPayment={paymentType?.price} />
+
+                    <Actions />
+                  </FormikForm>
+                )
+              }}
             </Formik>
           )}
         </QueryLoader>

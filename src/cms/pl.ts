@@ -36,6 +36,7 @@ const pl = {
     QUERY_LOADER: {
       loading: 'ładowanie...'
     },
+
     nrb,
     bankName,
     fullCompanyName,
@@ -110,9 +111,10 @@ const pl = {
       5: 'Płatność'
     },
 
-    checkoutTotal: {
-      delivery: 'Dostawa',
+    CHECKOUT_TOTAL: {
       products: 'Produkty',
+      delivery: 'Dostawa',
+      payment: 'Płatność',
       discount: 'Obniżka',
       sum: 'Łącznie do zapłaty',
       vat: '(w tym VAT)'
@@ -771,6 +773,7 @@ const pl = {
         LABELS: {
           products_price: 'Cena produktów',
           delivery_price: 'Dostawa',
+          payment_price: 'Płatność',
           discount: 'Rabat',
           grand_total: 'Łącznie to zapłaty',
           vat: 'W tym VAT'

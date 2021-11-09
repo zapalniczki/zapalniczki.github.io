@@ -6,12 +6,13 @@ import { displayMoney, getVatAmount } from 'utils'
 
 type Props = Pick<
   GetOrderResponse,
-  'products_price' | 'delivery_price' | 'discount' | 'total'
+  'products_price' | 'delivery_price' | 'payment_price' | 'discount' | 'total'
 >
 
 const Billing = ({
   delivery_price,
   discount,
+  payment_price,
   products_price,
   total
 }: Props) => {
@@ -32,6 +33,14 @@ const Billing = ({
         <LabelledItem
           item={displayMoney(delivery_price)}
           label={t('LABELS.delivery_price')}
+          marginTop="m-size"
+        />
+      ) : null}
+
+      {payment_price ? (
+        <LabelledItem
+          item={displayMoney(payment_price)}
+          label={t('LABELS.payment_price')}
           marginTop="m-size"
         />
       ) : null}

@@ -52,6 +52,7 @@ const Order = () => {
               <Billing
                 delivery_price={order.delivery_price}
                 discount={order.discount}
+                payment_price={order.payment_price}
                 products_price={order.products_price}
                 total={order.total}
               />

@@ -60,25 +60,6 @@ const DeliveryAndPayments = () => {
         />
       </Grid>
 
-      <SectionHead marginTop="xxl-size" title={t('payments.title')} />
-
-      <QueryLoader query={paymentTypesQuery}>
-        {(paymentTypes) => (
-          <Grid>
-            {paymentTypes
-              .filter((type) => type.is_enabled)
-              .map((type) => (
-                <FeatureItem key={type.id} title={type.label}>
-                  <FontAwesomeIcon
-                    icon={(type.frontend_icon_name ?? 'question') as IconName}
-                    size="3x"
-                  />
-                </FeatureItem>
-              ))}
-          </Grid>
-        )}
-      </QueryLoader>
-
       <SectionHead marginTop="xxl-size" title={t('delivery.title')} />
 
       <QueryLoader query={deliveryTypesQuery}>
@@ -93,7 +74,30 @@ const DeliveryAndPayments = () => {
                   title={type.label}
                 >
                   <FontAwesomeIcon
-                    icon={(type.frontend_icon_name ?? 'question') as IconName}
+                    icon={type.frontend_icon_name as IconName}
+                    size="3x"
+                  />
+                </FeatureItem>
+              ))}
+          </Grid>
+        )}
+      </QueryLoader>
+
+      <SectionHead marginTop="xxl-size" title={t('payments.title')} />
+
+      <QueryLoader query={paymentTypesQuery}>
+        {(paymentTypes) => (
+          <Grid>
+            {paymentTypes
+              .filter((type) => type.is_enabled)
+              .map((type) => (
+                <FeatureItem
+                  key={type.id}
+                  subtitle={`${displayMoney(type.price)} - ${type.time}`}
+                  title={type.label}
+                >
+                  <FontAwesomeIcon
+                    icon={type.frontend_icon_name as IconName}
                     size="3x"
                   />
                 </FeatureItem>

@@ -25,6 +25,7 @@ const order = tableBase.extend({
   total: number(),
   products_price: number(),
   delivery_price: number(),
+  payment_price: number(),
   discount: number(),
   user_id: string().uuid(),
   voucher_id: voucher.shape.id.nullable(),

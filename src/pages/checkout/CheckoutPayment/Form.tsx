@@ -6,6 +6,7 @@ import { FormValues } from './useForm'
 import { Row } from '../common'
 import { PaymentType } from 'models'
 import Voucher from './Voucher'
+import { displayMoney } from 'utils'
 
 type Props = {
   paymentTypes: PaymentType[]
@@ -28,6 +29,7 @@ const Form = ({ paymentTypes }: Props) => {
                 isFirst={index === 0}
                 subtitle={type.time}
                 title={type.label}
+                val={displayMoney(type.price)}
               />
             )}
           </Field>

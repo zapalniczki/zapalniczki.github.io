@@ -2,7 +2,7 @@ import tableBase from './tableBase'
 import { string, number, boolean, TypeOf } from 'zod'
 
 const deliveryType = tableBase.extend({
-  frontend_icon_name: string().nullable(),
+  frontend_icon_name: string(),
   is_enabled: boolean(),
   label: string(),
   price: number(),
