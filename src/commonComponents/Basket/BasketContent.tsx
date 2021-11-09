@@ -1,13 +1,16 @@
-import { getProductsById } from 'api'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BasketItem } from 'commonComponents'
-import { Flexbox, QueryLoader, Text } from 'components'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { Flexbox, Text } from 'components'
 import { useModalView, useTranslation } from 'hooks'
+import { GetProductsByIdResponseItem } from 'models'
 import { checkoutContext } from 'providers'
 import React, { useContext, useEffect } from 'react'
-import { useQuery } from 'react-query'
 
-const BasketContent = () => {
+type Props = {
+  products: GetProductsByIdResponseItem[]
+}
+
+const BasketContent = ({ products }: Props) => {
   const commonT = useTranslation('COMMON').withBase('BASKET')
   const { basket, isBasketEmpty } = useContext(checkoutContext)
 
@@ -17,43 +20,43 @@ const BasketContent = () => {
     triggerModalView()
   }, [])
 
-  const ids = basket.map((e) => e.id)
-  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
-    getProductsById(ids)
-  )
-
   return (
-    <QueryLoader query={productsQuery}>
-      {(products) => (
+    <Flexbox
+      flexDirection="column"
+      flexGrow={1}
+      overflowY="auto"
+      padding="s-size"
+    >
+      {isBasketEmpty && (
         <Flexbox
+          alignItems="center"
           flexDirection="column"
           flexGrow={1}
-          overflowY="auto"
-          padding="s-size"
+          justifyContent="center"
         >
-          {isBasketEmpty && (
-            <Flexbox alignItems="center" flexGrow={1} justifyContent="center">
-              <Text type="caption">{commonT('empty')}</Text>
-            </Flexbox>
-          )}
+          <FontAwesomeIcon icon="cart-arrow-down" size="2x" />
 
-          {basket.map((basketItem) => {
-            const productDetails = products.find(
-              (product) => product.id === basketItem.id
-            )
-
-            return (
-              <BasketItem
-                key={basketItem.id}
-                originalId={basketItem.id}
-                product={productDetails}
-                quantity={basketItem.quantity}
-              />
-            )
-          })}
+          <Text marginTop="m-size" type="body-2">
+            {commonT('empty')}
+          </Text>
         </Flexbox>
       )}
-    </QueryLoader>
+
+      {basket.map((basketItem) => {
+        const productDetails = products.find(
+          (product) => product.id === basketItem.id
+        )
+
+        return (
+          <BasketItem
+            key={basketItem.id}
+            originalId={basketItem.id}
+            product={productDetails}
+            quantity={basketItem.quantity}
+          />
+        )
+      })}
+    </Flexbox>
   )
 }
 

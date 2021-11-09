@@ -165,7 +165,7 @@ const pl = {
     BASKET: {
       close: 'Zamknij',
       clear: 'Wyczyść',
-      empty: 'Twój koszyk jest pusty',
+      empty: 'Koszyk jest pusty',
       title: 'Koszyk ',
       total: 'Produkty',
       checkout: 'Złóż zamówienie',

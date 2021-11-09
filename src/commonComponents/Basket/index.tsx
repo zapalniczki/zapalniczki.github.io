@@ -1,5 +1,9 @@
-import { togglesContext } from 'providers'
+import { getProductsById } from 'api'
+import { QueryLoader } from 'components'
+import { PRODUCTS_TABLE } from 'constants/db_tables'
+import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext, useEffect, useRef } from 'react'
+import { useQuery } from 'react-query'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
 import BasketContent from './BasketContent'
@@ -8,8 +12,10 @@ import Checkout from './Checkout'
 import Header from './Header'
 
 const Basket = () => {
-  const { basketOpen, closeBasket } = useContext(togglesContext)
   const ref = useRef<HTMLDivElement>(null)
+
+  const { basketOpen, closeBasket } = useContext(togglesContext)
+  const { basket } = useContext(checkoutContext)
 
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
@@ -25,6 +31,11 @@ const Basket = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  const ids = basket.map((e) => e.id)
+  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
+    getProductsById(ids)
+  )
+
   if (!basketOpen) {
     return null
   }
@@ -33,9 +44,15 @@ const Basket = () => {
     <Container ref={ref}>
       <Header />
 
-      <BasketContent />
+      <QueryLoader query={productsQuery}>
+        {(products) => (
+          <>
+            <BasketContent products={products} />
 
-      <Checkout />
+            <Checkout products={products} />
+          </>
+        )}
+      </QueryLoader>
     </Container>
   )
 }

@@ -8,7 +8,7 @@ import Header from './Header'
 
 const HamburgerMenu = () => {
   const commonT = useTranslation('COMMON').withBase('LINKS')
-  const { hamburgerOpen } = useContext(togglesContext)
+  const { closeHamburger, hamburgerOpen } = useContext(togglesContext)
 
   const { pathname } = useLocation()
 
@@ -50,6 +50,7 @@ const HamburgerMenu = () => {
               <NavigationLink
                 active={isActive}
                 label={commonT(route.translationKey)}
+                onClick={closeHamburger}
                 to={route.path}
               />
             </Box>
