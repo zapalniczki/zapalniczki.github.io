@@ -22,7 +22,7 @@ const Search = ({ onChange, value }: Props) => {
 
       <Button
         icon={value ? 'times' : 'search'}
-        label={value ? 'clear' : 'search'}
+        label={t(value ? 'clear' : 'search')}
         marginLeft={['unset', 0, 0, 'm-size']}
         marginTop={['unset', 'm-size', 'm-size', 0]}
         onClick={() => onChange('')}

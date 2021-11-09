@@ -23,7 +23,7 @@ const Condition = ({
       <Flexbox {...props} flexDirection="column">
         <Text type="subtitle-2">{title}</Text>
 
-        <Flexbox marginTop="xxs-size" overflowX="auto">
+        <Flexbox overflowX="auto" paddingY="xxs-size">
           {data
             .sort((prev, next) => (prev.label < next.label ? -1 : 1))
             .map((elem, index) => {
