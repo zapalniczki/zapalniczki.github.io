@@ -42,7 +42,7 @@ const Chip = ({ children, onClick, rounded, selected, ...props }: Props) => {
       onClick={onClick}
       paddingX="m-size"
       paddingY="ss-size"
-      width="fit-content"
+      width="max-content"
     >
       {selected && <FontAwesomeIcon color="black" icon="check" />}
 
@@ -51,6 +51,7 @@ const Chip = ({ children, onClick, rounded, selected, ...props }: Props) => {
         marginLeft={selected ? 'xxs-size' : 0}
         type="body-2"
         white={onClick ? false : true}
+        wrap={false}
       >
         {children}
       </Text>

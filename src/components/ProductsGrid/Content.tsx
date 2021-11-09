@@ -55,7 +55,14 @@ const Content = ({
         </Flexbox>
       )}
 
-      <Grid gridTemplateColumns="repeat(3, 1fr)">
+      <Grid
+        gridTemplateColumns={[
+          'unset',
+          '1fr',
+          'repeat(2, 1fr)',
+          'repeat(3, 1fr)'
+        ]}
+      >
         {products.map((product) => (
           <ProductTile key={product.id} product={product} />
         ))}

@@ -12,10 +12,14 @@ import {
 
 type Params = GetProductsParams & {
   page: number
+  size: number
 }
 
-export const getPaginatedProducts = async ({ page, ...params }: Params) => {
-  const size = 9
+export const getPaginatedProducts = async ({
+  page,
+  size,
+  ...params
+}: Params) => {
   const { from, to } = getPagination(page, size)
 
   const match = getProductsMatch(params)

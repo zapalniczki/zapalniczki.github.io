@@ -13,7 +13,7 @@ const Search = ({ onChange, value }: Props) => {
   const t = useTranslation('PRODUCTS').withBase('FILTERS')
 
   return (
-    <Flexbox>
+    <Flexbox flexDirection={['unset', 'column', 'column', 'row']}>
       <StyledInput
         onChange={(e) => onChange(e.target.value)}
         placeholder={t('searchPlaceholder')}
@@ -22,7 +22,8 @@ const Search = ({ onChange, value }: Props) => {
 
       <Button
         icon={value ? 'times' : 'search'}
-        marginLeft="m-size"
+        marginLeft={['unset', 0, 0, 'm-size']}
+        marginTop={['unset', 'm-size', 'm-size', 0]}
         onClick={() => onChange('')}
         size="medium"
         variant="primary"

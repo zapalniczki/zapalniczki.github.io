@@ -2,7 +2,12 @@ import { getPaginatedProducts } from 'api'
 import { BackButton, Page, ProductsGrid } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { PRODUCTS } from 'constants/routes'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import {
+  useBreakpoints,
+  useScrollTop,
+  useTabTitle,
+  useTranslation
+} from 'hooks'
 import debounce from 'lodash.debounce'
 import React, { useMemo, useState } from 'react'
 import { useInfiniteQuery } from 'react-query'
@@ -15,6 +20,8 @@ const Products = () => {
 
   useTabTitle(t('title'))
   useScrollTop()
+
+  const isDesktop = useBreakpoints('desktop')
 
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedSearchQuery, setDebuncedSearchQuery] = useState('')
@@ -30,6 +37,7 @@ const Products = () => {
 
   const params = {
     page: 0,
+    size: isDesktop ? 9 : 5,
     collectionId: filters.collectionId || state?.collectionId,
     labelId: state?.labelId,
     iconId: filters.iconId,

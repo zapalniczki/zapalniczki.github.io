@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Banner, Box, Button, Flexbox, Heading, Text } from 'components'
 import { Form as FormikForm, Formik } from 'formik'
-import { useTranslation } from 'hooks'
+import { useBreakpoints, useTranslation } from 'hooks'
 import React from 'react'
 import { useTheme } from 'styled-components'
 import Form from './Form'
@@ -11,6 +11,8 @@ const Newsletter = () => {
   const { t: commonT } = useTranslation('COMMON')
   const { initialValues, onSubmit, schema, setView, view } = useForm()
   const { colors } = useTheme()
+
+  const isDesktop = useBreakpoints('desktop')
 
   let title = commonT('NEWSLETTER.FORM.title')
   let subtitle = commonT('NEWSLETTER.FORM.subtitle')
@@ -57,18 +59,35 @@ const Newsletter = () => {
     subtitle = commonT(view.message)
   }
 
+  const iconSize = isDesktop ? '2x' : '5x'
+
   return (
     <Banner marginTop="xxl-size" size="MEDIUM">
-      <Flexbox alignItems="center">
+      <Flexbox
+        alignItems="center"
+        flexDirection={['unset', 'column', 'column', 'row']}
+      >
         {view.view === 'SUCCESS' && (
-          <FontAwesomeIcon color={colors.green} icon="check-circle" size="2x" />
+          <FontAwesomeIcon
+            color={colors.green}
+            icon="check-circle"
+            size={iconSize}
+          />
         )}
 
         {view.view === 'ERROR' && (
-          <FontAwesomeIcon color={colors.red} icon="times-circle" size="2x" />
+          <FontAwesomeIcon
+            color={colors.red}
+            icon="times-circle"
+            size={iconSize}
+          />
         )}
 
-        <Heading level={4} marginLeft={view.view !== 'FORM' ? 'm-size' : 0}>
+        <Heading
+          level={4}
+          marginLeft={['unset', 0, 0, view.view === 'FORM' ? 0 : 'm-size']}
+          marginTop={['unset', 'm-size', 'm-size', 0]}
+        >
           {title}
         </Heading>
       </Flexbox>
