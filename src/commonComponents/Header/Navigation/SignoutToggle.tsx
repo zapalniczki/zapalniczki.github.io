@@ -7,20 +7,18 @@ import {
   CHECKOUT_PAYMENT,
   CHECKOUT_PRODUCTS,
   CHECKOUT_RESULT,
-  CHECKOUT_SHIPPING,
-  HOME
+  CHECKOUT_SHIPPING
 } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
 import { useMutation } from 'react-query'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const SignoutToggle = () => {
   const { t: commonT } = useTranslation('COMMON')
 
   const { pathname } = useLocation()
-  const history = useHistory()
 
   const { isLoggedIn } = useContext(authContext)
   const { mutateAsync: mutateSignOut } = useMutation(signOut)
@@ -34,8 +32,6 @@ const SignoutToggle = () => {
       disabled={basketDisabledpathnames.includes(pathname)}
       onClick={async () => {
         await mutateSignOut()
-
-        history.push(HOME)
       }}
       padding="s-size"
       title={commonT('signoutToggleLabel')}

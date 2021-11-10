@@ -15,6 +15,9 @@ const useForm = () => {
   const useSubmit = () => {
     const { mutateAsync: mutateSignInWithEmailAndPassword } = useMutation(
       signInWithEmailAndPassword
+      // {
+      //   onError: () => {}
+      // }
     )
 
     return useFormSubmit((values: FormValues) =>

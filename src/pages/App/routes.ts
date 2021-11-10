@@ -23,7 +23,8 @@ import {
   ORDERS_ID,
   CHRISTMAS_2021,
   USER,
-  SIGN_IN
+  SIGN_IN,
+  SIGNED_OUT
 } from 'constants/routes'
 
 import React from 'react'
@@ -81,6 +82,13 @@ const routes = [
     path: CONTACT,
     order: 6
   },
+
+  {
+    component: React.lazy(() => import('pages/SignedOut')),
+    translationKey: 'signedOut',
+    path: SIGNED_OUT
+  },
+
   {
     component: React.lazy(() => import('pages/DeliveryAndPayments')),
     translationKey: 'deliveryAndPayments',
