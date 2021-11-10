@@ -2,6 +2,7 @@ import { Banner, Columns, Page } from 'components'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { ContactDetails } from 'organisms'
 import React from 'react'
+import Orders from './Orders'
 
 const User = () => {
   const { t } = useTranslation('USER')
@@ -14,7 +15,9 @@ const User = () => {
       <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
       <Columns>
-        <div />
+        <div>
+          <Orders />
+        </div>
 
         <div>
           <ContactDetails userId="365574d5-af43-46ef-8371-329a5134b856" />

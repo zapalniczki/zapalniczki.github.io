@@ -253,9 +253,10 @@ const pl = {
         required: 'Proszę podać miejscowość'
       },
       NIP: {
-        required: 'Proszę podać prawidłowy NIP',
-        length: 'NIP powinien mieć 10 znaków',
-        matches: 'NIP powinien zawierać tylko cyfry'
+        required: 'Proszę podać NIP',
+        length: 'NIP powinien zawierać 10 cyft',
+        matches: 'NIP powinien zawierać tylko cyfry',
+        invalid: 'NIP jest nieprawidłowy'
       },
       POST_CODE: {
         matches: 'Kod pocztowy powinien mieć format XX-XXX',
@@ -501,7 +502,11 @@ const pl = {
   },
 
   USER: {
-    title: 'Konto użytkownika'
+    title: 'Konto użytkownika',
+
+    ORDERS: {
+      title: 'Zamówienia'
+    }
   },
 
   VIEW_PRODUCT: {

@@ -43,7 +43,26 @@ const useFormSchema = () => {
     NIP: string()
       .required(commonT('NIP.required'))
       .length(10, commonT('NIP.length'))
-      .matches(/^(\d{10})$/, commonT('NIP.matches')),
+      .matches(/^(\d{10})$/, commonT('NIP.matches'))
+      .test('', commonT('NIP.invalid'), (nip) => {
+        if (!nip) {
+          return false
+        }
+
+        const weights = [6, 5, 7, 2, 3, 4, 5, 6, 7]
+        const controlNumber = parseInt(nip.substring(9, 10))
+        const weightCount = weights.length
+
+        let sum = 0
+        for (let i = 0; i < weightCount; i++) {
+          sum += parseInt(nip.slice(i, i + 1)) * weights[i]
+        }
+
+        const mod = sum % 11
+        const isValid = mod === controlNumber
+
+        return isValid
+      }),
 
     PASSWORD: string()
       .required(commonT('PASSWORD.required'))
