@@ -37,7 +37,7 @@ const useForm = (
     return useFormSubmit(
       (values: FormValues) => mutateGetVoucher({ id: values.voucher_id }),
       {
-        onError: (values, form: FormikHelpers<FormValues>) => {
+        onError: (_error, _values, form: FormikHelpers<FormValues>) => {
           form.setFieldError('voucher_id', t('error'))
           setCodeApplied(false)
         },

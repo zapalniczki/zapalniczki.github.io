@@ -8,6 +8,12 @@ export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
+    ERRORS: {
+      23505: 'Podany adres e-mail jest już zarejestrowany',
+      'Invalid login credentials': 'Nieprawidłowa nazwa użytkownika lub hasło',
+      default: `Nieoczekiwany błąd. Próbuj ponownie lub zadzwoń na ${phoneNumer}.`
+    },
+
     CONTACT_DETAILS: {
       title: 'Dane kontaktowe',
       address: 'Adres',
@@ -371,11 +377,7 @@ const pl = {
       },
       ERROR: {
         title: 'Nie udało się!',
-        tryAgain: 'Spróbuj jeszcze raz',
-        CODES: {
-          23505: 'Podany adres e-mail jest już zarejestrowany',
-          default: `W tym momencie nie udało się ustalić przyczyny. Zadzwoń na ${phoneNumer}, a my to dla Ciebie zrobimy.`
-        }
+        tryAgain: 'Spróbuj jeszcze raz'
       }
     },
 

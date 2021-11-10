@@ -8,7 +8,11 @@ const useFormSubmit = <T, TFormValues>(
   options?: {
     errorToastMessage?: string
     hideErrorToastMessage?: boolean
-    onError?: (values: TFormValues, form: FormikHelpers<TFormValues>) => void
+    onError?: (
+      e: Error,
+      values: TFormValues,
+      form: FormikHelpers<TFormValues>
+    ) => void
     onSuccess?: (values: TFormValues, form: FormikHelpers<TFormValues>) => void
     showSuccessToastMessage?: boolean
     successToastMessage?: string
@@ -53,7 +57,9 @@ const useFormSubmit = <T, TFormValues>(
 
       if (options) {
         if (options.onError) {
-          options.onError(values, form)
+          if (e instanceof Error) {
+            options.onError(e, values, form)
+          }
         }
       }
 

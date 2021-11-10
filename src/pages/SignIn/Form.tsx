@@ -1,10 +1,11 @@
 import React from 'react'
-import { Field, FieldProps, Form as FormikForm } from 'formik'
+import { Field, FieldProps, Form as FormikForm, useFormikContext } from 'formik'
 import { FormRow, FieldWrapper, Input, Button } from 'components'
 import { FormValues } from './useForm'
 import { useInput } from 'hooks'
 
 const Form = () => {
+  const { isValid } = useFormikContext<FormValues>()
   const { getInput } = useInput()
 
   return (
@@ -32,6 +33,7 @@ const Form = () => {
       <FormRow>
         <FieldWrapper>
           <Button
+            disabled={!isValid}
             label={getInput('SUBMIT').label}
             marginTop="s-size"
             size="small"

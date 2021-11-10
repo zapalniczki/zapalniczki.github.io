@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from 'api'
-import { useFormSchema, useFormSubmit } from 'hooks'
+import { useFormSchema, useFormSubmit, useTranslation } from 'hooks'
 import { User } from 'models'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
@@ -10,18 +10,30 @@ export type FormValues = {
 }
 
 const useForm = () => {
+  const commonT = useTranslation('COMMON').withBase('ERRORS')
   const { getSchema } = useFormSchema()
 
   const useSubmit = () => {
     const { mutateAsync: mutateSignInWithEmailAndPassword } = useMutation(
       signInWithEmailAndPassword
-      // {
-      //   onError: () => {}
-      // }
     )
 
-    return useFormSubmit((values: FormValues) =>
-      mutateSignInWithEmailAndPassword(values)
+    return useFormSubmit(
+      (values: FormValues) => mutateSignInWithEmailAndPassword(values),
+      {
+        hideErrorToastMessage: true,
+        onError: (error, _values, form) => {
+          let errorMessageKey = 'default'
+
+          switch (error.message) {
+            case 'Invalid login credentials':
+              errorMessageKey = error.message
+              break
+          }
+
+          form.setFieldError('email', commonT(errorMessageKey))
+        }
+      }
     )
   }
 

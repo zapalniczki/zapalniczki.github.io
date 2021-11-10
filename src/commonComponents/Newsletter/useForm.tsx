@@ -8,7 +8,7 @@ import { object } from 'yup'
 const useForm = () => {
   const [view, setView] = useState<View>({ view: 'FORM' })
   const { getSchema } = useFormSchema()
-  const commonT = useTranslation('COMMON').withBase('NEWSLETTER.ERROR.CODES')
+  const commonT = useTranslation('COMMON').withBase('ERRORS')
 
   const initialValues = { email: '' }
 
@@ -45,19 +45,19 @@ const useForm = () => {
         })
       },
       onError: (error) => {
-        let message = commonT('default')
+        let message = 'default'
 
         if (error instanceof Error) {
           switch (error.message) {
             case '23505':
-              message = commonT('23505')
+              message = error.message
               break
           }
         }
 
         setView({
           view: 'ERROR',
-          message
+          message: commonT(message)
         })
       }
     })
