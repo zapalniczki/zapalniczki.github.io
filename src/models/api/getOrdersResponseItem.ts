@@ -7,7 +7,8 @@ const getOrdersResponseItem = order
     updated_at: true,
     created_at: true,
     total: true,
-    status: true
+    status: true,
+    is_test: true
   })
   .extend({
     customerEmail: user.pick({ email: true }),

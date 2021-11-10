@@ -66,6 +66,7 @@ const pl = {
     preloaderInfo: 'Ładowanie strony',
     loading: 'Ładowanie',
     companyName: domain,
+    tableEmpty: 'Tabela jest pusta',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',
@@ -573,6 +574,7 @@ const pl = {
   ADMIN_ORDERS: {
     title: 'Zamówienia',
     emptyState: 'Nie ma żadnych zamówień',
+    testData: 'Dane testowe',
 
     STATUSES_INFO: {
       OPEN: 'Zamówienia, które dostały dopiero złożone. Oczekują na potwierdzenie przez nas zamówienia z klientem',
@@ -589,10 +591,12 @@ const pl = {
       COMPLETED: 'Zamówienia, które są ukończone.',
       REJECTED: 'Zamówienia, które zostały odrzucone i nie będą realizowane'
     },
+
     IS_COMPANY: {
       yes: 'Tak',
       no: 'Nie'
     },
+
     EDIT_MODAL: {
       buttonLabel: 'Edytuj',
       title: 'Edycja zamówienia',

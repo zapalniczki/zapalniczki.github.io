@@ -1,5 +1,5 @@
 import { Flexbox, Spinner } from 'components'
-import { useIsDev } from 'hooks'
+import { useDev } from 'hooks'
 import { Size } from 'models'
 import React from 'react'
 import { Img } from 'react-image'
@@ -17,7 +17,7 @@ type Props = {
 }
 
 const Image = ({ alt = '', size, src, ...props }: Props) => {
-  const isDev = useIsDev()
+  const isDev = useDev()
 
   let imageSrc = [src, getProductImagePlaceholder(size || 'TILE')]
   if (isDev && size) {

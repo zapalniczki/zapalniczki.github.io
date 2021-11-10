@@ -5,7 +5,7 @@ import {
   triggerSendEmail
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
-import { useIsDev, useFormSchema, useAdmin, useFormSubmit } from 'hooks'
+import { useDev, useFormSchema, useAdmin, useFormSubmit } from 'hooks'
 import multiply from 'lodash/multiply'
 import add from 'lodash/add'
 import { MoldStatus, PaymentType, Voucher } from 'models'
@@ -24,7 +24,7 @@ export type FormValues = {
 const useForm = () => {
   const history = useHistory()
   const { getSchema } = useFormSchema()
-  const isDev = useIsDev()
+  const isDev = useDev()
   const isAdmin = useAdmin()
 
   const { basket, checkout, setCheckout } = useContext(checkoutContext)

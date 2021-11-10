@@ -1,4 +1,6 @@
-import { Box } from 'components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Box, Flexbox, Text } from 'components'
+import { useTranslation } from 'hooks'
 import React from 'react'
 import { Column, useTable } from 'react-table'
 import styled from 'styled-components'
@@ -22,6 +24,7 @@ function Table<T extends DataConstraint>({
   data,
   ...props
 }: Props<T>) {
+  const { t: commonT } = useTranslation('COMMON')
   const { getTableBodyProps, getTableProps, headerGroups, prepareRow, rows } =
     useTable({
       columns,
@@ -44,6 +47,25 @@ function Table<T extends DataConstraint>({
         </thead>
 
         <tbody {...getTableBodyProps()}>
+          {!rows.length && (
+            <tr>
+              <td colSpan={headerGroups[0].headers.length}>
+                <Flexbox
+                  alignItems="center"
+                  flexDirection="column"
+                  justifyContent="center"
+                  width="100%"
+                >
+                  <FontAwesomeIcon icon="search" size="2x" />
+
+                  <Text marginTop="m-size" type="body-1">
+                    {commonT('tableEmpty')}
+                  </Text>
+                </Flexbox>
+              </td>
+            </tr>
+          )}
+
           {rows.map((row, rowIndex) => {
             prepareRow(row)
 

@@ -1,6 +1,6 @@
 import { addParcel, getUser, triggerSendEmail, updateOrderStatus } from 'api'
 import { ORDER_TABLE } from 'constants/db_tables'
-import { useFormSubmit, useIsDev } from 'hooks'
+import { useFormSubmit, useDev } from 'hooks'
 import { queryClient } from 'index'
 import { Order, OrderStatus, Parcel } from 'models'
 import { useState } from 'react'
@@ -23,7 +23,7 @@ const useForm = (id: string, status: Order['status']) => {
   })
 
   const useSubmit = () => {
-    const isDev = useIsDev()
+    const isDev = useDev()
 
     const { mutateAsync: mutateTriggerSendEmail } =
       useMutation(triggerSendEmail)

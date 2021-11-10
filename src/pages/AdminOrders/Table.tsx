@@ -1,39 +1,46 @@
 import { getOrders } from 'api'
 import {
   Box,
-  Heading,
-  QueryLoader,
-  Tile,
-  Table as NativeTable,
   DisplayDate,
-  Link,
+  ExternalLink,
   Flexbox,
+  Link,
+  QueryLoader,
+  SectionHead,
+  Switch,
+  Table as NativeTable,
   Text,
-  ExternalLink
+  Tile
 } from 'components'
-import React, { useMemo } from 'react'
-import { useTranslation } from 'hooks'
-import { GetOrdersResponseItem, OrderStatus } from 'models'
-import { AdminTableColumns } from './statusToColumns'
+import { ORDER_TABLE } from 'constants/db_tables'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
+import { useDev, useTranslation } from 'hooks'
+import { GetOrdersResponseItem, Order } from 'models'
+import React, { useMemo, useState } from 'react'
+import { useQuery } from 'react-query'
 import { displayMoney, getOrderPath } from 'utils'
 import EditModal from './EditModal'
-import { useQuery } from 'react-query'
-import { ORDER_TABLE } from 'constants/db_tables'
+import { AdminTableColumns } from './statusToColumns'
 
 type Props = {
   columns: AdminTableColumns[]
-  status: OrderStatus
+  status: Order['status']
 }
 
 const Table = ({ columns, status }: Props) => {
   const { t } = useTranslation('ADMIN_ORDERS')
   const { t: commonT } = useTranslation('COMMON')
 
-  const ordersQuery = useQuery([ORDER_TABLE, { status }], () =>
-    getOrders(status)
-  )
+  const isDev = useDev()
+  const [testData, setTestData] = useState(isDev)
+
+  const params: Pick<Order, 'status' | 'is_test'> = {
+    status,
+    is_test: testData
+  }
+
+  const ordersQuery = useQuery([ORDER_TABLE, params], () => getOrders(params))
 
   const columnsMemo = useMemo(
     () =>
@@ -47,11 +54,19 @@ const Table = ({ columns, status }: Props) => {
 
   return (
     <Tile>
-      <Heading level={6} marginY="l-size">
-        {t(`STATUSES_INFO.${status}`)}
-      </Heading>
+      <SectionHead separator title={commonT(`ORDER_STATUSES.${status}`)} />
 
-      <Box minHeight="50rem" overflowX="scroll" overflowY="auto" width="100%">
+      <Text type="subtitle-1">{t(`STATUSES_INFO.${status}`)}</Text>
+
+      <Flexbox justifyContent="flex-end" marginTop="m-size">
+        <Switch
+          checked={testData}
+          label={t('testData')}
+          onChange={(value) => setTestData(value)}
+        />
+      </Flexbox>
+
+      <Box marginTop="m-size" overflowX="scroll" overflowY="auto" width="100%">
         <QueryLoader query={ordersQuery}>
           {(orders) => {
             const data = shapeData(orders)

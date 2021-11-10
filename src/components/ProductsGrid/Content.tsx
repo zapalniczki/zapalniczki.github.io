@@ -47,7 +47,7 @@ const Content = ({
           justifyContent="center"
           width="100%"
         >
-          <FontAwesomeIcon icon="search" size="3x" />
+          <FontAwesomeIcon icon="search" size="2x" />
 
           <Text marginTop="m-size" type="body-1">
             {commonT('productsEmptyState')}

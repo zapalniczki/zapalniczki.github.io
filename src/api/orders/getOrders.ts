@@ -11,7 +11,9 @@ import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-export const getOrders = async (status: Order['status']) => {
+type Params = Pick<Order, 'status' | 'is_test'>
+
+export const getOrders = async ({ is_test, status }: Params) => {
   const response = await supabase
     .from<GetOrdersResponseItem>(ORDER_TABLE)
     .select(
@@ -45,10 +47,12 @@ export const getOrders = async (status: Order['status']) => {
       parcel: ${PARCELS_TABLE} (
         ref,
         link
-      )
+      ),
+      is_test
       `
     )
     .eq('status', status)
+    .filter('is_test', 'eq', is_test)
     .order('updated_at', { ascending: true })
 
   const data = parseApiResponse(array(getOrdersResponseItem), response)

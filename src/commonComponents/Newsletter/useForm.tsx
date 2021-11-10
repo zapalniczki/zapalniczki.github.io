@@ -1,5 +1,5 @@
 import { addEmail, addVoucher, triggerSendEmail } from 'api'
-import { useFormSubmit, useIsDev, useFormSchema, useTranslation } from 'hooks'
+import { useFormSubmit, useDev, useFormSchema, useTranslation } from 'hooks'
 import { User } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
@@ -17,7 +17,7 @@ const useForm = () => {
   })
 
   const useSubmit = () => {
-    const isDev = useIsDev()
+    const isDev = useDev()
 
     const { mutateAsync: mutateTriggerSendEmail } =
       useMutation(triggerSendEmail)
