@@ -284,6 +284,14 @@ const pl = {
       PASSWORD: {
         required: 'To pole jest wymagane',
         min: 'Hasło powinno mieć co najmniej 6 znaków'
+      },
+      NEW_PASSWORD: {
+        required: 'To pole jest wymagane',
+        min: 'Hasło powinno mieć co najmniej 6 znaków'
+      },
+      PASSWORD_CONFIRMATION: {
+        required: 'To pole jest wymagane',
+        oneOf: 'Hasła powinny być takie same'
       }
     },
 
@@ -353,6 +361,14 @@ const pl = {
       PASSWORD: {
         label: 'Hasło',
         placeholder: ''
+      },
+      NEW_PASSWORD: {
+        label: 'Nowe hasło',
+        placeholder: ''
+      },
+      PASSWORD_CONFIRMATION: {
+        label: 'Powtórz hasło',
+        placeholder: ''
       }
     },
 
@@ -410,6 +426,10 @@ const pl = {
 
   SIGN_IN: {
     title: 'Zaloguj się'
+  },
+
+  SIGN_UP: {
+    title: 'Załóż konto'
   },
 
   HOME: {

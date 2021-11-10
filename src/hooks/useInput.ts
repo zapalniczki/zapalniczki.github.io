@@ -105,6 +105,18 @@ const inputs = {
     placeholder: 'PASSWORD.placeholder',
     type: 'password',
     autocomplete: 'current-password'
+  },
+  NEW_PASSWORD: {
+    label: 'NEW_PASSWORD.label',
+    placeholder: 'NEW_PASSWORD.placeholder',
+    type: 'password',
+    autocomplete: 'new-password'
+  },
+  PASSWORD_CONFIRMATION: {
+    label: 'PASSWORD_CONFIRMATION.label',
+    placeholder: 'PASSWORD_CONFIRMATION.placeholder',
+    type: 'password',
+    autocomplete: 'new-password'
   }
 }
 

@@ -1,4 +1,4 @@
-import { number, NumberSchema, string, StringSchema } from 'yup'
+import { number, NumberSchema, ref, string, StringSchema } from 'yup'
 import useTranslation from './useTranslation'
 
 const useFormSchema = () => {
@@ -66,7 +66,15 @@ const useFormSchema = () => {
 
     PASSWORD: string()
       .required(commonT('PASSWORD.required'))
-      .min(6, commonT('PASSWORD.min'))
+      .min(6, commonT('PASSWORD.min')),
+
+    NEW_PASSWORD: string()
+      .required(commonT('NEW_PASSWORD.required'))
+      .min(6, commonT('NEW_PASSWORD.min')),
+
+    PASSWORD_CONFIRMATION: string()
+      .required(commonT('PASSWORD_CONFIRMATION.required'))
+      .oneOf([ref('newPassword')], commonT('PASSWORD_CONFIRMATION.oneOf'))
   }
 
   const getSchema = (key: SchemaKey) => schemas[key]
@@ -88,5 +96,7 @@ type SchemaKey =
   | 'PRODUCT_QUANTITY'
   | 'VOUCHER_ID'
   | 'PASSWORD'
+  | 'NEW_PASSWORD'
+  | 'PASSWORD_CONFIRMATION'
 
 export default useFormSchema

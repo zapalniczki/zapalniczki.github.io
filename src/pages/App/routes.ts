@@ -24,7 +24,8 @@ import {
   CHRISTMAS_2021,
   USER,
   SIGN_IN,
-  SIGNED_OUT
+  SIGNED_OUT,
+  SIGN_UP
 } from 'constants/routes'
 
 import React from 'react'
@@ -74,6 +75,11 @@ const routes = [
   {
     component: React.lazy(() => import('pages/SignIn')),
     path: SIGN_IN
+  },
+
+  {
+    component: React.lazy(() => import('pages/SignUp')),
+    path: SIGN_UP
   },
 
   {
