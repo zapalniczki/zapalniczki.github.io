@@ -20,7 +20,7 @@ const User = () => {
         </div>
 
         <div>
-          <ContactDetails userId="365574d5-af43-46ef-8371-329a5134b856" />
+          <ContactDetails userId="9014ee40-0227-4e27-8c47-fa3238217e12" />
         </div>
       </Columns>
     </Page>
