@@ -48,7 +48,6 @@ const Input = ({
       )}
 
       <StyledInput
-        {...field}
         as={textarea ? 'textarea' : 'input'}
         autoComplete={autocomplete}
         disabled={disabled}
@@ -56,6 +55,7 @@ const Input = ({
         maxLength={maxLength}
         placeholder={placeholder}
         textarea={textarea}
+        {...field}
         {...(!textarea && { type })}
       />
     </Flexbox>
