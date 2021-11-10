@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
+import getSpace from 'styles/getSpace'
 
 type LabelProps = {
   error?: boolean
@@ -9,7 +10,7 @@ const Label = styled.label<LabelProps>`
   border: none;
   background: none;
   padding: ${(props) =>
-    `${props.theme.space['xs-size']} ${props.theme.space['xs-size']}`};
+    `${getSpace('xs-size')(props)} ${getSpace('xs-size')(props)}`};
   color: ${(props) => {
     if (props.error) {
       return getColor('red')(props)

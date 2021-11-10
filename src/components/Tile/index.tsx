@@ -4,7 +4,8 @@ import {
   FlexboxProps,
   GridColumnProps,
   HeightProps,
-  SpaceProps
+  SpaceProps,
+  WidthProps
 } from 'styled-system'
 
 type Props = {
@@ -13,7 +14,9 @@ type Props = {
 } & SpaceProps &
   HeightProps &
   GridColumnProps &
-  FlexboxProps
+  FlexboxProps &
+  WidthProps
+
 const Tile = ({ children, onClick, ...props }: Props) => (
   <Flexbox
     background="white"

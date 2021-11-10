@@ -5,7 +5,7 @@ import { routes } from 'pages'
 import React from 'react'
 import { matchPath, useLocation } from 'react-router-dom'
 
-const MainMenu = () => {
+const Main = () => {
   const commonT = useTranslation('COMMON').withBase('LINKS')
   const { pathname } = useLocation()
 
@@ -47,4 +47,4 @@ const MainMenu = () => {
   )
 }
 
-export default MainMenu
+export default Main

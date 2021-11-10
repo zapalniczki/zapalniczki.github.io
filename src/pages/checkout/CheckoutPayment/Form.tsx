@@ -1,9 +1,8 @@
 import React from 'react'
 import { Field, FieldProps } from 'formik'
 import { useInput } from 'hooks'
-import { CheckboxField } from 'components'
+import { FormRow, CheckboxField } from 'components'
 import { FormValues } from './useForm'
-import { Row } from '../common'
 import { PaymentType } from 'models'
 import Voucher from './Voucher'
 import { displayMoney } from 'utils'
@@ -16,7 +15,7 @@ const Form = ({ paymentTypes }: Props) => {
   const { getInput } = useInput()
 
   return (
-    <Row flexDirection="column">
+    <FormRow flexDirection="column">
       {paymentTypes
         .filter((type) => type.is_enabled)
         .map((type, index) => (
@@ -36,7 +35,7 @@ const Form = ({ paymentTypes }: Props) => {
         ))}
 
       <Field component={Voucher} name="voucher_id" />
-    </Row>
+    </FormRow>
   )
 }
 

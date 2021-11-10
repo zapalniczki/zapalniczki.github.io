@@ -1,4 +1,5 @@
 export * from './addresses'
+export * from './auth'
 export * from './callback'
 export * from './collections'
 export * from './deliveryTypes'

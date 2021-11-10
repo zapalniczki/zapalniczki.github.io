@@ -1,10 +1,8 @@
 import { Field, FieldProps } from 'formik'
 import React from 'react'
-import { MobileInput, Input } from 'components'
+import { FormRow, FieldWrapper, MobileInput, Input } from 'components'
 import { useInput } from 'hooks'
 import { FormValues } from './useForm'
-import Row from '../common/Row'
-import FieldWrapper from '../common/FieldWrapper'
 
 type Props = {
   isCompany: boolean
@@ -15,7 +13,7 @@ const Form = ({ isCompany }: Props) => {
 
   return (
     <>
-      <Row>
+      <FormRow>
         <FieldWrapper>
           <Field name="full_name" type="text">
             {(props: FieldProps<FormValues['full_name'], FormValues>) => (
@@ -33,9 +31,9 @@ const Form = ({ isCompany }: Props) => {
             </Field>
           </FieldWrapper>
         )}
-      </Row>
+      </FormRow>
 
-      <Row>
+      <FormRow>
         <FieldWrapper>
           <Field name="street_address" type="text">
             {(props: FieldProps<FormValues['street_address'], FormValues>) => (
@@ -47,9 +45,9 @@ const Form = ({ isCompany }: Props) => {
             )}
           </Field>
         </FieldWrapper>
-      </Row>
+      </FormRow>
 
-      <Row>
+      <FormRow>
         <FieldWrapper>
           <Field name="post_code" type="text">
             {(props: FieldProps<FormValues['post_code'], FormValues>) => (
@@ -65,9 +63,9 @@ const Form = ({ isCompany }: Props) => {
             )}
           </Field>
         </FieldWrapper>
-      </Row>
+      </FormRow>
 
-      <Row>
+      <FormRow>
         <FieldWrapper>
           <Field name="email" type="email">
             {(props: FieldProps<FormValues['email'], FormValues>) => (
@@ -83,7 +81,7 @@ const Form = ({ isCompany }: Props) => {
             )}
           </Field>
         </FieldWrapper>
-      </Row>
+      </FormRow>
     </>
   )
 }

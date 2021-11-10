@@ -46,6 +46,7 @@ export { default as Switch } from './Switch'
 export { default as Table } from './Table'
 export { default as Text } from './Text'
 export { default as UserAvatar } from './UserAvatar'
+export { default as FormRow } from './FormRow'
 
 export * from './Banner'
 export * from './Carousel'

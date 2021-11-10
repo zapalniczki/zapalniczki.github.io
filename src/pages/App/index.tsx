@@ -1,20 +1,16 @@
-import React, { useContext, useEffect } from 'react'
-import AppRouter from './AppRouter'
-import { authContext } from 'providers'
 import { Preloader } from 'commonComponents'
+import { authContext } from 'providers'
+import React, { useContext } from 'react'
+import AppRouter from './AppRouter'
 
 const App = () => {
-  const { auth, setAuth } = useContext(authContext)
+  const { auth } = useContext(authContext)
 
-  useEffect(() => {
-    setAuth(null)
-  }, [])
-
-  if (auth === undefined) {
-    return <Preloader />
+  if (auth !== undefined) {
+    return <AppRouter />
   }
 
-  return <AppRouter />
+  return <Preloader />
 }
 
 export default App

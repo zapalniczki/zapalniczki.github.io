@@ -5,6 +5,7 @@ import React from 'react'
 import { GetProductResponse } from 'models'
 import getColor from 'styles/getColor'
 import { findCorrectProductImageSize } from 'utils'
+import getSpace from 'styles/getSpace'
 
 type Props = {
   product: GetProductResponse
@@ -48,7 +49,7 @@ const ImageWrapper = styled.div`
   height: 100%;
   flex-grow: 1;
   position: relative;
-  padding: ${(props) => `0 ${props.theme.space['xxxl-size']}`};
+  padding: ${(props) => `0 ${getSpace('xxxl-size')(props)}`};
 `
 
 const GalleryImageWrapper = styled.div`
@@ -62,7 +63,7 @@ const GalleryImageWrapper = styled.div`
   cursor: pointer;
 
   &:not(:first-child) {
-    margin-top: ${(props) => props.theme.space['s-size']};
+    margin-top: ${getSpace('s-size')};
   }
 `
 

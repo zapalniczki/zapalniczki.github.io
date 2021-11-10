@@ -1,17 +1,15 @@
-import { Input } from 'components'
+import { FormRow, FieldWrapper, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useInput } from 'hooks'
 import { FormValues } from './useForm'
-import FieldWrapper from '../common/FieldWrapper'
-import Row from '../common/Row'
 
 const Form = () => {
   const { getInput } = useInput()
 
   return (
     <>
-      <Row>
+      <FormRow>
         <FieldWrapper>
           <Field name="street_address">
             {(props: FieldProps<FormValues['street_address'], FormValues>) => (
@@ -23,9 +21,9 @@ const Form = () => {
             )}
           </Field>
         </FieldWrapper>
-      </Row>
+      </FormRow>
 
-      <Row>
+      <FormRow>
         <FieldWrapper>
           <Field name="post_code">
             {(props: FieldProps<FormValues['post_code'], FormValues>) => (
@@ -41,7 +39,7 @@ const Form = () => {
             )}
           </Field>
         </FieldWrapper>
-      </Row>
+      </FormRow>
     </>
   )
 }

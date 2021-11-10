@@ -2,15 +2,15 @@ import { getRequiredOrNot } from 'utils'
 import useTranslation from './useTranslation'
 
 const useInput = () => {
-  const { t: commonT } = useTranslation('COMMON')
+  const commonT = useTranslation('COMMON').withBase('INPUTS')
 
   const getInput = (key: InputKey, required?: boolean): InputValue => {
     const value: InputValue = inputs[key]
-    const { label, ...rest } = value
+    const { label, placeholder, ...rest } = value
 
     return {
       ...rest,
-      ...(rest.placeholder && { placeholder: commonT(rest.placeholder) }),
+      ...(placeholder && { placeholder: commonT(placeholder) }),
       label: getRequiredOrNot(commonT(label), required)
     }
   }
@@ -27,78 +27,84 @@ type InputValue = {
 
 const inputs = {
   PARCEL_LINK: {
-    label: 'INPUTS.PARCEL_LINK.label',
-    placeholder: 'INPUTS.PARCEL_LINK.placeholder'
+    label: 'PARCEL_LINK.label',
+    placeholder: 'PARCEL_LINK.placeholder'
   },
   PARCEL_REF: {
-    label: 'INPUTS.PARCEL_REF.label',
-    placeholder: 'INPUTS.PARCEL_REF.placeholder'
+    label: 'PARCEL_REF.label',
+    placeholder: 'PARCEL_REF.placeholder'
   },
   SUBMIT: {
-    label: 'INPUTS.SUBMIT.label',
-    placeholder: 'INPUTS.SUBMIT.placeholder'
+    label: 'SUBMIT.label',
+    placeholder: 'SUBMIT.placeholder'
   },
   VOUCHER_ID: {
-    label: 'INPUTS.VOUCHER_ID.label',
+    label: 'VOUCHER_ID.label',
     maxLength: 36
   },
   PAYMENT_TYPE: {
-    label: 'INPUTS.PAYMENT_TYPE.label'
+    label: 'PAYMENT_TYPE.label'
   },
 
   DELIVERY_TYPE: {
-    label: 'INPUTS.DELIVERY_TYPE.label'
+    label: 'DELIVERY_TYPE.label'
   },
   FULL_NAME: {
-    label: 'INPUTS.FULL_NAME.label',
-    placeholder: 'INPUTS.FULL_NAME.placeholder',
+    label: 'FULL_NAME.label',
+    placeholder: 'FULL_NAME.placeholder',
     autocomplete: 'name'
   },
   COMPANY: {
-    label: 'INPUTS.COMPANY.label',
-    placeholder: 'INPUTS.COMPANY.placeholder',
+    label: 'COMPANY.label',
+    placeholder: 'COMPANY.placeholder',
     autocomplete: 'organization'
   },
   EMAIL: {
-    label: 'INPUTS.EMAIL.label',
-    placeholder: 'INPUTS.EMAIL.placeholder',
+    label: 'EMAIL.label',
+    placeholder: 'EMAIL.placeholder',
     autocomplete: 'email'
   },
   PHONE: {
-    label: 'INPUTS.PHONE.label',
-    placeholder: 'INPUTS.PHONE.placeholder',
+    label: 'PHONE.label',
+    placeholder: 'PHONE.placeholder',
     autocomplete: 'tel'
   },
   PHONE_NOT_MOBILE: {
-    label: 'INPUTS.PHONE_NOT_MOBILE.label',
-    placeholder: 'INPUTS.PHONE_NOT_MOBILE.placeholder',
+    label: 'PHONE_NOT_MOBILE.label',
+    placeholder: 'PHONE_NOT_MOBILE.placeholder',
     maxLength: 11
   },
   STREET_ADDRESS: {
-    label: 'INPUTS.STREET_ADDRESS.label',
-    placeholder: 'INPUTS.STREET_ADDRESS.placeholder',
+    label: 'STREET_ADDRESS.label',
+    placeholder: 'STREET_ADDRESS.placeholder',
     autocomplete: 'street-address'
   },
   POST_CODE: {
-    label: 'INPUTS.POST_CODE.label',
-    placeholder: 'INPUTS.POST_CODE.placeholder',
+    label: 'POST_CODE.label',
+    placeholder: 'POST_CODE.placeholder',
     maxLength: 6,
     autocomplete: 'postal-code'
   },
   CITY: {
-    label: 'INPUTS.CITY.label',
-    placeholder: 'INPUTS.CITY.placeholder',
+    label: 'CITY.label',
+    placeholder: 'CITY.placeholder',
     autocomplete: 'address-level2'
   },
   NIP: {
-    label: 'INPUTS.NIP.label',
-    placeholder: 'INPUTS.NIP.placeholder',
+    label: 'NIP.label',
+    placeholder: 'NIP.placeholder',
     maxLength: 10
   },
   ORDER_ID: {
-    label: 'INPUTS.ORDER_ID.label',
-    placeholder: 'INPUTS.ORDER_ID.placeholder',
+    label: 'ORDER_ID.label',
+    placeholder: 'ORDER_ID.placeholder',
     maxLength: 36
+  },
+  PASSWORD: {
+    label: 'PASSWORD.label',
+    placeholder: 'PASSWORD.placeholder',
+    type: 'password',
+    autocomplete: 'current-password'
   }
 }
 

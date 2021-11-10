@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link, Logo, MaxWidth } from 'components'
 import { HOME } from 'constants/routes'
-import MainMenu from './MainMenu'
+import Main from './Main'
 import getColor from 'styles/getColor'
 import { useTranslation } from 'hooks'
 import getSpace from 'styles/getSpace'
-import NavigationMenu from './NavigationMenu'
+import Navigation from './Navigation'
 import { togglesContext } from 'providers'
 
-const Navigation = () => {
+const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false)
   const { basketOpen, hamburgerOpen } = useContext(togglesContext)
 
@@ -46,9 +46,9 @@ const Navigation = () => {
           <Logo expanded={isExpanded} />
         </Link>
 
-        <MainMenu />
+        <Main />
 
-        <NavigationMenu />
+        <Navigation />
       </MaxWidth>
     </Container>
   )
@@ -87,4 +87,4 @@ const Container = styled.nav<ContainerProps>`
     '0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);'};
 `
 
-export default Navigation
+export default Header

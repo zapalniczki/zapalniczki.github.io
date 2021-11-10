@@ -3,6 +3,7 @@ import { useTranslation } from 'hooks'
 import styled from 'styled-components'
 import React from 'react'
 import getColor from 'styles/getColor'
+import getSpace from 'styles/getSpace'
 
 type Props = {
   onChange: (value: string) => void
@@ -37,7 +38,7 @@ const StyledInput = styled.input`
   border: none;
   height: 4.6rem;
   width: 100%;
-  padding: ${(props) => `0 ${props.theme.space['s-size']}`};
+  padding: ${(props) => `0 ${getSpace('s-size')(props)}`};
   border: 1px solid;
   border-color: ${getColor('border-color')};
   font-size: 1.7rem;

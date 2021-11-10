@@ -32,6 +32,7 @@ export const config: InitOptions = {
       ORDER: pl.ORDER,
       PAGE_NOT_FOUND: pl.PAGE_NOT_FOUND,
       PRODUCTS: pl.PRODUCTS,
+      SIGN_IN: pl.SIGN_IN,
       VIEW_PRODUCT: pl.VIEW_PRODUCT,
       USER: pl.USER
     }

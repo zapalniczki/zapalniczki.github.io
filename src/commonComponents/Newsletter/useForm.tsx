@@ -1,5 +1,5 @@
 import { addEmail, addVoucher, triggerSendEmail } from 'api'
-import { useFormSubmit, useIsDev, useSchema, useTranslation } from 'hooks'
+import { useFormSubmit, useIsDev, useFormSchema, useTranslation } from 'hooks'
 import { User } from 'models'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
@@ -7,12 +7,12 @@ import { object } from 'yup'
 
 const useForm = () => {
   const [view, setView] = useState<View>({ view: 'FORM' })
-  const { getSchema } = useSchema()
+  const { getSchema } = useFormSchema()
   const commonT = useTranslation('COMMON').withBase('NEWSLETTER.ERROR.CODES')
 
   const initialValues = { email: '' }
 
-  const schema = object({
+  const validationSchema = object({
     email: getSchema('EMAIL')
   })
 
@@ -71,7 +71,7 @@ const useForm = () => {
 
   return {
     initialValues,
-    schema,
+    validationSchema,
     onSubmit,
     view,
     setView

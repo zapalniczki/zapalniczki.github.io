@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { signOut } from 'api'
 import { Button } from 'components'
 import {
   CHECKOUT_DELIVERY,
@@ -7,35 +8,41 @@ import {
   CHECKOUT_PRODUCTS,
   CHECKOUT_RESULT,
   CHECKOUT_SHIPPING,
-  USER
+  HOME
 } from 'constants/routes'
-import { useAdmin, useTranslation } from 'hooks'
-import React from 'react'
+import { useTranslation } from 'hooks'
+import { authContext } from 'providers'
+import React, { useContext } from 'react'
+import { useMutation } from 'react-query'
 import { useHistory, useLocation } from 'react-router-dom'
 
-const ProfileToggle = () => {
+const SignoutToggle = () => {
   const { t: commonT } = useTranslation('COMMON')
 
   const { pathname } = useLocation()
-
   const history = useHistory()
 
-  const isAdmin = useAdmin()
+  const { isLoggedIn } = useContext(authContext)
+  const { mutateAsync: mutateSignOut } = useMutation(signOut)
 
-  if (!isAdmin) {
+  if (!isLoggedIn) {
     return null
   }
 
   return (
     <Button
       disabled={basketDisabledpathnames.includes(pathname)}
-      onClick={() => history.push(USER)}
+      onClick={async () => {
+        await mutateSignOut()
+
+        history.push(HOME)
+      }}
       padding="s-size"
-      title={commonT('basketToggleLabel')}
+      title={commonT('signoutToggleLabel')}
       type="button"
       variant="quaternary"
     >
-      <FontAwesomeIcon icon="user-alt" size="2x" />
+      <FontAwesomeIcon icon="sign-out-alt" size="2x" />
     </Button>
   )
 }
@@ -49,4 +56,4 @@ const basketDisabledpathnames = [
   CHECKOUT_RESULT
 ]
 
-export default ProfileToggle
+export default SignoutToggle

@@ -1,5 +1,5 @@
 import { addCallback } from 'api'
-import { useFormSubmit, useSchema } from 'hooks'
+import { useFormSchema, useFormSubmit } from 'hooks'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
@@ -7,7 +7,7 @@ import { object } from 'yup'
 const useForm = () => {
   const [view, setView] = useState<View>({ view: 'FORM' })
 
-  const { getSchema } = useSchema()
+  const { getSchema } = useFormSchema()
 
   const initialValues: FormValues = {
     phone: ''

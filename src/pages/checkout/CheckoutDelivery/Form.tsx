@@ -1,10 +1,9 @@
-import { CheckboxField } from 'components'
+import { FormRow, CheckboxField } from 'components'
 import React from 'react'
 import { Field, FieldProps } from 'formik'
 import { useInput } from 'hooks'
 import { displayMoney } from 'utils'
 import { FormValues } from './useForm'
-import { Row } from '../common'
 import { DeliveryType } from 'models'
 
 type Props = {
@@ -15,7 +14,7 @@ const Form = ({ deliveryTypes }: Props) => {
   const { getInput } = useInput()
 
   return (
-    <Row flexDirection="column">
+    <FormRow flexDirection="column">
       {deliveryTypes
         .filter((type) => type.is_enabled)
         .map((type, index) => (
@@ -33,7 +32,7 @@ const Form = ({ deliveryTypes }: Props) => {
             )}
           </Field>
         ))}
-    </Row>
+    </FormRow>
   )
 }
 

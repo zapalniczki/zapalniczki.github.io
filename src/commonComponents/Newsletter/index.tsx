@@ -9,7 +9,7 @@ import useForm from './useForm'
 
 const Newsletter = () => {
   const { t: commonT } = useTranslation('COMMON')
-  const { initialValues, onSubmit, schema, setView, view } = useForm()
+  const { initialValues, onSubmit, setView, validationSchema, view } = useForm()
   const { colors } = useTheme()
 
   const isDesktop = useBreakpoints('desktop')
@@ -22,7 +22,7 @@ const Newsletter = () => {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validateOnChange
-      validationSchema={schema}
+      validationSchema={validationSchema}
     >
       {({ handleSubmit }) => (
         <>

@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 import { GetProductResponse } from 'models'
 import { object } from 'yup'
-import { useSchema } from 'hooks'
+import { useFormSchema } from 'hooks'
 
 export type FormValues = {
   product_quantity: number
@@ -14,7 +14,7 @@ const useForm = (product: GetProductResponse) => {
   const { setCheckout } = useContext(checkoutContext)
   const isInBasket = getProductFromBasket(product.id)
 
-  const { getSchema } = useSchema()
+  const { getSchema } = useFormSchema()
 
   const schema = object({
     product_quantity: getSchema('PRODUCT_QUANTITY')

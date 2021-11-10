@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom'
 import { object } from 'yup'
 import { CHECKOUT_PAYMENT } from 'constants/routes'
-import { useSchema } from 'hooks'
+import { useFormSchema } from 'hooks'
 import { useContext } from 'react'
 import { checkoutContext } from 'providers'
 import { Shipping } from 'models'
@@ -11,7 +11,7 @@ export type FormValues = Shipping
 const useForm = () => {
   const history = useHistory()
 
-  const { getSchema } = useSchema()
+  const { getSchema } = useFormSchema()
 
   const { checkout, setCheckout } = useContext(checkoutContext)
 

@@ -1,6 +1,6 @@
 import { getVoucher } from 'api'
 import { FormikHelpers } from 'formik'
-import { useFormSubmit, useSchema, useTranslation } from 'hooks'
+import { useFormSubmit, useFormSchema, useTranslation } from 'hooks'
 import { Voucher } from 'models'
 import { checkoutContext } from 'providers'
 import { useContext } from 'react'
@@ -10,7 +10,7 @@ import { object } from 'yup'
 const useForm = (
   setCodeApplied: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-  const { getSchema } = useSchema()
+  const { getSchema } = useFormSchema()
   const { setCheckout } = useContext(checkoutContext)
 
   const schema = object({

@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import getColor from './getColor'
+import getSpace from './getSpace'
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -33,7 +34,7 @@ body {
 
 p {
   color: ${getColor('paragraph-color')};
-  line-height: ${(props) => props.theme.space['line-height']};
+  line-height: ${getSpace('line-height')};
 }
 
 strong {

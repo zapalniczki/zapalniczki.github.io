@@ -22,7 +22,8 @@ import {
   PRODUCTS_ID,
   ORDERS_ID,
   CHRISTMAS_2021,
-  USER
+  USER,
+  SIGN_IN
 } from 'constants/routes'
 
 import React from 'react'
@@ -63,9 +64,15 @@ const routes = [
     component: React.lazy(() => import('pages/checkout/CheckoutResult')),
     path: CHECKOUT_RESULT
   },
+
   {
     component: React.lazy(() => import('pages/Order')),
     path: ORDERS_ID
+  },
+
+  {
+    component: React.lazy(() => import('pages/SignIn')),
+    path: SIGN_IN
   },
 
   {
@@ -94,7 +101,7 @@ const routes = [
   },
 
   {
-    component: React.lazy(() => import('pages/Customer')),
+    component: React.lazy(() => import('pages/User')),
     translationKey: 'customer',
     path: USER,
     user: true

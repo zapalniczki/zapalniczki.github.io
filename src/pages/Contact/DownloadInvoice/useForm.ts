@@ -1,5 +1,5 @@
 import { getInvoice } from 'api'
-import { useFormSubmit, useSchema, useTranslation } from 'hooks'
+import { useFormSubmit, useFormSchema, useTranslation } from 'hooks'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
@@ -12,7 +12,7 @@ const useForm = () => {
   const { t } = useTranslation('CONTACT')
   const [view, setView] = useState<View>({ view: 'FORM' })
 
-  const { getSchema } = useSchema()
+  const { getSchema } = useFormSchema()
 
   const initialValues: FormValues = {
     order_id: ''

@@ -1,4 +1,4 @@
-import { Basket, Footer, Navigation } from 'commonComponents'
+import { Basket, Footer, Header } from 'commonComponents'
 import { HamburgerMenu } from 'commonComponents/'
 import { AdminRoute, UserRoute } from 'components'
 import React, { Suspense } from 'react'
@@ -7,7 +7,7 @@ import routes from './routes'
 
 const AppRouter = () => (
   <>
-    <Navigation />
+    <Header />
 
     <Basket />
 

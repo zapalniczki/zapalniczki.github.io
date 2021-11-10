@@ -49,6 +49,8 @@ const pl = {
     fullCompanyName,
     hamburgetMenuToggleLabel: 'Menu',
     basketToggleLabel: 'Koszyk',
+    profileToggleLabel: 'Profil użytkownika',
+    signoutToggleLabel: 'Wyloguj',
     soon: 'Wkrótce',
     productsEmptyState: 'Nie znaleziono żadnych produktów',
     productsLoadMore: 'Pokaż więcej produktów',
@@ -56,6 +58,8 @@ const pl = {
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',
     preloaderInfo: 'Ładowanie strony',
+    loading: 'Ładowanie',
+    companyName: domain,
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',
@@ -194,14 +198,10 @@ const pl = {
       title: 'Menu'
     },
 
-    loading: 'Ładowanie',
-
     toasts: {
       addedProductToBasket: 'Dodano produkt do koszyka',
       removeProductFromBasket: 'Usunięto produkt z koszyka'
     },
-
-    companyName: domain,
 
     features: {
       title: 'Dlaczego warto kupować u nas?',
@@ -273,6 +273,10 @@ const pl = {
       ORDER_ID: {
         required: 'To pole jest wymagane',
         length: 'Numer referencyjny zamówienia powinien składać się z 36 znaków'
+      },
+      PASSWORD: {
+        required: 'To pole jest wymagane',
+        min: 'Hasło powinno mieć co najmniej 6 znaków'
       }
     },
 
@@ -338,6 +342,10 @@ const pl = {
       ORDER_ID: {
         label: 'Numer referencyjny zamówienia',
         placeholder: 'Znajduje się w tytule każdej wiadomości email'
+      },
+      PASSWORD: {
+        label: 'Hasło',
+        placeholder: ''
       }
     },
 
@@ -395,6 +403,10 @@ const pl = {
         buttonLabel: 'Spróbuj jeszcze raz'
       }
     }
+  },
+
+  SIGN_IN: {
+    title: 'Zaloguj się'
   },
 
   HOME: {

@@ -5,6 +5,7 @@ import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { SpaceProps, space, WidthProps, width } from 'styled-system'
 import getColor from 'styles/getColor'
+import getSpace from 'styles/getSpace'
 
 type Props = {
   children?: ReactNode
@@ -52,7 +53,7 @@ type ContainerProps = SpaceProps & {
 
 const Container = styled.button<ContainerProps>`
   background: ${getColor('button-color')};
-  padding: ${(props) => props.theme.space['m-size']};
+  padding: ${getSpace('m-size')};
   border: 1px solid;
   border-color: ${getColor('button-color')};
   color: ${getColor('white')};
@@ -118,7 +119,7 @@ const Container = styled.button<ContainerProps>`
     css`
       font-size: ${(props) => props.theme.fontSizes['font-small']};
       padding: ${(props) =>
-        `${props.theme.space['xs-size']} ${props.theme.space['m-size']}`};
+        `${getSpace('xs-size')(props)} ${getSpace('m-size')(props)}`};
       width: max-content;
     `}
 
@@ -126,7 +127,7 @@ const Container = styled.button<ContainerProps>`
     props.size === 'small' &&
     css`
       height: 3.5rem;
-      padding: ${(props) => `0 ${props.theme.space['m-size']}`};
+      padding: ${(props) => `0 ${getSpace('m-size')(props)}`};
       width: max-content;
     `}
 
