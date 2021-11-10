@@ -15,11 +15,13 @@ import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
+import { useTheme } from 'styled-components'
 import { displayMoney } from 'utils'
 import Option from './Option'
 
 const DeliveryAndPayments = () => {
   const { t } = useTranslation('DELIVERY_AND_PAYMENTS')
+  const { colors } = useTheme()
 
   useScrollTop()
   useTabTitle(t('title'))
@@ -37,15 +39,17 @@ const DeliveryAndPayments = () => {
 
       <SectionHead marginTop="xxl-size" title={t('processingTime.title')} />
 
-      <Grid gridTemplateColumns="1fr 5rem 1fr 5rem 1fr">
+      <Grid
+        gridTemplateColumns={['unset', '1fr', '1fr', '1fr 5rem 1fr 5rem 1fr']}
+      >
         <Option
           description={t('processingTime.items.PRODUCTION.description')}
           icon="calendar-alt"
           title={t('processingTime.items.PRODUCTION.title')}
         />
 
-        <Flexbox alignSelf="center">
-          <FontAwesomeIcon icon="plus" size="3x" />
+        <Flexbox alignSelf="center" justifyContent="center">
+          <FontAwesomeIcon color={colors['braty-red']} icon="plus" size="3x" />
         </Flexbox>
 
         <Option
@@ -54,8 +58,12 @@ const DeliveryAndPayments = () => {
           title={t('processingTime.items.DELIVERY.title')}
         />
 
-        <Flexbox alignSelf="center">
-          <FontAwesomeIcon icon="equals" size="3x" />
+        <Flexbox alignSelf="center" justifyContent="center">
+          <FontAwesomeIcon
+            color={colors['braty-red']}
+            icon="equals"
+            size="3x"
+          />
         </Flexbox>
 
         <Option
@@ -68,7 +76,7 @@ const DeliveryAndPayments = () => {
 
       <QueryLoader query={deliveryTypesQuery}>
         {(deliveryTypes) => (
-          <Grid>
+          <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {deliveryTypes
               .filter((type) => type.is_enabled)
               .map((type) => (
@@ -91,7 +99,7 @@ const DeliveryAndPayments = () => {
 
       <QueryLoader query={paymentTypesQuery}>
         {(paymentTypes) => (
-          <Grid>
+          <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {paymentTypes
               .filter((type) => type.is_enabled)
               .map((type) => (
