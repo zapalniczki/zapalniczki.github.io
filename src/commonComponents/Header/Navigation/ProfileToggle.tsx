@@ -20,7 +20,7 @@ const ProfileToggle = () => {
 
   const history = useHistory()
 
-  const { isAdmin } = useAdmin()
+  const isAdmin = useAdmin()
 
   if (!isAdmin) {
     return null

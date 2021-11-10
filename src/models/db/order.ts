@@ -1,5 +1,5 @@
 import tableBase from './tableBase'
-import { string, TypeOf, enum as zenum, number } from 'zod'
+import { boolean, string, TypeOf, enum as zenum, number } from 'zod'
 import voucher from './voucher'
 import parcel from './parcel'
 
@@ -29,7 +29,8 @@ const order = tableBase.extend({
   discount: number(),
   user_id: string().uuid(),
   voucher_id: voucher.shape.id.nullable(),
-  parcel_id: parcel.shape.id.nullable()
+  parcel_id: parcel.shape.id.nullable(),
+  is_test: boolean()
 })
 
 export type Order = TypeOf<typeof order>

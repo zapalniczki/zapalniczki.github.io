@@ -10,7 +10,10 @@ type Props = {
 const ToastProvider = ({ children }: Props) => {
   const value = useMemo(
     () => ({
-      addToast: (props: ToastProps) => toast(<Toast {...props} />)
+      addToast: (props: ToastProps) =>
+        toast(<Toast {...props} />, {
+          autoClose: 5000
+        })
     }),
     []
   )

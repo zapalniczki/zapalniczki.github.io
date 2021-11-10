@@ -16,7 +16,7 @@ import React from 'react'
 
 const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
-  const { isAdmin } = useAdmin()
+  const isAdmin = useAdmin()
 
   return (
     <Flexbox

@@ -5,11 +5,11 @@ import {
   triggerSendEmail
 } from 'api'
 import { CHECKOUT_RESULT } from 'constants/routes'
-import { useIsDev, useFormSchema } from 'hooks'
+import { useIsDev, useFormSchema, useAdmin, useFormSubmit } from 'hooks'
 import multiply from 'lodash/multiply'
 import add from 'lodash/add'
 import { MoldStatus, PaymentType, Voucher } from 'models'
-import { checkoutContext, initState, loaderContext } from 'providers'
+import { checkoutContext, initState } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useHistory } from 'react-router-dom'
@@ -25,101 +25,110 @@ const useForm = () => {
   const history = useHistory()
   const { getSchema } = useFormSchema()
   const isDev = useIsDev()
+  const isAdmin = useAdmin()
 
   const { basket, checkout, setCheckout } = useContext(checkoutContext)
-  const { hide, show } = useContext(loaderContext)
 
-  const { mutateAsync: mutateAddOrderItem } = useMutation(addOrderItem)
-  const { mutateAsync: mutateTriggerSendEmail } = useMutation(triggerSendEmail)
-  const { mutateAsync: mutateGetProductsById } = useMutation(getProductsById)
-  const { mutateAsync: mutateAddOrderFunction } = useMutation(rpcAddOrder)
+  const useSubmit = () => {
+    const { mutateAsync: mutateAddOrderItem } = useMutation(addOrderItem)
+    const { mutateAsync: mutateTriggerSendEmail } =
+      useMutation(triggerSendEmail)
+    const { mutateAsync: mutateGetProductsById } = useMutation(getProductsById)
+    const { mutateAsync: mutateAddOrderFunction } = useMutation(rpcAddOrder)
 
-  const onSubmit = async (form: FormValues) => {
-    show()
+    return useFormSubmit(async (values: FormValues) => {
+      const productsPrice = sumArray(
+        basket.map((product) => multiply(product.price, product.quantity))
+      )
 
-    const productsPrice = sumArray(
-      basket.map((product) => multiply(product.price, product.quantity))
-    )
+      const productIds = basket.map((product) => product.id)
+      const productsData = await mutateGetProductsById(productIds)
+      const productionTime = calculateProductionTime(
+        productsData.map((product) => product.mold.status)
+      )
 
-    const productIds = basket.map((product) => product.id)
-    const productsData = await mutateGetProductsById(productIds)
-    const productionTime = calculateProductionTime(
-      productsData.map((product) => product.mold.status)
-    )
+      const orderWillTakeLong = productionTime === 'LONG'
 
-    const orderWillTakeLong = productionTime === 'LONG'
+      const email = checkout.contact_details?.email ?? ''
+      const phone = checkout.contact_details?.phone ?? ''
+      const fullName = checkout.contact_details?.full_name ?? ''
 
-    const email = checkout.contact_details?.email ?? ''
-    const phone = checkout.contact_details?.phone ?? ''
-    const fullName = checkout.contact_details?.full_name ?? ''
+      const isTest = isAdmin || isDev
 
-    const orderId = await mutateAddOrderFunction({
-      voucher_id: form.voucher_id || null,
+      const orderId = await mutateAddOrderFunction({
+        voucher_id: values.voucher_id || null,
 
-      address: getHstoreFromObject({
-        street_address: checkout.contact_details?.street_address ?? '',
-        post_code: checkout.contact_details?.post_code ?? '',
-        city: checkout.contact_details?.city ?? ''
-      }),
+        address: getHstoreFromObject({
+          street_address: checkout.contact_details?.street_address ?? '',
+          post_code: checkout.contact_details?.post_code ?? '',
+          city: checkout.contact_details?.city ?? ''
+        }),
 
-      shipping: checkout.shipping
-        ? getHstoreFromObject({
-            street_address: checkout.shipping.street_address,
-            post_code: checkout.shipping.post_code,
-            city: checkout.shipping.city
-          })
-        : null,
+        shipping: checkout.shipping
+          ? getHstoreFromObject({
+              street_address: checkout.shipping.street_address,
+              post_code: checkout.shipping.post_code,
+              city: checkout.shipping.city
+            })
+          : null,
 
-      same_address_as_invoice: checkout.same_address_as_invoice,
-      payment_type: form.payment_type ?? '',
-      delivery_type: checkout.delivery_type ?? '',
+        same_address_as_invoice: checkout.same_address_as_invoice,
+        payment_type: values.payment_type ?? '',
+        delivery_type: checkout.delivery_type ?? '',
 
-      contact_details: getHstoreFromObject({
-        email: email,
-        phone: phone,
-        full_name: fullName,
-        nip: checkout.contact_details?.nip ? checkout.contact_details.nip : null
-      }),
+        contact_details: getHstoreFromObject({
+          email: email,
+          phone: phone,
+          full_name: fullName,
+          nip: checkout.contact_details?.nip
+            ? checkout.contact_details.nip
+            : null
+        }),
 
-      products_price: productsPrice,
+        products_price: productsPrice,
 
-      order_will_take_long: orderWillTakeLong
-    })
+        order_will_take_long: orderWillTakeLong,
 
-    const products = basket.map((product) => ({
-      product_id: product.id,
-      order_id: orderId,
-      quantity: product.quantity,
-      price: product.price
-    }))
-
-    await mutateAddOrderItem(products)
-
-    const locationState: CheckoutResultLocationState = {
-      orderID: orderId,
-      productionTime
-    }
-
-    if (!isDev) {
-      mutateTriggerSendEmail({
-        to: email,
-        type: {
-          key: 'NEW_ORDER',
-          content: {
-            name: fullName,
-            order_id: orderId,
-            phone: phone,
-            is_long: orderWillTakeLong
-          }
-        }
+        is_test: isTest
       })
-    }
 
-    setCheckout(initState)
-    hide()
+      const products = basket.map((product) => ({
+        product_id: product.id,
+        order_id: orderId,
+        quantity: product.quantity,
+        price: product.price,
+        is_test: isTest
+      }))
 
-    history.push(CHECKOUT_RESULT, locationState)
+      await mutateAddOrderItem(products)
+
+      const locationState: CheckoutResultLocationState = {
+        orderID: orderId,
+        productionTime
+      }
+
+      if (!isDev) {
+        mutateTriggerSendEmail({
+          to: email,
+          type: {
+            key: 'NEW_ORDER',
+            content: {
+              name: fullName,
+              order_id: orderId,
+              phone: phone,
+              is_long: orderWillTakeLong
+            }
+          }
+        })
+      }
+
+      setCheckout(initState)
+
+      history.push(CHECKOUT_RESULT, locationState)
+    })
   }
+
+  const onSubmit = useSubmit()
 
   const initialValues: FormValues = {
     payment_type: checkout.payment_type ?? '',

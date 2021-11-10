@@ -1,5 +1,5 @@
 import tableBase from './tableBase'
-import { string, TypeOf } from 'zod'
+import { boolean, string, TypeOf } from 'zod'
 
 const user = tableBase.extend({
   address_id: string().uuid(),
@@ -9,7 +9,8 @@ const user = tableBase.extend({
   phone: string(),
   preferred_delivery: string().uuid(),
   preferred_payment: string().uuid(),
-  shipping_id: string().uuid().nullable()
+  shipping_id: string().uuid().nullable(),
+  is_test: boolean()
 })
 
 export type User = TypeOf<typeof user>
