@@ -10,7 +10,7 @@ const Documents = () => {
 
   return (
     <Page>
-      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
+      <Banner size="SMALL" title={t('title')} />
 
       <Flexbox alignItems="flex-start" flexDirection="column">
         <ListItem marginTop="xl-size">{t('TYPES.termsAndConditions')}</ListItem>

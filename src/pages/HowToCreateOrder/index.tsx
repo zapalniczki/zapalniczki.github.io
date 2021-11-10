@@ -15,7 +15,7 @@ const HowToCreateOrder = () => {
 
   return (
     <Page>
-      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
+      <Banner size="SMALL" title={t('title')} />
 
       <Features />
 

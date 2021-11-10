@@ -33,7 +33,7 @@ const DeliveryAndPayments = () => {
 
   return (
     <Page>
-      <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
+      <Banner size="SMALL" title={t('title')} />
 
       <SectionHead marginTop="xxl-size" title={t('processingTime.title')} />
 
