@@ -3,6 +3,7 @@ import { Flexbox, Button, Text, Separator } from 'components'
 import { useModalView, useTranslation } from 'hooks'
 
 import { togglesContext } from 'providers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = () => {
   const commonT = useTranslation('COMMON').withBase('HAMBURGER_MENU')
@@ -27,12 +28,13 @@ const Header = () => {
         </Text>
 
         <Button
-          icon="times"
           onClick={closeHamburger}
           size="small"
           type="button"
-          variant="ternary"
-        />
+          variant="quaternary"
+        >
+          <FontAwesomeIcon icon="times" size="2x" />
+        </Button>
       </Flexbox>
 
       <Separator marginX="s-size" marginY="0" width="auto" />

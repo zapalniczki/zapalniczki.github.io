@@ -4,6 +4,7 @@ import { useTranslation } from 'hooks'
 
 import { togglesContext } from 'providers'
 import { checkoutContext } from 'providers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = () => {
   const commonT = useTranslation('COMMON').withBase('BASKET')
@@ -56,12 +57,13 @@ const Header = () => {
         )}
 
         <Button
-          icon="times"
           onClick={closeBasket}
           size="small"
           type="button"
-          variant="ternary"
-        />
+          variant="quaternary"
+        >
+          <FontAwesomeIcon icon="times" size="2x" />
+        </Button>
       </Flexbox>
 
       <Separator marginX="s-size" marginY="0" width="auto" />
