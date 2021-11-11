@@ -14,7 +14,12 @@ const Info = ({ product }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   return (
-    <Flexbox flexDirection="column" flexGrow={1} marginLeft="xl-size">
+    <Flexbox
+      flexDirection="column"
+      flexGrow={1}
+      marginLeft={['unset', 'unset', 'unset', 'xl-size']}
+      marginTop={['unset', 'xxl-size', 'xxl-size', 'unset']}
+    >
       <Heading level={4}>{product.name}</Heading>
 
       <Separator />

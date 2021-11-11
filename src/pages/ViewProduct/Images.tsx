@@ -6,6 +6,7 @@ import { GetProductResponse } from 'models'
 import getColor from 'styles/getColor'
 import { findCorrectProductImageSize } from 'utils'
 import getSpace from 'styles/getSpace'
+import breakpoints from 'styles/breakpoints'
 
 type Props = {
   product: GetProductResponse
@@ -21,25 +22,23 @@ const Images = ({ product }: Props) => {
 
   return (
     <Flexbox
-      flexDirection="column"
+      flexDirection={['unset', 'column-reverse', 'column-reverse', 'row']}
       flexGrow={4}
       height="100%"
-      maxWidth={width}
-      minWidth={width}
+      maxWidth={['unset', '100%', '100%', width]}
+      minWidth={['unset', '100%', '100%', width]}
     >
-      <Flexbox display="flex" height="100%">
-        <Flexbox flexDirection="column" height="100%" width="6rem">
-          {[thumbnailImage].map((image) => (
-            <GalleryImageWrapper key={image.toString()} role="presentation">
-              <Image size="THUMBNAIL" src={image} />
-            </GalleryImageWrapper>
-          ))}
-        </Flexbox>
-
-        <ImageWrapper>
-          <Image alt={name} size="LARGE" src={largeImage} />
-        </ImageWrapper>
+      <Flexbox flexDirection="column" height="100%" width="6rem">
+        {[thumbnailImage].map((image) => (
+          <GalleryImageWrapper key={image.toString()} role="presentation">
+            <Image size="THUMBNAIL" src={image} />
+          </GalleryImageWrapper>
+        ))}
       </Flexbox>
+
+      <ImageWrapper>
+        <Image alt={name} size="LARGE" src={largeImage} />
+      </ImageWrapper>
     </Flexbox>
   )
 }
@@ -49,7 +48,19 @@ const ImageWrapper = styled.div`
   height: 100%;
   flex-grow: 1;
   position: relative;
-  padding: ${(props) => `0 ${getSpace('xxxl-size')(props)}`};
+
+  & > * {
+    width: 100%;
+    height: auto;
+  }
+
+  ${(props) => breakpoints('desktop')`
+    padding: ${`0 ${getSpace('xxxl-size')(props)}`};
+
+    & > * {
+      width: auto;
+  }
+  `}
 `
 
 const GalleryImageWrapper = styled.div`

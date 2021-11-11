@@ -41,7 +41,7 @@ const ViewProduct = () => {
               to={PRODUCTS}
             />
 
-            <Tile flexDirection="row">
+            <Tile flexDirection={['unset', 'column', 'column', 'row']}>
               <Images product={product} />
 
               <Info product={product} />
