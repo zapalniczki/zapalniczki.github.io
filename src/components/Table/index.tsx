@@ -54,6 +54,7 @@ function Table<T extends DataConstraint>({
                   alignItems="center"
                   flexDirection="column"
                   justifyContent="center"
+                  paddingY="xxxl-size"
                   width="100%"
                 >
                   <FontAwesomeIcon icon="search" size="2x" />

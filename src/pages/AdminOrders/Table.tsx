@@ -6,6 +6,7 @@ import {
   Flexbox,
   Link,
   QueryLoader,
+  ResultIcon,
   SectionHead,
   Switch,
   Table as NativeTable,
@@ -16,7 +17,7 @@ import { ORDER_TABLE } from 'constants/db_tables'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
 import { useDev, useTranslation } from 'hooks'
-import { GetOrdersResponseItem, Order } from 'models'
+import { GetOrdersResponseItem, Mold, Order } from 'models'
 import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 import { displayMoney, getOrderPath } from 'utils'
@@ -102,7 +103,6 @@ const shapeData = (
 
     id: <Link label={order.id} showUnderline to={getOrderPath(order.id)} />,
     is_company: true,
-    // products: order.products,
     status: order.status,
     total: order.total,
     updated_at: <DisplayDate>{order.updated_at}</DisplayDate>,
@@ -121,47 +121,48 @@ const shapeData = (
     ) : (
       '-'
     ),
+    products: (
+      <>
+        {order.products.map((product) => (
+          <Text key={product.id} type="body-2">
+            {/* eslint-disable-next-line react/jsx-newline */}
+            {product.product.name} x {product.quantity}
+          </Text>
+        ))}
+      </>
+    ),
+
     molds: (
       <>
         {order.products.map((product) => (
-          <p key={product.id}>{product.id}</p>
+          <Flexbox
+            alignItems="center"
+            height="100%"
+            key={product.id}
+            width="100%"
+          >
+            <ResultIcon
+              size="1x"
+              variant={moldStatusToVariant[product.product.mold.status]}
+            />
+
+            <Text marginLeft="m-size" type="body-2">
+              {product.product.name}
+            </Text>
+          </Flexbox>
         ))}
       </>
     ),
     edit: <EditModal id={order.id} status={order.status} />
-
-    // molds: uniq(
-    //   order.products?.map((product) => ({
-    //     productId: product.id
-    //   }))
-    // ).map((mold) => {
-    //   const displayName = mold.productId
-
-    //   let status: MoldStatus | null = null
-
-    //   if (moldsData) {
-    //     // const alfa = moldsData.find(
-    //     //   (dbMold) => dbMold.productId === mold.productId
-    //     // )
-
-    //     status = null
-    //   }
-
-    //   let color = 'red'
-    //   if (status === 'DONE') {
-    //     color = 'green'
-    //   }
-
-    //   if (status === 'IN_PROGRESS') {
-    //     color = 'yellow'
-    //   }
-
-    //   return (
-    //     <Box color={color} key={displayName}>
-    //       {displayName}
-    //     </Box>
-    //   )
-    // })
   }))
+
+const moldStatusToVariant: Record<
+  Mold['status'],
+  'SUCCESS' | 'ERROR' | 'INFO'
+> = {
+  DONE: 'SUCCESS',
+  IN_PROGRESS: 'INFO',
+  UNDONE: 'ERROR'
+}
 
 export default Table

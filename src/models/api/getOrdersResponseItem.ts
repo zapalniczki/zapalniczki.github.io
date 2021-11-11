@@ -1,5 +1,13 @@
-import { array, object, TypeOf } from 'zod'
-import { user, deliveryType, mold, order, orderItem, parcel } from '../db'
+import { array, TypeOf } from 'zod'
+import {
+  deliveryType,
+  mold,
+  order,
+  orderItem,
+  parcel,
+  product,
+  user
+} from '../db'
 
 const getOrdersResponseItem = order
   .pick({
@@ -22,7 +30,7 @@ const getOrdersResponseItem = order
           quantity: true
         })
         .extend({
-          product: object({
+          product: product.pick({ name: true }).extend({
             mold: mold.pick({
               status: true
             })

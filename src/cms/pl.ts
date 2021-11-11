@@ -95,6 +95,7 @@ const pl = {
       updated_at: 'Data modyfikacji',
       icon: 'Ikona',
       client: 'Klient',
+      products: 'Produkty',
 
       // NEW
       product_name: 'Nazwa produktu',
@@ -577,7 +578,7 @@ const pl = {
     testData: 'Dane testowe',
 
     STATUSES_INFO: {
-      OPEN: 'Zamówienia, które dostały dopiero złożone. Oczekują na potwierdzenie przez nas zamówienia z klientem',
+      OPEN: 'Zamówienia, które dostały dopiero złożone. Oczekują na potwierdzenie przez nas zamówienia z klientem.',
       CONFIRMED:
         'Zamówienia, które zostały potwierdzone i oczekują na płatność. Zmiana statusu po zaksięgowaniu "SUMA" na koncie.',
       PAYMENT_RECEIVED:
@@ -589,7 +590,7 @@ const pl = {
       IN_DELIVERY:
         'Zamówienia, które są odebrane przez kuriera. Zmiana statusu po otrzymaniu paczki przez klienta.',
       COMPLETED: 'Zamówienia, które są ukończone.',
-      REJECTED: 'Zamówienia, które zostały odrzucone i nie będą realizowane'
+      REJECTED: 'Zamówienia, które zostały odrzucone i nie będą realizowane.'
     },
 
     IS_COMPANY: {

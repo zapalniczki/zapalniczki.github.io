@@ -39,6 +39,7 @@ export const getOrders = async ({ is_test, status }: Params) => {
         id,
         quantity,
         product: ${PRODUCTS_TABLE} (
+          name,
           mold: ${MOLDS_TABLE} (
             status
           )

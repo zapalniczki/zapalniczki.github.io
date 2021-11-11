@@ -33,7 +33,7 @@ const Form = () => {
                   })}
                   marginY="m-size"
                   onClick={() => props.form.setFieldValue('status', newValue)}
-                  size="medium"
+                  size="small"
                 />
               )}
 

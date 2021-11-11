@@ -3,14 +3,8 @@ import { OrderStatus } from 'models'
 const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
   OPEN: ['id', 'created_at', 'client', 'molds', 'sum', 'edit'],
   CONFIRMED: ['id', 'updated_at', 'sum', 'edit'],
-  PAYMENT_RECEIVED: [
-    'id',
-    'updated_at',
-    'boxes_count',
-    //  'molds'
-    'edit'
-  ],
-  PRODUCTION: ['id', 'updated_at', 'boxes_count', 'delivery_type', 'edit'],
+  PAYMENT_RECEIVED: ['id', 'updated_at', 'boxes_count', 'molds', 'edit'],
+  PRODUCTION: ['id', 'updated_at', 'boxes_count', 'products', 'edit'],
   AWAITING_FOR_PICKUP: [
     'id',
     'updated_at',
@@ -39,5 +33,6 @@ export type AdminTableColumns =
   | 'molds'
   | 'edit'
   | 'client'
+  | 'products'
 
 export default statusToColumns
