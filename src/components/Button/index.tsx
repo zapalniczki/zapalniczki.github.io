@@ -58,6 +58,7 @@ const Container = styled.button<ContainerProps>`
   border-color: ${getColor('button-color')};
   color: ${getColor('white')};
   position: relative;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

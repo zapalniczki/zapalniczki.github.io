@@ -12,7 +12,7 @@ const Features = () => {
     <>
       <SectionHead marginTop="xxl-size" title={commonT('features.title')} />
 
-      <Grid>
+      <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
         {features.map((feature) => (
           <FeatureItem
             key={feature.key}
