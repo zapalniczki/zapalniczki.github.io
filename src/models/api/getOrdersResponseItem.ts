@@ -40,7 +40,8 @@ const getOrdersResponseItem = order
     parcel: parcel
       .pick({
         ref: true,
-        link: true
+        link: true,
+        id: true
       })
       .nullable()
   })

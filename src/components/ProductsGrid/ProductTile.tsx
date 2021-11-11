@@ -56,7 +56,8 @@ const ProductTile = ({ product }: Props) => {
             backgroundColor="background-color"
             justifyContent="space-between"
             overflow="hidden"
-            padding="m-size"
+            paddingX={['unset', 'xs-size', 'xs-size', 'm-size']}
+            paddingY="m-size"
             width="100%"
           >
             <Flexbox flexDirection="column" maxWidth="100%" width="100%">

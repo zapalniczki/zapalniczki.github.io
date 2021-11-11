@@ -14,6 +14,7 @@ const Tile = ({ content, extended, icon, title }: Props) => (
   <TileComponent
     flexDirection="column"
     gridColumn={['unset', '1fr', '1fr', extended ? 'auto / span 2' : 'auto']}
+    paddingX={['unset', 'xs-size', 'xs-size', 'l-size']}
   >
     <TileHeading icon={icon} title={title} />
 

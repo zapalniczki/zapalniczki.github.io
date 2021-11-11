@@ -1,4 +1,4 @@
-import { Box, Flexbox, Heading } from 'components'
+import { Flexbox, Heading } from 'components'
 import React, { ReactNode } from 'react'
 import { SpaceProps } from 'styled-system'
 import { Color } from 'styles/theme'
@@ -26,7 +26,8 @@ const Banner = ({
     flexDirection="column"
     justifyContent="center"
     minHeight={size ? sizeToHeight[size] : sizeToHeight['SMALL']}
-    padding="l-size"
+    paddingX={['unset', 'xs-size', 'xs-size', 'l-size']}
+    paddingY="l-size"
     position="relative"
   >
     {title && <Heading level={4}>{title}</Heading>}
@@ -34,7 +35,8 @@ const Banner = ({
     {children}
 
     {background && (
-      <Box
+      <Flexbox
+        alignItems="flex-end"
         height="100%"
         left="0"
         position="absolute"
@@ -43,7 +45,7 @@ const Banner = ({
         zIndex={0}
       >
         {background}
-      </Box>
+      </Flexbox>
     )}
   </Flexbox>
 )

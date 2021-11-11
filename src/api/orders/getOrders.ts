@@ -47,7 +47,8 @@ export const getOrders = async ({ is_test, status }: Params) => {
       ),
       parcel: ${PARCELS_TABLE} (
         ref,
-        link
+        link,
+        id
       ),
       is_test
       `

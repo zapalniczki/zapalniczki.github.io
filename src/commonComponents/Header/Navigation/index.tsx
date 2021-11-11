@@ -10,6 +10,7 @@ const Navigation = () => (
     as="ul"
     justifyContent="flex-end"
     margin={0}
+    marginRight="-1rem"
     padding={0}
   >
     {/* <Box as="li" margin={0} padding={0}>

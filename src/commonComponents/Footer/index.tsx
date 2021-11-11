@@ -28,11 +28,10 @@ const Footer = () => {
       <MaxWidth
         alignItems="flex-start"
         flexDirection="column"
-        padding={['unset', 'm-size', 'm-size', 'l-size']}
+        innerPadding
+        // padding={['unset', 'm-size', 'm-size', 'l-size']}
       >
-        <Box marginLeft="-1rem">
-          <Logo />
-        </Box>
+        <Logo />
 
         <Flexbox
           flexDirection={['unset', 'column', 'column', 'row']}

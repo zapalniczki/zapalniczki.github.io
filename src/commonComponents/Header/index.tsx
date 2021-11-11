@@ -40,6 +40,7 @@ const Header = () => {
       <MaxWidth
         alignItems="center"
         flexDirection="row"
+        innerPadding
         justifyContent="space-between"
       >
         <Link title={commonT('LINKS.home')} to={HOME}>

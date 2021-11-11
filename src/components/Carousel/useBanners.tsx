@@ -33,6 +33,7 @@ const getBanners = (
         alignItems="center"
         flexDirection="column"
         marginX="auto"
+        maxWidth="100%"
         width="70rem"
         zIndex={1}
       >

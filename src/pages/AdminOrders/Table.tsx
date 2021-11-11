@@ -153,7 +153,15 @@ const shapeData = (
         ))}
       </>
     ),
-    edit: <EditModal id={order.id} status={order.status} />
+    edit: (
+      <EditModal
+        id={order.id}
+        parcelId={order.parcel?.id}
+        parcelLink={order.parcel?.link}
+        parcelRef={order.parcel?.ref}
+        status={order.status}
+      />
+    )
   }))
 
 const moldStatusToVariant: Record<

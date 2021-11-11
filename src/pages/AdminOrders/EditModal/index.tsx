@@ -1,23 +1,32 @@
 import { ModalResult, Modal, ModalFooter, ModalHeader } from 'components'
 import { Form as NativeForm, Formik } from 'formik'
 import { useTranslation } from 'hooks'
-import { Order } from 'models'
+import { Order, Parcel } from 'models'
 import React, { useState } from 'react'
 import Form from './Form'
 import useForm from './useForm'
 
 type Props = {
   id: string
+  parcelId?: Parcel['id']
+  parcelLink?: Parcel['link']
+  parcelRef?: Parcel['ref']
   status: Order['status']
 }
 
-const EditModal = ({ id, status }: Props) => {
+const EditModal = ({ id, parcelId, parcelLink, parcelRef, status }: Props) => {
   const { t } = useTranslation('ADMIN_ORDERS')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { initialValues, onSubmit, schema, setView, view } = useForm(id, status)
+  const { initialValues, onSubmit, schema, setView, view } = useForm(
+    id,
+    status,
+    parcelLink,
+    parcelRef,
+    parcelId
+  )
 
   const onClose = () => {
     setIsModalOpen(false)

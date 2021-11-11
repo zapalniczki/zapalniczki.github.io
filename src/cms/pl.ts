@@ -96,8 +96,6 @@ const pl = {
       icon: 'Ikona',
       client: 'Klient',
       products: 'Produkty',
-
-      // NEW
       product_name: 'Nazwa produktu',
       product_image: '',
       product_price: 'Cena',
