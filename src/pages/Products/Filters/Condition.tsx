@@ -3,6 +3,7 @@ import { GetCollectionsResponseItem, GetIconsResponseItem } from 'models'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { SpaceProps } from 'styled-system'
+import Loader from './Condition.loader'
 
 type Props = {
   query: UseQueryResult<(GetIconsResponseItem | GetCollectionsResponseItem)[]>
@@ -18,7 +19,7 @@ const Condition = ({
   title,
   ...props
 }: Props) => (
-  <QueryLoader query={query} showLoading={false}>
+  <QueryLoader Loader={<Loader {...props} />} query={query} showLoading={false}>
     {(data) => (
       <Flexbox {...props} flexDirection="column">
         <Text type="subtitle-2">{title}</Text>
