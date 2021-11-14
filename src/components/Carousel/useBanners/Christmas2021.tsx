@@ -6,21 +6,47 @@ const Christmas2021 = () => <Container />
 
 const blink = keyframes`
   20%, 60%, 100% {
-    filter: blur(5px) brightness(1);
+    opacity: 1;
+    filter: blur(5px);
   }
 
   40%, 80% {
-    filter: blur(0px) brightness(0);
+    opacity: 0;
+    filter: blur(0px);
   }
 
 `
 
 const Container = styled(Svg)`
-  /* #windows {
-    animation: ${blink} 10s linear infinite alternate;
-    animation-delay: 5s;
-    filter: blur(0px) brightness(1);
-  } */
+  #star-1 {
+    animation: ${blink} 5s ease-in-out infinite alternate;
+    animation-delay: 1s;
+  }
+
+  #star-2 {
+    animation: ${blink} 5s ease-in-out infinite alternate;
+    animation-delay: 0.5s;
+  }
+
+  #star-3 {
+    animation: ${blink} 5s ease-in-out infinite alternate;
+    animation-delay: 0s;
+  }
+
+  #star-4 {
+    animation: ${blink} 5s ease-in-out infinite alternate;
+    animation-delay: 1.5s;
+  }
+
+  #star-5 {
+    animation: ${blink} 5s ease-in-out infinite alternate;
+    animation-delay: 2s;
+  }
+
+  #star-6 {
+    animation: ${blink} 5s ease-in-out infinite alternate;
+    animation-delay: 2.5s;
+  }
 `
 
 export default Christmas2021
