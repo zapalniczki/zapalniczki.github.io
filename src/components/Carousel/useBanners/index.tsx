@@ -81,8 +81,8 @@ const getBanners = (
           type="body-2"
         >
           Jako jedyni w Polsce oferujemy zapalniczki tłoczone metodą
-          hotstampingu z wzorami dedykowanymi na ten specjalny czas. Zapraszamy
-          do zapoznania się z naszymi produktami.
+          hotstampingu z unikalnymi wzorami dedykowanymi na ten specjalny czas.
+          Zapraszamy do zapoznania się z naszymi produktami.
         </Text>
 
         <Button

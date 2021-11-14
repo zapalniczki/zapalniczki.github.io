@@ -1,11 +1,22 @@
 import { Box } from 'components'
 import React, { ReactNode } from 'react'
-import { GridTemplateColumnsProps, SpaceProps } from 'styled-system'
+import {
+  BorderProps,
+  GridAutoColumnsProps,
+  GridAutoFlowProps,
+  GridTemplateColumnsProps,
+  GridTemplateRowsProps,
+  SpaceProps
+} from 'styled-system'
 
 type Props = {
   children: ReactNode
 } & SpaceProps &
-  GridTemplateColumnsProps
+  GridTemplateColumnsProps &
+  GridTemplateRowsProps &
+  BorderProps &
+  GridAutoFlowProps &
+  GridAutoColumnsProps
 
 const Grid = ({ children, ...props }: Props) => (
   <Box

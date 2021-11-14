@@ -24,16 +24,15 @@ const Condition = ({
       <Flexbox {...props} flexDirection="column">
         <Text type="subtitle-2">{title}</Text>
 
-        <Flexbox overflowX="auto" paddingY="xxs-size">
+        <Flexbox flexWrap="wrap" gap="xs-size" paddingY="xxs-size">
           {data
             .sort((prev, next) => (prev.label < next.label ? -1 : 1))
-            .map((elem, index) => {
+            .map((elem) => {
               const isSelected = elem.id === selectedItem
 
               return (
                 <Chip
                   key={elem.label}
-                  marginLeft={index === 0 ? '0' : 'xs-size'}
                   onClick={() => selectItem(isSelected ? undefined : elem.id)}
                   rounded
                   selected={isSelected}
