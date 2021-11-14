@@ -1,15 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Flexbox, Button } from 'components'
+import { useBreakpoints } from 'hooks'
 import React from 'react'
 import { useTheme } from 'styled-components'
 
 type Props = {
-  clickHandler: () => void,
+  clickHandler: () => void
   right?: boolean
 }
 
 const Chevron = ({ clickHandler, right }: Props) => {
   const { colors } = useTheme()
+  const isDesktop = useBreakpoints('desktop')
 
   return (
     <Flexbox
@@ -25,6 +27,7 @@ const Chevron = ({ clickHandler, right }: Props) => {
         <FontAwesomeIcon
           color={colors['black']}
           icon={right ? 'chevron-right' : 'chevron-left'}
+          opacity={isDesktop ? 1 : 0.25}
           size="2x"
         />
       </Button>

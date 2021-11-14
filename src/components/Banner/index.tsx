@@ -1,4 +1,5 @@
 import { Flexbox, Heading } from 'components'
+import { useBreakpoints } from 'hooks'
 import React, { ReactNode } from 'react'
 import { SpaceProps } from 'styled-system'
 import { Color } from 'styles/theme'
@@ -10,6 +11,7 @@ export type Props = {
   children?: ReactNode
   size?: Size
   title?: string
+  vhOnMobile?: boolean
 } & SpaceProps
 
 const Banner = ({
@@ -18,37 +20,50 @@ const Banner = ({
   children,
   size,
   title,
+  vhOnMobile,
   ...props
-}: Props) => (
-  <Flexbox
-    {...props}
-    backgroundColor={backgroundColor ?? 'background-color-01'}
-    flexDirection="column"
-    justifyContent="center"
-    minHeight={size ? sizeToHeight[size] : sizeToHeight['SMALL']}
-    paddingX={['unset', 'xs-size', 'xs-size', 'l-size']}
-    paddingY="l-size"
-    position="relative"
-  >
-    {title && <Heading level={4}>{title}</Heading>}
+}: Props) => {
+  const isDesktop = useBreakpoints('desktop')
 
-    {children}
+  let height = sizeToHeight['SMALL']
+  if (size) {
+    height = sizeToHeight[size]
+  }
+  if (vhOnMobile && !isDesktop) {
+    height = '100vh'
+  }
 
-    {background && (
-      <Flexbox
-        alignItems="flex-end"
-        height="100%"
-        left="0"
-        position="absolute"
-        top="0"
-        width="100%"
-        zIndex={0}
-      >
-        {background}
-      </Flexbox>
-    )}
-  </Flexbox>
-)
+  return (
+    <Flexbox
+      {...props}
+      backgroundColor={backgroundColor ?? 'background-color-01'}
+      flexDirection="column"
+      justifyContent="center"
+      minHeight={height}
+      paddingX={['unset', 'xs-size', 'xs-size', 'l-size']}
+      paddingY="l-size"
+      position="relative"
+    >
+      {title && <Heading level={4}>{title}</Heading>}
+
+      {children}
+
+      {background && (
+        <Flexbox
+          alignItems="flex-end"
+          height="100%"
+          left="0"
+          position="absolute"
+          top="0"
+          width="100%"
+          zIndex={0}
+        >
+          {background}
+        </Flexbox>
+      )}
+    </Flexbox>
+  )
+}
 
 const sizeToHeight: Record<Size, string> = {
   SMALL: '20rem',

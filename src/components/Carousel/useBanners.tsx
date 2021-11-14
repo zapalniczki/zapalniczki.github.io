@@ -1,17 +1,14 @@
 import { Text, Button, Heading, Flexbox, Banner } from 'components'
-import { PRODUCTS } from 'constants/routes'
+import { CHRISTMAS_2021, PRODUCTS } from 'constants/routes'
 import { History } from 'history'
-import { TranslateFunc } from 'hooks'
 import React from 'react'
-import { useTranslation } from 'hooks'
 import { useHistory } from 'react-router-dom'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
+import Christmas2021 from './Christmas2021'
 
 const useBanners = () => {
   const history = useHistory()
-  const { t } = useTranslation('HOME')
-
-  const banners = getBanners(t, history)
+  const banners = getBanners(history)
 
   const getBanner = (key: BannerKey): JSX.Element => banners[key]
 
@@ -21,14 +18,13 @@ const useBanners = () => {
   }
 }
 
-export type BannerKey = 'YOUR_PLACE'
+export type BannerKey = 'YOUR_PLACE' | 'CHRISTMAS_2021'
 
 const getBanners = (
-  t: TranslateFunc,
   history: History<unknown>
 ): Record<BannerKey, JSX.Element> => ({
   YOUR_PLACE: (
-    <Banner background={<YourPlaceInYourPoint />} size="LARGE">
+    <Banner background={<YourPlaceInYourPoint />} size="LARGE" vhOnMobile>
       <Flexbox
         alignItems="center"
         flexDirection="column"
@@ -49,13 +45,50 @@ const getBanners = (
           textAlign="center"
           type="body-2"
         >
-          {t('banner.description')}
+          Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź
+          swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.
         </Text>
 
         <Button
           icon="arrow-right"
-          label={t('banner.buttonLabel')}
+          label="Produkty"
           onClick={() => history.push(PRODUCTS)}
+          size="medium"
+        />
+      </Flexbox>
+    </Banner>
+  ),
+
+  CHRISTMAS_2021: (
+    <Banner background={<Christmas2021 />} size="LARGE" vhOnMobile>
+      <Flexbox
+        alignItems="center"
+        flexDirection="column"
+        marginX="auto"
+        maxWidth="100%"
+        width="70rem"
+        zIndex={1}
+      >
+        <Heading level={3} textAlign="center">
+          {/* eslint-disable-next-line react/jsx-newline */}
+          <strong>Wyjątkowa</strong> oferta <strong>świąteczna</strong>
+        </Heading>
+
+        <Text
+          marginBottom="l-size"
+          marginTop="m-size"
+          textAlign="center"
+          type="body-2"
+        >
+          Jako jedyni w Polsce oferujemy zapalniczki tłoczone metodą
+          hotstampingu z wzorami dedykowanymi na ten specjalny czas. Zapraszamy
+          do zapoznania się z naszymi produktami.
+        </Text>
+
+        <Button
+          icon="arrow-right"
+          label="Produkty"
+          onClick={() => history.push(CHRISTMAS_2021)}
           size="medium"
         />
       </Flexbox>

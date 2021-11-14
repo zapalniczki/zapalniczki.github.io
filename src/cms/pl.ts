@@ -435,12 +435,6 @@ const pl = {
 
   HOME: {
     title: 'Strona Główna',
-    banner: {
-      title: 'Twoje miejsce w Twoim punkcie',
-      description:
-        'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.',
-      buttonLabel: 'Produkty'
-    },
 
     FEATURED: {
       title: 'Nowości'
