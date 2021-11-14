@@ -16,11 +16,11 @@ import {
 import { ORDER_TABLE } from 'constants/db_tables'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
-import { useDev, useTranslation } from 'hooks'
+import { TranslateFunc, useDev, useTranslation } from 'hooks'
 import { GetOrdersResponseItem, Mold, Order } from 'models'
 import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, getOrderPath } from 'utils'
+import { displayMoney, getOrderPath, getProductName } from 'utils'
 import EditModal from './EditModal'
 import { AdminTableColumns } from './statusToColumns'
 
@@ -70,7 +70,7 @@ const Table = ({ columns, status }: Props) => {
       <Box marginTop="m-size" overflowX="scroll" overflowY="auto" width="100%">
         <QueryLoader query={ordersQuery}>
           {(orders) => {
-            const data = shapeData(orders)
+            const data = shapeData(orders, commonT)
 
             return <NativeTable columns={columnsMemo} data={data} />
           }}
@@ -81,7 +81,8 @@ const Table = ({ columns, status }: Props) => {
 }
 
 const shapeData = (
-  data: GetOrdersResponseItem[]
+  data: GetOrdersResponseItem[],
+  t: TranslateFunc
 ): Record<AdminTableColumns, string | boolean | number | JSX.Element>[] =>
   data.map((order) => ({
     created_at: <DisplayDate>{order.created_at}</DisplayDate>,
@@ -121,36 +122,58 @@ const shapeData = (
     ) : (
       '-'
     ),
-    products: (
+    _products: (
       <>
-        {order.products.map((product) => (
-          <Text key={product.id} type="body-2">
-            {/* eslint-disable-next-line react/jsx-newline */}
-            {product.product.name} x {product.quantity}
-          </Text>
-        ))}
+        {order.products.map((product) => {
+          const productName = getProductName(
+            t('productNameBase'),
+            product.product.label.label,
+            product.product.icon.label
+          )
+
+          return (
+            <Text key={product.id} type="body-2">
+              {/* eslint-disable-next-line react/jsx-newline */}
+              {productName} x {product.quantity}
+            </Text>
+          )
+        })}
       </>
     ),
+    get products() {
+      return this._products
+    },
+    set products(value) {
+      this._products = value
+    },
 
     molds: (
       <>
-        {order.products.map((product) => (
-          <Flexbox
-            alignItems="center"
-            height="100%"
-            key={product.id}
-            width="100%"
-          >
-            <ResultIcon
-              size="1x"
-              variant={moldStatusToVariant[product.product.mold.status]}
-            />
+        {order.products.map((product) => {
+          const productName = getProductName(
+            t('productNameBase'),
+            product.product.label.label,
+            product.product.icon.label
+          )
 
-            <Text marginLeft="m-size" type="body-2">
-              {product.product.name}
-            </Text>
-          </Flexbox>
-        ))}
+          return (
+            <Flexbox
+              alignItems="center"
+              height="100%"
+              key={product.id}
+              width="100%"
+            >
+              <ResultIcon
+                size="1x"
+                variant={moldStatusToVariant[product.product.mold.status]}
+              />
+
+              <Text marginLeft="m-size" type="body-2">
+                {productName}
+              </Text>
+            </Flexbox>
+          )
+        })}
       </>
     ),
     edit: (

@@ -1,4 +1,4 @@
-import { getChristmasProducts } from 'api'
+import { getProducts } from 'api'
 import { ProductsGrid } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
@@ -9,12 +9,11 @@ const NewYearProducts = () => {
   const t = useTranslation('CHRISTMAS_2021').withBase('NEW_YEAR_PRODUCTS')
 
   const params = {
-    newYear: true,
-    collectionId: '3eb90808-0d57-4173-ac0a-2fb8bc66c049'
+    collectionId: '60fe5eba-733b-4040-85b8-a67cb8064e0a'
   }
 
   const newYearProductsQuery = useQuery([PRODUCTS_TABLE, params], () =>
-    getChristmasProducts(params)
+    getProducts(params)
   )
 
   return (

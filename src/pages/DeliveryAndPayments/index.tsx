@@ -15,13 +15,11 @@ import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
-import { useTheme } from 'styled-components'
 import { displayMoney } from 'utils'
 import Option from './Option'
 
 const DeliveryAndPayments = () => {
   const { t } = useTranslation('DELIVERY_AND_PAYMENTS')
-  const { colors } = useTheme()
 
   useScrollTop()
   useTabTitle(t('title'))
@@ -49,7 +47,7 @@ const DeliveryAndPayments = () => {
         />
 
         <Flexbox alignSelf="center" justifyContent="center">
-          <FontAwesomeIcon color={colors['braty-red']} icon="plus" size="3x" />
+          <FontAwesomeIcon icon="plus" size="3x" />
         </Flexbox>
 
         <Option
@@ -59,11 +57,7 @@ const DeliveryAndPayments = () => {
         />
 
         <Flexbox alignSelf="center" justifyContent="center">
-          <FontAwesomeIcon
-            color={colors['braty-red']}
-            icon="equals"
-            size="3x"
-          />
+          <FontAwesomeIcon icon="equals" size="3x" />
         </Flexbox>
 
         <Option

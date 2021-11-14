@@ -6,12 +6,12 @@ import { useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
 
-const Christmas2021 = () => {
-  const commonT = useTranslation('HOME').withBase('CHRISTMAS_2021')
+const NewYearsEve2022 = () => {
+  const commonT = useTranslation('HOME').withBase('NEW_YEARS_EVE_2022')
 
   const params = {
     limit: 3,
-    collectionId: '3eb90808-0d57-4173-ac0a-2fb8bc66c049'
+    collectionId: '60fe5eba-733b-4040-85b8-a67cb8064e0a'
   }
 
   const featuredQuery = useQuery([PRODUCTS_TABLE, params], () =>
@@ -32,4 +32,4 @@ const Christmas2021 = () => {
   )
 }
 
-export default Christmas2021
+export default NewYearsEve2022

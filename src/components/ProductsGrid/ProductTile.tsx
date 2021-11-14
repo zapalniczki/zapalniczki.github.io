@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Flexbox, Image, Text, Tile } from 'components'
 import { PRODUCTS_ID } from 'constants/routes'
+import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
@@ -8,7 +9,11 @@ import { generatePath, Link } from 'react-router-dom'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
-import { displayMoney, findCorrectProductImageSize } from 'utils'
+import {
+  displayMoney,
+  findCorrectProductImageSize,
+  getProductName
+} from 'utils'
 
 export type Props = {
   product: GetProductsResponseItem
@@ -25,6 +30,13 @@ const ProductTile = ({ product }: Props) => {
   const backImage = findCorrectProductImageSize(product.images, 'TILE_REVERSE')
 
   const [isHovered, setIsHovered] = useState(false)
+
+  const { t: commonT } = useTranslation('COMMON')
+  const productName = getProductName(
+    commonT('productNameBase'),
+    product.label.label,
+    product.icon.label
+  )
 
   return (
     <ReactVisibilitySensor partialVisibility scrollCheck>
@@ -68,7 +80,7 @@ const ProductTile = ({ product }: Props) => {
                 width="100%"
                 wrap={false}
               >
-                {product.name}
+                {productName}
               </Text>
 
               <Flexbox justifyContent="space-between" width="100%">

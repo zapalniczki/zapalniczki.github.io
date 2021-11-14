@@ -13,22 +13,34 @@ import Loader from './index.loader'
 import OtherIcons from './OtherIcons'
 import { useQuery } from 'react-query'
 import { Product } from 'models'
+import { getProductName } from 'utils'
 
 const ViewProduct = () => {
   const history = useHistory()
   const params = useParams<{ id: Product['id'] }>()
+  const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const productQuery = useQuery(['product', params], () => getProduct(params), {
     onError: () => history.push('/404')
   })
 
+  let productName = `Produkt ${params.id}`
+
+  if (
+    productQuery &&
+    productQuery.data?.label.label &&
+    productQuery.data.icon.label
+  ) {
+    productName = getProductName(
+      commonT('productNameBase'),
+      productQuery.data.label.label,
+      productQuery.data.icon.label
+    )
+  }
+
   useScrollTop(params.id)
-  useTabTitle(
-    t('title', {
-      productName: productQuery.data ? productQuery.data.name : 'Produkt'
-    })
-  )
+  useTabTitle(t('title', { productName }))
 
   return (
     <Page>

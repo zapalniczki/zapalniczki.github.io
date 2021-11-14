@@ -1,4 +1,10 @@
-import { IMAGES_TABLE, MOLDS_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
+import {
+  ICONS_TABLE,
+  IMAGES_TABLE,
+  LABELS_TABLE,
+  MOLDS_TABLE,
+  PRODUCTS_TABLE
+} from 'constants/db_tables'
 import {
   Collection,
   getProductsResponseItem,
@@ -17,6 +23,7 @@ export type Params = {
   featured?: Product['featured']
   iconId?: Icon['id']
   labelId?: Label['id']
+  limit?: number
   name?: Product['name']
 }
 
@@ -30,6 +37,7 @@ export const getProducts = async (params: Params = {}) => {
     .select(getProductsSelectQuery)
     .match(match)
     .ilike(ilike.column, ilike.patern)
+    .limit(params.limit ?? 1000)
 
   const data = parseApiResponse(array(getProductsResponseItem), response)
 
@@ -39,18 +47,24 @@ export const getProducts = async (params: Params = {}) => {
 export const getProductsSelectQuery = `
 id,
 price,
-name,
 visible,
 bestseller,
 featured,
 collection_id,
 label_id,
+name,
 icon_id,
 ${IMAGES_TABLE} (
   *
 ),
 mold: ${MOLDS_TABLE} (
   status
+),
+icon: ${ICONS_TABLE} (
+  label
+),
+label: ${LABELS_TABLE} (
+  label
 )
 `
 

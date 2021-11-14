@@ -67,6 +67,7 @@ const pl = {
     loading: 'Ładowanie',
     companyName: domain,
     tableEmpty: 'Tabela jest pusta',
+    productNameBase: 'Zapalniczka',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',
@@ -451,7 +452,12 @@ const pl = {
     },
 
     CHRISTMAS_2021: {
-      title: 'Oferta świąteczna',
+      title: 'Święta',
+      linkLabel: 'Zobacz wszystkie'
+    },
+
+    NEW_YEARS_EVE_2022: {
+      title: 'Nowy Rok',
       linkLabel: 'Zobacz wszystkie'
     }
   },
@@ -895,7 +901,7 @@ const pl = {
       info: 'Oferta obowiązuje do wyczerpania zapasów'
     },
     CHRISTMAS_PRODUCTS: {
-      title: 'Boże Narodzenie'
+      title: 'Święta'
     },
     NEW_YEAR_PRODUCTS: {
       title: 'Nowy Rok'

@@ -10,13 +10,17 @@ import {
 } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { PRODUCTS_ID } from 'constants/routes'
-import { useTranslation } from 'hooks'
+import { TranslateFunc, useTranslation } from 'hooks'
 import { multiply } from 'lodash'
 import { GetOrderResponse, GetProductsResponseItem } from 'models'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { generatePath } from 'react-router'
-import { displayMoney, findCorrectProductImageSize } from 'utils'
+import {
+  displayMoney,
+  findCorrectProductImageSize,
+  getProductName
+} from 'utils'
 
 type Props = {
   products: GetOrderResponse['products']
@@ -52,7 +56,7 @@ const ProductsTable = ({ products }: Props) => {
     <QueryLoader query={productsQuery}>
       {(data) => {
         const details = getDetails(data, products)
-        const shapedData = shapeData(details)
+        const shapedData = shapeData(details, commonT)
 
         return (
           <Tile marginTop="m-size">
@@ -88,7 +92,8 @@ const getDetails = (
 }
 
 const shapeData = (
-  data: RichProductDetails[]
+  data: RichProductDetails[],
+  t: TranslateFunc
 ): Record<
   OrderProductsTableColumns,
   string | boolean | number | JSX.Element
@@ -96,6 +101,11 @@ const shapeData = (
   data.map((product) => {
     const productPath = generatePath(PRODUCTS_ID, { id: product.id })
     const basketImage = findCorrectProductImageSize(product.images, 'BASKET')
+    const productName = getProductName(
+      t('productNameBase'),
+      product.label.label,
+      product.icon.label
+    )
 
     return {
       product_image: (
@@ -103,9 +113,7 @@ const shapeData = (
           <Image size="BASKET" src={basketImage} />
         </Box>
       ),
-      product_name: (
-        <Link label={product.name} showUnderline to={productPath} />
-      ),
+      product_name: <Link label={productName} showUnderline to={productPath} />,
       boxes_count: product.quantity,
       product_price: displayMoney(product.price),
       product_total: displayMoney(multiply(product.price, product.quantity))

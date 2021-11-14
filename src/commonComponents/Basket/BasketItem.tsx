@@ -8,7 +8,11 @@ import { generatePath } from 'react-router-dom'
 import styled from 'styled-components'
 import breakpoints from 'styles/breakpoints'
 import getSpace from 'styles/getSpace'
-import { displayMoney, findCorrectProductImageSize } from 'utils'
+import {
+  displayMoney,
+  findCorrectProductImageSize,
+  getProductName
+} from 'utils'
 import SimpleButton from './SimpleButton'
 
 type Props = {
@@ -18,7 +22,7 @@ type Props = {
 }
 
 const BasketItem = ({ originalId, product, quantity }: Props) => {
-  const commonT = useTranslation('COMMON').withBase('BASKET')
+  const { t: commonT } = useTranslation('COMMON')
 
   const { closeBasket } = useContext(togglesContext)
   const { setCheckout } = useContext(checkoutContext)
@@ -32,7 +36,13 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
     return null
   }
 
-  const { id, images, name, price } = product
+  const productName = getProductName(
+    commonT('productNameBase'),
+    product.label.label,
+    product.icon.label
+  )
+
+  const { id, images, price } = product
 
   const productPath = generatePath(PRODUCTS_ID, { id })
 
@@ -79,11 +89,11 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
         position="relative"
         width={['unset', '3rem', '3rem', '9rem']}
       >
-        <ImageStyled alt={name} size="BASKET" src={basketImage} />
+        <ImageStyled alt={productName} size="BASKET" src={basketImage} />
       </Box>
 
       <Flexbox flexDirection="column" gridArea="name" overflowX="hidden">
-        <Link label={name} onClick={closeBasket} to={productPath} />
+        <Link label={productName} onClick={closeBasket} to={productPath} />
       </Flexbox>
 
       <Flexbox alignItems="center" gridArea="controls">
@@ -122,7 +132,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
         {quantity > 1 && (
           <Text type="caption">
             {/* eslint-disable-next-line react/jsx-newline */}
-            {displayMoney(price)} {commonT('each')}
+            {displayMoney(price)} {commonT('BASKET.each')}
           </Text>
         )}
       </Flexbox>

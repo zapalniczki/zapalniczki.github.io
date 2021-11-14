@@ -1,8 +1,9 @@
-import { IMAGES_TABLE, MOLDS_TABLE, PRODUCTS_TABLE } from 'constants/db_tables'
+import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { getProductsResponseItem, GetProductsResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
+import { getProductsSelectQuery } from '.'
 
 type Params = {
   collectionId: string
@@ -12,25 +13,7 @@ type Params = {
 export const getOtherPlaces = async (params: Params) => {
   const response = await supabase
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
-    .select(
-      `
-      id,
-      price,
-      name,
-      visible,
-      bestseller,
-      featured,
-      collection_id,
-      label_id,
-      icon_id,
-      ${IMAGES_TABLE} (
-        *
-      ),
-      mold: ${MOLDS_TABLE} (
-        status
-      )
-    `
-    )
+    .select(getProductsSelectQuery)
     .eq('collection_id', params.collectionId)
     .neq('label_id', params.labelId)
     .limit(3)

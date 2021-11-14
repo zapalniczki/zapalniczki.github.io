@@ -5,9 +5,9 @@ const getProductResponse = product
   .pick({
     description: true,
     id: true,
-    name: true,
     price: true,
-    collection_id: true
+    collection_id: true,
+    name: true
   })
   .extend({
     images: array(image),

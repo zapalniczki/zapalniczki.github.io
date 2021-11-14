@@ -1,4 +1,6 @@
 import {
+  ICONS_TABLE,
+  LABELS_TABLE,
   MOLDS_TABLE,
   ORDER_ITEMS,
   ORDER_TABLE,
@@ -42,6 +44,12 @@ export const getOrders = async ({ is_test, status }: Params) => {
           name,
           mold: ${MOLDS_TABLE} (
             status
+          ),
+          label: ${LABELS_TABLE} (
+            label
+          ),
+          icon: ${ICONS_TABLE} (
+            label
           )
         )
       ),

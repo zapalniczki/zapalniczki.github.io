@@ -20,9 +20,9 @@ export const getProduct = async (params: Params) => {
       `
       description,
       id,
-      name,
       price,
       collection_id,
+      name,
       ${IMAGES_TABLE} (
         *
       ),

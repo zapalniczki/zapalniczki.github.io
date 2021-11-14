@@ -7,6 +7,7 @@ import Bestsellers from './Bestsellers'
 import { CallMeBack, Newsletter } from 'commonComponents'
 import Featured from './Featured'
 import Christmas2021 from './Christmas2021'
+import NewYearsEve2022 from './NewYearsEve2022'
 
 const Home = () => {
   const { t } = useTranslation('HOME')
@@ -19,6 +20,8 @@ const Home = () => {
       <Carousel>{['YOUR_PLACE']}</Carousel>
 
       <Christmas2021 />
+
+      <NewYearsEve2022 />
 
       <Featured />
 

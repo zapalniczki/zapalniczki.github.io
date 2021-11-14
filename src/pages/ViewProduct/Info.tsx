@@ -2,7 +2,7 @@ import { GetProductResponse } from 'models'
 import { Flexbox, Heading, Separator, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { displayMoney, removeSeparatorsFromLabel } from 'utils'
+import { displayMoney, getProductName } from 'utils'
 import Form from './Form'
 import AvilabilityIndicator from './AvilabilityIndicator'
 
@@ -11,7 +11,14 @@ type Props = {
 }
 
 const Info = ({ product }: Props) => {
+  const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
+
+  const productName = getProductName(
+    commonT('productNameBase'),
+    product.label.label,
+    product.icon.label
+  )
 
   return (
     <Flexbox
@@ -20,7 +27,7 @@ const Info = ({ product }: Props) => {
       marginLeft={['unset', 'unset', 'unset', 'xl-size']}
       marginTop={['unset', 'xxl-size', 'xxl-size', 'unset']}
     >
-      <Heading level={4}>{product.name}</Heading>
+      <Heading level={4}>{productName}</Heading>
 
       <Separator />
 
@@ -34,10 +41,7 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Detail
-        label={t('label')}
-        value={removeSeparatorsFromLabel(product.label.label)}
-      />
+      <Detail label={t('label')} value={product.label.label} />
 
       <Detail label={t('icon')} value={product.icon.label} />
 

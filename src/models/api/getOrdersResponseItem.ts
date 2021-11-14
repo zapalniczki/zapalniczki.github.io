@@ -1,6 +1,8 @@
 import { array, TypeOf } from 'zod'
 import {
   deliveryType,
+  icon,
+  label,
   mold,
   order,
   orderItem,
@@ -30,9 +32,15 @@ const getOrdersResponseItem = order
           quantity: true
         })
         .extend({
-          product: product.pick({ name: true }).extend({
+          product: product.pick({}).extend({
             mold: mold.pick({
               status: true
+            }),
+            label: label.pick({
+              label: true
+            }),
+            icon: icon.pick({
+              label: true
             })
           })
         })
