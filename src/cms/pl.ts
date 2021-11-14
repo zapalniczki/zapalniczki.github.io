@@ -565,13 +565,13 @@ const pl = {
 
     selectPlaceholder: 'Wybierz albo wyszukaj',
 
-    otherIcons: {
+    OTHER_ICONS: {
       title: 'Inne ikony',
       linkLabel: 'Zobacz wszystkie'
     },
 
-    otherPlaces: {
-      title: 'Inne miejsca',
+    OTHER_LABELS: {
+      title: 'Inne napisy',
       linkLabel: 'Zobacz wszystkie'
     }
   },

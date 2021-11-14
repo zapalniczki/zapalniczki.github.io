@@ -11,7 +11,7 @@ type Props = {
 }
 
 const OtherIcons = ({ iconId, labelId }: Props) => {
-  const { t } = useTranslation('VIEW_PRODUCT')
+  const t = useTranslation('VIEW_PRODUCT').withBase('OTHER_ICONS')
 
   const params = { labelId, iconId }
   const otherIconsQuery = useQuery(['other_icons', params], () =>
@@ -27,11 +27,11 @@ const OtherIcons = ({ iconId, labelId }: Props) => {
             labelId
           }
         },
-        label: t('otherIcons.linkLabel')
+        label: t('linkLabel')
       }}
       marginTop="xxl-size"
       query={otherIconsQuery}
-      title={t('otherIcons.title')}
+      title={t('title')}
     />
   )
 }

@@ -10,7 +10,8 @@ const getProductsResponseItem = product
     icon_id: true,
     visible: true,
     bestseller: true,
-    name: true
+    name: true,
+    updated_at: true
   })
   .extend({
     images: array(image),

@@ -32,12 +32,14 @@ export const getProducts = async (params: Params = {}) => {
   const ilike = getProductsIlike(params)
 
   const response = await supabase
-
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
     .select(getProductsSelectQuery)
+
     .match(match)
     .ilike(ilike.column, ilike.patern)
+
     .limit(params.limit ?? 1000)
+    .order('updated_at', { ascending: false })
 
   const data = parseApiResponse(array(getProductsResponseItem), response)
 
@@ -47,6 +49,7 @@ export const getProducts = async (params: Params = {}) => {
 export const getProductsSelectQuery = `
 id,
 price,
+updated_at,
 visible,
 bestseller,
 featured,

@@ -1,4 +1,4 @@
-import { getOtherPlaces } from 'api'
+import { getOtherLabels } from 'api'
 import { ProductsGrid } from 'components'
 import { useTranslation } from 'hooks'
 import { Collection, Label } from 'models'
@@ -10,12 +10,12 @@ type Props = {
   labelId: Label['id']
 }
 
-const OtherPlaces = ({ collectionId, labelId }: Props) => {
-  const { t } = useTranslation('VIEW_PRODUCT')
+const OtherLabels = ({ collectionId, labelId }: Props) => {
+  const t = useTranslation('VIEW_PRODUCT').withBase('OTHER_LABELS')
 
   const params = { labelId, collectionId }
-  const otherPlacesQuery = useQuery(['other_places', params], () =>
-    getOtherPlaces(params)
+  const otherLabelsQuery = useQuery(['other_labels', params], () =>
+    getOtherLabels(params)
   )
 
   return (
@@ -27,14 +27,14 @@ const OtherPlaces = ({ collectionId, labelId }: Props) => {
             collectionId
           }
         },
-        label: t('otherIcons.linkLabel')
+        label: t('linkLabel')
       }}
       loaderCount={3}
       marginTop="xxl-size"
-      query={otherPlacesQuery}
-      title={t('otherPlaces.title')}
+      query={otherLabelsQuery}
+      title={t('title')}
     />
   )
 }
 
-export default OtherPlaces
+export default OtherLabels

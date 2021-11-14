@@ -10,7 +10,7 @@ type Params = {
   labelId: string
 }
 
-export const getOtherPlaces = async (params: Params) => {
+export const getOtherLabels = async (params: Params) => {
   const response = await supabase
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
     .select(getProductsSelectQuery)

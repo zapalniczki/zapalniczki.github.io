@@ -5,7 +5,7 @@ import { useScrollTop, useTabTitle } from 'hooks'
 
 import { useTranslation } from 'hooks'
 import Images from './Images'
-import OtherPlaces from './OtherPlaces'
+import OtherLabels from './OtherLabels'
 import { PRODUCTS } from 'constants/routes'
 import Info from './Info'
 import { getProduct } from 'api'
@@ -61,7 +61,7 @@ const ViewProduct = () => {
 
             <OtherIcons iconId={product.icon.id} labelId={product.label.id} />
 
-            <OtherPlaces
+            <OtherLabels
               collectionId={product.collection_id}
               labelId={product.label.id}
             />
