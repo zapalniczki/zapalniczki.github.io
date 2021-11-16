@@ -10,7 +10,7 @@ import {
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
   CHECKOUT_PAYMENT,
-  CHECKOUT_PRODUCTS,
+  CART,
   CHECKOUT_RESULT,
   CHECKOUT_SHIPPING,
   CONTACT,
@@ -43,8 +43,8 @@ const routes = [
     path: PRODUCTS_ID
   },
   {
-    component: React.lazy(() => import('pages/checkout/CheckoutProducts')),
-    path: CHECKOUT_PRODUCTS
+    component: React.lazy(() => import('pages/checkout/Cart')),
+    path: CART
   },
   {
     component: React.lazy(() => import('pages/checkout/CheckoutDetails')),

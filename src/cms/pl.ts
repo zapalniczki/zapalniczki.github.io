@@ -124,23 +124,24 @@ const pl = {
     },
 
     checkoutSteps: {
-      1: 'Produkty',
-      2: 'Dane do faktury',
-      3: 'Dostawa',
-      5: 'Płatność'
+      1: 'Dane do faktury',
+      2: 'Dostawa',
+      4: 'Płatność'
     },
 
     CHECKOUT_TOTAL: {
-      products: 'Produkty',
+      title: 'Podsumowanie',
+      goToCheckout: 'Przejdź do kasy',
+
+      products: 'Cena produktów',
       delivery: 'Dostawa',
       payment: 'Płatność',
       discount: 'Obniżka',
-      sum: 'Łącznie do zapłaty',
+      total: 'Łącznie do zapłaty',
       vat: '(w tym VAT)'
     },
 
-    checkoutActions: {
-      backToShop: 'Wróć do sklepu',
+    CHECKOUT_ACTIONS: {
       back: 'Wróć',
       next: 'Dalej',
       createOrder: 'Zamawiam i płacę'
@@ -458,7 +459,7 @@ const pl = {
   },
 
   CHECKOUT_PRODUCTS: {
-    title: 'Produkty',
+    title: 'Koszyk',
     desc: 'Sprawdź produkty w Twoim koszyku.',
     emptyState:
       'Koszyk jest pusty. Dodaj produkty do koszyka i wróć tutaj później.'

@@ -14,10 +14,14 @@ const StepTracker = () => {
   const { colors } = useTheme()
 
   return (
-    <Flexbox justifyContent="center" marginBottom="xl-size">
+    <Flexbox
+      border="1px solid blue"
+      justifyContent="center"
+      marginBottom="xl-size"
+    >
       <Wrapper>
-        {[1, 2, 3, 4, 5].map((step) => {
-          if (step === 4) {
+        {[1, 2, 3, 4].map((step) => {
+          if (step === 3) {
             return null
           }
 
@@ -27,7 +31,7 @@ const StepTracker = () => {
               fontWeight={stepProps.selected ? 'bold' : 'unset'}
               type="body-2"
             >
-              {step === 5 ? 4 : step}
+              {step === 4 ? 3 : step}
             </Text>
           )
 

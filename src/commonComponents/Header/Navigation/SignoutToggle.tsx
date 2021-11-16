@@ -5,7 +5,7 @@ import {
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
   CHECKOUT_PAYMENT,
-  CHECKOUT_PRODUCTS,
+  CART,
   CHECKOUT_RESULT,
   CHECKOUT_SHIPPING
 } from 'constants/routes'
@@ -44,7 +44,7 @@ const SignoutToggle = () => {
 }
 
 const basketDisabledpathnames = [
-  CHECKOUT_PRODUCTS,
+  CART,
   CHECKOUT_DETAILS,
   CHECKOUT_DELIVERY,
   CHECKOUT_SHIPPING,

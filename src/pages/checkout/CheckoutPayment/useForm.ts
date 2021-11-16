@@ -7,13 +7,12 @@ import {
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useDev, useFormSchema, useAdmin, useFormSubmit } from 'hooks'
 import multiply from 'lodash/multiply'
-import add from 'lodash/add'
 import { MoldStatus, PaymentType, Voucher } from 'models'
 import { checkoutContext, initState } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useHistory } from 'react-router-dom'
-import { getHstoreFromObject } from 'utils'
+import { getHstoreFromObject, sumArray } from 'utils'
 import { object } from 'yup'
 
 export type FormValues = {
@@ -162,6 +161,3 @@ const calculateProductionTime = (
 
   return 'SHORT'
 }
-
-export const sumArray = (numbers: number[]) =>
-  numbers.reduce((acc, curr) => add(acc, curr), 0)

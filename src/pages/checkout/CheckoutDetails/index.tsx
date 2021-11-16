@@ -1,5 +1,5 @@
 import { Page, Switch } from 'components'
-import { CHECKOUT_PRODUCTS } from 'constants/routes'
+import { CART } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
 import { checkoutContext } from 'providers'
@@ -24,7 +24,7 @@ const CheckoutDetails = () => {
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
   if (isBasketEmpty) {
-    return <Redirect to={CHECKOUT_PRODUCTS} />
+    return <Redirect to={CART} />
   }
 
   return (

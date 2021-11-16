@@ -7,7 +7,7 @@ import {
   CHECKOUT_PAYMENT,
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
-  CHECKOUT_PRODUCTS,
+  CART,
   CHECKOUT_SHIPPING,
   CHECKOUT_RESULT
 } from 'constants/routes'
@@ -38,7 +38,7 @@ const BasketToggle = () => {
 }
 
 const basketDisabledpathnames = [
-  CHECKOUT_PRODUCTS,
+  CART,
   CHECKOUT_DETAILS,
   CHECKOUT_DELIVERY,
   CHECKOUT_SHIPPING,

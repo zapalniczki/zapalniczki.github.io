@@ -1,11 +1,10 @@
 import { Flexbox } from 'components'
-import { calculateDiscount, getVatAmount } from 'utils'
+import { calculateDiscount, getVatAmount, sumArray } from 'utils'
 import React, { useContext } from 'react'
 import { checkoutContext } from 'providers'
 import add from 'lodash.add'
 import subtract from 'lodash.subtract'
 import multiply from 'lodash.multiply'
-import { sumArray } from '../CheckoutPayment/useForm'
 import TotalRow from './TotalRow'
 
 type Props = {
@@ -42,7 +41,11 @@ const Total = ({ customDelivery, customPayment, customProducts }: Props) => {
   const vat = getVatAmount(grandTotal)
 
   return (
-    <Flexbox alignItems="center" justifyContent="flex-end" marginTop="2rem">
+    <Flexbox
+      alignItems="center"
+      border="1px solid green"
+      justifyContent="flex-end"
+    >
       <table>
         <tbody>
           <TotalRow amount={products} label="products" />
@@ -53,7 +56,7 @@ const Total = ({ customDelivery, customPayment, customProducts }: Props) => {
 
           <TotalRow amount={discount} label="discount" negative />
 
-          <TotalRow amount={grandTotal} bold label="sum" />
+          <TotalRow amount={grandTotal} bold label="total" />
 
           <TotalRow amount={vat} label="vat" />
         </tbody>

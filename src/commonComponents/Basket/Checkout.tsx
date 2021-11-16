@@ -1,5 +1,5 @@
 import { Button, Flexbox, Heading, Separator, Text } from 'components'
-import { CHECKOUT_PRODUCTS, PRODUCTS } from 'constants/routes'
+import { CART, PRODUCTS } from 'constants/routes'
 import { useBreakpoints, useTranslation } from 'hooks'
 import {
   BasketItem,
@@ -62,7 +62,7 @@ const Checkout = ({ products }: Props) => {
             marginTop={['unset', 'xxxs-size', 'xxxs-size', 'unset']}
             onClick={() => {
               closeBasket()
-              history.push(CHECKOUT_PRODUCTS)
+              history.push(CART)
             }}
             size={isDesktop ? 'medium' : 'small'}
             width="100%"
