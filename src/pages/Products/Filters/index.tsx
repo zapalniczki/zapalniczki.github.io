@@ -11,7 +11,6 @@ import Search from './Search'
 type Props = {
   filters: FiltersType
   searchQuery: string
-
   setFilters: React.Dispatch<React.SetStateAction<FiltersType>>
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
 }

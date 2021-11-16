@@ -511,7 +511,7 @@ const pl = {
       searchPlaceholder: 'Wpisz nazwę produktu, miejscowość lub ikonę',
       collections: 'Kolekcje',
       icons: 'Ikony',
-      search: 'Wyszukaj',
+      search: 'Szukaj',
       clear: 'Wyczyść'
     }
   },
