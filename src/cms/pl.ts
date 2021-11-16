@@ -68,6 +68,7 @@ const pl = {
     companyName: domain,
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Zapalniczka',
+    unit: '(50 sztuk)',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',

@@ -84,7 +84,9 @@ const ProductTile = ({ product }: Props) => {
               </Text>
 
               <Flexbox justifyContent="space-between" width="100%">
-                <Text type="body-2">{displayMoney(product.price)}</Text>
+                <Text type="body-2">
+                  {`${displayMoney(product.price)} ${commonT('unit')}`}
+                </Text>
 
                 {isInBasket && (
                   <Flexbox alignItems="center">
