@@ -8,7 +8,6 @@ import {
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
   CART,
-  CHECKOUT_SHIPPING,
   CHECKOUT_RESULT
 } from 'constants/routes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -41,7 +40,6 @@ const basketDisabledpathnames = [
   CART,
   CHECKOUT_DETAILS,
   CHECKOUT_DELIVERY,
-  CHECKOUT_SHIPPING,
   CHECKOUT_PAYMENT,
   CHECKOUT_RESULT
 ]

@@ -6,8 +6,6 @@ import getSpace from 'styles/getSpace'
 
 type Props = { innerPadding?: boolean }
 const MaxWidth = styled(Flexbox)<Props>`
-  border: 2px solid red;
-
   max-width: 120rem;
   width: 100%;
   flex-direction: column;

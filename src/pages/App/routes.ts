@@ -12,7 +12,6 @@ import {
   CHECKOUT_PAYMENT,
   CART,
   CHECKOUT_RESULT,
-  CHECKOUT_SHIPPING,
   CONTACT,
   DELIVERY_AND_PAYMENTS,
   DOCUMENTS,
@@ -54,10 +53,7 @@ const routes = [
     component: React.lazy(() => import('pages/checkout/CheckoutDelivery')),
     path: CHECKOUT_DELIVERY
   },
-  {
-    component: React.lazy(() => import('pages/checkout/CheckoutShipping')),
-    path: CHECKOUT_SHIPPING
-  },
+
   {
     component: React.lazy(() => import('pages/checkout/CheckoutPayment')),
     path: CHECKOUT_PAYMENT

@@ -132,6 +132,9 @@ const pl = {
     CHECKOUT_TOTAL: {
       title: 'Podsumowanie',
       goToCheckout: 'Przejdź do kasy',
+      goToDelivery: 'Przejdź do dostawy',
+      goToPayment: 'Przejdź do płatności',
+      createOrder: 'Zamawiam i płacę',
 
       products: 'Cena produktów',
       delivery: 'Dostawa',
@@ -139,12 +142,6 @@ const pl = {
       discount: 'Obniżka',
       total: 'Łącznie do zapłaty',
       vat: '(w tym VAT)'
-    },
-
-    CHECKOUT_ACTIONS: {
-      back: 'Wróć',
-      next: 'Dalej',
-      createOrder: 'Zamawiam i płacę'
     },
 
     customerTypes: {
@@ -458,27 +455,25 @@ const pl = {
     }
   },
 
-  CHECKOUT_PRODUCTS: {
+  CART: {
     title: 'Koszyk',
-    desc: 'Sprawdź produkty w Twoim koszyku.',
     emptyState:
       'Koszyk jest pusty. Dodaj produkty do koszyka i wróć tutaj później.'
   },
 
   CHECKOUT_DETAILS: {
+    back: 'Wróć do koszyka',
     title: 'Dane do faktury'
   },
 
   CHECKOUT_DELIVERY: {
+    back: 'Wróć do faktury',
     title: 'Dostawa',
     sameAddress: 'Czy adres dostawy różni się od adresu na fakturze?'
   },
 
-  CHECKOUT_SHIPPING: {
-    title: 'Dane do dostawy'
-  },
-
   CHECKOUT_PAYMENT: {
+    back: 'Wróć do dostawy',
     title: 'Płatność',
     voucher: {
       applyVoucher: 'Wykorzystaj kod',

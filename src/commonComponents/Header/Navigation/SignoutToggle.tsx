@@ -6,8 +6,7 @@ import {
   CHECKOUT_DETAILS,
   CHECKOUT_PAYMENT,
   CART,
-  CHECKOUT_RESULT,
-  CHECKOUT_SHIPPING
+  CHECKOUT_RESULT
 } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { authContext } from 'providers'
@@ -47,7 +46,6 @@ const basketDisabledpathnames = [
   CART,
   CHECKOUT_DETAILS,
   CHECKOUT_DELIVERY,
-  CHECKOUT_SHIPPING,
   CHECKOUT_PAYMENT,
   CHECKOUT_RESULT
 ]

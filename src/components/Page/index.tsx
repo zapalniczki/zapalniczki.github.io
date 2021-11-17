@@ -3,15 +3,16 @@ import React, { ReactNode, useEffect } from 'react'
 import { matchPath, useLocation } from 'react-router-dom'
 import Snowfall from 'react-snowfall'
 import styled from 'styled-components'
+import { FlexboxProps } from 'styled-system'
 import getSpace from 'styles/getSpace'
 import Flexbox from '../Flexbox'
 import MaxWidth from '../MaxWidth'
 
 type Props = {
   children: ReactNode
-}
+} & FlexboxProps
 
-const Page = ({ children }: Props) => {
+const Page = ({ children, ...props }: Props) => {
   const { pathname } = useLocation()
   const isProductsPage = matchPath(pathname, {
     path: '/products'
@@ -25,7 +26,7 @@ const Page = ({ children }: Props) => {
 
   return (
     <Container as="main">
-      <MaxWidth>{children}</MaxWidth>
+      <MaxWidth {...props}>{children}</MaxWidth>
 
       {!isProductsPage && (
         <Snowfall

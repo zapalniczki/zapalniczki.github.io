@@ -1,6 +1,6 @@
 import { Button, LabelledItem, SectionHead, Separator, Tile } from 'components'
 import { CHECKOUT_DETAILS } from 'constants/routes'
-import { useTranslation } from 'hooks'
+import { useCheckoutStep, useTranslation } from 'hooks'
 import add from 'lodash.add'
 import multiply from 'lodash.multiply'
 import subtract from 'lodash.subtract'
@@ -22,6 +22,7 @@ const CheckoutTotal = ({
 }: Props) => {
   const commonT = useTranslation('COMMON').withBase('CHECKOUT_TOTAL')
   const history = useHistory()
+  const current = useCheckoutStep()
 
   const { checkout, voucher } = useContext(checkoutContext)
   const { basket, total: checkoutTotal } = checkout
@@ -48,6 +49,27 @@ const CheckoutTotal = ({
 
   const total = subtract(cost, discount)
   const vat = getVatAmount(total)
+
+  let nextStepLabel = 'goToCheckout'
+  switch (current) {
+    case 1:
+      nextStepLabel = 'goToDelivery'
+      break
+
+    case 2:
+      nextStepLabel = 'goToPayment'
+      break
+
+    case 3:
+      nextStepLabel = 'xxx'
+      break
+
+    case 4:
+      nextStepLabel = 'createOrder'
+      break
+  }
+
+  const isCart = current === 0
 
   return (
     <Tile>
@@ -97,10 +119,12 @@ const CheckoutTotal = ({
       />
 
       <Button
-        label={commonT('goToCheckout')}
+        icon="arrow-right"
+        label={commonT(nextStepLabel)}
         marginTop="l-size"
-        onClick={() => history.push(CHECKOUT_DETAILS)}
+        onClick={() => isCart && history.push(CHECKOUT_DETAILS)}
         size="medium"
+        type={isCart ? 'button' : 'submit'}
       />
     </Tile>
   )

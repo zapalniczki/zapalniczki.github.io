@@ -1,13 +1,14 @@
 import { useHistory } from 'react-router-dom'
 import { object } from 'yup'
-import { CHECKOUT_PAYMENT, CHECKOUT_SHIPPING } from 'constants/routes'
+import { CHECKOUT_PAYMENT } from 'constants/routes'
 import { useFormSchema } from 'hooks'
 import { useContext } from 'react'
 import { checkoutContext } from 'providers'
-import { DeliveryType } from 'models'
+import { DeliveryType, Shipping } from 'models'
 
 export type FormValues = {
   delivery_type: string | null
+  shipping: Shipping
 }
 
 const useForm = () => {
@@ -38,23 +39,36 @@ const useForm = () => {
         total: {
           ...prev.total,
           delivery: selectedDeliveryType.price
-        }
+        },
+        shipping: selectedDeliveryType.requires_address ? form.shipping : null
       }))
     }
 
-    if (!sameAddressAsInvoice) {
-      history.push(CHECKOUT_SHIPPING)
-    } else {
-      history.push(CHECKOUT_PAYMENT)
-    }
+    history.push(CHECKOUT_PAYMENT)
   }
 
   const initialValues: FormValues = {
-    delivery_type: checkout.delivery_type ?? ''
+    delivery_type: checkout.delivery_type ?? '',
+    shipping: {
+      street_address:
+        checkout.shipping?.street_address ??
+        checkout.contact_details?.street_address ??
+        '',
+      post_code:
+        checkout.shipping?.post_code ??
+        checkout.contact_details?.post_code ??
+        '',
+      city: checkout.shipping?.city ?? checkout.contact_details?.city ?? ''
+    }
   }
 
   const schema = object({
-    delivery_type: getSchema('DELIVERY_TYPE')
+    delivery_type: getSchema('DELIVERY_TYPE'),
+    shipping: object().shape({
+      street_address: getSchema('STREET_ADDRESS'),
+      post_code: getSchema('POST_CODE'),
+      city: getSchema('CITY')
+    })
   })
 
   return {

@@ -1,19 +1,24 @@
-import { useScrollTop, useTabTitle } from 'hooks'
-import React, { useContext, useState } from 'react'
-import { useTranslation } from 'hooks'
-import { Formik, Form as FormikForm } from 'formik'
-import { Redirect } from 'react-router-dom'
-import { Page, QueryLoader, Switch } from 'components'
-import { CHECKOUT_DETAILS } from 'constants/routes'
-import { checkoutContext } from 'providers'
-import Actions from '../common/Actions'
-import { StepTracker, Wrapper, Total, StepTitle } from '../common'
-
-import useForm from './useForm'
-import Form from './Form'
 import { getDeliveryTypes } from 'api'
-import { useQuery } from 'react-query'
+import {
+  BackButton,
+  Columns,
+  Heading,
+  Page,
+  QueryLoader,
+  Switch
+} from 'components'
 import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
+import { CHECKOUT_DETAILS } from 'constants/routes'
+import { Form as FormikForm, Formik } from 'formik'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { StepTracker, CheckoutTotal } from 'organisms'
+import { checkoutContext } from 'providers'
+import React, { useContext, useState } from 'react'
+import { useQuery } from 'react-query'
+import { Redirect } from 'react-router-dom'
+import Form from './Form'
+import ShippingForm from './ShippingForm'
+import useForm from './useForm'
 
 const CheckoutDelivery = () => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
@@ -37,62 +42,70 @@ const CheckoutDelivery = () => {
 
   return (
     <Page>
+      <BackButton label={t('back')} to={CHECKOUT_DETAILS} />
+
       <StepTracker />
 
-      <Wrapper>
-        <StepTitle>{t('title')}</StepTitle>
+      <Heading level={4} marginBottom="l-size">
+        {t('title')}
+      </Heading>
 
-        <QueryLoader query={deliveryTypesQuery}>
-          {(deliveryTypes) => (
-            <Formik
-              initialValues={initialValues}
-              onSubmit={(values) =>
-                onSubmitForm(values, deliveryTypes, sameAddressAsInvoice)
-              }
-              validateOnChange
-              validationSchema={schema}
-            >
-              {({ handleSubmit, values }) => {
-                const delivery = deliveryTypes.find(
-                  (type) => type.id === values.delivery_type
-                )
+      <QueryLoader query={deliveryTypesQuery}>
+        {(deliveryTypes) => (
+          <Formik
+            initialValues={initialValues}
+            onSubmit={(values) =>
+              onSubmitForm(values, deliveryTypes, sameAddressAsInvoice)
+            }
+            validateOnChange
+            validationSchema={schema}
+          >
+            {({ handleSubmit, values }) => {
+              const delivery = deliveryTypes.find(
+                (type) => type.id === values.delivery_type
+              )
 
-                const shouldSwitchBeDisplayed = delivery?.requires_address
+              const shouldSwitchBeDisplayed = delivery?.requires_address
 
-                return (
-                  <FormikForm onSubmit={handleSubmit}>
-                    <Form deliveryTypes={deliveryTypes} />
+              return (
+                <FormikForm onSubmit={handleSubmit}>
+                  <Columns>
+                    <div>
+                      <Form deliveryTypes={deliveryTypes} />
 
-                    {shouldSwitchBeDisplayed && (
-                      <Switch
-                        checked={!sameAddressAsInvoice}
-                        flexDirection="row-reverse"
-                        justifyContent="flex-end"
-                        label={t('sameAddress')}
-                        marginTop="m-size"
-                        onChange={(checked) => {
-                          setSameAddressAsInvoice(!checked)
+                      {shouldSwitchBeDisplayed && (
+                        <Switch
+                          checked={!sameAddressAsInvoice}
+                          flexDirection="row-reverse"
+                          justifyContent="flex-end"
+                          label={t('sameAddress')}
+                          marginTop="l-size"
+                          onChange={(checked) => {
+                            setSameAddressAsInvoice(!checked)
 
-                          if (!checked) {
-                            setCheckout((prev) => ({
-                              ...prev,
-                              shipping: null
-                            }))
-                          }
-                        }}
-                      />
-                    )}
+                            if (!checked) {
+                              setCheckout((prev) => ({
+                                ...prev,
+                                shipping: null
+                              }))
+                            }
+                          }}
+                        />
+                      )}
 
-                    <Total customDelivery={delivery?.price} />
+                      {!sameAddressAsInvoice && <ShippingForm />}
+                    </div>
 
-                    <Actions />
-                  </FormikForm>
-                )
-              }}
-            </Formik>
-          )}
-        </QueryLoader>
-      </Wrapper>
+                    <div>
+                      <CheckoutTotal customDelivery={delivery?.price} />
+                    </div>
+                  </Columns>
+                </FormikForm>
+              )
+            }}
+          </Formik>
+        )}
+      </QueryLoader>
     </Page>
   )
 }

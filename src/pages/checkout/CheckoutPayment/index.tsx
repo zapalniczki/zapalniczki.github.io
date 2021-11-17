@@ -1,18 +1,16 @@
-import { Form as FormikForm, Formik } from 'formik'
-import { useScrollTop, useTabTitle } from 'hooks'
-import React, { useContext } from 'react'
-import { Redirect } from 'react-router-dom'
-import { useTranslation } from 'hooks'
-import { Page, QueryLoader } from 'components'
-import { CHECKOUT_DELIVERY } from 'constants/routes'
-import { checkoutContext } from 'providers'
-import { StepTracker, Actions, StepTitle, Total, Wrapper } from '../common'
-import useForm from './useForm'
-
-import Form from './Form'
 import { getPaymentTypes } from 'api'
-import { useQuery } from 'react-query'
+import { BackButton, Columns, Heading, Page, QueryLoader } from 'components'
 import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
+import { CHECKOUT_DELIVERY } from 'constants/routes'
+import { Form as FormikForm, Formik } from 'formik'
+import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { StepTracker, CheckoutTotal } from 'organisms'
+import { checkoutContext } from 'providers'
+import React, { useContext } from 'react'
+import { useQuery } from 'react-query'
+import { Redirect } from 'react-router-dom'
+import Form from './Form'
+import useForm from './useForm'
 
 const CheckoutPayment = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
@@ -35,38 +33,44 @@ const CheckoutPayment = () => {
 
   return (
     <Page>
+      <BackButton label={t('back')} to={CHECKOUT_DELIVERY} />
+
       <StepTracker />
 
-      <Wrapper>
-        <StepTitle>{t('title')}</StepTitle>
+      <Heading level={4} marginBottom="l-size">
+        {t('title')}
+      </Heading>
 
-        <QueryLoader query={paymentTypesQuery}>
-          {(paymentTypes) => (
-            <Formik
-              initialValues={initialValues}
-              onSubmit={onSubmit}
-              validateOnChange
-              validationSchema={schema}
-            >
-              {({ handleSubmit, values }) => {
-                const paymentType = paymentTypes.find(
-                  (type) => type.id === values.payment_type
-                )
+      <QueryLoader query={paymentTypesQuery}>
+        {(paymentTypes) => (
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validateOnChange
+            validationSchema={schema}
+          >
+            {({ values }) => {
+              const paymentType = paymentTypes.find(
+                (type) => type.id === values.payment_type
+              )
 
-                return (
-                  <FormikForm onSubmit={handleSubmit}>
-                    <Form paymentTypes={paymentTypes} />
+              return (
+                <FormikForm>
+                  <Columns>
+                    <div>
+                      <Form paymentTypes={paymentTypes} />
+                    </div>
 
-                    <Total customPayment={paymentType?.price} />
-
-                    <Actions />
-                  </FormikForm>
-                )
-              }}
-            </Formik>
-          )}
-        </QueryLoader>
-      </Wrapper>
+                    <div>
+                      <CheckoutTotal customPayment={paymentType?.price} />
+                    </div>
+                  </Columns>
+                </FormikForm>
+              )
+            }}
+          </Formik>
+        )}
+      </QueryLoader>
     </Page>
   )
 }

@@ -1,11 +1,11 @@
-import { Page, Switch } from 'components'
+import { BackButton, Columns, Heading, Page, Switch } from 'components'
 import { CART } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
 import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { StepTracker, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Actions, StepTitle, StepTracker, Wrapper } from '../common'
 import Form from './Form'
 import useForm from './useForm'
 
@@ -29,43 +29,48 @@ const CheckoutDetails = () => {
 
   return (
     <Page>
+      <BackButton label={t('back')} to={CART} />
+
       <StepTracker />
 
-      <Wrapper>
-        <StepTitle>{t('title')}</StepTitle>
+      <Heading level={4} marginBottom="l-size">
+        {t('title')}
+      </Heading>
 
-        <Formik
-          initialValues={initialValues}
-          onSubmit={onSubmitForm}
-          validateOnChange
-          validationSchema={getSchema(isCompany)}
-        >
-          {({ handleSubmit, setFieldValue }) => (
-            <>
-              <Switch
-                checked={!isCompany}
-                justifyContent="flex-end"
-                label={commonT('customerTypes.INDIVIDUAL')}
-                marginY="l-size"
-                onChange={(checked) => {
-                  // TODO Add eslint for curly brackets in arrow functions
-                  setIsCompany(!checked)
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmitForm}
+        validateOnChange
+        validationSchema={getSchema(isCompany)}
+      >
+        {({ setFieldValue }) => (
+          <FormikForm>
+            <Columns>
+              <div>
+                <Switch
+                  checked={!isCompany}
+                  justifyContent="flex-end"
+                  label={commonT('customerTypes.INDIVIDUAL')}
+                  onChange={(checked) => {
+                    // TODO Add eslint for curly brackets in arrow functions
+                    setIsCompany(!checked)
 
-                  if (checked) {
-                    setFieldValue('nip', '')
-                  }
-                }}
-              />
+                    if (checked) {
+                      setFieldValue('nip', '')
+                    }
+                  }}
+                />
 
-              <FormikForm onSubmit={handleSubmit}>
                 <Form isCompany={isCompany} />
+              </div>
 
-                <Actions />
-              </FormikForm>
-            </>
-          )}
-        </Formik>
-      </Wrapper>
+              <div>
+                <CheckoutTotal />
+              </div>
+            </Columns>
+          </FormikForm>
+        )}
+      </Formik>
     </Page>
   )
 }

@@ -7,7 +7,6 @@ import { Redirect, useHistory, useLocation } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import { getOrderPath } from 'utils'
 import { CheckoutResultLocationState } from '../CheckoutPayment/useForm'
-import { Wrapper } from '../common'
 
 const CheckoutResult = () => {
   const { colors } = useTheme()
@@ -24,59 +23,53 @@ const CheckoutResult = () => {
   }
 
   return (
-    <Page>
-      <Wrapper>
-        <Tile alignItems="center">
-          <Flexbox
-            alignItems="center"
-            justifyContent="center"
-            marginBottom="l-size"
-            marginTop="xl-size"
-          >
-            <FontAwesomeIcon
-              color={colors.green}
-              icon="check-circle"
-              size="7x"
-            />
-          </Flexbox>
+    <Page alignItems="center">
+      <Tile alignItems="center" width="70rem">
+        <Flexbox
+          alignItems="center"
+          justifyContent="center"
+          marginBottom="l-size"
+          marginTop="xl-size"
+        >
+          <FontAwesomeIcon color={colors.green} icon="check-circle" size="7x" />
+        </Flexbox>
 
-          <Heading color="green" fontWeight="bold" level={5}>
-            {t('title')}
-          </Heading>
+        <Heading color="green" fontWeight="bold" level={5}>
+          {t('title')}
+        </Heading>
 
-          <Heading level={5} marginTop="l-size">
-            {state.orderID}
-          </Heading>
+        <Heading level={5} marginTop="l-size">
+          {state.orderID}
+        </Heading>
 
-          <Text marginTop="l-size" type="body-2">
-            {t(`PAYMENT_INFO.${state.productionTime.toLowerCase()}`)}
-          </Text>
+        <Text marginTop="l-size" type="body-2">
+          {t(`PAYMENT_INFO.${state.productionTime.toLowerCase()}`)}
+        </Text>
 
-          <Flexbox
-            flexDirection="row-reverse"
-            justifyContent="space-between"
-            marginTop="l-size"
-            width="100%"
-          >
-            <Button
-              label={t('actions.seeOrder')}
-              onClick={() => {
-                const path = getOrderPath(state.orderID)
-                history.push(path)
-              }}
-              size="medium"
-              variant="primary"
-            />
+        <Flexbox
+          flexDirection="row-reverse"
+          justifyContent="space-between"
+          marginTop="l-size"
+          width="100%"
+        >
+          <Button
+            label={t('actions.seeOrder')}
+            onClick={() => {
+              const path = getOrderPath(state.orderID)
+              history.push(path)
+            }}
+            size="medium"
+            variant="primary"
+          />
 
-            <Button
-              label={t('actions.backToHome')}
-              onClick={() => history.push(HOME)}
-              size="medium"
-              variant="secondary"
-            />
-          </Flexbox>
-        </Tile>
-      </Wrapper>
+          <Button
+            label={t('actions.backToHome')}
+            onClick={() => history.push(HOME)}
+            size="medium"
+            variant="secondary"
+          />
+        </Flexbox>
+      </Tile>
     </Page>
   )
 }

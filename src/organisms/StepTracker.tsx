@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Flexbox, Text } from 'components'
-import { useTranslation } from 'hooks'
+import { useCheckoutStep, useTranslation } from 'hooks'
 import React from 'react'
 import styled, { useTheme } from 'styled-components'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
 import { changeColorAlpha } from 'utils'
-import { useCheckoutStep } from '.'
 
 const StepTracker = () => {
   const { t } = useTranslation('COMMON')
@@ -14,11 +13,7 @@ const StepTracker = () => {
   const { colors } = useTheme()
 
   return (
-    <Flexbox
-      border="1px solid blue"
-      justifyContent="center"
-      marginBottom="xl-size"
-    >
+    <Flexbox justifyContent="center" marginBottom="xl-size" marginTop="l-size">
       <Wrapper>
         {[1, 2, 3, 4].map((step) => {
           if (step === 3) {
