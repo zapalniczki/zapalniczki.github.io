@@ -16,12 +16,13 @@ import {
 import SimpleButton from './SimpleButton'
 
 type Props = {
+  first?: boolean
   originalId: BasketItem['id']
   product?: GetProductsResponseItem
   quantity: number
 }
 
-const BasketItem = ({ originalId, product, quantity }: Props) => {
+const BasketItem = ({ first, originalId, product, quantity }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   const { closeBasket } = useContext(togglesContext)
@@ -80,7 +81,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
   const basketImage = findCorrectProductImageSize(images, 'BASKET')
 
   return (
-    <Container>
+    <Container first={first}>
       <Box
         border="1px solid"
         borderColor="border-color"
@@ -140,7 +141,8 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
   )
 }
 
-const Container = styled(Tile)`
+type ContainerProps = Pick<Props, 'first'>
+const Container = styled(Tile)<ContainerProps>`
   padding: ${getSpace('s-size')};
   min-height: 12rem;
   align-items: center;
@@ -149,7 +151,7 @@ const Container = styled(Tile)`
   /* @include bezier-transition(); */
   /* animation: slide-up 0.5s ease; */
   width: 100%;
-  margin-bottom: ${getSpace('m-size')};
+  margin-top: ${(props) => !props.first && getSpace('m-size')(props)};
   display: grid;
   grid-template-columns: 3rem auto max-content;
   grid-template-rows: repeat(2, auto);

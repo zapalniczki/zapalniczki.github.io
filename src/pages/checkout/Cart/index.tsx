@@ -49,18 +49,15 @@ const Cart = () => {
           <div>
             <QueryLoader query={productsQuery}>
               {(products) => (
-                <Flexbox
-                  alignItems="center"
-                  flexDirection="column"
-                  minHeight="20rem"
-                >
-                  {basket.map((basketItem) => {
+                <Flexbox alignItems="center" flexDirection="column">
+                  {basket.map((basketItem, index) => {
                     const thisProduct = products.find(
                       (product) => product.id === basketItem.id
                     )
 
                     return (
                       <BasketItem
+                        first={index === 0}
                         key={basketItem.id}
                         originalId={basketItem.id}
                         product={thisProduct}
