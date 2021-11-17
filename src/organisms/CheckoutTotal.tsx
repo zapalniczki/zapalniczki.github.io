@@ -61,10 +61,6 @@ const CheckoutTotal = ({
       break
 
     case 3:
-      nextStepLabel = 'xxx'
-      break
-
-    case 4:
       nextStepLabel = 'createOrder'
       break
   }

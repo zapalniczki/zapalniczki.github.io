@@ -14,7 +14,7 @@ const useCheckoutStep = () => {
   } else if (pathname.includes(CHECKOUT_DELIVERY)) {
     current = 2
   } else if (pathname.includes(CHECKOUT_PAYMENT)) {
-    current = 4
+    current = 3
   }
 
   return current

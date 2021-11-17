@@ -124,9 +124,9 @@ const pl = {
     },
 
     checkoutSteps: {
-      1: 'Dane do faktury',
+      1: 'Faktura',
       2: 'Dostawa',
-      4: 'Płatność'
+      3: 'Płatność'
     },
 
     CHECKOUT_TOTAL: {
@@ -463,7 +463,7 @@ const pl = {
 
   CHECKOUT_DETAILS: {
     back: 'Wróć do koszyka',
-    title: 'Dane do faktury'
+    title: 'Faktura'
   },
 
   CHECKOUT_DELIVERY: {

@@ -15,18 +15,14 @@ const StepTracker = () => {
   return (
     <Flexbox justifyContent="center" marginBottom="xl-size" marginTop="l-size">
       <Wrapper>
-        {[1, 2, 3, 4].map((step) => {
-          if (step === 3) {
-            return null
-          }
-
+        {[1, 2, 3].map((step) => {
           const stepProps = getProps(current, step)
           let stepContent = (
             <Text
               fontWeight={stepProps.selected ? 'bold' : 'unset'}
               type="body-2"
             >
-              {step === 4 ? 3 : step}
+              {step}
             </Text>
           )
 
@@ -125,7 +121,7 @@ const StepIcon = styled.div<StepIconProps>`
 `
 
 const getProps = (current: number, step: number) => {
-  if (current === step || (current === 4 && step === 3)) {
+  if (current === step || (current === 3 && step === 3)) {
     return { selected: true }
   }
 
