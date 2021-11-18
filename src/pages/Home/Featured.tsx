@@ -8,7 +8,7 @@ import { useQuery } from 'react-query'
 const Featured = () => {
   const commonT = useTranslation('HOME').withBase('FEATURED')
 
-  const params = { featured: true }
+  const params = { limit: 3 }
   const featuredQuery = useQuery([PRODUCTS_TABLE, params], () =>
     getProducts(params)
   )
