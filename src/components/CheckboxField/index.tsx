@@ -1,6 +1,7 @@
 import { StyledInput, Text, Flexbox, InputLabel } from 'components'
 import { FieldProps } from 'formik'
 import React from 'react'
+import CheckboxFieldLoader from './index.loader'
 
 type Props = FieldProps & {
   id: string
@@ -35,7 +36,7 @@ const CheckboxField = ({
     <Flexbox
       alignItems="center"
       backgroundColor="background-color-01"
-      marginBottom="m-size"
+      marginTop={isFirst ? 'unset' : 'm-size'}
       position="relative"
     >
       <StyledInput
@@ -67,4 +68,5 @@ const CheckboxField = ({
   </>
 )
 
+export { CheckboxFieldLoader }
 export default CheckboxField

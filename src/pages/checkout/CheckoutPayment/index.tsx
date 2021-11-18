@@ -11,6 +11,7 @@ import { useQuery } from 'react-query'
 import { Redirect } from 'react-router-dom'
 import Form from './Form'
 import useForm from './useForm'
+import Loader from './index.loader'
 
 const CheckoutPayment = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
@@ -41,7 +42,7 @@ const CheckoutPayment = () => {
         {t('title')}
       </Heading>
 
-      <QueryLoader query={paymentTypesQuery}>
+      <QueryLoader Loader={<Loader />} query={paymentTypesQuery}>
         {(paymentTypes) => (
           <Formik
             initialValues={initialValues}

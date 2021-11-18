@@ -50,6 +50,7 @@ const ProductsGrid = ({
   const { t: commonT } = useTranslation('COMMON')
 
   const loader = (
+    // TODO RWD
     <ProductsGridLoader
       count={loaderCount}
       title={!!title || !!link || !!showCount || !!sectionHeadChildren}

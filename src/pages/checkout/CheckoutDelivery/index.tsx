@@ -19,6 +19,7 @@ import { Redirect } from 'react-router-dom'
 import Form from './Form'
 import ShippingForm from './ShippingForm'
 import useForm from './useForm'
+import Loader from './index.loader'
 
 const CheckoutDelivery = () => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
@@ -50,7 +51,7 @@ const CheckoutDelivery = () => {
         {t('title')}
       </Heading>
 
-      <QueryLoader query={deliveryTypesQuery}>
+      <QueryLoader Loader={<Loader />} query={deliveryTypesQuery}>
         {(deliveryTypes) => (
           <Formik
             initialValues={initialValues}

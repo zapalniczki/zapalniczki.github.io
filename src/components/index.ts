@@ -50,6 +50,7 @@ export { default as FormRow } from './FormRow'
 
 export * from './Banner'
 export * from './Carousel'
+export * from './CheckboxField'
 export * from './Input'
 export * from './Modal'
 export * from './ProductsGrid'

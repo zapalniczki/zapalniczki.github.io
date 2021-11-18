@@ -7,9 +7,10 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
 import BasketContent from './BasketContent'
-import BasketItem from './BasketItem'
+import { BasketItem } from 'organisms'
 import Checkout from './Checkout'
 import Header from './Header'
+import BasketLoader from './index.loader'
 
 const Basket = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -44,7 +45,7 @@ const Basket = () => {
     <Container ref={ref}>
       <Header />
 
-      <QueryLoader query={productsQuery}>
+      <QueryLoader Loader={<BasketLoader />} query={productsQuery}>
         {(products) => (
           <>
             <BasketContent products={products} />

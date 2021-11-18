@@ -8,6 +8,7 @@ import { CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
+import Loader from './index.loader'
 
 const Cart = () => {
   const { t } = useTranslation('CART')
@@ -47,7 +48,7 @@ const Cart = () => {
       {!isBasketEmpty && (
         <Columns>
           <div>
-            <QueryLoader query={productsQuery}>
+            <QueryLoader Loader={<Loader />} query={productsQuery}>
               {(products) => (
                 <Flexbox alignItems="center" flexDirection="column">
                   {basket.map((basketItem, index) => {

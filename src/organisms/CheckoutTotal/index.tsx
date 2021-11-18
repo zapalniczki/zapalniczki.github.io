@@ -8,6 +8,7 @@ import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { calculateDiscount, displayMoney, getVatAmount, sumArray } from 'utils'
+import CheckoutTotalLoader from './index.loader'
 
 type Props = {
   customDelivery?: number
@@ -126,4 +127,5 @@ const CheckoutTotal = ({
   )
 }
 
+export { CheckoutTotalLoader }
 export default CheckoutTotal

@@ -42,13 +42,14 @@ const BasketContent = ({ products }: Props) => {
         </Flexbox>
       )}
 
-      {basket.map((basketItem) => {
+      {basket.map((basketItem, index) => {
         const productDetails = products.find(
           (product) => product.id === basketItem.id
         )
 
         return (
           <BasketItem
+            first={index === 0}
             key={basketItem.id}
             originalId={basketItem.id}
             product={productDetails}

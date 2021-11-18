@@ -4,6 +4,7 @@ import { SpaceProps } from 'styled-system'
 
 type Props = SpaceProps
 
+// TODO RWD
 const Condtion = (props: Props) => (
   <Flexbox
     //  border="2px solid blue"

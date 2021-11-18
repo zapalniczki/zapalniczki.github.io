@@ -14,6 +14,7 @@ import {
   getProductName
 } from 'utils'
 import SimpleButton from './SimpleButton'
+import BasketItemLoader from './index.loader'
 
 type Props = {
   first?: boolean
@@ -177,4 +178,5 @@ const ImageStyled = styled(Image)`
   height: 100%;
 `
 
+export { BasketItemLoader }
 export default BasketItem

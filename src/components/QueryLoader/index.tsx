@@ -8,6 +8,7 @@ type Props<T> = {
   Loader?: ReactElement
   children: (data: T) => ReactNode
   customLoadingMessage?: string
+  persistLoader?: boolean
   query: UseQueryResult<T>
   showLoading?: boolean
 }
@@ -16,12 +17,13 @@ function QueryLoader<T>({
   Loader,
   children,
   customLoadingMessage,
+  persistLoader,
   query,
   showLoading = true
 }: Props<T>): JSX.Element | null {
   const commonT = useTranslation('COMMON').withBase('QUERY_LOADER')
 
-  if (query.isFetching) {
+  if (persistLoader || query.isFetching) {
     if (Loader) {
       return Loader
     }

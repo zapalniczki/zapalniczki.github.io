@@ -1,3 +1,6 @@
-export { default as ContactDetails } from './ContactDetails'
+export * from './BasketItem'
+export * from './CheckoutTotal'
+export { default as BasketItem } from './BasketItem'
 export { default as CheckoutTotal } from './CheckoutTotal'
+export { default as ContactDetails } from './ContactDetails'
 export { default as StepTracker } from './StepTracker'
