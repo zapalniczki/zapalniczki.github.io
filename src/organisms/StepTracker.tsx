@@ -3,6 +3,7 @@ import { Flexbox, Text } from 'components'
 import { useCheckoutStep, useTranslation } from 'hooks'
 import React from 'react'
 import styled, { useTheme } from 'styled-components'
+import breakpoints from 'styles/breakpoints'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
 import { changeColorAlpha } from 'utils'
@@ -17,6 +18,7 @@ const StepTracker = () => {
       <Wrapper>
         {[1, 2, 3].map((step) => {
           const stepProps = getProps(current, step)
+
           let stepContent = (
             <Text
               fontWeight={stepProps.selected ? 'bold' : 'unset'}
@@ -78,6 +80,14 @@ const Wrapper = styled.ul`
     background: ${(props) =>
       `${changeColorAlpha(getColor('border-color')(props), 0.5)}`};
   }
+
+  ${breakpoints('mobile')`
+    width: 100%;
+  `}
+
+  ${breakpoints('tablet')`
+    width: 75%;
+  `}
 `
 
 type StepIconProps = {

@@ -19,7 +19,7 @@ const Voucher = () => {
       validateOnChange
       validationSchema={schema}
     >
-      {() => <Form codeApplied={codeApplied} upperForm={upperForm} />}
+      <Form codeApplied={codeApplied} upperForm={upperForm} />
     </Formik>
   )
 }

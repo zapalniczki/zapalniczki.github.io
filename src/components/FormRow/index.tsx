@@ -1,11 +1,22 @@
 import { Flexbox } from 'components'
 import styled from 'styled-components'
+import breakpoints from 'styles/breakpoints'
 import getSpace from 'styles/getSpace'
 
-const FormRow = styled(Flexbox)`
+type Props = {
+  vertical?: boolean
+}
+
+const FormRow = styled(Flexbox)<Props>`
+  flex-direction: ${(props) => (props.vertical ? 'column' : 'column')};
+
   &:not(:last-child) {
     margin-bottom: ${getSpace('m-size')};
   }
+
+  ${(props) => breakpoints('desktop')`
+    flex-direction: ${props.vertical ? 'column' : 'row'};
+  `}
 `
 
 export default FormRow

@@ -17,8 +17,12 @@ const Form = ({ codeApplied, upperForm }: Props) => {
     useFormikContext<FormValues>()
 
   return (
-    <Flexbox alignItems="flex-end" marginTop="m-size">
-      <FieldWrapper width="30rem">
+    <Flexbox
+      alignItems={['unset', 'flex-start', 'flex-end']}
+      flexDirection={['unset', 'column', 'row']}
+      marginTop="m-size"
+    >
+      <FieldWrapper width={['unset', '100%', '30rem']}>
         <Field name="voucher_id">
           {(props: FieldProps<Voucher['id']>) => (
             <Input
@@ -43,7 +47,8 @@ const Form = ({ codeApplied, upperForm }: Props) => {
         <Button
           disabled={isSubmitting}
           label={t('voucher.applyVoucher')}
-          marginLeft="m-size"
+          marginLeft={['unset', 'unset', 'm-size']}
+          marginTop={['unset', 'm-size', 'unset']}
           onClick={submitForm}
           size="small"
           variant="secondary"

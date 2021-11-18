@@ -4,6 +4,7 @@ import {
   FlexboxProps,
   GridColumnProps,
   HeightProps,
+  MaxWidthProps,
   SpaceProps,
   WidthProps
 } from 'styled-system'
@@ -15,7 +16,8 @@ type Props = {
   HeightProps &
   GridColumnProps &
   FlexboxProps &
-  WidthProps
+  WidthProps &
+  MaxWidthProps
 
 const Tile = ({ children, onClick, ...props }: Props) => (
   <Flexbox

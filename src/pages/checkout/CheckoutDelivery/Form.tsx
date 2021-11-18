@@ -14,7 +14,7 @@ const Form = ({ deliveryTypes }: Props) => {
   const { getInput } = useInput()
 
   return (
-    <FormRow flexDirection="column">
+    <FormRow vertical>
       {deliveryTypes
         .filter((type) => type.is_enabled)
         .map((type, index) => (

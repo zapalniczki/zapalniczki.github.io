@@ -15,7 +15,7 @@ const Form = ({ paymentTypes }: Props) => {
   const { getInput } = useInput()
 
   return (
-    <FormRow flexDirection="column">
+    <FormRow vertical>
       {paymentTypes
         .filter((type) => type.is_enabled)
         .map((type, index) => (
