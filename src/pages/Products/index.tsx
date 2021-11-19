@@ -5,7 +5,7 @@ import { PRODUCTS } from 'constants/routes'
 import {
   useBreakpoints,
   useScrollTop,
-  useTabTitle,
+  usePageTitle,
   useTranslation
 } from 'hooks'
 import debounce from 'lodash.debounce'
@@ -18,7 +18,7 @@ const Products = () => {
   const { state } = useLocation<LocationState>()
   const { t } = useTranslation('PRODUCTS')
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   const isDesktop = useBreakpoints('desktop')

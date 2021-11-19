@@ -10,7 +10,7 @@ import {
 import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
 import { CHECKOUT_DETAILS } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { StepTracker, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
@@ -24,7 +24,7 @@ import Loader from './index.loader'
 const CheckoutDelivery = () => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)

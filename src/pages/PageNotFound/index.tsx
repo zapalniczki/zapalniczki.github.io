@@ -1,6 +1,6 @@
 import { Button, Flexbox, Heading, Page } from 'components'
 import { HOME } from 'constants/routes'
-import { useScrollTop, useTabTitle } from 'hooks'
+import { useScrollTop, usePageTitle } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { useHistory } from 'react-router-dom'
@@ -13,7 +13,7 @@ const PageNotFound = () => {
   const { colors } = useTheme()
 
   useScrollTop()
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
 
   return (
     <Page>

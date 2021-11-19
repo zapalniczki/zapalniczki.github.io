@@ -1,7 +1,7 @@
 import { BackButton, Columns, Heading, Page, Switch } from 'components'
 import { CART } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { StepTracker, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
@@ -14,7 +14,7 @@ const CheckoutDetails = () => {
   const { t: commonT } = useTranslation('COMMON')
   const { checkout, isBasketEmpty } = useContext(checkoutContext)
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   const [isCompany, setIsCompany] = useState<boolean>(

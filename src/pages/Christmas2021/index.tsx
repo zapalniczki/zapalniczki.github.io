@@ -1,5 +1,5 @@
 import { Banner, Heading, Page } from 'components'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 import ChristmasProducts from './ChristmasProducts'
 import NewYearProducts from './NewYearProducts'
@@ -7,7 +7,7 @@ import NewYearProducts from './NewYearProducts'
 const Contact = () => {
   const { t } = useTranslation('CHRISTMAS_2021')
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   return (

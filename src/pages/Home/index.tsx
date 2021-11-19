@@ -1,4 +1,4 @@
-import { useScrollTop, useTabTitle } from 'hooks'
+import { useScrollTop, usePageTitle } from 'hooks'
 import React from 'react'
 import { Carousel, Page } from 'components'
 
@@ -12,7 +12,7 @@ import NewYearsEve2022 from './NewYearsEve2022'
 const Home = () => {
   const { t } = useTranslation('HOME')
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   return (

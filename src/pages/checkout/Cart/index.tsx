@@ -3,7 +3,7 @@ import { getProductsById } from 'api'
 import { BasketItem } from 'commonComponents'
 import { Columns, Flexbox, Heading, Page, QueryLoader, Text } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
@@ -20,7 +20,7 @@ const Cart = () => {
     getProductsById(ids)
   )
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   return (

@@ -3,7 +3,7 @@ import { BackButton, Columns, Heading, Page, QueryLoader } from 'components'
 import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { StepTracker, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
@@ -16,7 +16,7 @@ import Loader from './index.loader'
 const CheckoutPayment = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   const { checkout } = useContext(checkoutContext)

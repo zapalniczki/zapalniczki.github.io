@@ -1,7 +1,7 @@
 import { getOrder } from 'api'
 import { Columns, Page, QueryLoader } from 'components'
 import { ORDER_TABLE } from 'constants/db_tables'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { Order } from 'models'
 import React from 'react'
 import { useQuery } from 'react-query'
@@ -23,7 +23,7 @@ const Order = () => {
 
   const { id } = useParams<{ id: Order['id'] }>()
 
-  useTabTitle(`${t('title')} ${id}`)
+  usePageTitle(`${t('title')} ${id}`)
   useScrollTop()
 
   const params = { id }

@@ -1,12 +1,12 @@
 import { Banner, Box, ExternalLink, Flexbox, ListItem, Page } from 'components'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 
 const Documents = () => {
   const { t } = useTranslation('DOCUMENTS')
 
   useScrollTop()
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
 
   return (
     <Page>

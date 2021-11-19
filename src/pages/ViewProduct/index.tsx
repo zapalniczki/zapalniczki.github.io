@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { BackButton, Page, Tile, QueryLoader } from 'components'
-import { useScrollTop, useTabTitle } from 'hooks'
+import { useScrollTop, usePageTitle } from 'hooks'
 
 import { useTranslation } from 'hooks'
 import Images from './Images'
@@ -40,7 +40,7 @@ const ViewProduct = () => {
   }
 
   useScrollTop(params.id)
-  useTabTitle(t('title', { productName }))
+  usePageTitle(t('title', { productName }))
 
   return (
     <Page>

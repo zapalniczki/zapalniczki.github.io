@@ -1,7 +1,7 @@
 import { Flexbox, Page, SectionHead, Tile } from 'components'
 import { USER } from 'constants/routes'
 import { Formik } from 'formik'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
 import { Redirect } from 'react-router-dom'
@@ -12,7 +12,7 @@ const SignUp = () => {
   const { t } = useTranslation('SIGN_UP')
   const { isLoggedIn } = useContext(authContext)
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   const { initialValues, onSubmit, validationSchema } = useForm()

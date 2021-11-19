@@ -12,7 +12,7 @@ import {
   SectionHead
 } from 'components'
 import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
 import { displayMoney } from 'utils'
@@ -22,7 +22,7 @@ const DeliveryAndPayments = () => {
   const { t } = useTranslation('DELIVERY_AND_PAYMENTS')
 
   useScrollTop()
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
 
   const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
 

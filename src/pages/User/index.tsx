@@ -1,5 +1,5 @@
 import { Banner, Columns, Page } from 'components'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { ContactDetails } from 'organisms'
 import React from 'react'
 import Orders from './Orders'
@@ -8,7 +8,7 @@ const User = () => {
   const { t } = useTranslation('USER')
 
   useScrollTop()
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
 
   return (
     <Page>

@@ -1,5 +1,5 @@
 import { Banner, Page, Text } from 'components'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { ORDER_STATUSES } from 'models'
 import React from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
@@ -11,7 +11,7 @@ const AdminOrders = () => {
   const { t } = useTranslation('ADMIN_ORDERS')
 
   useScrollTop()
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
 
   return (
     <Page>

@@ -4,7 +4,7 @@ import { HOME } from 'constants/routes'
 import {
   useBreakpoints,
   useScrollTop,
-  useTabTitle,
+  usePageTitle,
   useTranslation
 } from 'hooks'
 import React from 'react'
@@ -21,7 +21,7 @@ const CheckoutResult = () => {
   const { state } = useLocation<CheckoutResultLocationState>()
   const history = useHistory()
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   if (!state?.orderID) {

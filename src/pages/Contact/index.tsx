@@ -1,6 +1,6 @@
 import { CallMeBack, ReadTermsAndConditions } from 'commonComponents'
 import { Banner, Grid, Page } from 'components'
-import { useScrollTop, useTabTitle, useTranslation } from 'hooks'
+import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 import Tile from './Tile'
 import useContactMethods from './useContactMethod'
@@ -9,7 +9,7 @@ const Contact = () => {
   const { t } = useTranslation('CONTACT')
   const contactMethods = useContactMethods()
 
-  useTabTitle(t('title'))
+  usePageTitle(t('title'))
   useScrollTop()
 
   return (
