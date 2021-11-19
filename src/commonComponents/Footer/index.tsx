@@ -11,12 +11,14 @@ import {
 import { DOCUMENTS } from 'constants/routes'
 import { useAdmin, useTranslation } from 'hooks'
 import { routes } from 'pages'
+import { remoteConfigContext } from 'providers'
 
-import React from 'react'
+import React, { useContext } from 'react'
 
 const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
   const isAdmin = useAdmin()
+  const { christmas2021 } = useContext(remoteConfigContext)
 
   return (
     <Flexbox
@@ -48,6 +50,17 @@ const Footer = () => {
           >
             {routes
               .filter((route) => route.order)
+              .filter((route) => {
+                if (route.translationKey === 'christmas2021') {
+                  if (christmas2021) {
+                    return true
+                  }
+
+                  return false
+                }
+
+                return true
+              })
               .sort((prev, next) =>
                 (prev?.order || 1) < (next?.order || 1) ? -1 : 1
               )

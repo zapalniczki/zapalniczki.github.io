@@ -48,7 +48,8 @@ import {
   TogglesProvider,
   CheckoutProvider,
   LoaderProvider,
-  ToastProvider
+  ToastProvider,
+  RemoteConfigProvider
 } from 'providers'
 import React, { StrictMode } from 'react'
 import { render } from 'react-dom'
@@ -127,23 +128,25 @@ render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <Router history={history}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>
-            <I18nextProvider i18n={i18n}>
-              <CheckoutProvider>
-                <TogglesProvider>
-                  <LoaderProvider>
-                    <ToastProvider>
-                      <GlobalStyle />
+        <RemoteConfigProvider>
+          <AuthProvider>
+            <ThemeProvider theme={theme}>
+              <I18nextProvider i18n={i18n}>
+                <CheckoutProvider>
+                  <TogglesProvider>
+                    <LoaderProvider>
+                      <ToastProvider>
+                        <GlobalStyle />
 
-                      <App />
-                    </ToastProvider>
-                  </LoaderProvider>
-                </TogglesProvider>
-              </CheckoutProvider>
-            </I18nextProvider>
-          </ThemeProvider>
-        </AuthProvider>
+                        <App />
+                      </ToastProvider>
+                    </LoaderProvider>
+                  </TogglesProvider>
+                </CheckoutProvider>
+              </I18nextProvider>
+            </ThemeProvider>
+          </AuthProvider>
+        </RemoteConfigProvider>
       </Router>
     </QueryClientProvider>
   </StrictMode>,
