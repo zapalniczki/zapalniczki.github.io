@@ -60,8 +60,7 @@ import GlobalStyle from 'styles/GlobalStyle'
 import theme from 'styles/theme'
 import { App } from './pages'
 import ReactGA from 'react-ga'
-import { createBrowserHistory } from 'history'
-import { Router } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 if (process.env.MEASUREMENT_ID) {
   ReactGA.initialize(process.env.MEASUREMENT_ID)
@@ -121,13 +120,11 @@ export const queryClient = new QueryClient({
   }
 })
 
-export const history = createBrowserHistory()
-
 const root = document.getElementById('app')
 render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Router history={history}>
+      <HashRouter>
         <RemoteConfigProvider>
           <AuthProvider>
             <ThemeProvider theme={theme}>
@@ -147,7 +144,7 @@ render(
             </ThemeProvider>
           </AuthProvider>
         </RemoteConfigProvider>
-      </Router>
+      </HashRouter>
     </QueryClientProvider>
   </StrictMode>,
   root
