@@ -49,9 +49,7 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Text marginBottom="m-size" type="body-2">
-        {product.description}
-      </Text>
+      <Text type="body-2">{product.description}</Text>
 
       <AvilabilityIndicator status={product.mold.status} />
     </Flexbox>
