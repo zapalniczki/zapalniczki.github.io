@@ -12,6 +12,7 @@ const Columns = ({ children }: Props) => <Container>{children}</Container>
 
 const Container = styled(Flexbox)`
   flex-direction: column;
+  gap: ${getSpace('m-size')};
 
   & > * {
     &:first-child {
@@ -20,29 +21,25 @@ const Container = styled(Flexbox)`
     }
 
     &:last-child {
-      margin-top: ${getSpace('m-size')};
-      margin-left: 0;
       min-width: 100%;
       max-width: 100%;
     }
   }
 
   ${(props) => breakpoints('desktop')`
-  flex-direction: row;
+    flex-direction: row;
 
-  & > * {
-    &:first-child {
-      min-width: 70%;
-      max-width: 70%;
-    }
+    & > * {
+      &:first-child {
+        min-width: 70%;
+        max-width: 70%;
+      }
 
-    &:last-child {
-      margin-top: 0;
-      margin-left: ${getSpace('m-size')(props)};
-      min-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
-      max-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
+      &:last-child {
+        min-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
+        max-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
+      }
     }
-  }
 `}
 `
 
