@@ -3,7 +3,6 @@ import React, { Fragment } from 'react'
 import { Carousel as CarouselLib } from 'react-responsive-carousel'
 import { Box } from 'components'
 import useBanners, { BannerKey } from './useBanners'
-import Indicator from './Indicator'
 import Chevron from './Chevron'
 
 type Props = {
@@ -35,20 +34,7 @@ const Carousel = ({ children }: Props) => {
 
           return <Chevron clickHandler={clickHandler} />
         }}
-        renderIndicator={(clickHandler, isSelected, index, label) => {
-          if (!multipleChildren) {
-            return null
-          }
-
-          return (
-            <Indicator
-              clickHandler={clickHandler}
-              index={index}
-              isSelected={isSelected}
-              label={label}
-            />
-          )
-        }}
+        showIndicators={false}
         showStatus={false}
         showThumbs={false}
         swipeable={false}

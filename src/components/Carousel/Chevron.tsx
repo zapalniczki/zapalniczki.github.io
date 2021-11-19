@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Flexbox, Button } from 'components'
-import { useBreakpoints } from 'hooks'
+import { useBreakpoints, useTranslation } from 'hooks'
 import React from 'react'
 import { useTheme } from 'styled-components'
 
@@ -11,6 +11,7 @@ type Props = {
 
 const Chevron = ({ clickHandler, right }: Props) => {
   const { colors } = useTheme()
+  const commonT = useTranslation('COMMON').withBase('CAROUSEL.arrows')
   const isDesktop = useBreakpoints('desktop')
 
   return (
@@ -23,7 +24,11 @@ const Chevron = ({ clickHandler, right }: Props) => {
       top="0"
       zIndex={5}
     >
-      <Button onClick={clickHandler} variant="quaternary">
+      <Button
+        onClick={clickHandler}
+        title={commonT(right ? 'next' : 'prev')}
+        variant="quaternary"
+      >
         <FontAwesomeIcon
           color={colors['black']}
           icon={right ? 'chevron-right' : 'chevron-left'}

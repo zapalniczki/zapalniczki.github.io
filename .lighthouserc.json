@@ -6,6 +6,9 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
+        "heading-order": ["warn"],
+        "non-composited-animations": ["warn"],
+        "offscreen-images": ["warn"],
         "preload-lcp-image": ["warn"],
         "timing-budget": ["warn"],
         "errors-in-console": ["warn"],

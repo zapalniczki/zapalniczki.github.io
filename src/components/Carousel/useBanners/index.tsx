@@ -33,7 +33,7 @@ const getBanners = (
         width="70rem"
         zIndex={1}
       >
-        <Heading level={3} textAlign="center">
+        <Heading as="h1" level={3} textAlign="center">
           {/* eslint-disable-next-line react/jsx-newline */}
           <strong>Twoje</strong> miejsce w <strong>Twoim</strong>
           &nbsp;punkcie
@@ -69,7 +69,7 @@ const getBanners = (
         width="70rem"
         zIndex={1}
       >
-        <Heading level={3} textAlign="center">
+        <Heading as="h1" level={3} textAlign="center">
           {/* eslint-disable-next-line react/jsx-newline */}
           <strong>Wyjątkowa</strong> oferta <strong>świąteczna</strong>
         </Heading>

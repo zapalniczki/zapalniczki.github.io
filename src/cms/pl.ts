@@ -50,6 +50,13 @@ const pl = {
       loading: 'ładowanie...'
     },
 
+    CAROUSEL: {
+      arrows: {
+        prev: 'Poprzedni banner',
+        next: 'Następny banner'
+      }
+    },
+
     nrb,
     bankName,
     fullCompanyName,

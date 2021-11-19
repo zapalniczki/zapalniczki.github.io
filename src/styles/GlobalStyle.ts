@@ -102,6 +102,8 @@ li {
   bottom: unset !important;
   justify-content: center;
   margin-bottom: 0 !important;
+  display: flex;
+  justify-content: center;
 
   & > *:last-child {
     margin-right: 0;

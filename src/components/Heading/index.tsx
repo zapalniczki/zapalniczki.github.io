@@ -1,17 +1,18 @@
 import { Box } from 'components'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, ElementType } from 'react'
 import { useTheme } from 'styled-components'
 import { SpaceProps, TypographyProps } from 'styled-system'
 import { Color } from 'styles/theme'
 
 type Props = {
+  as?: ElementType
   children: ReactNode
   color?: Color
   level: 1 | 2 | 3 | 4 | 5 | 6
 } & SpaceProps &
   TypographyProps
 
-const Heading = ({ children, color, level, ...props }: Props) => {
+const Heading = ({ as, children, color, level, ...props }: Props) => {
   const { fontSizes, fontWeigths, letterSpacings } = useTheme()
 
   let fontSize: string, fontWeight: string, letterSpacing: string
@@ -55,7 +56,7 @@ const Heading = ({ children, color, level, ...props }: Props) => {
 
   return (
     <Box
-      as={`h${level}`}
+      as={as ?? `h${level}`}
       color={color ?? 'heading-color'}
       fontSize={fontSize}
       fontWeight={fontWeight}
