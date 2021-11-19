@@ -30,7 +30,7 @@ const Banner = ({
     height = sizeToHeight[size]
   }
   if (vhOnMobile && !isDesktop) {
-    height = '100vh'
+    height = `calc(100vh - 14rem)`
   }
 
   return (

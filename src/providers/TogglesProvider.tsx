@@ -5,14 +5,18 @@ type TogglesContext = {
   closeBasket: () => void
   closeHamburger: () => void
   hamburgerOpen: boolean
+  isHeaderExpanded: boolean
   setBasketOpen: React.Dispatch<React.SetStateAction<boolean>>
   setHamburgerOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsHeaderExpanded: (value: boolean) => void
   toggleHamburger: () => void
 }
 
 export const togglesContext = createContext<TogglesContext>({
   basketOpen: false,
   hamburgerOpen: false,
+  isHeaderExpanded: false,
+  setIsHeaderExpanded: () => undefined,
   setBasketOpen: () => undefined,
   setHamburgerOpen: () => undefined,
   closeBasket: () => undefined,
@@ -25,6 +29,8 @@ type Props = {
 }
 
 const TogglesProvider = ({ children }: Props) => {
+  const [isHeaderExpanded, setIsHeaderExpanded] = useState(false)
+
   const [basketOpen, setBasketOpen] = useState(false)
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
 
@@ -43,6 +49,8 @@ const TogglesProvider = ({ children }: Props) => {
   return (
     <togglesContext.Provider
       value={{
+        isHeaderExpanded,
+        setIsHeaderExpanded,
         basketOpen,
         setBasketOpen,
         closeBasket,

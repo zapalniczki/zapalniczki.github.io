@@ -51,6 +51,7 @@ const Carousel = ({ children }: Props) => {
         }}
         showStatus={false}
         showThumbs={false}
+        swipeable={false}
         useKeyboardArrows
       >
         {children.map((child, index) => (

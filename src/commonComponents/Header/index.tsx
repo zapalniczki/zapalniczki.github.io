@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link, Logo, MaxWidth } from 'components'
 import { HOME } from 'constants/routes'
@@ -10,17 +10,17 @@ import Navigation from './Navigation'
 import { togglesContext } from 'providers'
 
 const Header = () => {
-  const [isExpanded, setIsExpanded] = useState(false)
-  const { basketOpen, hamburgerOpen } = useContext(togglesContext)
+  const { basketOpen, hamburgerOpen, isHeaderExpanded, setIsHeaderExpanded } =
+    useContext(togglesContext)
 
   const { t: commonT } = useTranslation('COMMON')
 
   useEffect(() => {
     const scrollHandler = () => {
       if (window.pageYOffset >= 5) {
-        setIsExpanded(true)
+        setIsHeaderExpanded(true)
       } else {
-        setIsExpanded(false)
+        setIsHeaderExpanded(false)
       }
     }
 
@@ -31,12 +31,12 @@ const Header = () => {
 
   useEffect(() => {
     if (basketOpen || hamburgerOpen) {
-      setIsExpanded(true)
+      setIsHeaderExpanded(true)
     }
   }, [basketOpen, hamburgerOpen])
 
   return (
-    <Container isExpanded={isExpanded}>
+    <Container isExpanded={isHeaderExpanded}>
       <MaxWidth
         alignItems="center"
         flexDirection="row"
@@ -44,7 +44,7 @@ const Header = () => {
         justifyContent="space-between"
       >
         <Link title={commonT('LINKS.home')} to={HOME}>
-          <Logo expanded={isExpanded} />
+          <Logo expanded={isHeaderExpanded} />
         </Link>
 
         <Main />
