@@ -8,6 +8,7 @@ import { useTranslation } from 'hooks'
 import getSpace from 'styles/getSpace'
 import Navigation from './Navigation'
 import { togglesContext } from 'providers'
+import { motion } from 'framer-motion'
 
 const Header = () => {
   const { basketOpen, hamburgerOpen, isHeaderExpanded, setIsHeaderExpanded } =
@@ -36,7 +37,7 @@ const Header = () => {
   }, [basketOpen, hamburgerOpen])
 
   return (
-    <Container isExpanded={isHeaderExpanded}>
+    <Container isExpanded={isHeaderExpanded} layout="position">
       <MaxWidth
         alignItems="center"
         flexDirection="row"
@@ -59,7 +60,7 @@ type ContainerProps = {
   isExpanded: boolean
 }
 
-const Container = styled.nav<ContainerProps>`
+const Container = styled(motion.nav)<ContainerProps>`
   width: 100%;
   background: ${(props) => {
     if (props.isExpanded) {

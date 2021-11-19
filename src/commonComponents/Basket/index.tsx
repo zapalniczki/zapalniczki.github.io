@@ -11,6 +11,7 @@ import { BasketItem } from 'organisms'
 import Checkout from './Checkout'
 import Header from './Header'
 import BasketLoader from './index.loader'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const Basket = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -37,28 +38,42 @@ const Basket = () => {
     getProductsById(ids)
   )
 
-  if (!basketOpen) {
-    return null
-  }
+  // if (!basketOpen) {
+  //   return null
+  // }
 
   return (
-    <Container ref={ref}>
-      <Header />
+    <AnimatePresence>
+      {basketOpen && (
+        <Container
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          initial={{ x: '100%' }}
+          ref={ref}
+          transition={{
+            type: 'spring',
+            mass: 0.5,
+            duration: 0.1
+          }}
+        >
+          <Header />
 
-      <QueryLoader Loader={<BasketLoader />} query={productsQuery}>
-        {(products) => (
-          <>
-            <BasketContent products={products} />
+          <QueryLoader Loader={<BasketLoader />} query={productsQuery}>
+            {(products) => (
+              <>
+                <BasketContent products={products} />
 
-            <Checkout products={products} />
-          </>
-        )}
-      </QueryLoader>
-    </Container>
+                <Checkout products={products} />
+              </>
+            )}
+          </QueryLoader>
+        </Container>
+      )}
+    </AnimatePresence>
   )
 }
 
-const Container = styled.aside`
+const Container = styled(motion.aside)`
   width: 60rem;
   max-width: 100vw;
   height: 100vh;
