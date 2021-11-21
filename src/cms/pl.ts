@@ -270,10 +270,10 @@ const pl = {
         required: 'Proszę podać kod pocztowy'
       },
       FULL_NAME: {
-        required: 'To pole jest wymagane'
+        required: 'Proszę podać imię i nazwisko'
       },
       COMPANY: {
-        required: 'To pole jest wymagane'
+        required: 'Proszę podać nazwę firmy'
       },
       EMAIL: {
         email: 'Wprowadzony email jest niepoprawny',
@@ -285,19 +285,19 @@ const pl = {
           'Numer telefonu powinien składać się z numeru kierunkowego (48) i 9 cyfr'
       },
       ORDER_ID: {
-        required: 'To pole jest wymagane',
+        required: 'Proszę podać numer referencyjny zamówienia',
         length: 'Numer referencyjny zamówienia powinien składać się z 36 znaków'
       },
       PASSWORD: {
-        required: 'To pole jest wymagane',
+        required: 'Proszę podać hasło',
         min: 'Hasło powinno mieć co najmniej 6 znaków'
       },
       NEW_PASSWORD: {
-        required: 'To pole jest wymagane',
+        required: 'Proszę podać hasło',
         min: 'Hasło powinno mieć co najmniej 6 znaków'
       },
       PASSWORD_CONFIRMATION: {
-        required: 'To pole jest wymagane',
+        required: 'Proszę podać hasło',
         oneOf: 'Hasła powinny być takie same'
       }
     },
