@@ -18,22 +18,18 @@ type Props = {
 
 const Image = ({ alt = '', size, src, ...props }: Props) => {
   const isDev = useDev()
+  const placeholder = getProductImagePlaceholder(size || 'TILE')
 
-  let imageSrc = [src, getProductImagePlaceholder(size || 'TILE')]
+  let imageSrc = [src, placeholder]
   if (isDev && size) {
-    imageSrc = [getProductImagePlaceholder(size || 'TILE')]
+    imageSrc = [placeholder]
   }
 
   return (
     <Img
       alt={alt}
       loader={
-        <Flexbox
-          alignItems="center"
-          height="100%"
-          justifyContent="center"
-          width="100%"
-        >
+        <Flexbox alignItems="center" justifyContent="center">
           <Spinner small />
         </Flexbox>
       }

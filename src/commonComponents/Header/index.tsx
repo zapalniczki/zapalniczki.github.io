@@ -9,6 +9,7 @@ import getSpace from 'styles/getSpace'
 import Navigation from './Navigation'
 import { togglesContext } from 'providers'
 import { motion } from 'framer-motion'
+import { TOP_BAR_HEIGHT } from 'commonComponents'
 
 const Header = () => {
   const { basketOpen, hamburgerOpen, isHeaderExpanded, setIsHeaderExpanded } =
@@ -76,7 +77,7 @@ const Container = styled(motion.nav)<ContainerProps>`
     `${getSpace(props.isExpanded ? 'xxs-size' : 'm-size')(props)} 0`};
 
   position: ${(props) => (props.isExpanded ? 'fixed' : 'absolute')};
-  top: 0;
+  top: ${(props) => (props.isExpanded ? 0 : TOP_BAR_HEIGHT)};
   transform: translateY(0);
   z-index: ${(props) => props.theme.zIndices.navigation};
   box-shadow: ${(props) =>

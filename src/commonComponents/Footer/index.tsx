@@ -116,13 +116,15 @@ const Footer = () => {
               height="2rem"
               marginTop={['unset', 's-size', 's-size', 'unset']}
             >
-              <Image
-                height={20}
-                src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg"
-                width={105}
-              />
+              {isAdmin && (
+                <Image
+                  height={20}
+                  src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg"
+                  width={105}
+                />
+              )}
 
-              <Text marginLeft="m-size" type="caption">
+              <Text marginLeft={isAdmin ? 'm-size' : 0} type="caption">
                 {process.env.VERSION}
               </Text>
             </Flexbox>
