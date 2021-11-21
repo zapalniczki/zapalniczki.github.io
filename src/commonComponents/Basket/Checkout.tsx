@@ -1,5 +1,5 @@
-import { Button, Flexbox, Heading, Separator, Text } from 'components'
-import { CART, PRODUCTS } from 'constants/routes'
+import { Box, Button, Flexbox, Heading, Separator, Text } from 'components'
+import { CART } from 'constants/routes'
 import { useBreakpoints, useTranslation } from 'hooks'
 import {
   BasketItem,
@@ -8,7 +8,7 @@ import {
 } from 'models'
 import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { calculateTotal, displayMoney } from 'utils'
 
 type Props = {
@@ -33,33 +33,22 @@ const Checkout = ({ products }: Props) => {
     <Flexbox background="white" flexDirection="column">
       <Separator marginX="s-size" marginY="0" width="auto" />
 
-      <Flexbox alignItems="center" padding="s-size" width="100%">
+      <Flexbox
+        alignItems="center"
+        justifyContent="space-between"
+        padding="s-size"
+        width="100%"
+      >
         <Flexbox flexDirection="column">
           <Text type="caption">{commonT('total')}</Text>
 
           <Heading level={5}>{displayMoney(productsTotal)}</Heading>
         </Flexbox>
 
-        <Flexbox
-          flexDirection={['unset', 'column', 'column', 'row']}
-          marginLeft="auto"
-        >
-          <Button
-            label={commonT('backToShop')}
-            onClick={() => {
-              closeBasket()
-              navigate(PRODUCTS)
-            }}
-            size={isDesktop ? 'medium' : 'small'}
-            variant="secondary"
-            width="100%"
-          />
-
+        <Box>
           <Button
             disabled={isBasketEmpty || pathname === '/checkout'}
             label={commonT('checkout')}
-            marginLeft={['unset', 'unset', 'unset', 'm-size']}
-            marginTop={['unset', 'xxxs-size', 'xxxs-size', 'unset']}
             onClick={() => {
               closeBasket()
               navigate(CART)
@@ -67,7 +56,7 @@ const Checkout = ({ products }: Props) => {
             size={isDesktop ? 'medium' : 'small'}
             width="100%"
           />
-        </Flexbox>
+        </Box>
       </Flexbox>
     </Flexbox>
   )

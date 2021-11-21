@@ -46,7 +46,7 @@ const Container = styled(Flexbox)`
   min-height: 100vh;
   position: relative;
   padding: ${(props) => `${getSpace('top')(props)} 0`};
-  padding-top: calc(12rem + 2rem);
+  padding-top: calc(9.2rem + 2rem);
   flex-direction: column;
   align-items: center;
   justify-content: space-between;

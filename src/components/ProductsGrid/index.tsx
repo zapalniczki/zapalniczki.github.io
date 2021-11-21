@@ -1,10 +1,4 @@
-import {
-  Button,
-  Flexbox,
-  InfiniteQueryLoader,
-  QueryLoader,
-  Spinner
-} from 'components'
+import { Button, Flexbox, InfiniteQueryLoader, QueryLoader } from 'components'
 import { To } from 'history'
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
@@ -52,7 +46,6 @@ const ProductsGrid = ({
   const { t: commonT } = useTranslation('COMMON')
 
   const loader = (
-    // TODO RWD
     <ProductsGridLoader
       count={loaderCount}
       title={!!title || !!link || !!showCount || !!sectionHeadChildren}
@@ -105,12 +98,11 @@ const ProductsGrid = ({
                 <Button
                   disabled={props.query.isFetchingNextPage}
                   label={commonT('productsLoadMore')}
+                  loading={props.query.isFetchingNextPage}
                   marginRight="s-size"
                   onClick={() => props.query.fetchNextPage()}
                   size="medium"
                 />
-
-                {props.query.isFetchingNextPage && <Spinner small />}
               </Flexbox>
             )}
           </>

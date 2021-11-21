@@ -72,13 +72,8 @@ const Container = styled(motion.nav)<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${(props) => {
-    if (props.isExpanded) {
-      return `${getSpace('xxs-size')(props)} 0`
-    }
-
-    return `${getSpace('l-size')(props)} 0`
-  }};
+  padding: ${(props) =>
+    `${getSpace(props.isExpanded ? 'xxs-size' : 'm-size')(props)} 0`};
 
   position: ${(props) => (props.isExpanded ? 'fixed' : 'absolute')};
   top: 0;

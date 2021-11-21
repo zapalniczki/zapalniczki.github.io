@@ -193,9 +193,8 @@ const pl = {
       clear: 'Wyczyść',
       empty: 'Koszyk jest pusty',
       title: 'Koszyk ',
-      total: 'Produkty',
+      total: 'Cena produktów',
       checkout: 'Złóż zamówienie',
-      backToShop: 'Wróć do sklepu',
       products: '({{count}} produkt)',
       products_plural: '({{count}} produkty)',
       products_multiple: '({{count}} produktów)',
@@ -476,7 +475,7 @@ const pl = {
   CHECKOUT_DELIVERY: {
     back: 'Wróć do faktury',
     title: 'Dostawa',
-    sameAddress: 'Czy adres dostawy różni się od adresu na fakturze?'
+    sameAddress: 'Dostawa pod inny adres'
   },
 
   CHECKOUT_PAYMENT: {
@@ -538,7 +537,7 @@ const pl = {
 
     icon: 'ikona',
     label: 'napis',
-    color: 'wzór',
+    color: 'kolor',
     colorValueTODO: 'drewno mix',
 
     priceSubtitle: 'Cena za 1 pudełko (50 sztuk) - zawiera 23% VAT',

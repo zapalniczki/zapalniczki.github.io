@@ -1,6 +1,6 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Text, Box } from 'components'
+import { Text, Box, Spinner } from 'components'
 import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { SpaceProps, space, WidthProps, width } from 'styled-system'
@@ -12,6 +12,7 @@ type Props = {
   disabled?: boolean
   icon?: IconName
   label?: string
+  loading?: boolean
   onClick?: () => void
   size?: Size
   title?: string
@@ -24,27 +25,38 @@ const Button = ({
   children,
   icon,
   label,
+  loading,
   size = 'large',
   type = 'button',
   variant = 'primary',
   ...props
-}: Props) => (
-  <Container {...props} size={size} type={type} variant={variant}>
-    {label && (
-      <Text type="button" white={variant === 'primary'} wrap={false}>
-        {label}
-      </Text>
-    )}
+}: Props) => {
+  if (loading) {
+    return (
+      <Container {...props} size={size} type={type} variant={variant}>
+        <Spinner small />
+      </Container>
+    )
+  }
 
-    {icon && (
-      <Box marginLeft={label ? 'm-size' : 0}>
-        <FontAwesomeIcon icon={icon} />
-      </Box>
-    )}
+  return (
+    <Container {...props} size={size} type={type} variant={variant}>
+      {label && (
+        <Text type="button" white={variant === 'primary'} wrap={false}>
+          {label}
+        </Text>
+      )}
 
-    {children}
-  </Container>
-)
+      {icon && (
+        <Box marginLeft={label ? 'm-size' : 0}>
+          <FontAwesomeIcon icon={icon} />
+        </Box>
+      )}
+
+      {children}
+    </Container>
+  )
+}
 
 type ContainerProps = SpaceProps & {
   size: Size

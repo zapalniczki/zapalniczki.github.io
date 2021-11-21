@@ -23,7 +23,9 @@ const ProductsGridLoader = ({ count = 3, title, ...props }: Props) => (
       </Box>
     )}
 
-    <Grid>
+    <Grid
+      gridTemplateColumns={['unset', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+    >
       {[...Array(count).keys()].map((n) => (
         <ProductTileLoader key={n} />
       ))}
