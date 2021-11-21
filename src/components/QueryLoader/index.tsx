@@ -1,3 +1,4 @@
+import { ErrorFetchingMessage, Flexbox } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { ReactElement } from 'react'
@@ -37,7 +38,13 @@ function QueryLoader<T>({
     return <>{children(query.data as T)}</>
   }
 
-  return <p>ERROR</p>
+  return (
+    <Flexbox minHeight="8.6rem" position="relative" width="100%">
+      {Loader && Loader}
+
+      <ErrorFetchingMessage refetch={query.refetch} />
+    </Flexbox>
+  )
 }
 
 export default QueryLoader

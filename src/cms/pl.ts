@@ -76,6 +76,8 @@ const pl = {
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Zapalniczka',
     unit: '(50 sztuk)',
+    fetchErrorMessage: 'Nie udało się wczytać treści',
+    fetchErrorRetry: 'Spróbuj ponownie',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',

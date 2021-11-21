@@ -9,7 +9,8 @@ import {
   Grid,
   Page,
   QueryLoader,
-  SectionHead
+  SectionHead,
+  ProductsGridLoader
 } from 'components'
 import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
@@ -68,7 +69,7 @@ const DeliveryAndPayments = () => {
 
       <SectionHead marginTop="xxl-size" title={t('delivery.title')} />
 
-      <QueryLoader query={deliveryTypesQuery}>
+      <QueryLoader Loader={<ProductsGridLoader />} query={deliveryTypesQuery}>
         {(deliveryTypes) => (
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {deliveryTypes
@@ -91,7 +92,7 @@ const DeliveryAndPayments = () => {
 
       <SectionHead marginTop="xxl-size" title={t('payments.title')} />
 
-      <QueryLoader query={paymentTypesQuery}>
+      <QueryLoader Loader={<ProductsGridLoader />} query={paymentTypesQuery}>
         {(paymentTypes) => (
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {paymentTypes
