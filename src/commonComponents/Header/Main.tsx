@@ -22,23 +22,20 @@ const Main = () => {
         .sort((prev, next) =>
           (prev?.order || 1) < (next?.order || 1) ? -1 : 1
         )
-        .map((route) => {
-          const isActive = !!matchPath(pathname, {
-            path: route.path,
-            exact: route.exact
-          })
+        .map(({ end, icon, path, translationKey }) => {
+          const isActive = !!matchPath({ path, end }, pathname)
 
-          if (!route.translationKey) {
+          if (!translationKey) {
             return null
           }
 
           return (
-            <Box as="li" display="inline-block" key={route.path}>
+            <Box as="li" display="inline-block" key={path}>
               <NavigationLink
                 active={isActive}
-                icon={route.icon as IconName}
-                label={commonT(route.translationKey)}
-                to={route.path}
+                icon={icon as IconName}
+                label={commonT(translationKey)}
+                to={path}
               />
             </Box>
           )

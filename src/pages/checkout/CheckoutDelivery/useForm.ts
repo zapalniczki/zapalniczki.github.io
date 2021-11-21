@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { object } from 'yup'
 import { CHECKOUT_PAYMENT } from 'constants/routes'
 import { useFormSchema } from 'hooks'
@@ -12,10 +12,8 @@ export type FormValues = {
 }
 
 const useForm = () => {
-  const history = useHistory()
-
+  const navigate = useNavigate()
   const { getSchema } = useFormSchema()
-
   const { checkout, setCheckout } = useContext(checkoutContext)
 
   const onSubmitForm = (
@@ -44,7 +42,7 @@ const useForm = () => {
       }))
     }
 
-    history.push(CHECKOUT_PAYMENT)
+    navigate(CHECKOUT_PAYMENT)
   }
 
   const initialValues: FormValues = {

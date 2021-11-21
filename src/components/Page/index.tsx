@@ -14,10 +14,7 @@ type Props = {
 
 const Page = ({ children, ...props }: Props) => {
   const { pathname } = useLocation()
-  const isProductsPage = matchPath(pathname, {
-    path: '/products'
-  })
-
+  const isProductsPage = matchPath({ path: '/products' }, pathname)
   const triggerPageView = usePageView()
 
   useEffect(() => {

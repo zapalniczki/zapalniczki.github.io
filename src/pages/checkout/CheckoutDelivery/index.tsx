@@ -15,11 +15,11 @@ import { StepTracker, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
 import { useQuery } from 'react-query'
-import { Redirect } from 'react-router-dom'
 import Form from './Form'
 import ShippingForm from './ShippingForm'
 import useForm from './useForm'
 import Loader from './index.loader'
+import { Navigate } from 'react-router-dom'
 
 const CheckoutDelivery = () => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
@@ -38,7 +38,7 @@ const CheckoutDelivery = () => {
   )
 
   if (!checkout.contact_details) {
-    return <Redirect to={CHECKOUT_DETAILS} />
+    return <Navigate to={CHECKOUT_DETAILS} />
   }
 
   return (

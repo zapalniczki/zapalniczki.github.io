@@ -11,7 +11,7 @@ import { MoldStatus, PaymentType, Voucher } from 'models'
 import { checkoutContext, initState } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { getHstoreFromObject, sumArray } from 'utils'
 import { object } from 'yup'
 
@@ -21,7 +21,7 @@ export type FormValues = {
 }
 
 const useForm = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const { getSchema } = useFormSchema()
   const isDev = useDev()
   const isAdmin = useAdmin()
@@ -121,9 +121,8 @@ const useForm = () => {
         })
       }
 
+      navigate(CHECKOUT_RESULT, { state: locationState })
       setCheckout(initState)
-
-      history.push(CHECKOUT_RESULT, locationState)
     })
   }
 

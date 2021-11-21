@@ -1,11 +1,13 @@
 import { Box, Link } from 'components'
 import React from 'react'
-import { LocationDescriptor } from 'history'
+import { To } from 'history'
 import { SpaceProps } from 'styled-system'
+
+import {} from 'react-router-dom'
 
 type Props = {
   label: string
-  to: LocationDescriptor
+  to: To
 } & SpaceProps
 
 const BackButton = ({ label, to, ...props }: Props) => (

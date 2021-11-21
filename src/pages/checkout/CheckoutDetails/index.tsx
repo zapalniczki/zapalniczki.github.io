@@ -5,7 +5,7 @@ import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { StepTracker, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import Form from './Form'
 import useForm from './useForm'
 
@@ -24,7 +24,7 @@ const CheckoutDetails = () => {
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
   if (isBasketEmpty) {
-    return <Redirect to={CART} />
+    return <Navigate to={CART} />
   }
 
   return (

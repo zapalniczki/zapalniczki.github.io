@@ -27,12 +27,7 @@ const Footer = () => {
       flexDirection="column"
       paddingY="l-size"
     >
-      <MaxWidth
-        alignItems="flex-start"
-        flexDirection="column"
-        innerPadding
-        // padding={['unset', 'm-size', 'm-size', 'l-size']}
-      >
+      <MaxWidth alignItems="flex-start" flexDirection="column" innerPadding>
         <Logo />
 
         <Flexbox

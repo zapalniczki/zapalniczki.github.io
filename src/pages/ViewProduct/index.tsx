@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { BackButton, Page, Tile, QueryLoader } from 'components'
 import { useScrollTop, usePageTitle } from 'hooks'
 
@@ -12,17 +12,22 @@ import { getProduct } from 'api'
 import Loader from './index.loader'
 import OtherIcons from './OtherIcons'
 import { useQuery } from 'react-query'
-import { Product } from 'models'
 import { getProductName } from 'utils'
 
 const ViewProduct = () => {
-  const history = useHistory()
-  const params = useParams<{ id: Product['id'] }>()
   const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
 
+  const navigate = useNavigate()
+  const { id } = useParams<'id'>()
+
+  if (!id) {
+    throw new Error('No id!')
+  }
+
+  const params = { id }
   const productQuery = useQuery(['product', params], () => getProduct(params), {
-    onError: () => history.push('/404')
+    onError: () => navigate('/404')
   })
 
   let productName = `Produkt ${params.id}`

@@ -6,7 +6,7 @@ import multiply from 'lodash.multiply'
 import subtract from 'lodash.subtract'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { calculateDiscount, displayMoney, getVatAmount, sumArray } from 'utils'
 import CheckoutTotalLoader from './index.loader'
 
@@ -22,7 +22,7 @@ const CheckoutTotal = ({
   customProducts
 }: Props) => {
   const commonT = useTranslation('COMMON').withBase('CHECKOUT_TOTAL')
-  const history = useHistory()
+  const navigate = useNavigate()
   const current = useCheckoutStep()
 
   const { checkout, voucher } = useContext(checkoutContext)
@@ -119,7 +119,7 @@ const CheckoutTotal = ({
         icon="arrow-right"
         label={commonT(nextStepLabel)}
         marginTop="l-size"
-        onClick={() => isCart && history.push(CHECKOUT_DETAILS)}
+        onClick={() => isCart && navigate(CHECKOUT_DETAILS)}
         size="medium"
         type={isCart ? 'button' : 'submit'}
       />

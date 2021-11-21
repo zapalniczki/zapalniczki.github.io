@@ -1,7 +1,8 @@
 import { Link, Flexbox, Heading, Separator, Text } from 'components'
-import { LocationDescriptor } from 'history'
+import { To } from 'history'
 import { useTranslation } from 'hooks'
 import React, { ReactNode } from 'react'
+import { NavigateOptions } from 'react-router-dom'
 import { SpaceProps } from 'styled-system'
 
 type Props = {
@@ -9,7 +10,8 @@ type Props = {
   count?: number
   link?: {
     label: string
-    to: LocationDescriptor
+    options?: NavigateOptions
+    to: To
   }
   separator?: boolean
   title?: string
@@ -54,7 +56,14 @@ const SectionHead = ({
           </Text>
         )}
 
-        {link && <Link label={link.label} showUnderline to={link.to} />}
+        {link && (
+          <Link
+            label={link.label}
+            showUnderline
+            state={link.options?.state}
+            to={link.to}
+          />
+        )}
       </Flexbox>
 
       {separator && <Separator marginBottom="0" />}

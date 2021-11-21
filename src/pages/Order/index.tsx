@@ -20,11 +20,14 @@ import ParcelDetails from './ParcelDetails'
 
 const Order = () => {
   const { t } = useTranslation('ORDER')
-
-  const { id } = useParams<{ id: Order['id'] }>()
+  const { id } = useParams<'id'>()
 
   usePageTitle(`${t('title')} ${id}`)
   useScrollTop()
+
+  if (!id) {
+    throw new Error('Not id')
+  }
 
   const params = { id }
   const orderQuery = useQuery([ORDER_TABLE, params], () => getOrder(params))

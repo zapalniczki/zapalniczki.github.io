@@ -1,13 +1,12 @@
 import { Text, Button, Heading, Flexbox, Banner } from 'components'
 import { CHRISTMAS_2021, PRODUCTS } from 'constants/routes'
-import { History } from 'history'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 import Christmas2021 from './Christmas2021'
 
 const useBanners = () => {
-  const history = useHistory()
+  const history = useNavigate()
   const banners = getBanners(history)
 
   const getBanner = (key: BannerKey): JSX.Element => banners[key]
@@ -21,7 +20,7 @@ const useBanners = () => {
 export type BannerKey = 'YOUR_PLACE' | 'CHRISTMAS_2021'
 
 const getBanners = (
-  history: History<unknown>
+  navigate: NavigateFunction
 ): Record<BannerKey, JSX.Element> => ({
   YOUR_PLACE: (
     <Banner background={<YourPlaceInYourPoint />} size="LARGE" vhOnMobile>
@@ -52,7 +51,7 @@ const getBanners = (
         <Button
           icon="arrow-right"
           label="Produkty"
-          onClick={() => history.push(PRODUCTS)}
+          onClick={() => navigate(PRODUCTS)}
           size="medium"
         />
       </Flexbox>
@@ -88,7 +87,7 @@ const getBanners = (
         <Button
           icon="arrow-right"
           label="Produkty"
-          onClick={() => history.push(CHRISTMAS_2021)}
+          onClick={() => navigate(CHRISTMAS_2021)}
           size="medium"
         />
       </Flexbox>

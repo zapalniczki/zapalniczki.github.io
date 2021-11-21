@@ -10,15 +10,13 @@ import {
 } from 'constants/routes'
 import { useAdmin, useTranslation } from 'hooks'
 import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const ProfileToggle = () => {
   const { t: commonT } = useTranslation('COMMON')
 
   const { pathname } = useLocation()
-
-  const history = useHistory()
-
+  const navigate = useNavigate()
   const isAdmin = useAdmin()
 
   if (!isAdmin) {
@@ -28,7 +26,7 @@ const ProfileToggle = () => {
   return (
     <Button
       disabled={basketDisabledpathnames.includes(pathname)}
-      onClick={() => history.push(USER)}
+      onClick={() => navigate(USER)}
       padding="s-size"
       title={commonT('profileToggleLabel')}
       type="button"

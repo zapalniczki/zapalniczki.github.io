@@ -1,6 +1,6 @@
 import { Flexbox, Heading, Button, Banner } from 'components'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   link: {
@@ -11,7 +11,7 @@ type Props = {
 }
 
 const BannerWithTitleAndLink = ({ link: { label, to }, title }: Props) => {
-  const history = useHistory()
+  const navigate = useNavigate()
 
   return (
     <Banner marginTop="xxl-size" size="SMALL">
@@ -27,7 +27,7 @@ const BannerWithTitleAndLink = ({ link: { label, to }, title }: Props) => {
           icon="arrow-right"
           label={label}
           marginTop={['unset', 'm-size', 'm-size', 0]}
-          onClick={() => history.push(to)}
+          onClick={() => navigate(to)}
         />
       </Flexbox>
     </Banner>

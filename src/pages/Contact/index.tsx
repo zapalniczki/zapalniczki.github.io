@@ -1,6 +1,6 @@
 import { CallMeBack, ReadTermsAndConditions } from 'commonComponents'
 import { Banner, Grid, Page } from 'components'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
 import Tile from './Tile'
 import useContactMethods from './useContactMethod'

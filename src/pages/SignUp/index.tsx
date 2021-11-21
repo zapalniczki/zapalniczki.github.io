@@ -4,7 +4,7 @@ import { Formik } from 'formik'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import Form from './Form'
 import useForm from './useForm'
 
@@ -18,7 +18,7 @@ const SignUp = () => {
   const { initialValues, onSubmit, validationSchema } = useForm()
 
   if (isLoggedIn) {
-    return <Redirect to={USER} />
+    return <Navigate to={USER} />
   }
 
   return (

@@ -3,12 +3,12 @@ import { HOME } from 'constants/routes'
 import { useScrollTop, usePageTitle } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'
 
 const PageNotFound = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const { t } = useTranslation('PAGE_NOT_FOUND')
   const { colors } = useTheme()
 
@@ -39,7 +39,7 @@ const PageNotFound = () => {
         <Button
           label={t('buttonLabel')}
           marginTop="xxxl-size"
-          onClick={() => history.push(HOME)}
+          onClick={() => navigate(HOME)}
           size="medium"
           type="button"
         />

@@ -8,7 +8,7 @@ import {
   useTranslation
 } from 'hooks'
 import React from 'react'
-import { Redirect, useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Navigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import { getOrderPath } from 'utils'
 import { CheckoutResultLocationState } from '../CheckoutPayment/useForm'
@@ -18,14 +18,14 @@ const CheckoutResult = () => {
   const { t } = useTranslation('CHECKOUT_RESULT')
   const isDesktop = useBreakpoints('desktop')
 
-  const { state } = useLocation<CheckoutResultLocationState>()
-  const history = useHistory()
+  const { state }: { state: CheckoutResultLocationState } = useLocation()
+  const navigate = useNavigate()
 
   usePageTitle(t('title'))
   useScrollTop()
 
   if (!state?.orderID) {
-    return <Redirect to={HOME} />
+    return <Navigate to={HOME} />
   }
 
   return (
@@ -63,7 +63,7 @@ const CheckoutResult = () => {
             label={t('actions.seeOrder')}
             onClick={() => {
               const path = getOrderPath(state.orderID)
-              history.push(path)
+              navigate(path)
             }}
             size="medium"
             variant="primary"
@@ -72,7 +72,7 @@ const CheckoutResult = () => {
           <Button
             label={t('actions.backToHome')}
             marginTop={isDesktop ? 0 : 'm-size'}
-            onClick={() => history.push(HOME)}
+            onClick={() => navigate(HOME)}
             size="medium"
             variant="secondary"
           />

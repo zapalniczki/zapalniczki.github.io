@@ -15,13 +15,13 @@ import { useLocation } from 'react-router-dom'
 import Filters from './Filters'
 
 const Products = () => {
-  const { state } = useLocation<LocationState>()
   const { t } = useTranslation('PRODUCTS')
+  const isDesktop = useBreakpoints('desktop')
+
+  const { state }: { state: LocationState } = useLocation()
 
   usePageTitle(t('title'))
   useScrollTop()
-
-  const isDesktop = useBreakpoints('desktop')
 
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedSearchQuery, setDebuncedSearchQuery] = useState('')

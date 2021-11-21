@@ -5,11 +5,12 @@ import {
   QueryLoader,
   Spinner
 } from 'components'
-import { LocationDescriptor } from 'history'
+import { To } from 'history'
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import React, { ReactNode } from 'react'
 import { UseInfiniteQueryResult, UseQueryResult } from 'react-query'
+import { NavigateOptions } from 'react-router-dom'
 import { SpaceProps } from 'styled-system'
 import Content from './Content'
 import ProductsGridLoader from './index.loader'
@@ -18,7 +19,8 @@ export type BaseProps = {
   hideWhenEmpty?: boolean
   link?: {
     label: string
-    to: LocationDescriptor
+    options?: NavigateOptions
+    to: To
   }
   loaderCount?: number
   sectionHeadChildren?: ReactNode

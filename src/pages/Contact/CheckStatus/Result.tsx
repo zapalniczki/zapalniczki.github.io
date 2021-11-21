@@ -4,7 +4,7 @@ import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
 import TileHeading from '../TileHeading'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { Order } from 'models'
 import { getOrderPath } from 'utils'
 
@@ -17,7 +17,7 @@ type Props = {
 const Result = ({ id, setView, status }: Props) => {
   const { t } = useTranslation('CONTACT')
   const { t: commonT } = useTranslation('COMMON')
-  const history = useHistory()
+  const navigate = useNavigate()
 
   return (
     <ViewWrapper flexDirection="column">
@@ -46,7 +46,7 @@ const Result = ({ id, setView, status }: Props) => {
           marginTop={['unset', 'm-size', 'm-size', 0]}
           onClick={() => {
             const path = getOrderPath(id)
-            history.push(path)
+            navigate(path)
           }}
           size="small"
         />

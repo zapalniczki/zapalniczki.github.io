@@ -8,10 +8,10 @@ import { StepTracker, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
-import { Redirect } from 'react-router-dom'
 import Form from './Form'
 import useForm from './useForm'
 import Loader from './index.loader'
+import { Navigate } from 'react-router-dom'
 
 const CheckoutPayment = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
@@ -29,7 +29,7 @@ const CheckoutPayment = () => {
   const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {
-    return <Redirect to={CHECKOUT_DELIVERY} />
+    return <Navigate to={CHECKOUT_DELIVERY} />
   }
 
   return (

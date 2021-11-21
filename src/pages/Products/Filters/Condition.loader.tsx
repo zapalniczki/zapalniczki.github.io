@@ -6,11 +6,7 @@ type Props = SpaceProps
 
 // TODO RWD
 const Condtion = (props: Props) => (
-  <Flexbox
-    //  border="2px solid blue"
-    flexDirection="column"
-    {...props}
-  >
+  <Flexbox flexDirection="column" {...props}>
     <Box height="2.4rem">
       <ContentLoader
         gradientRatio={1}

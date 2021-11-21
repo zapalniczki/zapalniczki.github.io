@@ -8,7 +8,7 @@ import {
 } from 'models'
 import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { calculateTotal, displayMoney } from 'utils'
 
 type Props = {
@@ -20,7 +20,7 @@ const Checkout = ({ products }: Props) => {
   const isDesktop = useBreakpoints('desktop')
 
   const { pathname } = useLocation()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const { closeBasket } = useContext(togglesContext)
   const { basket, isBasketEmpty } = useContext(checkoutContext)
@@ -48,7 +48,7 @@ const Checkout = ({ products }: Props) => {
             label={commonT('backToShop')}
             onClick={() => {
               closeBasket()
-              history.push(PRODUCTS)
+              navigate(PRODUCTS)
             }}
             size={isDesktop ? 'medium' : 'small'}
             variant="secondary"
@@ -62,7 +62,7 @@ const Checkout = ({ products }: Props) => {
             marginTop={['unset', 'xxxs-size', 'xxxs-size', 'unset']}
             onClick={() => {
               closeBasket()
-              history.push(CART)
+              navigate(CART)
             }}
             size={isDesktop ? 'medium' : 'small'}
             width="100%"

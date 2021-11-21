@@ -3,7 +3,7 @@ import { getSession } from 'api'
 import { SIGNED_OUT } from 'constants/routes'
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import supabase from 'supabase'
 
 type AuthContexType = {
@@ -25,7 +25,7 @@ const AuthProvider = ({ children }: Props) => {
   const [auth, setAuth] = useState<AuthContexType['auth']>(undefined)
   const { mutateAsync: mutateGetSession } = useMutation(getSession)
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const start = async () => {
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }: Props) => {
 
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT') {
-      history.push(SIGNED_OUT)
+      navigate(SIGNED_OUT)
     }
 
     setAuth(session)

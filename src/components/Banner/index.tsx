@@ -7,7 +7,6 @@ import { Color } from 'styles/theme'
 export type Props = {
   background?: ReactNode
   backgroundColor?: Color
-  // description?: string
   children?: ReactNode
   size?: Size
   title?: string

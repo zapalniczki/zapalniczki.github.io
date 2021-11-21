@@ -1,8 +1,8 @@
 import { Basket, Footer, Header } from 'commonComponents'
 import { HamburgerMenu } from 'commonComponents/'
-import { AdminRoute, Flexbox, UserRoute } from 'components'
+import { AdminAuth, Flexbox, UserAuth } from 'components'
 import React, { Suspense } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import routes from './routes'
 
 const AppRouter = () => (
@@ -23,19 +23,37 @@ const AppRouter = () => (
         />
       }
     >
-      <Switch>
-        {routes.map(({ admin, user, ...props }, index) => {
-          if (user) {
-            return <UserRoute key={index} {...props} />
-          }
+      <Routes>
+        {routes.map(({ Component, admin, user, ...props }, index) => {
+          let Alfa = (
+            <Suspense fallback={<>fdfdf</>}>
+              <Component />
+            </Suspense>
+          )
 
           if (admin) {
-            return <AdminRoute key={index} {...props} />
+            Alfa = (
+              <AdminAuth>
+                <Suspense fallback={<>fdfdf</>}>
+                  <Component />
+                </Suspense>
+              </AdminAuth>
+            )
           }
 
-          return <Route {...props} key={index} />
+          if (user) {
+            Alfa = (
+              <UserAuth>
+                <Suspense fallback={<>fdfdf</>}>
+                  <Component />
+                </Suspense>
+              </UserAuth>
+            )
+          }
+
+          return <Route element={Alfa} key={index} {...props} />
         })}
-      </Switch>
+      </Routes>
     </Suspense>
 
     <Footer />

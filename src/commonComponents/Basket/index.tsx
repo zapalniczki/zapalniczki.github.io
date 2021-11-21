@@ -38,10 +38,6 @@ const Basket = () => {
     getProductsById(ids)
   )
 
-  // if (!basketOpen) {
-  //   return null
-  // }
-
   return (
     <AnimatePresence>
       {basketOpen && (
