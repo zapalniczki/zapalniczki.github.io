@@ -66,10 +66,11 @@ const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
     <Container
       $wrap={wrap}
       as={span ? 'span' : 'p'}
-      color={props.white ? 'white' : 'black'}
+      color={props.white ? 'white' : 'paragraph-color'}
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}
+      lineHeight="2.4rem"
       margin={0}
       {...props}
     >

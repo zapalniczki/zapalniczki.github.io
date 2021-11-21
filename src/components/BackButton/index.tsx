@@ -11,7 +11,7 @@ type Props = {
 } & SpaceProps
 
 const BackButton = ({ label, to, ...props }: Props) => (
-  <Box {...props}>
+  <Box width="max-content" {...props}>
     <Link icon="arrow-left" label={label} to={to} />
   </Box>
 )

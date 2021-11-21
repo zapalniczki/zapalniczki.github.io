@@ -34,7 +34,7 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
           border: '1px solid',
           borderColor: colors['border-color'],
           cursor: 'default',
-          background: colors['background-color-02']
+          background: 'background-color'
         }}
         country="pl"
         countryCodeEditable={false}

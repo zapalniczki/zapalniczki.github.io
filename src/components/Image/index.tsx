@@ -29,7 +29,12 @@ const Image = ({ alt = '', size, src, ...props }: Props) => {
     <Img
       alt={alt}
       loader={
-        <Flexbox alignItems="center" justifyContent="center">
+        <Flexbox
+          alignItems="center"
+          height="100%"
+          justifyContent="center"
+          width="100%"
+        >
           <Spinner small />
         </Flexbox>
       }

@@ -1,5 +1,5 @@
 import { Basket, Footer, Header, TopBar } from 'commonComponents'
-import { HamburgerMenu } from 'commonComponents/'
+import { HamburgerMenu, CookiesConsent } from 'commonComponents/'
 import { AdminAuth, Flexbox, UserAuth } from 'components'
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -15,48 +15,49 @@ const AppRouter = () => (
 
     <HamburgerMenu />
 
-    <Suspense
-      fallback={
-        <Flexbox
-          alignItems="center"
-          height="100vh"
-          justifyContent="center"
-          width="100vw"
-        />
-      }
-    >
-      <Routes>
-        {routes.map(({ Component, admin, user, ...props }, index) => {
-          let Alfa = (
-            <Suspense fallback={<>fdfdf</>}>
+    <CookiesConsent />
+
+    <Routes>
+      {routes.map(({ Component, admin, user, ...props }, index) => {
+        let ComponentToRender = <Component />
+        if (admin) {
+          ComponentToRender = (
+            <AdminAuth>
               <Component />
-            </Suspense>
+            </AdminAuth>
           )
+        }
 
-          if (admin) {
-            Alfa = (
-              <AdminAuth>
-                <Suspense fallback={<>fdfdf</>}>
-                  <Component />
-                </Suspense>
-              </AdminAuth>
-            )
-          }
+        if (user) {
+          ComponentToRender = (
+            <UserAuth>
+              <Component />
+            </UserAuth>
+          )
+        }
 
-          if (user) {
-            Alfa = (
-              <UserAuth>
-                <Suspense fallback={<>fdfdf</>}>
-                  <Component />
-                </Suspense>
-              </UserAuth>
-            )
-          }
-
-          return <Route element={Alfa} key={index} {...props} />
-        })}
-      </Routes>
-    </Suspense>
+        return (
+          <Route
+            element={
+              <Suspense
+                fallback={
+                  <Flexbox
+                    alignItems="center"
+                    height="100vh"
+                    justifyContent="center"
+                    width="100vw"
+                  />
+                }
+              >
+                {ComponentToRender}
+              </Suspense>
+            }
+            key={index}
+            {...props}
+          />
+        )
+      })}
+    </Routes>
 
     <Footer />
   </>

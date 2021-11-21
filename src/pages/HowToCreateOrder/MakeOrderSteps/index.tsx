@@ -12,7 +12,7 @@ const MakeOrderSteps = () => {
     <Tile flexDirection="row" marginTop="xxl-size">
       <Flexbox alignItems="center" justifyContent="center" width="20rem">
         <FontAwesomeIcon
-          color={colors['background-color-01']}
+          color={colors['banner-color']}
           icon="question"
           size="10x"
         />

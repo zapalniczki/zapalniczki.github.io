@@ -97,7 +97,7 @@ const Container = styled(Box)`
 
     th {
       text-align: left;
-      background: ${getColor('background-color-01')};
+      background: ${getColor('banner-color')};
     }
 
     th,

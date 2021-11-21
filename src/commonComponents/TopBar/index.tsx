@@ -4,9 +4,7 @@ import React from 'react'
 const TopBar = () => {
   return null
 
-  return (
-    <Flexbox backgroundColor="background-color-01" height={TOP_BAR_HEIGHT} />
-  )
+  return <Flexbox backgroundColor="banner-color" height={TOP_BAR_HEIGHT} />
 }
 
 // export const TOP_BAR_HEIGHT = '4rem'

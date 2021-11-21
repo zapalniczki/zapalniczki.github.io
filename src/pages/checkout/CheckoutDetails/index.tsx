@@ -1,4 +1,4 @@
-import { BackButton, Columns, Heading, Page, Switch } from 'components'
+import { BackButton, Columns, Heading, Page, Switch, Flexbox } from 'components'
 import { CART } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
@@ -29,7 +29,9 @@ const CheckoutDetails = () => {
 
   return (
     <Page>
-      <BackButton label={t('back')} to={CART} />
+      <Flexbox>
+        <BackButton label={t('back')} to={CART} />
+      </Flexbox>
 
       <StepTracker />
 
@@ -47,19 +49,20 @@ const CheckoutDetails = () => {
           <FormikForm>
             <Columns>
               <div>
-                <Switch
-                  checked={!isCompany}
-                  justifyContent="flex-end"
-                  label={commonT('customerTypes.INDIVIDUAL')}
-                  onChange={(checked) => {
-                    // TODO Add eslint for curly brackets in arrow functions
-                    setIsCompany(!checked)
+                <Flexbox justifyContent="flex-end">
+                  <Switch
+                    checked={!isCompany}
+                    justifyContent="flex-end"
+                    label={commonT('customerTypes.INDIVIDUAL')}
+                    onChange={(checked) => {
+                      setIsCompany(!checked)
 
-                    if (checked) {
-                      setFieldValue('nip', '')
-                    }
-                  }}
-                />
+                      if (checked) {
+                        setFieldValue('nip', '')
+                      }
+                    }}
+                  />
+                </Flexbox>
 
                 <Form isCompany={isCompany} />
               </div>

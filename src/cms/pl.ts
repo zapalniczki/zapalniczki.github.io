@@ -8,6 +8,11 @@ export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
+    COOKIES_CONSENT: {
+      agree: 'Rozumiem',
+      info: 'Strona braty.co używa plików cookies. Dowiedz się więcej o celu ich używania i zmianie ustawień cookies w przeglądarce.\nKorzystając ze strony wyrażasz zgodę na używanie cookies, zgodnie z aktualnymi ustawieniami przeglądarki.'
+    },
+
     ERRORS: {
       23505: 'Podany adres e-mail jest już zarejestrowany',
       'Invalid login credentials': 'Nieprawidłowa nazwa użytkownika lub hasło',

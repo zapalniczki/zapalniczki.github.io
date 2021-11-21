@@ -90,8 +90,8 @@ export const StyledInput = styled.input<StyledInputProps>`
     content: '';
     -webkit-appearance: none;
     background-color: ${getColor('white')};
-    border: 2px solid;
-    border-color: ${getColor('border-color-focus')};
+    border: 1px solid;
+    border-color: ${getColor('border-color')};
     padding: 1rem;
     display: inline-block;
     position: relative;
@@ -108,7 +108,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     display: block;
     position: absolute;
     top: 0;
-    left: 2.6rem;
+    left: 2.5rem;
     bottom: 0;
     margin: auto;
     width: 3px;
@@ -122,15 +122,15 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   &[type='checkbox']:hover + label:before,
   &[type='radio']:hover + label:before {
-    border: 2px solid;
-    border-color: ${getColor('border-color-focus')};
+    border: 1px solid;
+    border-color: ${getColor('border-color')};
   }
 
   &[type='checkbox']:checked + label:before,
   &[type='radio']:checked + label:before {
-    border: 2px solid;
-    border-color: ${getColor('gray-01')};
-    background: ${getColor('gray-01')};
+    border: 1px solid;
+    border-color: ${getColor('dark-color')};
+    background: ${getColor('dark-color')};
   }
 
   &[type='checkbox']:checked + label:after,

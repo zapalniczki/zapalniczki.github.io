@@ -185,10 +185,6 @@ const routes = [
 
   {
     Component: React.lazy(() => import('pages/PageNotFound')),
-    order: 1,
-    icon: '',
-    translationKey: '',
-    admin: true,
     path: '*'
   }
 ]

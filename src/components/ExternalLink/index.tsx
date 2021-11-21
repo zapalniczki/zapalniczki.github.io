@@ -45,7 +45,7 @@ type ContainerProps = {
 
 const Container = styled.a<ContainerProps>`
   color: ${(props) =>
-    props.disabled ? getColor('gray-01')(props) : getColor('black')(props)};
+    props.disabled ? getColor('dark-color')(props) : getColor('black')(props)};
   text-decoration: none;
   cursor: ${(props) => props.disabled && 'not-allowed'};
 

@@ -35,7 +35,7 @@ const Chip = ({ children, onClick, rounded, selected, ...props }: Props) => {
       as={onClick ? 'button' : 'div'}
       backgroundColor={color}
       border={onClick ? '1px solid' : 'none'}
-      borderColor={onClick ? 'border-color-focus' : 'none'}
+      borderColor="border-color"
       borderRadius={rounded ? '5rem' : 0}
       color="white"
       justifyContent="center"

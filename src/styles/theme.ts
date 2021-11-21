@@ -1,35 +1,20 @@
 const colors = {
-  'nav-bg': '#f8f8f8',
-  'nav-bg-scrolled': '#fff',
   'background-color': '#f9f9f9',
-  'background-color-01': '#f2f2f2',
+  'banner-color': '#f2f2f2',
+  'border-color': 'rgb(225, 225, 225)',
+
   'paragraph-color': '#4a4a4a',
   'heading-color': '#1a1a1a',
-
-  'background-color-02': '#f5f5f5',
-
-  'border-color': 'rgb(225, 225, 225)',
-  'border-color-focus': '#c5c5c5',
+  'label-color': '#696868',
 
   white: 'rgb(255, 255, 255)',
   black: 'rgb(0, 0, 0)',
-  'off-black': '#303030',
-  'off-white': '#f0f0f0',
+  'dark-color': '#3a3a3a',
 
   red: 'rgba(247, 45, 45, 0.986)',
   green: '#3b9620',
   yellow: 'rgb(228, 165, 31)',
   'yellow-outline': 'rgb(255, 221, 0)',
-
-  'gray-01': '#3a3a3a',
-  'gray-10': '#818181',
-  'gray-20': '#b6b6b6',
-
-  'button-color': '#101010',
-  'button-hover': '#101010',
-
-  'color-success': '#000',
-  'label-color': '#696868',
 
   'braty-red': '#e6070f',
   'christmas-red': 'rgb(184, 0, 0)'
@@ -48,6 +33,7 @@ const zIndices = {
 
 const fontSizes = {
   baseFontSize: '1.6rem',
+
   'font-small': '1.2rem',
   'font-medium': '1.5rem',
   'font-large': '2rem',
@@ -89,8 +75,6 @@ const fontWeigths = {
 }
 
 const space = {
-  'nav-height': '6rem',
-
   'xxxs-size': '0.25rem',
   'xxs-size': '0.5rem',
   'xs-size': '1rem',
@@ -102,11 +86,7 @@ const space = {
   'xxxl-size': '10rem',
 
   top: '10rem',
-  'top-mobile': '8.5rem',
-  bottom: '15rem',
-  'line-height': '2.4rem',
-
-  'pad-desktop': '10rem'
+  bottom: '15rem'
 }
 
 export const breakpoints = {

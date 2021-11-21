@@ -36,7 +36,7 @@ const Dot = styled.div<DotProps>`
     if (props.status === 'UNDONE') {
       return getColor('yellow')(props)
     } else if (props.status === 'IN_PROGRESS') {
-      return getColor('gray-01')(props)
+      return getColor('dark-color')(props)
     }
 
     return getColor('green')(props)

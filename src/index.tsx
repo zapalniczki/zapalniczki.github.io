@@ -41,6 +41,7 @@ import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons/faCartArrowDo
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons/faUserAlt'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt'
 import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding'
+import { faCookieBite } from '@fortawesome/free-solid-svg-icons/faCookieBite'
 
 import i18n from 'i18n/config'
 import {
@@ -108,7 +109,8 @@ library.add(
   faCartArrowDown,
   faUserAlt,
   faBuilding,
-  faSignOutAlt
+  faSignOutAlt,
+  faCookieBite
 )
 
 export const queryClient = new QueryClient({

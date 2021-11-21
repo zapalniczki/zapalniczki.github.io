@@ -61,6 +61,7 @@ const Switch = ({
         checkedIcon={false}
         handleDiameter={diameter}
         height={height}
+        offColor={colors['banner-color']}
         onChange={onChange}
         onColor={colors['green']}
         uncheckedIcon={false}

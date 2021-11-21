@@ -65,7 +65,7 @@ const Container = styled(motion.nav)<ContainerProps>`
   width: 100%;
   background: ${(props) => {
     if (props.isExpanded) {
-      return getColor('nav-bg-scrolled')(props)
+      return getColor('white')(props)
     }
 
     return undefined

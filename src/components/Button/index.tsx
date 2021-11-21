@@ -64,10 +64,10 @@ type ContainerProps = SpaceProps & {
 }
 
 const Container = styled.button<ContainerProps>`
-  background: ${getColor('button-color')};
+  background: ${getColor('dark-color')};
   padding: ${getSpace('m-size')};
   border: 1px solid;
-  border-color: ${getColor('button-color')};
+  border-color: ${getColor('dark-color')};
   color: ${getColor('white')};
   position: relative;
   max-width: 100%;
@@ -77,24 +77,18 @@ const Container = styled.button<ContainerProps>`
   cursor: pointer;
   text-decoration: none;
 
-  &:hover {
-    background: ${getColor('button-hover')};
-    border: 1px solid;
-    border-color: ${getColor('button-hover')};
-  }
-
   ${(props) =>
     props.variant === 'secondary' &&
     css`
       background: transparent;
       border: 1px solid;
-      border-color: ${getColor('button-color')};
-      color: ${getColor('button-color')};
+      border-color: ${getColor('dark-color')};
+      color: ${getColor('dark-color')};
 
       &:hover {
         background: ${getColor('border-color')};
         border: 1px solid;
-        border-color: ${getColor('button-color')};
+        border-color: ${getColor('dark-color')};
       }
     `}
 

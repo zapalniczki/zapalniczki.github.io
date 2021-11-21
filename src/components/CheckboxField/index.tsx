@@ -35,7 +35,7 @@ const CheckboxField = ({
 
     <Flexbox
       alignItems="center"
-      backgroundColor="background-color-01"
+      backgroundColor="banner-color"
       marginTop={isFirst ? 'unset' : 'm-size'}
       position="relative"
     >
