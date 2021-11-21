@@ -129,8 +129,8 @@ export const StyledInput = styled.input<StyledInputProps>`
   &[type='checkbox']:checked + label:before,
   &[type='radio']:checked + label:before {
     border: 1px solid;
-    border-color: ${getColor('dark-color')};
-    background: ${getColor('dark-color')};
+    border-color: ${getColor('green')};
+    background: ${getColor('green')};
   }
 
   &[type='checkbox']:checked + label:after,
