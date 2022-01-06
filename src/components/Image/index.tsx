@@ -12,6 +12,7 @@ type Props = {
   onPointerEnter?: React.PointerEventHandler<HTMLImageElement>
   onPointerLeave?: React.PointerEventHandler<HTMLImageElement>
   size?: Size
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   src: any
   width?: number
 }
