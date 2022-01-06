@@ -25,9 +25,9 @@ const Products = () => {
   const locationStateSchema = object({
     collectionId: string().optional(),
     labelId: string().optional()
-  })
+  }).nullable()
 
-  const state: LocationState = locationStateSchema.parse(location.state)
+  const state: LocationState | null = locationStateSchema.parse(location.state)
 
   usePageTitle(t('title'))
   useScrollTop()
