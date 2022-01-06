@@ -29,7 +29,18 @@ import {
 
 import React from 'react'
 
-const routes = [
+export type Route = {
+  Component: React.LazyExoticComponent<() => JSX.Element>
+  admin?: boolean
+  end?: boolean
+  icon?: 'gift'
+  order?: number
+  path: string
+  translationKey?: string
+  user?: boolean
+}
+
+const routes: Route[] = [
   {
     Component: React.lazy(() => import('pages/Products')),
     end: true,
@@ -53,7 +64,6 @@ const routes = [
     Component: React.lazy(() => import('pages/checkout/CheckoutDelivery')),
     path: CHECKOUT_DELIVERY
   },
-
   {
     Component: React.lazy(() => import('pages/checkout/CheckoutPayment')),
     path: CHECKOUT_PAYMENT
@@ -62,35 +72,29 @@ const routes = [
     Component: React.lazy(() => import('pages/checkout/CheckoutResult')),
     path: CHECKOUT_RESULT
   },
-
   {
     Component: React.lazy(() => import('pages/Order')),
     path: ORDERS_ID
   },
-
   {
     Component: React.lazy(() => import('pages/SignIn')),
     path: SIGN_IN
   },
-
   {
     Component: React.lazy(() => import('pages/SignUp')),
     path: SIGN_UP
   },
-
   {
     Component: React.lazy(() => import('pages/Contact')),
     translationKey: 'contact',
     path: CONTACT,
     order: 6
   },
-
   {
     Component: React.lazy(() => import('pages/SignedOut')),
     translationKey: 'signedOut',
     path: SIGNED_OUT
   },
-
   {
     Component: React.lazy(() => import('pages/DeliveryAndPayments')),
     translationKey: 'deliveryAndPayments',

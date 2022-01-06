@@ -14,11 +14,12 @@ import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'
 
 import React, { useContext } from 'react'
+import { handleRoutes } from 'utils'
 
 const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
   const isAdmin = useAdmin()
-  const { christmas2021 } = useContext(remoteConfigContext)
+  const remoteConfig = useContext(remoteConfigContext)
 
   return (
     <Flexbox
@@ -43,36 +44,20 @@ const Footer = () => {
             margin="0"
             padding="0"
           >
-            {routes
-              .filter((route) => route.order)
-              .filter((route) => {
-                if (route.translationKey === 'christmas2021') {
-                  if (christmas2021) {
-                    return true
-                  }
-
-                  return false
-                }
-
-                return true
-              })
-              .sort((prev, next) =>
-                (prev?.order || 1) < (next?.order || 1) ? -1 : 1
-              )
-              .map((route) => (
-                <Box
-                  as="li"
-                  display="inline-block"
+            {handleRoutes(routes, remoteConfig, 'FOOTER').map((route) => (
+              <Box
+                as="li"
+                display="inline-block"
+                key={route.path}
+                marginY="xxs-size"
+              >
+                <Link
                   key={route.path}
-                  marginY="xxs-size"
-                >
-                  <Link
-                    key={route.path}
-                    label={commonT(`LINKS.${route.translationKey}`)}
-                    to={route.path}
-                  />
-                </Box>
-              ))}
+                  label={commonT(`LINKS.${route.translationKey}`)}
+                  to={route.path}
+                />
+              </Box>
+            ))}
           </Flexbox>
 
           {isAdmin && (

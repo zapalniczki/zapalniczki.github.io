@@ -77,7 +77,7 @@ const remoteConfigContextSchema = object({
   i18n: boolean()
 })
 
-type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>
+export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>
 
 export const remoteConfigContext = createContext<RemoteConfigContext>(init)
 
