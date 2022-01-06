@@ -37,10 +37,10 @@ const HamburgerMenu = () => {
         <Header />
 
         {handleRoutes(routes, remoteConfig, 'HAMBURGER').map(
-          ({ end, path, translationKey }) => {
+          ({ end, key, path }) => {
             const isActive = !!matchPath({ path, end }, pathname)
 
-            if (!translationKey) {
+            if (!key) {
               return null
             }
 
@@ -48,7 +48,7 @@ const HamburgerMenu = () => {
               <Box as="li" display="inline-block" key={path}>
                 <NavigationLink
                   active={isActive}
-                  label={commonT(translationKey)}
+                  label={commonT(key)}
                   onClick={closeHamburger}
                   to={path}
                 />

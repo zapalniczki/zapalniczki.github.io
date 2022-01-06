@@ -37,7 +37,6 @@ export type Route = {
   key: RouteKey
   order?: number
   path: string
-  translationKey?: string
   user?: boolean
 }
 
@@ -45,7 +44,6 @@ const routes: Route[] = [
   {
     Component: React.lazy(() => import('pages/Products')),
     end: true,
-    translationKey: 'products',
     path: PRODUCTS,
     order: 2,
     key: 'products'
@@ -97,20 +95,18 @@ const routes: Route[] = [
   },
   {
     Component: React.lazy(() => import('pages/Contact')),
-    translationKey: 'contact',
+
     path: CONTACT,
     order: 6,
     key: 'contact'
   },
   {
     Component: React.lazy(() => import('pages/SignedOut')),
-    translationKey: 'signedOut',
     path: SIGNED_OUT,
     key: 'signedOut'
   },
   {
     Component: React.lazy(() => import('pages/DeliveryAndPayments')),
-    translationKey: 'deliveryAndPayments',
     path: DELIVERY_AND_PAYMENTS,
     end: true,
     order: 5,
@@ -118,21 +114,17 @@ const routes: Route[] = [
   },
   {
     Component: React.lazy(() => import('pages/HowToCreateOrder')),
-    translationKey: 'howToCreateOrder',
     path: HOW_TO_CREATE_ORDER,
-    // order: 4,
     key: 'howToCreateOrder'
   },
   {
     Component: React.lazy(() => import('pages/Documents')),
-    translationKey: 'documents',
     path: DOCUMENTS,
     key: 'documents'
   },
 
   {
     Component: React.lazy(() => import('pages/User')),
-    translationKey: 'customer',
     path: USER,
     user: true,
     key: 'customer'
@@ -140,7 +132,6 @@ const routes: Route[] = [
 
   {
     Component: React.lazy(() => import('pages/Christmas2021')),
-    translationKey: 'christmas2021',
     path: CHRISTMAS_2021,
     order: 3,
     icon: 'gift',
@@ -149,7 +140,6 @@ const routes: Route[] = [
 
   {
     Component: React.lazy(() => import('pages/ValentinesDay')),
-    translationKey: 'valentinesDay',
     path: VALENTINES_DAY,
     order: 3,
     icon: 'heart',
@@ -159,49 +149,42 @@ const routes: Route[] = [
   {
     Component: React.lazy(() => import('pages/AdminOrders')),
     admin: true,
-    translationKey: 'adminOrders',
     path: ADMIN_ORDERS,
     key: 'adminOrders'
   },
   {
     Component: React.lazy(() => import('pages/AdminIcons')),
     admin: true,
-    translationKey: 'adminIcons',
     path: ADMIN_ICONS,
     key: 'adminIcons'
   },
   {
     Component: React.lazy(() => import('pages/AdminLabels')),
     admin: true,
-    translationKey: 'adminLabels',
     path: ADMIN_LABELS,
     key: 'adminLabels'
   },
   {
     Component: React.lazy(() => import('pages/AdminCallbacks')),
     admin: true,
-    translationKey: 'adminCallbacks',
     path: ADMIN_CALLBACKS,
     key: 'adminCallbacks'
   },
   {
     Component: React.lazy(() => import('pages/AdminDeliveryTypes')),
     admin: true,
-    translationKey: 'adminDeliveryTypes',
     path: ADMIN_DELIVERY_TYPES,
     key: 'adminDeliveryTypes'
   },
   {
     Component: React.lazy(() => import('pages/AdminPaymentTypes')),
     admin: true,
-    translationKey: 'adminPaymentTypes',
     path: ADMIN_PAYMENT_TYPES,
     key: 'adminPaymentTypes'
   },
 
   {
     Component: React.lazy(() => import('pages/AdminMolds')),
-    translationKey: 'adminMolds',
     admin: true,
     path: ADMIN_MOLDS,
     key: 'adminMolds'
@@ -210,7 +193,6 @@ const routes: Route[] = [
   {
     Component: React.lazy(() => import('pages/Home')),
     end: true,
-    translationKey: 'home',
     path: HOME,
     order: 1,
     key: 'home'

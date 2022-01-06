@@ -53,7 +53,7 @@ const Footer = () => {
               >
                 <Link
                   key={route.path}
-                  label={commonT(`LINKS.${route.translationKey}`)}
+                  label={commonT(`LINKS.${route.key}`)}
                   to={route.path}
                 />
               </Box>
@@ -79,7 +79,7 @@ const Footer = () => {
                     marginY="xxs-size"
                   >
                     <Link
-                      label={commonT(`LINKS.${route.translationKey}`)}
+                      label={commonT(`LINKS.${route.key}`)}
                       to={route.path}
                     />
                   </Box>

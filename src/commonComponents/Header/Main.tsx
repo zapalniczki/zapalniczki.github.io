@@ -21,10 +21,10 @@ const Main = () => {
   return (
     <Flexbox as="ul" flexGrow={1} marginX="m-size" marginY="0" paddingLeft={0}>
       {handleRoutes(routes, remoteConfig, 'MENU').map(
-        ({ end, icon, path, translationKey }) => {
+        ({ end, icon, key, path }) => {
           const isActive = !!matchPath({ path, end }, pathname)
 
-          if (!translationKey) {
+          if (!key) {
             return null
           }
 
@@ -33,7 +33,7 @@ const Main = () => {
               <NavigationLink
                 active={isActive}
                 icon={icon as IconName}
-                label={commonT(translationKey)}
+                label={commonT(key)}
                 to={path}
               />
             </Box>
