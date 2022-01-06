@@ -18,7 +18,8 @@ const CheckoutResult = () => {
   const { t } = useTranslation('CHECKOUT_RESULT')
   const isDesktop = useBreakpoints('desktop')
 
-  const { state }: { state: CheckoutResultLocationState } = useLocation()
+  const location = useLocation()
+  const state: CheckoutResultLocationState = location.state
   const navigate = useNavigate()
 
   usePageTitle(t('title'))
