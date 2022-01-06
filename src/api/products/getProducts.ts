@@ -63,7 +63,7 @@ mold: ${MOLDS_TABLE} (
   status
 ),
 icon: ${ICONS_TABLE} (
-  label
+  label_pl
 ),
 label: ${LABELS_TABLE} (
   label

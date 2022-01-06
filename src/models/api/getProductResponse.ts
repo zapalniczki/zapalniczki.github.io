@@ -1,4 +1,4 @@
-import { image, mold, product, icon } from 'models'
+import { image, mold, product, icon, label } from 'models'
 import { array, TypeOf } from 'zod'
 
 const getProductResponse = product
@@ -11,8 +11,8 @@ const getProductResponse = product
   })
   .extend({
     images: array(image),
-    icon: icon.pick({ id: true, label: true }),
-    label: icon.pick({ id: true, label: true }),
+    icon: icon.pick({ id: true, label_pl: true }),
+    label: label.pick({ id: true, label: true }),
     mold: mold.pick({
       id: true,
       status: true

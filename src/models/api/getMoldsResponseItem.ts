@@ -9,7 +9,7 @@ const getMoldsResponseItem = mold
     status: true
   })
   .extend({
-    icon: icon.pick({ label: true }),
+    icon: icon.pick({ label_pl: true }),
     label: label.pick({ label: true })
   })
 

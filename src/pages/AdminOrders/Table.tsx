@@ -128,7 +128,7 @@ const shapeData = (
           const productName = getProductName(
             t('productNameBase'),
             product.product.label.label,
-            product.product.icon.label
+            product.product.icon.label_pl
           )
 
           return (
@@ -153,7 +153,7 @@ const shapeData = (
           const productName = getProductName(
             t('productNameBase'),
             product.product.label.label,
-            product.product.icon.label
+            product.product.icon.label_pl
           )
 
           return (

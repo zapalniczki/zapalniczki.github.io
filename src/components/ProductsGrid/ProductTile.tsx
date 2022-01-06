@@ -35,7 +35,7 @@ const ProductTile = ({ product }: Props) => {
   const productName = getProductName(
     commonT('productNameBase'),
     product.label.label,
-    product.icon.label
+    product.icon.label_pl
   )
 
   return (

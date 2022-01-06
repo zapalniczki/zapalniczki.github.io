@@ -26,18 +26,18 @@ const Condition = ({
 
         <Flexbox flexWrap="wrap" gap="xs-size" paddingY="xxs-size">
           {data
-            .sort((prev, next) => (prev.label < next.label ? -1 : 1))
+            .sort((prev, next) => (prev.label_pl < next.label_pl ? -1 : 1))
             .map((elem) => {
               const isSelected = elem.id === selectedItem
 
               return (
                 <Chip
-                  key={elem.label}
+                  key={elem.label_pl}
                   onClick={() => selectItem(isSelected ? undefined : elem.id)}
                   rounded
                   selected={isSelected}
                 >
-                  {elem.label}
+                  {elem.label_pl}
                 </Chip>
               )
             })}

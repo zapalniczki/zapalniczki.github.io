@@ -23,7 +23,7 @@ const Images = ({ product }: Props) => {
   const productName = getProductName(
     commonT('productNameBase'),
     product.label.label,
-    product.icon.label
+    product.icon.label_pl
   )
   const width = '60%'
 

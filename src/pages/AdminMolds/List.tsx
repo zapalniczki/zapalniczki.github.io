@@ -66,7 +66,7 @@ const shapeData = (data: GetMoldsResponseItem[], t: TranslateFunc) =>
     updated_at: formatDate(record.updated_at),
     status: record.status ? t(`MOLD_STATUSES.${record.status}`) : '-',
     label: record.label.label,
-    icon: record.icon.label,
+    icon: record.icon.label_pl,
     edit: <EditModal id={record.id} status={record.status ?? 'IN_PROGRESS'} />
   }))
 

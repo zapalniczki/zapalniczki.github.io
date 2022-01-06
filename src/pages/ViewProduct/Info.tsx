@@ -17,7 +17,7 @@ const Info = ({ product }: Props) => {
   const productName = getProductName(
     commonT('productNameBase'),
     product.label.label,
-    product.icon.label
+    product.icon.label_pl
   )
 
   return (
@@ -43,7 +43,7 @@ const Info = ({ product }: Props) => {
 
       <Detail label={t('label')} value={product.label.label} />
 
-      <Detail label={t('icon')} value={product.icon.label} />
+      <Detail label={t('icon')} value={product.icon.label_pl} />
 
       <Detail label={t('color')} value={t('colorValueTODO')} />
 

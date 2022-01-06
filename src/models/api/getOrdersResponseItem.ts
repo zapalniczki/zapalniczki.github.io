@@ -40,7 +40,7 @@ const getOrdersResponseItem = order
               label: true
             }),
             icon: icon.pick({
-              label: true
+              label_pl: true
             })
           })
         })

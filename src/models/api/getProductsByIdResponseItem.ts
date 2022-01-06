@@ -19,7 +19,7 @@ const getProductsByIdResponseItem = product
       status: true
     }),
     icon: icon.pick({
-      label: true
+      label_pl: true
     }),
     label: label.pick({
       label: true

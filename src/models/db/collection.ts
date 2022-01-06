@@ -2,7 +2,7 @@ import tableBase from './tableBase'
 import { boolean, string, TypeOf } from 'zod'
 
 const collection = tableBase.extend({
-  label: string(),
+  label_pl: string(),
   visible: boolean()
 })
 

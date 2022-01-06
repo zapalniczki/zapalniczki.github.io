@@ -2,7 +2,7 @@ import { boolean, string, TypeOf } from 'zod'
 import tableBase from './tableBase'
 
 const icon = tableBase.extend({
-  label: string(),
+  label_pl: string(),
   visible: boolean()
 })
 

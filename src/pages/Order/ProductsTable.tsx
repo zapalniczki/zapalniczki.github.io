@@ -104,7 +104,7 @@ const shapeData = (
     const productName = getProductName(
       t('productNameBase'),
       product.label.label,
-      product.icon.label
+      product.icon.label_pl
     )
 
     return {

@@ -31,7 +31,7 @@ export const getProduct = async (params: Params) => {
         status
       ),
       icon: ${ICONS_TABLE} (
-        label,
+        label_pl,
         id
       ),
       label: ${LABELS_TABLE} (

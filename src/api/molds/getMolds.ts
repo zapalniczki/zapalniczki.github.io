@@ -16,7 +16,7 @@ export const getMolds = async () => {
         label
       ),
       icon: ${ICONS_TABLE}!icon_id (
-        label
+        label_pl
       )
       `
     )
