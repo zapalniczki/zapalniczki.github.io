@@ -51,6 +51,7 @@ const init: RemoteConfigContext = {
   signIn: false,
   signUp: false,
   signedOut: false,
+  snow: false,
   viewProduct: true
 }
 
@@ -65,7 +66,7 @@ const RemoteConfigProvider = ({ children }: Props) => {
     async function start() {
       const remoteConfig = getRemoteConfig()
       remoteConfig.settings = {
-        minimumFetchIntervalMillis: 1,
+        minimumFetchIntervalMillis: 3600000,
         fetchTimeoutMillis: 6000
       }
 
@@ -91,8 +92,6 @@ const RemoteConfigProvider = ({ children }: Props) => {
     start()
   }, [])
 
-  console.log(config)
-
   return (
     <remoteConfigContext.Provider value={config}>
       {children}
@@ -101,34 +100,35 @@ const RemoteConfigProvider = ({ children }: Props) => {
 }
 
 const remoteConfigContextSchema = object({
-  christmas2021: boolean(),
-  i18n: boolean(),
-  deliveryAndPayments: boolean(),
-  products: boolean(),
-  viewProduct: boolean(),
-  cart: boolean(),
-  checkoutDetails: boolean(),
-  checkoutDelivery: boolean(),
-  checkoutPayment: boolean(),
-  checkoutResult: boolean(),
-  order: boolean(),
-  signIn: boolean(),
-  signUp: boolean(),
-  contact: boolean(),
-  signedOut: boolean(),
-  howToCreateOrder: boolean(),
-  documents: boolean(),
-  customer: boolean(),
-  christmas: boolean(),
-  adminOrders: boolean(),
-  adminIcons: boolean(),
-  adminLabels: boolean(),
+  _404: boolean(),
   adminCallbacks: boolean(),
   adminDeliveryTypes: boolean(),
-  adminPaymentTypes: boolean(),
+  adminIcons: boolean(),
+  adminLabels: boolean(),
   adminMolds: boolean(),
+  adminOrders: boolean(),
+  adminPaymentTypes: boolean(),
+  cart: boolean(),
+  checkoutDelivery: boolean(),
+  checkoutDetails: boolean(),
+  checkoutPayment: boolean(),
+  checkoutResult: boolean(),
+  christmas2021: boolean(),
+  christmas: boolean(),
+  contact: boolean(),
+  customer: boolean(),
+  deliveryAndPayments: boolean(),
+  documents: boolean(),
   home: boolean(),
-  _404: boolean()
+  howToCreateOrder: boolean(),
+  i18n: boolean(),
+  order: boolean(),
+  products: boolean(),
+  signIn: boolean(),
+  signUp: boolean(),
+  signedOut: boolean(),
+  snow: boolean(),
+  viewProduct: boolean()
 })
 
 export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>

@@ -1,5 +1,6 @@
 import { usePageView } from 'hooks'
-import React, { ReactNode, useEffect } from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { ReactNode, useContext, useEffect } from 'react'
 import { matchPath, useLocation } from 'react-router-dom'
 import Snowfall from 'react-snowfall'
 import styled from 'styled-components'
@@ -13,6 +14,7 @@ type Props = {
 } & FlexboxProps
 
 const Page = ({ children, ...props }: Props) => {
+  const { snow } = useContext(remoteConfigContext)
   const { pathname } = useLocation()
   const isProductsPage = matchPath({ path: '/products' }, pathname)
   const triggerPageView = usePageView()
@@ -25,7 +27,7 @@ const Page = ({ children, ...props }: Props) => {
     <Container as="main">
       <MaxWidth {...props}>{children}</MaxWidth>
 
-      {!isProductsPage && (
+      {snow && !isProductsPage && (
         <Snowfall
           color="white"
           radius={[1, 7.5]}
