@@ -101,8 +101,8 @@ const routes = [
   {
     Component: React.lazy(() => import('pages/HowToCreateOrder')),
     translationKey: 'howToCreateOrder',
-    path: HOW_TO_CREATE_ORDER,
-    order: 4
+    path: HOW_TO_CREATE_ORDER
+    // order: 4
   },
   {
     Component: React.lazy(() => import('pages/Documents')),

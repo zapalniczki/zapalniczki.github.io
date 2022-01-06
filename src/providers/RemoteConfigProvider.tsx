@@ -24,7 +24,8 @@ import {
 import { boolean, object, TypeOf } from 'zod'
 
 const init: RemoteConfigContext = {
-  christmas2021: false
+  christmas2021: false,
+  i18n: false
 }
 
 type Props = {
@@ -72,7 +73,8 @@ const RemoteConfigProvider = ({ children }: Props) => {
 }
 
 const remoteConfigContextSchema = object({
-  christmas2021: boolean()
+  christmas2021: boolean(),
+  i18n: boolean()
 })
 
 type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>

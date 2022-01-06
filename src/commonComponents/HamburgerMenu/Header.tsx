@@ -1,14 +1,11 @@
-import React, { useContext, useEffect } from 'react'
-import { Flexbox, Button, Text, Separator } from 'components'
-import { useModalView, useTranslation } from 'hooks'
-
-import { togglesContext } from 'providers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, Flexbox, Separator } from 'components'
+import { useModalView } from 'hooks'
+import { togglesContext } from 'providers'
+import React, { useContext, useEffect } from 'react'
 
 const Header = () => {
-  const commonT = useTranslation('COMMON').withBase('HAMBURGER_MENU')
   const { closeHamburger } = useContext(togglesContext)
-
   const triggerModalView = useModalView('hamburgerMenu')
 
   useEffect(() => {
@@ -22,11 +19,7 @@ const Header = () => {
       width="100%"
       zIndex={70}
     >
-      <Flexbox alignItems="center" padding="s-size">
-        <Text marginRight="auto" type="subtitle-1">
-          {commonT('title')}
-        </Text>
-
+      <Flexbox alignItems="center" justifyContent="flex-end" padding="s-size">
         <Button
           onClick={closeHamburger}
           size="small"

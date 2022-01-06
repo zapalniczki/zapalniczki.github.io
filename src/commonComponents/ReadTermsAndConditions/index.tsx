@@ -6,6 +6,8 @@ import { useTranslation } from 'hooks'
 const ReadTermsAndConditions = () => {
   const commonT = useTranslation('COMMON').withBase('READ_TERMS_AND_CONDITIONS')
 
+  return null
+
   return (
     <BannerWithTitleAndLink
       link={{

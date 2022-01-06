@@ -17,6 +17,10 @@ const Newsletter = () => {
   let title = commonT('NEWSLETTER.FORM.title')
   let subtitle = commonT('NEWSLETTER.FORM.subtitle')
 
+  if (title) {
+    return null
+  }
+
   let content: JSX.Element | null = (
     <Formik
       initialValues={initialValues}

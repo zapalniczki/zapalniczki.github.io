@@ -1,3 +1,5 @@
+import { LanguageKeys } from './pl'
+
 const phoneNumer = '+48 792 531 179'
 const companyName = 'Braty'
 const fullCompanyName = `${companyName} Przemysław Rychlewicz`
@@ -6,17 +8,17 @@ const nrb = '31 1140 2004 0000 3402 8090 0648'
 const bankName = 'mBank S.A.'
 export const email = `kontakt@${domain}`
 
-const pl = {
+const en: LanguageKeys = {
   COMMON: {
     COOKIES_CONSENT: {
-      agree: 'Rozumiem',
+      agree: 'I understand',
       info: 'Strona braty.co używa plików cookies. Dowiedz się więcej o celu ich używania i zmianie ustawień cookies w przeglądarce.\nKorzystając ze strony wyrażasz zgodę na używanie cookies, zgodnie z aktualnymi ustawieniami przeglądarki.'
     },
 
     ERRORS: {
-      23505: 'Podany adres e-mail jest już zarejestrowany',
-      'Invalid login credentials': 'Nieprawidłowa nazwa użytkownika lub hasło',
-      default: `Nieoczekiwany błąd. Próbuj ponownie lub zadzwoń na ${phoneNumer}.`
+      23505: 'Given email address is already registered',
+      'Invalid login credentials': 'Invalid username or password',
+      default: `Unexpected error. Try again or send us an email to${email}.`
     },
 
     CONTACT_DETAILS: {
@@ -32,33 +34,33 @@ const pl = {
     },
 
     LINKS: {
-      home: 'Strona Główna',
-      products: 'Produkty',
-      howToCreateOrder: 'Jak złożyć zamówienie',
-      deliveryAndPayments: 'Dostawa i płatności',
-      contact: 'Kontakt',
-      orders: 'Zamówienia',
-      documents: 'Dokumenty',
-      christmas2021: 'Oferta Świąteczna',
+      home: 'Home',
+      products: 'Products',
+      howToCreateOrder: 'How to order',
+      deliveryAndPayments: 'Delivery and payments',
+      contact: 'Contact',
+      orders: 'Orders',
+      documents: 'Terms and conditions',
+      christmas2021: 'Christmas Offer',
 
-      adminOrders: 'Zamówienia',
-      adminNewsletterUsers: 'Użytkownicy newslettera',
-      adminCallbacks: 'Prośby o kontakt',
-      adminDeliveryTypes: 'Metody dostawy',
-      adminPaymentTypes: 'Metody płatności',
-      adminMolds: 'Matryce',
-      adminIcons: 'Ikony',
-      adminLabels: 'Etykiety'
+      adminOrders: 'Orders',
+      adminNewsletterUsers: 'Newsletter users',
+      adminCallbacks: 'Contact request',
+      adminDeliveryTypes: 'Delivery methods',
+      adminPaymentTypes: 'Payments methods',
+      adminMolds: 'Molds',
+      adminIcons: 'Icons',
+      adminLabels: 'Labels'
     },
 
     QUERY_LOADER: {
-      loading: 'ładowanie...'
+      loading: 'loading...'
     },
 
     CAROUSEL: {
       arrows: {
-        prev: 'Poprzedni banner',
-        next: 'Następny banner'
+        prev: 'Previous slide',
+        next: 'Next slide'
       }
     },
 
@@ -137,33 +139,33 @@ const pl = {
     },
 
     FOOTER: {
-      allRightsReserved: `© {{year}} ${companyName} - Wszelkie prawa zastrzeżone`
+      allRightsReserved: `© {{year}} ${companyName} - All Rights Reserved`
     },
 
     checkoutSteps: {
-      1: 'Faktura',
-      2: 'Dostawa',
-      3: 'Płatność'
+      1: 'Invoice',
+      2: 'Delivery',
+      3: 'Payment'
     },
 
     CHECKOUT_TOTAL: {
-      title: 'Podsumowanie',
-      goToCheckout: 'Przejdź do kasy',
-      goToDelivery: 'Przejdź do dostawy',
-      goToPayment: 'Przejdź do płatności',
-      createOrder: 'Zamawiam i płacę',
+      title: 'Summary',
+      goToCheckout: 'Go to checkout',
+      goToDelivery: 'Go to delivery',
+      goToPayment: 'Go to payment',
+      createOrder: 'Confirm order',
 
-      products: 'Cena produktów',
-      delivery: 'Dostawa',
-      payment: 'Płatność',
-      discount: 'Obniżka',
-      total: 'Łącznie do zapłaty',
-      vat: '(w tym VAT)'
+      products: 'Products price',
+      delivery: 'Delivery',
+      payment: 'Payment',
+      discount: 'Discount',
+      total: 'Total',
+      vat: '(including TAX)'
     },
 
     customerTypes: {
-      INDIVIDUAL: 'Klient indywidualny',
-      COMPANY: 'Firma'
+      INDIVIDUAL: 'Individual client',
+      COMPANY: 'Company'
     },
 
     MOLD_STATUSES: {
@@ -184,30 +186,29 @@ const pl = {
     },
 
     STATUS_MEANINGS: {
-      OPEN: 'Co oznacza, że zamówienie zostało niedawno złożone i oczekuje na potwierdzenie czasu realizacji zamówienia.',
+      OPEN: 'What means that the order has been recently created and it is awaiting for confirmation.',
       CONFIRMED:
-        'Co oznacza, ze zamówienie zostało potwierdzone i oczekujemy na wpłatę środków.',
+        'What means that the order has been confirmed and we are awaitng for payment.',
       PAYMENT_RECEIVED:
-        'Co oznacza, że otrzymaliśmy środki i niebawem przystąpimy do jego realizacji.',
-      PRODUCTION: 'Co oznacza, że zamówienie jest realizowane właśnie teraz.',
+        'What means that we received payment and soon we will start preapring the order.',
+      PRODUCTION: 'What means that the order is currenly beeing prepared.',
       AWAITING_FOR_PICKUP:
-        'Co oznacza, że zamówienie zostało skompletowane i oczekuje na kuriera.',
-      IN_DELIVERY: 'Co oznacza, że zamówienie jest w drodze.',
-      COMPLETED:
-        'Co oznacza, że zamówienie zostało skompletowane i dostarczone.',
-      REJECTED: 'Co oznacza, że zamówienie nie będzie realizowane'
+        'What means that the order has been prepared and it is awaiting for delivery.',
+      IN_DELIVERY: 'What means that the order is beeing delivered.',
+      COMPLETED: 'What means that the order has been delivered.',
+      REJECTED: 'What means that the order will not be completed.'
     },
 
     BASKET: {
-      clear: 'Wyczyść',
-      empty: 'Koszyk jest pusty',
-      title: 'Koszyk',
-      total: 'Cena produktów',
-      checkout: 'Złóż zamówienie',
-      products: '({{count}} produkt)',
-      products_plural: '({{count}} produkty)',
-      products_multiple: '({{count}} produktów)',
-      each: 'pudełko'
+      clear: 'Clear',
+      empty: 'Basket is empty',
+      title: 'Basket',
+      total: 'Products price',
+      checkout: 'Checkout now',
+      products: '({{count}} product)',
+      products_plural: '({{count}} products)',
+      products_multiple: '({{count}} products)',
+      each: 'box'
     },
 
     HAMBURGER_MENU: {
@@ -243,7 +244,7 @@ const pl = {
 
     VALIDATIONS: {
       VOUCHER_ID: {
-        length: 'Kod rabatowy powinień mieć 36 znaków'
+        length: 'Promotion code should include 36 characters'
       },
       PRODUCT_QUANTITY: {
         required: 'error',
@@ -251,10 +252,10 @@ const pl = {
         max: 'error'
       },
       DELIVERY_TYPE: {
-        required: 'Wybierz aby przejść dalej'
+        required: 'Select one to go ahead'
       },
       PAYMENT_TYPE: {
-        required: 'Wybierz aby przejść dalej'
+        required: 'Select one to go ahead'
       },
       STREET_ADDRESS: {
         required: 'Proszę podać adres'
@@ -273,10 +274,10 @@ const pl = {
         required: 'Proszę podać kod pocztowy'
       },
       FULL_NAME: {
-        required: 'Proszę podać imię i nazwisko'
+        required: 'Name and surname are required'
       },
       COMPANY: {
-        required: 'Proszę podać nazwę firmy'
+        required: 'Company name is required'
       },
       EMAIL: {
         email: 'Wprowadzony email jest niepoprawny',
@@ -288,8 +289,8 @@ const pl = {
           'Numer telefonu powinien składać się z numeru kierunkowego (48) i 9 cyfr'
       },
       ORDER_ID: {
-        required: 'Proszę podać numer referencyjny zamówienia',
-        length: 'Numer referencyjny zamówienia powinien składać się z 36 znaków'
+        required: 'Order reference number in required',
+        length: 'Order reference number should have 36 characters'
       },
       PASSWORD: {
         required: 'Proszę podać hasło',
@@ -315,18 +316,18 @@ const pl = {
         placeholder: ''
       },
       VOUCHER_ID: {
-        label: 'Kod rabatowy',
+        label: 'Promotion code',
         placeholder: 'placeholder'
       },
       SUBMIT: {
-        label: 'Sprawdź'
+        label: 'Send'
       },
       PAYMENT_TYPE: {
-        label: 'Wybierz sposób płatności'
+        label: 'Select payment method'
       },
 
       DELIVERY_TYPE: {
-        label: 'Wybierz sposób dostawy'
+        label: 'Select delivery method'
       },
       FULL_NAME: {
         label: 'Imię i nazwisko',
@@ -365,8 +366,8 @@ const pl = {
         placeholder: ''
       },
       ORDER_ID: {
-        label: 'Numer referencyjny zamówienia',
-        placeholder: 'Znajduje się w tytule każdej wiadomości email'
+        label: 'Order reference number',
+        placeholder: 'It is included in the subject of every email'
       },
       PASSWORD: {
         label: 'Hasło',
@@ -443,86 +444,85 @@ const pl = {
   },
 
   HOME: {
-    title: 'Strona Główna',
+    title: 'Home',
 
     FEATURED: {
-      title: 'Nowości'
+      title: 'Featured'
     },
 
     bestsellers: {
-      title: 'Bestsellery',
-      linkLabel: 'Zobacz wszystkie'
+      title: 'Bestsellers',
+      linkLabel: 'See all'
     },
 
     CHRISTMAS_2021: {
-      title: 'Święta',
-      linkLabel: 'Zobacz wszystkie'
+      title: 'Christmas',
+      linkLabel: 'See all'
     },
 
     NEW_YEARS_EVE_2022: {
-      title: 'Nowy Rok',
-      linkLabel: 'Zobacz wszystkie'
+      title: "New Year's Eve",
+      linkLabel: 'See all'
     }
   },
 
   CART: {
-    title: 'Koszyk',
-    emptyState:
-      'Koszyk jest pusty. Dodaj produkty do koszyka i wróć tutaj później.'
+    title: 'Basket',
+    emptyState: 'Basket is empty. Add products and come back here later.'
   },
 
   CHECKOUT_DETAILS: {
-    back: 'Wróć do koszyka',
-    title: 'Faktura'
+    back: 'Go back to basket',
+    title: 'Invoice'
   },
 
   CHECKOUT_DELIVERY: {
-    back: 'Wróć do faktury',
-    title: 'Dostawa',
-    sameAddress: 'Dostawa pod inny adres'
+    back: 'Go back to invoice',
+    title: 'Delivery',
+    sameAddress: 'Shipping address is different than invoice address'
   },
 
   CHECKOUT_PAYMENT: {
-    back: 'Wróć do dostawy',
-    title: 'Płatność',
+    back: 'Go back do delivery',
+    title: 'Payment',
     voucher: {
-      applyVoucher: 'Wykorzystaj kod',
-      error: 'Kod jest nieprawidłowy',
-      successToastMessage: 'Kod został zaakceptowany'
+      applyVoucher: 'Apply a Promotion Code',
+      error: 'It is not a valid promo code',
+      successToastMessage: 'Promo code has been accepted'
     }
   },
 
   CHECKOUT_RESULT: {
-    title: 'Zamówienie zostało złożone',
+    title: 'Order has been successfully created',
     PAYMENT_INFO: {
       short:
-        'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem, w której znajdziesz informacje potrzebne do płatności. Po zaksięgowaniu środków na koncie, poinformujemy Cię o tym i przystąpimy do realizacji zamówienia.',
-      long: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Skontaktujemy się z Tobą w następnym dniu roboczym i potwierdzimy czas realizacji zamówienia.'
+        'To given email address we have just sent a message with confirmation in which you will find payment information. After we receive found, we will inform you about it and start completing the order.',
+      long: 'To given email address we have just sent a message with confirmation. We will contact you within next business day and confirm order preparation time.'
     },
     actions: {
-      backToHome: 'Wróć na stronę główną',
-      seeOrder: 'Zobacz zamówienie'
+      backToHome: 'Go to home page',
+      seeOrder: 'View order'
     }
   },
 
   PRODUCTS: {
-    title: 'Produkty',
-    showAllLabel: 'Pokaż wszystkie',
+    title: 'Products',
+    showAllLabel: 'See all',
 
     FILTERS: {
-      title: 'Wyszukaj swój produkt',
-      searchPlaceholder: 'Wpisz nazwę produktu, miejscowość lub ikonę',
-      collections: 'Kolekcje',
-      icons: 'Ikony',
-      search: 'Szukaj',
-      clear: 'Wyczyść'
+      title: 'Search your product',
+      searchPlaceholder: 'Type product name, label or icon',
+      collections: 'Collections',
+      icons: 'Icons',
+      search: 'Search',
+      clear: 'Clear'
     }
   },
 
   PAGE_NOT_FOUND: {
     title: '404',
-    heading: 'Ups! Nie znaleziono strony',
-    buttonLabel: 'Przejdź na stronę główną'
+    heading: "Ups! Pge wasn't found",
+    buttonLabel: 'Go to home'
   },
 
   USER: {
@@ -536,37 +536,37 @@ const pl = {
   VIEW_PRODUCT: {
     title: '{{productName}}',
 
-    icon: 'ikona',
-    label: 'napis',
-    color: 'kolor',
-    colorValueTODO: 'drewno mix',
+    icon: 'icon',
+    label: 'label',
+    color: 'color',
+    colorValueTODO: 'wood mix',
 
-    priceSubtitle: 'Cena za 1 pudełko (50 sztuk) - zawiera 23% VAT',
+    priceSubtitle: 'Price for 1 box (50 inside) - including 23% TAX',
     avilability: {
-      DONE: 'Produkt łatwo dostępny',
-      IN_PROGRESS: 'Produkt dostępny',
-      UNDONE: 'Produkt średnio dostępny'
+      DONE: 'Product easily available',
+      IN_PROGRESS: 'Product available',
+      UNDONE: 'Product moderately available'
     },
 
-    boxes: 'pudełko',
-    boxes_plural: 'pudełka',
-    boxes_multiple: 'pudełek',
+    boxes: 'box',
+    boxes_plural: 'boxes',
+    boxes_multiple: 'boxes',
 
     actions: {
-      goBack: 'Wróć',
-      addToBasket: 'Dodaj do koszyka',
-      inBasket: 'Produkt w koszyku',
-      updateInBasket: 'Zaktualizuj koszyk'
+      goBack: 'Go back',
+      addToBasket: 'Add to basket',
+      inBasket: 'Product inside basket',
+      updateInBasket: 'Update basket'
     },
 
     OTHER_ICONS: {
-      title: 'Inne ikony',
-      linkLabel: 'Zobacz wszystkie'
+      title: 'Other icons',
+      linkLabel: 'See all'
     },
 
     OTHER_LABELS: {
-      title: 'Inne napisy',
-      linkLabel: 'Zobacz wszystkie'
+      title: 'Other labels',
+      linkLabel: 'See all'
     }
   },
 
@@ -690,61 +690,61 @@ const pl = {
   },
 
   CONTACT: {
-    title: 'Kontakt',
+    title: 'Contact',
     items: {
       CHECK_STATUS: {
-        title: 'Sprawdź status zamówienia',
+        title: 'Check order status',
         result: {
-          tryNew: 'Sprawdź kolejne',
-          seeOrder: 'Zobacz zamówienie'
+          tryNew: 'Check another one',
+          seeOrder: 'View order'
         },
         error: {
-          title: 'Podany numer referencyjny nie został znaleziony',
-          info: 'Sprawdź podany numer i spróbuj jeszcze raz.',
-          tryAgain: 'Spróbuj ponownie'
+          title: "Given reference number wasn't found",
+          info: 'Check this number and try again',
+          tryAgain: 'Try again'
         }
       },
 
       EMAIL: {
         title: 'E-mail',
-        info: 'Kontakt w sprawie zamówień',
+        info: 'Orders and other enquiries',
         email: email,
-        link: `mailto:${email}?subject=Kontakt ze strony internetowej`
+        link: `mailto:${email}?subject=Enquiry from website`
       },
 
       DOWNLOAD_INVOICE: {
-        title: 'Pobierz fakturę',
+        title: 'Download invoice',
         result: {
-          title: 'Faktura jest gotowa do pobrania',
-          info: 'Dokument możesz obejrzeć odwiedzając poniższy link',
-          new: 'Sprawdź kolejną',
-          followLink: 'Przejdź do faktury'
+          title: 'Invoice is ready to download',
+          info: 'You can view document following link below',
+          new: 'Try another one',
+          followLink: 'See invoice'
         },
         error: {
-          title: 'Faktura nie jest gotowa',
-          info: `Dla podanego numeru referencyjnego nie znaleźliśmy faktury. Sprawdź podany numer i spróbuj jeszcze raz.`,
-          new: 'Spróbuj ponownie'
+          title: 'Invoice is not ready',
+          info: "For given reference number, we couldn't find any invoice. Check it and try again.",
+          new: 'Try again'
         }
       },
 
       ADDRESS: {
-        title: 'Adres',
-        info: 'Wymiany, zwroty i odbiór osobisty',
+        title: 'Address',
+        info: 'Exchanges, refunds and pickup in person',
         address1: fullCompanyName,
-        address2: 'ul. Bora-Komorowskiego 12/1',
+        address2: 'Bora-Komorowskiego Street, 12/1',
         address3: '80-366 Gdańsk',
-        address4: 'Polska'
+        address4: 'Poland'
       },
 
       PHONE: {
-        title: 'Telefon',
-        info: 'Czynne od poniedziałku do piątku, w godzinach 9:00 do 17:00.',
+        title: 'Telephone',
+        info: 'Open for enquiries Monday to Friday between 9:00 and 17:00',
         mobile: phoneNumer
       },
 
       ACCOUNT: {
-        title: 'Numer konta',
-        info: 'Do wpłat',
+        title: 'Bank account number',
+        info: 'For ',
         nrb: nrb,
         info2: `Nazwa banku: ${bankName}`,
         info3: 'Tytuł: Numer referencyjny zamówienia'
@@ -903,6 +903,4 @@ const pl = {
   }
 }
 
-export type LanguageKeys = typeof pl
-
-export default pl
+export default en

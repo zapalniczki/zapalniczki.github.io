@@ -6,6 +6,8 @@ import { useTranslation } from 'hooks'
 const ReadPrivacyPolicy = () => {
   const commonT = useTranslation('COMMON').withBase('READ_PRIVACY_POLICY')
 
+  return null
+
   return (
     <BannerWithTitleAndLink
       link={{
