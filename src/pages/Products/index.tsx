@@ -12,6 +12,7 @@ import debounce from 'lodash.debounce'
 import React, { useMemo, useState } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import { useLocation } from 'react-router-dom'
+import { object, string } from 'zod'
 import Filters from './Filters'
 
 const Products = () => {
@@ -19,7 +20,14 @@ const Products = () => {
   const isDesktop = useBreakpoints('desktop')
 
   const location = useLocation()
-  const state: LocationState = location.state
+
+  // TODO https://github.com/remix-run/react-router/issues/8503
+  const locationStateSchema = object({
+    collectionId: string().optional(),
+    labelId: string().optional()
+  })
+
+  const state: LocationState = locationStateSchema.parse(location.state)
 
   usePageTitle(t('title'))
   useScrollTop()

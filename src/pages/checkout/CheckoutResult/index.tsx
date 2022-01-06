@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Flexbox, Heading, Page, Text, Tile } from 'components'
 import { HOME } from 'constants/routes'
+
 import {
   useBreakpoints,
   useScrollTop,
@@ -9,8 +10,10 @@ import {
 } from 'hooks'
 import React from 'react'
 import { useNavigate, useLocation, Navigate } from 'react-router-dom'
+
 import { useTheme } from 'styled-components'
 import { getOrderPath } from 'utils'
+import { object, string, enum as zenum } from 'zod'
 import { CheckoutResultLocationState } from '../CheckoutPayment/useForm'
 
 const CheckoutResult = () => {
@@ -19,13 +22,20 @@ const CheckoutResult = () => {
   const isDesktop = useBreakpoints('desktop')
 
   const location = useLocation()
-  const state: CheckoutResultLocationState = location.state
   const navigate = useNavigate()
 
   usePageTitle(t('title'))
   useScrollTop()
 
-  if (!state?.orderID) {
+  // TODO https://github.com/remix-run/react-router/issues/8503
+  const checkoutResultLocationStateSchema = object({
+    orderID: string(),
+    productionTime: zenum(['LONG', 'SHORT'])
+  })
+  const state2: CheckoutResultLocationState =
+    checkoutResultLocationStateSchema.parse(location.state)
+
+  if (!state2?.orderID) {
     return <Navigate to={HOME} />
   }
 
@@ -46,11 +56,11 @@ const CheckoutResult = () => {
         </Heading>
 
         <Heading level={5} marginTop="l-size" textAlign="center">
-          {state.orderID}
+          {state2.orderID}
         </Heading>
 
         <Text marginTop="l-size" textAlign="center" type="body-2">
-          {t(`PAYMENT_INFO.${state.productionTime.toLowerCase()}`)}
+          {t(`PAYMENT_INFO.${state2.productionTime.toLowerCase()}`)}
         </Text>
 
         <Flexbox
@@ -63,7 +73,7 @@ const CheckoutResult = () => {
           <Button
             label={t('actions.seeOrder')}
             onClick={() => {
-              const path = getOrderPath(state.orderID)
+              const path = getOrderPath(state2.orderID)
               navigate(path)
             }}
             size="medium"
