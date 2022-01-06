@@ -42,6 +42,7 @@ const en: LanguageKeys = {
       orders: 'Orders',
       documents: 'Terms and conditions',
       christmas2021: 'Christmas Offer',
+      valentinesDay: "Valentine's Day",
 
       adminOrders: 'Orders',
       adminCallbacks: 'Contact request',
@@ -899,6 +900,10 @@ const en: LanguageKeys = {
     NEW_YEAR_PRODUCTS: {
       title: 'Nowy Rok'
     }
+  },
+
+  VALENTINES_2022: {
+    title: "Valentine's Day"
   }
 }
 

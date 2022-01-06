@@ -4,7 +4,7 @@ import React from 'react'
 import ChristmasProducts from './ChristmasProducts'
 import NewYearProducts from './NewYearProducts'
 
-const Contact = () => {
+const Christmas2021 = () => {
   const { t } = useTranslation('CHRISTMAS_2021')
 
   usePageTitle(t('title'))
@@ -35,4 +35,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Christmas2021

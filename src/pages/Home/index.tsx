@@ -1,6 +1,7 @@
 import { CallMeBack } from 'commonComponents'
 import { BannerKey, Carousel, Page } from 'components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import ValentinesDay from './ValentinesDay'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import Bestsellers from './Bestsellers'
@@ -23,6 +24,8 @@ const Home = () => {
   return (
     <Page>
       <Carousel>{banners}</Carousel>
+
+      <ValentinesDay />
 
       <Christmas2021 />
 

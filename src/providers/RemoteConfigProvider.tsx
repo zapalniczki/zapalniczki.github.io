@@ -52,6 +52,7 @@ const init: RemoteConfigContext = {
   signUp: false,
   signedOut: false,
   snow: false,
+  valentinesDay: false,
   viewProduct: true
 }
 
@@ -128,6 +129,7 @@ const remoteConfigContextSchema = object({
   signUp: boolean(),
   signedOut: boolean(),
   snow: boolean(),
+  valentinesDay: boolean(),
   viewProduct: boolean()
 })
 

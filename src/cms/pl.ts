@@ -40,6 +40,7 @@ const pl = {
       orders: 'Zamówienia',
       documents: 'Dokumenty',
       christmas2021: 'Oferta Świąteczna',
+      valentinesDay: 'Walentynki 2022',
 
       adminOrders: 'Zamówienia',
       adminCallbacks: 'Prośby o kontakt',
@@ -899,6 +900,10 @@ const pl = {
     NEW_YEAR_PRODUCTS: {
       title: 'Nowy Rok'
     }
+  },
+
+  VALENTINES_2022: {
+    title: 'Walentynki 2022'
   }
 }
 

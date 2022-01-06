@@ -23,7 +23,8 @@ import {
   USER,
   SIGN_IN,
   SIGNED_OUT,
-  SIGN_UP
+  SIGN_UP,
+  VALENTINES_DAY
 } from 'constants/routes'
 
 import React from 'react'
@@ -32,7 +33,7 @@ export type Route = {
   Component: React.LazyExoticComponent<() => JSX.Element>
   admin?: boolean
   end?: boolean
-  icon?: 'gift'
+  icon?: 'gift' | 'heart'
   key: RouteKey
   order?: number
   path: string
@@ -147,6 +148,15 @@ const routes: Route[] = [
   },
 
   {
+    Component: React.lazy(() => import('pages/ValentinesDay')),
+    translationKey: 'valentinesDay',
+    path: VALENTINES_DAY,
+    order: 3,
+    icon: 'heart',
+    key: 'valentinesDay'
+  },
+
+  {
     Component: React.lazy(() => import('pages/AdminOrders')),
     admin: true,
     translationKey: 'adminOrders',
@@ -241,4 +251,5 @@ type RouteKey =
   | 'signIn'
   | 'signUp'
   | 'signedOut'
+  | 'valentinesDay'
   | 'viewProduct'
