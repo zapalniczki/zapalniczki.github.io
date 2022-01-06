@@ -22,6 +22,7 @@ import {
   fetchAndActivate
 } from 'firebase/remote-config'
 import { boolean, object, TypeOf } from 'zod'
+import { useDev } from 'hooks'
 
 const init: RemoteConfigContext = {
   _404: true,
@@ -61,13 +62,14 @@ type Props = {
 }
 
 const RemoteConfigProvider = ({ children }: Props) => {
+  const isDev = useDev()
   const [config, setConfig] = useState<RemoteConfigContext>(init)
 
   useEffect(() => {
     async function start() {
       const remoteConfig = getRemoteConfig()
       remoteConfig.settings = {
-        minimumFetchIntervalMillis: 3600000,
+        minimumFetchIntervalMillis: isDev ? 2000 : 43200000,
         fetchTimeoutMillis: 6000
       }
 
@@ -87,6 +89,8 @@ const RemoteConfigProvider = ({ children }: Props) => {
 
       if (valuesParsed.success) {
         setConfig(valuesParsed.data)
+      } else {
+        throw new Error(valuesParsed.error.toString())
       }
     }
 
