@@ -3,7 +3,6 @@ export { default as AdminDeliveryTypes } from './AdminDeliveryTypes'
 export { default as AdminIcons } from './AdminIcons'
 export { default as AdminLabels } from './AdminLabels'
 export { default as AdminOrders } from './AdminOrders'
-export { default as AdminNewsletterUsers } from './AdminNewsletterUsers'
 export { default as AdminPaymentTypes } from './AdminPaymentTypes'
 
 export { default as AdminMolds } from './AdminMolds'

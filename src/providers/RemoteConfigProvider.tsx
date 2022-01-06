@@ -24,8 +24,34 @@ import {
 import { boolean, object, TypeOf } from 'zod'
 
 const init: RemoteConfigContext = {
+  _404: true,
+  adminCallbacks: false,
+  adminDeliveryTypes: false,
+  adminIcons: false,
+  adminLabels: false,
+  adminMolds: false,
+  adminOrders: false,
+  adminPaymentTypes: false,
+  cart: true,
+  checkoutDelivery: true,
+  checkoutDetails: true,
+  checkoutPayment: true,
+  checkoutResult: true,
   christmas2021: false,
-  i18n: false
+  christmas: false,
+  contact: true,
+  customer: false,
+  deliveryAndPayments: false,
+  documents: false,
+  home: true,
+  howToCreateOrder: false,
+  i18n: false,
+  order: true,
+  products: true,
+  signIn: false,
+  signUp: false,
+  signedOut: false,
+  viewProduct: true
 }
 
 type Props = {
@@ -65,6 +91,8 @@ const RemoteConfigProvider = ({ children }: Props) => {
     start()
   }, [])
 
+  console.log(config)
+
   return (
     <remoteConfigContext.Provider value={config}>
       {children}
@@ -74,7 +102,33 @@ const RemoteConfigProvider = ({ children }: Props) => {
 
 const remoteConfigContextSchema = object({
   christmas2021: boolean(),
-  i18n: boolean()
+  i18n: boolean(),
+  deliveryAndPayments: boolean(),
+  products: boolean(),
+  viewProduct: boolean(),
+  cart: boolean(),
+  checkoutDetails: boolean(),
+  checkoutDelivery: boolean(),
+  checkoutPayment: boolean(),
+  checkoutResult: boolean(),
+  order: boolean(),
+  signIn: boolean(),
+  signUp: boolean(),
+  contact: boolean(),
+  signedOut: boolean(),
+  howToCreateOrder: boolean(),
+  documents: boolean(),
+  customer: boolean(),
+  christmas: boolean(),
+  adminOrders: boolean(),
+  adminIcons: boolean(),
+  adminLabels: boolean(),
+  adminCallbacks: boolean(),
+  adminDeliveryTypes: boolean(),
+  adminPaymentTypes: boolean(),
+  adminMolds: boolean(),
+  home: boolean(),
+  _404: boolean()
 })
 
 export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>

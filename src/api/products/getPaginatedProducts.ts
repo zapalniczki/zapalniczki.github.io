@@ -28,6 +28,7 @@ export const getPaginatedProducts = async ({
   const response = await supabase
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
     .select(getProductsSelectQuery, { count: 'exact' })
+    .eq('visible', true)
     .match(match)
     .ilike(ilike.column, ilike.patern)
     .range(from, to)

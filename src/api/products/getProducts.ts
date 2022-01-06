@@ -34,10 +34,9 @@ export const getProducts = async (params: Params = {}) => {
   const response = await supabase
     .from<GetProductsResponseItem>(PRODUCTS_TABLE)
     .select(getProductsSelectQuery)
-
+    .eq('visible', true)
     .match(match)
     .ilike(ilike.column, ilike.patern)
-
     .limit(params.limit ?? 1000)
     .order('updated_at', { ascending: false })
 

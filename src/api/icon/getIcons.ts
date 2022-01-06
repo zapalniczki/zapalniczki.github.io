@@ -8,6 +8,7 @@ export const getIcons = async () => {
   const response = await supabase
     .from<GetIconsResponseItem>(ICONS_TABLE)
     .select()
+    .eq('visible', true)
 
   const data = parseApiResponse(array(getIconsResponseItem), response)
 

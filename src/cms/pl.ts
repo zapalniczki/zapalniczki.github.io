@@ -42,7 +42,6 @@ const pl = {
       christmas2021: 'Oferta Świąteczna',
 
       adminOrders: 'Zamówienia',
-      adminNewsletterUsers: 'Użytkownicy newslettera',
       adminCallbacks: 'Prośby o kontakt',
       adminDeliveryTypes: 'Metody dostawy',
       adminPaymentTypes: 'Metody płatności',

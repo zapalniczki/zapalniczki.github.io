@@ -44,7 +44,6 @@ const en: LanguageKeys = {
       christmas2021: 'Christmas Offer',
 
       adminOrders: 'Orders',
-      adminNewsletterUsers: 'Newsletter users',
       adminCallbacks: 'Contact request',
       adminDeliveryTypes: 'Delivery methods',
       adminPaymentTypes: 'Payments methods',

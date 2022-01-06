@@ -124,9 +124,13 @@ const Footer = () => {
             })}
           </Text>
 
-          <Link to={DOCUMENTS}>
-            <Text type="caption">{commonT('LINKS.documents')}</Text>
-          </Link>
+          {remoteConfig.documents ? (
+            <Link to={DOCUMENTS}>
+              <Text type="caption">{commonT('LINKS.documents')}</Text>
+            </Link>
+          ) : (
+            <span />
+          )}
         </Flexbox>
       </MaxWidth>
     </Flexbox>

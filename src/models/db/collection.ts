@@ -1,8 +1,9 @@
 import tableBase from './tableBase'
-import { string, TypeOf } from 'zod'
+import { boolean, string, TypeOf } from 'zod'
 
 const collection = tableBase.extend({
-  label: string()
+  label: string(),
+  visible: boolean()
 })
 
 export type Collection = TypeOf<typeof collection>

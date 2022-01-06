@@ -1,4 +1,4 @@
-import { CallMeBack, Newsletter } from 'commonComponents'
+import { CallMeBack } from 'commonComponents'
 import { BannerKey, Carousel, Page } from 'components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
@@ -29,8 +29,6 @@ const Home = () => {
       <NewYearsEve2022 />
 
       <Featured />
-
-      <Newsletter />
 
       <Bestsellers />
 

@@ -4,7 +4,6 @@ import {
   ADMIN_ICONS,
   ADMIN_LABELS,
   ADMIN_MOLDS,
-  ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS,
   ADMIN_PAYMENT_TYPES,
   CHECKOUT_DELIVERY,
@@ -34,6 +33,7 @@ export type Route = {
   admin?: boolean
   end?: boolean
   icon?: 'gift'
+  key: RouteKey
   order?: number
   path: string
   translationKey?: string
@@ -46,79 +46,95 @@ const routes: Route[] = [
     end: true,
     translationKey: 'products',
     path: PRODUCTS,
-    order: 2
+    order: 2,
+    key: 'products'
   },
   {
     Component: React.lazy(() => import('pages/ViewProduct')),
-    path: PRODUCTS_ID
+    path: PRODUCTS_ID,
+    key: 'viewProduct'
   },
   {
     Component: React.lazy(() => import('pages/checkout/Cart')),
-    path: CART
+    path: CART,
+    key: 'cart'
   },
   {
     Component: React.lazy(() => import('pages/checkout/CheckoutDetails')),
-    path: CHECKOUT_DETAILS
+    path: CHECKOUT_DETAILS,
+    key: 'checkoutDetails'
   },
   {
     Component: React.lazy(() => import('pages/checkout/CheckoutDelivery')),
-    path: CHECKOUT_DELIVERY
+    path: CHECKOUT_DELIVERY,
+    key: 'checkoutDelivery'
   },
   {
     Component: React.lazy(() => import('pages/checkout/CheckoutPayment')),
-    path: CHECKOUT_PAYMENT
+    path: CHECKOUT_PAYMENT,
+    key: 'checkoutPayment'
   },
   {
     Component: React.lazy(() => import('pages/checkout/CheckoutResult')),
-    path: CHECKOUT_RESULT
+    path: CHECKOUT_RESULT,
+    key: 'checkoutResult'
   },
   {
     Component: React.lazy(() => import('pages/Order')),
-    path: ORDERS_ID
+    path: ORDERS_ID,
+    key: 'order'
   },
   {
     Component: React.lazy(() => import('pages/SignIn')),
-    path: SIGN_IN
+    path: SIGN_IN,
+    key: 'signIn'
   },
   {
     Component: React.lazy(() => import('pages/SignUp')),
-    path: SIGN_UP
+    path: SIGN_UP,
+    key: 'signUp'
   },
   {
     Component: React.lazy(() => import('pages/Contact')),
     translationKey: 'contact',
     path: CONTACT,
-    order: 6
+    order: 6,
+    key: 'contact'
   },
   {
     Component: React.lazy(() => import('pages/SignedOut')),
     translationKey: 'signedOut',
-    path: SIGNED_OUT
+    path: SIGNED_OUT,
+    key: 'signedOut'
   },
   {
     Component: React.lazy(() => import('pages/DeliveryAndPayments')),
     translationKey: 'deliveryAndPayments',
     path: DELIVERY_AND_PAYMENTS,
     end: true,
-    order: 5
+    order: 5,
+    key: 'deliveryAndPayments'
   },
   {
     Component: React.lazy(() => import('pages/HowToCreateOrder')),
     translationKey: 'howToCreateOrder',
-    path: HOW_TO_CREATE_ORDER
-    // order: 4
+    path: HOW_TO_CREATE_ORDER,
+    // order: 4,
+    key: 'howToCreateOrder'
   },
   {
     Component: React.lazy(() => import('pages/Documents')),
     translationKey: 'documents',
-    path: DOCUMENTS
+    path: DOCUMENTS,
+    key: 'documents'
   },
 
   {
     Component: React.lazy(() => import('pages/User')),
     translationKey: 'customer',
     path: USER,
-    user: true
+    user: true,
+    key: 'customer'
   },
 
   {
@@ -126,57 +142,59 @@ const routes: Route[] = [
     translationKey: 'christmas2021',
     path: CHRISTMAS_2021,
     order: 3,
-    icon: 'gift'
+    icon: 'gift',
+    key: 'christmas'
   },
 
   {
     Component: React.lazy(() => import('pages/AdminOrders')),
     admin: true,
     translationKey: 'adminOrders',
-    path: ADMIN_ORDERS
-  },
-  {
-    Component: React.lazy(() => import('pages/AdminNewsletterUsers')),
-    admin: true,
-    translationKey: 'adminNewsletterUsers',
-    path: ADMIN_NEWSLETTER_USERS
+    path: ADMIN_ORDERS,
+    key: 'adminOrders'
   },
   {
     Component: React.lazy(() => import('pages/AdminIcons')),
     admin: true,
     translationKey: 'adminIcons',
-    path: ADMIN_ICONS
+    path: ADMIN_ICONS,
+    key: 'adminIcons'
   },
   {
     Component: React.lazy(() => import('pages/AdminLabels')),
     admin: true,
     translationKey: 'adminLabels',
-    path: ADMIN_LABELS
+    path: ADMIN_LABELS,
+    key: 'adminLabels'
   },
   {
     Component: React.lazy(() => import('pages/AdminCallbacks')),
     admin: true,
     translationKey: 'adminCallbacks',
-    path: ADMIN_CALLBACKS
+    path: ADMIN_CALLBACKS,
+    key: 'adminCallbacks'
   },
   {
     Component: React.lazy(() => import('pages/AdminDeliveryTypes')),
     admin: true,
     translationKey: 'adminDeliveryTypes',
-    path: ADMIN_DELIVERY_TYPES
+    path: ADMIN_DELIVERY_TYPES,
+    key: 'adminDeliveryTypes'
   },
   {
     Component: React.lazy(() => import('pages/AdminPaymentTypes')),
     admin: true,
     translationKey: 'adminPaymentTypes',
-    path: ADMIN_PAYMENT_TYPES
+    path: ADMIN_PAYMENT_TYPES,
+    key: 'adminPaymentTypes'
   },
 
   {
     Component: React.lazy(() => import('pages/AdminMolds')),
     translationKey: 'adminMolds',
     admin: true,
-    path: ADMIN_MOLDS
+    path: ADMIN_MOLDS,
+    key: 'adminMolds'
   },
 
   {
@@ -184,13 +202,43 @@ const routes: Route[] = [
     end: true,
     translationKey: 'home',
     path: HOME,
-    order: 1
+    order: 1,
+    key: 'home'
   },
 
   {
     Component: React.lazy(() => import('pages/PageNotFound')),
-    path: '*'
+    path: '*',
+    key: '_404'
   }
 ]
 
 export default routes
+
+type RouteKey =
+  | '_404'
+  | 'adminCallbacks'
+  | 'adminDeliveryTypes'
+  | 'adminIcons'
+  | 'adminLabels'
+  | 'adminMolds'
+  | 'adminOrders'
+  | 'adminPaymentTypes'
+  | 'cart'
+  | 'checkoutDelivery'
+  | 'checkoutDetails'
+  | 'checkoutPayment'
+  | 'checkoutResult'
+  | 'christmas'
+  | 'contact'
+  | 'customer'
+  | 'deliveryAndPayments'
+  | 'documents'
+  | 'home'
+  | 'howToCreateOrder'
+  | 'order'
+  | 'products'
+  | 'signIn'
+  | 'signUp'
+  | 'signedOut'
+  | 'viewProduct'

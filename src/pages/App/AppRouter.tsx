@@ -1,66 +1,74 @@
 import { Basket, Footer, Header, TopBar } from 'commonComponents'
 import { HamburgerMenu, CookiesConsent } from 'commonComponents/'
 import { AdminAuth, Flexbox, UserAuth } from 'components'
-import React, { Suspense } from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { Suspense, useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { handleRoutes } from 'utils'
 import routes from './routes'
 
-const AppRouter = () => (
-  <>
-    <TopBar />
+const AppRouter = () => {
+  const remoteConfig = useContext(remoteConfigContext)
 
-    <Header />
+  return (
+    <>
+      <TopBar />
 
-    <Basket />
+      <Header />
 
-    <HamburgerMenu />
+      <Basket />
 
-    <CookiesConsent />
+      <HamburgerMenu />
 
-    <Routes>
-      {routes.map(({ Component, admin, user, ...props }, index) => {
-        let ComponentToRender = <Component />
-        if (admin) {
-          ComponentToRender = (
-            <AdminAuth>
-              <Component />
-            </AdminAuth>
-          )
-        }
+      <CookiesConsent />
 
-        if (user) {
-          ComponentToRender = (
-            <UserAuth>
-              <Component />
-            </UserAuth>
-          )
-        }
-
-        return (
-          <Route
-            element={
-              <Suspense
-                fallback={
-                  <Flexbox
-                    alignItems="center"
-                    height="100vh"
-                    justifyContent="center"
-                    width="100vw"
-                  />
-                }
-              >
-                {ComponentToRender}
-              </Suspense>
+      <Routes>
+        {handleRoutes(routes, remoteConfig, 'ROUTER').map(
+          ({ Component, admin, key, user, ...props }) => {
+            let ComponentToRender = <Component />
+            if (admin) {
+              ComponentToRender = (
+                <AdminAuth>
+                  <Component />
+                </AdminAuth>
+              )
             }
-            key={index}
-            {...props}
-          />
-        )
-      })}
-    </Routes>
 
-    <Footer />
-  </>
-)
+            if (user) {
+              ComponentToRender = (
+                <UserAuth>
+                  <Component />
+                </UserAuth>
+              )
+            }
+
+            return (
+              <Route
+                element={
+                  <Suspense
+                    fallback={
+                      <Flexbox
+                        alignItems="center"
+                        height="100vh"
+                        justifyContent="center"
+                        width="100vw"
+                      />
+                    }
+                  >
+                    {ComponentToRender}
+                  </Suspense>
+                }
+                key={key}
+                {...props}
+              />
+            )
+          }
+        )}
+      </Routes>
+
+      <Footer />
+    </>
+  )
+}
 
 export default AppRouter

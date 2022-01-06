@@ -29,9 +29,8 @@ const Products = () => {
 
   const isFiltered = state?.labelId || state?.collectionId
 
-  const changeHandler = (value: React.SetStateAction<string>) => {
+  const changeHandler = (value: React.SetStateAction<string>) =>
     setDebuncedSearchQuery(value)
-  }
 
   const debouncedChangeHandler = useMemo(() => debounce(changeHandler, 300), [])
 

@@ -4,7 +4,7 @@ import { Route } from '../pages/App/routes'
 const handleRoutes = (
   routes: Route[],
   remoteConfig: RemoteConfigContext,
-  destination: 'FOOTER' | 'HAMBURGER' | 'MENU'
+  destination: 'FOOTER' | 'HAMBURGER' | 'MENU' | 'ROUTER'
 ) => {
   const isFooter = destination === 'FOOTER'
   const isHamburger = destination === 'HAMBURGER'
@@ -29,20 +29,7 @@ const handleRoutes = (
 
       return 1
     })
-
-    .filter((route) => {
-      if (isFooter || isHamburger || isMenu) {
-        if (route.translationKey === 'christmas2021') {
-          if (remoteConfig.christmas2021) {
-            return false
-          }
-
-          return false
-        }
-      }
-
-      return true
-    })
+    .filter((route) => remoteConfig[route.key])
 }
 
 export default handleRoutes

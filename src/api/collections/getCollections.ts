@@ -8,6 +8,7 @@ export const getCollections = async () => {
   const response = await supabase
     .from<GetCollectionsResponseItem>(COLLECTIONS_TABLE)
     .select()
+    .eq('visible', true)
 
   const data = parseApiResponse(array(getCollectionsResponseItem), response)
 

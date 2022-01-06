@@ -1,8 +1,9 @@
-import { string, TypeOf } from 'zod'
+import { boolean, string, TypeOf } from 'zod'
 import tableBase from './tableBase'
 
 const icon = tableBase.extend({
-  label: string()
+  label: string(),
+  visible: boolean()
 })
 
 export type Icon = TypeOf<typeof icon>
