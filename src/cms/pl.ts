@@ -459,6 +459,11 @@ const pl = {
       linkLabel: 'Zobacz wszystkie'
     },
 
+    VALENTINES_DAY: {
+      title: 'Walentynki',
+      linkLabel: 'Zobacz wszystkie'
+    },
+
     NEW_YEARS_EVE_2022: {
       title: 'Nowy Rok',
       linkLabel: 'Zobacz wszystkie'

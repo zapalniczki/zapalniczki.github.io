@@ -8,20 +8,18 @@ import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 
 const ValentinesDay = () => {
-  const { valentinesDay } = useContext(remoteConfigContext)
-
   const commonT = useTranslation('HOME').withBase('VALENTINES_DAY')
+  const { valentinesDay } = useContext(remoteConfigContext)
 
   const params = {
     limit: 3,
     collectionId: 'c8445406-9971-424e-a788-df15dd6f0460'
   }
+  const query = useQuery([PRODUCTS_TABLE, params], () => getProducts(params))
 
   if (!valentinesDay) {
     return null
   }
-
-  const query = useQuery([PRODUCTS_TABLE, params], () => getProducts(params))
 
   return (
     <ProductsGrid

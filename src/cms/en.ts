@@ -460,6 +460,11 @@ const en: LanguageKeys = {
       linkLabel: 'See all'
     },
 
+    VALENTINES_DAY: {
+      title: "Valentines's Day",
+      linkLabel: 'See all'
+    },
+
     NEW_YEARS_EVE_2022: {
       title: "New Year's Eve",
       linkLabel: 'See all'
