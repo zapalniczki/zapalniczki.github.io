@@ -743,7 +743,7 @@ const pl = {
 
       PHONE: {
         title: 'Telefon',
-        info: 'Czynne od poniedziałku do piątku, w godzinach 9:00 do 17:00.',
+        info: 'Kontakt pod numerem',
         mobile: phoneNumer
       },
 

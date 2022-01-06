@@ -743,7 +743,7 @@ const en: LanguageKeys = {
 
       PHONE: {
         title: 'Telephone',
-        info: 'Open for enquiries Monday to Friday between 9:00 and 17:00',
+        info: 'For any enquiries',
         mobile: phoneNumer
       },
 
