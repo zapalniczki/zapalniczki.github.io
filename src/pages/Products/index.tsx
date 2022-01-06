@@ -18,7 +18,8 @@ const Products = () => {
   const { t } = useTranslation('PRODUCTS')
   const isDesktop = useBreakpoints('desktop')
 
-  const { state }: { state: LocationState } = useLocation()
+  const location = useLocation()
+  const state: LocationState = location.state
 
   usePageTitle(t('title'))
   useScrollTop()
