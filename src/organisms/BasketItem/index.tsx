@@ -40,7 +40,7 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
 
   const productName = getProductName(
     commonT('productNameBase'),
-    product.label.label,
+    product.label.label_pl,
     product.icon.label_pl
   )
 

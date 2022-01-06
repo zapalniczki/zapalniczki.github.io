@@ -34,12 +34,12 @@ const ViewProduct = () => {
 
   if (
     productQuery &&
-    productQuery.data?.label.label &&
+    productQuery.data?.label.label_pl &&
     productQuery.data.icon.label_pl
   ) {
     productName = getProductName(
       commonT('productNameBase'),
-      productQuery.data.label.label,
+      productQuery.data.label.label_pl,
       productQuery.data.icon.label_pl
     )
   }

@@ -34,7 +34,7 @@ const ProductTile = ({ product }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const productName = getProductName(
     commonT('productNameBase'),
-    product.label.label,
+    product.label.label_pl,
     product.icon.label_pl
   )
 

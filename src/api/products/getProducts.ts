@@ -66,7 +66,7 @@ icon: ${ICONS_TABLE} (
   label_pl
 ),
 label: ${LABELS_TABLE} (
-  label
+  label_pl
 )
 `
 

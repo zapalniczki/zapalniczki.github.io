@@ -35,7 +35,7 @@ export const getProduct = async (params: Params) => {
         id
       ),
       label: ${LABELS_TABLE} (
-        label,
+        label_pl,
         id
       )
       `

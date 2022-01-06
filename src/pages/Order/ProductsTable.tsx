@@ -103,7 +103,7 @@ const shapeData = (
     const basketImage = findCorrectProductImageSize(product.images, 'BASKET')
     const productName = getProductName(
       t('productNameBase'),
-      product.label.label,
+      product.label.label_pl,
       product.icon.label_pl
     )
 

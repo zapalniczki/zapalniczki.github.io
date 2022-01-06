@@ -46,7 +46,7 @@ export const getOrders = async ({ is_test, status }: Params) => {
             status
           ),
           label: ${LABELS_TABLE} (
-            label
+            label_pl
           ),
           icon: ${ICONS_TABLE} (
             label_pl

@@ -2,7 +2,7 @@ import tableBase from './tableBase'
 import { string, TypeOf } from 'zod'
 
 const label = tableBase.extend({
-  label: string()
+  label_pl: string()
 })
 
 export type Label = TypeOf<typeof label>

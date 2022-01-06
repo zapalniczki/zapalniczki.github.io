@@ -127,7 +127,7 @@ const shapeData = (
         {order.products.map((product) => {
           const productName = getProductName(
             t('productNameBase'),
-            product.product.label.label,
+            product.product.label.label_pl,
             product.product.icon.label_pl
           )
 
@@ -152,7 +152,7 @@ const shapeData = (
         {order.products.map((product) => {
           const productName = getProductName(
             t('productNameBase'),
-            product.product.label.label,
+            product.product.label.label_pl,
             product.product.icon.label_pl
           )
 

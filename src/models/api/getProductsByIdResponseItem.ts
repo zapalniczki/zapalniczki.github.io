@@ -22,7 +22,7 @@ const getProductsByIdResponseItem = product
       label_pl: true
     }),
     label: label.pick({
-      label: true
+      label_pl: true
     })
   })
 
