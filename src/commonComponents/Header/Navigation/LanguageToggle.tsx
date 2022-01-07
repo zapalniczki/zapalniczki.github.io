@@ -8,19 +8,17 @@ import {
 } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import { enum as zenum, TypeOf } from 'zod'
 
 import { ReactComponent as Pl } from 'assets/flags/pl.svg'
 import { ReactComponent as En } from 'assets/flags/en.svg'
+import { useLocation } from 'react-router'
 
 const LanguageToggle = () => {
-  const { i18n, withBase } = useTranslation('COMMON')
+  const { currentLanguage, i18n, withBase } = useTranslation('COMMON')
   const commonT = withBase('LANGUAGE_TOGGLE_LABEL')
 
   const { pathname } = useLocation()
-
-  const currentLanguage = availiableLanguages.parse(i18n.language)
 
   return (
     <Button
@@ -37,7 +35,7 @@ const LanguageToggle = () => {
         i18n.changeLanguage(nextLanguage)
       }}
       padding="s-size"
-      title={commonT('pl')}
+      title={commonT(currentLanguage)}
       type="button"
       variant="quaternary"
     >
@@ -59,7 +57,7 @@ const basketDisabledpathnames = [
 const AVAILABLE_LANGUAGES = ['pl', 'en'] as const
 const availiableLanguages = zenum(['pl', 'en'])
 
-type Language = TypeOf<typeof availiableLanguages>
+export type Language = TypeOf<typeof availiableLanguages>
 
 const languageToFlagMapping: Record<Language, JSX.Element> = {
   pl: <Pl />,

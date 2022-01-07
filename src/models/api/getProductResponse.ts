@@ -11,8 +11,16 @@ const getProductResponse = product
   })
   .extend({
     images: array(image),
-    icon: icon.pick({ id: true, label_pl: true }),
-    label: label.pick({ id: true, label_pl: true }),
+    icon: icon.pick({
+      id: true,
+      label_pl: true,
+      label_en: true
+    }),
+    label: label.pick({
+      id: true,
+      label_pl: true,
+      label_en: true
+    }),
     mold: mold.pick({
       id: true,
       status: true

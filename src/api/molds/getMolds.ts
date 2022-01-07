@@ -13,10 +13,12 @@ export const getMolds = async () => {
       updated_at,
       status,
       label: ${LABELS_TABLE}!label_id (
-        label_pl
+        label_pl,
+        label_en
       ),
       icon: ${ICONS_TABLE}!icon_id (
-        label_pl
+        label_pl,
+        label_en
       )
       `
     )

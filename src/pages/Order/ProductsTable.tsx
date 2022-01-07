@@ -10,7 +10,7 @@ import {
 } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { PRODUCTS_ID } from 'constants/routes'
-import { TranslateFunc, useTranslation } from 'hooks'
+import { Language, TranslateFunc, useTranslation } from 'hooks'
 import { multiply } from 'lodash'
 import { GetOrderResponse, GetProductsResponseItem } from 'models'
 import React, { useMemo } from 'react'
@@ -19,6 +19,7 @@ import { generatePath } from 'react-router'
 import {
   displayMoney,
   findCorrectProductImageSize,
+  getLanguageLabel,
   getProductName
 } from 'utils'
 
@@ -27,7 +28,7 @@ type Props = {
 }
 
 const ProductsTable = ({ products }: Props) => {
-  const { t: commonT } = useTranslation('COMMON')
+  const { currentLanguage, t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PRODUCTS')
 
   const ids = products.map((e) => e.product_id)
@@ -56,7 +57,7 @@ const ProductsTable = ({ products }: Props) => {
     <QueryLoader query={productsQuery}>
       {(data) => {
         const details = getDetails(data, products)
-        const shapedData = shapeData(details, commonT)
+        const shapedData = shapeData(details, commonT, currentLanguage)
 
         return (
           <Tile marginTop="m-size">
@@ -93,18 +94,28 @@ const getDetails = (
 
 const shapeData = (
   data: RichProductDetails[],
-  t: TranslateFunc
+  t: TranslateFunc,
+  currentLanguage: Language
 ): Record<
   OrderProductsTableColumns,
   string | boolean | number | JSX.Element
 >[] =>
   data.map((product) => {
+    const iconLabel = getLanguageLabel({
+      language: currentLanguage,
+      label: product.icon
+    })
+    const labelLabel = getLanguageLabel({
+      language: currentLanguage,
+      label: product.label
+    })
+
     const productPath = generatePath(PRODUCTS_ID, { id: product.id })
     const basketImage = findCorrectProductImageSize(product.images, 'BASKET')
     const productName = getProductName(
       t('productNameBase'),
-      product.label.label_pl,
-      product.icon.label_pl
+      labelLabel,
+      iconLabel
     )
 
     return {

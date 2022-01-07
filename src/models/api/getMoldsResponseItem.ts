@@ -9,8 +9,14 @@ const getMoldsResponseItem = mold
     status: true
   })
   .extend({
-    icon: icon.pick({ label_pl: true }),
-    label: label.pick({ label_pl: true })
+    icon: icon.pick({
+      label_pl: true,
+      label_en: true
+    }),
+    label: label.pick({
+      label_pl: true,
+      label_en: true
+    })
   })
 
 export type GetMoldsResponseItem = TypeOf<typeof getMoldsResponseItem>

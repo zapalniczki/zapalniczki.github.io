@@ -4,7 +4,11 @@ import styled from 'styled-components'
 import React from 'react'
 import { GetProductResponse } from 'models'
 import getColor from 'styles/getColor'
-import { findCorrectProductImageSize, getProductName } from 'utils'
+import {
+  findCorrectProductImageSize,
+  getLanguageLabel,
+  getProductName
+} from 'utils'
 import getSpace from 'styles/getSpace'
 import breakpoints from 'styles/breakpoints'
 import { useTranslation } from 'hooks'
@@ -14,16 +18,25 @@ type Props = {
 }
 
 const Images = ({ product }: Props) => {
-  const { t: commonT } = useTranslation('COMMON')
+  const { currentLanguage, t: commonT } = useTranslation('COMMON')
   const { images } = product
 
   const largeImage = findCorrectProductImageSize(images, 'LARGE')
   const thumbnailImage = findCorrectProductImageSize(images, 'THUMBNAIL')
 
+  const iconLabel = getLanguageLabel({
+    language: currentLanguage,
+    label: product.icon
+  })
+  const labelLabel = getLanguageLabel({
+    language: currentLanguage,
+    label: product.label
+  })
+
   const productName = getProductName(
     commonT('productNameBase'),
-    product.label.label_pl,
-    product.icon.label_pl
+    labelLabel,
+    iconLabel
   )
   const width = '60%'
 

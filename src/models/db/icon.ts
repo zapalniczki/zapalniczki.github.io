@@ -3,6 +3,7 @@ import tableBase from './tableBase'
 
 const icon = tableBase.extend({
   label_pl: string(),
+  label_en: string(),
   visible: boolean()
 })
 

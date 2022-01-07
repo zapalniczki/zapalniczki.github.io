@@ -63,10 +63,12 @@ mold: ${MOLDS_TABLE} (
   status
 ),
 icon: ${ICONS_TABLE} (
-  label_pl
+  label_pl,
+  label_en
 ),
 label: ${LABELS_TABLE} (
-  label_pl
+  label_pl,
+  label_en
 )
 `
 

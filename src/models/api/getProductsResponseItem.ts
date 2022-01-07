@@ -19,10 +19,12 @@ const getProductsResponseItem = product
       status: true
     }),
     icon: icon.pick({
-      label_pl: true
+      label_pl: true,
+      label_en: true
     }),
     label: label.pick({
-      label_pl: true
+      label_pl: true,
+      label_en: true
     })
   })
 

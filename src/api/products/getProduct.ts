@@ -32,10 +32,12 @@ export const getProduct = async (params: Params) => {
       ),
       icon: ${ICONS_TABLE} (
         label_pl,
+        label_en,
         id
       ),
       label: ${LABELS_TABLE} (
         label_pl,
+        label_en,
         id
       )
       `

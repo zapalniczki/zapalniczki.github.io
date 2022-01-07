@@ -12,10 +12,10 @@ import { getProduct } from 'api'
 import Loader from './index.loader'
 import OtherIcons from './OtherIcons'
 import { useQuery } from 'react-query'
-import { getProductName } from 'utils'
+import { getLanguageLabel, getProductName } from 'utils'
 
 const ViewProduct = () => {
-  const { t: commonT } = useTranslation('COMMON')
+  const { currentLanguage, t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const navigate = useNavigate()
@@ -39,8 +39,14 @@ const ViewProduct = () => {
   ) {
     productName = getProductName(
       commonT('productNameBase'),
-      productQuery.data.label.label_pl,
-      productQuery.data.icon.label_pl
+      getLanguageLabel({
+        language: currentLanguage,
+        label: productQuery.data.label
+      }),
+      getLanguageLabel({
+        language: currentLanguage,
+        label: productQuery.data.icon
+      })
     )
   }
 

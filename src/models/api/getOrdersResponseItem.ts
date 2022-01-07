@@ -37,10 +37,12 @@ const getOrdersResponseItem = order
               status: true
             }),
             label: label.pick({
-              label_pl: true
+              label_pl: true,
+              label_en: true
             }),
             icon: icon.pick({
-              label_pl: true
+              label_pl: true,
+              label_en: true
             })
           })
         })

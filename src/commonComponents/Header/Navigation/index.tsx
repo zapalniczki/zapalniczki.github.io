@@ -17,11 +17,13 @@ const Navigation = () => {
       margin={0}
       padding={0}
     >
-      {i18n && (
-        <Box as="li" margin={0} padding={0}>
-          <LanguageToggle />
-        </Box>
-      )}
+      {/* {i18n && ( */}
+
+      <Box as="li" margin={0} padding={0}>
+        <LanguageToggle />
+      </Box>
+
+      {/* )} */}
 
       <Box as="li" margin={0} padding={0}>
         <BasketToggle />

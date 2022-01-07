@@ -6,6 +6,7 @@ export { default as findCorrectProductImageSize } from './findCorrectProductImag
 export { default as formatDate } from './formatDate'
 export { default as getDifferenceFromNow } from './getDifferenceFromNow'
 export { default as getHstoreFromObject } from './getHstoreFromObject'
+export { default as getLanguageLabel } from './getLanguageLabel'
 export { default as getOrderPath } from './getOrderPath'
 export { default as getProductImagePlaceholder } from './getProductImagePlaceholder'
 export { default as getProductImageSize } from './getProductImageSize'

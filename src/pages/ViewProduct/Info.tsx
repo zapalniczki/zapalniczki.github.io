@@ -2,7 +2,7 @@ import { GetProductResponse } from 'models'
 import { Flexbox, Heading, Separator, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { displayMoney, getProductName } from 'utils'
+import { displayMoney, getLanguageLabel, getProductName } from 'utils'
 import Form from './Form'
 import AvilabilityIndicator from './AvilabilityIndicator'
 
@@ -11,13 +11,22 @@ type Props = {
 }
 
 const Info = ({ product }: Props) => {
-  const { t: commonT } = useTranslation('COMMON')
+  const { currentLanguage, t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
+
+  const iconLabel = getLanguageLabel({
+    language: currentLanguage,
+    label: product.icon
+  })
+  const labelLabel = getLanguageLabel({
+    language: currentLanguage,
+    label: product.label
+  })
 
   const productName = getProductName(
     commonT('productNameBase'),
-    product.label.label_pl,
-    product.icon.label_pl
+    labelLabel,
+    iconLabel
   )
 
   return (
@@ -41,9 +50,9 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Detail label={t('label')} value={product.label.label_pl} />
+      <Detail label={t('label')} value={labelLabel} />
 
-      <Detail label={t('icon')} value={product.icon.label_pl} />
+      <Detail label={t('icon')} value={iconLabel} />
 
       <Detail label={t('color')} value={t('colorValueTODO')} />
 

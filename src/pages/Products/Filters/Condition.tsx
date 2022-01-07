@@ -1,8 +1,10 @@
 import { Chip, Flexbox, QueryLoader, Text } from 'components'
+import { useTranslation } from 'hooks'
 import { GetCollectionsResponseItem, GetIconsResponseItem } from 'models'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { SpaceProps } from 'styled-system'
+import { getLanguageLabel } from 'utils'
 import Loader from './Condition.loader'
 
 type Props = {
@@ -18,33 +20,45 @@ const Condition = ({
   selectedItem,
   title,
   ...props
-}: Props) => (
-  <QueryLoader Loader={<Loader {...props} />} query={query} showLoading={false}>
-    {(data) => (
-      <Flexbox {...props} flexDirection="column">
-        <Text type="subtitle-2">{title}</Text>
+}: Props) => {
+  const { currentLanguage } = useTranslation('COMMON')
 
-        <Flexbox flexWrap="wrap" gap="xs-size" paddingY="xxs-size">
-          {data
-            .sort((prev, next) => (prev.label_pl < next.label_pl ? -1 : 1))
-            .map((elem) => {
-              const isSelected = elem.id === selectedItem
+  return (
+    <QueryLoader
+      Loader={<Loader {...props} />}
+      query={query}
+      showLoading={false}
+    >
+      {(data) => (
+        <Flexbox {...props} flexDirection="column">
+          <Text type="subtitle-2">{title}</Text>
 
-              return (
-                <Chip
-                  key={elem.label_pl}
-                  onClick={() => selectItem(isSelected ? undefined : elem.id)}
-                  rounded
-                  selected={isSelected}
-                >
-                  {elem.label_pl}
-                </Chip>
-              )
-            })}
+          <Flexbox flexWrap="wrap" gap="xs-size" paddingY="xxs-size">
+            {data
+              .sort((prev, next) => (prev.label_pl < next.label_pl ? -1 : 1))
+              .map((elem) => {
+                const isSelected = elem.id === selectedItem
+                const label = getLanguageLabel({
+                  language: currentLanguage,
+                  label: elem
+                })
+
+                return (
+                  <Chip
+                    key={label}
+                    onClick={() => selectItem(isSelected ? undefined : elem.id)}
+                    rounded
+                    selected={isSelected}
+                  >
+                    {label}
+                  </Chip>
+                )
+              })}
+          </Flexbox>
         </Flexbox>
-      </Flexbox>
-    )}
-  </QueryLoader>
-)
+      )}
+    </QueryLoader>
+  )
+}
 
 export default Condition

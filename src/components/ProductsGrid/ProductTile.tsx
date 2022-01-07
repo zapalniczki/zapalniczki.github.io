@@ -12,6 +12,7 @@ import getColor from 'styles/getColor'
 import {
   displayMoney,
   findCorrectProductImageSize,
+  getLanguageLabel,
   getProductName
 } from 'utils'
 
@@ -20,6 +21,7 @@ export type Props = {
 }
 
 const ProductTile = ({ product }: Props) => {
+  const { currentLanguage } = useTranslation('COMMON')
   const viewProductPath = generatePath(PRODUCTS_ID, { id: product.id })
 
   const { getProductFromBasket } = useContext(checkoutContext)
@@ -31,11 +33,20 @@ const ProductTile = ({ product }: Props) => {
 
   const [isHovered, setIsHovered] = useState(false)
 
+  const iconLabel = getLanguageLabel({
+    language: currentLanguage,
+    label: product.icon
+  })
+  const labelLabel = getLanguageLabel({
+    language: currentLanguage,
+    label: product.label
+  })
+
   const { t: commonT } = useTranslation('COMMON')
   const productName = getProductName(
     commonT('productNameBase'),
-    product.label.label_pl,
-    product.icon.label_pl
+    labelLabel,
+    iconLabel
   )
 
   return (
