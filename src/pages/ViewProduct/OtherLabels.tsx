@@ -21,8 +21,7 @@ const OtherLabels = ({ collectionId, labelId }: Props) => {
   return (
     <ProductsGrid
       link={{
-        to: { pathname: '/products' },
-        options: { state: { collectionId } },
+        to: { pathname: '/products', search: `collectionId=${collectionId}` },
         label: t('linkLabel')
       }}
       loaderCount={3}

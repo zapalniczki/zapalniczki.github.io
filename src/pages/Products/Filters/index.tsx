@@ -4,23 +4,15 @@ import { COLLECTIONS_TABLE, ICONS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
-import { Filters as FiltersType } from '..'
 import Condition from './Condition'
 import Search from './Search'
 
 type Props = {
-  filters: FiltersType
   searchQuery: string
-  setFilters: React.Dispatch<React.SetStateAction<FiltersType>>
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Filters = ({
-  filters,
-  searchQuery,
-  setFilters,
-  setSearchQuery
-}: Props) => {
+const Filters = ({ searchQuery, setSearchQuery }: Props) => {
   const t = useTranslation('PRODUCTS').withBase('FILTERS')
 
   const iconsQuery = useQuery(ICONS_TABLE, () => getIcons())
@@ -35,20 +27,16 @@ const Filters = ({
       <Search onChange={(value) => setSearchQuery(value)} value={searchQuery} />
 
       <Condition
+        keyId="collectionId"
         marginTop="m-size"
         query={collectionsQuery}
-        selectItem={(value) =>
-          setFilters({ ...(value && { collectionId: value }) })
-        }
-        selectedItem={filters.collectionId}
         title={t('collections')}
       />
 
       <Condition
+        keyId="iconId"
         marginTop="m-size"
         query={iconsQuery}
-        selectItem={(value) => setFilters({ ...(value && { iconId: value }) })}
-        selectedItem={filters.iconId}
         title={t('icons')}
       />
     </Banner>

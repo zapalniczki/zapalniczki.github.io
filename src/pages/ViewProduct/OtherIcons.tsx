@@ -21,9 +21,8 @@ const OtherIcons = ({ iconId, labelId }: Props) => {
   return (
     <ProductsGrid
       link={{
-        to: { pathname: '/products' },
-        label: t('linkLabel'),
-        options: { state: { labelId } }
+        to: { pathname: '/products', search: `labelId=${labelId}` },
+        label: t('linkLabel')
       }}
       marginTop="xxl-size"
       query={otherIconsQuery}
