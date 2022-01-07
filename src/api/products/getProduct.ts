@@ -18,7 +18,8 @@ export const getProduct = async (params: Params) => {
     .from<GetProductResponse>(PRODUCTS_TABLE)
     .select(
       `
-      description,
+      description_pl,
+      description_en,
       id,
       price,
       collection_id,

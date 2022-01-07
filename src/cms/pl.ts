@@ -74,7 +74,7 @@ const pl = {
     signoutToggleLabel: 'Wyloguj',
     soon: 'Wkrótce',
     productsEmptyState: 'Nie znaleziono żadnych produktów',
-    productsLoadMore: 'Pokaż więcej produktów',
+    productsLoadMore: 'Pokaż więcej',
     productsSingle: '{{count}} produkt',
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',

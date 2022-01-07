@@ -3,7 +3,8 @@ import { array, TypeOf } from 'zod'
 
 const getProductResponse = product
   .pick({
-    description: true,
+    description_pl: true,
+    description_en: true,
     id: true,
     price: true,
     collection_id: true,

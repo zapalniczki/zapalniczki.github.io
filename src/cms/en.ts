@@ -76,7 +76,7 @@ const en: LanguageKeys = {
     signoutToggleLabel: 'Wyloguj',
     soon: 'Wkrótce',
     productsEmptyState: 'No results',
-    productsLoadMore: 'Pokaż więcej produktów',
+    productsLoadMore: 'Show more',
     productsSingle: '{{count}} product',
     productsFew: '{{count}} products',
     productsMultiple: '{{count}} products',

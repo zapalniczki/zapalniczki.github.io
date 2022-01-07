@@ -29,6 +29,12 @@ const Info = ({ product }: Props) => {
     iconLabel
   )
 
+  const description = getLanguageLabel({
+    language: currentLanguage,
+    label: product,
+    description: true
+  })
+
   return (
     <Flexbox
       flexDirection="column"
@@ -58,7 +64,7 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Text type="body-2">{product.description}</Text>
+      <Text type="body-2">{description}</Text>
 
       <AvilabilityIndicator status={product.mold.status} />
     </Flexbox>
