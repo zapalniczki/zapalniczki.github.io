@@ -2,16 +2,22 @@ import { getProducts } from 'api'
 import { ProductsGrid } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 
 const Bestsellers = () => {
+  const { homeBestsellersDisplay } = useContext(remoteConfigContext)
   const { t } = useTranslation('HOME')
 
   const params = { bestseller: true }
   const bestsellersQuery = useQuery([PRODUCTS_TABLE, params], () =>
     getProducts(params)
   )
+
+  if (!homeBestsellersDisplay) {
+    return null
+  }
 
   return (
     <ProductsGrid

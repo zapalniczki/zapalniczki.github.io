@@ -21,7 +21,7 @@ import {
   getAll,
   fetchAndActivate
 } from 'firebase/remote-config'
-import { boolean, object, TypeOf } from 'zod'
+import { boolean, number, object, TypeOf, ZodFirstPartyTypeKind } from 'zod'
 import { useDev } from 'hooks'
 
 const init: RemoteConfigContext = {
@@ -54,7 +54,10 @@ const init: RemoteConfigContext = {
   signedOut: false,
   snow: false,
   valentinesDay: false,
-  viewProduct: true
+  viewProduct: true,
+  homeFeaturedCount: 6,
+  homeBestsellersDisplay: false,
+  homeFeaturedDisplay: false
 }
 
 type Props = {
@@ -77,11 +80,19 @@ const RemoteConfigProvider = ({ children }: Props) => {
 
       const rawValues = getAll(remoteConfig)
       const values = Object.fromEntries(
-        Object.entries(rawValues).map((alfa) => {
-          const key = alfa[0]
-          const value = alfa[1].asBoolean()
+        Object.entries(rawValues).map(([key, value]) => {
+          const valueType = getTypeOfRemoteConfigKey(key)
 
-          return [key, value]
+          let valueParsed
+          if (valueType === ZodFirstPartyTypeKind.ZodNumber) {
+            valueParsed = value.asNumber()
+          } else if (valueType === ZodFirstPartyTypeKind.ZodBoolean) {
+            valueParsed = value.asBoolean()
+          } else {
+            valueParsed = value.asString()
+          }
+
+          return [key, valueParsed]
         })
       )
 
@@ -134,7 +145,10 @@ const remoteConfigContextSchema = object({
   signedOut: boolean(),
   snow: boolean(),
   valentinesDay: boolean(),
-  viewProduct: boolean()
+  viewProduct: boolean(),
+  homeFeaturedCount: number(),
+  homeBestsellersDisplay: boolean(),
+  homeFeaturedDisplay: boolean()
 })
 
 export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>
@@ -142,3 +156,20 @@ export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>
 export const remoteConfigContext = createContext<RemoteConfigContext>(init)
 
 export default RemoteConfigProvider
+
+const getTypeOfRemoteConfigKey = (query: string) => {
+  const remoteConfigKeysWithTypes = Object.entries(
+    remoteConfigContextSchema._getCached().shape
+  ).map(([key, value]) => ({
+    key,
+    type: value._def.typeName
+  }))
+
+  const thisKey = remoteConfigKeysWithTypes.find((key) => key.key === query)
+
+  if (!thisKey) {
+    return undefined
+  }
+
+  return thisKey.type
+}
