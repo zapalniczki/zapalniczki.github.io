@@ -1,7 +1,7 @@
 import { getProducts } from 'api'
 import { ProductsGrid } from 'components'
 import { PRODUCTS_TABLE } from 'constants/db_tables'
-import { CHRISTMAS_2021 } from 'constants/routes'
+import { VALENTINES_DAY } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
@@ -24,7 +24,7 @@ const ValentinesDay = () => {
   return (
     <ProductsGrid
       link={{
-        to: CHRISTMAS_2021,
+        to: VALENTINES_DAY,
         label: commonT('linkLabel')
       }}
       loaderCount={3}
