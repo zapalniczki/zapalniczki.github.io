@@ -5,13 +5,9 @@ import { Box } from 'components'
 import useBanners, { BannerKey } from './useBanners'
 import Chevron from './Chevron'
 
-type Props = {
-  children: BannerKey[]
-}
-
-const Carousel = ({ children }: Props) => {
-  const { getBanner } = useBanners()
-  const multipleChildren = children.length > 1
+const Carousel = () => {
+  const { getBanner, visibleBanners } = useBanners()
+  const multipleChildren = visibleBanners.length > 1
 
   return (
     <Box height="100%" width="100%">
@@ -40,8 +36,8 @@ const Carousel = ({ children }: Props) => {
         swipeable={false}
         useKeyboardArrows
       >
-        {children.map((child, index) => (
-          <Fragment key={index}>{getBanner(child)}</Fragment>
+        {visibleBanners.map((banner, index) => (
+          <Fragment key={index}>{getBanner(banner)}</Fragment>
         ))}
       </CarouselLib>
     </Box>

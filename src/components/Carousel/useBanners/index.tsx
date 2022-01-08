@@ -1,19 +1,28 @@
 import { Text, Button, Heading, Flexbox, Banner } from 'components'
 import { CHRISTMAS_2021, PRODUCTS } from 'constants/routes'
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 import Christmas2021 from './Christmas2021'
+import { remoteConfigContext } from 'providers'
 
 const useBanners = () => {
+  const { christmas2021 } = useContext(remoteConfigContext)
+
   const history = useNavigate()
   const banners = getBanners(history)
 
   const getBanner = (key: BannerKey): JSX.Element => banners[key]
 
+  let visibleBanners: BannerKey[] = ['YOUR_PLACE']
+  if (christmas2021) {
+    visibleBanners = ['CHRISTMAS_2021', ...visibleBanners]
+  }
+
   return {
     banners,
-    getBanner
+    getBanner,
+    visibleBanners
   }
 }
 
