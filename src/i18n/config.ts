@@ -4,8 +4,10 @@ import { i18nextPlugin } from 'translation-check'
 
 import pl from 'cms/pl'
 import en from 'cms/en'
+import { Language } from 'hooks'
 
 export const keySeparator = '.'
+export const FALLBACK_LANGUAGE: Language = 'en'
 
 const namespacesPL = {
   ADMIN_CALLBACKS: pl.ADMIN_CALLBACKS,
@@ -40,8 +42,6 @@ const namespacesPL = {
   USER: pl.USER
 }
 
-type Namespaces = typeof namespacesPL
-
 const namespacesEN: Namespaces = {
   ADMIN_CALLBACKS: en.ADMIN_CALLBACKS,
   ADMIN_DELIVERY_TYPES: en.ADMIN_DELIVERY_TYPES,
@@ -51,7 +51,6 @@ const namespacesEN: Namespaces = {
   ADMIN_NEWSLETTER_USERS: en.ADMIN_NEWSLETTER_USERS,
   ADMIN_ORDERS: en.ADMIN_ORDERS,
   ADMIN_PAYMENT_TYPES: en.ADMIN_PAYMENT_TYPES,
-
   CHECKOUT_DELIVERY: en.CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS: en.CHECKOUT_DETAILS,
   CHECKOUT_PAYMENT: en.CHECKOUT_PAYMENT,
@@ -79,15 +78,16 @@ i18n
   .use(i18nextPlugin)
   .use(LanguageDetector)
   .init({
-    fallbackLng: 'en',
+    fallbackLng: FALLBACK_LANGUAGE,
+    debug: true,
     keySeparator: keySeparator,
     resources: {
       pl: namespacesPL,
-
       en: namespacesEN
     }
   })
 
 export type TranslationsNamespace = keyof typeof pl
+type Namespaces = typeof namespacesPL
 
 export default i18n

@@ -6,9 +6,8 @@ import {
   CHECKOUT_PAYMENT,
   CHECKOUT_RESULT
 } from 'constants/routes'
-import { useTranslation } from 'hooks'
+import { Language, language, useTranslation } from 'hooks'
 import React from 'react'
-import { enum as zenum, TypeOf } from 'zod'
 
 import { ReactComponent as Pl } from 'assets/flags/pl.svg'
 import { ReactComponent as En } from 'assets/flags/en.svg'
@@ -24,13 +23,12 @@ const LanguageToggle = () => {
     <Button
       disabled={basketDisabledpathnames.includes(pathname)}
       onClick={() => {
-        const indexOfCurrentLanguage =
-          AVAILABLE_LANGUAGES.indexOf(currentLanguage)
+        const indexOfCurrentLanguage = language.options.indexOf(currentLanguage)
         const indexOfNextLanguage =
-          indexOfCurrentLanguage === AVAILABLE_LANGUAGES.length - 1
+          indexOfCurrentLanguage === language.options.length - 1
             ? 0
             : indexOfCurrentLanguage + 1
-        const nextLanguage = AVAILABLE_LANGUAGES[indexOfNextLanguage]
+        const nextLanguage = language.options[indexOfNextLanguage]
 
         i18n.changeLanguage(nextLanguage)
       }}
@@ -53,11 +51,6 @@ const basketDisabledpathnames = [
   CHECKOUT_PAYMENT,
   CHECKOUT_RESULT
 ]
-
-const AVAILABLE_LANGUAGES = ['pl', 'en'] as const
-const availiableLanguages = zenum(['pl', 'en'])
-
-export type Language = TypeOf<typeof availiableLanguages>
 
 const languageToFlagMapping: Record<Language, JSX.Element> = {
   pl: <Pl />,
