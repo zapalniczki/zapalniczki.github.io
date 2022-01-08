@@ -80,7 +80,7 @@ const en: LanguageKeys = {
     productsSingle: '{{count}} product',
     productsFew: '{{count}} products',
     productsMultiple: '{{count}} products',
-    preloaderInfo: 'Ładowanie strony',
+    preloaderInfo: 'Website loading',
     loading: 'Ładowanie',
     companyName: domain,
     tableEmpty: 'Tabela jest pusta',
