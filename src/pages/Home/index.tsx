@@ -8,6 +8,7 @@ import Bestsellers from './Bestsellers'
 import Christmas2021 from './Christmas2021'
 import Featured from './Featured'
 import NewYearsEve2022 from './NewYearsEve2022'
+import Catalogue from './Catalogue'
 
 const Home = () => {
   const { christmas2021 } = useContext(remoteConfigContext)
@@ -32,6 +33,8 @@ const Home = () => {
       <NewYearsEve2022 />
 
       <Featured />
+
+      <Catalogue />
 
       <Bestsellers />
 

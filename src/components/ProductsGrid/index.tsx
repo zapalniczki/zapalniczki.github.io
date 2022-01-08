@@ -5,7 +5,7 @@ import { GetProductsResponseItem } from 'models'
 import React, { ReactNode } from 'react'
 import { UseInfiniteQueryResult, UseQueryResult } from 'react-query'
 import { NavigateOptions } from 'react-router-dom'
-import { SpaceProps } from 'styled-system'
+import { OrderProps, SpaceProps } from 'styled-system'
 import Content from './Content'
 import ProductsGridLoader from './index.loader'
 
@@ -20,7 +20,8 @@ export type BaseProps = {
   sectionHeadChildren?: ReactNode
   showCount?: true
   title?: string
-} & SpaceProps
+} & SpaceProps &
+  OrderProps
 
 type Props = BaseProps &
   (

@@ -46,18 +46,21 @@ const init: RemoteConfigContext = {
   documents: false,
   home: true,
   howToCreateOrder: false,
-  i18n: false,
   order: true,
   products: true,
   signIn: false,
   signUp: false,
   signedOut: false,
-  snow: false,
   valentinesDay: false,
   viewProduct: true,
+  // HOME
   homeFeaturedCount: 6,
   homeBestsellersDisplay: false,
-  homeFeaturedDisplay: false
+  homeFeaturedDisplay: false,
+  homeCatalogueDisplay: false,
+  // REST
+  i18n: false,
+  snow: false
 }
 
 type Props = {
@@ -137,18 +140,21 @@ const remoteConfigContextSchema = object({
   documents: boolean(),
   home: boolean(),
   howToCreateOrder: boolean(),
-  i18n: boolean(),
   order: boolean(),
   products: boolean(),
   signIn: boolean(),
   signUp: boolean(),
   signedOut: boolean(),
-  snow: boolean(),
   valentinesDay: boolean(),
   viewProduct: boolean(),
+  // HOME
   homeFeaturedCount: number(),
   homeBestsellersDisplay: boolean(),
-  homeFeaturedDisplay: boolean()
+  homeFeaturedDisplay: boolean(),
+  homeCatalogueDisplay: boolean(),
+  // REST
+  snow: boolean(),
+  i18n: boolean()
 })
 
 export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>
