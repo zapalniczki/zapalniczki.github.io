@@ -532,7 +532,7 @@ const en: LanguageKeys = {
 
   PAGE_NOT_FOUND: {
     title: '404',
-    heading: "Ups! Pge wasn't found",
+    heading: "Ups! Page wasn't found",
     buttonLabel: 'Go to home'
   },
 
