@@ -32,14 +32,15 @@ const pl = {
     },
 
     LINKS: {
-      home: 'Strona Główna',
-      products: 'Produkty',
-      howToCreateOrder: 'Jak złożyć zamówienie',
-      deliveryAndPayments: 'Dostawa i płatności',
-      contact: 'Kontakt',
-      orders: 'Zamówienia',
-      documents: 'Dokumenty',
       christmas2021: 'Oferta Świąteczna',
+      companyOffer: 'Oferta dla firmy',
+      contact: 'Kontakt',
+      deliveryAndPayments: 'Dostawa i płatności',
+      documents: 'Dokumenty',
+      home: 'Strona Główna',
+      howToCreateOrder: 'Jak złożyć zamówienie',
+      orders: 'Zamówienia',
+      products: 'Produkty',
       valentinesDay: 'Walentynki 2022',
 
       adminOrders: 'Zamówienia',

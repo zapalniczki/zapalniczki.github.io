@@ -34,14 +34,15 @@ const en: LanguageKeys = {
     },
 
     LINKS: {
-      home: 'Home',
-      products: 'Products',
-      howToCreateOrder: 'How to order',
-      deliveryAndPayments: 'Delivery and payments',
-      contact: 'Contact',
-      orders: 'Orders',
-      documents: 'Terms and conditions',
       christmas2021: 'Christmas Offer',
+      companyOffer: 'Company offer',
+      contact: 'Contact',
+      deliveryAndPayments: 'Delivery and payments',
+      documents: 'Terms and conditions',
+      home: 'Home',
+      howToCreateOrder: 'How to order',
+      orders: 'Orders',
+      products: 'Products',
       valentinesDay: "Valentine's Day",
 
       adminOrders: 'Orders',

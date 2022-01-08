@@ -6,24 +6,25 @@ import {
   ADMIN_MOLDS,
   ADMIN_ORDERS,
   ADMIN_PAYMENT_TYPES,
+  CART,
   CHECKOUT_DELIVERY,
   CHECKOUT_DETAILS,
   CHECKOUT_PAYMENT,
-  CART,
   CHECKOUT_RESULT,
+  CHRISTMAS_2021,
+  COMPANY_OFFER,
   CONTACT,
   DELIVERY_AND_PAYMENTS,
   DOCUMENTS,
   HOME,
   HOW_TO_CREATE_ORDER,
+  ORDERS_ID,
   PRODUCTS,
   PRODUCTS_ID,
-  ORDERS_ID,
-  CHRISTMAS_2021,
-  USER,
-  SIGN_IN,
   SIGNED_OUT,
+  SIGN_IN,
   SIGN_UP,
+  USER,
   VALENTINES_DAY
 } from 'constants/routes'
 
@@ -84,6 +85,12 @@ const routes: Route[] = [
     key: 'order'
   },
   {
+    Component: React.lazy(() => import('pages/CompanyOffer')),
+    path: COMPANY_OFFER,
+    key: 'companyOffer',
+    order: 4
+  },
+  {
     Component: React.lazy(() => import('pages/SignIn')),
     path: SIGN_IN,
     key: 'signIn'
@@ -95,9 +102,8 @@ const routes: Route[] = [
   },
   {
     Component: React.lazy(() => import('pages/Contact')),
-
     path: CONTACT,
-    order: 6,
+    order: 7,
     key: 'contact'
   },
   {
@@ -109,7 +115,7 @@ const routes: Route[] = [
     Component: React.lazy(() => import('pages/DeliveryAndPayments')),
     path: DELIVERY_AND_PAYMENTS,
     end: true,
-    order: 5,
+    order: 6,
     key: 'deliveryAndPayments'
   },
   {
@@ -222,6 +228,7 @@ type RouteKey =
   | 'checkoutPayment'
   | 'checkoutResult'
   | 'christmas'
+  | 'companyOffer'
   | 'contact'
   | 'customer'
   | 'deliveryAndPayments'
