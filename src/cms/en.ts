@@ -450,6 +450,11 @@ const en: LanguageKeys = {
       title: 'Featured'
     },
 
+    CATALOGUE: {
+      title: 'Nasz najnowszy katalog produktów już jest',
+      linkLabel: 'Zobacz'
+    },
+
     bestsellers: {
       title: 'Bestsellers',
       linkLabel: 'See all'

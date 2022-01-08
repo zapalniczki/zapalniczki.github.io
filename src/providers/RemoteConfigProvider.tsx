@@ -21,7 +21,14 @@ import {
   getAll,
   fetchAndActivate
 } from 'firebase/remote-config'
-import { boolean, number, object, TypeOf, ZodFirstPartyTypeKind } from 'zod'
+import {
+  string,
+  boolean,
+  number,
+  object,
+  TypeOf,
+  ZodFirstPartyTypeKind
+} from 'zod'
 import { useDev } from 'hooks'
 
 const init: RemoteConfigContext = {
@@ -58,6 +65,9 @@ const init: RemoteConfigContext = {
   homeBestsellersDisplay: false,
   homeFeaturedDisplay: false,
   homeCatalogueDisplay: false,
+  // DATA
+  catalogue_cover: '',
+  catalogue_link: '',
   // REST
   i18n: false,
   snow: false
@@ -152,6 +162,9 @@ const remoteConfigContextSchema = object({
   homeBestsellersDisplay: boolean(),
   homeFeaturedDisplay: boolean(),
   homeCatalogueDisplay: boolean(),
+  // DATA
+  catalogue_cover: string(),
+  catalogue_link: string(),
   // REST
   snow: boolean(),
   i18n: boolean()

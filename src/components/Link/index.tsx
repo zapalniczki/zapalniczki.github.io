@@ -4,6 +4,7 @@ import { Text } from 'components'
 import React from 'react'
 import { Link as RouterLink, LinkProps } from 'react-router-dom'
 import styled from 'styled-components'
+import { space, SpaceProps } from 'styled-system'
 import getColor from 'styles/getColor'
 
 type Props = LinkProps & {
@@ -12,7 +13,7 @@ type Props = LinkProps & {
   icon?: IconName
   label?: string
   showUnderline?: boolean
-}
+} & SpaceProps
 
 const Link = ({
   active,
@@ -49,6 +50,8 @@ const Container = styled(RouterLink)<ContainerProps>`
   align-items: center;
   text-decoration: ${(props) => (props.$showUnderline ? 'underline' : 'none')};
   color: ${getColor('black')};
+
+  ${space};
 `
 
 export default Link

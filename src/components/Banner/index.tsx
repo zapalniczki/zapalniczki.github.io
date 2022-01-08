@@ -70,6 +70,6 @@ const sizeToHeight: Record<Size, string> = {
   LARGE: '40rem'
 }
 
-type Size = 'SMALL' | 'MEDIUM' | 'LARGE'
+export type Size = 'SMALL' | 'MEDIUM' | 'LARGE'
 
 export default Banner

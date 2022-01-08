@@ -1,4 +1,4 @@
-import { Flexbox, Heading, Button, Banner } from 'components'
+import { Flexbox, Heading, Button, Banner, Size } from 'components'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,14 +7,19 @@ type Props = {
     label: string
     to: string
   }
+  size?: Size
   title: string
 }
 
-const BannerWithTitleAndLink = ({ link: { label, to }, title }: Props) => {
+const BannerWithTitleAndLink = ({
+  link: { label, to },
+  size,
+  title
+}: Props) => {
   const navigate = useNavigate()
 
   return (
-    <Banner marginTop="xxl-size" size="SMALL">
+    <Banner marginTop="xxl-size" size={size}>
       <Flexbox
         alignItems={['unset', 'flex-start', 'flex-start', 'center']}
         flexDirection={['unset', 'column', 'column', 'row']}

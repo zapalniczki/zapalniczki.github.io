@@ -1,15 +1,24 @@
-import { Banner } from 'components'
+import { BannerWithImage, ExternalLink } from 'components'
+import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 
 const Catalogue = () => {
-  const { homeCatalogueDisplay } = useContext(remoteConfigContext)
+  const t = useTranslation('HOME').withBase('CATALOGUE')
+  const { catalogue_cover, catalogue_link, homeCatalogueDisplay } =
+    useContext(remoteConfigContext)
 
   if (!homeCatalogueDisplay) {
     return null
   }
 
-  return <Banner marginTop="xxl-size" size="MEDIUM" />
+  return (
+    <BannerWithImage size="MEDIUM" src={catalogue_cover} title={t('title')}>
+      <ExternalLink marginTop="m-size" to={catalogue_link}>
+        {t('linkLabel')}
+      </ExternalLink>
+    </BannerWithImage>
+  )
 }
 
 export default Catalogue

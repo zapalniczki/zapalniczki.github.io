@@ -449,6 +449,11 @@ const pl = {
       title: 'Nowości'
     },
 
+    CATALOGUE: {
+      title: 'Nasz najnowszy katalog produktów już jest!',
+      linkLabel: 'Zobacz'
+    },
+
     bestsellers: {
       title: 'Bestsellery',
       linkLabel: 'Zobacz wszystkie'

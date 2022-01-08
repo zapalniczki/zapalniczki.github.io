@@ -13,7 +13,7 @@ type Props = {
 
 const ExternalLink = ({ children, to, ...props }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
-  const isDisabled = to.length === 0
+  const isDisabled = !to.length
 
   const link = (
     <Container
