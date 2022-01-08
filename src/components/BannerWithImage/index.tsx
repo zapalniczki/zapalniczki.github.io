@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react'
 
 type Props = {
   children?: ReactNode
-
   size?: Size
   src: string
   title: string
