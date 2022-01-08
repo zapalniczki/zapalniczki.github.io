@@ -1,7 +1,7 @@
 import { Flexbox, Heading } from 'components'
 import { useBreakpoints } from 'hooks'
 import React, { ReactNode } from 'react'
-import { SpaceProps } from 'styled-system'
+import { OrderProps, SpaceProps } from 'styled-system'
 import { Color } from 'styles/theme'
 
 export type Props = {
@@ -11,7 +11,8 @@ export type Props = {
   size?: Size
   title?: string
   vhOnMobile?: boolean
-} & SpaceProps
+} & SpaceProps &
+  OrderProps
 
 const Banner = ({
   background,

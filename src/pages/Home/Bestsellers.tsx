@@ -7,7 +7,8 @@ import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 
 const Bestsellers = () => {
-  const { homeBestsellersDisplay } = useContext(remoteConfigContext)
+  const { homeBestsellersDisplay, homeBestsellersOrder } =
+    useContext(remoteConfigContext)
   const { t } = useTranslation('HOME')
 
   const params = { bestseller: true }
@@ -23,6 +24,7 @@ const Bestsellers = () => {
     <ProductsGrid
       loaderCount={6}
       marginTop="xxl-size"
+      order={homeBestsellersOrder}
       query={bestsellersQuery}
       title={t('bestsellers.title')}
     />

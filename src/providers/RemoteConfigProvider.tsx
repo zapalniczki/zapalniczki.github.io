@@ -65,6 +65,10 @@ const init: RemoteConfigContext = {
   homeBestsellersDisplay: false,
   homeFeaturedDisplay: false,
   homeCatalogueDisplay: false,
+  homeValentinesDayOrder: 0,
+  homeFeaturedOrder: 0,
+  homeCatalogueOrder: 0,
+  homeBestsellersOrder: 0,
   // DATA
   catalogue_cover: '',
   catalogue_link: '',
@@ -162,6 +166,10 @@ const remoteConfigContextSchema = object({
   homeBestsellersDisplay: boolean(),
   homeFeaturedDisplay: boolean(),
   homeCatalogueDisplay: boolean(),
+  homeValentinesDayOrder: number(),
+  homeFeaturedOrder: number(),
+  homeCatalogueOrder: number(),
+  homeBestsellersOrder: number(),
   // DATA
   catalogue_cover: string(),
   catalogue_link: string(),

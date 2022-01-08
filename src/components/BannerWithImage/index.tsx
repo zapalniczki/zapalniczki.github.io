@@ -1,15 +1,16 @@
 import { Banner, Flexbox, Heading, Image, Size } from 'components'
 import React, { ReactNode } from 'react'
+import { OrderProps } from 'styled-system'
 
 type Props = {
   children?: ReactNode
   size?: Size
   src: string
   title: string
-}
+} & OrderProps
 
-const BannerWithImage = ({ children, size, src, title }: Props) => (
-  <Banner marginTop="xxl-size" size={size}>
+const BannerWithImage = ({ children, size, src, title, ...props }: Props) => (
+  <Banner marginTop="xxl-size" size={size} {...props}>
     <Flexbox
       alignItems={['unset', 'center', 'center', 'center']}
       flexDirection={['unset', 'column', 'column', 'row']}

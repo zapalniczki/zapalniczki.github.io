@@ -5,15 +5,24 @@ import React, { useContext } from 'react'
 
 const Catalogue = () => {
   const t = useTranslation('HOME').withBase('CATALOGUE')
-  const { catalogue_cover, catalogue_link, homeCatalogueDisplay } =
-    useContext(remoteConfigContext)
+  const {
+    catalogue_cover,
+    catalogue_link,
+    homeCatalogueDisplay,
+    homeCatalogueOrder
+  } = useContext(remoteConfigContext)
 
   if (!homeCatalogueDisplay) {
     return null
   }
 
   return (
-    <BannerWithImage size="MEDIUM" src={catalogue_cover} title={t('title')}>
+    <BannerWithImage
+      order={homeCatalogueOrder}
+      size="MEDIUM"
+      src={catalogue_cover}
+      title={t('title')}
+    >
       <ExternalLink marginTop="m-size" to={catalogue_link}>
         {t('linkLabel')}
       </ExternalLink>

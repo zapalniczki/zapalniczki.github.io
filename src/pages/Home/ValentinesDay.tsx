@@ -9,7 +9,8 @@ import { useQuery } from 'react-query'
 
 const ValentinesDay = () => {
   const commonT = useTranslation('HOME').withBase('VALENTINES_DAY')
-  const { valentinesDay } = useContext(remoteConfigContext)
+  const { homeValentinesDayOrder, valentinesDay } =
+    useContext(remoteConfigContext)
 
   const params = {
     limit: 3,
@@ -29,6 +30,7 @@ const ValentinesDay = () => {
       }}
       loaderCount={3}
       marginTop="xxl-size"
+      order={homeValentinesDayOrder}
       query={query}
       title={commonT('title')}
     />
