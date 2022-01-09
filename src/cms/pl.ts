@@ -8,6 +8,20 @@ export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
+    BANNERS: {
+      YOUR_PLACE: {
+        title:
+          '<strong>Twoje</strong> miejsce w <strong>Twoim</strong> miejscu',
+        subtitle:
+          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją sprzedażową.'
+      },
+      CHRISTMAS_2021: {
+        tite: '<strong>Wyjątkowa</strong> oferta <strong>świąteczna</strong>',
+        subtitle:
+          'Jako jedyni w Polsce oferujemy zapalniczki tłoczone metodą hotstampingu z unikalnymi wzorami dedykowanymi na ten specjalny czas. Zapraszamy do zapoznania się z naszymi produktami.'
+      }
+    },
+
     COOKIES_CONSENT: {
       agree: 'Rozumiem',
       info: 'Strona braty.co używa plików cookies. Dowiedz się więcej o celu ich używania i zmianie ustawień cookies w przeglądarce.\nKorzystając ze strony wyrażasz zgodę na używanie cookies, zgodnie z aktualnymi ustawieniami przeglądarki.'
@@ -63,13 +77,15 @@ const pl = {
       }
     },
 
-    nrb,
-    bankName,
-    fullCompanyName,
     LANGUAGE_TOGGLE_LABEL: {
       pl: 'polski',
       en: 'english'
     },
+
+    nrb,
+    bankName,
+    fullCompanyName,
+
     basketToggleLabel: 'Koszyk',
     profileToggleLabel: 'Profil użytkownika',
     signoutToggleLabel: 'Wyloguj',

@@ -5,12 +5,15 @@ import { NavigateFunction, useNavigate } from 'react-router-dom'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 import Christmas2021 from './Christmas2021'
 import { remoteConfigContext } from 'providers'
+import { TranslateFunc, useTranslation } from 'hooks'
+import { Trans } from 'react-i18next'
 
 const useBanners = () => {
+  const commonT = useTranslation('COMMON').withBase('BANNERS')
   const { christmas2021 } = useContext(remoteConfigContext)
 
   const history = useNavigate()
-  const banners = getBanners(history)
+  const banners = getBanners(history, commonT)
 
   const getBanner = (key: BannerKey): JSX.Element => banners[key]
 
@@ -29,7 +32,8 @@ const useBanners = () => {
 export type BannerKey = 'YOUR_PLACE' | 'CHRISTMAS_2021'
 
 const getBanners = (
-  navigate: NavigateFunction
+  navigate: NavigateFunction,
+  commonT: TranslateFunc
 ): Record<BannerKey, JSX.Element> => ({
   YOUR_PLACE: (
     <Banner background={<YourPlaceInYourPoint />} size="LARGE" vhOnMobile>
@@ -42,9 +46,7 @@ const getBanners = (
         zIndex={1}
       >
         <Heading as="h1" level={3} textAlign="center">
-          {/* eslint-disable-next-line react/jsx-newline */}
-          <strong>Twoje</strong> miejsce w <strong>Twoim</strong>
-          &nbsp;punkcie
+          <Trans i18nKey="BANNERS.YOUR_PLACE.title" ns="COMMON" />
         </Heading>
 
         <Text
@@ -53,8 +55,7 @@ const getBanners = (
           textAlign="center"
           type="body-2"
         >
-          Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź
-          swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.
+          {commonT('YOUR_PLACE.subtitle')}
         </Text>
 
         <Button
@@ -78,8 +79,7 @@ const getBanners = (
         zIndex={1}
       >
         <Heading as="h1" level={3} textAlign="center">
-          {/* eslint-disable-next-line react/jsx-newline */}
-          <strong>Wyjątkowa</strong> oferta <strong>świąteczna</strong>
+          {commonT('CHRISTMAS_2021.title')}
         </Heading>
 
         <Text
@@ -88,9 +88,7 @@ const getBanners = (
           textAlign="center"
           type="body-2"
         >
-          Jako jedyni w Polsce oferujemy zapalniczki tłoczone metodą
-          hotstampingu z unikalnymi wzorami dedykowanymi na ten specjalny czas.
-          Zapraszamy do zapoznania się z naszymi produktami.
+          {commonT('CHRISTMAS_2021.subtitle')}
         </Text>
 
         <Button
