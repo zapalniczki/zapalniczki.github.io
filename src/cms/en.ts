@@ -305,9 +305,8 @@ const en: LanguageKeys = {
         required: 'Proszę podać adres e-mail'
       },
       PHONE: {
-        required: 'Proszę podać numer telefonu',
-        matches:
-          'Numer telefonu powinien składać się z numeru kierunkowego (48) i 9 cyfr'
+        required: 'Please type phone number',
+        matches: 'Phone number should have at least 6 digits'
       },
       ORDER_ID: {
         required: 'Order reference number in required',

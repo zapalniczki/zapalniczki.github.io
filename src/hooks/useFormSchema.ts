@@ -22,7 +22,7 @@ const useFormSchema = () => {
 
     PHONE: string()
       .trim()
-      .matches(/(^((48)(\d){9})$)|(^(\d){9}$)/, commonT('PHONE.matches'))
+      .matches(/^(\d){8,}$/, commonT('PHONE.matches'))
       .required(commonT('PHONE.required')),
 
     ORDER_ID: string()

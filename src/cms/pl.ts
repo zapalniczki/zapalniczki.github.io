@@ -306,8 +306,7 @@ const pl = {
       },
       PHONE: {
         required: 'Proszę podać numer telefonu',
-        matches:
-          'Numer telefonu powinien składać się z numeru kierunkowego (48) i 9 cyfr'
+        matches: 'Numer telefonu powinien zawierać co najmniej 6 cyfr'
       },
       ORDER_ID: {
         required: 'Proszę podać numer referencyjny zamówienia',
