@@ -68,6 +68,8 @@ if (process.env.MEASUREMENT_ID) {
   ReactGA.initialize(process.env.MEASUREMENT_ID)
 }
 
+import 'react-phone-input-2/lib/style.css'
+
 library.add(
   faArrowLeft,
   faArrowRight,

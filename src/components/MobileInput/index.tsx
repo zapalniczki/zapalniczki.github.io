@@ -1,5 +1,6 @@
 import { Flexbox, InputLabel } from 'components'
 import { FieldProps, useField } from 'formik'
+import { useTranslation } from 'hooks'
 import React from 'react'
 import PhoneInput from 'react-phone-input-2'
 import { useTheme } from 'styled-components'
@@ -13,12 +14,19 @@ type Props = {
 }
 
 const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
+  const commonT = useTranslation('COMMON').withBase('COUNTRIES')
+  const { currentLanguage } = useTranslation('COMMON')
+  const { colors } = useTheme()
+
   const { field, meta } = fieldProps
   const [, , helpers] = useField(fieldProps.field.name)
   const { error, touched } = meta
   const { setValue } = helpers
 
-  const { colors } = useTheme()
+  let country = 'pl'
+  if (currentLanguage !== 'pl') {
+    country = 'gb'
+  }
 
   return (
     <Flexbox flexDirection="column">
@@ -36,9 +44,8 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
           cursor: 'default',
           background: 'background-color'
         }}
-        country="pl"
+        country={country}
         countryCodeEditable={false}
-        disableDropdown
         disabled={disabled}
         inputClass="input-form d-block"
         inputStyle={{
@@ -46,10 +53,18 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
           border: '1px solid',
           borderColor: colors['border-color']
         }}
-        masks={{ pl: '... .. .. ..' }}
+        localization={{
+          pl: commonT('pl'),
+          de: commonT('de'),
+          gb: commonT('gb')
+        }}
+        masks={{
+          pl: '... .. .. ..'
+        }}
         onBlur={field.onBlur}
         onChange={(value) => setValue(value)}
         onFocus={() => helpers.setTouched(true)}
+        onlyCountries={['pl', 'de', 'gb']}
         placeholder={placeholder}
         value={field.value ?? ''}
       />

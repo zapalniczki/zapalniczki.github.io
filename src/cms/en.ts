@@ -10,6 +10,11 @@ export const email = `kontakt@${domain}`
 
 const en: LanguageKeys = {
   COMMON: {
+    COUNTRIES: {
+      de: 'Germany',
+      gb: 'United Kingdom',
+      pl: 'Poland'
+    },
     BANNERS: {
       YOUR_PLACE: {
         title: '<strong>Your</strong> place in <strong>Your</strong> point',

@@ -8,6 +8,11 @@ export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
+    COUNTRIES: {
+      de: 'Niemcy',
+      gb: 'Wielka Brytania',
+      pl: 'Polska'
+    },
     BANNERS: {
       YOUR_PLACE: {
         title:
