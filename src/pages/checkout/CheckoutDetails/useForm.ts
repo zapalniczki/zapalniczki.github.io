@@ -32,7 +32,8 @@ const useForm = () => {
     post_code: checkout.contact_details?.post_code ?? '',
     city: checkout.contact_details?.city ?? '',
     email: checkout.contact_details?.email ?? '',
-    phone: checkout.contact_details?.phone ?? ''
+    phone: checkout.contact_details?.phone ?? '',
+    country: checkout.contact_details?.country ?? ''
   }
 
   const getSchema = (isCompany: boolean) => {

@@ -56,7 +56,9 @@ const useForm = () => {
         checkout.shipping?.post_code ??
         checkout.contact_details?.post_code ??
         '',
-      city: checkout.shipping?.city ?? checkout.contact_details?.city ?? ''
+      city: checkout.shipping?.city ?? checkout.contact_details?.city ?? '',
+      country:
+        checkout.shipping?.country ?? checkout.contact_details?.country ?? ''
     }
   }
 
