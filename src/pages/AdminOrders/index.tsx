@@ -1,6 +1,6 @@
 import { Banner, Page, Text } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
-import { ORDER_STATUSES } from 'models'
+import { ORDER_STATUSES } from 'braty-common'
 import React from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import statusToColumns from './statusToColumns'

@@ -1,4 +1,4 @@
-import { image, mold, product, icon, label } from 'models'
+import { image, mold, product, icon, label } from 'braty-common'
 import { array, TypeOf } from 'zod'
 
 const getProductResponse = product

@@ -1,10 +1,11 @@
 import { Button, FieldWrapper, Flexbox, Input } from 'components'
 import { Field, FieldProps, FormikContextType, useFormikContext } from 'formik'
 import { useInput, useTranslation } from 'hooks'
-import { Voucher } from 'models'
+import { Voucher } from 'braty-common'
 import React from 'react'
 import { FormValues } from './useForm'
 import { FormValues as UpperFormValues } from '../useForm'
+
 type Props = {
   codeApplied: boolean
   upperForm: FormikContextType<UpperFormValues>

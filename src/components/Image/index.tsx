@@ -1,6 +1,6 @@
 import { Flexbox, Spinner } from 'components'
 import { useDev } from 'hooks'
-import { ImageSize } from 'models'
+import { ImageSize } from 'braty-common'
 import React from 'react'
 import { Img } from 'react-image'
 import { getProductImagePlaceholder } from 'utils'

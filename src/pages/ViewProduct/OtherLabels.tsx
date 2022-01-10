@@ -1,7 +1,7 @@
 import { getOtherLabels } from 'api'
 import { ProductsGrid } from 'components'
 import { useTranslation } from 'hooks'
-import { Collection, Label } from 'models'
+import { Collection, Label } from 'braty-common'
 import React from 'react'
 import { useQuery } from 'react-query'
 

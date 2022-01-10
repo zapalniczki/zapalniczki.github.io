@@ -1,5 +1,5 @@
 import { VOUCHERS_TABLE } from 'constants/db_tables'
-import { voucher, Voucher } from 'models'
+import { voucher, Voucher } from 'braty-common'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 

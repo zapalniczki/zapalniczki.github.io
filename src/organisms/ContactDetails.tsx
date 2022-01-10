@@ -11,7 +11,7 @@ import {
 } from 'components'
 import { USERS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
-import { Order } from 'models'
+import { Order } from 'braty-common'
 import React from 'react'
 import { useQuery } from 'react-query'
 

@@ -3,7 +3,7 @@ import { Field, FieldProps } from 'formik'
 import { useInput } from 'hooks'
 import { FormRow, CheckboxField } from 'components'
 import { FormValues } from './useForm'
-import { PaymentType } from 'models'
+import { PaymentType } from 'braty-common'
 import Voucher from './Voucher'
 import { displayMoney } from 'utils'
 

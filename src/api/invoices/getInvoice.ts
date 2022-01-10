@@ -1,7 +1,8 @@
 import { INVOICES_TABLE } from 'constants/db_tables'
-import { getInvoiceResponse, GetInvoiceResponse, Order } from 'models'
+import { getInvoiceResponse, GetInvoiceResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Order } from 'braty-common'
 
 type Params = {
   order_id: Order['id']

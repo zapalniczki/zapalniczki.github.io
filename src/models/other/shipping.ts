@@ -1,4 +1,4 @@
-import { address } from '../db'
+import { address } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const shipping = address.omit({

@@ -1,4 +1,4 @@
-import { order } from 'models'
+import { order } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const addOrderResponse = order

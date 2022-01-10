@@ -1,4 +1,4 @@
-import { User } from 'models'
+import { User } from 'braty-common'
 import { EmailEvent } from 'braty-common'
 
 type Payload = {

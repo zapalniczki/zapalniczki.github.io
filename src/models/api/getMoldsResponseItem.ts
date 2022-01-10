@@ -1,4 +1,4 @@
-import { icon, label, mold } from 'models'
+import { icon, label, mold } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const getMoldsResponseItem = mold

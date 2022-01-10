@@ -7,13 +7,14 @@ import {
 import { CHECKOUT_RESULT } from 'constants/routes'
 import { useDev, useFormSchema, useAdmin, useFormSubmit } from 'hooks'
 import multiply from 'lodash/multiply'
-import { MoldStatus, PaymentType, Voucher } from 'models'
+import { MoldStatus } from 'braty-common'
 import { checkoutContext, initState } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 import { getHstoreFromObject, sumArray } from 'utils'
 import { object } from 'yup'
+import { Voucher, PaymentType } from 'braty-common'
 
 export type FormValues = {
   payment_type: PaymentType['id']

@@ -1,6 +1,6 @@
 import { Text, Heading, Tile } from 'components'
 import { useTranslation } from 'hooks'
-import { Order } from 'models'
+import { Order } from 'braty-common'
 import React from 'react'
 
 type Props = {

@@ -1,4 +1,4 @@
-import { paymentType } from 'models'
+import { paymentType } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const getPaymentTypesResponseItem = paymentType

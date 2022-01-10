@@ -1,4 +1,4 @@
-import { mold } from 'models'
+import { mold } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const updateMoldResponse = mold

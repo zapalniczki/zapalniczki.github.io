@@ -1,7 +1,8 @@
 import { PARCELS_TABLE } from 'constants/db_tables'
-import { editParcelResponse, EditParcelResponse, Parcel } from 'models'
+import { editParcelResponse, EditParcelResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Parcel } from 'braty-common'
 
 type Payload = Omit<Parcel, 'created_at' | 'updated_at'>
 

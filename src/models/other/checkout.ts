@@ -1,6 +1,6 @@
 import { basketItem, contactDetails, shipping } from '../other'
 
-import { deliveryType, paymentType, voucher } from '../db'
+import { deliveryType, paymentType, voucher } from 'braty-common'
 
 import { array, boolean, object, number, TypeOf } from 'zod'
 

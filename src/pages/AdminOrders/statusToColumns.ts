@@ -1,4 +1,4 @@
-import { OrderStatus } from 'models'
+import { OrderStatus } from 'braty-common'
 
 const statusToColumns: Record<OrderStatus, AdminTableColumns[]> = {
   OPEN: ['id', 'created_at', 'client', 'molds', 'sum', 'edit'],

@@ -1,4 +1,4 @@
-import { icon } from 'models'
+import { icon } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const getIconsResponseItem = icon

@@ -3,7 +3,7 @@ import React from 'react'
 import { useTranslation } from 'hooks'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
-import { MoldStatus } from 'models'
+import { MoldStatus } from 'braty-common'
 import getSpace from 'styles/getSpace'
 
 type Props = {

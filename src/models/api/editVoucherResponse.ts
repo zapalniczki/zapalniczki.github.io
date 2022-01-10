@@ -1,4 +1,4 @@
-import { voucher } from 'models'
+import { voucher } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const editVoucherResponse = voucher

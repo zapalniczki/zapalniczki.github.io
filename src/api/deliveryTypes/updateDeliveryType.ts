@@ -1,11 +1,8 @@
 import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
-import {
-  DeliveryType,
-  updateDeliveryTypeResponse,
-  UpdateDeliveryTypeResponse
-} from 'models'
+import { updateDeliveryTypeResponse, UpdateDeliveryTypeResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { DeliveryType } from 'braty-common'
 
 type Payload = Pick<DeliveryType, 'id' | 'is_enabled'>
 

@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import { orderItem } from 'models'
+import { orderItem } from 'braty-common'
 
 const addOrderItemResponse = orderItem
 

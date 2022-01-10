@@ -1,4 +1,4 @@
-import { Image, ImageSize } from 'models'
+import { Image, ImageSize } from 'braty-common'
 import getProductImagePlaceholder from './getProductImagePlaceholder'
 
 const findCorrectProductImageSize = (images: Image[], size: ImageSize) => {

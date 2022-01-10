@@ -5,9 +5,10 @@ import {
   MOLDS_TABLE,
   PRODUCTS_TABLE
 } from 'constants/db_tables'
-import { GetProductResponse, getProductResponse, Product } from 'models'
+import { GetProductResponse, getProductResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Product } from 'braty-common'
 
 type Params = {
   id: Product['id']

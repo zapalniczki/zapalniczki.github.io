@@ -5,7 +5,7 @@ import { ViewWrapper } from '.'
 import { View } from './useForm'
 import TileHeading from '../TileHeading'
 import { useNavigate } from 'react-router'
-import { Order } from 'models'
+import { Order } from 'braty-common'
 import { getOrderPath } from 'utils'
 
 type Props = {

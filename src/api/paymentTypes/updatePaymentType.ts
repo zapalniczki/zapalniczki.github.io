@@ -1,11 +1,8 @@
 import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
-import {
-  PaymentType,
-  updatePaymentTypeResponse,
-  UpdatePaymentTypeResponse
-} from 'models'
+import { updatePaymentTypeResponse, UpdatePaymentTypeResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { PaymentType } from 'braty-common'
 
 type Payload = Pick<PaymentType, 'id' | 'is_enabled'>
 

@@ -1,7 +1,9 @@
 import { USERS_TABLE } from 'constants/db_tables'
-import { AddUserResponse, addUserResponse, User } from 'models'
+import { AddUserResponse, addUserResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+
+import { User } from 'braty-common'
 
 type Payload = Omit<User, 'created_at' | 'updated_at' | 'id'>
 

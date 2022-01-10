@@ -1,7 +1,8 @@
 import { CALLBACK_TABLE } from 'constants/db_tables'
-import { addCallbackResponse, AddCallbackResponse, Callback } from 'models'
+import { addCallbackResponse, AddCallbackResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Callback } from 'braty-common'
 
 type Payload = {
   phone: Callback['phone_number']

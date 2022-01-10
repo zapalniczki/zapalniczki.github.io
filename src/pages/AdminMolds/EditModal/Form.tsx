@@ -1,7 +1,7 @@
 import { ModalContent, Select, Text } from 'components'
 import { Field, FieldProps } from 'formik'
 import { TranslateFunc, useTranslation } from 'hooks'
-import { MoldStatus, MOLD_STATUSES } from 'models'
+import { MoldStatus, MOLD_STATUSES } from 'braty-common'
 import React from 'react'
 import { FormValues } from './useForm'
 

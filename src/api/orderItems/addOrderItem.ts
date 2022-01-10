@@ -1,8 +1,9 @@
 import { ORDER_ITEMS } from 'constants/db_tables'
-import { AddOrderItemResponse, addOrderItemResponse, OrderItem } from 'models'
+import { AddOrderItemResponse, addOrderItemResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
+import { OrderItem } from 'braty-common'
 
 type Payload = Omit<OrderItem, 'created_at' | 'updated_at' | 'id'>[]
 

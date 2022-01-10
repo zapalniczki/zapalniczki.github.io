@@ -2,7 +2,7 @@ import React from 'react'
 import { Tile, Text, SectionHead, Flexbox } from 'components'
 import { useTranslation } from 'hooks'
 import StatusIndicator from './StatusIndicator'
-import { Order } from 'models'
+import { Order } from 'braty-common'
 
 type Props = {
   status: Order['status']

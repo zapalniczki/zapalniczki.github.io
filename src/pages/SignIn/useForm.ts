@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from 'api'
 import { useFormSchema, useFormSubmit, useTranslation } from 'hooks'
-import { User } from 'models'
+import { User } from 'braty-common'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
 

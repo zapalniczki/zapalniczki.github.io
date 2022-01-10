@@ -2,10 +2,9 @@ import { updateMold } from 'api'
 import { MOLDS_TABLE } from 'constants/db_tables'
 import { useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
-import { MoldStatus } from 'models'
+import { MoldStatus } from 'braty-common'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
-
 import { object, string } from 'yup'
 
 const useForm = (id: string, status: MoldStatus) => {

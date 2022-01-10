@@ -1,7 +1,7 @@
 import { getVoucher } from 'api'
 import { FormikHelpers } from 'formik'
 import { useFormSubmit, useFormSchema, useTranslation } from 'hooks'
-import { Voucher } from 'models'
+import { Voucher } from 'braty-common'
 import { checkoutContext } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'

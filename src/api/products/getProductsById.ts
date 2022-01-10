@@ -1,13 +1,13 @@
 import { PRODUCTS_TABLE } from 'constants/db_tables'
 import {
   getProductsByIdResponseItem,
-  GetProductsByIdResponseItem,
-  Product
+  GetProductsByIdResponseItem
 } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 import { getProductsSelectQuery } from '.'
+import { Product } from 'braty-common'
 
 type Payload = Product['id'][]
 

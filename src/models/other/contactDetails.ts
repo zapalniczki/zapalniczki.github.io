@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import user from '../db/user'
+import { user } from 'braty-common'
 import shipping from '../other/shipping'
 
 const contactDetails = user

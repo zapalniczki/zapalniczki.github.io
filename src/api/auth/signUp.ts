@@ -1,4 +1,4 @@
-import { User } from 'models'
+import { User } from 'braty-common'
 import supabase from 'supabase'
 
 type Payload = {

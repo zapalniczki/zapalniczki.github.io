@@ -1,6 +1,7 @@
-import { rpcAddOrderResponse, Voucher } from 'models'
+import { rpcAddOrderResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Voucher } from 'braty-common'
 
 type Payload = {
   address: string

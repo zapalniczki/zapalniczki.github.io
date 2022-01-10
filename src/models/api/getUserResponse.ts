@@ -1,5 +1,5 @@
-import { address, user } from '../db'
 import { TypeOf } from 'zod'
+import { user, address } from 'braty-common'
 
 const getUserResponse = user
   .pick({

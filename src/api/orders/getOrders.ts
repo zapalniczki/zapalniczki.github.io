@@ -8,10 +8,11 @@ import {
   PRODUCTS_TABLE,
   USERS_TABLE
 } from 'constants/db_tables'
-import { GetOrdersResponseItem, getOrdersResponseItem, Order } from 'models'
+import { GetOrdersResponseItem, getOrdersResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
+import { Order } from 'braty-common'
 
 type Params = Pick<Order, 'status' | 'is_test'>
 

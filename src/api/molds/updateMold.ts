@@ -1,7 +1,8 @@
 import { MOLDS_TABLE } from 'constants/db_tables'
-import { Mold, updateMoldResponse, UpdateMoldResponse } from 'models'
+import { updateMoldResponse, UpdateMoldResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Mold } from 'braty-common'
 
 type Payload = Pick<Mold, 'id' | 'status'>
 

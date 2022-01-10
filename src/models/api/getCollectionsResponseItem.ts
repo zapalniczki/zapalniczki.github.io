@@ -1,4 +1,4 @@
-import { collection } from 'models'
+import { collection } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const getCollectionsResponseItem = collection

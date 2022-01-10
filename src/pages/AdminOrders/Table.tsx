@@ -17,12 +17,13 @@ import { ORDER_TABLE } from 'constants/db_tables'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
 import { TranslateFunc, useDev, useTranslation } from 'hooks'
-import { GetOrdersResponseItem, Mold, Order } from 'models'
+import { GetOrdersResponseItem } from 'models'
 import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 import { displayMoney, getOrderPath, getProductName } from 'utils'
 import EditModal from './EditModal'
 import { AdminTableColumns } from './statusToColumns'
+import { Order, Mold } from 'braty-common'
 
 type Props = {
   columns: AdminTableColumns[]

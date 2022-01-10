@@ -1,4 +1,4 @@
-import { parcel } from 'models'
+import { parcel } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const editParcelResponse = parcel

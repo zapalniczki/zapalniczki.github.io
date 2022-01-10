@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import { order } from '../db'
+import { order } from 'braty-common'
 
 const rpcAddOrderResponse = order.shape.id
 

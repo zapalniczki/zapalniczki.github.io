@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import { user } from 'models'
+import { user } from 'braty-common'
 
 const addUserResponse = user
 

@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import { address } from 'models'
+import { address } from 'braty-common'
 
 const addAddressResponse = address
 

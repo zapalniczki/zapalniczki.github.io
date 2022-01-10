@@ -1,6 +1,6 @@
 import { getOrderStatus } from 'api'
 import { useFormSubmit, useFormSchema, useTranslation } from 'hooks'
-import { Order } from 'models'
+import { Order } from 'braty-common'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object } from 'yup'

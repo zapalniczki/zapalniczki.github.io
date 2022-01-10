@@ -1,5 +1,5 @@
 import { TypeOf } from 'zod'
-import { callback } from 'models'
+import { callback } from 'braty-common'
 
 const updateCallbackResponse = callback
 

@@ -1,7 +1,7 @@
 import { Button, Input, LabelledItem, ModalContent } from 'components'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
-import { OrderStatus, ORDER_STATUSES } from 'models'
+import { OrderStatus, ORDER_STATUSES } from 'braty-common'
 import React from 'react'
 import { FormValues } from './useForm'
 

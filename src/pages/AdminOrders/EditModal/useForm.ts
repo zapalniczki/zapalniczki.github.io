@@ -8,7 +8,7 @@ import {
 import { ORDER_TABLE } from 'constants/db_tables'
 import { useDev, useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
-import { Order, OrderStatus, Parcel } from 'models'
+import { Order, OrderStatus, Parcel } from 'braty-common'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object, string } from 'yup'

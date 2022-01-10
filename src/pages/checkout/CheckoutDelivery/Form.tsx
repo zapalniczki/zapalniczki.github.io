@@ -4,7 +4,7 @@ import { Field, FieldProps } from 'formik'
 import { useInput } from 'hooks'
 import { displayMoney } from 'utils'
 import { FormValues } from './useForm'
-import { DeliveryType } from 'models'
+import { DeliveryType } from 'braty-common'
 
 type Props = {
   deliveryTypes: DeliveryType[]

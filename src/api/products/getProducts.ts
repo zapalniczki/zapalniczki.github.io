@@ -5,17 +5,11 @@ import {
   MOLDS_TABLE,
   PRODUCTS_TABLE
 } from 'constants/db_tables'
-import {
-  Collection,
-  getProductsResponseItem,
-  GetProductsResponseItem,
-  Icon,
-  Label,
-  Product
-} from 'models'
+import { getProductsResponseItem, GetProductsResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
+import { Product, Collection, Icon, Label } from 'braty-common'
 
 export type Params = {
   bestseller?: Product['bestseller']

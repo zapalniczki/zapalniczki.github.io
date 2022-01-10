@@ -1,4 +1,4 @@
-import { invoice } from 'models'
+import { invoice } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const getInvoiceResponse = invoice

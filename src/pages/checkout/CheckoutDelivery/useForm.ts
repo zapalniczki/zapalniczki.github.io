@@ -3,8 +3,9 @@ import { object } from 'yup'
 import { CHECKOUT_PAYMENT } from 'constants/routes'
 import { useFormSchema } from 'hooks'
 import { useContext } from 'react'
+import { Shipping } from 'models'
 import { checkoutContext } from 'providers'
-import { DeliveryType, Shipping } from 'models'
+import { DeliveryType } from 'braty-common'
 
 export type FormValues = {
   delivery_type: string | null

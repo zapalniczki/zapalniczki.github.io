@@ -1,7 +1,8 @@
 import { VOUCHERS_TABLE } from 'constants/db_tables'
-import { addVoucherResponse, AddVoucherResponse, Voucher } from 'models'
+import { addVoucherResponse, AddVoucherResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Voucher } from 'braty-common'
 
 type Payload = Pick<Voucher, 'discount'>
 

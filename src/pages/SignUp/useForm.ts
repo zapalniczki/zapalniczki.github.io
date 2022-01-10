@@ -1,6 +1,6 @@
 import { signUp } from 'api'
 import { useFormSchema, useFormSubmit } from 'hooks'
-import { User } from 'models'
+import { User } from 'braty-common'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
 

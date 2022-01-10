@@ -1,7 +1,7 @@
 import { ModalResult, Modal, ModalFooter, ModalHeader } from 'components'
 import { Form as NativeForm, Formik } from 'formik'
 import { useTranslation } from 'hooks'
-import { MoldStatus } from 'models'
+import { MoldStatus } from 'braty-common'
 import React, { useState } from 'react'
 import Form from './Form'
 import useForm from './useForm'

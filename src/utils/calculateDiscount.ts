@@ -1,5 +1,5 @@
 import multiply from 'lodash/multiply'
-import { Voucher } from 'models'
+import { Voucher } from 'braty-common'
 
 const calculateDiscount = (
   discount: Voucher['discount'],

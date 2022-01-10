@@ -1,7 +1,8 @@
 import { ADDRESSES_TABLE, USERS_TABLE } from 'constants/db_tables'
-import { GetUserResponse, getUserResponse, User } from 'models'
+import { GetUserResponse, getUserResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { User } from 'braty-common'
 
 type Params = Pick<User, 'id'>
 

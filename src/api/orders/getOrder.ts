@@ -7,9 +7,10 @@ import {
   PARCELS_TABLE,
   VOUCHERS_TABLE
 } from 'constants/db_tables'
-import { getOrderResponse, GetOrderResponse, Order } from 'models'
+import { getOrderResponse, GetOrderResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Order } from 'braty-common'
 
 type Props = {
   id: Order['id']

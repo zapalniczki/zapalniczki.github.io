@@ -9,7 +9,7 @@ import {
   parcel,
   product,
   user
-} from '../db'
+} from 'braty-common'
 
 const getOrdersResponseItem = order
   .pick({

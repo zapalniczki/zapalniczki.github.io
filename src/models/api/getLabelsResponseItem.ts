@@ -1,4 +1,4 @@
-import { label } from 'models'
+import { label } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const getLabelsResponseItem = label

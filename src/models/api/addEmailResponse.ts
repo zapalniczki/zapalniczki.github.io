@@ -1,4 +1,4 @@
-import { newsletter } from 'models'
+import { newsletter } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const addEmailResponse = newsletter

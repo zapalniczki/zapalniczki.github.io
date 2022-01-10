@@ -1,4 +1,4 @@
-import { icon, image, label, mold, product } from '../db'
+import { icon, image, label, mold, product } from 'braty-common'
 import { array, TypeOf } from 'zod'
 
 const getProductsByIdResponseItem = product

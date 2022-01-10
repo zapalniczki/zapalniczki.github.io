@@ -1,4 +1,4 @@
-import { ImageSize } from 'models'
+import { ImageSize } from 'braty-common'
 
 const getProductImageSize = (size: ImageSize): [string, string] => {
   switch (size) {

@@ -1,7 +1,7 @@
 import { getPaymentTypes } from 'api'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
 import { useTranslation } from 'hooks'
-import { PaymentType } from 'models'
+import { PaymentType } from 'braty-common'
 import EditModal from './EditModal'
 import React, { useMemo } from 'react'
 import { formatDate, displayMoney } from 'utils'

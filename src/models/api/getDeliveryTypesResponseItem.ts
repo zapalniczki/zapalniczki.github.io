@@ -1,4 +1,4 @@
-import { deliveryType } from 'models'
+import { deliveryType } from 'braty-common'
 import { TypeOf } from 'zod'
 
 const getDeliveryTypesResponseItem = deliveryType

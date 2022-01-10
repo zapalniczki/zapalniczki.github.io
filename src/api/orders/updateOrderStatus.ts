@@ -1,11 +1,8 @@
 import { ORDER_TABLE } from 'constants/db_tables'
-import {
-  Order,
-  updateOrderStatusResponse,
-  UpdateOrderStatusResponse
-} from 'models'
+import { updateOrderStatusResponse, UpdateOrderStatusResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
+import { Order } from 'braty-common'
 
 type Payload = Pick<Order, 'id' | 'status' | 'parcel_id'>
 
