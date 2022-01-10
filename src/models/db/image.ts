@@ -1,7 +1,7 @@
 import tableBase from './tableBase'
 import { string, TypeOf, enum as zenum } from 'zod'
 
-const size = zenum([
+const imageSize = zenum([
   'TILE',
   'LARGE',
   'TILE_REVERSE',
@@ -9,11 +9,11 @@ const size = zenum([
   'BASKET',
   'LONG'
 ])
-export type Size = TypeOf<typeof size>
+export type ImageSize = TypeOf<typeof imageSize>
 
 const image = tableBase.extend({
   src: string(),
-  size: size
+  size: imageSize
 })
 
 export type Image = TypeOf<typeof image>

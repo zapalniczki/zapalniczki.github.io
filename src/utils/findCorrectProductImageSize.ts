@@ -1,7 +1,7 @@
-import { Image, Size } from 'models'
+import { Image, ImageSize } from 'models'
 import getProductImagePlaceholder from './getProductImagePlaceholder'
 
-const findCorrectProductImageSize = (images: Image[], size: Size) => {
+const findCorrectProductImageSize = (images: Image[], size: ImageSize) => {
   const image = images.find((i) => i.size === size)
 
   if (image) {

@@ -4,9 +4,9 @@ import basket from 'assets/productImagePlaceholders/basket.png'
 import thumbnail from 'assets/productImagePlaceholders/thumbnail.png'
 import large from 'assets/productImagePlaceholders/large.png'
 import long from 'assets/productImagePlaceholders/long.png'
-import { Size } from 'models'
+import { ImageSize } from 'models'
 
-const getProductImagePlaceholder = (size: Size) => {
+const getProductImagePlaceholder = (size: ImageSize) => {
   switch (size) {
     default:
     case 'TILE':

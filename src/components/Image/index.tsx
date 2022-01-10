@@ -1,6 +1,6 @@
 import { Flexbox, Spinner } from 'components'
 import { useDev } from 'hooks'
-import { Size } from 'models'
+import { ImageSize } from 'models'
 import React from 'react'
 import { Img } from 'react-image'
 import { getProductImagePlaceholder } from 'utils'
@@ -11,7 +11,7 @@ type Props = {
   height?: number
   onPointerEnter?: React.PointerEventHandler<HTMLImageElement>
   onPointerLeave?: React.PointerEventHandler<HTMLImageElement>
-  size?: Size
+  size?: ImageSize
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   src: any
   width?: number

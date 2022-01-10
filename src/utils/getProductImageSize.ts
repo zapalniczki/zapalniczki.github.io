@@ -1,6 +1,6 @@
-import { Size } from 'models'
+import { ImageSize } from 'models'
 
-const getProductImageSize = (size: Size): [string, string] => {
+const getProductImageSize = (size: ImageSize): [string, string] => {
   switch (size) {
     default:
     case 'TILE':
