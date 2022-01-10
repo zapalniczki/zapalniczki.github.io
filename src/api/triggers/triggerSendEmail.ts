@@ -1,8 +1,9 @@
-import { Order, User, Voucher } from 'models'
+import { User } from 'models'
+import { EmailEvent } from 'braty-common'
 
 type Payload = {
   to: User['email']
-  type: EventType
+  type: EmailEvent
 }
 
 export const triggerSendEmail = (payload: Payload) => {
@@ -18,28 +19,3 @@ export const triggerSendEmail = (payload: Payload) => {
 
   return fetch(path, options)
 }
-
-type EventType =
-  | {
-      content: {
-        is_long?: boolean
-        name: User['full_name']
-        order_id: Order['id']
-        phone: User['phone']
-      }
-      key: 'NEW_ORDER'
-    }
-  | {
-      content: {
-        voucher_id: Voucher['id']
-      }
-      key: 'NEWSLETTER_SIGNUP'
-    }
-  | {
-      content: {
-        name: User['full_name']
-        order_id: Order['id']
-        order_status: Order['status']
-      }
-      key: 'ORDER_STATUS_CHANGE'
-    }
