@@ -1,10 +1,6 @@
-import { User } from 'braty-common'
 import { EmailEvent } from 'braty-common'
 
-type Payload = {
-  to: User['email']
-  type: EmailEvent
-}
+type Payload = EmailEvent
 
 export const triggerSendEmail = (payload: Payload) => {
   const headers = new Headers()
