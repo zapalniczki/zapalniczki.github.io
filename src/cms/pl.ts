@@ -68,7 +68,8 @@ const pl = {
       adminPaymentTypes: 'Metody płatności',
       adminMolds: 'Matryce',
       adminIcons: 'Ikony',
-      adminLabels: 'Etykiety'
+      adminLabels: 'Etykiety',
+      adminMarketing: 'Marketing'
     },
 
     QUERY_LOADER: {
@@ -639,6 +640,10 @@ const pl = {
         }
       }
     }
+  },
+
+  ADMIN_MARKETING: {
+    title: 'Marketing'
   },
 
   ADMIN_NEWSLETTER_USERS: {

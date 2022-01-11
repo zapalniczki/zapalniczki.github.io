@@ -149,6 +149,12 @@ const routes: Route[] = [
     key: 'adminCallbacks'
   },
   {
+    Component: React.lazy(() => import('pages/AdminMarketing')),
+    admin: true,
+    path: ROUTES.ADMIN_MARKETING,
+    key: 'adminMarketing'
+  },
+  {
     Component: React.lazy(() => import('pages/AdminDeliveryTypes')),
     admin: true,
     path: ROUTES.ADMIN_DELIVERY_TYPES,
@@ -193,6 +199,7 @@ type RouteKey =
   | 'adminLabels'
   | 'adminMolds'
   | 'adminOrders'
+  | 'adminMarketing'
   | 'adminPaymentTypes'
   | 'cart'
   | 'checkoutDelivery'

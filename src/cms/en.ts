@@ -69,7 +69,8 @@ const en: LanguageKeys = {
       adminPaymentTypes: 'Payments methods',
       adminMolds: 'Molds',
       adminIcons: 'Icons',
-      adminLabels: 'Labels'
+      adminLabels: 'Labels',
+      adminMarketing: 'Marketing'
     },
 
     QUERY_LOADER: {
@@ -638,6 +639,10 @@ const en: LanguageKeys = {
         }
       }
     }
+  },
+
+  ADMIN_MARKETING: {
+    title: 'Marketing'
   },
 
   ADMIN_NEWSLETTER_USERS: {
