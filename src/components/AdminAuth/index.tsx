@@ -1,4 +1,4 @@
-import { HOME } from 'constants/routes'
+import { ROUTES } from 'braty-common'
 import { useAdmin } from 'hooks'
 import { Navigate } from 'react-router-dom'
 import React from 'react'
@@ -11,7 +11,7 @@ const AdminAuth = ({ children }: Props) => {
   const isAdmin = useAdmin()
 
   if (!isAdmin) {
-    return <Navigate to={HOME} />
+    return <Navigate to={ROUTES.HOME} />
   }
 
   return children

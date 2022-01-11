@@ -1,5 +1,5 @@
+import { ROUTES } from 'braty-common'
 import { Button, LabelledItem, SectionHead, Separator, Tile } from 'components'
-import { CHECKOUT_DETAILS } from 'constants/routes'
 import { useCheckoutStep, useTranslation } from 'hooks'
 import add from 'lodash.add'
 import multiply from 'lodash.multiply'
@@ -9,7 +9,6 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { calculateDiscount, displayMoney, getVatAmount, sumArray } from 'utils'
 import CheckoutTotalLoader from './index.loader'
-
 type Props = {
   customDelivery?: number
   customPayment?: number
@@ -119,7 +118,7 @@ const CheckoutTotal = ({
         icon="arrow-right"
         label={commonT(nextStepLabel)}
         marginTop="l-size"
-        onClick={() => isCart && navigate(CHECKOUT_DETAILS)}
+        onClick={() => isCart && navigate(ROUTES.CHECKOUT_DETAILS)}
         size="medium"
         type={isCart ? 'button' : 'submit'}
       />

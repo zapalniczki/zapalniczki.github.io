@@ -1,5 +1,5 @@
+import { ROUTES } from 'braty-common'
 import { Box, Button, Flexbox, Heading, Separator, Text } from 'components'
-import { CART } from 'constants/routes'
 import { useBreakpoints, useTranslation } from 'hooks'
 import {
   BasketItem,
@@ -51,7 +51,7 @@ const Checkout = ({ products }: Props) => {
             label={commonT('checkout')}
             onClick={() => {
               closeBasket()
-              navigate(CART)
+              navigate(ROUTES.CART)
             }}
             size={isDesktop ? 'medium' : 'small'}
             width="100%"

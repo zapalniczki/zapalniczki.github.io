@@ -1,8 +1,8 @@
-import { BackButton, Columns, Heading, Page, Switch, Flexbox } from 'components'
-import { CART } from 'constants/routes'
+import { ROUTES } from 'braty-common'
+import { BackButton, Columns, Flexbox, Heading, Page, Switch } from 'components'
 import { Form as FormikForm, Formik } from 'formik'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
-import { StepTracker, CheckoutTotal } from 'organisms'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import { CheckoutTotal, StepTracker } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
 import { Navigate } from 'react-router-dom'
@@ -24,13 +24,13 @@ const CheckoutDetails = () => {
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
   if (isBasketEmpty) {
-    return <Navigate to={CART} />
+    return <Navigate to={ROUTES.CART} />
   }
 
   return (
     <Page>
       <Flexbox>
-        <BackButton label={t('back')} to={CART} />
+        <BackButton label={t('back')} to={ROUTES.CART} />
       </Flexbox>
 
       <StepTracker />

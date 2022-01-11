@@ -1,5 +1,5 @@
 import { getDeliveryTypes } from 'api'
-import { DB_TABLES } from 'braty-common'
+import { DB_TABLES, ROUTES } from 'braty-common'
 import {
   BackButton,
   Columns,
@@ -8,7 +8,6 @@ import {
   QueryLoader,
   Switch
 } from 'components'
-import { CHECKOUT_DETAILS } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { CheckoutTotal, StepTracker } from 'organisms'
@@ -41,12 +40,12 @@ const CheckoutDelivery = () => {
   )
 
   if (!checkout.contact_details) {
-    return <Navigate to={CHECKOUT_DETAILS} />
+    return <Navigate to={ROUTES.CHECKOUT_DETAILS} />
   }
 
   return (
     <Page>
-      <BackButton label={t('back')} to={CHECKOUT_DETAILS} />
+      <BackButton label={t('back')} to={ROUTES.CHECKOUT_DETAILS} />
 
       <StepTracker />
 

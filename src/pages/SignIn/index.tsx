@@ -1,7 +1,7 @@
+import { ROUTES } from 'braty-common'
 import { Flexbox, Page, SectionHead, Tile } from 'components'
-import { USER } from 'constants/routes'
 import { Formik } from 'formik'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
@@ -18,7 +18,7 @@ const SignIn = () => {
   const { initialValues, onSubmit, validationSchema } = useForm()
 
   if (isLoggedIn) {
-    return <Navigate to={USER} />
+    return <Navigate to={ROUTES.USER} />
   }
 
   return (

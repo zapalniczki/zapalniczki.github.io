@@ -1,11 +1,10 @@
-import { useNavigate } from 'react-router-dom'
-import { object } from 'yup'
-import { CHECKOUT_PAYMENT } from 'constants/routes'
+import { DeliveryType, ROUTES } from 'braty-common'
 import { useFormSchema } from 'hooks'
-import { useContext } from 'react'
 import { Shipping } from 'models'
 import { checkoutContext } from 'providers'
-import { DeliveryType } from 'braty-common'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { object } from 'yup'
 
 export type FormValues = {
   delivery_type: string | null
@@ -43,7 +42,7 @@ const useForm = () => {
       }))
     }
 
-    navigate(CHECKOUT_PAYMENT)
+    navigate(ROUTES.CHECKOUT_PAYMENT)
   }
 
   const initialValues: FormValues = {

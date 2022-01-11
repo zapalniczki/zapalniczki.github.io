@@ -1,5 +1,5 @@
 import { Button, Flexbox, Heading, Page } from 'components'
-import { HOME } from 'constants/routes'
+import { ROUTES } from 'braty-common'
 import { useScrollTop, usePageTitle } from 'hooks'
 import React from 'react'
 import { useTranslation } from 'hooks'
@@ -39,7 +39,7 @@ const PageNotFound = () => {
         <Button
           label={t('buttonLabel')}
           marginTop="xxxl-size"
-          onClick={() => navigate(HOME)}
+          onClick={() => navigate(ROUTES.HOME)}
           size="medium"
           type="button"
         />

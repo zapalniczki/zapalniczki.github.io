@@ -1,4 +1,5 @@
 import { getProductsById } from 'api'
+import { DB_TABLES, ROUTES } from 'braty-common'
 import {
   Box,
   Image,
@@ -8,8 +9,6 @@ import {
   Table,
   Tile
 } from 'components'
-
-import { PRODUCTS_ID } from 'constants/routes'
 import { Language, TranslateFunc, useTranslation } from 'hooks'
 import { multiply } from 'lodash'
 import { GetOrderResponse, GetProductsResponseItem } from 'models'
@@ -22,7 +21,6 @@ import {
   getLanguageLabel,
   getProductName
 } from 'utils'
-import { DB_TABLES } from 'braty-common'
 
 type Props = {
   products: GetOrderResponse['products']
@@ -111,7 +109,7 @@ const shapeData = (
       label: product.label
     })
 
-    const productPath = generatePath(PRODUCTS_ID, { id: product.id })
+    const productPath = generatePath(ROUTES.PRODUCTS_ID, { id: product.id })
     const basketImage = findCorrectProductImageSize(product.images, 'BASKET')
     const productName = getProductName(
       t('productNameBase'),

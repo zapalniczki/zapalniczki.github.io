@@ -1,20 +1,18 @@
 import {
-  rpcAddOrder,
   addOrderItem,
   getProductsById,
+  rpcAddOrder,
   triggerSendEmail
 } from 'api'
-import { CHECKOUT_RESULT } from 'constants/routes'
-import { useDev, useFormSchema, useAdmin, useFormSubmit } from 'hooks'
+import { MoldStatus, PaymentType, ROUTES, Voucher } from 'braty-common'
+import { useAdmin, useDev, useFormSchema, useFormSubmit } from 'hooks'
 import multiply from 'lodash/multiply'
-import { MoldStatus } from 'braty-common'
 import { checkoutContext, initState } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 import { getHstoreFromObject, sumArray } from 'utils'
 import { object } from 'yup'
-import { Voucher, PaymentType } from 'braty-common'
 
 export type FormValues = {
   payment_type: PaymentType['id']
@@ -122,7 +120,7 @@ const useForm = () => {
         })
       }
 
-      navigate(CHECKOUT_RESULT, { state: locationState })
+      navigate(ROUTES.CHECKOUT_RESULT, { state: locationState })
       setCheckout(initState)
     })
   }

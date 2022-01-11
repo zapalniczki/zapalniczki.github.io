@@ -1,4 +1,4 @@
-import { SIGN_IN } from 'constants/routes'
+import { ROUTES } from 'braty-common'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
@@ -11,7 +11,7 @@ const UserAuth = ({ children }: Props) => {
   const { isLoggedIn } = useContext(authContext)
 
   if (!isLoggedIn) {
-    return <Navigate to={SIGN_IN} />
+    return <Navigate to={ROUTES.SIGN_IN} />
   }
 
   return children

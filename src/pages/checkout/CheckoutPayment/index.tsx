@@ -1,7 +1,7 @@
 import { getPaymentTypes } from 'api'
 import { DB_TABLES } from 'braty-common'
 import { BackButton, Columns, Heading, Page, QueryLoader } from 'components'
-import { CHECKOUT_DELIVERY } from 'constants/routes'
+import { ROUTES } from 'braty-common'
 import { Form as FormikForm, Formik } from 'formik'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { CheckoutTotal, StepTracker } from 'organisms'
@@ -29,12 +29,12 @@ const CheckoutPayment = () => {
   const { initialValues, onSubmit, schema } = useForm()
 
   if (!checkout.delivery_type) {
-    return <Navigate to={CHECKOUT_DELIVERY} />
+    return <Navigate to={ROUTES.CHECKOUT_DELIVERY} />
   }
 
   return (
     <Page>
-      <BackButton label={t('back')} to={CHECKOUT_DELIVERY} />
+      <BackButton label={t('back')} to={ROUTES.CHECKOUT_DELIVERY} />
 
       <StepTracker />
 

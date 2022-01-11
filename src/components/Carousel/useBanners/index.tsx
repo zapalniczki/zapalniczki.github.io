@@ -1,12 +1,12 @@
-import { Text, Button, Heading, Flexbox, Banner } from 'components'
-import { CHRISTMAS_2021, PRODUCTS } from 'constants/routes'
-import React, { useContext } from 'react'
-import { NavigateFunction, useNavigate } from 'react-router-dom'
-import YourPlaceInYourPoint from './YourPlaceInYourPoint'
-import Christmas2021 from './Christmas2021'
-import { remoteConfigContext } from 'providers'
+import { ROUTES } from 'braty-common'
+import { Banner, Button, Flexbox, Heading, Text } from 'components'
 import { TranslateFunc, useTranslation } from 'hooks'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { Trans } from 'react-i18next'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
+import Christmas2021 from './Christmas2021'
+import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 
 const useBanners = () => {
   const commonT = useTranslation('COMMON').withBase('BANNERS')
@@ -61,7 +61,7 @@ const getBanners = (
         <Button
           icon="arrow-right"
           label="Produkty"
-          onClick={() => navigate(PRODUCTS)}
+          onClick={() => navigate(ROUTES.PRODUCTS)}
           size="medium"
         />
       </Flexbox>
@@ -94,7 +94,7 @@ const getBanners = (
         <Button
           icon="arrow-right"
           label="Produkty"
-          onClick={() => navigate(CHRISTMAS_2021)}
+          onClick={() => navigate(ROUTES.CHRISTMAS_2021)}
           size="medium"
         />
       </Flexbox>

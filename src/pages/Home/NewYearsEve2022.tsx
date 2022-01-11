@@ -1,12 +1,10 @@
 import { getProducts } from 'api'
+import { DB_TABLES, ROUTES } from 'braty-common'
 import { ProductsGrid } from 'components'
-
-import { CHRISTMAS_2021 } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
-import { DB_TABLES } from 'braty-common'
 
 const NewYearsEve2022 = () => {
   const { christmas2021 } = useContext(remoteConfigContext)
@@ -28,7 +26,7 @@ const NewYearsEve2022 = () => {
   return (
     <ProductsGrid
       link={{
-        to: CHRISTMAS_2021,
+        to: ROUTES.CHRISTMAS_2021,
         label: commonT('linkLabel')
       }}
       loaderCount={3}

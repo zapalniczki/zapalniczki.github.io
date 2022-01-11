@@ -1,17 +1,10 @@
-import { checkoutContext } from 'providers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ROUTES } from 'braty-common'
+import { Badge, Button } from 'components'
+import { useTranslation } from 'hooks'
+import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Badge, Button } from 'components'
-import { togglesContext } from 'providers'
-import {
-  CHECKOUT_PAYMENT,
-  CHECKOUT_DELIVERY,
-  CHECKOUT_DETAILS,
-  CART,
-  CHECKOUT_RESULT
-} from 'constants/routes'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useTranslation } from 'hooks'
 
 const BasketToggle = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -37,11 +30,11 @@ const BasketToggle = () => {
 }
 
 const basketDisabledpathnames = [
-  CART,
-  CHECKOUT_DETAILS,
-  CHECKOUT_DELIVERY,
-  CHECKOUT_PAYMENT,
-  CHECKOUT_RESULT
+  ROUTES.CART as string,
+  ROUTES.CHECKOUT_DETAILS as string,
+  ROUTES.CHECKOUT_DELIVERY as string,
+  ROUTES.CHECKOUT_PAYMENT as string,
+  ROUTES.CHECKOUT_RESULT as string
 ]
 
 export default BasketToggle

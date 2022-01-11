@@ -1,6 +1,6 @@
 import { Session } from '@supabase/supabase-js'
 import { getSession } from 'api'
-import { SIGNED_OUT } from 'constants/routes'
+import { ROUTES } from 'braty-common'
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }: Props) => {
 
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT') {
-      navigate(SIGNED_OUT)
+      navigate(ROUTES.SIGNED_OUT)
     }
 
     setAuth(session)

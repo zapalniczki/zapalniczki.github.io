@@ -1,13 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { signOut } from 'api'
+import { ROUTES } from 'braty-common'
 import { Button } from 'components'
-import {
-  CHECKOUT_DELIVERY,
-  CHECKOUT_DETAILS,
-  CHECKOUT_PAYMENT,
-  CART,
-  CHECKOUT_RESULT
-} from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
@@ -43,11 +37,11 @@ const SignoutToggle = () => {
 }
 
 const basketDisabledpathnames = [
-  CART,
-  CHECKOUT_DETAILS,
-  CHECKOUT_DELIVERY,
-  CHECKOUT_PAYMENT,
-  CHECKOUT_RESULT
+  ROUTES.CART as string,
+  ROUTES.CHECKOUT_DETAILS as string,
+  ROUTES.CHECKOUT_DELIVERY as string,
+  ROUTES.CHECKOUT_PAYMENT as string,
+  ROUTES.CHECKOUT_RESULT as string
 ]
 
 export default SignoutToggle

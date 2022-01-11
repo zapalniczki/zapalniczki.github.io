@@ -1,3 +1,4 @@
+import { ROUTES } from 'braty-common'
 import {
   Box,
   Flexbox,
@@ -8,11 +9,9 @@ import {
   Separator,
   Text
 } from 'components'
-import { DOCUMENTS } from 'constants/routes'
 import { useAdmin, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'
-
 import React, { useContext } from 'react'
 import { handleRoutes } from 'utils'
 
@@ -125,7 +124,7 @@ const Footer = () => {
           </Text>
 
           {remoteConfig.documents ? (
-            <Link to={DOCUMENTS}>
+            <Link to={ROUTES.DOCUMENTS}>
               <Text type="caption">{commonT('LINKS.documents')}</Text>
             </Link>
           ) : (

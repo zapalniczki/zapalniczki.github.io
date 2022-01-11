@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Flexbox, Heading, Page, Text, Tile } from 'components'
-import { HOME } from 'constants/routes'
+import { ROUTES } from 'braty-common'
 
 import {
   useBreakpoints,
@@ -36,7 +36,7 @@ const CheckoutResult = () => {
     checkoutResultLocationStateSchema.parse(location.state)
 
   if (!state2?.orderID) {
-    return <Navigate to={HOME} />
+    return <Navigate to={ROUTES.HOME} />
   }
 
   return (
@@ -83,7 +83,7 @@ const CheckoutResult = () => {
           <Button
             label={t('actions.backToHome')}
             marginTop={isDesktop ? 0 : 'm-size'}
-            onClick={() => navigate(HOME)}
+            onClick={() => navigate(ROUTES.HOME)}
             size="medium"
             variant="secondary"
           />

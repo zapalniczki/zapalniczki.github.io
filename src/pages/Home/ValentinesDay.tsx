@@ -1,12 +1,11 @@
 import { getProducts } from 'api'
 import { ProductsGrid } from 'components'
 
-import { VALENTINES_DAY } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
-import { DB_TABLES } from 'braty-common'
+import { DB_TABLES, ROUTES } from 'braty-common'
 
 const ValentinesDay = () => {
   const commonT = useTranslation('HOME').withBase('VALENTINES_DAY')
@@ -28,7 +27,7 @@ const ValentinesDay = () => {
   return (
     <ProductsGrid
       link={{
-        to: VALENTINES_DAY,
+        to: ROUTES.VALENTINES_DAY,
         label: commonT('linkLabel')
       }}
       loaderCount={3}

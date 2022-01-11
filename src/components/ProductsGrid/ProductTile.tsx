@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Flexbox, Image, Text, Tile } from 'components'
-import { PRODUCTS_ID } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import { checkoutContext } from 'providers'
@@ -15,6 +14,7 @@ import {
   getLanguageLabel,
   getProductName
 } from 'utils'
+import { ROUTES } from 'braty-common'
 
 export type Props = {
   product: GetProductsResponseItem
@@ -22,7 +22,7 @@ export type Props = {
 
 const ProductTile = ({ product }: Props) => {
   const { currentLanguage } = useTranslation('COMMON')
-  const viewProductPath = generatePath(PRODUCTS_ID, { id: product.id })
+  const viewProductPath = generatePath(ROUTES.PRODUCTS_ID, { id: product.id })
 
   const { getProductFromBasket } = useContext(checkoutContext)
   const isBasket = getProductFromBasket(product.id)

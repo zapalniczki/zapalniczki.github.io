@@ -1,19 +1,15 @@
-import {
-  CHECKOUT_DELIVERY,
-  CHECKOUT_DETAILS,
-  CHECKOUT_PAYMENT
-} from 'constants/routes'
+import { ROUTES } from 'braty-common'
 import { useLocation } from 'react-router'
 
 const useCheckoutStep = () => {
   const { pathname } = useLocation()
 
   let current = 0
-  if (pathname.includes(CHECKOUT_DETAILS)) {
+  if (pathname.includes(ROUTES.CHECKOUT_DETAILS)) {
     current = 1
-  } else if (pathname.includes(CHECKOUT_DELIVERY)) {
+  } else if (pathname.includes(ROUTES.CHECKOUT_DELIVERY)) {
     current = 2
-  } else if (pathname.includes(CHECKOUT_PAYMENT)) {
+  } else if (pathname.includes(ROUTES.CHECKOUT_PAYMENT)) {
     current = 3
   }
 

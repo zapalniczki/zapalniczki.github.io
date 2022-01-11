@@ -1,16 +1,9 @@
+import { ReactComponent as En } from 'assets/flags/en.svg'
+import { ReactComponent as Pl } from 'assets/flags/pl.svg'
+import { ROUTES } from 'braty-common'
 import { Button, Flexbox } from 'components'
-import {
-  CART,
-  CHECKOUT_DELIVERY,
-  CHECKOUT_DETAILS,
-  CHECKOUT_PAYMENT,
-  CHECKOUT_RESULT
-} from 'constants/routes'
 import { Language, language, useTranslation } from 'hooks'
 import React from 'react'
-
-import { ReactComponent as Pl } from 'assets/flags/pl.svg'
-import { ReactComponent as En } from 'assets/flags/en.svg'
 import { useLocation } from 'react-router'
 
 const LanguageToggle = () => {
@@ -45,11 +38,11 @@ const LanguageToggle = () => {
 }
 
 const basketDisabledpathnames = [
-  CART,
-  CHECKOUT_DETAILS,
-  CHECKOUT_DELIVERY,
-  CHECKOUT_PAYMENT,
-  CHECKOUT_RESULT
+  ROUTES.CART as string,
+  ROUTES.CHECKOUT_DETAILS as string,
+  ROUTES.CHECKOUT_DELIVERY as string,
+  ROUTES.CHECKOUT_PAYMENT as string,
+  ROUTES.CHECKOUT_RESULT as string
 ]
 
 const languageToFlagMapping: Record<Language, JSX.Element> = {

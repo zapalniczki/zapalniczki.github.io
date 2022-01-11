@@ -1,8 +1,8 @@
+import { ROUTES } from 'braty-common'
 import { Box, Flexbox, Image, Link, Text, Tile } from 'components'
-import { PRODUCTS_ID } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { BasketItem, GetProductsResponseItem } from 'models'
-import { togglesContext, checkoutContext } from 'providers'
+import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'
 import { generatePath } from 'react-router-dom'
 import styled from 'styled-components'
@@ -14,8 +14,8 @@ import {
   getLanguageLabel,
   getProductName
 } from 'utils'
-import SimpleButton from './SimpleButton'
 import BasketItemLoader from './index.loader'
+import SimpleButton from './SimpleButton'
 
 type Props = {
   first?: boolean
@@ -56,7 +56,7 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
 
   const { id, images, price } = product
 
-  const productPath = generatePath(PRODUCTS_ID, { id })
+  const productPath = generatePath(ROUTES.PRODUCTS_ID, { id })
 
   const modifyQuantity = (addition?: boolean) => {
     setCheckout((prev) => {

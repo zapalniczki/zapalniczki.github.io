@@ -1,7 +1,7 @@
+import { ROUTES } from 'braty-common'
 import { BannerWithTitleAndLink } from 'components'
-import { DOCUMENTS } from 'constants/routes'
-import React from 'react'
 import { useTranslation } from 'hooks'
+import React from 'react'
 
 const ReadPrivacyPolicy = () => {
   const commonT = useTranslation('COMMON').withBase('READ_PRIVACY_POLICY')
@@ -11,7 +11,7 @@ const ReadPrivacyPolicy = () => {
   return (
     <BannerWithTitleAndLink
       link={{
-        to: DOCUMENTS,
+        to: ROUTES.DOCUMENTS,
         label: commonT('buttonLabel')
       }}
       title={commonT('title')}

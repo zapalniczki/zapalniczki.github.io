@@ -1,18 +1,16 @@
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { BackButton, Page, Tile, QueryLoader } from 'components'
-import { useScrollTop, usePageTitle } from 'hooks'
-
-import { useTranslation } from 'hooks'
-import Images from './Images'
-import OtherLabels from './OtherLabels'
-import { PRODUCTS } from 'constants/routes'
-import Info from './Info'
 import { getProduct } from 'api'
-import Loader from './index.loader'
-import OtherIcons from './OtherIcons'
+import { ROUTES } from 'braty-common'
+import { BackButton, Page, QueryLoader, Tile } from 'components'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import React from 'react'
 import { useQuery } from 'react-query'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getLanguageLabel, getProductName } from 'utils'
+import Images from './Images'
+import Loader from './index.loader'
+import Info from './Info'
+import OtherIcons from './OtherIcons'
+import OtherLabels from './OtherLabels'
 
 const ViewProduct = () => {
   const { currentLanguage, t: commonT } = useTranslation('COMMON')
@@ -61,7 +59,7 @@ const ViewProduct = () => {
             <BackButton
               label={t('actions.goBack')}
               marginBottom="s-size"
-              to={PRODUCTS}
+              to={ROUTES.PRODUCTS}
             />
 
             <Tile flexDirection={['unset', 'column', 'column', 'row']}>

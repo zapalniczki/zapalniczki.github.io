@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link, Logo, MaxWidth } from 'components'
-import { HOME } from 'constants/routes'
+import { ROUTES } from 'braty-common'
 import Main from './Main'
 import getColor from 'styles/getColor'
 import { useTranslation } from 'hooks'
@@ -45,7 +45,7 @@ const Header = () => {
         innerPadding
         justifyContent="space-between"
       >
-        <Link title={commonT('LINKS.home')} to={HOME}>
+        <Link title={commonT('LINKS.home')} to={ROUTES.HOME}>
           <Logo expanded={isHeaderExpanded} />
         </Link>
 

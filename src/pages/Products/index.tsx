@@ -1,7 +1,6 @@
 import { getPaginatedProducts } from 'api'
+import { DB_TABLES, ROUTES } from 'braty-common'
 import { BackButton, Page, ProductsGrid } from 'components'
-
-import { PRODUCTS } from 'constants/routes'
 import {
   useBreakpoints,
   usePageTitle,
@@ -13,7 +12,6 @@ import React, { useMemo, useState } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import { useSearchParams } from 'react-router-dom'
 import Filters from './Filters'
-import { DB_TABLES } from 'braty-common'
 
 const Products = () => {
   const { t } = useTranslation('PRODUCTS')
@@ -76,7 +74,7 @@ const Products = () => {
         query={infiniteProductQuery}
         sectionHeadChildren={
           isFiltered ? (
-            <BackButton label={t('showAllLabel')} to={PRODUCTS} />
+            <BackButton label={t('showAllLabel')} to={ROUTES.PRODUCTS} />
           ) : undefined
         }
         showCount

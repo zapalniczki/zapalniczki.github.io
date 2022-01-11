@@ -1,10 +1,10 @@
+import { ROUTES } from 'braty-common'
+import { useFormSchema } from 'hooks'
+import { ContactDetails } from 'models'
+import { checkoutContext } from 'providers'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { object } from 'yup'
-import { useFormSchema } from 'hooks'
-import { CHECKOUT_DELIVERY } from 'constants/routes'
-import { useContext } from 'react'
-import { checkoutContext } from 'providers'
-import { ContactDetails } from 'models'
 
 export type FormValues = ContactDetails
 
@@ -22,7 +22,7 @@ const useForm = () => {
       }
     }))
 
-    navigate(CHECKOUT_DELIVERY)
+    navigate(ROUTES.CHECKOUT_DELIVERY)
   }
 
   const initialValues: FormValues = {

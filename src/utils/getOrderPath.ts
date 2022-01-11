@@ -1,8 +1,8 @@
-import { ORDERS_ID } from 'constants/routes'
 import { generatePath } from 'react-router'
+import { ROUTES } from 'braty-common'
 
 const getOrderPath = (id: string) => {
-  const path = generatePath(ORDERS_ID, { id })
+  const path = generatePath(ROUTES.ORDERS_ID, { id })
 
   return path
 }
