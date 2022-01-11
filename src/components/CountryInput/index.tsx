@@ -2,17 +2,14 @@ import Select from 'react-select/src/Select'
 import React from 'react'
 
 const CountryInput = () => {
-  const onChange = (value: Value) => {
-    console.log(value)
-  }
   const value = { label: 'string', value: 'string' }
 
   return (
     <Select
       components={{}}
-      onChange={onChange}
+      onChange={() => undefined}
       options={countries}
-      value={value}
+      value={value as Value}
     />
   )
 }
