@@ -1,17 +1,16 @@
 import { getUser } from 'api'
+import { DB_TABLES, Order } from 'braty-common'
 import {
   Flexbox,
-  Separator,
+  LabelledItem,
   QueryLoader,
   SectionHead,
+  Separator,
   Text,
   Tile,
-  UserAvatar,
-  LabelledItem
+  UserAvatar
 } from 'components'
-import { USERS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
-import { Order } from 'braty-common'
 import React from 'react'
 import { useQuery } from 'react-query'
 
@@ -23,7 +22,7 @@ const ContactDetails = ({ userId }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   const params = { id: userId }
-  const userQuery = useQuery([USERS_TABLE, params], () => getUser(params))
+  const userQuery = useQuery([DB_TABLES.USERS, params], () => getUser(params))
 
   return (
     <QueryLoader query={userQuery}>

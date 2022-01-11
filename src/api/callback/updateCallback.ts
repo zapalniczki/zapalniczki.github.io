@@ -1,14 +1,13 @@
-import { CALLBACK_TABLE } from 'constants/db_tables'
+import { Callback, DB_TABLES } from 'braty-common'
 import { updateCallbackResponse, UpdateCallbackResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Callback } from 'braty-common'
 
 type Payload = Pick<Callback, 'done' | 'id'>
 
 export const updateCallback = async (payload: Payload) => {
   const response = await supabase
-    .from<UpdateCallbackResponse>(CALLBACK_TABLE)
+    .from<UpdateCallbackResponse>(DB_TABLES.CALLBACK)
     .update({
       done: payload.done
     })

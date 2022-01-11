@@ -1,14 +1,7 @@
-import {
-  ICONS_TABLE,
-  IMAGES_TABLE,
-  LABELS_TABLE,
-  MOLDS_TABLE,
-  PRODUCTS_TABLE
-} from 'constants/db_tables'
+import { DB_TABLES, Product } from 'braty-common'
 import { GetProductResponse, getProductResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Product } from 'braty-common'
 
 type Params = {
   id: Product['id']
@@ -16,7 +9,7 @@ type Params = {
 
 export const getProduct = async (params: Params) => {
   const response = await supabase
-    .from<GetProductResponse>(PRODUCTS_TABLE)
+    .from<GetProductResponse>(DB_TABLES.PRODUCTS)
     .select(
       `
       description_pl,
@@ -25,19 +18,19 @@ export const getProduct = async (params: Params) => {
       price,
       collection_id,
       name,
-      ${IMAGES_TABLE} (
+      ${DB_TABLES.IMAGES} (
         *
       ),
-      mold: ${MOLDS_TABLE} (
+      mold: ${DB_TABLES.MOLDS} (
         id,
         status
       ),
-      icon: ${ICONS_TABLE} (
+      icon: ${DB_TABLES.ICONS} (
         label_pl,
         label_en,
         id
       ),
-      label: ${LABELS_TABLE} (
+      label: ${DB_TABLES.LABELS} (
         label_pl,
         label_en,
         id

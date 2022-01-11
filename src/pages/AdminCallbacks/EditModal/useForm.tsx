@@ -1,7 +1,6 @@
 import { updateCallback } from 'api'
-import { CALLBACK_TABLE } from 'constants/db_tables'
 import { queryClient } from 'index'
-import {} from 'providers'
+import { DB_TABLES } from 'braty-common'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 
@@ -27,7 +26,7 @@ const useForm = (id: string, done: boolean) => {
           view: 'SUCCESS'
         })
 
-        queryClient.invalidateQueries([CALLBACK_TABLE])
+        queryClient.invalidateQueries([DB_TABLES.CALLBACK])
       }
     })
 

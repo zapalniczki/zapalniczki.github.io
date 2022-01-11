@@ -1,10 +1,9 @@
 import { updatePaymentType } from 'api'
-import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
-
+import { DB_TABLES } from 'braty-common'
 import { object, string, boolean } from 'yup'
 
 const useForm = (id: string, is_enabled: boolean) => {
@@ -27,7 +26,7 @@ const useForm = (id: string, is_enabled: boolean) => {
           view: 'SUCCESS'
         })
 
-        queryClient.invalidateQueries([PAYMENT_TYPE_TABLE])
+        queryClient.invalidateQueries([DB_TABLES.PAYMENT_TYPE])
       }
     })
 

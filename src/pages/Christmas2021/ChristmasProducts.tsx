@@ -1,9 +1,10 @@
 import { getProducts } from 'api'
 import { ProductsGrid } from 'components'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
+
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
+import { DB_TABLES } from 'braty-common'
 
 const ChristmasProducts = () => {
   const t = useTranslation('CHRISTMAS_2021').withBase('CHRISTMAS_PRODUCTS')
@@ -11,7 +12,7 @@ const ChristmasProducts = () => {
   const params = {
     collectionId: '3eb90808-0d57-4173-ac0a-2fb8bc66c049'
   }
-  const christmasProductsQuery = useQuery([PRODUCTS_TABLE, params], () =>
+  const christmasProductsQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
     getProducts(params)
   )
 

@@ -1,16 +1,7 @@
-import {
-  ADDRESSES_TABLE,
-  DELIVERY_TYPES_TABLE,
-  INVOICES_TABLE,
-  ORDER_ITEMS,
-  ORDER_TABLE,
-  PARCELS_TABLE,
-  VOUCHERS_TABLE
-} from 'constants/db_tables'
+import { DB_TABLES, Order } from 'braty-common'
 import { getOrderResponse, GetOrderResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Order } from 'braty-common'
 
 type Props = {
   id: Order['id']
@@ -18,32 +9,32 @@ type Props = {
 
 export const getOrder = async ({ id }: Props) => {
   const response = await supabase
-    .from<GetOrderResponse>(ORDER_TABLE)
+    .from<GetOrderResponse>(DB_TABLES.ORDER)
     .select(
       `*,
-      products: ${ORDER_ITEMS} (
+      products: ${DB_TABLES.ORDER_ITEMS} (
         product_id,
         price,
         quantity
       ),
-      shipping: ${ADDRESSES_TABLE} (
+      shipping: ${DB_TABLES.ADDRESSES} (
         post_code,
         street_address,
         city
       ),
-      invoice: ${INVOICES_TABLE} (
+      invoice: ${DB_TABLES.INVOICES} (
         url
       ),
-      delivery_type: ${DELIVERY_TYPES_TABLE} (
+      delivery_type: ${DB_TABLES.DELIVERY_TYPES} (
         label,
         time
       ),
-      voucher: ${VOUCHERS_TABLE} (
+      voucher: ${DB_TABLES.VOUCHERS} (
         id,
         discount,
         is_fixed
       ),
-      parcel: ${PARCELS_TABLE} (
+      parcel: ${DB_TABLES.PARCELS} (
         ref,
         link
       )

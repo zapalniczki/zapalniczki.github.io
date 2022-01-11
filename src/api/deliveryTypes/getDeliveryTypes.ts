@@ -1,4 +1,4 @@
-import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
+import { DB_TABLES } from 'braty-common'
 import {
   getDeliveryTypesResponseItem,
   GetDeliveryTypesResponseItem
@@ -9,7 +9,7 @@ import { array } from 'zod'
 
 export const getDeliveryTypes = async () => {
   const response = await supabase
-    .from<GetDeliveryTypesResponseItem>(DELIVERY_TYPES_TABLE)
+    .from<GetDeliveryTypesResponseItem>(DB_TABLES.DELIVERY_TYPES)
     .select()
 
   const data = parseApiResponse(array(getDeliveryTypesResponseItem), response)

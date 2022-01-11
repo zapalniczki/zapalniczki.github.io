@@ -1,18 +1,17 @@
 import { getPaymentTypes } from 'api'
+import { DB_TABLES, PaymentType } from 'braty-common'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
 import { useTranslation } from 'hooks'
-import { PaymentType } from 'braty-common'
-import EditModal from './EditModal'
 import React, { useMemo } from 'react'
-import { formatDate, displayMoney } from 'utils'
 import { useQuery } from 'react-query'
-import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
+import { displayMoney, formatDate } from 'utils'
+import EditModal from './EditModal'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
   const params = {}
-  const paymentTypesQuery = useQuery([PAYMENT_TYPE_TABLE, params], () =>
+  const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
     getPaymentTypes(params)
   )
   const columns = useMemo(

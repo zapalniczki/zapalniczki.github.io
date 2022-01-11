@@ -5,10 +5,9 @@ import {
   triggerSendEmail,
   updateOrderStatus
 } from 'api'
-import { ORDER_TABLE } from 'constants/db_tables'
+import { DB_TABLES, Order, OrderStatus, Parcel } from 'braty-common'
 import { useDev, useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
-import { Order, OrderStatus, Parcel } from 'braty-common'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object, string } from 'yup'
@@ -98,7 +97,7 @@ const useForm = (
       {
         showSuccessToastMessage: true,
         onSuccess: () => {
-          queryClient.invalidateQueries([ORDER_TABLE])
+          queryClient.invalidateQueries([DB_TABLES.ORDER])
 
           setView({
             view: 'SUCCESS'

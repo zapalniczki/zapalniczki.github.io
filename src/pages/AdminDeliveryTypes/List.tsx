@@ -1,8 +1,7 @@
 import { getDeliveryTypes } from 'api'
+import { DB_TABLES, DeliveryType } from 'braty-common'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
-import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
-import { DeliveryType } from 'braty-common'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { displayMoney, formatDate } from 'utils'
@@ -11,7 +10,10 @@ import EditModal from './EditModal'
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
+  const deliveryTypesQuery = useQuery(
+    DB_TABLES.DELIVERY_TYPES,
+    getDeliveryTypes
+  )
   const columns = useMemo(
     () => [
       {

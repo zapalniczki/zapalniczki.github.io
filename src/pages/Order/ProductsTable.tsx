@@ -8,7 +8,7 @@ import {
   Table,
   Tile
 } from 'components'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
+
 import { PRODUCTS_ID } from 'constants/routes'
 import { Language, TranslateFunc, useTranslation } from 'hooks'
 import { multiply } from 'lodash'
@@ -22,6 +22,7 @@ import {
   getLanguageLabel,
   getProductName
 } from 'utils'
+import { DB_TABLES } from 'braty-common'
 
 type Props = {
   products: GetOrderResponse['products']
@@ -32,7 +33,7 @@ const ProductsTable = ({ products }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.PRODUCTS')
 
   const ids = products.map((e) => e.product_id)
-  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
+  const productsQuery = useQuery([DB_TABLES.PRODUCTS, ids], () =>
     getProductsById(ids)
   )
 

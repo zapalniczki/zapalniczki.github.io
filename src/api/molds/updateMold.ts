@@ -1,14 +1,13 @@
-import { MOLDS_TABLE } from 'constants/db_tables'
+import { DB_TABLES, Mold } from 'braty-common'
 import { updateMoldResponse, UpdateMoldResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Mold } from 'braty-common'
 
 type Payload = Pick<Mold, 'id' | 'status'>
 
 export const updateMold = async (payload: Payload) => {
   const response = await supabase
-    .from<UpdateMoldResponse>(MOLDS_TABLE)
+    .from<UpdateMoldResponse>(DB_TABLES.MOLDS)
     .update({
       status: payload.status
     })

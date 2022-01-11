@@ -1,10 +1,11 @@
 import { getProducts } from 'api'
 import { ProductsGrid } from 'components'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
+
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
+import { DB_TABLES } from 'braty-common'
 
 const Featured = () => {
   const { homeFeaturedCount, homeFeaturedDisplay, homeFeaturedOrder } =
@@ -15,7 +16,7 @@ const Featured = () => {
     limit: homeFeaturedCount,
     collectionId: '9c0d32bb-3690-43c7-bca8-ab4d2aff80d5'
   }
-  const featuredQuery = useQuery([PRODUCTS_TABLE, params], () =>
+  const featuredQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
     getProducts(params)
   )
 

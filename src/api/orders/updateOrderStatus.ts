@@ -1,14 +1,13 @@
-import { ORDER_TABLE } from 'constants/db_tables'
+import { DB_TABLES, Order } from 'braty-common'
 import { updateOrderStatusResponse, UpdateOrderStatusResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Order } from 'braty-common'
 
 type Payload = Pick<Order, 'id' | 'status' | 'parcel_id'>
 
 export const updateOrderStatus = async (payload: Payload) => {
   const response = await supabase
-    .from<UpdateOrderStatusResponse>(ORDER_TABLE)
+    .from<UpdateOrderStatusResponse>(DB_TABLES.ORDER)
     .update({
       status: payload.status,
       parcel_id: payload.parcel_id

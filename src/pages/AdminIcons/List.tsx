@@ -1,8 +1,7 @@
 import { getIcons } from 'api'
+import { DB_TABLES, Icon } from 'braty-common'
 import { QueryLoader, Table, Tile } from 'components'
-import { ICONS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
-import { Icon } from 'braty-common'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
@@ -10,7 +9,7 @@ import { formatDate } from 'utils'
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const iconsQuery = useQuery(ICONS_TABLE, getIcons)
+  const iconsQuery = useQuery(DB_TABLES.ICONS, getIcons)
   const columns = useMemo(
     () => [
       {

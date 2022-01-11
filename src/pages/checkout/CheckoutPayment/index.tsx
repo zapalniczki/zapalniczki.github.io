@@ -1,17 +1,17 @@
 import { getPaymentTypes } from 'api'
+import { DB_TABLES } from 'braty-common'
 import { BackButton, Columns, Heading, Page, QueryLoader } from 'components'
-import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
 import { CHECKOUT_DELIVERY } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
-import { StepTracker, CheckoutTotal } from 'organisms'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import { CheckoutTotal, StepTracker } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
-import Form from './Form'
-import useForm from './useForm'
-import Loader from './index.loader'
 import { Navigate } from 'react-router-dom'
+import Form from './Form'
+import Loader from './index.loader'
+import useForm from './useForm'
 
 const CheckoutPayment = () => {
   const { t } = useTranslation('CHECKOUT_PAYMENT')
@@ -23,7 +23,7 @@ const CheckoutPayment = () => {
 
   const params = { in_person: !!checkout.delivery_type_allows_cash_payment }
 
-  const paymentTypesQuery = useQuery([PAYMENT_TYPE_TABLE, params], () =>
+  const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
     getPaymentTypes(params)
   )
   const { initialValues, onSubmit, schema } = useForm()

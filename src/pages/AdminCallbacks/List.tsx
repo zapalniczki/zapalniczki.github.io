@@ -1,8 +1,7 @@
 import { getCallbacks } from 'api'
+import { Callback, DB_TABLES } from 'braty-common'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
-import { CALLBACK_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
-import { Callback } from 'braty-common'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
@@ -11,7 +10,7 @@ import EditModal from './EditModal'
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const callbacksQuery = useQuery(CALLBACK_TABLE, getCallbacks)
+  const callbacksQuery = useQuery(DB_TABLES.CALLBACK, getCallbacks)
   const columns = useMemo(
     () => [
       {

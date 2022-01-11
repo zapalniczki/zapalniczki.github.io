@@ -1,8 +1,7 @@
-import { CALLBACK_TABLE } from 'constants/db_tables'
+import { Callback, DB_TABLES } from 'braty-common'
 import { addCallbackResponse, AddCallbackResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Callback } from 'braty-common'
 
 type Payload = {
   phone: Callback['phone_number']
@@ -10,7 +9,7 @@ type Payload = {
 
 export const addCallback = async (payload: Payload) => {
   const response = await supabase
-    .from<AddCallbackResponse>(CALLBACK_TABLE)
+    .from<AddCallbackResponse>(DB_TABLES.CALLBACK)
     .insert({
       phone_number: payload.phone
     })

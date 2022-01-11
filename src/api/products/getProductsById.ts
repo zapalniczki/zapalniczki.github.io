@@ -1,4 +1,3 @@
-import { PRODUCTS_TABLE } from 'constants/db_tables'
 import {
   getProductsByIdResponseItem,
   GetProductsByIdResponseItem
@@ -8,12 +7,13 @@ import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 import { getProductsSelectQuery } from '.'
 import { Product } from 'braty-common'
+import { DB_TABLES } from 'braty-common'
 
 type Payload = Product['id'][]
 
 export const getProductsById = async (payload: Payload) => {
   const response = await supabase
-    .from<GetProductsByIdResponseItem>(PRODUCTS_TABLE)
+    .from<GetProductsByIdResponseItem>(DB_TABLES.PRODUCTS)
     .select(getProductsSelectQuery)
     .in('id', payload)
 

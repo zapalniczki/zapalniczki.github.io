@@ -1,24 +1,14 @@
-import {
-  ICONS_TABLE,
-  LABELS_TABLE,
-  MOLDS_TABLE,
-  ORDER_ITEMS,
-  ORDER_TABLE,
-  PARCELS_TABLE,
-  PRODUCTS_TABLE,
-  USERS_TABLE
-} from 'constants/db_tables'
+import { DB_TABLES, Order } from 'braty-common'
 import { GetOrdersResponseItem, getOrdersResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
-import { Order } from 'braty-common'
 
 type Params = Pick<Order, 'status' | 'is_test'>
 
 export const getOrders = async ({ is_test, status }: Params) => {
   const response = await supabase
-    .from<GetOrdersResponseItem>(ORDER_TABLE)
+    .from<GetOrdersResponseItem>(DB_TABLES.ORDER)
     .select(
       `
       id,
@@ -28,35 +18,35 @@ export const getOrders = async ({ is_test, status }: Params) => {
       total,
       updated_at,
       created_at,
-      customerName: ${USERS_TABLE}!user_id (
+      customerName: ${DB_TABLES.ORDER}!user_id (
         full_name
       ),
-      customerPhone: ${USERS_TABLE}!user_id (
+      customerPhone: ${DB_TABLES.ORDER}!user_id (
         phone
       ),
-      customerEmail: ${USERS_TABLE}!user_id (
+      customerEmail: ${DB_TABLES.ORDER}!user_id (
         email
       ),
       status,
-      products: ${ORDER_ITEMS} (
+      products: ${DB_TABLES.ORDER_ITEMS} (
         id,
         quantity,
-        product: ${PRODUCTS_TABLE} (
+        product: ${DB_TABLES.PRODUCTS} (
           name,
-          mold: ${MOLDS_TABLE} (
+          mold: ${DB_TABLES.MOLDS} (
             status
           ),
-          label: ${LABELS_TABLE} (
+          label: ${DB_TABLES.LABELS} (
             label_pl,
             label_en
           ),
-          icon: ${ICONS_TABLE} (
+          icon: ${DB_TABLES.ICONS} (
             label_pl,
             label_en
           )
         )
       ),
-      parcel: ${PARCELS_TABLE} (
+      parcel: ${DB_TABLES.PARCELS} (
         ref,
         link,
         id

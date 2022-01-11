@@ -1,14 +1,13 @@
-import { VOUCHERS_TABLE } from 'constants/db_tables'
+import { DB_TABLES, Voucher } from 'braty-common'
 import { addVoucherResponse, AddVoucherResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Voucher } from 'braty-common'
 
 type Payload = Pick<Voucher, 'id' | 'is_used'>
 
 export const editVoucher = async ({ id, is_used }: Payload) => {
   const response = await supabase
-    .from<AddVoucherResponse>(VOUCHERS_TABLE)
+    .from<AddVoucherResponse>(DB_TABLES.VOUCHERS)
     .update({ is_used })
     .eq('id', id)
     .single()

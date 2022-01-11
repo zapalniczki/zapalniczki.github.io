@@ -1,4 +1,4 @@
-import { CALLBACK_TABLE } from 'constants/db_tables'
+import { DB_TABLES } from 'braty-common'
 import { GetCallbackResponseItem, getCallbacksResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
@@ -6,7 +6,7 @@ import { array } from 'zod'
 
 export const getCallbacks = async () => {
   const response = await supabase
-    .from<GetCallbackResponseItem>(CALLBACK_TABLE)
+    .from<GetCallbackResponseItem>(DB_TABLES.CALLBACK)
     .select()
     .order('updated_at')
 

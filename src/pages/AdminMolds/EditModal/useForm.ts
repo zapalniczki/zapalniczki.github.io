@@ -1,8 +1,7 @@
 import { updateMold } from 'api'
-import { MOLDS_TABLE } from 'constants/db_tables'
+import { DB_TABLES, MoldStatus } from 'braty-common'
 import { useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
-import { MoldStatus } from 'braty-common'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object, string } from 'yup'
@@ -27,7 +26,7 @@ const useForm = (id: string, status: MoldStatus) => {
           view: 'SUCCESS'
         })
 
-        queryClient.invalidateQueries([MOLDS_TABLE])
+        queryClient.invalidateQueries([DB_TABLES.MOLDS])
       }
     })
 

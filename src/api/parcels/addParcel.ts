@@ -1,14 +1,13 @@
-import { PARCELS_TABLE } from 'constants/db_tables'
+import { DB_TABLES, Parcel } from 'braty-common'
 import { addParcelResponse, AddParcelResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Parcel } from 'braty-common'
 
 type Payload = Omit<Parcel, 'created_at' | 'updated_at' | 'id'>
 
 export const addParcel = async (payload: Payload) => {
   const response = await supabase
-    .from<AddParcelResponse>(PARCELS_TABLE)
+    .from<AddParcelResponse>(DB_TABLES.PARCELS)
     .insert(payload)
     .single()
 

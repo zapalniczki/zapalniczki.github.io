@@ -1,8 +1,7 @@
-import { ORDER_TABLE } from 'constants/db_tables'
+import { DB_TABLES, Order } from 'braty-common'
 import { getOrderStatusResponse, GetOrderStatusResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Order } from 'braty-common'
 
 type Params = {
   order_id: Order['id']
@@ -10,7 +9,7 @@ type Params = {
 
 export const getOrderStatus = async (params: Params) => {
   const response = await supabase
-    .from<GetOrderStatusResponse>(ORDER_TABLE)
+    .from<GetOrderStatusResponse>(DB_TABLES.ORDER)
     .select('id, status')
     .eq('id', params.order_id)
     .single()

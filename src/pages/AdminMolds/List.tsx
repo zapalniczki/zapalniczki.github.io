@@ -1,6 +1,6 @@
 import { getMolds } from 'api'
+import { DB_TABLES } from 'braty-common'
 import { Heading, QueryLoader, Table, Tile } from 'components'
-import { MOLDS_TABLE } from 'constants/db_tables'
 import { TranslateFunc, useTranslation } from 'hooks'
 import { GetMoldsResponseItem } from 'models'
 import React, { useMemo } from 'react'
@@ -12,7 +12,7 @@ const List = () => {
   const { t: commonT } = useTranslation('COMMON')
   const { t } = useTranslation('ADMIN_MOLDS')
 
-  const moldsQuery = useQuery(MOLDS_TABLE, getMolds)
+  const moldsQuery = useQuery(DB_TABLES.MOLDS, getMolds)
   const columns = useMemo(
     () => [
       {

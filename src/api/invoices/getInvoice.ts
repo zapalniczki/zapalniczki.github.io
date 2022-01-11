@@ -1,8 +1,7 @@
-import { INVOICES_TABLE } from 'constants/db_tables'
+import { DB_TABLES, Order } from 'braty-common'
 import { getInvoiceResponse, GetInvoiceResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { Order } from 'braty-common'
 
 type Params = {
   order_id: Order['id']
@@ -10,7 +9,7 @@ type Params = {
 
 export const getInvoice = async (params: Params) => {
   const response = await supabase
-    .from<GetInvoiceResponse>(INVOICES_TABLE)
+    .from<GetInvoiceResponse>(DB_TABLES.INVOICES)
     .select()
     .eq('order_id', params.order_id)
     .single()

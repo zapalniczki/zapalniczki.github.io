@@ -1,15 +1,8 @@
-import {
-  ICONS_TABLE,
-  IMAGES_TABLE,
-  LABELS_TABLE,
-  MOLDS_TABLE,
-  PRODUCTS_TABLE
-} from 'constants/db_tables'
+import { Collection, DB_TABLES, Icon, Label, Product } from 'braty-common'
 import { getProductsResponseItem, GetProductsResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
-import { Product, Collection, Icon, Label } from 'braty-common'
 
 export type Params = {
   bestseller?: Product['bestseller']
@@ -26,7 +19,7 @@ export const getProducts = async (params: Params = {}) => {
   const ilike = getProductsIlike(params)
 
   const response = await supabase
-    .from<GetProductsResponseItem>(PRODUCTS_TABLE)
+    .from<GetProductsResponseItem>(DB_TABLES.PRODUCTS)
     .select(getProductsSelectQuery)
     .eq('visible', true)
     .match(match)
@@ -50,17 +43,17 @@ collection_id,
 label_id,
 name,
 icon_id,
-${IMAGES_TABLE} (
+${DB_TABLES.IMAGES} (
   *
 ),
-mold: ${MOLDS_TABLE} (
+mold: ${DB_TABLES.MOLDS} (
   status
 ),
-icon: ${ICONS_TABLE} (
+icon: ${DB_TABLES.ICONS} (
   label_pl,
   label_en
 ),
-label: ${LABELS_TABLE} (
+label: ${DB_TABLES.LABELS} (
   label_pl,
   label_en
 )

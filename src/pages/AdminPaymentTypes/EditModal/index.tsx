@@ -1,5 +1,5 @@
-import { ModalResult, Modal, ModalFooter, ModalHeader } from 'components'
-import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
+import { DB_TABLES } from 'braty-common'
+import { Modal, ModalFooter, ModalHeader, ModalResult } from 'components'
 import { Form as NativeForm, Formik } from 'formik'
 import { useTranslation } from 'hooks'
 import { queryClient } from 'index'
@@ -27,7 +27,7 @@ const EditModal = ({ id, is_enabled }: Props) => {
     setIsModalOpen(false)
     setView({ view: 'FORM' })
 
-    queryClient.invalidateQueries([PAYMENT_TYPE_TABLE])
+    queryClient.invalidateQueries([DB_TABLES.PAYMENT_TYPE])
   }
 
   let content

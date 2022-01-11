@@ -1,6 +1,6 @@
 import { getProductsById } from 'api'
 import { QueryLoader } from 'components'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
+
 import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext, useEffect, useRef } from 'react'
 import { useQuery } from 'react-query'
@@ -12,6 +12,7 @@ import Checkout from './Checkout'
 import Header from './Header'
 import BasketLoader from './index.loader'
 import { AnimatePresence, motion } from 'framer-motion'
+import { DB_TABLES } from 'braty-common'
 
 const Basket = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -34,7 +35,7 @@ const Basket = () => {
   }, [])
 
   const ids = basket.map((e) => e.id)
-  const productsQuery = useQuery([PRODUCTS_TABLE, ids], () =>
+  const productsQuery = useQuery([DB_TABLES.PRODUCTS, ids], () =>
     getProductsById(ids)
   )
 

@@ -1,4 +1,5 @@
 import { getOrders } from 'api'
+import { DB_TABLES, Mold, Order } from 'braty-common'
 import {
   Box,
   DisplayDate,
@@ -13,7 +14,6 @@ import {
   Text,
   Tile
 } from 'components'
-import { ORDER_TABLE } from 'constants/db_tables'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
 import { TranslateFunc, useDev, useTranslation } from 'hooks'
@@ -23,7 +23,6 @@ import { useQuery } from 'react-query'
 import { displayMoney, getOrderPath, getProductName } from 'utils'
 import EditModal from './EditModal'
 import { AdminTableColumns } from './statusToColumns'
-import { Order, Mold } from 'braty-common'
 
 type Props = {
   columns: AdminTableColumns[]
@@ -42,7 +41,9 @@ const Table = ({ columns, status }: Props) => {
     is_test: testData
   }
 
-  const ordersQuery = useQuery([ORDER_TABLE, params], () => getOrders(params))
+  const ordersQuery = useQuery([DB_TABLES.ORDER, params], () =>
+    getOrders(params)
+  )
 
   const columnsMemo = useMemo(
     () =>

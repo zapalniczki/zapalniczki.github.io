@@ -1,14 +1,13 @@
-import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
+import { DB_TABLES, PaymentType } from 'braty-common'
 import { updatePaymentTypeResponse, UpdatePaymentTypeResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { PaymentType } from 'braty-common'
 
 type Payload = Pick<PaymentType, 'id' | 'is_enabled'>
 
 export const updatePaymentType = async (payload: Payload) => {
   const response = await supabase
-    .from<UpdatePaymentTypeResponse>(PAYMENT_TYPE_TABLE)
+    .from<UpdatePaymentTypeResponse>(DB_TABLES.PAYMENT_TYPE)
     .update({
       is_enabled: payload.is_enabled
     })

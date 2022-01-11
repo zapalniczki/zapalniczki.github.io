@@ -1,4 +1,4 @@
-import { PAYMENT_TYPE_TABLE } from 'constants/db_tables'
+import { DB_TABLES } from 'braty-common'
 import {
   getPaymentTypesResponseItem,
   GetPaymentTypesResponseItem
@@ -13,7 +13,7 @@ type Params = {
 
 export const getPaymentTypes = async (params: Params = {}) => {
   const response = await supabase
-    .from<GetPaymentTypesResponseItem>(PAYMENT_TYPE_TABLE)
+    .from<GetPaymentTypesResponseItem>(DB_TABLES.PAYMENT_TYPE)
     .select()
     .match({
       ...(params.in_person !== undefined && { in_person: params.in_person })

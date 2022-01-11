@@ -1,4 +1,5 @@
 import { getDeliveryTypes } from 'api'
+import { DB_TABLES } from 'braty-common'
 import {
   BackButton,
   Columns,
@@ -7,19 +8,18 @@ import {
   QueryLoader,
   Switch
 } from 'components'
-import { DELIVERY_TYPES_TABLE } from 'constants/db_tables'
 import { CHECKOUT_DETAILS } from 'constants/routes'
 import { Form as FormikForm, Formik } from 'formik'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
-import { StepTracker, CheckoutTotal } from 'organisms'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import { CheckoutTotal, StepTracker } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
 import { useQuery } from 'react-query'
+import { Navigate } from 'react-router-dom'
 import Form from './Form'
+import Loader from './index.loader'
 import ShippingForm from './ShippingForm'
 import useForm from './useForm'
-import Loader from './index.loader'
-import { Navigate } from 'react-router-dom'
 
 const CheckoutDelivery = () => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
@@ -27,7 +27,10 @@ const CheckoutDelivery = () => {
   usePageTitle(t('title'))
   useScrollTop()
 
-  const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
+  const deliveryTypesQuery = useQuery(
+    DB_TABLES.DELIVERY_TYPES,
+    getDeliveryTypes
+  )
   const { checkout, setCheckout } = useContext(checkoutContext)
   const { initialValues, onSubmitForm, schema } = useForm()
 

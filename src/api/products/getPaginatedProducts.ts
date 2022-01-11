@@ -1,4 +1,3 @@
-import { PRODUCTS_TABLE } from 'constants/db_tables'
 import { getProductsResponseItem, GetProductsResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
@@ -9,6 +8,7 @@ import {
   getProductsMatch,
   Params as GetProductsParams
 } from '.'
+import { DB_TABLES } from 'braty-common'
 
 type Params = GetProductsParams & {
   page: number
@@ -26,7 +26,7 @@ export const getPaginatedProducts = async ({
   const ilike = getProductsIlike(params)
 
   const response = await supabase
-    .from<GetProductsResponseItem>(PRODUCTS_TABLE)
+    .from<GetProductsResponseItem>(DB_TABLES.PRODUCTS)
     .select(getProductsSelectQuery, { count: 'exact' })
     .eq('visible', true)
     .match(match)

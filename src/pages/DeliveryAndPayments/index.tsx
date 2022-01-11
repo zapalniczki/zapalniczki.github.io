@@ -1,6 +1,7 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getDeliveryTypes, getPaymentTypes } from 'api'
+import { DB_TABLES } from 'braty-common'
 import { ReadTermsAndConditions } from 'commonComponents'
 import {
   Banner,
@@ -8,12 +9,11 @@ import {
   Flexbox,
   Grid,
   Page,
+  ProductsGridLoader,
   QueryLoader,
-  SectionHead,
-  ProductsGridLoader
+  SectionHead
 } from 'components'
-import { DELIVERY_TYPES_TABLE, PAYMENT_TYPE_TABLE } from 'constants/db_tables'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
 import { displayMoney } from 'utils'
@@ -25,10 +25,13 @@ const DeliveryAndPayments = () => {
   useScrollTop()
   usePageTitle(t('title'))
 
-  const deliveryTypesQuery = useQuery(DELIVERY_TYPES_TABLE, getDeliveryTypes)
+  const deliveryTypesQuery = useQuery(
+    DB_TABLES.DELIVERY_TYPES,
+    getDeliveryTypes
+  )
 
   const params = {}
-  const paymentTypesQuery = useQuery([PAYMENT_TYPE_TABLE, params], () =>
+  const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
     getPaymentTypes(params)
   )
 

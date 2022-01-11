@@ -1,6 +1,6 @@
 import { getCollections, getIcons } from 'api'
+import { DB_TABLES } from 'braty-common'
 import { Banner, Heading } from 'components'
-import { COLLECTIONS_TABLE, ICONS_TABLE } from 'constants/db_tables'
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
@@ -15,8 +15,10 @@ type Props = {
 const Filters = ({ searchQuery, setSearchQuery }: Props) => {
   const t = useTranslation('PRODUCTS').withBase('FILTERS')
 
-  const iconsQuery = useQuery(ICONS_TABLE, () => getIcons())
-  const collectionsQuery = useQuery(COLLECTIONS_TABLE, () => getCollections())
+  const iconsQuery = useQuery(DB_TABLES.ICONS, () => getIcons())
+  const collectionsQuery = useQuery(DB_TABLES.COLLECTIONS, () =>
+    getCollections()
+  )
 
   return (
     <Banner>

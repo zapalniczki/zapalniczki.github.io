@@ -1,18 +1,17 @@
-import { ADDRESSES_TABLE, USERS_TABLE } from 'constants/db_tables'
 import { GetUserResponse, getUserResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
-import { User } from 'braty-common'
+import { User, DB_TABLES } from 'braty-common'
 
 type Params = Pick<User, 'id'>
 
 export const getUser = async ({ id }: Params) => {
   const response = await supabase
-    .from<GetUserResponse>(USERS_TABLE)
+    .from<GetUserResponse>(DB_TABLES.USERS)
     .select(
       `
         *,
-        address: ${ADDRESSES_TABLE}!address_id (
+        address: ${DB_TABLES.ADDRESSES}!address_id (
           city,
           post_code,
           street_address

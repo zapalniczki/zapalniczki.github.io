@@ -1,11 +1,12 @@
 import { getProducts } from 'api'
 import { ProductsGrid } from 'components'
-import { PRODUCTS_TABLE } from 'constants/db_tables'
+
 import { VALENTINES_DAY } from 'constants/routes'
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
+import { DB_TABLES } from 'braty-common'
 
 const ValentinesDay = () => {
   const commonT = useTranslation('HOME').withBase('VALENTINES_DAY')
@@ -16,7 +17,9 @@ const ValentinesDay = () => {
     limit: 3,
     collectionId: 'c8445406-9971-424e-a788-df15dd6f0460'
   }
-  const query = useQuery([PRODUCTS_TABLE, params], () => getProducts(params))
+  const query = useQuery([DB_TABLES.PRODUCTS, params], () =>
+    getProducts(params)
+  )
 
   if (!valentinesDay) {
     return null

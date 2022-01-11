@@ -1,22 +1,21 @@
 import { getOrder } from 'api'
+import { DB_TABLES, Order } from 'braty-common'
 import { Columns, Page, QueryLoader } from 'components'
-import { ORDER_TABLE } from 'constants/db_tables'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
-import { Order } from 'braty-common'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import { ContactDetails } from 'organisms'
 import React from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
 import Billing from './Billing'
-import { ContactDetails } from 'organisms'
 import Details from './Details'
 import Invoice from './Invoice'
 import OrderId from './OrderId'
+import ParcelDetails from './ParcelDetails'
 import Payment from './Payment'
-import Voucher from './Voucher'
 import ProductsTable from './ProductsTable'
 import Shipping from './Shipping'
 import Status from './Status'
-import ParcelDetails from './ParcelDetails'
+import Voucher from './Voucher'
 
 const Order = () => {
   const { t } = useTranslation('ORDER')
@@ -30,7 +29,7 @@ const Order = () => {
   }
 
   const params = { id }
-  const orderQuery = useQuery([ORDER_TABLE, params], () => getOrder(params))
+  const orderQuery = useQuery([DB_TABLES.ORDER, params], () => getOrder(params))
 
   return (
     <Page>
