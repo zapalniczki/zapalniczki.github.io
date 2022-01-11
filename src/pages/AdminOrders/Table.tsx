@@ -88,9 +88,9 @@ const shapeData = (
 ): Record<AdminTableColumns, string | boolean | number | JSX.Element>[] =>
   data.map((order) => ({
     created_at: <DisplayDate>{order.created_at}</DisplayDate>,
-    customer_email: order.customerEmail.email,
+    email: order.customerEmail.email,
     customer_name: order.customerName.full_name,
-    customer_phone: order.customerPhone.phone,
+    phone: order.customerPhone.phone,
     delivery_yype: order.deliveryType.label,
     client: (
       <Flexbox flexDirection="column">

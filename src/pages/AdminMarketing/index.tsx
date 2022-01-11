@@ -1,7 +1,7 @@
 import { Banner, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
-// import List from './List'
+import List from './List'
 
 const AdminMarketing = () => {
   const { t } = useTranslation('ADMIN_MARKETING')
@@ -13,7 +13,7 @@ const AdminMarketing = () => {
     <Page>
       <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
-      {/* <List /> */}
+      <List />
     </Page>
   )
 }
