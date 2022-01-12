@@ -8,6 +8,7 @@ export const getMarketings = async () => {
   const response = await supabase
     .from<GetMarketingsResponseItem>(DB_TABLES.MARKETING)
     .select('*')
+    .order('updated_at', { ascending: false })
 
   const data = parseApiResponse(array(getMarketingsResponseItem), response)
 

@@ -6,9 +6,9 @@ import React, { useState } from 'react'
 import Form from './Form'
 import useForm from './useForm'
 
-type Props = Omit<Marketing, 'updated_at' | 'created_at' | 'is_test'>
+type Props = Partial<Omit<Marketing, 'updated_at' | 'created_at' | 'is_test'>>
 
-const EditModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
+const FormModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
   const { t } = useTranslation('ADMIN_MARKETING')
   const { t: commonT } = useTranslation('COMMON')
 
@@ -29,7 +29,6 @@ const EditModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
   }
 
   let content
-
   if (view.view === 'FORM') {
     content = (
       <Formik
@@ -74,11 +73,11 @@ const EditModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
   return (
     <Modal
       isOpen={isModalOpen}
-      label={t('EDIT_MODAL.buttonLabel')}
+      label={t(`FORM_MODAL.${id ? 'buttonLabelEdit' : 'buttonLabelAdd'}`)}
       setIsOpen={setIsModalOpen}
     >
       <ModalHeader onClick={() => onClose()}>
-        {t('EDIT_MODAL.title')}
+        {t(`FORM_MODAL.${id ? 'titleEdit' : 'titleAdd'}`)}
       </ModalHeader>
 
       {content}
@@ -86,4 +85,4 @@ const EditModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
   )
 }
 
-export default EditModal
+export default FormModal

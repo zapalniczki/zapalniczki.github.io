@@ -5,7 +5,7 @@ import { useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
-import EditModal from './EditModal'
+import FormModal from './FormModal'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
@@ -70,7 +70,7 @@ const shapeData = (data: Marketing[]) =>
     phone: record.phone,
     notes: record.notes,
     edit: (
-      <EditModal
+      <FormModal
         email={record.email}
         id={record.id}
         name={record.name}

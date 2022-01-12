@@ -26,6 +26,14 @@ const Form = () => {
             )}
           </Field>
         </FieldWrapper>
+
+        <FieldWrapper>
+          <Field name="plus_code">
+            {(props: FieldProps<FormValues['plus_code'], FormValues>) => (
+              <Input {...props} {...getInput('PLUS_CODE')} />
+            )}
+          </Field>
+        </FieldWrapper>
       </FormRow>
 
       <FormRow>

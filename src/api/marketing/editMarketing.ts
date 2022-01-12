@@ -11,7 +11,9 @@ export const editMarketing = async (payload: Payload) => {
     .update({
       email: payload.email,
       phone: payload.phone,
-      notes: payload.notes
+      notes: payload.notes,
+      name: payload.name,
+      plus_code: payload.plus_code
     })
     .eq('id', payload.id)
     .single()

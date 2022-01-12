@@ -4,92 +4,120 @@ import useTranslation from './useTranslation'
 const useFormSchema = () => {
   const commonT = useTranslation('COMMON').withBase('VALIDATIONS')
 
-  const schemas: Record<SchemaKey, StringSchema | NumberSchema> = {
-    VOUCHER_ID: string().length(36, commonT('VOUCHER_ID.length')),
+  const schemas: Record<
+    SchemaKey,
+    (variant?: boolean) => StringSchema | NumberSchema
+  > = {
+    VOUCHER_ID: () => string().length(36, commonT('VOUCHER_ID.length')),
 
-    PRODUCT_QUANTITY: number()
-      .min(1, commonT('PRODUCT_QUANTITY.min'))
-      .max(100, commonT('PRODUCT_QUANTITY.max'))
-      .required(commonT('PRODUCT_QUANTITY.required')),
+    PRODUCT_QUANTITY: () =>
+      number()
+        .min(1, commonT('PRODUCT_QUANTITY.min'))
+        .max(100, commonT('PRODUCT_QUANTITY.max'))
+        .required(commonT('PRODUCT_QUANTITY.required')),
 
-    PAYMENT_TYPE: string().required(commonT('PAYMENT_TYPE.required')),
+    PAYMENT_TYPE: () => string().required(commonT('PAYMENT_TYPE.required')),
 
-    DELIVERY_TYPE: string().required(commonT('DELIVERY_TYPE.required')),
+    DELIVERY_TYPE: () => string().required(commonT('DELIVERY_TYPE.required')),
 
-    EMAIL: string()
-      .email(commonT('EMAIL.email'))
-      .required(commonT('EMAIL.required')),
+    EMAIL: (variant) => {
+      if (variant) {
+        return string().email(commonT('EMAIL.email'))
+      }
 
-    PHONE: string()
-      .trim()
-      .matches(/^(\d){8,}$/, commonT('PHONE.matches'))
-      .required(commonT('PHONE.required')),
+      return string()
+        .email(commonT('EMAIL.email'))
+        .required(commonT('EMAIL.required'))
+    },
 
-    ORDER_ID: string()
-      .required(commonT('ORDER_ID.required'))
-      .length(36, commonT('ORDER_ID.length')),
+    PHONE: (variant) => {
+      if (variant) {
+        return string().trim()
+      }
 
-    FULL_NAME: string().required(commonT('FULL_NAME.required')),
+      return string()
+        .trim()
+        .matches(/^(\d){8,}$/, commonT('PHONE.matches'))
+        .required(commonT('PHONE.required'))
+    },
 
-    STREET_ADDRESS: string().required(commonT('STREET_ADDRESS.required')),
+    ORDER_ID: () =>
+      string()
+        .required(commonT('ORDER_ID.required'))
+        .length(36, commonT('ORDER_ID.length')),
 
-    POST_CODE: string()
-      .trim()
-      .matches(/^(\d{2})-(\d{3})$/, commonT('POST_CODE.matches'))
-      .required(commonT('POST_CODE.required')),
+    FULL_NAME: () => string().required(commonT('FULL_NAME.required')),
 
-    CITY: string().required(commonT('CITY.required')),
+    STREET_ADDRESS: () => string().required(commonT('STREET_ADDRESS.required')),
 
-    NIP: string()
-      .required(commonT('NIP.required'))
-      .length(10, commonT('NIP.length'))
-      .matches(/^(\d{10})$/, commonT('NIP.matches'))
-      .test('', commonT('NIP.invalid'), (nip) => {
-        if (!nip) {
-          return false
-        }
+    POST_CODE: () =>
+      string()
+        .trim()
+        .matches(/^(\d{2})-(\d{3})$/, commonT('POST_CODE.matches'))
+        .required(commonT('POST_CODE.required')),
 
-        const weights = [6, 5, 7, 2, 3, 4, 5, 6, 7]
-        const controlNumber = parseInt(nip.substring(9, 10))
-        const weightCount = weights.length
+    CITY: () => string().required(commonT('CITY.required')),
 
-        let sum = 0
-        for (let i = 0; i < weightCount; i++) {
-          sum += parseInt(nip.slice(i, i + 1)) * weights[i]
-        }
+    NIP: () =>
+      string()
+        .required(commonT('NIP.required'))
+        .length(10, commonT('NIP.length'))
+        .matches(/^(\d{10})$/, commonT('NIP.matches'))
+        .test('', commonT('NIP.invalid'), (nip) => {
+          if (!nip) {
+            return false
+          }
 
-        const mod = sum % 11
-        const isValid = mod === controlNumber
+          const weights = [6, 5, 7, 2, 3, 4, 5, 6, 7]
+          const controlNumber = parseInt(nip.substring(9, 10))
+          const weightCount = weights.length
 
-        return isValid
-      }),
+          let sum = 0
+          for (let i = 0; i < weightCount; i++) {
+            sum += parseInt(nip.slice(i, i + 1)) * weights[i]
+          }
 
-    PASSWORD: string()
-      .required(commonT('PASSWORD.required'))
-      .min(6, commonT('PASSWORD.min')),
+          const mod = sum % 11
+          const isValid = mod === controlNumber
 
-    NEW_PASSWORD: string()
-      .required(commonT('NEW_PASSWORD.required'))
-      .min(6, commonT('NEW_PASSWORD.min')),
+          return isValid
+        }),
 
-    PASSWORD_CONFIRMATION: string()
-      .required(commonT('PASSWORD_CONFIRMATION.required'))
-      .oneOf([ref('newPassword')], commonT('PASSWORD_CONFIRMATION.oneOf')),
+    PASSWORD: () =>
+      string()
+        .required(commonT('PASSWORD.required'))
+        .min(6, commonT('PASSWORD.min')),
 
-    NOTES: string(),
+    NEW_PASSWORD: () =>
+      string()
+        .required(commonT('NEW_PASSWORD.required'))
+        .min(6, commonT('NEW_PASSWORD.min')),
 
-    NAME: string(),
+    PASSWORD_CONFIRMATION: () =>
+      string()
+        .required(commonT('PASSWORD_CONFIRMATION.required'))
+        .oneOf([ref('newPassword')], commonT('PASSWORD_CONFIRMATION.oneOf')),
 
-    PLUS_CODE: string()
+    NOTES: () => string(),
+
+    NAME: () => string(),
+
+    PLUS_CODE: () => string(),
+
+    TEST: () => string()
   }
 
-  const getSchema = (key: SchemaKey) => schemas[key]
+  const getSchema = (key: SchemaKey, variant?: boolean) => schemas[key](variant)
 
-  return { schemas, getSchema }
+  return {
+    schemas,
+    getSchema
+  }
 }
 
 type SchemaKey =
   | 'CITY'
+  | 'TEST'
   | 'DELIVERY_TYPE'
   | 'EMAIL'
   | 'FULL_NAME'

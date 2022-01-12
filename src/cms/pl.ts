@@ -413,7 +413,7 @@ const pl = {
         placeholder: ''
       },
       PLUS_CODE: {
-        lablel: 'Kod Plus',
+        label: 'Kod Plus',
         placeholder: 'Wklej kod plus'
       }
     },
@@ -658,9 +658,11 @@ const pl = {
 
   ADMIN_MARKETING: {
     title: 'Marketing',
-    EDIT_MODAL: {
-      title: 'Edycja',
-      buttonLabel: 'Edytuj'
+    FORM_MODAL: {
+      titleEdit: 'Edycja',
+      titleAdd: 'Dodawanie',
+      buttonLabelEdit: 'Edytuj',
+      buttonLabelAdd: 'Dodaj'
     }
   },
 

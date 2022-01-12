@@ -7,7 +7,7 @@ type Props = {
 } & FlexboxProps
 
 const ModalContent = ({ children, ...props }: Props) => (
-  <Flexbox {...props} flexDirection="column" height="100%" width="100%">
+  <Flexbox {...props} flexDirection="column" minHeight="100%" width="100%">
     {children}
   </Flexbox>
 )

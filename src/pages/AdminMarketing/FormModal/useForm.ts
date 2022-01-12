@@ -1,18 +1,18 @@
-import { editMarketing } from 'api'
+import { addMarketing, editMarketing } from 'api'
 import { DB_TABLES, Marketing } from 'braty-common'
-import { useFormSchema, useFormSubmit } from 'hooks'
+import { useDev, useFormSchema, useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
 
 const useForm = (
-  id: Marketing['id'],
-  email: Marketing['email'],
-  phone: Marketing['phone'],
-  notes: Marketing['notes'],
-  name: Marketing['name'],
-  plus_code: Marketing['plus_code']
+  id?: Marketing['id'],
+  email?: Marketing['email'],
+  phone?: Marketing['phone'],
+  notes?: Marketing['notes'],
+  name?: Marketing['name'],
+  plus_code?: Marketing['plus_code']
 ) => {
   const { getSchema } = useFormSchema()
 
@@ -27,27 +27,41 @@ const useForm = (
   }
 
   const schema = object({
-    email: getSchema('EMAIL'),
-    phone: getSchema('PHONE'),
+    email: getSchema('EMAIL', true),
+    phone: getSchema('PHONE', true),
     notes: getSchema('NOTES'),
     name: getSchema('NAME'),
     plus_code: getSchema('PLUS_CODE')
   })
 
   const useSubmit = () => {
+    const isDev = useDev()
     const { mutateAsync: mutateEditMarketing } = useMutation(editMarketing)
+    const { mutateAsync: mutateAddMarketing } = useMutation(addMarketing)
 
     return useFormSubmit(
       async (values: FormValues) => {
-        const marketingResponse = await mutateEditMarketing({
-          id,
-          email: values.email,
-          phone: values.phone,
-          notes: values.notes,
-          name: values.name,
-          plus_code: values.plus_code
-        })
+        let marketingResponse
 
+        if (id) {
+          marketingResponse = await mutateEditMarketing({
+            id,
+            email: values.email,
+            phone: values.phone,
+            notes: values.notes,
+            name: values.name,
+            plus_code: values.plus_code
+          })
+        } else {
+          marketingResponse = await mutateAddMarketing({
+            email: values.email,
+            phone: values.phone,
+            notes: values.notes,
+            name: values.name,
+            plus_code: values.plus_code,
+            is_test: isDev
+          })
+        }
         // if (!isDev) {
         //   mutateTriggerSendEmail({
         //     to: userResponse.email,

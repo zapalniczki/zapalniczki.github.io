@@ -413,7 +413,7 @@ const en: LanguageKeys = {
         placeholder: ''
       },
       PLUS_CODE: {
-        lablel: 'Plus code',
+        label: 'Plus code',
         placeholder: 'Paste plus code'
       }
     },
@@ -657,9 +657,11 @@ const en: LanguageKeys = {
 
   ADMIN_MARKETING: {
     title: 'Marketing',
-    EDIT_MODAL: {
-      title: 'Editing',
-      buttonLabel: 'Edit'
+    FORM_MODAL: {
+      titleEdit: 'Editing',
+      titleAdd: 'Adding',
+      buttonLabelEdit: 'Edit',
+      buttonLabelAdd: 'Add'
     }
   },
 
