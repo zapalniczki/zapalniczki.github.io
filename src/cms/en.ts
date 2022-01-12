@@ -134,6 +134,7 @@ const en: LanguageKeys = {
       name: 'Name',
       phone: 'Telefon',
       phone_number: 'Numer telefonu',
+      plus_code: 'Kod plus',
       price: 'Cena',
       product_image: '',
       product_name: 'Nazwa produktu',

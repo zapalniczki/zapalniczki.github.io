@@ -26,6 +26,10 @@ const List = () => {
         accessor: 'name' as const
       },
       {
+        Header: commonT('TABLE_HEADERS.plus_code'),
+        accessor: 'plus_code' as const
+      },
+      {
         Header: commonT('TABLE_HEADERS.email'),
         accessor: 'email' as const
       },
@@ -61,6 +65,7 @@ const shapeData = (data: Marketing[]) =>
     id: formatDate(record.created_at),
     updated_at: formatDate(record.updated_at),
     name: record.name,
+    plus_code: record.plus_code,
     email: record.email,
     phone: record.phone,
     notes: record.notes,
