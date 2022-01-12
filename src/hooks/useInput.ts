@@ -117,6 +117,21 @@ const inputs = {
     placeholder: 'PASSWORD_CONFIRMATION.placeholder',
     type: 'password',
     autocomplete: 'new-password'
+  },
+  NOTES: {
+    label: 'NOTES.label',
+    placeholder: 'NOTES.placeholder',
+    textarea: true
+  },
+  NAME: {
+    label: 'NAME.label',
+    placeholder: 'NAME.placeholder',
+    type: 'text'
+  },
+  PLUS_CODE: {
+    label: 'PLUS_CODE.label',
+    placeholder: 'PLUS_CODE.placeholder',
+    type: 'text'
   }
 }
 

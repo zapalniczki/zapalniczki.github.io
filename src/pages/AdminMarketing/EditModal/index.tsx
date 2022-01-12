@@ -8,8 +8,8 @@ import useForm from './useForm'
 
 type Props = Omit<Marketing, 'updated_at' | 'created_at' | 'is_test'>
 
-const EditModal = ({ email, id, notes, phone }: Props) => {
-  const { t } = useTranslation('ADMIN_ORDERS')
+const EditModal = ({ email, id, name, notes, phone }: Props) => {
+  const { t } = useTranslation('ADMIN_MARKETING')
   const { t: commonT } = useTranslation('COMMON')
 
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -18,7 +18,8 @@ const EditModal = ({ email, id, notes, phone }: Props) => {
     id,
     email,
     phone,
-    notes
+    notes,
+    name
   )
 
   const onClose = () => {

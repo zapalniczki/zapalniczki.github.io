@@ -7,10 +7,11 @@ import { useMutation } from 'react-query'
 import { object } from 'yup'
 
 const useForm = (
-  id: string,
+  id: Marketing['id'],
   email: Marketing['email'],
   phone: Marketing['phone'],
-  notes: Marketing['notes']
+  notes: Marketing['notes'],
+  name: Marketing['name']
 ) => {
   const { getSchema } = useFormSchema()
 
@@ -19,7 +20,8 @@ const useForm = (
   const initialValues: FormValues = {
     email: email ?? '',
     phone: phone ?? '',
-    notes: notes ?? ''
+    notes: notes ?? '',
+    name: name ?? ''
   }
 
   const schema = object({
@@ -37,7 +39,8 @@ const useForm = (
           id,
           email: values.email,
           phone: values.phone,
-          notes: values.notes
+          notes: values.notes,
+          name: values.name
         })
 
         // if (!isDev) {
@@ -80,9 +83,12 @@ const useForm = (
   }
 }
 
-export type FormValues = Required<
-  Omit<Marketing, 'created_at' | 'updated_at' | 'id' | 'is_test'>
->
+export type FormValues = {
+  email: NonNullable<Marketing['email']>
+  name: NonNullable<Marketing['name']>
+  notes: NonNullable<Marketing['notes']>
+  phone: NonNullable<Marketing['phone']>
+}
 
 type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }
 

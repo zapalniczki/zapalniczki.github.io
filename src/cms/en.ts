@@ -131,6 +131,7 @@ const en: LanguageKeys = {
       notes: 'Notes',
       molds: 'Matryce',
       order_time: 'Czas zamówienia',
+      name: 'Name',
       phone: 'Telefon',
       phone_number: 'Numer telefonu',
       price: 'Cena',
@@ -401,6 +402,18 @@ const en: LanguageKeys = {
       PASSWORD_CONFIRMATION: {
         label: 'Powtórz hasło',
         placeholder: ''
+      },
+      NOTES: {
+        label: 'Notes',
+        placeholder: 'Type anything'
+      },
+      NAME: {
+        label: 'Name',
+        placeholder: ''
+      },
+      PLUS_CODE: {
+        lablel: 'Plus code',
+        placeholder: 'Paste plus code'
       }
     },
 
@@ -642,7 +655,11 @@ const en: LanguageKeys = {
   },
 
   ADMIN_MARKETING: {
-    title: 'Marketing'
+    title: 'Marketing',
+    EDIT_MODAL: {
+      title: 'Editing',
+      buttonLabel: 'Edit'
+    }
   },
 
   ADMIN_NEWSLETTER_USERS: {

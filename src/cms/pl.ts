@@ -128,6 +128,7 @@ const pl = {
       is_enabled: 'Włączone',
       label: 'Etykieta',
       molds: 'Matryce',
+      name: 'Nazwa',
       notes: 'Notatki',
       order_time: 'Czas zamówienia',
       phone: 'Telefon',
@@ -401,6 +402,18 @@ const pl = {
       PASSWORD_CONFIRMATION: {
         label: 'Powtórz hasło',
         placeholder: ''
+      },
+      NOTES: {
+        label: 'Notatki',
+        placeholder: 'Wpisz cokolwiek'
+      },
+      NAME: {
+        label: 'Nazwa',
+        placeholder: ''
+      },
+      PLUS_CODE: {
+        lablel: 'Kod Plus',
+        placeholder: 'Wklej kod plus'
       }
     },
 
@@ -643,7 +656,11 @@ const pl = {
   },
 
   ADMIN_MARKETING: {
-    title: 'Marketing'
+    title: 'Marketing',
+    EDIT_MODAL: {
+      title: 'Edycja',
+      buttonLabel: 'Edytuj'
+    }
   },
 
   ADMIN_NEWSLETTER_USERS: {

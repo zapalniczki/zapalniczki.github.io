@@ -22,6 +22,10 @@ const List = () => {
         accessor: 'updated_at' as const
       },
       {
+        Header: commonT('TABLE_HEADERS.name'),
+        accessor: 'name' as const
+      },
+      {
         Header: commonT('TABLE_HEADERS.email'),
         accessor: 'email' as const
       },
@@ -56,6 +60,7 @@ const shapeData = (data: Marketing[]) =>
   data.map((record) => ({
     id: formatDate(record.created_at),
     updated_at: formatDate(record.updated_at),
+    name: record.name,
     email: record.email,
     phone: record.phone,
     notes: record.notes,
@@ -63,6 +68,7 @@ const shapeData = (data: Marketing[]) =>
       <EditModal
         email={record.email}
         id={record.id}
+        name={record.name}
         notes={record.notes}
         phone={record.phone}
       />
