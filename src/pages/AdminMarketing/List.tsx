@@ -76,6 +76,7 @@ const shapeData = (data: Marketing[]) =>
         name={record.name}
         notes={record.notes}
         phone={record.phone}
+        plus_code={record.plus_code}
       />
     )
   }))

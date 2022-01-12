@@ -8,7 +8,7 @@ import useForm from './useForm'
 
 type Props = Omit<Marketing, 'updated_at' | 'created_at' | 'is_test'>
 
-const EditModal = ({ email, id, name, notes, phone }: Props) => {
+const EditModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
   const { t } = useTranslation('ADMIN_MARKETING')
   const { t: commonT } = useTranslation('COMMON')
 
@@ -19,7 +19,8 @@ const EditModal = ({ email, id, name, notes, phone }: Props) => {
     email,
     phone,
     notes,
-    name
+    name,
+    plus_code
   )
 
   const onClose = () => {

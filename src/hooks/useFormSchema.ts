@@ -76,7 +76,11 @@ const useFormSchema = () => {
       .required(commonT('PASSWORD_CONFIRMATION.required'))
       .oneOf([ref('newPassword')], commonT('PASSWORD_CONFIRMATION.oneOf')),
 
-    NOTES: string()
+    NOTES: string(),
+
+    NAME: string(),
+
+    PLUS_CODE: string()
   }
 
   const getSchema = (key: SchemaKey) => schemas[key]
@@ -89,6 +93,7 @@ type SchemaKey =
   | 'DELIVERY_TYPE'
   | 'EMAIL'
   | 'FULL_NAME'
+  | 'NAME'
   | 'NEW_PASSWORD'
   | 'NIP'
   | 'NOTES'
@@ -96,6 +101,7 @@ type SchemaKey =
   | 'PASSWORD'
   | 'PASSWORD_CONFIRMATION'
   | 'PAYMENT_TYPE'
+  | 'PLUS_CODE'
   | 'PHONE'
   | 'POST_CODE'
   | 'PRODUCT_QUANTITY'

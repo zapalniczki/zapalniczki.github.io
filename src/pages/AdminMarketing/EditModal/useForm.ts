@@ -11,7 +11,8 @@ const useForm = (
   email: Marketing['email'],
   phone: Marketing['phone'],
   notes: Marketing['notes'],
-  name: Marketing['name']
+  name: Marketing['name'],
+  plus_code: Marketing['plus_code']
 ) => {
   const { getSchema } = useFormSchema()
 
@@ -21,13 +22,16 @@ const useForm = (
     email: email ?? '',
     phone: phone ?? '',
     notes: notes ?? '',
-    name: name ?? ''
+    name: name ?? '',
+    plus_code: plus_code ?? ''
   }
 
   const schema = object({
     email: getSchema('EMAIL'),
     phone: getSchema('PHONE'),
-    notes: getSchema('NOTES')
+    notes: getSchema('NOTES'),
+    name: getSchema('NAME'),
+    plus_code: getSchema('PLUS_CODE')
   })
 
   const useSubmit = () => {
@@ -40,7 +44,8 @@ const useForm = (
           email: values.email,
           phone: values.phone,
           notes: values.notes,
-          name: values.name
+          name: values.name,
+          plus_code: values.plus_code
         })
 
         // if (!isDev) {
@@ -88,6 +93,7 @@ export type FormValues = {
   name: NonNullable<Marketing['name']>
   notes: NonNullable<Marketing['notes']>
   phone: NonNullable<Marketing['phone']>
+  plus_code: NonNullable<Marketing['plus_code']>
 }
 
 type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }
