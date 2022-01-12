@@ -1,18 +1,16 @@
-import { getDeliveryTypes } from 'api'
-import { DB_TABLES, DeliveryType } from 'braty-common'
-import { QueryLoader, Table, Tile } from 'components'
+import { getMarketings } from 'api'
+import { DB_TABLES, Marketing } from 'braty-common'
+import { QueryLoader, Table } from 'components'
 import { useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, formatDate } from 'utils'
+import { formatDate } from 'utils'
+import EditModal from './EditModal'
 
 const List = () => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const deliveryTypesQuery = useQuery(
-    DB_TABLES.DELIVERY_TYPES,
-    getDeliveryTypes
-  )
+  const marketingQuery = useQuery(DB_TABLES.MARKETING, getMarketings)
   const columns = useMemo(
     () => [
       {
@@ -44,28 +42,31 @@ const List = () => {
   )
 
   return (
-    <Tile>
-      <QueryLoader query={deliveryTypesQuery}>
-        {(data) => {
-          const shappedData = shapeData(data)
+    <QueryLoader query={marketingQuery}>
+      {(data) => {
+        const shappedData = shapeData(data)
 
-          return <Table columns={columns} data={shappedData} />
-        }}
-      </QueryLoader>
-    </Tile>
+        return <Table columns={columns} data={shappedData} />
+      }}
+    </QueryLoader>
   )
 }
 
-const shapeData = (data: DeliveryType[]) =>
+const shapeData = (data: Marketing[]) =>
   data.map((record) => ({
     id: formatDate(record.created_at),
     updated_at: formatDate(record.updated_at),
-    email: record.label,
-    price: displayMoney(record.price),
-    phone: record.time,
-    notes: '',
-    edit: 2
-    // edit: <EditModal id={record.id} is_enabled={record.is_enabled || false} />
+    email: record.email,
+    phone: record.phone,
+    notes: record.notes,
+    edit: (
+      <EditModal
+        email={record.email}
+        id={record.id}
+        notes={record.notes}
+        phone={record.phone}
+      />
+    )
   }))
 
 export default List

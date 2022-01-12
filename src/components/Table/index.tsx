@@ -10,7 +10,7 @@ import getSpace from 'styles/getSpace'
 
 type DataConstraint = Record<
   string,
-  string | number | boolean | undefined | JSX.Element
+  string | number | boolean | undefined | JSX.Element | null
 >
 
 type Props<D extends DataConstraint> = {

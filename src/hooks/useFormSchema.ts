@@ -74,7 +74,9 @@ const useFormSchema = () => {
 
     PASSWORD_CONFIRMATION: string()
       .required(commonT('PASSWORD_CONFIRMATION.required'))
-      .oneOf([ref('newPassword')], commonT('PASSWORD_CONFIRMATION.oneOf'))
+      .oneOf([ref('newPassword')], commonT('PASSWORD_CONFIRMATION.oneOf')),
+
+    NOTES: string()
   }
 
   const getSchema = (key: SchemaKey) => schemas[key]
@@ -83,20 +85,21 @@ const useFormSchema = () => {
 }
 
 type SchemaKey =
-  | 'EMAIL'
-  | 'PHONE'
-  | 'ORDER_ID'
-  | 'FULL_NAME'
-  | 'STREET_ADDRESS'
-  | 'POST_CODE'
   | 'CITY'
-  | 'NIP'
   | 'DELIVERY_TYPE'
-  | 'PAYMENT_TYPE'
-  | 'PRODUCT_QUANTITY'
-  | 'VOUCHER_ID'
-  | 'PASSWORD'
+  | 'EMAIL'
+  | 'FULL_NAME'
   | 'NEW_PASSWORD'
+  | 'NIP'
+  | 'NOTES'
+  | 'ORDER_ID'
+  | 'PASSWORD'
   | 'PASSWORD_CONFIRMATION'
+  | 'PAYMENT_TYPE'
+  | 'PHONE'
+  | 'POST_CODE'
+  | 'PRODUCT_QUANTITY'
+  | 'STREET_ADDRESS'
+  | 'VOUCHER_ID'
 
 export default useFormSchema
