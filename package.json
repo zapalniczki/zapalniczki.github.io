@@ -11,7 +11,8 @@
     "lint:fix": "yarn lint --fix",
     "minor": "yarn version --new-version minor",
     "patch": "yarn version --new-version patch",
-    "start": "webpack serve --config webpack/dev.config.js --hot"
+    "start": "webpack serve --config webpack/dev.config.js --hot",
+    "up": "yarn upgrade braty-common & git add . & git commit -m \"Upgraded braty-common\""
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
