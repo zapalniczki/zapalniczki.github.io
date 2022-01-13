@@ -183,7 +183,7 @@ const pl = {
       payment: 'Płatność',
       discount: 'Obniżka',
       total: 'Łącznie do zapłaty',
-      vat: '(w tym VAT)'
+      vat: '(w tym 23% VAT)'
     },
 
     customerTypes: {
@@ -658,6 +658,7 @@ const pl = {
 
   ADMIN_MARKETING: {
     title: 'Marketing',
+    testDataEnabled: 'Dane testowe',
     FORM_MODAL: {
       titleEdit: 'Edycja',
       titleAdd: 'Dodawanie',
@@ -885,7 +886,7 @@ const pl = {
           payment_price: 'Płatność',
           discount: 'Rabat',
           grand_total: 'Łącznie to zapłaty',
-          vat: 'W tym VAT'
+          vat: 'W tym 23% VAT'
         }
       },
 

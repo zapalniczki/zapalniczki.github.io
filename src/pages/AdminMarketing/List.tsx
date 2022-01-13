@@ -7,10 +7,17 @@ import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
 import FormModal from './FormModal'
 
-const List = () => {
+type Props = {
+  testDataEnabled: boolean
+}
+
+const List = ({ testDataEnabled }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const marketingQuery = useQuery(DB_TABLES.MARKETING, getMarketings)
+  const params = { is_test: testDataEnabled }
+  const marketingQuery = useQuery([DB_TABLES.MARKETING, params], () =>
+    getMarketings(params)
+  )
   const columns = useMemo(
     () => [
       {

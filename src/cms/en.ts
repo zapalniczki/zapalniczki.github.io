@@ -657,6 +657,7 @@ const en: LanguageKeys = {
 
   ADMIN_MARKETING: {
     title: 'Marketing',
+    testDataEnabled: 'Testing data',
     FORM_MODAL: {
       titleEdit: 'Editing',
       titleAdd: 'Adding',
@@ -884,7 +885,7 @@ const en: LanguageKeys = {
           payment_price: 'Płatność',
           discount: 'Rabat',
           grand_total: 'Łącznie to zapłaty',
-          vat: 'W tym VAT'
+          vat: 'W tym 23% VAT'
         }
       },
 
