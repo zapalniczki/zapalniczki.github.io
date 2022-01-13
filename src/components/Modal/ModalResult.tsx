@@ -9,7 +9,7 @@ type Props =
       variant: 'SUCCESS'
     }
   | {
-      onClick: () => void,
+      onClick: () => void
       variant: 'ERROR'
     }
 
@@ -18,7 +18,11 @@ const ModalResult = (props: Props) => {
 
   return (
     <>
-      <ModalContent alignItems="center" justifyContent="center">
+      <ModalContent
+        alignItems="center"
+        justifyContent="center"
+        padding="l-size"
+      >
         <ResultIcon variant={props.variant} />
 
         <Heading level={5} marginTop="s-size">

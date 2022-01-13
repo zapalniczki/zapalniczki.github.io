@@ -1,10 +1,11 @@
 import { Flexbox } from 'components'
 import React, { ReactNode } from 'react'
-import { FlexboxProps } from 'styled-system'
+import { FlexboxProps, SpaceProps } from 'styled-system'
 
 type Props = {
   children: ReactNode
-} & FlexboxProps
+} & FlexboxProps &
+  SpaceProps
 
 const ModalContent = ({ children, ...props }: Props) => (
   <Flexbox {...props} flexDirection="column" minHeight="100%" width="100%">

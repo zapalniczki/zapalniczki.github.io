@@ -37,7 +37,7 @@ const FormModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
         validateOnChange
         validationSchema={schema}
       >
-        {({ handleSubmit, submitForm }) => (
+        {({ dirty, handleSubmit, submitForm }) => (
           <>
             <NativeForm
               onSubmit={handleSubmit}
@@ -49,7 +49,8 @@ const FormModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
             <ModalFooter
               primaryButton={{
                 onClick: () => submitForm(),
-                label: commonT('MODAL.FOOTER.primaryLabel')
+                label: commonT('MODAL.FOOTER.primaryLabel'),
+                disabled: !dirty
               }}
               secondaryButton={{
                 onClick: () => onClose(),
