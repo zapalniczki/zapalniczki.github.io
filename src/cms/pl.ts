@@ -16,9 +16,9 @@ const pl = {
     BANNERS: {
       YOUR_PLACE: {
         title:
-          '<strong>Twoje</strong> miejsce w <strong>Twoim</strong> miejscu',
+          '<strong>Twoje</strong> miejsce w <strong>Twoim</strong> punkcie',
         subtitle:
-          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją sprzedażową.'
+          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.'
       },
       CHRISTMAS_2021: {
         tite: '<strong>Wyjątkowa</strong> oferta <strong>świąteczna</strong>',
