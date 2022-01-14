@@ -14,7 +14,7 @@ jobs:
           node-version: 12.x
       - uses: webfactory/ssh-agent@v0.2.0
         with:
-          ssh-private-key: ${{secrets.SSH_PRIVATE_KEY}}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: npm install
       - run: npm run lint
       - run: npm run build --stats-error-details
