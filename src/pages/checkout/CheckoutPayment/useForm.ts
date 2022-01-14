@@ -106,7 +106,7 @@ const useForm = () => {
       }
 
       if (!isDev) {
-        mutateTriggerSendEmail({
+        await mutateTriggerSendEmail({
           to: email,
           type: {
             key: 'NEW_ORDER',
