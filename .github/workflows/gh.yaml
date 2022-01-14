@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - uses: webfactory/ssh-agent@v0.2.0
+      - uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: npm install
