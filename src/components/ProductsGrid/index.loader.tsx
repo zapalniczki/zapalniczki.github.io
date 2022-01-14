@@ -5,12 +5,13 @@ import ProductTileLoader from './ProductTIle.loader'
 
 type Props = SpaceProps & {
   count?: number
-  title?: boolean
+  leftTitle?: boolean
+  rightTitle?: boolean
 }
 
-const ProductsGridLoader = ({ count = 3, title, ...props }: Props) => (
+const ProductsGridLoader = ({ count = 3, leftTitle, ...props }: Props) => (
   <Flexbox flexDirection="column" {...props}>
-    {title && (
+    {leftTitle && (
       <Box marginBottom="m-size">
         <ContentLoader
           gradientRatio={1}

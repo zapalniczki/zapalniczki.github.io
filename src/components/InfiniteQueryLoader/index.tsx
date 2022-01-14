@@ -7,6 +7,7 @@ import { UseInfiniteQueryResult } from 'react-query'
 type Props<T> = {
   Loader?: ReactElement
   children: (data: T[]) => ReactNode
+  persistLoader?: boolean
   query: UseInfiniteQueryResult<T>
   showLoading?: boolean
 }
@@ -14,12 +15,13 @@ type Props<T> = {
 function InfiniteQueryLoader<T>({
   Loader,
   children,
+  persistLoader,
   query,
   showLoading = true
 }: Props<T>): JSX.Element | null {
   const commonT = useTranslation('COMMON').withBase('QUERY_LOADER')
 
-  if (query.isFetching && !query.isFetchingNextPage) {
+  if (persistLoader || (query.isFetching && !query.isFetchingNextPage)) {
     if (Loader) {
       return Loader
     }
