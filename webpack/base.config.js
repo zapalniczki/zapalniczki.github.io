@@ -1,13 +1,9 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const path = require('path')
-
 const createStyledComponentsTransformer =
   require('typescript-plugin-styled-components').default
+const path = require('path')
 const styledComponentsTransformer = createStyledComponentsTransformer()
 
-const resolve = (dir) => {
-  return path.join(__dirname, '..', dir)
-}
+const resolve = (dir) => path.join(__dirname, '..', dir)
 
 module.exports = {
   entry: resolve('src/index.tsx'),
@@ -28,27 +24,11 @@ module.exports = {
           })
         }
       },
+
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ],
-        sideEffects: true
+        use: { loader: 'babel-loader' }
       },
 
       {
@@ -89,11 +69,5 @@ module.exports = {
     modules: [resolve('src'), 'node_modules'],
     mainFiles: ['index'],
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx']
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[name].[contenthash]_[id].css'
-    })
-  ]
+  }
 }
