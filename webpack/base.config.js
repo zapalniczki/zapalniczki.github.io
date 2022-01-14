@@ -2,7 +2,6 @@ const createStyledComponentsTransformer =
   require('typescript-plugin-styled-components').default
 const path = require('path')
 const styledComponentsTransformer = createStyledComponentsTransformer()
-
 const resolve = (dir) => path.join(__dirname, '..', dir)
 
 module.exports = {
