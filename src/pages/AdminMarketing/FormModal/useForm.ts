@@ -13,9 +13,8 @@ const useForm = (
   notes?: Marketing['notes'],
   name?: Marketing['name'],
   plus_code?: Marketing['plus_code'],
-  send_brochure_agreement: Marketing["send_brochure_agreement"],
-  send_brochure_cyclic_agreement: Marketing["send_brochure_cyclic_agreement"]
-
+  send_brochure_agreement?: Marketing['send_brochure_agreement'],
+  send_brochure_cyclic_agreement?: Marketing['send_brochure_cyclic_agreement']
 ) => {
   const { getSchema } = useFormSchema()
   const [view, setView] = useState<View>({ view: 'FORM' })
@@ -26,7 +25,8 @@ const useForm = (
     notes: notes ?? '',
     name: name ?? '',
     plus_code: plus_code ?? '',
-    send_brochure_agreement:
+    send_brochure_agreement: send_brochure_agreement ?? false,
+    send_brochure_cyclic_agreement: send_brochure_cyclic_agreement ?? false
   }
 
   const schema = object({
@@ -57,7 +57,10 @@ const useForm = (
             notes: values.notes,
             name: values.name,
             plus_code: values.plus_code,
-
+            send_brochure_agreement: values.send_brochure_agreement,
+            send_brochure_cyclic_agreement:
+              values.send_brochure_cyclic_agreement,
+            is_test: isDev
           })
         } else {
           marketingResponse = await mutateAddMarketing({
@@ -66,11 +69,16 @@ const useForm = (
             notes: values.notes,
             name: values.name,
             plus_code: values.plus_code,
+            send_brochure_agreement: values.send_brochure_agreement,
+            send_brochure_cyclic_agreement:
+              values.send_brochure_cyclic_agreement,
             is_test: isDev
           })
         }
 
-        const shouldSendEmail = values.email.length
+        const shouldSendEmail =
+          values.email.length && values.send_brochure_agreement && !isDev
+
         if (shouldSendEmail) {
           mutateTriggerSendEmail({
             to: values.email,
@@ -116,6 +124,8 @@ export type FormValues = {
   notes: NonNullable<Marketing['notes']>
   phone: NonNullable<Marketing['phone']>
   plus_code: NonNullable<Marketing['plus_code']>
+  send_brochure_agreement: Marketing['send_brochure_agreement']
+  send_brochure_cyclic_agreement: Marketing['send_brochure_cyclic_agreement']
 }
 
 type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }

@@ -3,7 +3,7 @@ import { editMarketingResponse, EditMarketingResponse } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 
-type Payload = Omit<Marketing, 'updated_at' | 'created_at' | 'is_test'>
+type Payload = Omit<Marketing, 'updated_at' | 'created_at'>
 
 export const editMarketing = async (payload: Payload) => {
   const response = await supabase
@@ -15,7 +15,7 @@ export const editMarketing = async (payload: Payload) => {
       name: payload.name,
       plus_code: payload.plus_code,
       send_brochure_agreement: payload.send_brochure_agreement,
-      sned_brochure_cyclic_agreement: payload.sned_brochure_cyclic_agreement
+      send_brochure_cyclic_agreement: payload.send_brochure_cyclic_agreement
     })
     .eq('id', payload.id)
     .single()

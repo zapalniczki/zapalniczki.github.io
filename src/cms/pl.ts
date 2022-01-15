@@ -141,6 +141,8 @@ const pl = {
       product_total: 'Total',
       products: 'Produkty',
       requires_address: 'Wymaga adresu',
+      sendBrochureAgreement: 'Zgoda na wysłanie katalogu',
+      sendBrochureCyclicAgreement: 'Zgoda na wysyłanie katalogu cyklicznie',
       status: 'Status',
       sum: 'Suma',
       time: 'Czas',
@@ -415,6 +417,12 @@ const pl = {
       PLUS_CODE: {
         label: 'Kod Plus',
         placeholder: 'Wklej kod plus'
+      },
+      SEND_BROCHURE_AGREEMENT: {
+        label: 'Zgoda na wysłanie katalogu produktów'
+      },
+      SEND_BROCHURE_CYCLIC_AGREEMENT: {
+        label: 'Zgoda na wysyłanie katalogu produktów cyklicznie'
       }
     },
 

@@ -3,7 +3,8 @@ import {
   FormRow,
   Input,
   MobileInput,
-  ModalContent
+  ModalContent,
+  Switch
 } from 'components'
 import { Field, FieldProps } from 'formik'
 import { useInput } from 'hooks'
@@ -59,6 +60,51 @@ const Form = () => {
           <Field name="notes">
             {(props: FieldProps<FormValues['notes'], FormValues>) => (
               <Input {...props} {...getInput('NOTES')} />
+            )}
+          </Field>
+        </FieldWrapper>
+      </FormRow>
+
+      <FormRow>
+        <FieldWrapper>
+          <Field name="send_brochure_agreement">
+            {(
+              props: FieldProps<
+                FormValues['send_brochure_agreement'],
+                FormValues
+              >
+            ) => (
+              <Switch
+                checked={props.field.value}
+                {...getInput('SEND_BROCHURE_AGREEMENT')}
+                onChange={(value) =>
+                  props.form.setFieldValue('send_brochure_agreement', value)
+                }
+              />
+            )}
+          </Field>
+        </FieldWrapper>
+      </FormRow>
+
+      <FormRow>
+        <FieldWrapper>
+          <Field name="send_brochure_cyclic_agreement">
+            {(
+              props: FieldProps<
+                FormValues['send_brochure_cyclic_agreement'],
+                FormValues
+              >
+            ) => (
+              <Switch
+                checked={props.field.value}
+                {...getInput('SEND_BROCHURE_CYCLIC_AGREEMENT')}
+                onChange={(value) =>
+                  props.form.setFieldValue(
+                    'send_brochure_cyclic_agreement',
+                    value
+                  )
+                }
+              />
             )}
           </Field>
         </FieldWrapper>

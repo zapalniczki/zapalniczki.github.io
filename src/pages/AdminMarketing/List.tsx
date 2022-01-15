@@ -1,6 +1,6 @@
 import { getMarketings } from 'api'
 import { DB_TABLES, Marketing } from 'braty-common'
-import { QueryLoader, Table } from 'components'
+import { Flexbox, QueryLoader, ResultIcon, Table } from 'components'
 import { useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
@@ -21,8 +21,8 @@ const List = ({ testDataEnabled }: Props) => {
   const columns = useMemo(
     () => [
       {
-        Header: commonT('TABLE_HEADERS.id'),
-        accessor: 'id' as const
+        Header: commonT('TABLE_HEADERS.created_at'),
+        accessor: 'created_at' as const
       },
       {
         Header: commonT('TABLE_HEADERS.updated_at'),
@@ -49,6 +49,14 @@ const List = ({ testDataEnabled }: Props) => {
         accessor: 'notes' as const
       },
       {
+        Header: commonT('TABLE_HEADERS.sendBrochureAgreement'),
+        accessor: 'sendBrochureAgreement' as const
+      },
+      {
+        Header: commonT('TABLE_HEADERS.sendBrochureCyclicAgreement'),
+        accessor: 'sendBrochureCyclicAgreement' as const
+      },
+      {
         Header: commonT('TABLE_HEADERS.edit'),
         accessor: 'edit' as const
       }
@@ -69,13 +77,29 @@ const List = ({ testDataEnabled }: Props) => {
 
 const shapeData = (data: Marketing[]) =>
   data.map((record) => ({
-    id: formatDate(record.created_at),
+    created_at: formatDate(record.created_at),
     updated_at: formatDate(record.updated_at),
     name: record.name,
     plus_code: record.plus_code,
     email: record.email,
     phone: record.phone,
     notes: record.notes,
+    sendBrochureAgreement: (
+      <Flexbox justifyContent="center">
+        <ResultIcon
+          size="2x"
+          variant={record.send_brochure_agreement ? 'SUCCESS' : 'ERROR'}
+        />
+      </Flexbox>
+    ),
+    sendBrochureCyclicAgreement: (
+      <Flexbox justifyContent="center">
+        <ResultIcon
+          size="2x"
+          variant={record.send_brochure_cyclic_agreement ? 'SUCCESS' : 'ERROR'}
+        />
+      </Flexbox>
+    ),
     edit: (
       <FormModal
         email={record.email}

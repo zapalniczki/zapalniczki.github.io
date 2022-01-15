@@ -142,6 +142,8 @@ const en: LanguageKeys = {
       product_total: 'Total',
       products: 'Produkty',
       requires_address: 'Wymaga adresu',
+      sendBrochureAgreement: 'Zgoda na wysłanie katalogu',
+      sendBrochureCyclicAgreement: 'Zgoda na wysyłanie katalogu cyklicznie',
       status: 'Status',
       sum: 'Suma',
       time: 'Czas',
@@ -415,6 +417,12 @@ const en: LanguageKeys = {
       PLUS_CODE: {
         label: 'Plus code',
         placeholder: 'Paste plus code'
+      },
+      SEND_BROCHURE_AGREEMENT: {
+        label: 'Agreement to send products brochure'
+      },
+      SEND_BROCHURE_CYCLIC_AGREEMENT: {
+        label: 'Agreement to send products brochure periodically'
       }
     },
 

@@ -14,7 +14,9 @@ export const addMarketing = async (payload: Payload) => {
       name: payload.name,
       notes: payload.notes,
       phone: payload.phone,
-      plus_code: payload.plus_code
+      plus_code: payload.plus_code,
+      send_brochure_agreement: payload.send_brochure_agreement,
+      send_brochure_cyclic_agreement: payload.send_brochure_cyclic_agreement
     })
     .single()
 

@@ -132,6 +132,12 @@ const inputs = {
     label: 'PLUS_CODE.label',
     placeholder: 'PLUS_CODE.placeholder',
     type: 'text'
+  },
+  SEND_BROCHURE_AGREEMENT: {
+    label: 'SEND_BROCHURE_AGREEMENT.label'
+  },
+  SEND_BROCHURE_CYCLIC_AGREEMENT: {
+    label: 'SEND_BROCHURE_CYCLIC_AGREEMENT.label'
   }
 }
 
