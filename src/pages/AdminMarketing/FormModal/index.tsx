@@ -28,8 +28,6 @@ const FormModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
     setView({ view: 'FORM' })
   }
 
-  console.log(initialValues)
-
   let content
   if (view.view === 'FORM') {
     content = (

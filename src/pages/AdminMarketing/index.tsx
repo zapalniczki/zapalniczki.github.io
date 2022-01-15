@@ -8,7 +8,7 @@ const AdminMarketing = () => {
   const { t } = useTranslation('ADMIN_MARKETING')
 
   const isDev = useDev()
-  const [testDataEnabled, setTestDataEnabled] = useState(!isDev)
+  const [testDataEnabled, setTestDataEnabled] = useState(isDev)
 
   useScrollTop()
   usePageTitle(t('title'))
