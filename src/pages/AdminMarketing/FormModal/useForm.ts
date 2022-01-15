@@ -1,6 +1,6 @@
-import { addMarketing, editMarketing } from 'api'
+import { addMarketing, editMarketing, triggerSendEmail } from 'api'
 import { DB_TABLES, Marketing } from 'braty-common'
-import { useDev, useFormSchema, useFormSubmit } from 'hooks'
+import { useDev, useFormSchema, useFormSubmit, useTranslation } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
@@ -15,7 +15,6 @@ const useForm = (
   plus_code?: Marketing['plus_code']
 ) => {
   const { getSchema } = useFormSchema()
-
   const [view, setView] = useState<View>({ view: 'FORM' })
 
   const initialValues: FormValues = {
@@ -38,6 +37,9 @@ const useForm = (
     const isDev = useDev()
     const { mutateAsync: mutateEditMarketing } = useMutation(editMarketing)
     const { mutateAsync: mutateAddMarketing } = useMutation(addMarketing)
+    const { mutateAsync: mutateTriggerSendEmail } =
+      useMutation(triggerSendEmail)
+    const { currentLanguage } = useTranslation('COMMON')
 
     return useFormSubmit(
       async (values: FormValues) => {
@@ -62,19 +64,20 @@ const useForm = (
             is_test: isDev
           })
         }
-        // if (!isDev) {
-        //   mutateTriggerSendEmail({
-        //     to: userResponse.email,
-        //     type: {
-        //       key: 'ORDER_STATUS_CHANGE',
-        //       content: {
-        //         order_id: orderResponse.id,
-        //         order_status: orderResponse.status,
-        //         name: userResponse.full_name
-        //       }
-        //     }
-        //   })
-        // }
+
+        const shouldSendEmail = values.email.length
+        if (shouldSendEmail) {
+          mutateTriggerSendEmail({
+            to: values.email,
+            type: {
+              key: 'MARKETING_OFFER',
+              content: {
+                name: values.name ?? undefined,
+                language: currentLanguage
+              }
+            }
+          })
+        }
 
         return marketingResponse
       },
