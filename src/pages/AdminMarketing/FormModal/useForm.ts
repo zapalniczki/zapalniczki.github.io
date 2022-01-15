@@ -12,7 +12,10 @@ const useForm = (
   phone?: Marketing['phone'],
   notes?: Marketing['notes'],
   name?: Marketing['name'],
-  plus_code?: Marketing['plus_code']
+  plus_code?: Marketing['plus_code'],
+  send_brochure_agreement: Marketing["send_brochure_agreement"],
+  send_brochure_cyclic_agreement: Marketing["send_brochure_cyclic_agreement"]
+
 ) => {
   const { getSchema } = useFormSchema()
   const [view, setView] = useState<View>({ view: 'FORM' })
@@ -22,7 +25,8 @@ const useForm = (
     phone: phone ?? '',
     notes: notes ?? '',
     name: name ?? '',
-    plus_code: plus_code ?? ''
+    plus_code: plus_code ?? '',
+    send_brochure_agreement:
   }
 
   const schema = object({
@@ -52,7 +56,8 @@ const useForm = (
             phone: values.phone,
             notes: values.notes,
             name: values.name,
-            plus_code: values.plus_code
+            plus_code: values.plus_code,
+
           })
         } else {
           marketingResponse = await mutateAddMarketing({
