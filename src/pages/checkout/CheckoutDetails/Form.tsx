@@ -3,6 +3,7 @@ import React from 'react'
 import { FormRow, FieldWrapper, MobileInput, Input } from 'components'
 import { useInput } from 'hooks'
 import { FormValues } from './useForm'
+import CountryInput from 'components/CountryInput'
 
 type Props = {
   isCompany: boolean
@@ -42,6 +43,20 @@ const Form = ({ isCompany }: Props) => {
                 {...props}
                 {...getInput('STREET_ADDRESS', true)}
               />
+            )}
+          </Field>
+        </FieldWrapper>
+      </FormRow>
+
+      <FormRow>
+        <FieldWrapper>
+          <Field name="post_code" type="text">
+            {(props: FieldProps<FormValues['post_code'], FormValues>) => (
+              <>
+                <Input {...props} {...getInput('POST_CODE', true)} />
+
+                <CountryInput />
+              </>
             )}
           </Field>
         </FieldWrapper>

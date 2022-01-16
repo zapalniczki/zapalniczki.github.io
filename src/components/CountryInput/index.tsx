@@ -4,14 +4,15 @@ import React from 'react'
 const CountryInput = () => {
   const value = { label: 'string', value: 'string' }
 
-  return (
-    <Select
-      components={{}}
-      onChange={() => undefined}
-      options={countries}
-      value={value as Value}
-    />
-  )
+  return <p>country input</p>
+  // return (
+  //   <Select
+  //     components={{}}
+  //     onChange={() => undefined}
+  //     options={countries}
+  //     value={value as Value}
+  //   />
+  // )
 }
 
 const countries = [

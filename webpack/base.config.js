@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const createStyledComponentsTransformer =
   require('typescript-plugin-styled-components').default
 const path = require('path')
@@ -28,6 +29,22 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: { loader: 'babel-loader' }
+      },
+
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ],
+        sideEffects: true
       },
 
       {
