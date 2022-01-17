@@ -68,9 +68,8 @@ const Footer = () => {
               marginTop={['unset', 'm-size', 'm-size', 'unset']}
               padding="0"
             >
-              {routes
-                .filter((route) => route.admin)
-                .map((route) => (
+              {handleRoutes(routes, remoteConfig, 'FOOTER_ADMIN').map(
+                (route) => (
                   <Box
                     as="li"
                     display="inline-block"
@@ -82,7 +81,8 @@ const Footer = () => {
                       to={route.path}
                     />
                   </Box>
-                ))}
+                )
+              )}
             </Flexbox>
           )}
         </Flexbox>

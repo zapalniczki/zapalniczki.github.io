@@ -39,7 +39,7 @@ const init: RemoteConfigContext = {
   adminMarketing: true,
   adminLabels: false,
   adminMolds: false,
-  adminOrders: false,
+  adminOrders: true,
   adminPaymentTypes: false,
   cart: true,
   checkoutDelivery: true,
