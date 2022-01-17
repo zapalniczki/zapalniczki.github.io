@@ -12,6 +12,8 @@ type Props = FieldProps<string> & {
   label?: string
   maxLength?: number
   placeholder?: string
+  // TEMP
+  showLabelOrError?: boolean
 } & (
     | {
         textarea?: false
@@ -32,6 +34,7 @@ const Input = ({
   maxLength,
   meta,
   placeholder,
+  showLabelOrError = true,
   textarea,
   type = 'text',
   ...props
@@ -39,13 +42,16 @@ const Input = ({
   const touched = meta?.touched
   const { error } = meta
 
+  const tempLabelOrError =
+    touched && error ? (
+      <InputLabel error>{error}</InputLabel>
+    ) : (
+      label && <InputLabel htmlFor={field.name}>{label}</InputLabel>
+    )
+
   return (
     <Flexbox {...props} flexDirection="column">
-      {touched && error ? (
-        <InputLabel error>{error}</InputLabel>
-      ) : (
-        label && <InputLabel htmlFor={field.name}>{label}</InputLabel>
-      )}
+      {showLabelOrError && tempLabelOrError}
 
       <StyledInput
         as={textarea ? 'textarea' : 'input'}

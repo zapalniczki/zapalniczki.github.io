@@ -1,11 +1,11 @@
 import SelectFromLib from 'react-select'
 import React from 'react'
-import { CSSObject } from 'styled-components'
+// import { CSSObject } from 'styled-components'
 
 type Props = {
-  onChange: (option: Option | null) => void,
-  options: Option[],
-  placeholder?: string,
+  onChange: (option: Option | null) => void
+  options: Option[]
+  placeholder?: string
   value?: Option
 }
 
@@ -14,12 +14,14 @@ const Select = ({ onChange, options, placeholder, value }: Props) => (
     onChange={onChange}
     options={sortAndMapOptions(options)}
     placeholder={placeholder}
-    styles={{
-      menu: (provided: CSSObject) => ({
-        ...provided,
-        zIndex: 10
-      })
-    }}
+    styles={
+      {
+        // menu: (provided: CSSObject) => ({
+        //   ...provided,
+        //   zIndex: 10
+        // })
+      }
+    }
     value={value}
   />
 )

@@ -1,19 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import Select from 'react-select/src/Select'
+import Select from 'react-select'
 import React from 'react'
 
 const CountryInput = () => {
   const value = { label: 'string', value: 'string' }
 
-  return <p>country input</p>
-  // return (
-  //   <Select
-  //     components={{}}
-  //     onChange={() => undefined}
-  //     options={countries}
-  //     value={value as Value}
-  //   />
-  // )
+  return (
+    <Select
+      components={{}}
+      onChange={() => undefined}
+      options={countries}
+      value={value as Value}
+    />
+  )
 }
 
 const countries = [
