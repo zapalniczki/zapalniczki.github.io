@@ -147,7 +147,8 @@ const en: LanguageKeys = {
       status: 'Status',
       sum: 'Suma',
       time: 'Czas',
-      updated_at: 'Data modyfikacji'
+      updated_at: 'Data modyfikacji',
+      delete: 'Usuń'
     },
 
     MODAL: {
@@ -671,6 +672,10 @@ const en: LanguageKeys = {
       titleAdd: 'Adding',
       buttonLabelEdit: 'Edit',
       buttonLabelAdd: 'Add'
+    },
+    REMOVE_MODAL: {
+      title: 'Do you want to remove this entry?',
+      buttonLabel: 'Remove'
     }
   },
 

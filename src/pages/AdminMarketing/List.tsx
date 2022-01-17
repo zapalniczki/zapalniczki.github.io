@@ -6,6 +6,7 @@ import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
 import FormModal from './FormModal'
+import RemoveModal from './RemoveModal'
 
 type Props = {
   testDataEnabled: boolean
@@ -59,6 +60,10 @@ const List = ({ testDataEnabled }: Props) => {
       {
         Header: commonT('TABLE_HEADERS.edit'),
         accessor: 'edit' as const
+      },
+      {
+        Header: commonT('TABLE_HEADERS.delete'),
+        accessor: 'delete' as const
       }
     ],
     []
@@ -111,7 +116,8 @@ const shapeData = (data: Marketing[]) =>
         send_brochure_agreement={record.send_brochure_agreement}
         send_brochure_cyclic_agreement={record.send_brochure_cyclic_agreement}
       />
-    )
+    ),
+    delete: <RemoveModal id={record.id} />
   }))
 
 export default List

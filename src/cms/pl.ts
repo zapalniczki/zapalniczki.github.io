@@ -146,7 +146,8 @@ const pl = {
       status: 'Status',
       sum: 'Suma',
       time: 'Czas',
-      updated_at: 'Data modyfikacji'
+      updated_at: 'Data modyfikacji',
+      delete: 'Usuń'
     },
 
     MODAL: {
@@ -672,6 +673,10 @@ const pl = {
       titleAdd: 'Dodawanie',
       buttonLabelEdit: 'Edytuj',
       buttonLabelAdd: 'Dodaj'
+    },
+    REMOVE_MODAL: {
+      title: 'Czy chcesz usunąć ten wpis?',
+      buttonLabel: 'Usuń'
     }
   },
 
