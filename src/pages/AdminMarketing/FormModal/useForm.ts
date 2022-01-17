@@ -76,8 +76,19 @@ const useForm = (
           })
         }
 
+        let allowByOldEmail = true
+        if (id) {
+          if (send_brochure_agreement) {
+            allowByOldEmail = false
+          } else {
+            allowByOldEmail = true
+          }
+        }
+
         const shouldSendEmail =
-          values.email.length && values.send_brochure_agreement && !isDev
+          values.email.length &&
+          values.send_brochure_agreement &&
+          allowByOldEmail
 
         if (shouldSendEmail) {
           mutateTriggerSendEmail({

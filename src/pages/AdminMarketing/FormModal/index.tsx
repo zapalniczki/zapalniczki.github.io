@@ -8,7 +8,16 @@ import useForm from './useForm'
 
 type Props = Partial<Omit<Marketing, 'updated_at' | 'created_at' | 'is_test'>>
 
-const FormModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
+const FormModal = ({
+  email,
+  id,
+  name,
+  notes,
+  phone,
+  plus_code,
+  send_brochure_agreement,
+  send_brochure_cyclic_agreement
+}: Props) => {
   const { t } = useTranslation('ADMIN_MARKETING')
   const { t: commonT } = useTranslation('COMMON')
 
@@ -20,7 +29,9 @@ const FormModal = ({ email, id, name, notes, phone, plus_code }: Props) => {
     phone,
     notes,
     name,
-    plus_code
+    plus_code,
+    send_brochure_agreement,
+    send_brochure_cyclic_agreement
   )
 
   const onClose = () => {

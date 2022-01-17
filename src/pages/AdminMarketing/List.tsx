@@ -108,6 +108,8 @@ const shapeData = (data: Marketing[]) =>
         notes={record.notes}
         phone={record.phone}
         plus_code={record.plus_code}
+        send_brochure_agreement={record.send_brochure_agreement}
+        send_brochure_cyclic_agreement={record.send_brochure_cyclic_agreement}
       />
     )
   }))
