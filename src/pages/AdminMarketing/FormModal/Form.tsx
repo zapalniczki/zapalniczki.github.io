@@ -12,9 +12,6 @@ import React from 'react'
 import { FormValues } from './useForm'
 
 const Form = () => {
-  // const { t } = useTranslation('ADMIN_ORDERS')
-  // const { t: commonT } = useTranslation('COMMON')
-
   const { getInput } = useInput()
 
   return (
