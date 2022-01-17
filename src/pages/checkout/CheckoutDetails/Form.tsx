@@ -8,6 +8,7 @@ import { FormValues } from './useForm'
 type Props = {
   isCompany: boolean
 }
+
 const Form = ({ isCompany }: Props) => {
   const { getInput } = useInput()
   const name = isCompany ? 'COMPANY' : 'FULL_NAME'
