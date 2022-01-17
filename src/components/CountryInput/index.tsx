@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Select from 'react-select/src/Select'
 import React from 'react'
 
