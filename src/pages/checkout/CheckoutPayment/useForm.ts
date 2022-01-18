@@ -59,7 +59,8 @@ const useForm = () => {
         address: getHstoreFromObject({
           street_address: checkout.contact_details?.street_address ?? '',
           post_code: checkout.contact_details?.post_code ?? '',
-          city: checkout.contact_details?.city ?? ''
+          city: checkout.contact_details?.city ?? '',
+          country: checkout.contact_details?.country ?? ''
         }),
 
         shipping: checkout.shipping

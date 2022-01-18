@@ -270,6 +270,9 @@ const pl = {
     },
 
     VALIDATIONS: {
+      COUNTRY: {
+        required: 'Proszę podać kraj'
+      },
       VOUCHER_ID: {
         length: 'Kod rabatowy powinień mieć 36 znaków'
       },

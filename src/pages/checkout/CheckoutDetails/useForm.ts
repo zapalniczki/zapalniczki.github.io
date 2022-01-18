@@ -38,12 +38,13 @@ const useForm = () => {
 
   const getSchema = (isCompany: boolean) => {
     const base = object().shape({
-      full_name: getNativeSchema('FULL_NAME'),
-      street_address: getNativeSchema('STREET_ADDRESS'),
-      post_code: getNativeSchema('POST_CODE'),
       city: getNativeSchema('CITY'),
+      country: getNativeSchema('COUNTRY'),
       email: getNativeSchema('EMAIL'),
-      phone: getNativeSchema('PHONE')
+      full_name: getNativeSchema('FULL_NAME'),
+      phone: getNativeSchema('PHONE'),
+      post_code: getNativeSchema('POST_CODE'),
+      street_address: getNativeSchema('STREET_ADDRESS')
     })
 
     const companySchema = base.shape({

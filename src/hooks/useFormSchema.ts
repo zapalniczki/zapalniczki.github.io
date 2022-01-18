@@ -46,7 +46,7 @@ const useFormSchema = () => {
         .required(commonT('ORDER_ID.required'))
         .length(36, commonT('ORDER_ID.length')),
 
-    FULL_NAME: () => string().required(commonT('FULL_NAME.required')),
+    FULL_NAME: () => string().required(commonT('FULL_NAME.required')).trim(),
 
     STREET_ADDRESS: () => string().required(commonT('STREET_ADDRESS.required')),
 
@@ -104,7 +104,9 @@ const useFormSchema = () => {
 
     PLUS_CODE: () => string(),
 
-    TEST: () => string()
+    TEST: () => string(),
+
+    COUNTRY: () => string().required(commonT('COUNTRY.required'))
   }
 
   const getSchema = (key: SchemaKey, variant?: boolean) => schemas[key](variant)
@@ -117,7 +119,7 @@ const useFormSchema = () => {
 
 type SchemaKey =
   | 'CITY'
-  | 'TEST'
+  | 'COUNTRY'
   | 'DELIVERY_TYPE'
   | 'EMAIL'
   | 'FULL_NAME'
@@ -134,6 +136,7 @@ type SchemaKey =
   | 'POST_CODE'
   | 'PRODUCT_QUANTITY'
   | 'STREET_ADDRESS'
+  | 'TEST'
   | 'VOUCHER_ID'
 
 export default useFormSchema

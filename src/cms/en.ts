@@ -270,6 +270,9 @@ const en: LanguageKeys = {
     },
 
     VALIDATIONS: {
+      COUNTRY: {
+        required: 'Country is required'
+      },
       VOUCHER_ID: {
         length: 'Promotion code should include 36 characters'
       },

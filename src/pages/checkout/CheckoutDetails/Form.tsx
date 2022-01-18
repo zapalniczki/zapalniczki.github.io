@@ -1,14 +1,14 @@
-import { Field, FieldProps } from 'formik'
-import React from 'react'
 import {
-  FormRow,
+  CountryInput,
   FieldWrapper,
-  MobileInput,
+  FormRow,
   Input,
-  ValidatedInput,
-  CountryInput
+  MobileInput,
+  ValidatedInput
 } from 'components'
-import { useDev, useInput } from 'hooks'
+import { Field, FieldProps } from 'formik'
+import { useInput } from 'hooks'
+import React from 'react'
 import { FormValues } from './useForm'
 
 type Props = {
@@ -18,40 +18,44 @@ type Props = {
 const Form = ({ isCompany }: Props) => {
   const { getInput } = useInput()
   const name = isCompany ? 'COMPANY' : 'FULL_NAME'
-  const isDev = useDev()
 
   return (
     <>
-      {isDev && (
-        <FormRow>
-          <FieldWrapper flexBasis="50%">
-            <Field name="post_code" type="text">
-              {(props: FieldProps<FormValues['post_code'], FormValues>) => {
-                const inputProps = getInput('COUNTRY', true)
+      <FormRow>
+        <FieldWrapper flexBasis="50%">
+          <Field name="country" type="text">
+            {(fieldProps: FieldProps<FormValues['country'], FormValues>) => {
+              const { label, ...inputProps } = getInput('COUNTRY', true)
 
-                return (
-                  <ValidatedInput label={inputProps.label} name="country">
-                    <CountryInput
-                      onChange={() => undefined}
-                      value={undefined}
-                    />
-                  </ValidatedInput>
-                )
-              }}
-            </Field>
-          </FieldWrapper>
-        </FormRow>
-      )}
+              return (
+                <ValidatedInput label={label} name="country">
+                  <CountryInput
+                    onChange={(value) =>
+                      fieldProps.form.setFieldValue('country', value?.value)
+                    }
+                    placeholder={inputProps.placeholder}
+                    value={fieldProps.field.value}
+                  />
+                </ValidatedInput>
+              )
+            }}
+          </Field>
+        </FieldWrapper>
+      </FormRow>
 
       <FormRow>
         <FieldWrapper>
           <Field name="full_name" type="text">
-            {(props: FieldProps<FormValues['full_name'], FormValues>) => {
-              const inputProps = getInput(name, true)
+            {(fieldProps: FieldProps<FormValues['full_name'], FormValues>) => {
+              const { label, ...inputProps } = getInput(name, true)
 
               return (
-                <ValidatedInput label={inputProps.label} name="full_name">
-                  <Input showLabelOrError={false} {...props} {...inputProps} />
+                <ValidatedInput label={label} name="full_name">
+                  <Input
+                    showLabelOrError={false}
+                    {...fieldProps}
+                    {...inputProps}
+                  />
                 </ValidatedInput>
               )
             }}
@@ -61,14 +65,14 @@ const Form = ({ isCompany }: Props) => {
         {isCompany && (
           <FieldWrapper>
             <Field name="nip" type="text">
-              {(props: FieldProps<string, FormValues>) => {
-                const inputProps = getInput('NIP', true)
+              {(fieldProps: FieldProps<string, FormValues>) => {
+                const { label, ...inputProps } = getInput('NIP', true)
 
                 return (
-                  <ValidatedInput label={inputProps.label} name="nip">
+                  <ValidatedInput label={label} name="nip">
                     <Input
                       showLabelOrError={false}
-                      {...props}
+                      {...fieldProps}
                       {...inputProps}
                     />
                   </ValidatedInput>
@@ -82,15 +86,17 @@ const Form = ({ isCompany }: Props) => {
       <FormRow>
         <FieldWrapper>
           <Field name="street_address" type="text">
-            {(props: FieldProps<FormValues['street_address'], FormValues>) => {
-              const inputProps = getInput('STREET_ADDRESS', true)
+            {(
+              fieldProps: FieldProps<FormValues['street_address'], FormValues>
+            ) => {
+              const { label, ...inputProps } = getInput('STREET_ADDRESS', true)
 
               return (
-                <ValidatedInput label={inputProps.label} name="street_address">
+                <ValidatedInput label={label} name="street_address">
                   <Input
                     showLabelOrError={false}
                     textarea
-                    {...props}
+                    {...fieldProps}
                     {...inputProps}
                   />
                 </ValidatedInput>
@@ -103,12 +109,16 @@ const Form = ({ isCompany }: Props) => {
       <FormRow>
         <FieldWrapper>
           <Field name="post_code" type="text">
-            {(props: FieldProps<FormValues['post_code'], FormValues>) => {
-              const inputProps = getInput('POST_CODE', true)
+            {(fieldProps: FieldProps<FormValues['post_code'], FormValues>) => {
+              const { label, ...inputProps } = getInput('POST_CODE', true)
 
               return (
-                <ValidatedInput label={inputProps.label} name="post_code">
-                  <Input showLabelOrError={false} {...props} {...inputProps} />
+                <ValidatedInput label={label} name="post_code">
+                  <Input
+                    showLabelOrError={false}
+                    {...fieldProps}
+                    {...inputProps}
+                  />
                 </ValidatedInput>
               )
             }}
@@ -117,12 +127,16 @@ const Form = ({ isCompany }: Props) => {
 
         <FieldWrapper>
           <Field name="city" type="text">
-            {(props: FieldProps<FormValues['city'], FormValues>) => {
-              const inputProps = getInput('CITY', true)
+            {(fieldProps: FieldProps<FormValues['city'], FormValues>) => {
+              const { label, ...inputProps } = getInput('CITY', true)
 
               return (
-                <ValidatedInput label={inputProps.label} name="city">
-                  <Input showLabelOrError={false} {...props} {...inputProps} />
+                <ValidatedInput label={label} name="city">
+                  <Input
+                    showLabelOrError={false}
+                    {...fieldProps}
+                    {...inputProps}
+                  />
                 </ValidatedInput>
               )
             }}
@@ -133,12 +147,16 @@ const Form = ({ isCompany }: Props) => {
       <FormRow>
         <FieldWrapper>
           <Field name="email" type="email">
-            {(props: FieldProps<FormValues['email'], FormValues>) => {
-              const inputProps = getInput('EMAIL', true)
+            {(fieldProps: FieldProps<FormValues['email'], FormValues>) => {
+              const { label, ...inputProps } = getInput('EMAIL', true)
 
               return (
-                <ValidatedInput label={inputProps.label} name="email">
-                  <Input showLabelOrError={false} {...props} {...inputProps} />
+                <ValidatedInput label={label} name="email">
+                  <Input
+                    showLabelOrError={false}
+                    {...fieldProps}
+                    {...inputProps}
+                  />
                 </ValidatedInput>
               )
             }}
@@ -147,8 +165,11 @@ const Form = ({ isCompany }: Props) => {
 
         <FieldWrapper>
           <Field name="phone">
-            {(props: FieldProps<FormValues['phone'], FormValues>) => (
-              <MobileInput fieldProps={props} {...getInput('PHONE', true)} />
+            {(fieldProps: FieldProps<FormValues['phone'], FormValues>) => (
+              <MobileInput
+                fieldProps={fieldProps}
+                {...getInput('PHONE', true)}
+              />
             )}
           </Field>
         </FieldWrapper>
