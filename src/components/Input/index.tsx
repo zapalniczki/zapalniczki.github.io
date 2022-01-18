@@ -78,8 +78,9 @@ export const StyledInput = styled.input<StyledInputProps>`
   cursor: pointer;
   border: 1px solid;
   border-color: ${getColor('border-color')};
-  padding: ${getSpace('xs-size')};
+  padding: ${getSpace('xxs-size')} ${getSpace('xs-size')};
   font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
 
   &[type='checkbox'],
   &[type='radio'] {

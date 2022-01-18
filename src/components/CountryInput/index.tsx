@@ -1,27 +1,29 @@
-import Select from 'react-select'
+import Select from '../Select'
 import React from 'react'
+import { Props as SelectProps } from '../Select'
+import { TranslateFunc, useTranslation } from 'hooks'
 
-const CountryInput = () => {
-  const value = { label: 'string', value: 'string' }
+type Props = Omit<SelectProps, 'options'>
 
-  return (
-    <Select
-      components={{}}
-      onChange={() => undefined}
-      options={countries}
-      value={value as Value}
-    />
-  )
+const CountryInput = (props: Props) => {
+  const commonT = useTranslation('COMMON').withBase('COUNTRIES')
+
+  return <Select disabled options={getOptions(commonT)} {...props} />
 }
 
-const countries = [
-  { label: 'label1', value: 'value1' },
-  { label: 'label2', value: 'value2' }
+const getOptions = (commonT: TranslateFunc) => [
+  {
+    label: commonT('pl'),
+    value: 'Poland'
+  },
+  {
+    label: commonT('gb'),
+    value: 'United Kingdom'
+  },
+  {
+    label: commonT('de'),
+    value: 'Germany'
+  }
 ]
-
-type Value = {
-  label: string
-  value: string
-} | null
 
 export default CountryInput

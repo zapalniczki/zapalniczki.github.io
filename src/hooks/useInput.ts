@@ -90,6 +90,10 @@ const inputs = {
     placeholder: 'CITY.placeholder',
     autocomplete: 'address-level2'
   },
+  COUNTRY: {
+    label: 'COUNTRY.label',
+    placeholder: 'COUNTRY.placeholder'
+  },
   NIP: {
     label: 'NIP.label',
     placeholder: 'NIP.placeholder',

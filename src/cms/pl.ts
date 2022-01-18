@@ -345,6 +345,10 @@ const pl = {
         label: 'Kod rabatowy',
         placeholder: 'placeholder'
       },
+      COUNTRY: {
+        label: 'Kraj',
+        placeholder: ''
+      },
       SUBMIT: {
         label: 'Sprawdź'
       },

@@ -5,11 +5,11 @@ import {
   FieldWrapper,
   MobileInput,
   Input,
-  ValidatedInput
+  ValidatedInput,
+  CountryInput
 } from 'components'
 import { useDev, useInput } from 'hooks'
 import { FormValues } from './useForm'
-import { CountryInput } from 'components'
 
 type Props = {
   isCompany: boolean
@@ -24,11 +24,20 @@ const Form = ({ isCompany }: Props) => {
     <>
       {isDev && (
         <FormRow>
-          <FieldWrapper>
+          <FieldWrapper flexBasis="50%">
             <Field name="post_code" type="text">
-              {(props: FieldProps<FormValues['post_code'], FormValues>) => (
-                <CountryInput />
-              )}
+              {(props: FieldProps<FormValues['post_code'], FormValues>) => {
+                const inputProps = getInput('COUNTRY', true)
+
+                return (
+                  <ValidatedInput label={inputProps.label} name="country">
+                    <CountryInput
+                      onChange={() => undefined}
+                      value={undefined}
+                    />
+                  </ValidatedInput>
+                )
+              }}
             </Field>
           </FieldWrapper>
         </FormRow>

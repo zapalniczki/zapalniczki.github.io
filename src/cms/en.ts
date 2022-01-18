@@ -345,6 +345,10 @@ const en: LanguageKeys = {
         label: 'Promotion code',
         placeholder: 'placeholder'
       },
+      COUNTRY: {
+        label: 'Kraj',
+        placeholder: ''
+      },
       SUBMIT: {
         label: 'Send'
       },
