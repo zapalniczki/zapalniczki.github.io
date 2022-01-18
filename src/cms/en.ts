@@ -294,7 +294,7 @@ const en: LanguageKeys = {
         required: 'City is required'
       },
       NIP: {
-        required: 'Tax Identification Number is required',
+        required: 'VAT Number is required',
         length: 'NIP powinien zawierać 10 cyft',
         matches: 'NIP powinien zawierać tylko cyfry',
         invalid: 'NIP jest nieprawidłowy'
@@ -395,7 +395,7 @@ const en: LanguageKeys = {
         placeholder: ''
       },
       NIP: {
-        label: 'NIP',
+        label: 'VAT number',
         placeholder: ''
       },
       ORDER_ID: {
