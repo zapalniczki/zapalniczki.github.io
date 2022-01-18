@@ -67,7 +67,8 @@ const useForm = () => {
           ? getHstoreFromObject({
               street_address: checkout.shipping.street_address,
               post_code: checkout.shipping.post_code,
-              city: checkout.shipping.city
+              city: checkout.shipping.city,
+              country: checkout.shipping.country
             })
           : null,
 

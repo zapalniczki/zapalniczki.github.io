@@ -65,9 +65,10 @@ const useForm = () => {
   const schema = object({
     delivery_type: getSchema('DELIVERY_TYPE'),
     shipping: object().shape({
-      street_address: getSchema('STREET_ADDRESS'),
+      city: getSchema('CITY'),
+      country: getSchema('COUNTRY'),
       post_code: getSchema('POST_CODE'),
-      city: getSchema('CITY')
+      street_address: getSchema('STREET_ADDRESS')
     })
   })
 

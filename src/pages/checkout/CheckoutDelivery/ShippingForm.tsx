@@ -1,4 +1,10 @@
-import { FormRow, FieldWrapper, Input } from 'components'
+import {
+  FormRow,
+  FieldWrapper,
+  Input,
+  ValidatedInput,
+  CountryInput
+} from 'components'
 import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useInput } from 'hooks'
@@ -9,21 +15,58 @@ const ShippingForm = () => {
 
   return (
     <>
+      <FormRow>
+        <FieldWrapper flexBasis="50%">
+          <Field name="shipping.country" type="text">
+            {(
+              fieldProps: FieldProps<
+                FormValues['shipping']['country'],
+                FormValues
+              >
+            ) => {
+              const { label, ...inputProps } = getInput('COUNTRY', true)
+
+              return (
+                <ValidatedInput label={label} name="shipping.country">
+                  <CountryInput
+                    onChange={(value) =>
+                      fieldProps.form.setFieldValue(
+                        'shipping.country',
+                        value?.value
+                      )
+                    }
+                    placeholder={inputProps.placeholder}
+                    value={fieldProps.field.value}
+                  />
+                </ValidatedInput>
+              )
+            }}
+          </Field>
+        </FieldWrapper>
+      </FormRow>
+
       <FormRow marginTop="m-size">
         <FieldWrapper>
           <Field name="shipping.street_address">
             {(
-              props: FieldProps<
+              fieldProps: FieldProps<
                 FormValues['shipping']['street_address'],
                 FormValues
               >
-            ) => (
-              <Input
-                textarea
-                {...props}
-                {...getInput('STREET_ADDRESS', true)}
-              />
-            )}
+            ) => {
+              const { label, ...inputProps } = getInput('STREET_ADDRESS', true)
+
+              return (
+                <ValidatedInput label={label} name="shipping.street_address">
+                  <Input
+                    showLabelOrError={false}
+                    textarea
+                    {...inputProps}
+                    {...fieldProps}
+                  />
+                </ValidatedInput>
+              )
+            }}
           </Field>
         </FieldWrapper>
       </FormRow>
@@ -32,16 +75,43 @@ const ShippingForm = () => {
         <FieldWrapper>
           <Field name="shipping.post_code">
             {(
-              props: FieldProps<FormValues['shipping']['post_code'], FormValues>
-            ) => <Input {...props} {...getInput('POST_CODE', true)} />}
+              fieldProps: FieldProps<
+                FormValues['shipping']['post_code'],
+                FormValues
+              >
+            ) => {
+              const { label, ...inputProps } = getInput('POST_CODE', true)
+
+              return (
+                <ValidatedInput label={label} name="shipping.post_code">
+                  <Input
+                    showLabelOrError={false}
+                    {...fieldProps}
+                    {...inputProps}
+                  />
+                </ValidatedInput>
+              )
+            }}
           </Field>
         </FieldWrapper>
 
         <FieldWrapper>
           <Field name="shipping.city">
             {(
-              props: FieldProps<FormValues['shipping']['city'], FormValues>
-            ) => <Input {...props} {...getInput('CITY', true)} />}
+              fieldProps: FieldProps<FormValues['shipping']['city'], FormValues>
+            ) => {
+              const { label, ...inputProps } = getInput('CITY', true)
+
+              return (
+                <ValidatedInput label={label} name="shipping.city">
+                  <Input
+                    showLabelOrError={false}
+                    {...fieldProps}
+                    {...inputProps}
+                  />
+                </ValidatedInput>
+              )
+            }}
           </Field>
         </FieldWrapper>
       </FormRow>
