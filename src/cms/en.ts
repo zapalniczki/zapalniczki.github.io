@@ -288,20 +288,20 @@ const en: LanguageKeys = {
         required: 'Select one to go ahead'
       },
       STREET_ADDRESS: {
-        required: 'Proszę podać adres'
+        required: 'Address is required'
       },
       CITY: {
-        required: 'Proszę podać miejscowość'
+        required: 'City is required'
       },
       NIP: {
-        required: 'Proszę podać NIP',
+        required: 'Tax Identification Number is required',
         length: 'NIP powinien zawierać 10 cyft',
         matches: 'NIP powinien zawierać tylko cyfry',
         invalid: 'NIP jest nieprawidłowy'
       },
       POST_CODE: {
         matches: 'Kod pocztowy powinien mieć format XX-XXX',
-        required: 'Proszę podać kod pocztowy'
+        required: 'Post code is required'
       },
       FULL_NAME: {
         required: 'Name and surname are required'
@@ -310,11 +310,11 @@ const en: LanguageKeys = {
         required: 'Company name is required'
       },
       EMAIL: {
-        email: 'Wprowadzony email jest niepoprawny',
-        required: 'Proszę podać adres e-mail'
+        email: 'Email is incorrect',
+        required: 'Email is required'
       },
       PHONE: {
-        required: 'Please type phone number',
+        required: 'Phone number is required',
         matches: 'Phone number should have at least 6 digits'
       },
       ORDER_ID: {
@@ -349,7 +349,7 @@ const en: LanguageKeys = {
         placeholder: 'placeholder'
       },
       COUNTRY: {
-        label: 'Kraj',
+        label: 'Country',
         placeholder: ''
       },
       SUBMIT: {
@@ -363,19 +363,19 @@ const en: LanguageKeys = {
         label: 'Select delivery method'
       },
       FULL_NAME: {
-        label: 'Imię i nazwisko',
+        label: 'Name and surname',
         placeholder: ''
       },
       COMPANY: {
-        label: 'Nazwa firmy',
+        label: 'Company name',
         placeholder: ''
       },
       EMAIL: {
-        label: 'Adres email',
+        label: 'Email address',
         placeholder: ''
       },
       PHONE: {
-        label: 'Numer telefonu',
+        label: 'Phone number',
         placeholder: 'Twój '
       },
       PHONE_NOT_MOBILE: {
@@ -383,15 +383,15 @@ const en: LanguageKeys = {
         placeholder: 'Twój numer telefonu'
       },
       STREET_ADDRESS: {
-        label: 'Adres (ulica, numer domu/mieszkania)',
+        label: 'Address',
         placeholder: ''
       },
       POST_CODE: {
-        label: 'Kod pocztowy',
+        label: 'Post code',
         placeholder: ''
       },
       CITY: {
-        label: 'Miasto',
+        label: 'City',
         placeholder: ''
       },
       NIP: {
