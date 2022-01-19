@@ -1,38 +1,52 @@
 import React from 'react'
 import { Field, FieldProps } from 'formik'
-import { useInput } from 'hooks'
+import { useInput, useTranslation } from 'hooks'
 import { FormRow, CheckboxField } from 'components'
 import { FormValues } from './useForm'
 import { PaymentType } from 'braty-common'
 import Voucher from './Voucher'
-import { displayMoney } from 'utils'
+import { displayMoney, getLanguageLabel } from 'utils'
 
 type Props = {
   paymentTypes: PaymentType[]
 }
 
 const Form = ({ paymentTypes }: Props) => {
+  const { currentLanguage } = useTranslation('COMMON')
   const { getInput } = useInput()
 
   return (
     <FormRow vertical>
       {paymentTypes
         .filter((type) => type.is_enabled)
-        .map((type, index) => (
-          <Field key={type.label} name="payment_type">
-            {(props: FieldProps<PaymentType, FormValues>) => (
-              <CheckboxField
-                {...props}
-                {...getInput('PAYMENT_TYPE', true)}
-                id={type.id}
-                isFirst={index === 0}
-                subtitle={type.time}
-                title={type.label}
-                val={displayMoney(type.price)}
-              />
-            )}
-          </Field>
-        ))}
+        .map((type, index) => {
+          const label = getLanguageLabel({
+            language: currentLanguage,
+            label: type
+          })
+
+          const description = getLanguageLabel({
+            language: currentLanguage,
+            label: type,
+            description: true
+          })
+
+          return (
+            <Field key={label} name="payment_type">
+              {(props: FieldProps<PaymentType, FormValues>) => (
+                <CheckboxField
+                  {...props}
+                  {...getInput('PAYMENT_TYPE', true)}
+                  id={type.id}
+                  isFirst={!index}
+                  subtitle={description}
+                  title={label}
+                  val={displayMoney(type.price)}
+                />
+              )}
+            </Field>
+          )
+        })}
 
       <Field component={Voucher} name="voucher_id" />
     </FormRow>

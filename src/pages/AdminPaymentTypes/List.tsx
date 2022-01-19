@@ -1,14 +1,14 @@
 import { getPaymentTypes } from 'api'
 import { DB_TABLES, PaymentType } from 'braty-common'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
-import { useTranslation } from 'hooks'
+import { Language, useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, formatDate } from 'utils'
+import { displayMoney, formatDate, getLanguageLabel } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
-  const { t: commonT } = useTranslation('COMMON')
+  const { currentLanguage, t: commonT } = useTranslation('COMMON')
 
   const params = {}
   const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
@@ -33,8 +33,8 @@ const List = () => {
         accessor: 'price' as const
       },
       {
-        Header: commonT('TABLE_HEADERS.time'),
-        accessor: 'time' as const
+        Header: commonT('TABLE_HEADERS.description'),
+        accessor: 'description' as const
       },
       {
         Header: commonT('TABLE_HEADERS.is_enabled'),
@@ -52,7 +52,7 @@ const List = () => {
     <Tile>
       <QueryLoader query={paymentTypesQuery}>
         {(data) => {
-          const shappedData = shapeData(data)
+          const shappedData = shapeData(data, currentLanguage)
 
           return <Table columns={columns} data={shappedData} />
         }}
@@ -61,23 +61,36 @@ const List = () => {
   )
 }
 
-const shapeData = (data: PaymentType[]) =>
-  data.map((record) => ({
-    created_at: formatDate(record.created_at),
-    updated_at: formatDate(record.updated_at),
-    label: record.label,
-    price: displayMoney(record.price),
-    time: record.time,
-    is_enabled: (
-      <Flexbox justifyContent="center">
-        <ResultIcon
-          size="2x"
-          variant={record.is_enabled ? 'SUCCESS' : 'ERROR'}
-        />
-      </Flexbox>
-    ),
-    frontend_icon_name: record.frontend_icon_name ?? '-',
-    edit: <EditModal id={record.id} is_enabled={record.is_enabled ?? false} />
-  }))
+const shapeData = (data: PaymentType[], currentLanguage: Language) =>
+  data.map((record) => {
+    const label = getLanguageLabel({
+      language: currentLanguage,
+      label: record
+    })
+
+    const description = getLanguageLabel({
+      language: currentLanguage,
+      label: record,
+      description: true
+    })
+
+    return {
+      created_at: formatDate(record.created_at),
+      updated_at: formatDate(record.updated_at),
+      label,
+      price: displayMoney(record.price),
+      description,
+      is_enabled: (
+        <Flexbox justifyContent="center">
+          <ResultIcon
+            size="2x"
+            variant={record.is_enabled ? 'SUCCESS' : 'ERROR'}
+          />
+        </Flexbox>
+      ),
+      icon_name: record.icon_name ?? '-',
+      edit: <EditModal id={record.id} is_enabled={record.is_enabled ?? false} />
+    }
+  })
 
 export default List

@@ -37,8 +37,8 @@ const List = () => {
         accessor: 'description' as const
       },
       {
-        Header: commonT('TABLE_HEADERS.frontend_icon_name'),
-        accessor: 'frontend_icon_name' as const
+        Header: commonT('TABLE_HEADERS.icon_name'),
+        accessor: 'icon_name' as const
       },
       {
         Header: commonT('TABLE_HEADERS.requires_address'),
@@ -91,7 +91,7 @@ const shapeData = (data: DeliveryType[], currentLanguage: Language) =>
       description: description,
       requires_address: getIcon(record.requires_address),
       is_enabled: getIcon(record.is_enabled),
-      frontend_icon_name: record.frontend_icon_name ?? '-',
+      icon_name: record.icon_name ?? '-',
       edit: <EditModal id={record.id} is_enabled={record.is_enabled || false} />
     }
   })

@@ -16,11 +16,11 @@ import {
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney } from 'utils'
+import { displayMoney, getLanguageLabel } from 'utils'
 import Option from './Option'
 
 const DeliveryAndPayments = () => {
-  const { t } = useTranslation('DELIVERY_AND_PAYMENTS')
+  const { currentLanguage, t } = useTranslation('DELIVERY_AND_PAYMENTS')
 
   useScrollTop()
   usePageTitle(t('title'))
@@ -86,7 +86,7 @@ const DeliveryAndPayments = () => {
                   title={type.label_pl}
                 >
                   <FontAwesomeIcon
-                    icon={type.frontend_icon_name as IconName}
+                    icon={type.icon_name as IconName}
                     size="3x"
                   />
                 </FeatureItem>
@@ -102,18 +102,31 @@ const DeliveryAndPayments = () => {
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {paymentTypes
               .filter((type) => type.is_enabled)
-              .map((type) => (
-                <FeatureItem
-                  key={type.id}
-                  subtitle={`${displayMoney(type.price)} - ${type.time}`}
-                  title={type.label}
-                >
-                  <FontAwesomeIcon
-                    icon={type.frontend_icon_name as IconName}
-                    size="3x"
-                  />
-                </FeatureItem>
-              ))}
+              .map((type) => {
+                const label = getLanguageLabel({
+                  language: currentLanguage,
+                  label: type
+                })
+
+                const description = getLanguageLabel({
+                  language: currentLanguage,
+                  label: type,
+                  description: true
+                })
+
+                return (
+                  <FeatureItem
+                    key={type.id}
+                    subtitle={`${displayMoney(type.price)} - ${description}`}
+                    title={label}
+                  >
+                    <FontAwesomeIcon
+                      icon={type.icon_name as IconName}
+                      size="3x"
+                    />
+                  </FeatureItem>
+                )
+              })}
           </Grid>
         )}
       </QueryLoader>
