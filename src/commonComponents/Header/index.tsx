@@ -1,15 +1,14 @@
+import { ROUTES } from 'braty-common'
+import { TOP_BAR_HEIGHT } from 'commonComponents'
+import { Link, Logo, MaxWidth } from 'components'
+import { useTranslation } from 'hooks'
+import { togglesContext } from 'providers'
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
-import { Link, Logo, MaxWidth } from 'components'
-import { ROUTES } from 'braty-common'
-import Main from './Main'
 import getColor from 'styles/getColor'
-import { useTranslation } from 'hooks'
 import getSpace from 'styles/getSpace'
+import Main from './Main'
 import Navigation from './Navigation'
-import { togglesContext } from 'providers'
-import { motion } from 'framer-motion'
-import { TOP_BAR_HEIGHT } from 'commonComponents'
 
 const Header = () => {
   const { basketOpen, hamburgerOpen, isHeaderExpanded, setIsHeaderExpanded } =
@@ -38,7 +37,7 @@ const Header = () => {
   }, [basketOpen, hamburgerOpen])
 
   return (
-    <Container isExpanded={isHeaderExpanded} layout="position">
+    <Container isExpanded={isHeaderExpanded}>
       <MaxWidth
         alignItems="center"
         flexDirection="row"
@@ -61,7 +60,7 @@ type ContainerProps = {
   isExpanded: boolean
 }
 
-const Container = styled(motion.nav)<ContainerProps>`
+const Container = styled.nav<ContainerProps>`
   width: 100%;
   background: ${(props) => {
     if (props.isExpanded) {

@@ -301,10 +301,10 @@ const pl = {
         invalid: 'NIP jest nieprawidłowy'
       },
       NIP_UK: {
-        invalid: 'VAT jest nieprawidłowy1'
+        invalid: 'VAT jest nieprawidłowy'
       },
       NIP_DE: {
-        invalid: 'VAT jest nieprawidłowy2'
+        invalid: 'VAT jest nieprawidłowy'
       },
       POST_CODE: {
         matches: 'Kod pocztowy powinien mieć format XX-XXX',

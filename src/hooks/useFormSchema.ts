@@ -62,7 +62,7 @@ const useFormSchema = () => {
       string()
         .required(commonT('NIP_PL.required'))
         .length(10, commonT('NIP_PL.length'))
-        .matches(/^(\d{10})$/, commonT('NIP_PL.matches2'))
+        .matches(/^(\d{10})$/, commonT('NIP_PL.matches'))
         .test('', commonT('NIP_PL.invalid'), (nip) => {
           if (!nip) {
             return false
