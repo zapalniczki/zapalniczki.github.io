@@ -122,7 +122,7 @@ const pl = {
       done: 'Wykonano',
       edit: 'Edycja',
       email: 'Email',
-      frontend_icon_name: 'Ikona',
+      icon_name: 'Ikona',
       icon: 'Ikona',
       id: 'Numer referencyjny',
       is_company: 'Czy firma?',
