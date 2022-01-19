@@ -94,10 +94,18 @@ const inputs = {
     label: 'COUNTRY.label',
     placeholder: 'COUNTRY.placeholder'
   },
-  NIP: {
-    label: 'NIP.label',
-    placeholder: 'NIP.placeholder',
+  NIP_PL: {
+    label: 'NIP_PL.label',
+    placeholder: 'NIP_PL.placeholder',
     maxLength: 10
+  },
+  NIP_UK: {
+    label: 'NIP_UK.label',
+    placeholder: 'NIP_UK.placeholder'
+  },
+  NIP_DE: {
+    label: 'NIP_DE.label',
+    placeholder: 'NIP_DE.placeholder'
   },
   ORDER_ID: {
     label: 'ORDER_ID.label',

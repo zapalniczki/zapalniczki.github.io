@@ -45,38 +45,34 @@ const CheckoutDetails = () => {
         validateOnChange
         validationSchema={getSchema(isCompany)}
       >
-        {({ setFieldValue, values }) => {
-          console.log(values)
+        {({ setFieldValue }) => (
+          <FormikForm>
+            <Columns>
+              <div>
+                <Flexbox justifyContent="flex-end">
+                  <Switch
+                    checked={!isCompany}
+                    justifyContent="flex-end"
+                    label={commonT('customerTypes.INDIVIDUAL')}
+                    onChange={(checked) => {
+                      setIsCompany(!checked)
 
-          return (
-            <FormikForm>
-              <Columns>
-                <div>
-                  <Flexbox justifyContent="flex-end">
-                    <Switch
-                      checked={!isCompany}
-                      justifyContent="flex-end"
-                      label={commonT('customerTypes.INDIVIDUAL')}
-                      onChange={(checked) => {
-                        setIsCompany(!checked)
+                      if (checked) {
+                        setFieldValue('nip', '')
+                      }
+                    }}
+                  />
+                </Flexbox>
 
-                        if (checked) {
-                          setFieldValue('nip', '')
-                        }
-                      }}
-                    />
-                  </Flexbox>
+                <Form isCompany={isCompany} />
+              </div>
 
-                  <Form isCompany={isCompany} />
-                </div>
-
-                <div>
-                  <CheckoutTotal />
-                </div>
-              </Columns>
-            </FormikForm>
-          )
-        }}
+              <div>
+                <CheckoutTotal />
+              </div>
+            </Columns>
+          </FormikForm>
+        )}
       </Formik>
     </Page>
   )

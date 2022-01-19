@@ -293,11 +293,17 @@ const en: LanguageKeys = {
       CITY: {
         required: 'City is required'
       },
-      NIP: {
-        required: 'VAT Number is required',
-        length: 'NIP powinien zawierać 10 cyft',
-        matches: 'NIP powinien zawierać tylko cyfry',
-        invalid: 'NIP jest nieprawidłowy'
+      NIP_PL: {
+        required: 'NIP is required',
+        length: 'NIP should contain 10 digits',
+        matches: 'NIP should contain digits only',
+        invalid: 'NIP is invalid'
+      },
+      NIP_UK: {
+        invalid: 'VAT number is invalid'
+      },
+      NIP_DE: {
+        invalid: 'VAT number is invalid'
       },
       POST_CODE: {
         matches: 'Kod pocztowy powinien mieć format XX-XXX',
@@ -358,7 +364,6 @@ const en: LanguageKeys = {
       PAYMENT_TYPE: {
         label: 'Select payment method'
       },
-
       DELIVERY_TYPE: {
         label: 'Select delivery method'
       },
@@ -394,7 +399,15 @@ const en: LanguageKeys = {
         label: 'City',
         placeholder: ''
       },
-      NIP: {
+      NIP_PL: {
+        label: 'NIP number',
+        placeholder: ''
+      },
+      NIP_UK: {
+        label: 'VAT number',
+        placeholder: ''
+      },
+      NIP_DE: {
         label: 'VAT number',
         placeholder: ''
       },

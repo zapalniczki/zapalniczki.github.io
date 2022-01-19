@@ -4,7 +4,7 @@ import { ContactDetails } from 'models'
 import { checkoutContext } from 'providers'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { object } from 'yup'
+import { object, string } from 'yup'
 
 export type FormValues = ContactDetails
 
@@ -17,9 +17,7 @@ const useForm = () => {
   const onSubmitForm = (form: FormValues) => {
     setCheckout((prev) => ({
       ...prev,
-      contact_details: {
-        ...form
-      }
+      contact_details: { ...form }
     }))
 
     navigate(ROUTES.CHECKOUT_DELIVERY)
@@ -33,7 +31,7 @@ const useForm = () => {
     city: checkout.contact_details?.city ?? '',
     email: checkout.contact_details?.email ?? '',
     phone: checkout.contact_details?.phone ?? '',
-    country: checkout.contact_details?.country ?? ''
+    country: checkout.contact_details?.country ?? 'Poland'
   }
 
   const getSchema = (isCompany: boolean) => {
@@ -48,7 +46,19 @@ const useForm = () => {
     })
 
     const companySchema = base.shape({
-      nip: getNativeSchema('NIP')
+      nip: string()
+        .when('country', {
+          is: 'Poland',
+          then: getNativeSchema('NIP_PL')
+        })
+        .when('country', {
+          is: 'United Kingdom',
+          then: getNativeSchema('NIP_UK')
+        })
+        .when('country', {
+          is: 'Germany',
+          then: getNativeSchema('NIP_DE')
+        })
     })
 
     return isCompany ? companySchema : base

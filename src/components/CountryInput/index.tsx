@@ -23,19 +23,20 @@ const CountryInput = ({ value, ...props }: Props) => {
   )
 }
 
-const getOptions = (commonT: TranslateFunc) => [
-  {
-    label: commonT('pl'),
-    value: 'Poland'
-  },
-  {
-    label: commonT('gb'),
-    value: 'United Kingdom'
-  },
-  {
-    label: commonT('de'),
-    value: 'Germany'
-  }
-]
+const getOptions = (commonT: TranslateFunc) =>
+  [
+    {
+      label: commonT('pl'),
+      value: 'Poland'
+    },
+    {
+      label: commonT('gb'),
+      value: 'United Kingdom'
+    },
+    {
+      label: commonT('de'),
+      value: 'Germany'
+    }
+  ].sort((prev, next) => (prev.label > next.label ? 1 : -1))
 
 export default CountryInput

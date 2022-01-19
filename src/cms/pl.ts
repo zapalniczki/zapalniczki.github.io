@@ -293,11 +293,17 @@ const pl = {
       CITY: {
         required: 'Proszę podać miejscowość'
       },
-      NIP: {
+      NIP_PL: {
         required: 'Proszę podać NIP',
-        length: 'NIP powinien zawierać 10 cyft',
+        length: 'NIP powinien zawierać 10 cyfr',
         matches: 'NIP powinien zawierać tylko cyfry',
         invalid: 'NIP jest nieprawidłowy'
+      },
+      NIP_UK: {
+        invalid: 'VAT jest nieprawidłowy1'
+      },
+      NIP_DE: {
+        invalid: 'VAT jest nieprawidłowy2'
       },
       POST_CODE: {
         matches: 'Kod pocztowy powinien mieć format XX-XXX',
@@ -358,7 +364,6 @@ const pl = {
       PAYMENT_TYPE: {
         label: 'Wybierz sposób płatności'
       },
-
       DELIVERY_TYPE: {
         label: 'Wybierz sposób dostawy'
       },
@@ -394,8 +399,16 @@ const pl = {
         label: 'Miasto',
         placeholder: ''
       },
-      NIP: {
+      NIP_PL: {
         label: 'NIP',
+        placeholder: ''
+      },
+      NIP_UK: {
+        label: 'numer VAT',
+        placeholder: ''
+      },
+      NIP_DE: {
+        label: 'numer VAT',
         placeholder: ''
       },
       ORDER_ID: {

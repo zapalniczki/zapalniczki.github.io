@@ -22,7 +22,25 @@ const Form = ({ isCompany }: Props) => {
   return (
     <>
       <FormRow>
-        <FieldWrapper flexBasis="50%">
+        <FieldWrapper>
+          <Field name="full_name" type="text">
+            {(fieldProps: FieldProps<FormValues['full_name'], FormValues>) => {
+              const { label, ...inputProps } = getInput(name, true)
+
+              return (
+                <ValidatedInput label={label} name="full_name">
+                  <Input
+                    showLabelOrError={false}
+                    {...fieldProps}
+                    {...inputProps}
+                  />
+                </ValidatedInput>
+              )
+            }}
+          </Field>
+        </FieldWrapper>
+
+        <FieldWrapper>
           <Field name="country" type="text">
             {(fieldProps: FieldProps<FormValues['country'], FormValues>) => {
               const { label, ...inputProps } = getInput('COUNTRY', true)
@@ -43,34 +61,18 @@ const Form = ({ isCompany }: Props) => {
         </FieldWrapper>
       </FormRow>
 
-      <FormRow>
-        <FieldWrapper>
-          <Field name="full_name" type="text">
-            {(fieldProps: FieldProps<FormValues['full_name'], FormValues>) => {
-              const { label, ...inputProps } = getInput(name, true)
-
-              return (
-                <ValidatedInput label={label} name="full_name">
-                  <Input
-                    showLabelOrError={false}
-                    {...fieldProps}
-                    {...inputProps}
-                  />
-                </ValidatedInput>
-              )
-            }}
-          </Field>
-        </FieldWrapper>
-
-        {isCompany && (
+      {isCompany && (
+        <FormRow>
           <FieldWrapper>
             <Field name="nip" type="text">
               {(fieldProps: FieldProps<string, FormValues>) => {
-                const { label, ...inputProps } = getInput('NIP', true)
+                const vatInputKey = getVatKey(fieldProps.form.values.country)
+                const { label, ...inputProps } = getInput(vatInputKey, true)
 
                 return (
                   <ValidatedInput label={label} name="nip">
                     <Input
+                      disabled={!fieldProps.form.values.country}
                       showLabelOrError={false}
                       {...fieldProps}
                       {...inputProps}
@@ -80,8 +82,8 @@ const Form = ({ isCompany }: Props) => {
               }}
             </Field>
           </FieldWrapper>
-        )}
-      </FormRow>
+        </FormRow>
+      )}
 
       <FormRow>
         <FieldWrapper>
@@ -176,6 +178,20 @@ const Form = ({ isCompany }: Props) => {
       </FormRow>
     </>
   )
+}
+
+const getVatKey = (country: string) => {
+  switch (country) {
+    case 'United Kingdom':
+      return 'NIP_UK'
+
+    case 'Germany':
+      return 'NIP_DE'
+
+    case 'Poland':
+    default:
+      return 'NIP_PL'
+  }
 }
 
 export default Form
