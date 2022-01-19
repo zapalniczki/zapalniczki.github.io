@@ -25,6 +25,12 @@ const Form = ({ deliveryTypes }: Props) => {
             label: type
           })
 
+          const description = getLanguageLabel({
+            language: currentLanguage,
+            label: type,
+            description: true
+          })
+
           return (
             <Field key={label} name="delivery_type">
               {(props: FieldProps<DeliveryType, FormValues>) => (
@@ -33,7 +39,7 @@ const Form = ({ deliveryTypes }: Props) => {
                   {...getInput('DELIVERY_TYPE', true)}
                   id={type.id}
                   isFirst={index === 0}
-                  subtitle={`${type.time}`}
+                  subtitle={description}
                   title={label}
                   val={displayMoney(type.price)}
                 />

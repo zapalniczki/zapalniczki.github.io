@@ -14,7 +14,9 @@ export const getOrders = async ({ is_test, status }: Params) => {
       id,
       deliveryType: delivery_type(
         label_pl,
-        label_en
+        label_en,
+        description_pl,
+        description_en
       ),
       total,
       updated_at,
@@ -58,6 +60,8 @@ export const getOrders = async ({ is_test, status }: Params) => {
     .eq('status', status)
     .filter('is_test', 'eq', is_test)
     .order('updated_at', { ascending: true })
+
+  console.log(response)
 
   const data = parseApiResponse(array(getOrdersResponseItem), response)
 

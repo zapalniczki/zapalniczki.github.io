@@ -80,7 +80,9 @@ const DeliveryAndPayments = () => {
               .map((type) => (
                 <FeatureItem
                   key={type.id}
-                  subtitle={`${displayMoney(type.price)} - ${type.time}`}
+                  subtitle={`${displayMoney(type.price)} - ${
+                    type.description_pl
+                  }`}
                   title={type.label_pl}
                 >
                   <FontAwesomeIcon

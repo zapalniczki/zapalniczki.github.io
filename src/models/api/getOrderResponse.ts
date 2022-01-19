@@ -35,8 +35,7 @@ const getOrderResponse = order.extend({
 
   delivery_type: deliveryType.pick({
     label_en: true,
-    label_pl: true,
-    time: true
+    label_pl: true
   }),
 
   voucher: voucher

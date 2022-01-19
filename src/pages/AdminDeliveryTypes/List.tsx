@@ -1,14 +1,14 @@
 import { getDeliveryTypes } from 'api'
 import { DB_TABLES, DeliveryType } from 'braty-common'
 import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
-import { useTranslation } from 'hooks'
+import { Language, useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, formatDate } from 'utils'
+import { displayMoney, formatDate, getLanguageLabel } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
-  const { t: commonT } = useTranslation('COMMON')
+  const { currentLanguage, t: commonT } = useTranslation('COMMON')
 
   const deliveryTypesQuery = useQuery(
     DB_TABLES.DELIVERY_TYPES,
@@ -60,7 +60,7 @@ const List = () => {
     <Tile>
       <QueryLoader query={deliveryTypesQuery}>
         {(data) => {
-          const shappedData = shapeData(data)
+          const shappedData = shapeData(data, currentLanguage)
 
           return <Table columns={columns} data={shappedData} />
         }}
@@ -69,7 +69,7 @@ const List = () => {
   )
 }
 
-const shapeData = (data: DeliveryType[]) =>
+const shapeData = (data: DeliveryType[], currentLanguage: Language) =>
   data.map((record) => {
     const getIcon = (possitive: boolean | null) => (
       <Flexbox justifyContent="center">
@@ -77,12 +77,18 @@ const shapeData = (data: DeliveryType[]) =>
       </Flexbox>
     )
 
+    const description = getLanguageLabel({
+      language: currentLanguage,
+      label: record,
+      description: true
+    })
+
     return {
       created_at: formatDate(record.created_at),
       updated_at: formatDate(record.updated_at),
       label: record.label_pl,
       price: displayMoney(record.price),
-      description: record.time,
+      description: description,
       requires_address: getIcon(record.requires_address),
       is_enabled: getIcon(record.is_enabled),
       frontend_icon_name: record.frontend_icon_name ?? '-',
