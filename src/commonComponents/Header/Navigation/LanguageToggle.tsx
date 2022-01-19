@@ -1,20 +1,15 @@
 import { ReactComponent as En } from 'assets/flags/en.svg'
 import { ReactComponent as Pl } from 'assets/flags/pl.svg'
-import { ROUTES } from 'braty-common'
 import { Button, Flexbox } from 'components'
 import { Language, language, useTranslation } from 'hooks'
 import React from 'react'
-import { useLocation } from 'react-router'
 
 const LanguageToggle = () => {
   const { currentLanguage, i18n, withBase } = useTranslation('COMMON')
   const commonT = withBase('LANGUAGE_TOGGLE_LABEL')
 
-  const { pathname } = useLocation()
-
   return (
     <Button
-      disabled={basketDisabledpathnames.includes(pathname)}
       onClick={() => {
         const indexOfCurrentLanguage = language.options.indexOf(currentLanguage)
         const indexOfNextLanguage =
@@ -36,14 +31,6 @@ const LanguageToggle = () => {
     </Button>
   )
 }
-
-const basketDisabledpathnames = [
-  ROUTES.CART as string,
-  ROUTES.CHECKOUT_DETAILS as string,
-  ROUTES.CHECKOUT_DELIVERY as string,
-  ROUTES.CHECKOUT_PAYMENT as string,
-  ROUTES.CHECKOUT_RESULT as string
-]
 
 const languageToFlagMapping: Record<Language, JSX.Element> = {
   pl: <Pl />,

@@ -52,8 +52,6 @@ const CheckoutProvider = ({ children }: Props) => {
 
   const voucher = checkout.voucher
 
-  console.log(checkout)
-
   return (
     <checkoutContext.Provider
       value={{
