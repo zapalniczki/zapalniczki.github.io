@@ -1,4 +1,4 @@
-import { FormRow, CheckboxField } from 'components'
+import { FormRow, CheckboxField, ValidatedInput } from 'components'
 import React from 'react'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
@@ -20,7 +20,7 @@ const Form = ({ deliveryTypes }: Props) => {
       {deliveryTypes
         .filter((type) => type.is_enabled)
         .map((type, index) => {
-          const label = getLanguageLabel({
+          const optionLabel = getLanguageLabel({
             language: currentLanguage,
             label: type
           })
@@ -32,18 +32,28 @@ const Form = ({ deliveryTypes }: Props) => {
           })
 
           return (
-            <Field key={label} name="delivery_type">
-              {(props: FieldProps<DeliveryType, FormValues>) => (
-                <CheckboxField
-                  {...props}
-                  {...getInput('DELIVERY_TYPE', true)}
-                  id={type.id}
-                  isFirst={index === 0}
-                  subtitle={description}
-                  title={label}
-                  val={displayMoney(type.price)}
-                />
-              )}
+            <Field key={optionLabel} name="delivery_type">
+              {(fieldProps: FieldProps<DeliveryType, FormValues>) => {
+                const { label } = getInput('DELIVERY_TYPE', true)
+                const isFirst = !index
+
+                return (
+                  <>
+                    {isFirst && (
+                      <ValidatedInput label={label} name="delivery_type" />
+                    )}
+
+                    <CheckboxField
+                      {...fieldProps.field}
+                      caption={displayMoney(type.price)}
+                      selectedValue={fieldProps.field.value}
+                      subtitle={description}
+                      title={optionLabel}
+                      value={type.id}
+                    />
+                  </>
+                )
+              }}
             </Field>
           )
         })}

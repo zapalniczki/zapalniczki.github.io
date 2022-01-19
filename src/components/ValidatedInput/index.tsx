@@ -4,7 +4,7 @@ import { useField } from 'formik'
 import InputLabel from '../InputLabel'
 
 type Props = {
-  children: ReactNode
+  children?: ReactNode
   label?: string
   name: string
 }

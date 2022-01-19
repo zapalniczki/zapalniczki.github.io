@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
-import { FormRow, CheckboxField } from 'components'
+import { FormRow, CheckboxField, ValidatedInput } from 'components'
 import { FormValues } from './useForm'
 import { PaymentType } from 'braty-common'
 import Voucher from './Voucher'
@@ -22,7 +22,7 @@ const Form = ({ paymentTypes }: Props) => {
       {paymentTypes
         .filter((type) => type.is_enabled)
         .map((type, index) => {
-          const label = getLanguageLabel({
+          const optionLabel = getLanguageLabel({
             language: currentLanguage,
             label: type
           })
@@ -34,18 +34,28 @@ const Form = ({ paymentTypes }: Props) => {
           })
 
           return (
-            <Field key={label} name="payment_type">
-              {(props: FieldProps<PaymentType, FormValues>) => (
-                <CheckboxField
-                  {...props}
-                  {...getInput('PAYMENT_TYPE', true)}
-                  id={type.id}
-                  isFirst={!index}
-                  subtitle={description}
-                  title={label}
-                  val={displayMoney(type.price)}
-                />
-              )}
+            <Field key={optionLabel} name="payment_type">
+              {(fieldProps: FieldProps<PaymentType, FormValues>) => {
+                const { label } = getInput('PAYMENT_TYPE', true)
+                const isFirst = !index
+
+                return (
+                  <>
+                    {isFirst && (
+                      <ValidatedInput label={label} name="payment_type" />
+                    )}
+
+                    <CheckboxField
+                      {...fieldProps.field}
+                      caption={displayMoney(type.price)}
+                      selectedValue={fieldProps.field}
+                      subtitle={description}
+                      title={optionLabel}
+                      value={type.id}
+                    />
+                  </>
+                )
+              }}
             </Field>
           )
         })}

@@ -1,71 +1,59 @@
-import { StyledInput, Text, Flexbox, InputLabel } from 'components'
-import { FieldProps } from 'formik'
+import { StyledInput, Text, Flexbox } from 'components'
+import { FieldProps, FieldInputProps } from 'formik'
 import React from 'react'
 import CheckboxFieldLoader from './index.loader'
 
-type Props = FieldProps & {
-  id: string
-  isFirst: boolean
-  label: string
+type Props = FieldInputProps<string> & {
+  caption?: string
+  selectedValue: FieldProps['field']['value']
   subtitle?: string
   title: string
-  val?: string
+  value: FieldProps['field']['value']
 }
 
 const CheckboxField = ({
-  field: { name, onBlur, onChange, value },
-  id,
-  isFirst,
-  label,
-  meta: { error, touched },
+  caption,
+  name,
+  onBlur,
+  onChange,
+  selectedValue,
   subtitle,
   title,
-  val
+  value
 }: Props) => (
-  <>
-    {isFirst && (
-      <Flexbox justifyContent="flex-start" marginBottom="0" marginRight="auto">
-        {touched && error ? (
-          <InputLabel error>{error}</InputLabel>
-        ) : (
-          <InputLabel htmlFor={name}>{label}</InputLabel>
-        )}
-      </Flexbox>
-    )}
+  <Flexbox
+    alignItems="center"
+    backgroundColor="banner-color"
+    position="relative"
+  >
+    <StyledInput
+      checked={value === selectedValue}
+      id={value}
+      name={name}
+      onBlur={onBlur}
+      onChange={onChange}
+      type="radio"
+      value={value}
+    />
 
-    <Flexbox
-      alignItems="center"
-      backgroundColor="banner-color"
-      marginTop={isFirst ? 'unset' : 'm-size'}
-      position="relative"
-    >
-      <StyledInput
-        checked={id === value}
-        id={id}
-        name={name}
-        onBlur={onBlur}
-        onChange={onChange}
-        type="radio"
-        value={id}
-      />
+    <Flexbox as="label" htmlFor={value} padding="m-size" width="100%">
+      <Text marginLeft="m-size" type="body-2">
+        {title}
+      </Text>
 
-      <Flexbox as="label" htmlFor={id} padding="m-size" width="100%">
-        <Text type="body-2">{title}</Text>
+      {subtitle && (
+        <Text marginLeft="m-size" type="caption">
+          {subtitle}
+        </Text>
+      )}
 
-        {subtitle && (
-          <Text marginLeft="s-size" type="caption">
-            {subtitle}
-          </Text>
-        )}
-
-        {val && (
-          <Text marginLeft="auto" type="body-1">
-            {val}
-          </Text>
-        )}
-      </Flexbox>
+      {caption && (
+        <Text marginLeft="auto" type="body-1">
+          {caption}
+        </Text>
+      )}
     </Flexbox>
-  </>
+  </Flexbox>
 )
 
 export { CheckboxFieldLoader }

@@ -15,7 +15,7 @@ const ShippingForm = () => {
 
   return (
     <>
-      <FormRow>
+      <FormRow marginTop="m-size">
         <FieldWrapper flexBasis="50%">
           <Field name="shipping.country" type="text">
             {(
