@@ -54,9 +54,9 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
           borderColor: colors['border-color']
         }}
         localization={{
-          pl: commonT('pl'),
-          de: commonT('de'),
-          gb: commonT('gb')
+          pl: commonT('POLAND'),
+          de: commonT('GERMANY'),
+          gb: commonT('UNITED KINGDOM')
         }}
         masks={{
           pl: '... .. .. ..'

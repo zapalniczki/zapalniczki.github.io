@@ -11,9 +11,9 @@ export const email = `kontakt@${domain}`
 const en: LanguageKeys = {
   COMMON: {
     COUNTRIES: {
-      de: 'Germany',
-      gb: 'United Kingdom',
-      pl: 'Poland'
+      GERMANY: 'Germany',
+      'UNITED KINGDOM': 'United Kingdom',
+      POLAND: 'Poland'
     },
     BANNERS: {
       YOUR_PLACE: {
@@ -41,10 +41,10 @@ const en: LanguageKeys = {
     },
 
     CONTACT_DETAILS: {
-      title: 'Dane kontaktowe',
-      address: 'Adres',
-      shippings: 'Adres do wysyłki',
-      nip: 'NIP'
+      title: 'Contact details',
+      address: 'Address',
+      shippings: 'Shipping address',
+      nip: 'VAT number'
     },
 
     TOAST: {
@@ -203,14 +203,14 @@ const en: LanguageKeys = {
     },
 
     ORDER_STATUSES: {
-      OPEN: 'Nowe',
-      CONFIRMED: 'Potwierdzone',
-      PAYMENT_RECEIVED: 'Zapłacone',
-      PRODUCTION: 'Produkcja',
-      AWAITING_FOR_PICKUP: 'Oczekuje na dostawę',
-      IN_DELIVERY: 'W dostawie',
-      COMPLETED: 'Zakończone',
-      REJECTED: 'Odrzucone'
+      OPEN: 'New',
+      CONFIRMED: 'Confirmed',
+      PAYMENT_RECEIVED: 'Payed',
+      PRODUCTION: 'Production',
+      AWAITING_FOR_PICKUP: 'Delivery awaiting',
+      IN_DELIVERY: 'In delivery',
+      COMPLETED: 'Completed',
+      REJECTED: 'Rejected'
     },
 
     STATUS_MEANINGS: {
@@ -913,74 +913,73 @@ const en: LanguageKeys = {
   },
 
   ORDER: {
-    title: 'Zamówienie',
+    title: 'Order',
     SECTIONS: {
       ORDER_ID: {
-        label: 'Numer referencyjny zamówienia'
+        label: 'Order reference number'
       },
 
       PRODUCTS: {
-        title: 'Produkty'
+        title: 'Products'
       },
 
       STATUS: {
-        title: 'Status zamówienia'
+        title: 'Order status'
       },
 
       BILLING: {
-        title: 'Szczegóły rozliczenia',
+        title: 'Billing',
         LABELS: {
-          products_price: 'Cena produktów',
-          delivery_price: 'Dostawa',
-          payment_price: 'Płatność',
-          discount: 'Rabat',
-          grand_total: 'Łącznie to zapłaty',
-          vat: 'W tym 23% VAT'
+          products_price: 'Products price',
+          delivery_price: 'Delivery',
+          payment_price: 'Payment',
+          discount: 'Discount',
+          grand_total: 'Total to pay',
+          vat: '(including TAX)'
         }
       },
 
       PAYMENT: {
-        title: 'Dane do płatności',
-        info: 'Zamówienie należy opłacić w ciągu 5 dni roboczych od potwierdzenia przez nas czasu realizacji.',
+        title: 'Payment details',
+        info: 'Payment should be made within 5 working days from receiving order realization time confirmation.',
         LABELS: {
-          nrb: 'Numer konta',
-          amount: 'Kwota do zapłaty',
-          title: 'Tytuł płatności',
-          recipient: 'Odbiorca płatności',
-          bankName: 'Nazwa banku'
+          nrb: 'Account number',
+          amount: 'Outstanding amount',
+          title: 'Payment title',
+          recipient: 'Recipeint',
+          bankName: 'Bank name'
         }
       },
 
       INVOICE: {
-        title: 'Faktura',
-        empty:
-          'Dokument nie jest jeszcze dostępny. Wróć tutaj ponownie za jakiś czas.',
-        info: 'Dokument jest dostępny.',
-        goToInvoice: 'Przejdź do faktury'
+        title: 'Invoice',
+        empty: 'Document is not yet available. Come back here later.',
+        info: 'Document is available.',
+        goToInvoice: 'View invoice'
       },
 
       DETAILS: {
-        title: 'Szczegóły',
+        title: 'Details',
         LABELS: {
-          created_at: 'Złożenie zamówienia',
-          updated_at: 'Ostatnia modyfikacja',
-          product_count: 'Liczba pudełek'
+          created_at: 'Created order',
+          updated_at: 'Last modification',
+          product_count: 'Boxes count'
         }
       },
 
       PARCEL_DETAILS: {
-        title: 'Przesyłka',
+        title: 'Delivery',
         LABELS: {
-          parcel_id: 'Numer referencyjny',
-          follow_parcel: 'Śledź paczkę'
+          parcel_id: 'Reference number',
+          follow_parcel: 'Follow parcel'
         }
       },
 
       SHIPPING: {
-        title: 'Dostawa',
+        title: 'Shipping',
         LABELS: {
-          delivery_type: 'Typ',
-          shipping_address: 'Adres'
+          delivery_type: 'Type',
+          shipping_address: 'Destination'
         }
       },
 

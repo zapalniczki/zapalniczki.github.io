@@ -9,9 +9,9 @@ export const email = `kontakt@${domain}`
 const pl = {
   COMMON: {
     COUNTRIES: {
-      de: 'Niemcy',
-      gb: 'Wielka Brytania',
-      pl: 'Polska'
+      GERMANY: 'Niemcy',
+      'UNITED KINGDOM': 'Wielka Brytania',
+      POLAND: 'Polska'
     },
     BANNERS: {
       YOUR_PLACE: {

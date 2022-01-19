@@ -12,6 +12,7 @@ const getUserResponse = user
   .extend({
     address: address.pick({
       city: true,
+      country: true,
       post_code: true,
       street_address: true
     })

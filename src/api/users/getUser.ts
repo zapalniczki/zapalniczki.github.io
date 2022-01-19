@@ -13,6 +13,7 @@ export const getUser = async ({ id }: Params) => {
         *,
         address: ${DB_TABLES.ADDRESSES}!address_id (
           city,
+          country,
           post_code,
           street_address
         )

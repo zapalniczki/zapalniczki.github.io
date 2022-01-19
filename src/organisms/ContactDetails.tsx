@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-newline */
 import { getUser } from 'api'
 import { DB_TABLES, Order } from 'braty-common'
 import {
@@ -71,10 +72,15 @@ const ContactDetails = ({ userId }: Props) => {
               label={commonT('CONTACT_DETAILS.address')}
             />
 
-            <Text fontWeight="bold" type="body-1">
-              {/* eslint-disable-next-line react/jsx-newline */}
-              {data.address.post_code}, {data.address.city}
-            </Text>
+            <Flexbox flexDirection="column">
+              <Text fontWeight="bold" type="body-1">
+                {data.address.post_code}, {data.address.city}
+              </Text>
+
+              <Text fontWeight="bold" type="body-1">
+                {commonT(`COUNTRIES.${data.address.country}`)}
+              </Text>
+            </Flexbox>
           </Tile>
         )
       }}

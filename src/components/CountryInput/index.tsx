@@ -29,15 +29,15 @@ const getOptions = (
 ): { label: string; value: Country }[] =>
   [
     {
-      label: commonT('pl'),
+      label: commonT('POLAND'),
       value: 'POLAND' as const
     },
     {
-      label: commonT('gb'),
+      label: commonT('UNITED KINGDOM'),
       value: 'UNITED KINGDOM' as const
     },
     {
-      label: commonT('de'),
+      label: commonT('GERMANY'),
       value: 'GERMANY' as const
     }
   ].sort((prev, next) => (prev.label > next.label ? 1 : -1))
