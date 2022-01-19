@@ -61,8 +61,6 @@ export const getOrders = async ({ is_test, status }: Params) => {
     .filter('is_test', 'eq', is_test)
     .order('updated_at', { ascending: true })
 
-  console.log(response)
-
   const data = parseApiResponse(array(getOrdersResponseItem), response)
 
   return data
