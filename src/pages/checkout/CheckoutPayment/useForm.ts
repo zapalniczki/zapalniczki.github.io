@@ -5,7 +5,13 @@ import {
   triggerSendEmail
 } from 'api'
 import { MoldStatus, PaymentType, ROUTES, Voucher } from 'braty-common'
-import { useAdmin, useDev, useFormSchema, useFormSubmit } from 'hooks'
+import {
+  useAdmin,
+  useDev,
+  useFormSchema,
+  useFormSubmit,
+  useTranslation
+} from 'hooks'
 import multiply from 'lodash/multiply'
 import { checkoutContext, initState } from 'providers'
 import { useContext } from 'react'
@@ -20,6 +26,7 @@ export type FormValues = {
 }
 
 const useForm = () => {
+  const { currentLanguage } = useTranslation('COMMON')
   const navigate = useNavigate()
   const { getSchema } = useFormSchema()
   const isDev = useDev()
@@ -113,6 +120,7 @@ const useForm = () => {
           type: {
             key: 'NEW_ORDER',
             content: {
+              language: currentLanguage,
               name: fullName,
               order_id: orderId,
               phone: phone,

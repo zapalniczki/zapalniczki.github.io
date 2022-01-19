@@ -6,14 +6,14 @@ import {
   updateOrderStatus
 } from 'api'
 import { DB_TABLES, Order, OrderStatus, Parcel } from 'braty-common'
-import { useDev, useFormSubmit } from 'hooks'
+import { useTranslation, useDev, useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { object, string } from 'yup'
 
 const useForm = (
-  id: string,
+  id: Order['id'],
   status: Order['status'],
   parcelLink?: Parcel['link'],
   parcelRef?: Parcel['ref'],
@@ -39,6 +39,7 @@ const useForm = (
   })
 
   const useSubmit = () => {
+    const { currentLanguage } = useTranslation('COMMON')
     const isDev = useDev()
 
     const { mutateAsync: mutateTriggerSendEmail } =
@@ -84,6 +85,7 @@ const useForm = (
             type: {
               key: 'ORDER_STATUS_CHANGE',
               content: {
+                language: currentLanguage,
                 order_id: orderResponse.id,
                 order_status: orderResponse.status,
                 name: userResponse.full_name
