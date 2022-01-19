@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
 import { FormRow, CheckboxField } from 'components'
@@ -6,12 +6,14 @@ import { FormValues } from './useForm'
 import { PaymentType } from 'braty-common'
 import Voucher from './Voucher'
 import { displayMoney, getLanguageLabel } from 'utils'
+import { remoteConfigContext } from 'providers'
 
 type Props = {
   paymentTypes: PaymentType[]
 }
 
 const Form = ({ paymentTypes }: Props) => {
+  const { vouchers } = useContext(remoteConfigContext)
   const { currentLanguage } = useTranslation('COMMON')
   const { getInput } = useInput()
 
@@ -48,7 +50,7 @@ const Form = ({ paymentTypes }: Props) => {
           )
         })}
 
-      <Field component={Voucher} name="voucher_id" />
+      {vouchers && <Field component={Voucher} name="voucher_id" />}
     </FormRow>
   )
 }

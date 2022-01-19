@@ -76,7 +76,8 @@ const init: RemoteConfigContext = {
   catalogue_link: '',
   // REST
   i18n: false,
-  snow: false
+  snow: false,
+  vouchers: false
 }
 
 type Props = {
@@ -179,7 +180,8 @@ const remoteConfigContextSchema = object({
   catalogue_link: string(),
   // REST
   snow: boolean(),
-  i18n: boolean()
+  i18n: boolean(),
+  vouchers: boolean()
 })
 
 export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>
