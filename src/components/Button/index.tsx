@@ -1,9 +1,10 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Text, Box, Spinner } from 'components'
+import { LayoutProps } from 'framer-motion'
 import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { SpaceProps, space, WidthProps, width } from 'styled-system'
+import { SpaceProps, space, WidthProps, width, layout } from 'styled-system'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
 
@@ -40,7 +41,13 @@ const Button = ({
   }
 
   return (
-    <Container {...props} size={size} type={type} variant={variant}>
+    <Container
+      width={[0, '100%', 'unset']}
+      {...props}
+      size={size}
+      type={type}
+      variant={variant}
+    >
       {label && (
         <Text type="button" white={variant === 'primary'} wrap={false}>
           {label}
@@ -58,10 +65,11 @@ const Button = ({
   )
 }
 
-type ContainerProps = SpaceProps & {
-  size: Size
-  variant: Variant
-}
+type ContainerProps = SpaceProps &
+  LayoutProps & {
+    size: Size
+    variant: Variant
+  }
 
 const Container = styled.button<ContainerProps>`
   background: ${getColor('dark-color')};
@@ -150,6 +158,7 @@ const Container = styled.button<ContainerProps>`
 
   ${space}
   ${width}
+  ${layout}
 `
 
 type Size = 'large' | 'medium' | 'small'

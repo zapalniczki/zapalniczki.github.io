@@ -19,7 +19,7 @@ import { CheckoutResultLocationState } from '../CheckoutPayment/useForm'
 const CheckoutResult = () => {
   const { colors } = useTheme()
   const { t } = useTranslation('CHECKOUT_RESULT')
-  const isDesktop = useBreakpoints('desktop')
+  const isMobile = useBreakpoints('mobile')
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -64,8 +64,7 @@ const CheckoutResult = () => {
         </Text>
 
         <Flexbox
-          alignItems={isDesktop ? 'unset' : 'flex-end'}
-          flexDirection={isDesktop ? 'row-reverse' : 'column'}
+          flexDirection={isMobile ? 'column' : 'row-reverse'}
           justifyContent="space-between"
           marginTop="l-size"
           width="100%"
@@ -74,6 +73,7 @@ const CheckoutResult = () => {
             label={t('actions.seeOrder')}
             onClick={() => {
               const path = getOrderPath(state2.orderID)
+
               navigate(path)
             }}
             size="medium"
@@ -82,7 +82,7 @@ const CheckoutResult = () => {
 
           <Button
             label={t('actions.backToHome')}
-            marginTop={isDesktop ? 0 : 'm-size'}
+            marginTop={isMobile ? 'm-size' : 0}
             onClick={() => navigate(ROUTES.HOME)}
             size="medium"
             variant="secondary"
