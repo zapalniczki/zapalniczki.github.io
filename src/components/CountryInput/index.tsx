@@ -2,6 +2,7 @@ import Select from '../Select'
 import React from 'react'
 import { Props as SelectProps } from '../Select'
 import { TranslateFunc, useTranslation } from 'hooks'
+import { Country } from 'braty-common'
 
 type Props = Omit<SelectProps, 'options' | 'value'> & {
   value: string
@@ -23,19 +24,21 @@ const CountryInput = ({ value, ...props }: Props) => {
   )
 }
 
-const getOptions = (commonT: TranslateFunc) =>
+const getOptions = (
+  commonT: TranslateFunc
+): { label: string; value: Country }[] =>
   [
     {
       label: commonT('pl'),
-      value: 'Poland'
+      value: 'POLAND' as const
     },
     {
       label: commonT('gb'),
-      value: 'United Kingdom'
+      value: 'UNITED KINGDOM' as const
     },
     {
       label: commonT('de'),
-      value: 'Germany'
+      value: 'GERMANY' as const
     }
   ].sort((prev, next) => (prev.label > next.label ? 1 : -1))
 

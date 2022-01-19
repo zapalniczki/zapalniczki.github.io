@@ -31,7 +31,7 @@ const useForm = () => {
     city: checkout.contact_details?.city ?? '',
     email: checkout.contact_details?.email ?? '',
     phone: checkout.contact_details?.phone ?? '',
-    country: checkout.contact_details?.country ?? 'Poland'
+    country: checkout.contact_details?.country ?? 'POLAND'
   }
 
   const getSchema = (isCompany: boolean) => {
@@ -48,15 +48,15 @@ const useForm = () => {
     const companySchema = base.shape({
       nip: string()
         .when('country', {
-          is: 'Poland',
+          is: 'POLAND',
           then: getNativeSchema('NIP_PL')
         })
         .when('country', {
-          is: 'United Kingdom',
+          is: 'UNITED KINGDOM',
           then: getNativeSchema('NIP_UK')
         })
         .when('country', {
-          is: 'Germany',
+          is: 'GERMANY',
           then: getNativeSchema('NIP_DE')
         })
     })

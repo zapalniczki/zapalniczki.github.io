@@ -58,7 +58,9 @@ const useForm = () => {
         '',
       city: checkout.shipping?.city ?? checkout.contact_details?.city ?? '',
       country:
-        checkout.shipping?.country ?? checkout.contact_details?.country ?? ''
+        checkout.shipping?.country ??
+        checkout.contact_details?.country ??
+        'POLAND'
     }
   }
 
