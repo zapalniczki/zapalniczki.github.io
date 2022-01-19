@@ -9,6 +9,7 @@ import {
 import { Field, FieldProps } from 'formik'
 import { useInput } from 'hooks'
 import React from 'react'
+import { getPostCodeKey } from 'utils'
 import { FormValues } from './useForm'
 
 type Props = {
@@ -112,7 +113,10 @@ const Form = ({ isCompany }: Props) => {
         <FieldWrapper>
           <Field name="post_code" type="text">
             {(fieldProps: FieldProps<FormValues['post_code'], FormValues>) => {
-              const { label, ...inputProps } = getInput('POST_CODE', true)
+              const postCodeInputKey = getPostCodeKey(
+                fieldProps.form.values.country
+              )
+              const { label, ...inputProps } = getInput(postCodeInputKey, true)
 
               return (
                 <ValidatedInput label={label} name="post_code">

@@ -50,11 +50,17 @@ const useFormSchema = () => {
 
     STREET_ADDRESS: () => string().required(commonT('STREET_ADDRESS.required')),
 
-    POST_CODE: () =>
+    POST_CODE_PL: () =>
       string()
         .trim()
-        .matches(/^(\d{2})-(\d{3})$/, commonT('POST_CODE.matches'))
-        .required(commonT('POST_CODE.required')),
+        .required(commonT('POST_CODE_PL.required'))
+        .matches(/^(\d{2})-(\d{3})$/, commonT('POST_CODE_PL.matches')),
+
+    POST_CODE_UK: () =>
+      string().trim().required(commonT('POST_CODE_UK.required')),
+
+    POST_CODE_DE: () =>
+      string().trim().required(commonT('POST_CODE_DE.required')),
 
     CITY: () => string().required(commonT('CITY.required')),
 
@@ -143,18 +149,20 @@ type SchemaKey =
   | 'FULL_NAME'
   | 'NAME'
   | 'NEW_PASSWORD'
+  | 'NIP_DE'
   | 'NIP_PL'
   | 'NIP_UK'
-  | 'NIP_DE'
   | 'NOTES'
   | 'ORDER_ID'
   | 'PASSWORD'
   | 'PASSWORD_CONFIRMATION'
   | 'PAYMENT_TYPE'
-  | 'PLUS_CODE'
   | 'PHONE'
-  | 'POST_CODE'
+  | 'POST_CODE_DE'
+  | 'POST_CODE_PL'
+  | 'POST_CODE_UK'
   | 'PRODUCT_QUANTITY'
+  | 'PLUS_CODE'
   | 'STREET_ADDRESS'
   | 'TEST'
   | 'VOUCHER_ID'

@@ -4,7 +4,7 @@ import { Shipping } from 'models'
 import { checkoutContext } from 'providers'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { object } from 'yup'
+import { object, string } from 'yup'
 
 export type FormValues = {
   delivery_type: string | null
@@ -13,7 +13,7 @@ export type FormValues = {
 
 const useForm = () => {
   const navigate = useNavigate()
-  const { getSchema } = useFormSchema()
+  const { getSchema: getNativeSchema } = useFormSchema()
   const { checkout, setCheckout } = useContext(checkoutContext)
 
   const onSubmitForm = (
@@ -65,13 +65,26 @@ const useForm = () => {
   }
 
   const schema = object({
-    delivery_type: getSchema('DELIVERY_TYPE'),
+    delivery_type: getNativeSchema('DELIVERY_TYPE'),
     shipping: object().shape({
-      city: getSchema('CITY'),
-      country: getSchema('COUNTRY'),
-      post_code: getSchema('POST_CODE'),
-      street_address: getSchema('STREET_ADDRESS')
+      city: getNativeSchema('CITY'),
+      country: getNativeSchema('COUNTRY'),
+      street_address: getNativeSchema('STREET_ADDRESS')
     })
+  }).shape({
+    post_code: string()
+      .when('country', {
+        is: 'POLAND',
+        then: getNativeSchema('POST_CODE_PL')
+      })
+      .when('country', {
+        is: 'UNITED KINGDOM',
+        then: getNativeSchema('POST_CODE_UK')
+      })
+      .when('country', {
+        is: 'GERMANY',
+        then: getNativeSchema('POST_CODE_DE')
+      })
   })
 
   return {

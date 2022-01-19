@@ -79,12 +79,23 @@ const inputs = {
     placeholder: 'STREET_ADDRESS.placeholder',
     autocomplete: 'street-address'
   },
-  POST_CODE: {
-    label: 'POST_CODE.label',
-    placeholder: 'POST_CODE.placeholder',
+  POST_CODE_PL: {
+    label: 'POST_CODE_PL.label',
+    placeholder: 'POST_CODE_PL.placeholder',
     maxLength: 6,
     autocomplete: 'postal-code'
   },
+  POST_CODE_UK: {
+    label: 'POST_CODE_UK.label',
+    placeholder: 'POST_CODE_UK.placeholder',
+    autocomplete: 'postal-code'
+  },
+  POST_CODE_DE: {
+    label: 'POST_CODE_DE.label',
+    placeholder: 'POST_CODE_DE.placeholder',
+    autocomplete: 'postal-code'
+  },
+
   CITY: {
     label: 'CITY.label',
     placeholder: 'CITY.placeholder',

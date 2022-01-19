@@ -306,8 +306,16 @@ const pl = {
       NIP_DE: {
         invalid: 'VAT jest nieprawidłowy'
       },
-      POST_CODE: {
+      POST_CODE_PL: {
         matches: 'Kod pocztowy powinien mieć format XX-XXX',
+        required: 'Proszę podać kod pocztowy'
+      },
+      POST_CODE_UK: {
+        matches: 'Kod pocztowy jest nieprawidłowy',
+        required: 'Proszę podać kod pocztowy'
+      },
+      POST_CODE_DE: {
+        matches: 'Kod pocztowy jest nieprawidłowy',
         required: 'Proszę podać kod pocztowy'
       },
       FULL_NAME: {
@@ -392,7 +400,15 @@ const pl = {
         label: 'Adres (ulica, numer domu/mieszkania)',
         placeholder: ''
       },
-      POST_CODE: {
+      POST_CODE_PL: {
+        label: 'Kod pocztowy',
+        placeholder: ''
+      },
+      POST_CODE_UK: {
+        label: 'Kod pocztowy',
+        placeholder: ''
+      },
+      POST_CODE_DE: {
         label: 'Kod pocztowy',
         placeholder: ''
       },

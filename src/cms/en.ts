@@ -306,8 +306,16 @@ const en: LanguageKeys = {
       NIP_DE: {
         invalid: 'VAT number is invalid'
       },
-      POST_CODE: {
-        matches: 'Kod pocztowy powinien mieć format XX-XXX',
+      POST_CODE_PL: {
+        matches: 'Post code should follow give format XX-XXX',
+        required: 'Post code is required'
+      },
+      POST_CODE_UK: {
+        matches: 'Post code is invalid',
+        required: 'Post code is required'
+      },
+      POST_CODE_DE: {
+        matches: 'Post code is invalid',
         required: 'Post code is required'
       },
       FULL_NAME: {
@@ -392,7 +400,15 @@ const en: LanguageKeys = {
         label: 'Address',
         placeholder: ''
       },
-      POST_CODE: {
+      POST_CODE_PL: {
+        label: 'Post code',
+        placeholder: ''
+      },
+      POST_CODE_UK: {
+        label: 'Post code',
+        placeholder: ''
+      },
+      POST_CODE_DE: {
         label: 'Post code',
         placeholder: ''
       },

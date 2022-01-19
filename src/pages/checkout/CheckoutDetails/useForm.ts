@@ -35,15 +35,30 @@ const useForm = () => {
   }
 
   const getSchema = (isCompany: boolean) => {
-    const base = object().shape({
-      city: getNativeSchema('CITY'),
-      country: getNativeSchema('COUNTRY'),
-      email: getNativeSchema('EMAIL'),
-      full_name: getNativeSchema('FULL_NAME'),
-      phone: getNativeSchema('PHONE'),
-      post_code: getNativeSchema('POST_CODE'),
-      street_address: getNativeSchema('STREET_ADDRESS')
-    })
+    const base = object()
+      .shape({
+        city: getNativeSchema('CITY'),
+        country: getNativeSchema('COUNTRY'),
+        email: getNativeSchema('EMAIL'),
+        full_name: getNativeSchema('FULL_NAME'),
+        phone: getNativeSchema('PHONE'),
+        street_address: getNativeSchema('STREET_ADDRESS')
+      })
+      .shape({
+        post_code: string()
+          .when('country', {
+            is: 'POLAND',
+            then: getNativeSchema('POST_CODE_PL')
+          })
+          .when('country', {
+            is: 'UNITED KINGDOM',
+            then: getNativeSchema('POST_CODE_UK')
+          })
+          .when('country', {
+            is: 'GERMANY',
+            then: getNativeSchema('POST_CODE_DE')
+          })
+      })
 
     const companySchema = base.shape({
       nip: string()

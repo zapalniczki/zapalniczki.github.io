@@ -48,7 +48,7 @@ const Form = ({ paymentTypes }: Props) => {
                     <CheckboxField
                       {...fieldProps.field}
                       caption={displayMoney(type.price)}
-                      selectedValue={fieldProps.field}
+                      selectedValue={fieldProps.field.value}
                       subtitle={description}
                       title={optionLabel}
                       value={type.id}

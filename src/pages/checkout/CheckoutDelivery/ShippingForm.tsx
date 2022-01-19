@@ -9,6 +9,7 @@ import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useInput } from 'hooks'
 import { FormValues } from './useForm'
+import { getPostCodeKey } from 'utils'
 
 const ShippingForm = () => {
   const { getInput } = useInput()
@@ -80,7 +81,10 @@ const ShippingForm = () => {
                 FormValues
               >
             ) => {
-              const { label, ...inputProps } = getInput('POST_CODE', true)
+              const postCodeInputKey = getPostCodeKey(
+                fieldProps.form.values.shipping.country
+              )
+              const { label, ...inputProps } = getInput(postCodeInputKey, true)
 
               return (
                 <ValidatedInput label={label} name="shipping.post_code">
