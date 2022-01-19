@@ -2747,8 +2747,8 @@ braces@^3.0.1:
     fill-range "^7.0.1"
 
 braty-common@zapalniczki/braty-common:
-  version "1.0.106"
-  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/f7f600d31dbbf5d5ad9310e1e3a33e0d9c78d710"
+  version "1.0.107"
+  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/3a48158e637b466d54b548ad65b167fa3ed22e00"
   dependencies:
     zod "^3.11.6"
 
