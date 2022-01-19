@@ -33,8 +33,8 @@ const List = () => {
         accessor: 'price' as const
       },
       {
-        Header: commonT('TABLE_HEADERS.time'),
-        accessor: 'time' as const
+        Header: commonT('TABLE_HEADERS.description'),
+        accessor: 'description' as const
       },
       {
         Header: commonT('TABLE_HEADERS.frontend_icon_name'),
@@ -82,7 +82,7 @@ const shapeData = (data: DeliveryType[]) =>
       updated_at: formatDate(record.updated_at),
       label: record.label_pl,
       price: displayMoney(record.price),
-      time: record.time,
+      description: record.time,
       requires_address: getIcon(record.requires_address),
       is_enabled: getIcon(record.is_enabled),
       frontend_icon_name: record.frontend_icon_name ?? '-',
