@@ -26,7 +26,8 @@ export const getOrder = async ({ id }: Props) => {
         url
       ),
       delivery_type: ${DB_TABLES.DELIVERY_TYPES} (
-        label,
+        label_pl,
+        label_en,
         time
       ),
       voucher: ${DB_TABLES.VOUCHERS} (

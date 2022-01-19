@@ -81,7 +81,7 @@ const DeliveryAndPayments = () => {
                 <FeatureItem
                   key={type.id}
                   subtitle={`${displayMoney(type.price)} - ${type.time}`}
-                  title={type.label}
+                  title={type.label_pl}
                 >
                   <FontAwesomeIcon
                     icon={type.frontend_icon_name as IconName}

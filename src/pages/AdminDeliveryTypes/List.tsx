@@ -80,7 +80,7 @@ const shapeData = (data: DeliveryType[]) =>
     return {
       created_at: formatDate(record.created_at),
       updated_at: formatDate(record.updated_at),
-      label: record.label,
+      label: record.label_pl,
       price: displayMoney(record.price),
       time: record.time,
       requires_address: getIcon(record.requires_address),

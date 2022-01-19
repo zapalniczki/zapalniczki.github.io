@@ -34,7 +34,8 @@ const getOrderResponse = order.extend({
   ).optional(),
 
   delivery_type: deliveryType.pick({
-    label: true,
+    label_en: true,
+    label_pl: true,
     time: true
   }),
 

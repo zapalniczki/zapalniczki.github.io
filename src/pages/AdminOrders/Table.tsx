@@ -91,7 +91,7 @@ const shapeData = (
     email: order.customerEmail.email,
     customer_name: order.customerName.full_name,
     phone: order.customerPhone.phone,
-    delivery_yype: order.deliveryType.label,
+    delivery_type: order.deliveryType.label_pl,
     client: (
       <Flexbox flexDirection="column">
         <Text fontWeight="bold" type="body-2">
@@ -114,7 +114,6 @@ const shapeData = (
       parseISO(order.updated_at)
     ),
     sum: displayMoney(order.total),
-    delivery_type: order.deliveryType.label,
     boxes_count:
       order.products
         ?.map((product) => product.quantity)

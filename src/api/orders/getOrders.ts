@@ -13,7 +13,8 @@ export const getOrders = async ({ is_test, status }: Params) => {
       `
       id,
       deliveryType: delivery_type(
-        label
+        label_pl,
+        label_en
       ),
       total,
       updated_at,
