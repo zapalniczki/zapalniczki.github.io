@@ -60,7 +60,7 @@ const getBanners = (
 
         <Button
           icon="arrow-right"
-          label="Produkty"
+          label={commonT('YOUR_PLACE.buttonLabel')}
           onClick={() => navigate(ROUTES.PRODUCTS)}
           size="medium"
         />

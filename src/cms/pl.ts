@@ -18,7 +18,8 @@ const pl = {
         title:
           '<strong>Twoje</strong> miejsce w <strong>Twoim</strong> punkcie',
         subtitle:
-          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.'
+          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.',
+        buttonLabel: 'Produkty'
       },
       CHRISTMAS_2021: {
         tite: '<strong>Wyjątkowa</strong> oferta <strong>świąteczna</strong>',
@@ -515,7 +516,7 @@ const pl = {
     },
 
     CATALOGUE: {
-      title: 'Nasz najnowszy katalog produktów już jest!',
+      title: 'Katalog produktów',
       linkLabel: 'Zobacz'
     },
 

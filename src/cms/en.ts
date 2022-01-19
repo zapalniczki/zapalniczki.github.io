@@ -19,7 +19,8 @@ const en: LanguageKeys = {
       YOUR_PLACE: {
         title: '<strong>Your</strong> place in <strong>Your</strong> point',
         subtitle:
-          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją sprzedażową.'
+          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją sprzedażową.',
+        buttonLabel: 'Products'
       },
       CHRISTMAS_2021: {
         tite: '<strong>Wyjątkowa</strong> oferta <strong>świąteczna</strong>',
@@ -515,8 +516,8 @@ const en: LanguageKeys = {
     },
 
     CATALOGUE: {
-      title: 'Nasz najnowszy katalog produktów już jest',
-      linkLabel: 'Zobacz'
+      title: 'Products Catalogue',
+      linkLabel: 'View'
     },
 
     bestsellers: {
