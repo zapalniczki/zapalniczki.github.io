@@ -2747,9 +2747,10 @@ braces@^3.0.1:
     fill-range "^7.0.1"
 
 braty-common@zapalniczki/braty-common:
-  version "1.0.110"
-  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/c4c926e997ee8cf13292a9c4fa0ece3d38c99980"
+  version "1.0.111"
+  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/e57df5103592f5cb7f4b0bcb73897e302354c495"
   dependencies:
+    firebase "^9.6.3"
     zod "^3.11.6"
 
 broadcast-channel@^3.4.1:
@@ -4328,7 +4329,7 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-firebase@^9.4.1:
+firebase@^9.4.1, firebase@^9.6.3:
   version "9.6.3"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-9.6.3.tgz#fe22c94369eb50eba9d15e8ba2edb7100d5c1ed4"
   integrity sha512-CMzv2LJGruZNtKI6pk1XLVaDC7ujIcq/S57wbC9XGllykIh86GLNPwVEWuCqCWmQDAZLyhi0t6tW/F2NX3HcPA==
