@@ -1,4 +1,4 @@
-import { RemoteConfig } from 'providers'
+import { RemoteConfig } from 'braty-common'
 import { Route } from '../pages/App/routes'
 
 const handleRoutes = (

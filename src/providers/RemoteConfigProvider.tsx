@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { createContext } from 'react'
-import { remoteConfig, RemoteConfig } from 'braty-common'
+import { remoteConfig as remoteConfigSchema, RemoteConfig } from 'braty-common'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAXnOQn6hJ15jMRHqRT-1nozJ8-omP0s2E',
@@ -21,14 +21,7 @@ import {
   getAll,
   fetchAndActivate
 } from 'firebase/remote-config'
-import {
-  string,
-  boolean,
-  number,
-  object,
-  TypeOf,
-  ZodFirstPartyTypeKind
-} from 'zod'
+import { ZodFirstPartyTypeKind } from 'zod'
 import { useDev } from 'hooks'
 
 const init: RemoteConfig = {
@@ -116,7 +109,7 @@ const RemoteConfigProvider = ({ children }: Props) => {
         })
       )
 
-      const valuesParsed = remoteConfig.safeParse(values)
+      const valuesParsed = remoteConfigSchema.safeParse(values)
 
       if (valuesParsed.success) {
         setConfig(valuesParsed.data)
@@ -135,64 +128,13 @@ const RemoteConfigProvider = ({ children }: Props) => {
   )
 }
 
-const remoteConfig = object({
-  _404: boolean(),
-  adminCallbacks: boolean(),
-  adminDeliveryTypes: boolean(),
-  adminIcons: boolean(),
-  adminLabels: boolean(),
-  adminMolds: boolean(),
-  adminOrders: boolean(),
-  adminPaymentTypes: boolean(),
-  adminMarketing: boolean(),
-  cart: boolean(),
-  checkoutDelivery: boolean(),
-  checkoutDetails: boolean(),
-  checkoutPayment: boolean(),
-  checkoutResult: boolean(),
-  christmas2021: boolean(),
-  christmas: boolean(),
-  companyOffer: boolean(),
-  contact: boolean(),
-  customer: boolean(),
-  deliveryAndPayments: boolean(),
-  documents: boolean(),
-  home: boolean(),
-  howToCreateOrder: boolean(),
-  order: boolean(),
-  products: boolean(),
-  signIn: boolean(),
-  signUp: boolean(),
-  signedOut: boolean(),
-  valentinesDay: boolean(),
-  viewProduct: boolean(),
-  // HOME
-  homeFeaturedCount: number(),
-  homeBestsellersDisplay: boolean(),
-  homeFeaturedDisplay: boolean(),
-  homeCatalogueDisplay: boolean(),
-  homeValentinesDayOrder: number(),
-  homeFeaturedOrder: number(),
-  homeCatalogueOrder: number(),
-  homeBestsellersOrder: number(),
-  // DATA
-  catalogue_cover: string(),
-  catalogue_link: string(),
-  // REST
-  snow: boolean(),
-  i18n: boolean(),
-  vouchers: boolean()
-})
-
-export type RemoteConfig = TypeOf<typeof remoteConfig>
-
 export const remoteConfigContext = createContext<RemoteConfig>(init)
 
 export default RemoteConfigProvider
 
 const getTypeOfRemoteConfigKey = (query: string) => {
   const remoteConfigKeysWithTypes = Object.entries(
-    remoteConfig._getCached().shape
+    remoteConfigSchema._getCached().shape
   ).map(([key, value]) => ({
     key,
     type: value._def.typeName
