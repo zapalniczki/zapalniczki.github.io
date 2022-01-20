@@ -6,7 +6,7 @@ import {
   updateOrderStatus
 } from 'api'
 import { DB_TABLES, Order, OrderStatus, Parcel } from 'braty-common'
-import { useTranslation, useDev, useFormSubmit } from 'hooks'
+import { useTranslation, useTest, useFormSubmit } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
@@ -40,7 +40,7 @@ const useForm = (
 
   const useSubmit = () => {
     const { currentLanguage } = useTranslation('COMMON')
-    const isDev = useDev()
+    const isTest = useTest()
 
     const { mutateAsync: mutateTriggerSendEmail } =
       useMutation(triggerSendEmail)
@@ -79,7 +79,7 @@ const useForm = (
           id: orderResponse.user_id
         })
 
-        if (!isDev) {
+        if (!isTest) {
           mutateTriggerSendEmail({
             to: userResponse.email,
             type: {

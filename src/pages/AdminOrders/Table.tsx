@@ -16,7 +16,7 @@ import {
 } from 'components'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
-import { TranslateFunc, useDev, useTranslation } from 'hooks'
+import { TranslateFunc, useTest, useTranslation } from 'hooks'
 import { GetOrdersResponseItem } from 'models'
 import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
@@ -33,8 +33,8 @@ const Table = ({ columns, status }: Props) => {
   const { t } = useTranslation('ADMIN_ORDERS')
   const { t: commonT } = useTranslation('COMMON')
 
-  const isDev = useDev()
-  const [testData, setTestData] = useState(isDev)
+  const isTest = useTest()
+  const [testData, setTestData] = useState(isTest)
 
   const params: Pick<Order, 'status' | 'is_test'> = {
     status,

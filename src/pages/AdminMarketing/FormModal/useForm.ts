@@ -1,6 +1,6 @@
 import { addMarketing, editMarketing, triggerSendEmail } from 'api'
 import { DB_TABLES, Marketing } from 'braty-common'
-import { useDev, useFormSchema, useFormSubmit, useTranslation } from 'hooks'
+import { useFormSchema, useFormSubmit, useTest, useTranslation } from 'hooks'
 import { queryClient } from 'index'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
@@ -38,7 +38,7 @@ const useForm = (
   })
 
   const useSubmit = () => {
-    const isDev = useDev()
+    const isTest = useTest()
     const { mutateAsync: mutateEditMarketing } = useMutation(editMarketing)
     const { mutateAsync: mutateAddMarketing } = useMutation(addMarketing)
     const { mutateAsync: mutateTriggerSendEmail } =
@@ -60,7 +60,7 @@ const useForm = (
             send_brochure_agreement: values.send_brochure_agreement,
             send_brochure_cyclic_agreement:
               values.send_brochure_cyclic_agreement,
-            is_test: isDev
+            is_test: isTest
           })
         } else {
           marketingResponse = await mutateAddMarketing({
@@ -72,7 +72,7 @@ const useForm = (
             send_brochure_agreement: values.send_brochure_agreement,
             send_brochure_cyclic_agreement:
               values.send_brochure_cyclic_agreement,
-            is_test: isDev
+            is_test: isTest
           })
         }
 

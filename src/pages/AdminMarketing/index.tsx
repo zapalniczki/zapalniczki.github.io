@@ -1,5 +1,5 @@
 import { Banner, Flexbox, Page, Switch } from 'components'
-import { useDev, usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import { useTest, usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React, { useState } from 'react'
 import FormModal from './FormModal'
 import List from './List'
@@ -7,8 +7,8 @@ import List from './List'
 const AdminMarketing = () => {
   const { t } = useTranslation('ADMIN_MARKETING')
 
-  const isDev = useDev()
-  const [testDataEnabled, setTestDataEnabled] = useState(isDev)
+  const isTest = useTest()
+  const [testDataEnabled, setTestDataEnabled] = useState(isTest)
 
   useScrollTop()
   usePageTitle(t('title'))
