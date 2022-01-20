@@ -1,7 +1,11 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { createContext } from 'react'
-import { remoteConfig as remoteConfigSchema, RemoteConfig } from 'braty-common'
+import {
+  remoteConfig as remoteConfigSchema,
+  RemoteConfig,
+  getTypeOfRemoteConfigKey
+} from 'braty-common'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAXnOQn6hJ15jMRHqRT-1nozJ8-omP0s2E',
@@ -82,7 +86,7 @@ const RemoteConfigProvider = ({ children }: Props) => {
   const [config, setConfig] = useState<RemoteConfig>(init)
 
   useEffect(() => {
-    async function start() {
+    async function fetchAndParseRemoteConfig() {
       const remoteConfig = getRemoteConfig()
       remoteConfig.settings = {
         minimumFetchIntervalMillis: isDev ? 2000 : 43200000,
@@ -118,7 +122,7 @@ const RemoteConfigProvider = ({ children }: Props) => {
       }
     }
 
-    start()
+    fetchAndParseRemoteConfig()
   }, [])
 
   return (
@@ -131,20 +135,3 @@ const RemoteConfigProvider = ({ children }: Props) => {
 export const remoteConfigContext = createContext<RemoteConfig>(init)
 
 export default RemoteConfigProvider
-
-const getTypeOfRemoteConfigKey = (query: string) => {
-  const remoteConfigKeysWithTypes = Object.entries(
-    remoteConfigSchema._getCached().shape
-  ).map(([key, value]) => ({
-    key,
-    type: value._def.typeName
-  }))
-
-  const thisKey = remoteConfigKeysWithTypes.find((key) => key.key === query)
-
-  if (!thisKey) {
-    return undefined
-  }
-
-  return thisKey.type
-}
