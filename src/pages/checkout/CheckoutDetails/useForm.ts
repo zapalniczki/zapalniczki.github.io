@@ -73,7 +73,8 @@ const useForm = () => {
         .when('country', {
           is: 'GERMANY',
           then: getNativeSchema('NIP_DE')
-        })
+        }),
+      full_name: getNativeSchema('COMPANY')
     })
 
     return isCompany ? companySchema : base

@@ -48,6 +48,8 @@ const useFormSchema = () => {
 
     FULL_NAME: () => string().required(commonT('FULL_NAME.required')).trim(),
 
+    COMPANY: () => string().required(commonT('COMPANY.required')).trim(),
+
     STREET_ADDRESS: () => string().required(commonT('STREET_ADDRESS.required')),
 
     POST_CODE_PL: () =>
@@ -143,6 +145,7 @@ const useFormSchema = () => {
 
 type SchemaKey =
   | 'CITY'
+  | 'COMPANY'
   | 'COUNTRY'
   | 'DELIVERY_TYPE'
   | 'EMAIL'
