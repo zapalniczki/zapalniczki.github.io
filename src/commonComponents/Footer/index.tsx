@@ -1,6 +1,5 @@
 import { ROUTES } from 'braty-common'
 import {
-  Badge,
   Box,
   Flexbox,
   Image,
@@ -10,16 +9,16 @@ import {
   Separator,
   Text
 } from 'components'
-import { useAdmin, useBreakpoints, useTranslation } from 'hooks'
+import { useAdmin, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { handleRoutes } from 'utils'
+import AdminNavigation from './AdminNavigation'
 
 const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
   const isAdmin = useAdmin()
-  const isMobile = useBreakpoints('mobile')
   const remoteConfig = useContext(remoteConfigContext)
 
   return (
@@ -61,51 +60,7 @@ const Footer = () => {
             ))}
           </Flexbox>
 
-          {isAdmin && (
-            <Flexbox
-              alignItems={['unset', 'flex-start', 'flex-start', 'flex-end']}
-              as="ul"
-              flexDirection="column"
-              margin="0"
-              marginTop={['unset', 'm-size', 'm-size', 'unset']}
-              padding="0"
-            >
-              {handleRoutes(routes, remoteConfig, 'FOOTER_ADMIN').map(
-                (route) => {
-                  if (route.key === 'adminOrders') {
-                    return (
-                      <Badge
-                        count={2}
-                        key={route.path}
-                        right={isMobile ? undefined : -50}
-                      >
-                        <Box as="li" display="inline-block" marginY="xxs-size">
-                          <Link
-                            label={commonT(`LINKS.${route.key}`)}
-                            to={route.path}
-                          />
-                        </Box>
-                      </Badge>
-                    )
-                  }
-
-                  return (
-                    <Box
-                      as="li"
-                      display="inline-block"
-                      key={route.path}
-                      marginY="xxs-size"
-                    >
-                      <Link
-                        label={commonT(`LINKS.${route.key}`)}
-                        to={route.path}
-                      />
-                    </Box>
-                  )
-                }
-              )}
-            </Flexbox>
-          )}
+          <AdminNavigation />
         </Flexbox>
 
         <Separator marginY="l-size" />
