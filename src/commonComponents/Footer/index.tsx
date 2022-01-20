@@ -1,5 +1,6 @@
 import { ROUTES } from 'braty-common'
 import {
+  Badge,
   Box,
   Flexbox,
   Image,
@@ -9,7 +10,7 @@ import {
   Separator,
   Text
 } from 'components'
-import { useAdmin, useTranslation } from 'hooks'
+import { useAdmin, useBreakpoints, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
@@ -18,6 +19,7 @@ import { handleRoutes } from 'utils'
 const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
   const isAdmin = useAdmin()
+  const isMobile = useBreakpoints('mobile')
   const remoteConfig = useContext(remoteConfigContext)
 
   return (
@@ -69,19 +71,38 @@ const Footer = () => {
               padding="0"
             >
               {handleRoutes(routes, remoteConfig, 'FOOTER_ADMIN').map(
-                (route) => (
-                  <Box
-                    as="li"
-                    display="inline-block"
-                    key={route.path}
-                    marginY="xxs-size"
-                  >
-                    <Link
-                      label={commonT(`LINKS.${route.key}`)}
-                      to={route.path}
-                    />
-                  </Box>
-                )
+                (route) => {
+                  if (route.key === 'adminOrders') {
+                    return (
+                      <Badge
+                        count={2}
+                        key={route.path}
+                        right={isMobile ? undefined : -50}
+                      >
+                        <Box as="li" display="inline-block" marginY="xxs-size">
+                          <Link
+                            label={commonT(`LINKS.${route.key}`)}
+                            to={route.path}
+                          />
+                        </Box>
+                      </Badge>
+                    )
+                  }
+
+                  return (
+                    <Box
+                      as="li"
+                      display="inline-block"
+                      key={route.path}
+                      marginY="xxs-size"
+                    >
+                      <Link
+                        label={commonT(`LINKS.${route.key}`)}
+                        to={route.path}
+                      />
+                    </Box>
+                  )
+                }
               )}
             </Flexbox>
           )}

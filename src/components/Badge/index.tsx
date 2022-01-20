@@ -6,6 +6,7 @@ import getSpace from 'styles/getSpace'
 
 type BaseProps = {
   children?: ReactNode
+  right?: number
   top?: number
 }
 
@@ -25,14 +26,14 @@ const Badge = ({ children, ...props }: Props) => {
   let content: JSX.Element | null = null
   if (props.hasText) {
     content = (
-      <Count hasText={props.hasText} top={props.top}>
+      <Count hasText={props.hasText} right={props.right} top={props.top}>
         {props.text}
       </Count>
     )
   } else {
     if (props.count >= 1) {
       content = (
-        <Count count={props.count} top={props.top}>
+        <Count count={props.count} right={props.right} top={props.top}>
           {props.count}
         </Count>
       )
@@ -51,6 +52,7 @@ const Badge = ({ children, ...props }: Props) => {
 type CountProps = {
   count?: number
   hasText?: boolean
+  right?: number
   top?: number
 }
 
@@ -69,7 +71,8 @@ const Count = styled.span<CountProps>`
   position: absolute;
   top: 0;
   right: 0;
-  transform: ${(props) => `translate(50%, ${props.top || -85}%)`};
+  transform: ${(props) =>
+    `translate(${props.right || 50}%, ${props.top || -85}%)`};
 `
 
 export default Badge
