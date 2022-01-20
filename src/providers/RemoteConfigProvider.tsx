@@ -1,11 +1,7 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import { fetchAndParseRemoteConfig, RemoteConfig } from 'braty-common'
 import { initializeApp } from 'firebase/app'
-import { createContext } from 'react'
-import {
-  remoteConfig as remoteConfigSchema,
-  RemoteConfig,
-  getTypeOfRemoteConfigKey
-} from 'braty-common'
+import { useDev } from 'hooks'
+import React, { createContext, ReactNode, useEffect, useState } from 'react'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAXnOQn6hJ15jMRHqRT-1nozJ8-omP0s2E',
@@ -19,14 +15,6 @@ const firebaseConfig = {
 }
 
 initializeApp(firebaseConfig)
-
-import {
-  getRemoteConfig,
-  getAll,
-  fetchAndActivate
-} from 'firebase/remote-config'
-import { ZodFirstPartyTypeKind } from 'zod'
-import { useDev } from 'hooks'
 
 const init: RemoteConfig = {
   _404: true,
@@ -86,43 +74,13 @@ const RemoteConfigProvider = ({ children }: Props) => {
   const [config, setConfig] = useState<RemoteConfig>(init)
 
   useEffect(() => {
-    async function fetchAndParseRemoteConfig() {
-      const remoteConfig = getRemoteConfig()
-      remoteConfig.settings = {
-        minimumFetchIntervalMillis: isDev ? 2000 : 43200000,
-        fetchTimeoutMillis: 6000
-      }
+    const start = async () => {
+      const remoteConfig = await fetchAndParseRemoteConfig(isDev)
 
-      await fetchAndActivate(remoteConfig)
-
-      const rawValues = getAll(remoteConfig)
-      const values = Object.fromEntries(
-        Object.entries(rawValues).map(([key, value]) => {
-          const valueType = getTypeOfRemoteConfigKey(key)
-
-          let valueParsed
-          if (valueType === ZodFirstPartyTypeKind.ZodNumber) {
-            valueParsed = value.asNumber()
-          } else if (valueType === ZodFirstPartyTypeKind.ZodBoolean) {
-            valueParsed = value.asBoolean()
-          } else {
-            valueParsed = value.asString()
-          }
-
-          return [key, valueParsed]
-        })
-      )
-
-      const valuesParsed = remoteConfigSchema.safeParse(values)
-
-      if (valuesParsed.success) {
-        setConfig(valuesParsed.data)
-      } else {
-        throw new Error(valuesParsed.error.toString())
-      }
+      setConfig(remoteConfig)
     }
 
-    fetchAndParseRemoteConfig()
+    start()
   }, [])
 
   return (
