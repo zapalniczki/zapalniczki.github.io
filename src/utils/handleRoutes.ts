@@ -1,9 +1,9 @@
-import { RemoteConfigContext } from 'providers'
+import { RemoteConfig } from 'providers'
 import { Route } from '../pages/App/routes'
 
 const handleRoutes = (
   routes: Route[],
-  remoteConfig: RemoteConfigContext,
+  remoteConfig: RemoteConfig,
   destination: 'FOOTER' | 'HAMBURGER' | 'MENU' | 'ROUTER' | 'FOOTER_ADMIN'
 ) => {
   const isFooter = destination === 'FOOTER'

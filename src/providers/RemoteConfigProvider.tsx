@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { createContext } from 'react'
+import { remoteConfig, RemoteConfig } from 'braty-common'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAXnOQn6hJ15jMRHqRT-1nozJ8-omP0s2E',
@@ -13,7 +14,6 @@ const firebaseConfig = {
   appId: '1:397821315416:web:7af195e1b14c809e4f3d2d'
 }
 
-// Initialize Firebase
 initializeApp(firebaseConfig)
 
 import {
@@ -31,7 +31,7 @@ import {
 } from 'zod'
 import { useDev } from 'hooks'
 
-const init: RemoteConfigContext = {
+const init: RemoteConfig = {
   _404: true,
   adminCallbacks: false,
   adminDeliveryTypes: false,
@@ -86,7 +86,7 @@ type Props = {
 
 const RemoteConfigProvider = ({ children }: Props) => {
   const isDev = useDev()
-  const [config, setConfig] = useState<RemoteConfigContext>(init)
+  const [config, setConfig] = useState<RemoteConfig>(init)
 
   useEffect(() => {
     async function start() {
@@ -116,7 +116,7 @@ const RemoteConfigProvider = ({ children }: Props) => {
         })
       )
 
-      const valuesParsed = remoteConfigContextSchema.safeParse(values)
+      const valuesParsed = remoteConfig.safeParse(values)
 
       if (valuesParsed.success) {
         setConfig(valuesParsed.data)
@@ -135,7 +135,7 @@ const RemoteConfigProvider = ({ children }: Props) => {
   )
 }
 
-const remoteConfigContextSchema = object({
+const remoteConfig = object({
   _404: boolean(),
   adminCallbacks: boolean(),
   adminDeliveryTypes: boolean(),
@@ -184,15 +184,15 @@ const remoteConfigContextSchema = object({
   vouchers: boolean()
 })
 
-export type RemoteConfigContext = TypeOf<typeof remoteConfigContextSchema>
+export type RemoteConfig = TypeOf<typeof remoteConfig>
 
-export const remoteConfigContext = createContext<RemoteConfigContext>(init)
+export const remoteConfigContext = createContext<RemoteConfig>(init)
 
 export default RemoteConfigProvider
 
 const getTypeOfRemoteConfigKey = (query: string) => {
   const remoteConfigKeysWithTypes = Object.entries(
-    remoteConfigContextSchema._getCached().shape
+    remoteConfig._getCached().shape
   ).map(([key, value]) => ({
     key,
     type: value._def.typeName
