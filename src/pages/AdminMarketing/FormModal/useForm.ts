@@ -92,12 +92,12 @@ const useForm = (
 
         if (shouldSendEmail) {
           mutateTriggerSendEmail({
+            language: currentLanguage,
             to: values.email,
             type: {
               key: 'MARKETING_OFFER',
               content: {
-                name: values.name ?? undefined,
-                language: currentLanguage
+                name: values.name ?? undefined
               }
             }
           })

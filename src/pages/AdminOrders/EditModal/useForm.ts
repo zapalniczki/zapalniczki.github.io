@@ -81,11 +81,11 @@ const useForm = (
 
         if (!isTest) {
           mutateTriggerSendEmail({
+            language: currentLanguage,
             to: userResponse.email,
             type: {
               key: 'ORDER_STATUS_CHANGE',
               content: {
-                language: currentLanguage,
                 order_id: orderResponse.id,
                 order_status: orderResponse.status,
                 name: userResponse.full_name

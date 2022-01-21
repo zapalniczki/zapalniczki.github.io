@@ -107,11 +107,11 @@ const useForm = () => {
 
       if (!isTest) {
         await mutateTriggerSendEmail({
+          language: currentLanguage,
           to: email,
           type: {
             key: 'NEW_ORDER',
             content: {
-              language: currentLanguage,
               name: fullName,
               order_id: orderId,
               phone: phone,
