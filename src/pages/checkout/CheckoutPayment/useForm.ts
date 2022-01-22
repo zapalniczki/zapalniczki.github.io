@@ -5,7 +5,13 @@ import {
   triggerSendEmail
 } from 'api'
 import { MoldStatus, PaymentType, ROUTES, Voucher } from 'braty-common'
-import { useTest, useFormSchema, useFormSubmit, useTranslation } from 'hooks'
+import {
+  useTest,
+  useFormSchema,
+  useFormSubmit,
+  useTranslation,
+  useNoEmail
+} from 'hooks'
 import multiply from 'lodash/multiply'
 import { checkoutContext, initState } from 'providers'
 import { useContext } from 'react'
@@ -23,6 +29,7 @@ const useForm = () => {
   const { currentLanguage } = useTranslation('COMMON')
   const navigate = useNavigate()
   const { getSchema } = useFormSchema()
+  const isNoEmail = useNoEmail()
   const isTest = useTest()
 
   const { basket, checkout, setCheckout } = useContext(checkoutContext)
@@ -105,7 +112,7 @@ const useForm = () => {
         productionTime
       }
 
-      if (!isTest) {
+      if (!isNoEmail) {
         await mutateTriggerSendEmail({
           language: currentLanguage,
           to: email,
