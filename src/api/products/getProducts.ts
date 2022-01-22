@@ -1,4 +1,11 @@
-import { Collection, DB_TABLES, Icon, Label, Product } from 'braty-common'
+import {
+  Collection,
+  DB_TABLES,
+  Icon,
+  Label,
+  product,
+  Product
+} from 'braty-common'
 import { getProductsResponseItem, GetProductsResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
@@ -11,7 +18,8 @@ export type Params = {
   iconId?: Icon['id']
   labelId?: Label['id']
   limit?: number
-  name?: Product['name']
+  name_en?: Product['name_en']
+  name_pl?: Product['name_pl']
 }
 
 export const getProducts = async (params: Params = {}) => {
@@ -41,7 +49,8 @@ bestseller,
 featured,
 collection_id,
 label_id,
-name,
+name_pl,
+name_en,
 icon_id,
 ${DB_TABLES.IMAGES} (
   *
@@ -67,7 +76,16 @@ export const getProductsMatch = (params: Params) => ({
   ...(params?.featured && { featured: params.featured })
 })
 
-export const getProductsIlike = (params: Params) => ({
-  column: 'name' as const,
-  patern: `%${params.name ? params.name : ''}%`
-})
+export const getProductsIlike = (params: Params) => {
+  if (params.name_en) {
+    return {
+      column: 'name_en' as const,
+      patern: `%${params.name_en ? params.name_en : ''}%`
+    }
+  }
+
+  return {
+    column: 'name_pl' as const,
+    patern: `%${params.name_pl ? params.name_pl : ''}%`
+  }
+}

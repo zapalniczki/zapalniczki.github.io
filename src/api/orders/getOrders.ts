@@ -35,7 +35,8 @@ export const getOrders = async ({ is_test, status }: Params) => {
         id,
         quantity,
         product: ${DB_TABLES.PRODUCTS} (
-          name,
+          name_pl,
+          name_en,
           mold: ${DB_TABLES.MOLDS} (
             status
           ),

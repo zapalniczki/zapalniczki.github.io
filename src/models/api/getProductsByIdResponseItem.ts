@@ -10,7 +10,8 @@ const getProductsByIdResponseItem = product
     icon_id: true,
     visible: true,
     bestseller: true,
-    name: true,
+    name_pl: true,
+    name_en: true,
     updated_at: true
   })
   .extend({

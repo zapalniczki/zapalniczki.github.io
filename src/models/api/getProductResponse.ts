@@ -8,7 +8,8 @@ const getProductResponse = product
     id: true,
     price: true,
     collection_id: true,
-    name: true
+    name_pl: true,
+    name_en: true
   })
   .extend({
     images: array(image),

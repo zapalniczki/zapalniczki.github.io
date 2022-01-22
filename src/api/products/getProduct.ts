@@ -17,7 +17,8 @@ export const getProduct = async (params: Params) => {
       id,
       price,
       collection_id,
-      name,
+      name_pl,
+      name_en,
       ${DB_TABLES.IMAGES} (
         *
       ),
