@@ -1,11 +1,4 @@
-import {
-  Collection,
-  DB_TABLES,
-  Icon,
-  Label,
-  product,
-  Product
-} from 'braty-common'
+import { Collection, DB_TABLES, Icon, Label, Product } from 'braty-common'
 import { getProductsResponseItem, GetProductsResponseItem } from 'models'
 import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
