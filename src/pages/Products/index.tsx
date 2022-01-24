@@ -41,13 +41,16 @@ const Products = () => {
     collectionId: collectionId,
     labelId: labelId,
     iconId: iconId,
-    name: debouncedSearchQuery
+    name_pl: debouncedSearchQuery
   }
 
   const infiniteProductQuery = useInfiniteQuery(
     [DB_TABLES.PRODUCTS, params],
     ({ pageParam = params.page }) =>
-      getPaginatedProducts({ ...params, page: pageParam }),
+      getPaginatedProducts({
+        ...params,
+        page: pageParam
+      }),
     {
       getNextPageParam: (lastPage) =>
         lastPage.hasNextPage ? lastPage.page + 1 : undefined,

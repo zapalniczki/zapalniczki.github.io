@@ -32,7 +32,7 @@ export const getPaginatedProducts = async ({
     .match(match)
     .ilike(ilike.column, ilike.patern)
     .range(from, to)
-    .order('updated_at', { ascending: false })
+    .order('updated_at', { ascending: true })
 
   const data = parseApiResponse(array(getProductsResponseItem), response)
   const count = response.count ?? 0
