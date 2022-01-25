@@ -18,8 +18,7 @@ import { generatePath } from 'react-router'
 import {
   displayMoney,
   findCorrectProductImageSize,
-  getLanguageLabel,
-  getProductName
+  getLanguageLabel
 } from 'utils'
 
 type Props = {
@@ -100,22 +99,13 @@ const shapeData = (
   string | boolean | number | JSX.Element
 >[] =>
   data.map((product) => {
-    const iconLabel = getLanguageLabel({
-      language: currentLanguage,
-      label: product.icon
-    })
-    const labelLabel = getLanguageLabel({
-      language: currentLanguage,
-      label: product.label
-    })
-
     const productPath = generatePath(ROUTES.PRODUCTS_ID, { id: product.id })
     const basketImage = findCorrectProductImageSize(product.images, 'BASKET')
-    const productName = getProductName(
-      t('productNameBase'),
-      labelLabel,
-      iconLabel
-    )
+    const productName = getLanguageLabel({
+      language: currentLanguage,
+      label: product,
+      name: true
+    })
 
     return {
       product_image: (

@@ -11,8 +11,7 @@ import getSpace from 'styles/getSpace'
 import {
   displayMoney,
   findCorrectProductImageSize,
-  getLanguageLabel,
-  getProductName
+  getLanguageLabel
 } from 'utils'
 import BasketItemLoader from './index.loader'
 import SimpleButton from './SimpleButton'
@@ -39,20 +38,11 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
     return null
   }
 
-  const iconLabel = getLanguageLabel({
+  const productName = getLanguageLabel({
     language: currentLanguage,
-    label: product.icon
+    label: product,
+    name: true
   })
-  const labelLabel = getLanguageLabel({
-    language: currentLanguage,
-    label: product.label
-  })
-
-  const productName = getProductName(
-    commonT('productNameBase'),
-    labelLabel,
-    iconLabel
-  )
 
   const { id, images, price } = product
 

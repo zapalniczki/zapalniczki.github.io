@@ -5,7 +5,7 @@ import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getLanguageLabel, getProductName } from 'utils'
+import { getLanguageLabel } from 'utils'
 import Images from './Images'
 import Loader from './index.loader'
 import Info from './Info'
@@ -13,7 +13,7 @@ import OtherIcons from './OtherIcons'
 import OtherLabels from './OtherLabels'
 
 const ViewProduct = () => {
-  const { currentLanguage, t: commonT } = useTranslation('COMMON')
+  const { currentLanguage } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const navigate = useNavigate()
@@ -35,17 +35,11 @@ const ViewProduct = () => {
     productQuery.data?.label.label_pl &&
     productQuery.data.icon.label_pl
   ) {
-    productName = getProductName(
-      commonT('productNameBase'),
-      getLanguageLabel({
-        language: currentLanguage,
-        label: productQuery.data.label
-      }),
-      getLanguageLabel({
-        language: currentLanguage,
-        label: productQuery.data.icon
-      })
-    )
+    productName = getLanguageLabel({
+      language: currentLanguage,
+      label: productQuery.data,
+      name: true
+    })
   }
 
   useScrollTop(params.id)

@@ -35,19 +35,24 @@ const getOrdersResponseItem = order
           quantity: true
         })
         .extend({
-          product: product.pick({}).extend({
-            mold: mold.pick({
-              status: true
-            }),
-            label: label.pick({
-              label_pl: true,
-              label_en: true
-            }),
-            icon: icon.pick({
-              label_pl: true,
-              label_en: true
+          product: product
+            .pick({
+              name_en: true,
+              name_pl: true
             })
-          })
+            .extend({
+              mold: mold.pick({
+                status: true
+              }),
+              label: label.pick({
+                label_pl: true,
+                label_en: true
+              }),
+              icon: icon.pick({
+                label_pl: true,
+                label_en: true
+              })
+            })
         })
     ),
     parcel: parcel

@@ -16,11 +16,11 @@ import {
 } from 'components'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
-import { TranslateFunc, useTest, useTranslation } from 'hooks'
+import { Language, useTest, useTranslation } from 'hooks'
 import { GetOrdersResponseItem } from 'models'
 import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, getOrderPath, getProductName } from 'utils'
+import { displayMoney, getLanguageLabel, getOrderPath } from 'utils'
 import EditModal from './EditModal'
 import { AdminTableColumns } from './statusToColumns'
 
@@ -30,7 +30,7 @@ type Props = {
 }
 
 const Table = ({ columns, status }: Props) => {
-  const { t } = useTranslation('ADMIN_ORDERS')
+  const { currentLanguage, t } = useTranslation('ADMIN_ORDERS')
   const { t: commonT } = useTranslation('COMMON')
 
   const isTest = useTest()
@@ -72,7 +72,7 @@ const Table = ({ columns, status }: Props) => {
       <Box marginTop="m-size" overflowX="scroll" overflowY="auto" width="100%">
         <QueryLoader query={ordersQuery}>
           {(orders) => {
-            const data = shapeData(orders, commonT)
+            const data = shapeData(orders, currentLanguage)
 
             return <NativeTable columns={columnsMemo} data={data} />
           }}
@@ -84,7 +84,7 @@ const Table = ({ columns, status }: Props) => {
 
 const shapeData = (
   data: GetOrdersResponseItem[],
-  t: TranslateFunc
+  currentLanguage: Language
 ): Record<AdminTableColumns, string | boolean | number | JSX.Element>[] =>
   data.map((order) => ({
     created_at: <DisplayDate>{order.created_at}</DisplayDate>,
@@ -126,11 +126,11 @@ const shapeData = (
     _products: (
       <>
         {order.products.map((product) => {
-          const productName = getProductName(
-            t('productNameBase'),
-            product.product.label.label_pl,
-            product.product.icon.label_pl
-          )
+          const productName = getLanguageLabel({
+            language: currentLanguage,
+            label: product.product,
+            name: true
+          })
 
           return (
             <Text key={product.id} type="body-2">
@@ -151,11 +151,11 @@ const shapeData = (
     molds: (
       <>
         {order.products.map((product) => {
-          const productName = getProductName(
-            t('productNameBase'),
-            product.product.label.label_pl,
-            product.product.icon.label_pl
-          )
+          const productName = getLanguageLabel({
+            language: currentLanguage,
+            label: product.product,
+            name: true
+          })
 
           return (
             <Flexbox

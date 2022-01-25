@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ROUTES } from 'braty-common'
 import { Flexbox, Image, Text, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
@@ -11,10 +12,8 @@ import getColor from 'styles/getColor'
 import {
   displayMoney,
   findCorrectProductImageSize,
-  getLanguageLabel,
-  getProductName
+  getLanguageLabel
 } from 'utils'
-import { ROUTES } from 'braty-common'
 
 export type Props = {
   product: GetProductsResponseItem
@@ -33,21 +32,13 @@ const ProductTile = ({ product }: Props) => {
 
   const [isHovered, setIsHovered] = useState(false)
 
-  const iconLabel = getLanguageLabel({
-    language: currentLanguage,
-    label: product.icon
-  })
-  const labelLabel = getLanguageLabel({
-    language: currentLanguage,
-    label: product.label
-  })
-
   const { t: commonT } = useTranslation('COMMON')
-  const productName = getProductName(
-    commonT('productNameBase'),
-    labelLabel,
-    iconLabel
-  )
+
+  const productName = getLanguageLabel({
+    language: currentLanguage,
+    label: product,
+    name: true
+  })
 
   return (
     <ReactVisibilitySensor partialVisibility scrollCheck>
