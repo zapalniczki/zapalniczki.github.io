@@ -28,8 +28,12 @@ const CheckoutDelivery = () => {
   useScrollTop()
 
   const params = {
-    abroad: checkout.contact_details?.country !== 'POLAND'
+    abroad: checkout.contact_details?.country
+      ? checkout.contact_details.country !== 'POLAND'
+      : undefined
   }
+
+  console.log(params)
   const deliveryTypesQuery = useQuery([DB_TABLES.DELIVERY_TYPES, params], () =>
     getDeliveryTypes(params)
   )
