@@ -37,7 +37,7 @@ const init: RemoteConfig = {
   contact: true,
   customer: false,
   deliveryAndPayments: false,
-  europe: true,
+  europe: false,
   documents: false,
   home: true,
   howToCreateOrder: false,

@@ -1,4 +1,5 @@
-import { SectionHead, Tile, Text, LabelledItem } from 'components'
+/* eslint-disable react/jsx-newline */
+import { SectionHead, Tile, Text, LabelledItem, Flexbox } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import React from 'react'
@@ -11,7 +12,7 @@ type Props = {
 
 const Shipping = ({ deliveryType, shipping }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.SHIPPING')
-  const { currentLanguage } = useTranslation('COMMON')
+  const { currentLanguage, t: commonT } = useTranslation('COMMON')
 
   const label = getLanguageLabel({
     language: currentLanguage,
@@ -32,10 +33,15 @@ const Shipping = ({ deliveryType, shipping }: Props) => {
             marginTop="m-size"
           />
 
-          <Text fontWeight="bold" type="body-1">
-            {/* eslint-disable-next-line react/jsx-newline */}
-            {shipping.post_code}, {shipping.city}
-          </Text>
+          <Flexbox flexDirection="column">
+            <Text fontWeight="bold" type="body-1">
+              {shipping.post_code}, {shipping.city}
+            </Text>
+
+            <Text fontWeight="bold" type="body-1">
+              {commonT(`COUNTRIES.${shipping.country}`)}
+            </Text>
+          </Flexbox>
         </>
       )}
     </Tile>

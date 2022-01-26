@@ -20,7 +20,8 @@ export const getOrder = async ({ id }: Props) => {
       shipping: ${DB_TABLES.ADDRESSES} (
         post_code,
         street_address,
-        city
+        city,
+        country
       ),
       invoice: ${DB_TABLES.INVOICES} (
         url

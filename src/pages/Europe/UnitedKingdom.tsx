@@ -6,14 +6,13 @@ import React from 'react'
 import { useQuery } from 'react-query'
 import { DB_TABLES } from 'braty-common'
 
-const ChristmasProducts = () => {
-  const t = useTranslation('CHRISTMAS_2021').withBase('CHRISTMAS_PRODUCTS')
+const UnitedKingdom = () => {
+  const t = useTranslation('EUROPE').withBase('UNITED_KINGDOM')
 
-  const params = {
-    collectionId: '3eb90808-0d57-4173-ac0a-2fb8bc66c049'
-  }
-  const christmasProductsQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
-    getProducts(params)
+  const params = { collectionId: 'daa8e336-4ecc-4214-ad57-aa760dcaa35e' }
+  const unitedKingdomProductsQuery = useQuery(
+    [DB_TABLES.PRODUCTS, params],
+    () => getProducts(params)
   )
 
   return (
@@ -21,10 +20,10 @@ const ChristmasProducts = () => {
       hideWhenEmpty={false}
       loaderCount={6}
       marginTop="xxl-size"
-      query={christmasProductsQuery}
+      query={unitedKingdomProductsQuery}
       title={t('title')}
     />
   )
 }
 
-export default ChristmasProducts
+export default UnitedKingdom

@@ -23,7 +23,8 @@ const getOrderResponse = order.extend({
     .pick({
       post_code: true,
       city: true,
-      street_address: true
+      street_address: true,
+      country: true
     })
     .nullable(),
 

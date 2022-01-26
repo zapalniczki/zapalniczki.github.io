@@ -997,7 +997,15 @@ const pl = {
   },
 
   EUROPE: {
-    title: 'Europa'
+    title: 'Europa',
+
+    GERMANY: {
+      title: 'Niemcy'
+    },
+
+    UNITED_KINGDOM: {
+      title: 'Wielka Brytania'
+    }
   },
 
   CHRISTMAS_2021: {

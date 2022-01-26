@@ -947,7 +947,7 @@ const en: LanguageKeys = {
           nrb: 'Account number',
           amount: 'Outstanding amount',
           title: 'Payment title',
-          recipient: 'Recipeint',
+          recipient: 'Recipient',
           bankName: 'Bank name'
         }
       },
@@ -995,7 +995,15 @@ const en: LanguageKeys = {
   },
 
   EUROPE: {
-    title: 'Europe'
+    title: 'Europe',
+
+    GERMANY: {
+      title: 'Germany'
+    },
+
+    UNITED_KINGDOM: {
+      title: 'United Kingdom'
+    }
   },
 
   CHRISTMAS_2021: {

@@ -18,7 +18,7 @@ const routes: Route[] = [
     Component: React.lazy(() => import('pages/Products')),
     end: true,
     path: ROUTES.PRODUCTS,
-    order: 2,
+    order: 3,
     key: 'products'
   },
   {
@@ -111,7 +111,7 @@ const routes: Route[] = [
   {
     Component: React.lazy(() => import('pages/Christmas2021')),
     path: ROUTES.CHRISTMAS_2021,
-    order: 3,
+    order: 2,
     icon: 'gift',
     key: 'christmas'
   },
@@ -119,7 +119,7 @@ const routes: Route[] = [
   {
     Component: React.lazy(() => import('pages/ValentinesDay')),
     path: ROUTES.VALENTINES_DAY,
-    order: 3,
+    order: 2,
     icon: 'heart',
     key: 'valentinesDay'
   },
