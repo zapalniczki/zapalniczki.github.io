@@ -63,6 +63,7 @@ const en: LanguageKeys = {
       orders: 'Orders',
       products: 'Products',
       valentinesDay: "Valentine's Day",
+      europe: 'Europe',
 
       adminOrders: 'Orders',
       adminCallbacks: 'Contact request',

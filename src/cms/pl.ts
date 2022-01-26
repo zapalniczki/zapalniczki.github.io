@@ -62,6 +62,7 @@ const pl = {
       orders: 'Zamówienia',
       products: 'Produkty',
       valentinesDay: 'Walentynki 2022',
+      europe: 'Europa',
 
       adminOrders: 'Zamówienia',
       adminCallbacks: 'Prośby o kontakt',

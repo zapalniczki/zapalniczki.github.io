@@ -60,7 +60,7 @@ const routes: Route[] = [
     Component: React.lazy(() => import('pages/CompanyOffer')),
     path: ROUTES.COMPANY_OFFER,
     key: 'companyOffer',
-    order: 4
+    order: 5
   },
   {
     Component: React.lazy(() => import('pages/SignIn')),
@@ -122,6 +122,13 @@ const routes: Route[] = [
     order: 3,
     icon: 'heart',
     key: 'valentinesDay'
+  },
+
+  {
+    Component: React.lazy(() => import('pages/Europe')),
+    path: ROUTES.EUROPE,
+    order: 4,
+    key: 'europe'
   },
 
   {
@@ -212,6 +219,7 @@ type RouteKey =
   | 'customer'
   | 'deliveryAndPayments'
   | 'documents'
+  | 'europe'
   | 'home'
   | 'howToCreateOrder'
   | 'order'

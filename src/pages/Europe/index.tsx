@@ -2,7 +2,6 @@ import { Banner, Heading, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 import ChristmasProducts from './ChristmasProducts'
-import NewYearProducts from './NewYearProducts'
 
 const Europe = () => {
   const { t } = useTranslation('EUROPE')
@@ -30,7 +29,7 @@ const Europe = () => {
         </Heading>
       </Banner>
 
-      <NewYearProducts />
+      {/* <NewYearProducts /> */}
     </Page>
   )
 }
