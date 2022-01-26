@@ -32,9 +32,7 @@ const useForm = () => {
         same_address_as_invoice: selectedDeliveryType.requires_address
           ? sameAddressAsInvoice
           : null,
-        delivery_type_allows_cash_payment:
-          // selectedDeliveryType.allows_cash_payment,
-          true,
+        delivery_type_allows_cash_payment: selectedDeliveryType.cash_payment,
         total: {
           ...prev.total,
           delivery: selectedDeliveryType.price

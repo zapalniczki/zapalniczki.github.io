@@ -22,8 +22,10 @@ const CheckoutPayment = () => {
   const { checkout } = useContext(checkoutContext)
 
   const isPoland = checkout.contact_details?.country === 'POLAND'
+  const cashPayment = checkout.delivery_type_allows_cash_payment
+
   const params = {
-    in_person: !!checkout.delivery_type_allows_cash_payment,
+    in_person: cashPayment === null ? undefined : !!cashPayment,
     ...(isPoland ? { domestic: true } : { abroad: true })
   }
 
