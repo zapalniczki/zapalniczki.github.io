@@ -132,7 +132,10 @@ const useFormSchema = () => {
 
     TEST: () => string(),
 
-    COUNTRY: () => string().required(commonT('COUNTRY.required'))
+    COUNTRY: () => string().required(commonT('COUNTRY.required')),
+
+    MARKETING_STATUS: () =>
+      string().required(commonT('MARKETING_STATUS.required'))
   }
 
   const getSchema = (key: SchemaKey, variant?: boolean) => schemas[key](variant)
@@ -169,6 +172,7 @@ type SchemaKey =
   | 'STREET_ADDRESS'
   | 'TEST'
   | 'VOUCHER_ID'
+  | 'MARKETING_STATUS'
 
 export default useFormSchema
 

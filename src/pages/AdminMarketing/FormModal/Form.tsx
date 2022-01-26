@@ -5,14 +5,17 @@ import {
   MobileInput,
   ModalContent,
   Select,
-  Switch
+  Switch,
+  ValidatedInput
 } from 'components'
 import { Field, FieldProps } from 'formik'
-import { useInput } from 'hooks'
+import { useInput, useTranslation } from 'hooks'
 import React from 'react'
 import { FormValues } from './useForm'
+import { marketingStatus } from 'braty-common'
 
 const Form = () => {
+  const { t: commonT } = useTranslation('COMMON')
   const { getInput } = useInput()
 
   return (
@@ -66,12 +69,33 @@ const Form = () => {
       <FormRow>
         <FieldWrapper>
           <Field name="status">
-            {(props: FieldProps<FormValues['status'], FormValues>) => (
-              <Select
-                onChange={props.field.onChange}
-                value={props.field.value}
-              />
-            )}
+            {(fieldProps: FieldProps<FormValues['status'], FormValues>) => {
+              const options = marketingStatus.options.map((status) => ({
+                value: status,
+                label: commonT(`MARKETING_STATUSES.${status}`)
+              }))
+
+              const value = options.find(
+                (option) => option.value === fieldProps.field.value
+              )
+
+              const { label } = getInput('MARKETING_STATUS', true)
+
+              return (
+                <ValidatedInput label={label} name="status">
+                  <Select
+                    onChange={(value) =>
+                      fieldProps.form.setFieldValue(
+                        'shipping.country',
+                        value?.value
+                      )
+                    }
+                    options={options}
+                    value={value}
+                  />
+                </ValidatedInput>
+              )
+            }}
           </Field>
         </FieldWrapper>
       </FormRow>

@@ -105,6 +105,12 @@ const inputs = {
     label: 'COUNTRY.label',
     placeholder: 'COUNTRY.placeholder'
   },
+
+  MARKETING_STATUS: {
+    label: 'MARKETING_STATUS.label',
+    placeholder: 'MARKETING_STATUS.placeholder'
+  },
+
   NIP_PL: {
     label: 'NIP_PL.label',
     placeholder: 'NIP_PL.placeholder',

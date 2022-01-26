@@ -8,6 +8,13 @@ export const email = `kontakt@${domain}`
 
 const pl = {
   COMMON: {
+    MARKETING_STATUSES: {
+      REJECTED: 'Brak zainteresowania',
+      UNANSWERED: 'Nieodebrane',
+      INTERESTED: 'Zainteresowanie',
+      TODO: 'To zrobienia'
+    },
+
     COUNTRIES: {
       GERMANY: 'Niemcy',
       'UNITED KINGDOM': 'Wielka Brytania',
@@ -272,6 +279,9 @@ const pl = {
     },
 
     VALIDATIONS: {
+      MARKETING_STATUS: {
+        required: 'Proszę podać status'
+      },
       COUNTRY: {
         required: 'Proszę podać kraj'
       },
@@ -352,6 +362,11 @@ const pl = {
     },
 
     INPUTS: {
+      MARKETING_STATUS: {
+        label: 'Status',
+        placeholder: ''
+      },
+
       PARCEL_REF: {
         label: 'Numer paczki',
         placeholder: ''

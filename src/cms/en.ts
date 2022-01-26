@@ -10,6 +10,13 @@ export const email = `kontakt@${domain}`
 
 const en: LanguageKeys = {
   COMMON: {
+    MARKETING_STATUSES: {
+      REJECTED: 'No interest',
+      UNANSWERED: 'Unanswered',
+      INTERESTED: 'Interesed',
+      TODO: 'To do'
+    },
+
     COUNTRIES: {
       GERMANY: 'Germany',
       'UNITED KINGDOM': 'United Kingdom',
@@ -272,6 +279,9 @@ const en: LanguageKeys = {
     },
 
     VALIDATIONS: {
+      MARKETING_STATUS: {
+        required: 'Status is required'
+      },
       COUNTRY: {
         required: 'Country is required'
       },
@@ -352,6 +362,11 @@ const en: LanguageKeys = {
     },
 
     INPUTS: {
+      MARKETING_STATUS: {
+        label: 'Status',
+        placeholder: ''
+      },
+
       PARCEL_REF: {
         label: 'Numer paczki',
         placeholder: ''
