@@ -12,9 +12,9 @@ const Main = () => {
   const commonT = useTranslation('COMMON').withBase('LINKS')
   const { pathname } = useLocation()
 
-  const isDesktop = useBreakpoints('desktop')
+  const isAboveDesktop = useBreakpoints('desktop max')
 
-  if (!isDesktop) {
+  if (!isAboveDesktop) {
     return null
   }
 

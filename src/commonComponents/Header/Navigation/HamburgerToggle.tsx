@@ -6,11 +6,11 @@ import React, { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const HamburgerToggle = () => {
-  const desktop = useBreakpoints('desktop')
+  const isAboveDesktop = useBreakpoints('desktop max')
   const { toggleHamburger } = useContext(togglesContext)
   const { t: commonT } = useTranslation('COMMON')
 
-  if (desktop) {
+  if (isAboveDesktop) {
     return null
   }
 

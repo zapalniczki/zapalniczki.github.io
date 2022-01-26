@@ -15,7 +15,7 @@ import Filters from './Filters'
 
 const Products = () => {
   const { t } = useTranslation('PRODUCTS')
-  const isDesktop = useBreakpoints('desktop')
+  const isAboveDesktop = useBreakpoints('desktop max')
   const [searchParams] = useSearchParams({})
 
   usePageTitle(t('title'))
@@ -37,7 +37,7 @@ const Products = () => {
 
   const params = {
     page: 0,
-    size: isDesktop ? 9 : 5,
+    size: isAboveDesktop ? 9 : 4,
     collectionId: collectionId,
     labelId: labelId,
     iconId: iconId,
