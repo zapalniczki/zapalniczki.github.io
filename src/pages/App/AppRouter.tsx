@@ -1,11 +1,17 @@
-import { Basket, Footer, Header, TopBar } from 'commonComponents'
-import { HamburgerMenu, CookiesConsent } from 'commonComponents/'
+import {
+  HamburgerMenu,
+  CookiesConsent,
+  Footer,
+  Header,
+  TopBar
+} from 'commonComponents'
 import { AdminAuth, Flexbox, UserAuth } from 'components'
 import { remoteConfigContext } from 'providers'
 import React, { Suspense, useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { handleRoutes } from 'utils'
 import routes from './routes'
+import Basket from './Basket'
 
 const AppRouter = () => {
   const remoteConfig = useContext(remoteConfigContext)

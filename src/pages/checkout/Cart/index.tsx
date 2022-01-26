@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getProductsById } from 'api'
-import { BasketItem } from 'commonComponents'
+import { BasketItem } from 'organisms'
 import { Columns, Flexbox, Heading, Page, QueryLoader, Text } from 'components'
 
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'

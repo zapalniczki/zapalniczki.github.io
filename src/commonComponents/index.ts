@@ -1,6 +1,4 @@
-export * from './Basket'
 export * from './TopBar'
-export { default as Basket } from './Basket'
 export { default as CallMeBack } from './CallMeBack'
 export { default as CookiesConsent } from './CookiesConsent'
 export { default as Features } from './Features'

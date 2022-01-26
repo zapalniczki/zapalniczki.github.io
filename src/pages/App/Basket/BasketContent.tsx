@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { BasketItem } from 'commonComponents'
+import { BasketItem } from 'organisms'
 import { Flexbox, Text } from 'components'
 import { useModalView, useTranslation } from 'hooks'
 import { GetProductsByIdResponseItem } from 'models'
