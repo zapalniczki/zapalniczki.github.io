@@ -15,7 +15,7 @@ const FormRow = styled(Flexbox)<Props>`
     margin-bottom: ${getSpace('m-size')};
   }
 
-  ${(props) => breakpoints('desktop')`
+  ${(props) => breakpoints('desktop max')`
     flex-direction: ${props.vertical ? 'column' : 'row'};
   `}
 `

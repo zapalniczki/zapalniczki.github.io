@@ -1,3 +1,5 @@
+export const MAX_WIDTH = 1200
+
 const colors = {
   'background-color': '#f9f9f9',
   'banner-color': '#f2f2f2',
@@ -92,7 +94,8 @@ const space = {
 export const breakpoints = {
   mobile: 0,
   tablet: 768,
-  desktop: 1024
+  desktop: 1024,
+  max: MAX_WIDTH
 }
 
 const theme = {

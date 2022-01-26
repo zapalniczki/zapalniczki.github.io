@@ -161,7 +161,7 @@ const Container = styled(Tile)<ContainerProps>`
     'picture name name'
     'controls controls button-remove';
 
-  ${breakpoints('desktop')`
+  ${breakpoints('desktop max')`
       grid-gap: 0.5rem 2rem;
       grid-template-columns: 9rem auto max-content;
       grid-template-areas:

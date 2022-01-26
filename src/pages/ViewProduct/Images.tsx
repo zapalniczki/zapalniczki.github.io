@@ -62,7 +62,7 @@ const ImageWrapper = styled.div`
     height: auto;
   }
 
-  ${(props) => breakpoints('desktop')`
+  ${(props) => breakpoints('desktop max')`
     padding: ${`0 ${getSpace('xxxl-size')(props)}`};
 
     & > * {

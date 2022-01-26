@@ -72,7 +72,7 @@ const Container = styled(MaxWidth)`
     padding: ${getSpace('s-size')} !important;
   }
 
-  ${breakpoints('desktop')`
+  ${breakpoints('desktop max')`
     .CookieConsent {
       flex-direction: row;
     }

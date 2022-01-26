@@ -26,7 +26,7 @@ const Container = styled(Flexbox)`
     }
   }
 
-  ${(props) => breakpoints('desktop')`
+  ${(props) => breakpoints('desktop max')`
     flex-direction: row;
 
     & > * {

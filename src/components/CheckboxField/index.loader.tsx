@@ -10,7 +10,7 @@ const Loader = ({ ...props }: Props) => {
   const height = 56
 
   return (
-    <Flexbox flexDirection="column" height={height} width={width} {...props}>
+    <Flexbox height={height} width={width} {...props}>
       <ContentLoader
         height={height}
         viewBox={`0 0 ${width} ${height}`}

@@ -1,13 +1,15 @@
 import useBreakpoints from './useBreakpoints'
 
 const useLoaderWidth = (column?: 'MAIN' | 'SIDE') => {
-  const isTablet = useBreakpoints('tablet')
+  const isMax = useBreakpoints('max')
   const isDesktop = useBreakpoints('desktop')
+  const isTablet = useBreakpoints('tablet')
 
   let width
-
-  if (isDesktop) {
+  if (isMax) {
     width = 1200
+  } else if (!isMax && isDesktop) {
+    width = 1024
   } else if (!isDesktop && isTablet) {
     width = 768
   } else {
@@ -15,8 +17,10 @@ const useLoaderWidth = (column?: 'MAIN' | 'SIDE') => {
   }
 
   if (column === 'MAIN') {
-    if (isDesktop) {
+    if (isMax) {
       width = 840
+    } else if (!isMax && isDesktop) {
+      width = 716.8
     } else if (!isDesktop && isTablet) {
       width = 768
     } else {
@@ -25,8 +29,10 @@ const useLoaderWidth = (column?: 'MAIN' | 'SIDE') => {
   }
 
   if (column === 'SIDE') {
-    if (isDesktop) {
+    if (isMax) {
       width = 344
+    } else if (!isMax && isDesktop) {
+      width = 291.2
     } else if (!isDesktop && isTablet) {
       width = 768
     } else {

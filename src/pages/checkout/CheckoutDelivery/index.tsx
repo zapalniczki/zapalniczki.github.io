@@ -56,7 +56,7 @@ const CheckoutDelivery = () => {
         {t('title')}
       </Heading>
 
-      <QueryLoader Loader={<Loader />} query={deliveryTypesQuery}>
+      <QueryLoader Loader={<Loader />} persistLoader query={deliveryTypesQuery}>
         {(deliveryTypes) => (
           <Formik
             initialValues={initialValues}

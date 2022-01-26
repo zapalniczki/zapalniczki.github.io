@@ -24,12 +24,13 @@ const Banner = ({
   ...props
 }: Props) => {
   const isDesktop = useBreakpoints('desktop')
+  const isMax = useBreakpoints('max')
 
   let height = sizeToHeight['SMALL']
   if (size) {
     height = sizeToHeight[size]
   }
-  if (vhOnMobile && !isDesktop) {
+  if (vhOnMobile && !isDesktop && !isMax) {
     height = `calc(100vh - 14rem)`
   }
 
