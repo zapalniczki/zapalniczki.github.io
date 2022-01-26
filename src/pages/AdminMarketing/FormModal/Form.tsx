@@ -79,8 +79,6 @@ const Form = () => {
                 (option) => option.value === fieldProps.field.value
               )
 
-              console.log(value)
-
               const { label } = getInput('MARKETING_STATUS', true)
 
               return (
