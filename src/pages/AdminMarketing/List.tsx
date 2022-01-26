@@ -115,6 +115,7 @@ const shapeData = (data: Marketing[]) =>
         plus_code={record.plus_code}
         send_brochure_agreement={record.send_brochure_agreement}
         send_brochure_cyclic_agreement={record.send_brochure_cyclic_agreement}
+        status={record.status}
       />
     ),
     delete: <RemoveModal id={record.id} />

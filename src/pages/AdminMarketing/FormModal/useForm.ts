@@ -14,7 +14,8 @@ const useForm = (
   name?: Marketing['name'],
   plus_code?: Marketing['plus_code'],
   send_brochure_agreement?: Marketing['send_brochure_agreement'],
-  send_brochure_cyclic_agreement?: Marketing['send_brochure_cyclic_agreement']
+  send_brochure_cyclic_agreement?: Marketing['send_brochure_cyclic_agreement'],
+  status?: Marketing['status']
 ) => {
   const { getSchema } = useFormSchema()
   const [view, setView] = useState<View>({ view: 'FORM' })
@@ -26,7 +27,8 @@ const useForm = (
     name: name ?? '',
     plus_code: plus_code ?? '',
     send_brochure_agreement: send_brochure_agreement ?? false,
-    send_brochure_cyclic_agreement: send_brochure_cyclic_agreement ?? false
+    send_brochure_cyclic_agreement: send_brochure_cyclic_agreement ?? false,
+    status: status ?? 'TODO'
   }
 
   const schema = object({
@@ -60,6 +62,7 @@ const useForm = (
             send_brochure_agreement: values.send_brochure_agreement,
             send_brochure_cyclic_agreement:
               values.send_brochure_cyclic_agreement,
+            status: 'TODO',
             is_test: isTest
           })
         } else {
@@ -68,6 +71,7 @@ const useForm = (
             phone: values.phone,
             notes: values.notes,
             name: values.name,
+            status: 'TODO',
             plus_code: values.plus_code,
             send_brochure_agreement: values.send_brochure_agreement,
             send_brochure_cyclic_agreement:
@@ -137,6 +141,7 @@ export type FormValues = {
   plus_code: NonNullable<Marketing['plus_code']>
   send_brochure_agreement: Marketing['send_brochure_agreement']
   send_brochure_cyclic_agreement: Marketing['send_brochure_cyclic_agreement']
+  status: Marketing['status']
 }
 
 type View = { view: 'FORM' } | { view: 'SUCCESS' } | { view: 'ERROR' }

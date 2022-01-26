@@ -4,6 +4,7 @@ import {
   Input,
   MobileInput,
   ModalContent,
+  Select,
   Switch
 } from 'components'
 import { Field, FieldProps } from 'formik'
@@ -57,6 +58,19 @@ const Form = () => {
           <Field name="notes">
             {(props: FieldProps<FormValues['notes'], FormValues>) => (
               <Input {...props} {...getInput('NOTES')} />
+            )}
+          </Field>
+        </FieldWrapper>
+      </FormRow>
+
+      <FormRow>
+        <FieldWrapper>
+          <Field name="status">
+            {(props: FieldProps<FormValues['status'], FormValues>) => (
+              <Select
+                onChange={props.field.onChange}
+                value={props.field.value}
+              />
             )}
           </Field>
         </FieldWrapper>
