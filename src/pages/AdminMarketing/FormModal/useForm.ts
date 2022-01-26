@@ -62,7 +62,7 @@ const useForm = (
             send_brochure_agreement: values.send_brochure_agreement,
             send_brochure_cyclic_agreement:
               values.send_brochure_cyclic_agreement,
-            status: 'TODO',
+            status: values.status,
             is_test: isTest
           })
         } else {
@@ -71,7 +71,7 @@ const useForm = (
             phone: values.phone,
             notes: values.notes,
             name: values.name,
-            status: 'TODO',
+            status: values.status,
             plus_code: values.plus_code,
             send_brochure_agreement: values.send_brochure_agreement,
             send_brochure_cyclic_agreement:

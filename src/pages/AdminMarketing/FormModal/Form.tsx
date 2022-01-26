@@ -79,16 +79,15 @@ const Form = () => {
                 (option) => option.value === fieldProps.field.value
               )
 
+              console.log(value)
+
               const { label } = getInput('MARKETING_STATUS', true)
 
               return (
                 <ValidatedInput label={label} name="status">
                   <Select
                     onChange={(value) =>
-                      fieldProps.form.setFieldValue(
-                        'shipping.country',
-                        value?.value
-                      )
+                      fieldProps.form.setFieldValue('status', value?.value)
                     }
                     options={options}
                     value={value}

@@ -3,7 +3,16 @@ import { MarketingStatus } from 'braty-common'
 const statusToColumns: Record<MarketingStatus, AdminMarketingTableColumn[]> = {
   TODO: ['updated_at', 'name', 'plus_code', 'email', 'phone', 'notes', 'edit'],
   UNANSWERED: ['updated_at', 'name', 'plus_code', 'email', 'notes', 'edit'],
-  INTERESTED: ['updated_at', 'name', 'plus_code', 'email', 'notes', 'edit'],
+  INTERESTED: [
+    'updated_at',
+    'name',
+    'plus_code',
+    'email',
+    'notes',
+    'sendBrochureAgreement',
+    'sendBrochureCyclicAgreement',
+    'edit'
+  ],
   REJECTED: [
     'updated_at',
     'name',
@@ -12,7 +21,7 @@ const statusToColumns: Record<MarketingStatus, AdminMarketingTableColumn[]> = {
     'notes',
     'edit',
     'sendBrochureAgreement',
-  | 'sendBrochureCyclicAgreement',
+    'sendBrochureCyclicAgreement',
     'delete'
   ]
 }

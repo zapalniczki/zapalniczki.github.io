@@ -15,7 +15,8 @@ export const editMarketing = async (payload: Payload) => {
       name: payload.name,
       plus_code: payload.plus_code,
       send_brochure_agreement: payload.send_brochure_agreement,
-      send_brochure_cyclic_agreement: payload.send_brochure_cyclic_agreement
+      send_brochure_cyclic_agreement: payload.send_brochure_cyclic_agreement,
+      status: payload.status
     })
     .eq('id', payload.id)
     .single()
