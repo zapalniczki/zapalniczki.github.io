@@ -27,13 +27,8 @@ const CheckoutDelivery = () => {
   usePageTitle(t('title'))
   useScrollTop()
 
-  const params = {
-    abroad: checkout.contact_details?.country
-      ? checkout.contact_details.country !== 'POLAND'
-      : undefined
-  }
-
-  console.log(params)
+  const isPoland = checkout.contact_details?.country === 'POLAND'
+  const params = { ...(isPoland ? { domestic: true } : { abroad: true }) }
   const deliveryTypesQuery = useQuery([DB_TABLES.DELIVERY_TYPES, params], () =>
     getDeliveryTypes(params)
   )

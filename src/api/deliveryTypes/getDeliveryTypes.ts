@@ -7,7 +7,7 @@ import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-type Params = Partial<Pick<DeliveryType, 'is_enabled' | 'abroad'>>
+type Params = Partial<Pick<DeliveryType, 'domestic' | 'abroad'>>
 
 export const getDeliveryTypes = async (params?: Params) => {
   const match = getMatch(params)
@@ -25,6 +25,6 @@ export const getDeliveryTypes = async (params?: Params) => {
 }
 
 export const getMatch = (params?: Params) => ({
-  ...(params?.is_enabled && { is_enabled: params.is_enabled }),
-  ...(params?.abroad !== undefined && { abroad: params.abroad })
+  ...(params?.domestic && { domestic: params.domestic }),
+  ...(params?.abroad && { abroad: params.abroad })
 })
