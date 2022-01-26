@@ -4,12 +4,10 @@ import {
   Flexbox,
   QueryLoader,
   ResultIcon,
-  Switch,
-  Table as NativeTable,
-  Tile
+  Table as NativeTable
 } from 'components'
-import { useTest, useTranslation } from 'hooks'
-import React, { useMemo, useState } from 'react'
+import { useTranslation } from 'hooks'
+import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { formatDate } from 'utils'
 import FormModal from './FormModal'
@@ -19,14 +17,11 @@ import { AdminMarketingTableColumn } from './statusToColumns'
 type Props = {
   columns: AdminMarketingTableColumn[]
   status: Marketing['status']
+  testData: boolean
 }
 
-const Table = ({ columns, status }: Props) => {
+const Table = ({ columns, status, testData }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
-  const { t } = useTranslation('ADMIN_MARKETING')
-
-  const isTest = useTest()
-  const [testData, setTestData] = useState(isTest)
 
   const params = {
     is_test: testData,
@@ -47,26 +42,13 @@ const Table = ({ columns, status }: Props) => {
   )
 
   return (
-    <Tile>
-      <Flexbox justifyContent="flex-end" marginBottom="m-size">
-        <Switch
-          checked={testData}
-          label={t('testDataEnabled')}
-          marginRight="l-size"
-          onChange={setTestData}
-        />
+    <QueryLoader query={marketingQuery}>
+      {(data) => {
+        const shappedData = shapeData(data)
 
-        <FormModal />
-      </Flexbox>
-
-      <QueryLoader query={marketingQuery}>
-        {(data) => {
-          const shappedData = shapeData(data)
-
-          return <NativeTable columns={columnsMemo} data={shappedData} />
-        }}
-      </QueryLoader>
-    </Tile>
+        return <NativeTable columns={columnsMemo} data={shappedData} />
+      }}
+    </QueryLoader>
   )
 }
 
