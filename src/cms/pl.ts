@@ -995,6 +995,10 @@ const pl = {
     }
   },
 
+  EUROPE: {
+    title: 'Europa'
+  },
+
   CHRISTMAS_2021: {
     title: 'OFERTA ŚWIĄTECZNA 2021',
     HALF_BANNER: {
