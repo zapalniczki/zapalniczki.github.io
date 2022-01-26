@@ -6,8 +6,8 @@ import React, { useContext } from 'react'
 const Catalogue = () => {
   const t = useTranslation('HOME').withBase('CATALOGUE')
   const {
-    catalogue_cover,
-    catalogue_link,
+    catalogue_cover_pl,
+    catalogue_link_pl,
     homeCatalogueDisplay,
     homeCatalogueOrder
   } = useContext(remoteConfigContext)
@@ -20,10 +20,10 @@ const Catalogue = () => {
     <BannerWithImage
       order={homeCatalogueOrder}
       size="MEDIUM"
-      src={catalogue_cover}
+      src={catalogue_cover_pl}
       title={t('title')}
     >
-      <ExternalLink marginTop="m-size" to={catalogue_link}>
+      <ExternalLink marginTop="m-size" to={catalogue_link_pl}>
         {t('linkLabel')}
       </ExternalLink>
     </BannerWithImage>

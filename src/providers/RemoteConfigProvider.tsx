@@ -57,8 +57,10 @@ const init: RemoteConfig = {
   homeCatalogueOrder: 0,
   homeBestsellersOrder: 0,
   // DATA
-  catalogue_cover: '',
-  catalogue_link: '',
+  catalogue_cover_pl: '',
+  catalogue_link_pl: '',
+  catalogue_cover_en: '',
+  catalogue_link_en: '',
   // REST
   i18n: false,
   snow: false,
