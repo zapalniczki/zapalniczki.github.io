@@ -29,9 +29,8 @@ const DeliveryAndPayments = () => {
     getDeliveryTypes()
   )
 
-  const params = {}
-  const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
-    getPaymentTypes(params)
+  const paymentTypesQuery = useQuery(DB_TABLES.PAYMENT_TYPE, () =>
+    getPaymentTypes()
   )
 
   return (

@@ -10,9 +10,8 @@ import EditModal from './EditModal'
 const List = () => {
   const { currentLanguage, t: commonT } = useTranslation('COMMON')
 
-  const params = {}
-  const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
-    getPaymentTypes(params)
+  const paymentTypesQuery = useQuery(DB_TABLES.PAYMENT_TYPE, () =>
+    getPaymentTypes()
   )
   const columns = useMemo(
     () => [

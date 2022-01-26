@@ -30,6 +30,7 @@ const ShippingForm = () => {
               return (
                 <ValidatedInput label={label} name="shipping.country">
                   <CountryInput
+                    disabled
                     onChange={(value) =>
                       fieldProps.form.setFieldValue(
                         'shipping.country',

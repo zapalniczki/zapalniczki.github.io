@@ -21,7 +21,11 @@ const CheckoutPayment = () => {
 
   const { checkout } = useContext(checkoutContext)
 
-  const params = { in_person: !!checkout.delivery_type_allows_cash_payment }
+  const isPoland = checkout.contact_details?.country === 'POLAND'
+  const params = {
+    in_person: !!checkout.delivery_type_allows_cash_payment,
+    ...(isPoland ? { domestic: true } : { abroad: true })
+  }
 
   const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
     getPaymentTypes(params)
