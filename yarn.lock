@@ -2820,8 +2820,8 @@ braces@^3.0.1:
     fill-range "^7.0.1"
 
 braty-common@zapalniczki/braty-common:
-  version "1.0.135"
-  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/20077c98a20d8c78c3c13754277f0b2e95a27fd0"
+  version "1.0.136"
+  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/d2ceb18314860454bb050cae0ecff2a74c2d7227"
   dependencies:
     firebase "^9.6.3"
     zod "^3.11.6"
