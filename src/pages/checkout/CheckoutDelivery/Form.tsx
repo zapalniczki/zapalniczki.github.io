@@ -12,51 +12,48 @@ type Props = {
 
 const Form = ({ deliveryTypes }: Props) => {
   const { getInput } = useInput()
-
   const { currentLanguage } = useTranslation('COMMON')
 
   return (
     <FormRow vertical>
-      {deliveryTypes
-        .filter((type) => type.is_enabled)
-        .map((type, index) => {
-          const optionLabel = getLanguageLabel({
-            language: currentLanguage,
-            label: type
-          })
+      {deliveryTypes.map((type, index) => {
+        const optionLabel = getLanguageLabel({
+          language: currentLanguage,
+          label: type
+        })
 
-          const description = getLanguageLabel({
-            language: currentLanguage,
-            label: type,
-            description: true
-          })
+        const description = getLanguageLabel({
+          language: currentLanguage,
+          label: type,
+          description: true
+        })
 
-          return (
-            <Field key={optionLabel} name="delivery_type">
-              {(fieldProps: FieldProps<DeliveryType, FormValues>) => {
-                const { label } = getInput('DELIVERY_TYPE', true)
-                const isFirst = !index
+        return (
+          <Field key={optionLabel} name="delivery_type">
+            {(fieldProps: FieldProps<DeliveryType, FormValues>) => {
+              const { label } = getInput('DELIVERY_TYPE', true)
+              const isFirst = !index
 
-                return (
-                  <>
-                    {isFirst && (
-                      <ValidatedInput label={label} name="delivery_type" />
-                    )}
+              return (
+                <>
+                  {isFirst && (
+                    <ValidatedInput label={label} name="delivery_type" />
+                  )}
 
-                    <CheckboxField
-                      {...fieldProps.field}
-                      caption={displayMoney(type.price)}
-                      selectedValue={fieldProps.field.value}
-                      subtitle={description}
-                      title={optionLabel}
-                      value={type.id}
-                    />
-                  </>
-                )
-              }}
-            </Field>
-          )
-        })}
+                  <CheckboxField
+                    {...fieldProps.field}
+                    caption={displayMoney(type.price)}
+                    selectedValue={fieldProps.field.value}
+                    subtitle={description}
+                    title={optionLabel}
+                    value={type.id}
+                  />
+                </>
+              )
+            }}
+          </Field>
+        )
+      })}
     </FormRow>
   )
 }

@@ -10,9 +10,8 @@ import EditModal from './EditModal'
 const List = () => {
   const { currentLanguage, t: commonT } = useTranslation('COMMON')
 
-  const deliveryTypesQuery = useQuery(
-    DB_TABLES.DELIVERY_TYPES,
-    getDeliveryTypes
+  const deliveryTypesQuery = useQuery(DB_TABLES.DELIVERY_TYPES, () =>
+    getDeliveryTypes()
   )
   const columns = useMemo(
     () => [

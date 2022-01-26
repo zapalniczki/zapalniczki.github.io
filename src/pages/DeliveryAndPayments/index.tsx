@@ -25,9 +25,8 @@ const DeliveryAndPayments = () => {
   useScrollTop()
   usePageTitle(t('title'))
 
-  const deliveryTypesQuery = useQuery(
-    DB_TABLES.DELIVERY_TYPES,
-    getDeliveryTypes
+  const deliveryTypesQuery = useQuery(DB_TABLES.DELIVERY_TYPES, () =>
+    getDeliveryTypes()
   )
 
   const params = {}
@@ -75,22 +74,17 @@ const DeliveryAndPayments = () => {
       <QueryLoader Loader={<ProductsGridLoader />} query={deliveryTypesQuery}>
         {(deliveryTypes) => (
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
-            {deliveryTypes
-              .filter((type) => type.is_enabled)
-              .map((type) => (
-                <FeatureItem
-                  key={type.id}
-                  subtitle={`${displayMoney(type.price)} - ${
-                    type.description_pl
-                  }`}
-                  title={type.label_pl}
-                >
-                  <FontAwesomeIcon
-                    icon={type.icon_name as IconName}
-                    size="3x"
-                  />
-                </FeatureItem>
-              ))}
+            {deliveryTypes.map((type) => (
+              <FeatureItem
+                key={type.id}
+                subtitle={`${displayMoney(type.price)} - ${
+                  type.description_pl
+                }`}
+                title={type.label_pl}
+              >
+                <FontAwesomeIcon icon={type.icon_name as IconName} size="3x" />
+              </FeatureItem>
+            ))}
           </Grid>
         )}
       </QueryLoader>
@@ -100,33 +94,31 @@ const DeliveryAndPayments = () => {
       <QueryLoader Loader={<ProductsGridLoader />} query={paymentTypesQuery}>
         {(paymentTypes) => (
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
-            {paymentTypes
-              .filter((type) => type.is_enabled)
-              .map((type) => {
-                const label = getLanguageLabel({
-                  language: currentLanguage,
-                  label: type
-                })
+            {paymentTypes.map((type) => {
+              const label = getLanguageLabel({
+                language: currentLanguage,
+                label: type
+              })
 
-                const description = getLanguageLabel({
-                  language: currentLanguage,
-                  label: type,
-                  description: true
-                })
+              const description = getLanguageLabel({
+                language: currentLanguage,
+                label: type,
+                description: true
+              })
 
-                return (
-                  <FeatureItem
-                    key={type.id}
-                    subtitle={`${displayMoney(type.price)} - ${description}`}
-                    title={label}
-                  >
-                    <FontAwesomeIcon
-                      icon={type.icon_name as IconName}
-                      size="3x"
-                    />
-                  </FeatureItem>
-                )
-              })}
+              return (
+                <FeatureItem
+                  key={type.id}
+                  subtitle={`${displayMoney(type.price)} - ${description}`}
+                  title={label}
+                >
+                  <FontAwesomeIcon
+                    icon={type.icon_name as IconName}
+                    size="3x"
+                  />
+                </FeatureItem>
+              )
+            })}
           </Grid>
         )}
       </QueryLoader>

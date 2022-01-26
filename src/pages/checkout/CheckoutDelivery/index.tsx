@@ -22,15 +22,17 @@ import useForm from './useForm'
 
 const CheckoutDelivery = () => {
   const { t } = useTranslation('CHECKOUT_DELIVERY')
+  const { checkout, setCheckout } = useContext(checkoutContext)
 
   usePageTitle(t('title'))
   useScrollTop()
 
-  const deliveryTypesQuery = useQuery(
-    DB_TABLES.DELIVERY_TYPES,
-    getDeliveryTypes
+  const params = {
+    abroad: checkout.contact_details?.country !== 'POLAND'
+  }
+  const deliveryTypesQuery = useQuery([DB_TABLES.DELIVERY_TYPES, params], () =>
+    getDeliveryTypes(params)
   )
-  const { checkout, setCheckout } = useContext(checkoutContext)
   const { initialValues, onSubmitForm, schema } = useForm()
 
   const [sameAddressAsInvoice, setSameAddressAsInvoice] = useState<boolean>(
