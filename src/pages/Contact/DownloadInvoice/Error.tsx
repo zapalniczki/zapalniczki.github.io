@@ -1,4 +1,4 @@
-import { Button, Text } from 'components'
+import { Box, Button, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
@@ -23,12 +23,13 @@ const Error = ({ message, setView }: Props) => {
 
       <Text type="body-2">{message}</Text>
 
-      <Button
-        label={t('items.DOWNLOAD_INVOICE.error.new')}
-        marginTop="m-size"
-        onClick={() => setView({ view: 'FORM' })}
-        size="small"
-      />
+      <Box marginTop="m-size">
+        <Button
+          label={t('items.DOWNLOAD_INVOICE.error.new')}
+          onClick={() => setView({ view: 'FORM' })}
+          size="small"
+        />
+      </Box>
     </ViewWrapper>
   )
 }
