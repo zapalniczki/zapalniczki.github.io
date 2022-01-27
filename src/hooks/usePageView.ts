@@ -1,8 +1,11 @@
 import ReactGA from 'react-ga'
+import { useLocation } from 'react-router-dom'
 
 const usePageView = () => {
+  const { pathname, search } = useLocation()
+
   const triggerPageView = () => {
-    const page = window.location.pathname + window.location.search
+    const page = pathname + search
     ReactGA.pageview(page)
   }
 
