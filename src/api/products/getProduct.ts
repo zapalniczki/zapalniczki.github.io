@@ -16,7 +16,6 @@ export const getProduct = async (params: Params) => {
       description_en,
       id,
       price,
-      collection_id,
       name_pl,
       name_en,
       ${DB_TABLES.IMAGES} (
@@ -27,6 +26,11 @@ export const getProduct = async (params: Params) => {
         status
       ),
       icon: ${DB_TABLES.ICONS} (
+        label_pl,
+        label_en,
+        id
+      ),
+      collection: ${DB_TABLES.COLLECTIONS} (
         label_pl,
         label_en,
         id

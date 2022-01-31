@@ -620,7 +620,7 @@ const pl = {
     FILTERS: {
       title: 'Wyszukaj swój produkt',
       searchPlaceholder: 'Wpisz nazwę produktu, miejscowość lub ikonę',
-      collections: 'Kolekcje',
+      collections: 'Kategorie',
       icons: 'Ikony',
       search: 'Szukaj',
       clear: 'Wyczyść'
@@ -643,11 +643,12 @@ const pl = {
 
   VIEW_PRODUCT: {
     title: '{{productName}}',
-
     icon: 'ikona',
     label: 'napis',
     color: 'kolor',
+    collection: 'kategoria',
     colorValueTODO: 'drewno mix',
+    sku: 'SKU',
 
     priceSubtitle: 'Cena za 1 pudełko (50 sztuk) - zawiera 23% VAT',
     avilability: {

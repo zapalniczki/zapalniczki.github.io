@@ -18,7 +18,7 @@ const AvilabilityIndicator = ({ status }: Props) => {
   }
 
   return (
-    <Flexbox alignItems="center">
+    <Flexbox alignItems="center" marginTop="s-size">
       <Dot status={status} />
 
       <Text marginLeft="s-size" type="caption">

@@ -65,7 +65,7 @@ const ViewProduct = () => {
             <OtherIcons iconId={product.icon.id} labelId={product.label.id} />
 
             <OtherLabels
-              collectionId={product.collection_id}
+              collectionId={product.collection.id}
               labelId={product.label.id}
             />
           </>

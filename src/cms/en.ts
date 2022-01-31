@@ -563,7 +563,7 @@ const en: LanguageKeys = {
     },
 
     VALENTINES_DAY: {
-      title: "Valentines's Day",
+      title: "Valentine's Day",
       linkLabel: 'See all'
     },
 
@@ -619,7 +619,7 @@ const en: LanguageKeys = {
     FILTERS: {
       title: 'Search your product',
       searchPlaceholder: 'Type product name, label or icon',
-      collections: 'Collections',
+      collections: 'Categories',
       icons: 'Icons',
       search: 'Search',
       clear: 'Clear'
@@ -642,11 +642,12 @@ const en: LanguageKeys = {
 
   VIEW_PRODUCT: {
     title: '{{productName}}',
-
     icon: 'icon',
     label: 'label',
     color: 'color',
+    collection: 'category',
     colorValueTODO: 'wood mix',
+    sku: 'SKU',
 
     priceSubtitle: 'Price for 1 box (50 inside) - including 23% TAX',
     avilability: {

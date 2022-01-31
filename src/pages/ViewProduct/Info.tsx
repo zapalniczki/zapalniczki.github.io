@@ -23,6 +23,11 @@ const Info = ({ product }: Props) => {
     label: product.label
   })
 
+  const collectionLabel = getLanguageLabel({
+    language: currentLanguage,
+    label: product.collection
+  })
+
   const productName = getLanguageLabel({
     language: currentLanguage,
     label: product,
@@ -50,13 +55,19 @@ const Info = ({ product }: Props) => {
 
       <Text type="caption">{t('priceSubtitle')}</Text>
 
+      <AvilabilityIndicator status={product.mold.status} />
+
       <Separator />
 
       <Form product={product} />
 
       <Separator />
 
-      <Detail label={t('label')} value={labelLabel} />
+      <Detail label={t('sku')} value={product.id} />
+
+      <Detail label={t('collection')} value={collectionLabel} />
+
+      <Detail label={t('label')} quotes value={labelLabel} />
 
       <Detail label={t('icon')} value={iconLabel} />
 
@@ -65,25 +76,28 @@ const Info = ({ product }: Props) => {
       <Separator />
 
       <Text type="body-2">{description}</Text>
-
-      <AvilabilityIndicator status={product.mold.status} />
     </Flexbox>
   )
 }
 
 type DetailProps = {
   label: string
+  quotes?: boolean
   value: string
 }
 
-const Detail = ({ label, value }: DetailProps) => (
-  <Flexbox>
-    <Text type="caption">{label}</Text>
+const Detail = ({ label, quotes, value }: DetailProps) => {
+  const displayedValue = quotes ? `"${value}"` : value
 
-    <Text marginLeft="s-size" type="subtitle-2">
-      {value}
-    </Text>
-  </Flexbox>
-)
+  return (
+    <Flexbox>
+      <Text type="caption">{label}</Text>
+
+      <Text marginLeft="s-size" type="subtitle-2">
+        {displayedValue}
+      </Text>
+    </Flexbox>
+  )
+}
 
 export default Info

@@ -1,4 +1,4 @@
-import { image, mold, product, icon, label } from 'braty-common'
+import { image, mold, product, icon, label, collection } from 'braty-common'
 import { array, TypeOf } from 'zod'
 
 const getProductResponse = product
@@ -7,7 +7,6 @@ const getProductResponse = product
     description_en: true,
     id: true,
     price: true,
-    collection_id: true,
     name_pl: true,
     name_en: true
   })
@@ -22,6 +21,11 @@ const getProductResponse = product
       id: true,
       label_pl: true,
       label_en: true
+    }),
+    collection: collection.pick({
+      label_en: true,
+      label_pl: true,
+      id: true
     }),
     mold: mold.pick({
       id: true,
