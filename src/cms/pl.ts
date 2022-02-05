@@ -1,7 +1,9 @@
-const phoneNumer = '+48 792 531 179'
+import { BRATY_PHONE, BRATY_NAME } from "braty-common"
+
+const phoneNumer = BRATY_PHONE
 const companyName = 'Braty'
 const fullCompanyName = `${companyName} Przemysław Rychlewicz`
-const domain = 'braty.co'
+const domain = BRATY_NAME
 const nrb = '31 1140 2004 0000 3402 8090 0648'
 const bankName = 'mBank S.A.'
 export const email = `kontakt@${domain}`
@@ -863,11 +865,12 @@ const pl = {
       },
 
       ACCOUNT: {
-        title: 'Numer konta',
-        info: 'Do wpłat',
+        title: 'Numer rachunku',
+        info: 'Do wpłat za zamówienia',
         nrb: nrb,
         info2: `Nazwa banku: ${bankName}`,
-        info3: 'Tytuł: Numer referencyjny zamówienia'
+        info3: 'Tytuł: Numer referencyjny zamówienia',
+        info4: `IBAN: ${}`
       }
     }
   },

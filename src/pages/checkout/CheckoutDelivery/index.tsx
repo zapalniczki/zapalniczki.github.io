@@ -80,26 +80,28 @@ const CheckoutDelivery = () => {
                       <Form deliveryTypes={deliveryTypes} />
 
                       {shouldSwitchBeDisplayed && (
-                        <Switch
-                          checked={!sameAddressAsInvoice}
-                          flexDirection="row-reverse"
-                          justifyContent="flex-end"
-                          label={t('sameAddress')}
-                          marginTop="l-size"
-                          onChange={(checked) => {
-                            setSameAddressAsInvoice(!checked)
+                        <>
+                          <Switch
+                            checked={!sameAddressAsInvoice}
+                            flexDirection="row-reverse"
+                            justifyContent="flex-end"
+                            label={t('sameAddress')}
+                            marginTop="l-size"
+                            onChange={(checked) => {
+                              setSameAddressAsInvoice(!checked)
 
-                            if (!checked) {
-                              setCheckout((prev) => ({
-                                ...prev,
-                                shipping: null
-                              }))
-                            }
-                          }}
-                        />
+                              if (!checked) {
+                                setCheckout((prev) => ({
+                                  ...prev,
+                                  shipping: null
+                                }))
+                              }
+                            }}
+                          />
+
+                          {!sameAddressAsInvoice && <ShippingForm />}
+                        </>
                       )}
-
-                      {!sameAddressAsInvoice && <ShippingForm />}
                     </div>
 
                     <div>
