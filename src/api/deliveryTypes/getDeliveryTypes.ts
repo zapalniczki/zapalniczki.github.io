@@ -13,7 +13,6 @@ export const getDeliveryTypes = async (params?: Params) => {
   const match = getMatch(params)
 
   const response = await supabase
-
     .from<GetDeliveryTypesResponseItem>(DB_TABLES.DELIVERY_TYPES)
     .select()
     .eq('is_enabled', true)
