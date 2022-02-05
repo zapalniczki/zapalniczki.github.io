@@ -2890,8 +2890,8 @@ braces@^3.0.1:
     fill-range "^7.0.1"
 
 braty-common@zapalniczki/braty-common:
-  version "1.0.177"
-  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/800ea1bfe8f2ab9edfecc35eacdc305fb1751ee6"
+  version "1.0.178"
+  resolved "https://codeload.github.com/zapalniczki/braty-common/tar.gz/00ce435e6c715ffeb9b12c24f80d95dd23a92608"
   dependencies:
     firebase "^9.6.3"
     zod "^3.11.6"

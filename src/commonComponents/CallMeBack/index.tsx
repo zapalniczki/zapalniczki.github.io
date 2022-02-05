@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { BRATY_PHONE } from 'braty-common'
 import { Banner, Box, Button, Flexbox, Heading, Text } from 'components'
 import { Form as FormikForm, Formik } from 'formik'
 import { useBreakpoints, useTranslation } from 'hooks'
@@ -18,7 +19,7 @@ const CallMeBack = (props: Props) => {
   const isDesktop = useBreakpoints('desktop')
 
   let title = commonT('FORM.title')
-  let subtitle = commonT('FORM.subtitle')
+  let subtitle = commonT('FORM.subtitle', { phoneNumber: BRATY_PHONE })
 
   return null
 

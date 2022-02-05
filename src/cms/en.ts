@@ -1,12 +1,5 @@
 import { LanguageKeys } from './pl'
-import {
-  BRATY_ADDRESS_1,
-  BRATY_BANK_ACCOUNT,
-  BRATY_BANK_NAME,
-  BRATY_EMAIL,
-  BRATY_NAME,
-  BRATY_PHONE
-} from 'braty-common'
+import { BRATY_ADDRESS_1, BRATY_EMAIL, BRATY_PHONE } from 'braty-common'
 
 const en: LanguageKeys = {
   COMMON: {
@@ -44,7 +37,7 @@ const en: LanguageKeys = {
     ERRORS: {
       23505: 'Given email address is already registered',
       'Invalid login credentials': 'Invalid username or password',
-      default: `Unexpected error. Try again or send us an email to${BRATY_EMAIL}.`
+      default: `Unexpected error. Try again or send us an email to ${BRATY_EMAIL}.`
     },
 
     CONTACT_DETAILS: {
@@ -94,8 +87,6 @@ const en: LanguageKeys = {
       en: 'english'
     },
 
-    nrb: BRATY_BANK_ACCOUNT,
-    bankName: BRATY_BANK_NAME,
     fullCompanyName: BRATY_ADDRESS_1,
 
     basketToggleLabel: 'Koszyk',
@@ -109,7 +100,6 @@ const en: LanguageKeys = {
     productsMultiple: '{{count}} products',
     preloaderInfo: 'Website loading',
     loading: 'Loading...',
-    companyName: BRATY_NAME,
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Lighter',
     unit: '(Pack of 50)',
@@ -171,7 +161,7 @@ const en: LanguageKeys = {
     },
 
     FOOTER: {
-      allRightsReserved: `© {{year}} ${BRATY_NAME} - All Rights Reserved`
+      allRightsReserved: `© {{year}} {{companyName}} - All Rights Reserved`
     },
 
     checkoutSteps: {
@@ -506,7 +496,7 @@ const en: LanguageKeys = {
       FORM: {
         title:
           'Jeżeli masz jakiekolwiek pytanie lub nie ma Twojego produktu...',
-        subtitle: `Zadzwoń na ${BRATY_PHONE} albo podaj swój numer telefonu, a my odzwonimy.`,
+        subtitle: `Zadzwoń na {{phoneNumber}} albo podaj swój numer telefonu, a my odzwonimy.`,
         info: 'Naciskając przycisk "Potwierdzam i wysyłam" potwierdzasz, że akceptujesz Politykę prywatności.',
         FORM: {
           SUBMIT: {
@@ -517,7 +507,7 @@ const en: LanguageKeys = {
       SUCCESS: {
         title: 'Prośba o telefon została wysłana',
         subtitle:
-          'Niedługo się z Tobą skontaktujemy. Średnio zajmuje nam to 24 godziny.'
+          'Niedługo się z Tobą skontaktujemy. Zazwyczaj zajmuje nam to 24 godziny.'
       },
 
       ERROR: {
@@ -848,24 +838,18 @@ const en: LanguageKeys = {
 
       ADDRESS: {
         title: 'Address',
-        info: 'Exchanges, refunds and pickup in person',
-        address1: BRATY_ADDRESS_1,
-        address2: 'Bora-Komorowskiego Street, 12/1',
-        address3: '80-366 Gdańsk',
-        address4: 'Poland'
+        info: 'Exchanges, refunds and pickup in person'
       },
 
       PHONE: {
         title: 'Telephone',
-        info: 'For any enquiries',
-        mobile: BRATY_PHONE
+        info: 'For any enquiries'
       },
 
       ACCOUNT: {
         title: 'Bank account number',
-        info: 'For ',
-        nrb: BRATY_BANK_ACCOUNT,
-        info2: `Nazwa banku: ${BRATY_BANK_NAME}`,
+        info: 'For order payments',
+        info2: `Nazwa banku: {{bankName}}`,
         info3: 'Tytuł: Numer referencyjny zamówienia'
       }
     }

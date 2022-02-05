@@ -1,11 +1,4 @@
-import {
-  BRATY_PHONE,
-  BRATY_NAME,
-  BRATY_BANK_NAME,
-  BRATY_ADDRESS_1,
-  BRATY_BANK_ACCOUNT,
-  BRATY_EMAIL
-} from 'braty-common'
+import { BRATY_PHONE, BRATY_ADDRESS_1, BRATY_EMAIL } from 'braty-common'
 
 const pl = {
   COMMON: {
@@ -94,8 +87,6 @@ const pl = {
       en: 'english'
     },
 
-    nrb: BRATY_BANK_ACCOUNT,
-    bankName: BRATY_BANK_NAME,
     fullCompanyName: BRATY_ADDRESS_1,
 
     basketToggleLabel: 'Koszyk',
@@ -109,7 +100,6 @@ const pl = {
     productsMultiple: '{{count}} produktów',
     preloaderInfo: 'Ładowanie strony',
     loading: 'Ładowanie...',
-    companyName: BRATY_NAME,
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Zapalniczka',
     unit: '(50 sztuk)',
@@ -171,7 +161,7 @@ const pl = {
     },
 
     FOOTER: {
-      allRightsReserved: `© {{year}} ${BRATY_NAME} - Wszelkie prawa zastrzeżone`
+      allRightsReserved: `© {{year}} {{companyName}} - Wszelkie prawa zastrzeżone`
     },
 
     checkoutSteps: {
@@ -507,7 +497,7 @@ const pl = {
       FORM: {
         title:
           'Jeżeli masz jakiekolwiek pytanie lub nie ma Twojego produktu...',
-        subtitle: `Zadzwoń na ${BRATY_PHONE} albo podaj swój numer telefonu, a my odzwonimy.`,
+        subtitle: `Zadzwoń na {{phoneNumber}} albo podaj swój numer telefonu, a my odzwonimy.`,
         info: 'Naciskając przycisk "Potwierdzam i wysyłam" potwierdzasz, że akceptujesz Politykę prywatności.',
         FORM: {
           SUBMIT: {
@@ -850,24 +840,18 @@ const pl = {
 
       ADDRESS: {
         title: 'Adres',
-        info: 'Wymiany, zwroty i odbiór osobisty',
-        address1: BRATY_ADDRESS_1,
-        address2: 'ul. Bora-Komorowskiego 12/1',
-        address3: '80-366 Gdańsk',
-        address4: 'Polska'
+        info: 'Wymiany, zwroty i odbiór osobisty'
       },
 
       PHONE: {
         title: 'Telefon',
-        info: 'Kontakt pod numerem',
-        mobile: BRATY_PHONE
+        info: 'Kontakt pod numerem'
       },
 
       ACCOUNT: {
         title: 'Numer rachunku',
         info: 'Do wpłat za zamówienia',
-        nrb: BRATY_BANK_ACCOUNT,
-        info2: `Nazwa banku: ${BRATY_BANK_NAME}`,
+        info2: `Nazwa banku: {{bankName}}`,
         info3: 'Tytuł: Numer referencyjny zamówienia'
         // info4: `IBAN: ${'fff'}`
       }

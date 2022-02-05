@@ -1,3 +1,4 @@
+import { BRATY_BANK_ACCOUNT, BRATY_BANK_NAME } from 'braty-common'
 import { SectionHead, Tile, Text, LabelledItem } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
@@ -21,13 +22,13 @@ const Payment = ({ id, status, total }: Props) => {
       <Text type="body-2">{t('info')}</Text>
 
       <LabelledItem
-        item={commonT('bankName')}
+        item={BRATY_BANK_NAME}
         label={t('LABELS.bankName')}
         marginTop="m-size"
       />
 
       <LabelledItem
-        item={commonT('nrb')}
+        item={BRATY_BANK_ACCOUNT}
         label={t('LABELS.nrb')}
         marginTop="m-size"
       />

@@ -1,4 +1,4 @@
-import { ROUTES, BRATY_WEBSITE_WORKFLOW_BADGE } from 'braty-common'
+import { ROUTES, BRATY_WEBSITE_WORKFLOW_BADGE, BRATY_NAME } from 'braty-common'
 import {
   Box,
   Flexbox,
@@ -99,7 +99,8 @@ const Footer = () => {
             type="caption"
           >
             {commonT('FOOTER.allRightsReserved', {
-              year: new Date().getFullYear()
+              year: new Date().getFullYear(),
+              companyName: BRATY_NAME
             })}
           </Text>
 

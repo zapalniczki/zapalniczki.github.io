@@ -5,6 +5,14 @@ import { useTranslation } from 'hooks'
 import CheckStatus from './CheckStatus'
 import React from 'react'
 import DownloadInvoice from './DownloadInvoice'
+import {
+  BRATY_ADDRESS_1,
+  BRATY_ADDRESS_2,
+  BRATY_ADDRESS_3,
+  BRATY_BANK_ACCOUNT,
+  BRATY_BANK_NAME,
+  BRATY_PHONE
+} from 'braty-common'
 
 const useContactMethods = (): ContactMethod[] => {
   const { t } = useTranslation('CONTACT')
@@ -38,7 +46,7 @@ const useContactMethods = (): ContactMethod[] => {
           <Text type="body-2">{t('items.PHONE.info')}</Text>
 
           <Text marginTop="s-size" type="subtitle-2">
-            {t('items.PHONE.mobile')}
+            {BRATY_PHONE}
           </Text>
         </>
       )
@@ -58,19 +66,15 @@ const useContactMethods = (): ContactMethod[] => {
           <Text type="body-2">{t('items.ADDRESS.info')}</Text>
 
           <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
-            {t('items.ADDRESS.address1')}
+            {BRATY_ADDRESS_1}
           </Text>
 
           <Text lineHeight="1.21" type="subtitle-2">
-            {t('items.ADDRESS.address2')}
+            {BRATY_ADDRESS_2}
           </Text>
 
           <Text lineHeight="1.21" type="subtitle-2">
-            {t('items.ADDRESS.address3')}
-          </Text>
-
-          <Text lineHeight="1.21" type="subtitle-2">
-            {t('items.ADDRESS.address4')}
+            {BRATY_ADDRESS_3}
           </Text>
         </>
       )
@@ -84,11 +88,11 @@ const useContactMethods = (): ContactMethod[] => {
           <Text type="body-2">{t('items.ACCOUNT.info')}</Text>
 
           <Text marginTop="s-size" type="subtitle-2">
-            {t('items.ACCOUNT.nrb')}
+            {BRATY_BANK_ACCOUNT}
           </Text>
 
           <Text marginTop="s-size" type="body-2">
-            {t('items.ACCOUNT.info2')}
+            {t('items.ACCOUNT.info2', { bankName: BRATY_BANK_NAME })}
           </Text>
 
           <Text type="body-2">{t('items.ACCOUNT.info3')}</Text>
