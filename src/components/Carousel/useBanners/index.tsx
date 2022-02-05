@@ -5,6 +5,8 @@ import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { Trans } from 'react-i18next'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
+import { useTheme } from 'styled-components'
+import { Theme } from 'styles/theme'
 import Christmas2021 from './Christmas2021'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 
@@ -13,7 +15,8 @@ const useBanners = () => {
   const { christmas2021 } = useContext(remoteConfigContext)
 
   const history = useNavigate()
-  const banners = getBanners(history, commonT)
+  const { colors } = useTheme()
+  const banners = getBanners(history, commonT, colors)
 
   const getBanner = (key: BannerKey): JSX.Element => banners[key]
 
@@ -33,7 +36,8 @@ export type BannerKey = 'YOUR_PLACE' | 'CHRISTMAS_2021'
 
 const getBanners = (
   navigate: NavigateFunction,
-  commonT: TranslateFunc
+  commonT: TranslateFunc,
+  colors: Theme['colors']
 ): Record<BannerKey, JSX.Element> => ({
   YOUR_PLACE: (
     <Banner background={<YourPlaceInYourPoint />} size="LARGE" vhOnMobile>
@@ -46,7 +50,17 @@ const getBanners = (
         zIndex={1}
       >
         <Heading as="h1" level={3} textAlign="center">
-          <Trans i18nKey="BANNERS.YOUR_PLACE.title" ns="COMMON" />
+          <Trans
+            components={{
+              strong: (
+                <span
+                  style={{ color: colors['braty-red'], fontWeight: 'bold' }}
+                />
+              )
+            }}
+            i18nKey="BANNERS.YOUR_PLACE.title"
+            ns="COMMON"
+          />
         </Heading>
 
         <Text
