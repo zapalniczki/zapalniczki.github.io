@@ -1,12 +1,11 @@
-import { BRATY_PHONE, BRATY_NAME } from "braty-common"
-
-const phoneNumer = BRATY_PHONE
-const companyName = 'Braty'
-const fullCompanyName = `${companyName} Przemysław Rychlewicz`
-const domain = BRATY_NAME
-const nrb = '31 1140 2004 0000 3402 8090 0648'
-const bankName = 'mBank S.A.'
-export const email = `kontakt@${domain}`
+import {
+  BRATY_PHONE,
+  BRATY_NAME,
+  BRATY_BANK_NAME,
+  BRATY_ADDRESS_1,
+  BRATY_BANK_ACCOUNT,
+  BRATY_EMAIL
+} from 'braty-common'
 
 const pl = {
   COMMON: {
@@ -45,7 +44,7 @@ const pl = {
     ERRORS: {
       23505: 'Podany adres e-mail jest już zarejestrowany',
       'Invalid login credentials': 'Nieprawidłowa nazwa użytkownika lub hasło',
-      default: `Nieoczekiwany błąd. Próbuj ponownie lub zadzwoń na ${phoneNumer}.`
+      default: `Nieoczekiwany błąd. Próbuj ponownie lub zadzwoń na ${BRATY_PHONE}.`
     },
 
     CONTACT_DETAILS: {
@@ -95,9 +94,9 @@ const pl = {
       en: 'english'
     },
 
-    nrb,
-    bankName,
-    fullCompanyName,
+    nrb: BRATY_BANK_ACCOUNT,
+    bankName: BRATY_BANK_NAME,
+    fullCompanyName: BRATY_ADDRESS_1,
 
     basketToggleLabel: 'Koszyk',
     profileToggleLabel: 'Profil użytkownika',
@@ -110,7 +109,7 @@ const pl = {
     productsMultiple: '{{count}} produktów',
     preloaderInfo: 'Ładowanie strony',
     loading: 'Ładowanie...',
-    companyName: domain,
+    companyName: BRATY_NAME,
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Zapalniczka',
     unit: '(50 sztuk)',
@@ -172,7 +171,7 @@ const pl = {
     },
 
     FOOTER: {
-      allRightsReserved: `© {{year}} ${companyName} - Wszelkie prawa zastrzeżone`
+      allRightsReserved: `© {{year}} ${BRATY_NAME} - Wszelkie prawa zastrzeżone`
     },
 
     checkoutSteps: {
@@ -508,7 +507,7 @@ const pl = {
       FORM: {
         title:
           'Jeżeli masz jakiekolwiek pytanie lub nie ma Twojego produktu...',
-        subtitle: `Zadzwoń na ${phoneNumer} albo podaj swój numer telefonu, a my odzwonimy.`,
+        subtitle: `Zadzwoń na ${BRATY_PHONE} albo podaj swój numer telefonu, a my odzwonimy.`,
         info: 'Naciskając przycisk "Potwierdzam i wysyłam" potwierdzasz, że akceptujesz Politykę prywatności.',
         FORM: {
           SUBMIT: {
@@ -830,8 +829,8 @@ const pl = {
       EMAIL: {
         title: 'E-mail',
         info: 'Kontakt w sprawie zamówień',
-        email: email,
-        link: `mailto:${email}?subject=Kontakt ze strony internetowej`
+        email: BRATY_EMAIL,
+        link: `mailto:${BRATY_EMAIL}?subject=Kontakt ze strony internetowej`
       },
 
       DOWNLOAD_INVOICE: {
@@ -852,7 +851,7 @@ const pl = {
       ADDRESS: {
         title: 'Adres',
         info: 'Wymiany, zwroty i odbiór osobisty',
-        address1: fullCompanyName,
+        address1: BRATY_ADDRESS_1,
         address2: 'ul. Bora-Komorowskiego 12/1',
         address3: '80-366 Gdańsk',
         address4: 'Polska'
@@ -861,16 +860,16 @@ const pl = {
       PHONE: {
         title: 'Telefon',
         info: 'Kontakt pod numerem',
-        mobile: phoneNumer
+        mobile: BRATY_PHONE
       },
 
       ACCOUNT: {
         title: 'Numer rachunku',
         info: 'Do wpłat za zamówienia',
-        nrb: nrb,
-        info2: `Nazwa banku: ${bankName}`,
-        info3: 'Tytuł: Numer referencyjny zamówienia',
-        info4: `IBAN: ${}`
+        nrb: BRATY_BANK_ACCOUNT,
+        info2: `Nazwa banku: ${BRATY_BANK_NAME}`,
+        info3: 'Tytuł: Numer referencyjny zamówienia'
+        // info4: `IBAN: ${'fff'}`
       }
     }
   },
@@ -891,7 +890,7 @@ const pl = {
           description: 'Wysyłka zazwyczaj następuje następnego dnia roboczego.'
         },
         TOTAL: {
-          description: `Całkowity czas realizacji zależy od zamówienia. Zadzwoń na ${phoneNumer} i upewnj się, że zamówienie będzie na czas.`
+          description: `Całkowity czas realizacji zależy od zamówienia. Zadzwoń na ${BRATY_PHONE} i upewnj się, że zamówienie będzie na czas.`
         }
       }
     },

@@ -1,12 +1,12 @@
 import { LanguageKeys } from './pl'
-
-const phoneNumer = '+48 792 531 179'
-const companyName = 'Braty'
-const fullCompanyName = `${companyName} Przemysław Rychlewicz`
-const domain = 'braty.co'
-const nrb = '31 1140 2004 0000 3402 8090 0648'
-const bankName = 'mBank S.A.'
-export const email = `kontakt@${domain}`
+import {
+  BRATY_ADDRESS_1,
+  BRATY_BANK_ACCOUNT,
+  BRATY_BANK_NAME,
+  BRATY_EMAIL,
+  BRATY_NAME,
+  BRATY_PHONE
+} from 'braty-common'
 
 const en: LanguageKeys = {
   COMMON: {
@@ -44,7 +44,7 @@ const en: LanguageKeys = {
     ERRORS: {
       23505: 'Given email address is already registered',
       'Invalid login credentials': 'Invalid username or password',
-      default: `Unexpected error. Try again or send us an email to${email}.`
+      default: `Unexpected error. Try again or send us an email to${BRATY_EMAIL}.`
     },
 
     CONTACT_DETAILS: {
@@ -94,9 +94,9 @@ const en: LanguageKeys = {
       en: 'english'
     },
 
-    nrb,
-    bankName,
-    fullCompanyName,
+    nrb: BRATY_BANK_ACCOUNT,
+    bankName: BRATY_BANK_NAME,
+    fullCompanyName: BRATY_ADDRESS_1,
 
     basketToggleLabel: 'Koszyk',
     profileToggleLabel: 'Profil użytkownika',
@@ -109,7 +109,7 @@ const en: LanguageKeys = {
     productsMultiple: '{{count}} products',
     preloaderInfo: 'Website loading',
     loading: 'Loading...',
-    companyName: domain,
+    companyName: BRATY_NAME,
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Lighter',
     unit: '(Pack of 50)',
@@ -171,7 +171,7 @@ const en: LanguageKeys = {
     },
 
     FOOTER: {
-      allRightsReserved: `© {{year}} ${companyName} - All Rights Reserved`
+      allRightsReserved: `© {{year}} ${BRATY_NAME} - All Rights Reserved`
     },
 
     checkoutSteps: {
@@ -506,7 +506,7 @@ const en: LanguageKeys = {
       FORM: {
         title:
           'Jeżeli masz jakiekolwiek pytanie lub nie ma Twojego produktu...',
-        subtitle: `Zadzwoń na ${phoneNumer} albo podaj swój numer telefonu, a my odzwonimy.`,
+        subtitle: `Zadzwoń na ${BRATY_PHONE} albo podaj swój numer telefonu, a my odzwonimy.`,
         info: 'Naciskając przycisk "Potwierdzam i wysyłam" potwierdzasz, że akceptujesz Politykę prywatności.',
         FORM: {
           SUBMIT: {
@@ -827,8 +827,8 @@ const en: LanguageKeys = {
       EMAIL: {
         title: 'E-mail',
         info: 'Orders and other enquiries',
-        email: email,
-        link: `mailto:${email}?subject=Enquiry from website`
+        email: BRATY_EMAIL,
+        link: `mailto:${BRATY_EMAIL}?subject=Enquiry from website`
       },
 
       DOWNLOAD_INVOICE: {
@@ -849,7 +849,7 @@ const en: LanguageKeys = {
       ADDRESS: {
         title: 'Address',
         info: 'Exchanges, refunds and pickup in person',
-        address1: fullCompanyName,
+        address1: BRATY_ADDRESS_1,
         address2: 'Bora-Komorowskiego Street, 12/1',
         address3: '80-366 Gdańsk',
         address4: 'Poland'
@@ -858,14 +858,14 @@ const en: LanguageKeys = {
       PHONE: {
         title: 'Telephone',
         info: 'For any enquiries',
-        mobile: phoneNumer
+        mobile: BRATY_PHONE
       },
 
       ACCOUNT: {
         title: 'Bank account number',
         info: 'For ',
-        nrb: nrb,
-        info2: `Nazwa banku: ${bankName}`,
+        nrb: BRATY_BANK_ACCOUNT,
+        info2: `Nazwa banku: ${BRATY_BANK_NAME}`,
         info3: 'Tytuł: Numer referencyjny zamówienia'
       }
     }
@@ -887,7 +887,7 @@ const en: LanguageKeys = {
           description: 'Wysyłka zazwyczaj następuje następnego dnia roboczego.'
         },
         TOTAL: {
-          description: `Całkowity czas realizacji zależy od zamówienia. Zadzwoń na ${phoneNumer} i upewnj się, że zamówienie będzie na czas.`
+          description: `Całkowity czas realizacji zależy od zamówienia. Zadzwoń na ${BRATY_PHONE} i upewnj się, że zamówienie będzie na czas.`
         }
       }
     },
