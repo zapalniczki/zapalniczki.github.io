@@ -66,32 +66,36 @@ const Footer = () => {
         <Separator marginY="l-size" />
 
         <Flexbox
+          alignItems="center"
           flexDirection={['unset', 'column-reverse', 'column-reverse', 'row']}
           justifyContent="space-between"
           width="100%"
         >
-          <Flexbox alignItems="center" height="100%">
-            <Flexbox
-              alignItems="center"
-              height="2rem"
-              marginTop={['unset', 's-size', 's-size', 'unset']}
-            >
-              {isAdmin && (
-                <Image
-                  height={20}
-                  src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg"
-                  width={105}
-                />
-              )}
+          <Flexbox
+            alignItems="center"
+            height="100%"
+            marginTop={['unset', 's-size', 's-size', 'unset']}
+          >
+            {isAdmin && (
+              <Image
+                height={20}
+                src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg"
+                width={105}
+              />
+            )}
 
-              <Text marginLeft={isAdmin ? 'm-size' : 0} type="caption">
-                {process.env.VERSION}
-              </Text>
-            </Flexbox>
+            <Text
+              marginLeft={isAdmin ? 'm-size' : 0}
+              textAlign={['unset', 'center', 'left']}
+              type="caption"
+            >
+              {process.env.VERSION}
+            </Text>
           </Flexbox>
 
           <Text
             marginTop={['unset', 's-size', 's-size', 'unset']}
+            textAlign={['unset', 'center', 'left']}
             type="caption"
           >
             {commonT('FOOTER.allRightsReserved', {
