@@ -25,7 +25,7 @@ const pl = {
         title:
           '<strong>Twoje</strong> miejsce w <strong>Twoim</strong> punkcie',
         subtitle:
-          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.',
+          'Największy wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją ofertę sprzedażową.',
         buttonLabel: 'Produkty'
       },
       CHRISTMAS_2021: {
@@ -36,8 +36,8 @@ const pl = {
     },
 
     COOKIES_CONSENT: {
-      agree: 'Rozumiem',
-      info: 'Strona braty.co używa plików cookies. Dowiedz się więcej o celu ich używania i zmianie ustawień cookies w przeglądarce.\nKorzystając ze strony wyrażasz zgodę na używanie cookies, zgodnie z aktualnymi ustawieniami przeglądarki.'
+      agree: 'Przejdź do strony',
+      info: 'Strona braty.co używa plików cookies. Korzystając ze strony wyrażasz zgodę na używanie cookies, zgodnie z aktualnymi ustawieniami przeglądarki.'
     },
 
     ERRORS: {

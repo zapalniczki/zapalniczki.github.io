@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Flexbox, MaxWidth, Text } from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
-import React from 'react'
-import CookieConsent from 'react-cookie-consent'
+import { Loader } from 'providers'
+import React, { useState } from 'react'
+import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
 import styled, { useTheme } from 'styled-components'
 import breakpoints from 'styles/breakpoints'
 import getSpace from 'styles/getSpace'
@@ -11,42 +12,57 @@ const CookiesConsent = () => {
   const commonT = useTranslation('COMMON').withBase('COOKIES_CONSENT')
   const { colors } = useTheme()
 
-  const isDesktop = useBreakpoints('desktop')
+  const isAboveDesktop = useBreakpoints('desktop max')
+
+  const initialCookieConsent = getCookieConsentValue()
+  const [cookieConsent, setCookieConsent] = useState(initialCookieConsent)
+
+  if (cookieConsent) {
+    return null
+  }
 
   return (
-    <Flexbox
-      backgroundColor="banner-color"
-      bottom="0"
-      justifyContent="center"
-      position="fixed"
-      width="100%"
-      zIndex={999}
-    >
-      <Container>
-        <CookieConsent
-          buttonText={commonT('agree')}
-          contentClasses="content-wrapper-class"
-        >
-          <MaxWidth alignItems="center" flexDirection="row">
-            {isDesktop && (
-              <FontAwesomeIcon
-                color={colors['dark-color']}
-                icon="cookie-bite"
-                size="2x"
-              />
-            )}
+    <Loader>
+      <Flexbox
+        backgroundColor="banner-color"
+        bottom="0"
+        justifyContent="center"
+        left="0"
+        position="fixed"
+        width="100%"
+        zIndex={999}
+      >
+        <Container>
+          <CookieConsent
+            buttonText={commonT('agree')}
+            contentClasses="content-wrapper-class"
+            onAccept={() => {
+              const currentCookieConsent = getCookieConsentValue()
 
-            <Text
-              marginLeft="m-size"
-              textAlign={isDesktop ? 'unset' : 'center'}
-              type="body-2"
-            >
-              {commonT('info')}
-            </Text>
-          </MaxWidth>
-        </CookieConsent>
-      </Container>
-    </Flexbox>
+              return setCookieConsent(currentCookieConsent)
+            }}
+          >
+            <MaxWidth alignItems="center" flexDirection="row">
+              {isAboveDesktop && (
+                <FontAwesomeIcon
+                  color={colors['dark-color']}
+                  icon="cookie-bite"
+                  size="2x"
+                />
+              )}
+
+              <Text
+                marginLeft="m-size"
+                textAlign={isAboveDesktop ? 'unset' : 'center'}
+                type="body-2"
+              >
+                {commonT('info')}
+              </Text>
+            </MaxWidth>
+          </CookieConsent>
+        </Container>
+      </Flexbox>
+    </Loader>
   )
 }
 

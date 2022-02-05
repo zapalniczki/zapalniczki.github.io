@@ -26,7 +26,7 @@ const en: LanguageKeys = {
       YOUR_PLACE: {
         title: '<strong>Your</strong> place in <strong>Your</strong> point',
         subtitle:
-          'Największy w Polsce wybór zapalniczek z nazwą miejscowości. Znajdź swoją zapalniczkę i razem z nami poszerzaj swoją sprzedażową.',
+          'The greatest selection of lighters with handmade printed town name. Find your lighter and diversify your product offer with us.',
         buttonLabel: 'Products'
       },
       CHRISTMAS_2021: {
@@ -37,8 +37,8 @@ const en: LanguageKeys = {
     },
 
     COOKIES_CONSENT: {
-      agree: 'I understand',
-      info: 'Strona braty.co używa plików cookies. Dowiedz się więcej o celu ich używania i zmianie ustawień cookies w przeglądarce.\nKorzystając ze strony wyrażasz zgodę na używanie cookies, zgodnie z aktualnymi ustawieniami przeglądarki.'
+      agree: 'Continue to website',
+      info: 'We use cookies to make sure this website can function. By continuing to browse on this website, you agree to our use of cookies.'
     },
 
     ERRORS: {

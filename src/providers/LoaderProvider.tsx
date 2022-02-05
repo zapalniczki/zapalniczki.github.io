@@ -40,7 +40,7 @@ const LoaderProvider = ({ children }: Props) => {
   )
 }
 
-const Loader = styled.div`
+export const Loader = styled.div`
   background-color: ${(props) =>
     `${changeColorAlpha(getColor('black')(props), 0.25)}`};
   position: fixed;
