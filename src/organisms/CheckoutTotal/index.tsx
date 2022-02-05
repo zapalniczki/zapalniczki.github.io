@@ -1,5 +1,18 @@
-import { ROUTES } from 'braty-common'
-import { Button, LabelledItem, SectionHead, Separator, Tile } from 'components'
+import {
+  BRATY_ADDRESS_1,
+  BRATY_ADDRESS_2,
+  BRATY_ADDRESS_3,
+  BRATY_NAME,
+  ROUTES
+} from 'braty-common'
+import {
+  Button,
+  LabelledItem,
+  SectionHead,
+  Separator,
+  Text,
+  Tile
+} from 'components'
 import { useCheckoutStep, useTranslation } from 'hooks'
 import add from 'lodash.add'
 import multiply from 'lodash.multiply'
@@ -9,6 +22,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { calculateDiscount, displayMoney, getVatAmount, sumArray } from 'utils'
 import CheckoutTotalLoader from './index.loader'
+
 type Props = {
   customDelivery?: number
   customPayment?: number
@@ -66,6 +80,7 @@ const CheckoutTotal = ({
   }
 
   const isCart = current === 0
+  const isLast = current === 3
 
   return (
     <Tile>
@@ -122,6 +137,16 @@ const CheckoutTotal = ({
         size="medium"
         type={isCart ? 'button' : 'submit'}
       />
+
+      {isLast && (
+        <Text lineHeight="1.6" marginTop="m-size" type="caption">
+          {commonT('info', {
+            interpolation: { escapeValue: false },
+            address: `${BRATY_ADDRESS_1}, ${BRATY_ADDRESS_2}, ${BRATY_ADDRESS_3}`,
+            companyName: BRATY_NAME
+          })}
+        </Text>
+      )}
     </Tile>
   )
 }

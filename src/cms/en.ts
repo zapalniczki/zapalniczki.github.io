@@ -173,14 +173,15 @@ const en: LanguageKeys = {
       goToCheckout: 'Go to checkout',
       goToDelivery: 'Go to delivery',
       goToPayment: 'Go to payment',
-      createOrder: 'Confirm order',
+      createOrder: 'Place order',
 
       products: 'Products price',
       delivery: 'Delivery',
       payment: 'Payment',
       discount: 'Discount',
       total: 'Total',
-      vat: '(including 23% TAX)'
+      vat: '(including 23% TAX)',
+      info: 'This website Data Processor is {{address}}. By clicking "Place order" button I confirm that I read Terms and Condition of {{companyName}} and I agree it fully.'
     },
 
     customerTypes: {

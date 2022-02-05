@@ -173,14 +173,15 @@ const pl = {
       goToCheckout: 'Przejdź do kasy',
       goToDelivery: 'Przejdź do dostawy',
       goToPayment: 'Przejdź do płatności',
-      createOrder: 'Zamawiam i płacę',
+      createOrder: 'Składam zamówienie',
 
       products: 'Cena produktów',
       delivery: 'Dostawa',
       payment: 'Płatność',
       discount: 'Obniżka',
       total: 'Łącznie do zapłaty',
-      vat: '(w tym 23% VAT)'
+      vat: '(w tym 23% VAT)',
+      info: 'Informujemy, że administratorem Twoich danych jest {{address}}. Klikając przycisk "Składam zamówienie" potwierdzam, że zapoznałem/am się z regulaminem sklepu internetowego {{companyName}} i akceptuję jego treść.'
     },
 
     customerTypes: {
