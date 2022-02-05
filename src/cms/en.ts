@@ -82,10 +82,6 @@ const en: LanguageKeys = {
       adminMarketing: 'Marketing'
     },
 
-    QUERY_LOADER: {
-      loading: 'loading...'
-    },
-
     CAROUSEL: {
       arrows: {
         prev: 'Previous slide',
@@ -112,13 +108,13 @@ const en: LanguageKeys = {
     productsFew: '{{count}} products',
     productsMultiple: '{{count}} products',
     preloaderInfo: 'Website loading',
-    loading: 'Ładowanie',
+    loading: 'Loading...',
     companyName: domain,
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Lighter',
     unit: '(Pack of 50)',
-    fetchErrorMessage: 'Nie udało się wczytać treści',
-    fetchErrorRetry: 'Spróbuj ponownie',
+    fetchErrorMessage: 'Something went wrong with loading data',
+    fetchErrorRetry: 'Try again',
 
     TABLE_HEADERS: {
       boxes_count: 'Liczba pudełek',
@@ -196,7 +192,7 @@ const en: LanguageKeys = {
       payment: 'Payment',
       discount: 'Discount',
       total: 'Total',
-      vat: '(including TAX)'
+      vat: '(including 23% TAX)'
     },
 
     customerTypes: {
@@ -952,7 +948,7 @@ const en: LanguageKeys = {
           payment_price: 'Payment',
           discount: 'Discount',
           grand_total: 'Total to pay',
-          vat: '(including TAX)'
+          vat: '(including 23% TAX)'
         }
       },
 

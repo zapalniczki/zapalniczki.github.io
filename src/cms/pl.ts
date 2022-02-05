@@ -81,10 +81,6 @@ const pl = {
       adminMarketing: 'Marketing'
     },
 
-    QUERY_LOADER: {
-      loading: 'ładowanie...'
-    },
-
     CAROUSEL: {
       arrows: {
         prev: 'Poprzedni banner',
@@ -111,7 +107,7 @@ const pl = {
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',
     preloaderInfo: 'Ładowanie strony',
-    loading: 'Ładowanie',
+    loading: 'Ładowanie...',
     companyName: domain,
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Zapalniczka',

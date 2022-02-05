@@ -21,6 +21,7 @@ const Header = () => {
     >
       <Flexbox alignItems="center" justifyContent="flex-end" padding="s-size">
         <Button
+          mobileFullWidth={false}
           onClick={closeHamburger}
           size="small"
           type="button"

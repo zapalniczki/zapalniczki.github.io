@@ -1,4 +1,4 @@
-import { ROUTES } from 'braty-common'
+import { ROUTES, BRATY_WEBSITE_WORKFLOW_BADGE } from 'braty-common'
 import {
   Box,
   Flexbox,
@@ -79,7 +79,7 @@ const Footer = () => {
             {isAdmin && (
               <Image
                 height={20}
-                src="https://github.com/zapalniczki/zapalniczki.github.io/actions/workflows/gh.yaml/badge.svg"
+                src={BRATY_WEBSITE_WORKFLOW_BADGE}
                 width={105}
               />
             )}

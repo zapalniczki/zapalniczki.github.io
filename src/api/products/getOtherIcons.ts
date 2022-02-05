@@ -16,6 +16,7 @@ export const getOtherIcons = async (params: Params) => {
     .from<GetProductsResponseItem>(DB_TABLES.PRODUCTS)
     .select(getProductsSelectQuery)
     .eq('label_id', params.labelId)
+    .eq('visible', true)
     .neq('icon_id', params.iconId)
     .limit(3)
 

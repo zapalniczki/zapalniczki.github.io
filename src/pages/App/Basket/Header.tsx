@@ -49,6 +49,7 @@ const Header = () => {
           <Button
             label={commonT('clear')}
             marginRight="s-size"
+            mobileFullWidth={false}
             onClick={clearBasket}
             size="small"
             type="button"
@@ -57,6 +58,7 @@ const Header = () => {
         )}
 
         <Button
+          mobileFullWidth={false}
           onClick={closeBasket}
           size="small"
           type="button"

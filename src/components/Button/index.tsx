@@ -14,6 +14,7 @@ type Props = {
   icon?: IconName
   label?: string
   loading?: boolean
+  mobileFullWidth?: boolean
   onClick?: () => void
   size?: Size
   title?: string
@@ -27,6 +28,7 @@ const Button = ({
   icon,
   label,
   loading,
+  mobileFullWidth = true,
   size = 'large',
   type = 'button',
   variant = 'primary',
@@ -42,6 +44,7 @@ const Button = ({
 
   return (
     <Container
+      mobileFullWidth={mobileFullWidth}
       width={[0, '100%', 'unset']}
       {...props}
       size={size}
@@ -65,11 +68,12 @@ const Button = ({
   )
 }
 
-type ContainerProps = SpaceProps &
-  LayoutProps & {
-    size: Size
-    variant: Variant
-  }
+type ContainerProps = {
+  mobileFullWidth?: boolean
+  size: Size
+  variant: Variant
+} & SpaceProps &
+  LayoutProps
 
 const Container = styled.button<ContainerProps>`
   background: ${getColor('dark-color')};
@@ -78,7 +82,7 @@ const Container = styled.button<ContainerProps>`
   border-color: ${getColor('dark-color')};
   color: ${getColor('white')};
   position: relative;
-  max-width: 100%;
+  max-width: ${(props) => (props.mobileFullWidth ? '100%' : 'max-content')};
   display: flex;
   align-items: center;
   justify-content: center;

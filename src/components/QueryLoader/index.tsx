@@ -22,7 +22,7 @@ function QueryLoader<T>({
   query,
   showLoading = true
 }: Props<T>): JSX.Element | null {
-  const commonT = useTranslation('COMMON').withBase('QUERY_LOADER')
+  const { t: commonT } = useTranslation('COMMON')
 
   if (persistLoader || query.isFetching) {
     if (Loader) {

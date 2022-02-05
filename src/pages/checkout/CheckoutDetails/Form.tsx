@@ -1,3 +1,4 @@
+import { Country } from 'braty-common'
 import {
   CountryInput,
   FieldWrapper,
@@ -7,7 +8,7 @@ import {
   ValidatedInput
 } from 'components'
 import { Field, FieldProps } from 'formik'
-import { useInput } from 'hooks'
+import { InputKey, useInput } from 'hooks'
 import React from 'react'
 import { getPostCodeKey } from 'utils'
 import { FormValues } from './useForm'
@@ -68,7 +69,11 @@ const Form = ({ isCompany }: Props) => {
             <Field name="nip" type="text">
               {(fieldProps: FieldProps<string, FormValues>) => {
                 const vatInputKey = getVatKey(fieldProps.form.values.country)
-                const { label, ...inputProps } = getInput(vatInputKey, true)
+                const isNipRequired = vatInputKey === 'NIP_PL'
+                const { label, ...inputProps } = getInput(
+                  vatInputKey,
+                  isNipRequired
+                )
 
                 return (
                   <ValidatedInput label={label} name="nip">
@@ -184,15 +189,15 @@ const Form = ({ isCompany }: Props) => {
   )
 }
 
-const getVatKey = (country: string) => {
+const getVatKey = (country: Country): InputKey => {
   switch (country) {
-    case 'United Kingdom':
+    case 'UNITED KINGDOM':
       return 'NIP_UK'
 
-    case 'Germany':
+    case 'GERMANY':
       return 'NIP_DE'
 
-    case 'Poland':
+    case 'POLAND':
     default:
       return 'NIP_PL'
   }

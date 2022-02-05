@@ -49,12 +49,12 @@ const Checkout = ({ products }: Props) => {
           <Button
             disabled={isBasketEmpty || pathname === '/checkout'}
             label={commonT('checkout')}
+            mobileFullWidth={false}
             onClick={() => {
               closeBasket()
               navigate(ROUTES.CART)
             }}
             size={isDesktop ? 'medium' : 'small'}
-            width="100%"
           />
         </Box>
       </Flexbox>

@@ -43,8 +43,9 @@ const Condition = ({ keyId, query, title, ...props }: Props) => {
   return (
     <QueryLoader
       Loader={<Loader {...props} />}
+      // persistLoader
       query={query}
-      showLoading={false}
+      // showLoading={false}
     >
       {(data) => (
         <Flexbox {...props} flexDirection="column">

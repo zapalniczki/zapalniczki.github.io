@@ -27,7 +27,7 @@ const ErrorFetchingMessage = ({ refetch }: Props) => {
         marginTop="m-size"
         onClick={refetch}
         size="medium"
-        variant="secondary"
+        variant="primary"
       />
     </Flexbox>
   )

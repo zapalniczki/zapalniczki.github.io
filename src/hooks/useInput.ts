@@ -170,6 +170,6 @@ const inputs = {
   }
 }
 
-type InputKey = keyof typeof inputs
+export type InputKey = keyof typeof inputs
 
 export default useInput
