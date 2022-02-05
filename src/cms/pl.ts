@@ -1,4 +1,4 @@
-import { BRATY_PHONE, BRATY_ADDRESS_1, BRATY_EMAIL } from 'braty-common'
+import { BRATY_PHONE } from 'braty-common'
 
 const pl = {
   COMMON: {
@@ -86,8 +86,6 @@ const pl = {
       pl: 'polski',
       en: 'english'
     },
-
-    fullCompanyName: BRATY_ADDRESS_1,
 
     basketToggleLabel: 'Koszyk',
     profileToggleLabel: 'Profil użytkownika',
@@ -818,9 +816,8 @@ const pl = {
 
       EMAIL: {
         title: 'E-mail',
-        info: 'Kontakt w sprawie zamówień',
-        email: BRATY_EMAIL,
-        link: `mailto:${BRATY_EMAIL}?subject=Kontakt ze strony internetowej`
+        info: 'Kontakt w jakiejkolwiek sprawie',
+        link: `mailto:{{email}}?subject=Kontakt ze strony internetowej`
       },
 
       DOWNLOAD_INVOICE: {
@@ -845,15 +842,16 @@ const pl = {
 
       PHONE: {
         title: 'Telefon',
-        info: 'Kontakt pod numerem'
+        info: 'Kontakt w jakiejkolwiek sprawie'
       },
 
       ACCOUNT: {
         title: 'Numer rachunku',
         info: 'Do wpłat za zamówienia',
-        info2: `Nazwa banku: {{bankName}}`,
-        info3: 'Tytuł: Numer referencyjny zamówienia'
-        // info4: `IBAN: ${'fff'}`
+        bankName: `nazwa banku: <strong>{{bankName}}</strong>`,
+        ref: 'tytuł: <strong>Numer referencyjny zamówienia</strong>',
+        iban: 'IBAN: <strong>{{iban}}</strong>',
+        bic: 'BIC: <strong>{{bic}}</strong>'
       }
     }
   },

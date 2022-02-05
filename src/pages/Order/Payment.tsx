@@ -1,4 +1,8 @@
-import { BRATY_BANK_ACCOUNT, BRATY_BANK_NAME } from 'braty-common'
+import {
+  BRATY_ADDRESS_1,
+  BRATY_BANK_ACCOUNT,
+  BRATY_BANK_NAME
+} from 'braty-common'
 import { SectionHead, Tile, Text, LabelledItem } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
@@ -8,7 +12,6 @@ import { displayMoney } from 'utils'
 type Props = Pick<GetOrderResponse, 'id' | 'total' | 'status'>
 
 const Payment = ({ id, status, total }: Props) => {
-  const { t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PAYMENT')
 
   if (status !== 'CONFIRMED') {
@@ -34,7 +37,7 @@ const Payment = ({ id, status, total }: Props) => {
       />
 
       <LabelledItem
-        item={commonT('fullCompanyName')}
+        item={BRATY_ADDRESS_1}
         label={t('LABELS.recipient')}
         marginTop="m-size"
       />

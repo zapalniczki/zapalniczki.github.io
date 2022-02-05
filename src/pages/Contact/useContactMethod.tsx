@@ -11,8 +11,12 @@ import {
   BRATY_ADDRESS_3,
   BRATY_BANK_ACCOUNT,
   BRATY_BANK_NAME,
+  BRATY_BIC,
+  BRATY_EMAIL,
+  BRATY_IBAN,
   BRATY_PHONE
 } from 'braty-common'
+import { Trans } from 'react-i18next'
 
 const useContactMethods = (): ContactMethod[] => {
   const { t } = useTranslation('CONTACT')
@@ -31,8 +35,11 @@ const useContactMethods = (): ContactMethod[] => {
         <>
           <Text type="body-2">{t('items.EMAIL.info')}</Text>
 
-          <ExternalLink marginTop="s-size" to={t('items.EMAIL.link')}>
-            <Text type="subtitle-2">{t('items.EMAIL.email')}</Text>
+          <ExternalLink
+            marginTop="s-size"
+            to={t('items.EMAIL.link', { email: BRATY_EMAIL })}
+          >
+            <Text type="subtitle-2">{BRATY_EMAIL}</Text>
           </ExternalLink>
         </>
       )
@@ -92,10 +99,32 @@ const useContactMethods = (): ContactMethod[] => {
           </Text>
 
           <Text marginTop="s-size" type="body-2">
-            {t('items.ACCOUNT.info2', { bankName: BRATY_BANK_NAME })}
+            <Trans
+              i18nKey="items.ACCOUNT.bankName"
+              t={t}
+              values={{ bankName: BRATY_BANK_NAME }}
+            />
           </Text>
 
-          <Text type="body-2">{t('items.ACCOUNT.info3')}</Text>
+          <Text type="body-2">
+            <Trans i18nKey="items.ACCOUNT.ref" t={t} />
+          </Text>
+
+          <Text type="body-2">
+            <Trans
+              i18nKey="items.ACCOUNT.iban"
+              t={t}
+              values={{ iban: BRATY_IBAN }}
+            />
+          </Text>
+
+          <Text type="body-2">
+            <Trans
+              i18nKey="items.ACCOUNT.bic"
+              t={t}
+              values={{ bic: BRATY_BIC }}
+            />
+          </Text>
         </>
       )
     }

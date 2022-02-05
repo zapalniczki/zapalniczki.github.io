@@ -1,5 +1,5 @@
+import { BRATY_EMAIL, BRATY_PHONE } from 'braty-common'
 import { LanguageKeys } from './pl'
-import { BRATY_ADDRESS_1, BRATY_EMAIL, BRATY_PHONE } from 'braty-common'
 
 const en: LanguageKeys = {
   COMMON: {
@@ -86,8 +86,6 @@ const en: LanguageKeys = {
       pl: 'polski',
       en: 'english'
     },
-
-    fullCompanyName: BRATY_ADDRESS_1,
 
     basketToggleLabel: 'Koszyk',
     profileToggleLabel: 'Profil użytkownika',
@@ -804,7 +802,7 @@ const en: LanguageKeys = {
       CHECK_STATUS: {
         title: 'Check order status',
         result: {
-          tryNew: 'Check another one',
+          tryNew: 'Check new',
           seeOrder: 'View order'
         },
         error: {
@@ -816,9 +814,8 @@ const en: LanguageKeys = {
 
       EMAIL: {
         title: 'E-mail',
-        info: 'Orders and other enquiries',
-        email: BRATY_EMAIL,
-        link: `mailto:${BRATY_EMAIL}?subject=Enquiry from website`
+        info: 'For any enquires',
+        link: `mailto:{{email}}?subject=Enquiry from website`
       },
 
       DOWNLOAD_INVOICE: {
@@ -849,8 +846,10 @@ const en: LanguageKeys = {
       ACCOUNT: {
         title: 'Bank account number',
         info: 'For order payments',
-        info2: `Nazwa banku: {{bankName}}`,
-        info3: 'Tytuł: Numer referencyjny zamówienia'
+        bankName: `bank name: <strong>{{bankName}}</strong>`,
+        ref: 'title: <strong>Order reference number</strong>',
+        iban: 'IBAN: <strong>{{iban}}</strong>',
+        bic: 'BIC: <strong>{{bic}}</strong>'
       }
     }
   },
