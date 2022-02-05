@@ -66,28 +66,6 @@ const useContactMethods = (): ContactMethod[] => {
     },
 
     {
-      icon: 'map-marked-alt',
-      key: 'ADDRESS',
-      content: (
-        <>
-          <Text type="body-2">{t('items.ADDRESS.info')}</Text>
-
-          <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
-            {BRATY_ADDRESS_1}
-          </Text>
-
-          <Text lineHeight="1.21" type="subtitle-2">
-            {BRATY_ADDRESS_2}
-          </Text>
-
-          <Text lineHeight="1.21" type="subtitle-2">
-            {BRATY_ADDRESS_3}
-          </Text>
-        </>
-      )
-    },
-
-    {
       icon: 'university',
       key: 'ACCOUNT',
       content: (
@@ -124,6 +102,28 @@ const useContactMethods = (): ContactMethod[] => {
               t={t}
               values={{ bic: BRATY_BIC }}
             />
+          </Text>
+        </>
+      )
+    },
+
+    {
+      icon: 'map-marked-alt',
+      key: 'ADDRESS',
+      content: (
+        <>
+          <Text type="body-2">{t('items.ADDRESS.info')}</Text>
+
+          <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
+            {BRATY_ADDRESS_1}
+          </Text>
+
+          <Text lineHeight="1.21" type="subtitle-2">
+            {BRATY_ADDRESS_2}
+          </Text>
+
+          <Text lineHeight="1.21" type="subtitle-2">
+            {BRATY_ADDRESS_3}
           </Text>
         </>
       )
