@@ -4,7 +4,15 @@ import { Text, Box, Spinner } from 'components'
 import { LayoutProps } from 'framer-motion'
 import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-import { SpaceProps, space, WidthProps, width, layout } from 'styled-system'
+import {
+  SpaceProps,
+  space,
+  WidthProps,
+  width,
+  layout,
+  BorderRadiusProps,
+  borderRadius
+} from 'styled-system'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
 
@@ -44,6 +52,9 @@ const Button = ({
 
   return (
     <Container
+      // TEMP
+      borderRadius="tiny"
+      // TEMP
       mobileFullWidth={mobileFullWidth}
       width={[0, '100%', 'unset']}
       {...props}
@@ -73,7 +84,8 @@ type ContainerProps = {
   size: Size
   variant: Variant
 } & SpaceProps &
-  LayoutProps
+  LayoutProps &
+  BorderRadiusProps
 
 const Container = styled.button<ContainerProps>`
   background: ${getColor('dark-color')};
@@ -163,6 +175,7 @@ const Container = styled.button<ContainerProps>`
   ${space}
   ${width}
   ${layout}
+  ${borderRadius}
 `
 
 type Size = 'large' | 'medium' | 'small'

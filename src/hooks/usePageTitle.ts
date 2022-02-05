@@ -1,14 +1,12 @@
-import { useTranslation } from 'hooks'
+import { BRATY_NAME } from 'braty-common'
 import { useLayoutEffect } from 'react'
 
 const usePageTitle = (title?: string) => {
-  const { t: commonT } = useTranslation('COMMON')
-
   useLayoutEffect(() => {
     if (title) {
-      document.title = title + ' | ' + commonT('companyName')
+      document.title = title + ' | ' + BRATY_NAME
     } else {
-      document.title = commonT('companyName')
+      document.title = BRATY_NAME
     }
   }, [title])
 }

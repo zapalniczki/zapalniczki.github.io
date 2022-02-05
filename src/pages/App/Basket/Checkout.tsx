@@ -17,7 +17,7 @@ type Props = {
 
 const Checkout = ({ products }: Props) => {
   const commonT = useTranslation('COMMON').withBase('BASKET')
-  const isDesktop = useBreakpoints('desktop')
+  const isMobile = useBreakpoints('mobile')
 
   const { pathname } = useLocation()
   const navigate = useNavigate()
@@ -54,7 +54,7 @@ const Checkout = ({ products }: Props) => {
               closeBasket()
               navigate(ROUTES.CART)
             }}
-            size={isDesktop ? 'medium' : 'small'}
+            size={isMobile ? 'small' : 'medium'}
           />
         </Box>
       </Flexbox>

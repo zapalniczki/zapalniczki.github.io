@@ -98,6 +98,10 @@ export const breakpoints = {
   max: MAX_WIDTH
 }
 
+const radii = {
+  tiny: '0.4rem'
+}
+
 const theme = {
   colors,
   space,
@@ -105,6 +109,7 @@ const theme = {
   fontSizes,
   fontWeigths,
   letterSpacings,
+  radii,
   breakpoints: Object.values(breakpoints).map((val) => `${val}px`)
 }
 

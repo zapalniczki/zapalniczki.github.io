@@ -40,7 +40,7 @@ const PageNotFound = () => {
           label={t('buttonLabel')}
           marginTop="xxxl-size"
           onClick={() => navigate(ROUTES.HOME)}
-          size="medium"
+          size="large"
           type="button"
         />
       </Flexbox>
