@@ -14,7 +14,7 @@ import { useSearchParams } from 'react-router-dom'
 import Filters from './Filters'
 
 const Products = () => {
-  const { t } = useTranslation('PRODUCTS')
+  const { currentLanguage, t } = useTranslation('PRODUCTS')
   const isAboveDesktop = useBreakpoints('desktop max')
   const [searchParams] = useSearchParams({})
 
@@ -35,13 +35,14 @@ const Products = () => {
 
   const isFiltered = labelId
 
+  const nameParamsKey = `name_${currentLanguage}` as const
   const params = {
     page: 0,
     size: isAboveDesktop ? 9 : 4,
     collectionId: collectionId,
     labelId: labelId,
     iconId: iconId,
-    name_pl: debouncedSearchQuery
+    [nameParamsKey]: debouncedSearchQuery
   }
 
   const infiniteProductQuery = useInfiniteQuery(

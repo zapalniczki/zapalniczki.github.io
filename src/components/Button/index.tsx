@@ -44,7 +44,15 @@ const Button = ({
 }: Props) => {
   if (loading) {
     return (
-      <Container {...props} size={size} type={type} variant={variant}>
+      <Container
+        {...props}
+        borderRadius="tiny"
+        paddingLeft="l-size"
+        paddingRight="l-size"
+        size={size}
+        type={type}
+        variant={variant}
+      >
         <Spinner small />
       </Container>
     )
@@ -52,9 +60,7 @@ const Button = ({
 
   return (
     <Container
-      // TEMP
       borderRadius="tiny"
-      // TEMP
       mobileFullWidth={mobileFullWidth}
       width={[0, '100%', 'unset']}
       {...props}
