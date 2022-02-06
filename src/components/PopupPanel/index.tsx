@@ -1,6 +1,6 @@
 import Flexbox from '../Flexbox'
 import { motion, AnimatePresence } from 'framer-motion'
-import React, { ReactNode } from 'react'
+import React, { forwardRef, ReactNode } from 'react'
 import { useTheme } from 'styled-components'
 import PanelHeader from './PanelHeader'
 
@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode
 }
 
-const PopupPanel = ({ children }: Props) => {
+const PopupPanel = forwardRef<HTMLDivElement, Props>(({ children }, ref) => {
   const { zIndices } = useTheme()
 
   return (
@@ -22,6 +22,7 @@ const PopupPanel = ({ children }: Props) => {
         initial={{ x: '100%' }}
         layout
         position="fixed"
+        ref={ref}
         right={0}
         style={{
           width: '60rem',
@@ -41,7 +42,9 @@ const PopupPanel = ({ children }: Props) => {
       </MotionFlexbox>
     </AnimatePresence>
   )
-}
+})
+
+PopupPanel.displayName = 'PopupPanel'
 
 const MotionFlexbox = motion(Flexbox)
 

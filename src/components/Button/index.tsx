@@ -100,6 +100,7 @@ const Container = styled.button<ContainerProps>`
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
+  box-shadow: 0 5px 15px 0 rgb(0 0 0 / 15%);
 
   ${(props) =>
     props.variant === 'secondary' &&
@@ -123,6 +124,7 @@ const Container = styled.button<ContainerProps>`
       border: 1px solid;
       border-color: ${getColor('border-color')};
       color: ${getColor('paragraph-color')};
+      box-shadow: none;
 
       &:hover {
         border: 1px solid;
@@ -137,6 +139,7 @@ const Container = styled.button<ContainerProps>`
       background: transparent;
       border-color: transparent;
       color: ${getColor('paragraph-color')};
+      box-shadow: none;
 
       &:hover {
         background: transparent;

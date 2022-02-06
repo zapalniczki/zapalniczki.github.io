@@ -40,7 +40,7 @@ const Basket = () => {
   }
 
   return (
-    <PopupPanel>
+    <PopupPanel ref={ref}>
       <Header />
 
       <QueryLoader Loader={<BasketLoader />} query={productsQuery}>

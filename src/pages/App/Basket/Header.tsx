@@ -28,11 +28,12 @@ const Header = () => {
       />
 
       <Flexbox
-        alignItems={['unset', 'flex-start', 'flex-start', 'center']}
-        flexDirection={['unset', 'column', 'column', 'row']}
-        marginRight="auto"
+        alignItems={['unset', 'flex-end', 'flex-end', 'center']}
+        flexDirection={['unset', 'column', 'column', 'row-reverse']}
+        justifyContent="flex-start"
+        width="100%"
       >
-        <Text textAlign="left" type="subtitle-1" width="100%">
+        <Text textAlign="left" type="subtitle-1" width="max-content">
           {commonT('title')}
         </Text>
 
@@ -41,6 +42,7 @@ const Header = () => {
             marginLeft={['unset', 'unset', 'unset', 's-size']}
             span
             type="caption"
+            wrap={false}
           >
             {commonT(countName, { count: productCount })}
           </Text>
