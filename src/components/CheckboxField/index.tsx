@@ -1,6 +1,8 @@
 import { StyledInput, Text, Flexbox } from 'components'
 import { FieldProps, FieldInputProps } from 'formik'
 import React from 'react'
+import styled from 'styled-components'
+import getColor from 'styles/getColor'
 import CheckboxFieldLoader from './index.loader'
 
 type Props = FieldInputProps<string> & {
@@ -21,9 +23,11 @@ const CheckboxField = ({
   title,
   value
 }: Props) => (
-  <Flexbox
+  <Container
     alignItems="center"
     backgroundColor="banner-color"
+    border="1px solid"
+    borderColor="border-color"
     position="relative"
   >
     <StyledInput
@@ -53,8 +57,14 @@ const CheckboxField = ({
         </Text>
       )}
     </Flexbox>
-  </Flexbox>
+  </Container>
 )
+
+const Container = styled(Flexbox)`
+  &:hover {
+    border-color: ${getColor('border-color-hover')};
+  }
+`
 
 export { CheckboxFieldLoader }
 export default CheckboxField

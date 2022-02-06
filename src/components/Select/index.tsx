@@ -12,7 +12,7 @@ export type Props = {
 }
 
 const Select = ({ disabled, onChange, options, placeholder, value }: Props) => {
-  const { colors } = useTheme()
+  const { colors, radii } = useTheme()
 
   return (
     <SelectFromLib
@@ -26,20 +26,28 @@ const Select = ({ disabled, onChange, options, placeholder, value }: Props) => {
         menu: (provided) => ({
           ...provided,
           zIndex: 10,
-          marginTop: '0.2rem',
-          borderRadius: 0
+          marginTop: '0.4rem',
+          borderRadius: radii['tiny']
         }),
 
         menuList: (provided) => ({
           ...provided,
-          padding: 0
+          paddingTop: '0.4rem',
+          paddingBottom: '0.4rem'
         }),
 
-        control: (provided) => ({
+        control: (provided, state) => ({
           ...provided,
           minHeight: INPUT_HEIGHT,
-          borderRadius: 0,
-          borderColor: colors['border-color']
+          borderRadius: radii['tiny'],
+          borderColor: colors['border-color'],
+          boxShadow: 'none',
+          outline: state.isFocused ? '2px solid' : 'none',
+          outlineColor: state.isFocused ? colors['yellow-outline'] : 'none',
+
+          '&:hover': {
+            borderColor: colors['border-color-hover']
+          }
         }),
 
         valueContainer: (provided) => ({
@@ -54,6 +62,14 @@ const Select = ({ disabled, onChange, options, placeholder, value }: Props) => {
           fontSize: '1.4rem'
         })
       }}
+      theme={(provided) => ({
+        ...provided,
+        colors: {
+          ...provided.colors,
+          primary25: colors['select-option-background-hover'],
+          primary: colors['braty-red']
+        }
+      })}
       value={value}
     />
   )

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
+import getRadius from 'styles/getRadius'
 
 type Props = FieldProps<string> & {
   autocomplete?: string
@@ -77,10 +78,15 @@ export const StyledInput = styled.input<StyledInputProps>`
   position: relative;
   cursor: pointer;
   border: 1px solid;
+  border-radius: ${getRadius('tiny')};
   border-color: ${getColor('border-color')};
   padding: ${getSpace('xxs-size')} ${getSpace('xs-size')};
   font-family: 'Roboto', sans-serif;
   font-size: 1.4rem;
+
+  &:hover {
+    border-color: ${getColor('border-color-hover')};
+  }
 
   &[type='checkbox'],
   &[type='radio'] {

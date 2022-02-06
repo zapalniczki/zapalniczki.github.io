@@ -1,9 +1,14 @@
 export const MAX_WIDTH = 1200
 
 const colors = {
-  'background-color': '#f9f9f9',
-  'banner-color': '#f2f2f2',
+  'background-color': '#f5f5f5',
+  // 'banner-color': '#FFFFFF',
+  'banner-color': '#F2F2F2',
   'border-color': 'rgb(225, 225, 225)',
+  'border-color-light': 'rgb(234, 234, 234)',
+  'border-color-hover': '#CACACA',
+
+  'select-option-background-hover': '#F7F7F7',
 
   'paragraph-color': '#4a4a4a',
   'heading-color': '#1a1a1a',
@@ -14,11 +19,11 @@ const colors = {
   'dark-color': '#3a3a3a',
 
   red: 'rgba(247, 45, 45, 0.986)',
-  green: '#3b9620',
+  green: '#3B9620',
   yellow: 'rgb(228, 165, 31)',
   'yellow-outline': 'rgb(255, 221, 0)',
 
-  'braty-red': '#e6070f',
+  'braty-red': '#E6070F',
   'christmas-red': 'rgb(184, 0, 0)'
 }
 
@@ -115,6 +120,7 @@ const theme = {
 
 export type Theme = typeof theme
 export type Color = keyof typeof colors
+export type Radius = keyof typeof radii
 export type Space = keyof typeof space
 export type Breakpoint = keyof typeof breakpoints
 

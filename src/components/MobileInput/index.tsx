@@ -16,7 +16,7 @@ type Props = {
 const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
   const commonT = useTranslation('COMMON').withBase('COUNTRIES')
   const { currentLanguage } = useTranslation('COMMON')
-  const { colors } = useTheme()
+  const { colors, radii } = useTheme()
 
   const { field, meta } = fieldProps
   const [, , helpers] = useField(fieldProps.field.name)
@@ -42,7 +42,7 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
           border: '1px solid',
           borderColor: colors['border-color'],
           cursor: 'default',
-          background: 'background-color'
+          background: colors['white']
         }}
         country={country}
         countryCodeEditable={false}
@@ -51,7 +51,8 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
         inputStyle={{
           width: '100%',
           border: '1px solid',
-          borderColor: colors['border-color']
+          borderColor: colors['border-color'],
+          borderRadius: radii['tiny']
         }}
         localization={{
           pl: commonT('POLAND'),

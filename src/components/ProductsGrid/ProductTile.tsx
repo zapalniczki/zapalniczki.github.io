@@ -68,6 +68,8 @@ const ProductTile = ({ product }: Props) => {
 
           <Flexbox
             backgroundColor="background-color"
+            borderBottomLeftRadius="tiny"
+            borderBottomRightRadius="tiny"
             justifyContent="space-between"
             overflow="hidden"
             paddingX={['unset', 'xs-size', 'xs-size', 'm-size']}
@@ -114,7 +116,7 @@ const Container = styled(Tile)`
   justify-content: space-between;
   text-decoration: none;
   border: 1px solid;
-  border-color: ${getColor('border-color')};
+  border-color: ${getColor('border-color-light')};
   width: 100%;
   max-width: 100%;
   overflow: hidden;

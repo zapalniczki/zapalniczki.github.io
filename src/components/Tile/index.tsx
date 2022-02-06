@@ -24,6 +24,7 @@ const Tile = ({ children, onClick, ...props }: Props) => (
     background="white"
     border="1px solid"
     borderColor="border-color"
+    borderRadius="tiny"
     flexDirection="column"
     onClick={onClick}
     padding={['unset', 'm-size', 'm-size', 'l-size']}
