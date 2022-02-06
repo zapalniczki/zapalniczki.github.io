@@ -1,18 +1,14 @@
 import { getProductsById } from 'api'
-import { QueryLoader } from 'components'
-
+import { DB_TABLES } from 'braty-common'
+import { PopupPanel, QueryLoader } from 'components'
+import { BasketItem } from 'organisms'
 import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext, useEffect, useRef } from 'react'
 import { useQuery } from 'react-query'
-import styled from 'styled-components'
-import getColor from 'styles/getColor'
 import BasketContent from './BasketContent'
-import { BasketItem } from 'organisms'
 import Checkout from './Checkout'
 import Header from './Header'
 import BasketLoader from './index.loader'
-import { AnimatePresence, motion } from 'framer-motion'
-import { DB_TABLES } from 'braty-common'
 
 const Basket = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -39,50 +35,26 @@ const Basket = () => {
     getProductsById(ids)
   )
 
+  if (!basketOpen) {
+    return null
+  }
+
   return (
-    <AnimatePresence>
-      {basketOpen && (
-        <Container
-          animate={{ x: 0 }}
-          exit={{ x: '100%' }}
-          initial={{ x: '100%' }}
-          ref={ref}
-          transition={{
-            type: 'spring',
-            mass: 0.5,
-            duration: 0.1
-          }}
-        >
-          <Header />
+    <PopupPanel>
+      <Header />
 
-          <QueryLoader Loader={<BasketLoader />} query={productsQuery}>
-            {(products) => (
-              <>
-                <BasketContent products={products} />
+      <QueryLoader Loader={<BasketLoader />} query={productsQuery}>
+        {(products) => (
+          <>
+            <BasketContent products={products} />
 
-                <Checkout products={products} />
-              </>
-            )}
-          </QueryLoader>
-        </Container>
-      )}
-    </AnimatePresence>
+            <Checkout products={products} />
+          </>
+        )}
+      </QueryLoader>
+    </PopupPanel>
   )
 }
-
-const Container = styled(motion.aside)`
-  width: 60rem;
-  max-width: 100vw;
-  height: 100vh;
-  background: ${getColor('white')};
-  position: fixed;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.08);
-  z-index: ${(props) => props.theme.zIndices.basket};
-`
 
 export default Basket
 export { BasketItem }

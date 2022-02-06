@@ -1,12 +1,11 @@
-import { Flexbox, Box, NavigationLink } from 'components'
+import { Box, NavigationLink, PopupPanel } from 'components'
 import { useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'
 import { matchPath, useLocation } from 'react-router'
-import Header from './Header'
-import { motion, AnimatePresence } from 'framer-motion'
 import { handleRoutes } from 'utils'
+import Header from './Header'
 
 const HamburgerMenu = () => {
   const commonT = useTranslation('COMMON').withBase('LINKS')
@@ -20,47 +19,31 @@ const HamburgerMenu = () => {
   }
 
   return (
-    <AnimatePresence>
-      <MotionFlexbox
-        animate={{ width: '100vw' }}
-        backgroundColor="white"
-        exit={{ width: 0 }}
-        flexDirection="column"
-        height="100vh"
-        initial={{ width: 0 }}
-        layout
-        position="fixed"
-        right="0"
-        top="0"
-        zIndex={70}
-      >
-        <Header />
+    <PopupPanel>
+      <Header />
 
-        {handleRoutes(routes, remoteConfig, 'HAMBURGER').map(
-          ({ end, key, path }) => {
-            const isActive = !!matchPath({ path, end }, pathname)
+      {handleRoutes(routes, remoteConfig, 'HAMBURGER').map(
+        ({ end, key, path }) => {
+          const isActive = !!matchPath({ path, end }, pathname)
 
-            if (!key) {
-              return null
-            }
-
-            return (
-              <Box as="li" display="inline-block" key={path}>
-                <NavigationLink
-                  active={isActive}
-                  label={commonT(key)}
-                  onClick={closeHamburger}
-                  to={path}
-                />
-              </Box>
-            )
+          if (!key) {
+            return null
           }
-        )}
-      </MotionFlexbox>
-    </AnimatePresence>
+
+          return (
+            <Box as="li" display="inline-block" key={path}>
+              <NavigationLink
+                active={isActive}
+                label={commonT(key)}
+                onClick={closeHamburger}
+                to={path}
+              />
+            </Box>
+          )
+        }
+      )}
+    </PopupPanel>
   )
 }
-
-const MotionFlexbox = motion(Flexbox)
 
 export default HamburgerMenu
