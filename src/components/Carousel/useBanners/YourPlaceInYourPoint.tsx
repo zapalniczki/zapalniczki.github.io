@@ -16,6 +16,8 @@ const blink = keyframes`
 `
 
 const Container = styled(Svg)`
+  height: calc(100% - 0.1rem);
+
   #windows {
     animation: ${blink} 10s linear infinite alternate;
     animation-delay: 5s;

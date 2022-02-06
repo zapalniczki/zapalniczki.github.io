@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import { Carousel as CarouselLib } from 'react-responsive-carousel'
+import { Carousel as CarouselNative } from 'react-responsive-carousel'
 import { Box } from 'components'
 import useBanners, { BannerKey } from './useBanners'
 import Chevron from './Chevron'
@@ -10,8 +10,12 @@ const Carousel = () => {
   const multipleChildren = visibleBanners.length > 1
 
   return (
-    <Box height="100%" width="100%">
-      <CarouselLib
+    <Box
+      // border="1px solid red"
+      height="100%"
+      width="100%"
+    >
+      <CarouselNative
         autoPlay
         dynamicHeight={false}
         infiniteLoop
@@ -39,7 +43,7 @@ const Carousel = () => {
         {visibleBanners.map((banner, index) => (
           <Fragment key={index}>{getBanner(banner)}</Fragment>
         ))}
-      </CarouselLib>
+      </CarouselNative>
     </Box>
   )
 }
