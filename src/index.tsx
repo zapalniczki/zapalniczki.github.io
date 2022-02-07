@@ -111,7 +111,8 @@ library.add(
   faTruckLoading,
   faUniversity,
   faUserAlt,
-  faUserClock
+  faUserClock,
+  faHeart
 )
 
 export const queryClient = new QueryClient({
