@@ -9,6 +9,7 @@ import {
   Separator,
   Text
 } from 'components'
+import envs from 'envs'
 import { useAdmin, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'
@@ -89,7 +90,7 @@ const Footer = () => {
               textAlign={['unset', 'center', 'left']}
               type="caption"
             >
-              {process.env.VERSION}
+              {envs.version}
             </Text>
           </Flexbox>
 

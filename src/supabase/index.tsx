@@ -1,16 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
-import config from './config'
+import envs from 'envs'
 
-const { publicAnonKey, url } = config
-
-if (!url) {
-  throw new Error('No SUPABASE_URL in envs ')
-}
-
-if (!publicAnonKey) {
-  throw new Error('No SUPABASE_PUBLIC_ANON_KEY in envs ')
-}
-
-const supabase = createClient(url, publicAnonKey)
+const supabase = createClient(envs.supabaseUrl, envs.supabasePublicAnonKey)
 
 export default supabase

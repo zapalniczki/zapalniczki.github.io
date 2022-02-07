@@ -1,20 +1,6 @@
 import { fetchAndParseRemoteConfig, RemoteConfig } from 'braty-common'
-import { initializeApp } from 'firebase/app'
 import { useDev } from 'hooks'
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyAXnOQn6hJ15jMRHqRT-1nozJ8-omP0s2E',
-  authDomain: 'zapalniczki-c7234.firebaseapp.com',
-  databaseURL:
-    'https://zapalniczki-c7234-default-rtdb.asia-southeast1.firebasedatabase.app',
-  projectId: 'zapalniczki-c7234',
-  storageBucket: 'zapalniczki-c7234.appspot.com',
-  messagingSenderId: '397821315416',
-  appId: '1:397821315416:web:7af195e1b14c809e4f3d2d'
-}
-
-initializeApp(firebaseConfig)
 
 const init: RemoteConfig = {
   _404: true,

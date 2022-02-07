@@ -63,10 +63,9 @@ import theme from 'styles/theme'
 import { App } from './pages'
 import ReactGA from 'react-ga'
 import { HashRouter } from 'react-router-dom'
+import envs from 'envs'
 
-if (process.env.MEASUREMENT_ID) {
-  ReactGA.initialize(process.env.MEASUREMENT_ID)
-}
+ReactGA.initialize(envs.measurementId)
 
 library.add(
   faArrowLeft,
