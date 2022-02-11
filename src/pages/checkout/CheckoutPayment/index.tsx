@@ -12,9 +12,10 @@ import { Navigate } from 'react-router-dom'
 import Form from './Form'
 import Loader from './index.loader'
 import useForm from './useForm'
+import { getLanguagePrice } from 'utils'
 
 const CheckoutPayment = () => {
-  const { t } = useTranslation('CHECKOUT_PAYMENT')
+  const { currentLanguage, t } = useTranslation('CHECKOUT_PAYMENT')
 
   usePageTitle(t('title'))
   useScrollTop()
@@ -61,6 +62,14 @@ const CheckoutPayment = () => {
                 (type) => type.id === values.payment_type
               )
 
+              let price: number | undefined
+              if (paymentType) {
+                price = getLanguagePrice({
+                  language: currentLanguage,
+                  price: paymentType
+                })
+              }
+
               return (
                 <FormikForm>
                   <Columns>
@@ -69,7 +78,7 @@ const CheckoutPayment = () => {
                     </div>
 
                     <div>
-                      <CheckoutTotal customPayment={paymentType?.price} />
+                      <CheckoutTotal customPayment={price} />
                     </div>
                   </Columns>
                 </FormikForm>

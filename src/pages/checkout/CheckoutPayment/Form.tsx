@@ -5,7 +5,7 @@ import { FormRow, CheckboxField, ValidatedInput } from 'components'
 import { FormValues } from './useForm'
 import { PaymentType } from 'braty-common'
 import Voucher from './Voucher'
-import { displayMoney, getLanguageLabel } from 'utils'
+import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
 import { remoteConfigContext } from 'providers'
 
 type Props = {
@@ -33,6 +33,11 @@ const Form = ({ paymentTypes }: Props) => {
             description: true
           })
 
+          const price = getLanguagePrice({
+            language: currentLanguage,
+            price: type
+          })
+
           return (
             <Field key={optionLabel} name="payment_type">
               {(fieldProps: FieldProps<PaymentType, FormValues>) => {
@@ -47,7 +52,7 @@ const Form = ({ paymentTypes }: Props) => {
 
                     <CheckboxField
                       {...fieldProps.field}
-                      caption={displayMoney(type.price)}
+                      caption={displayMoney(price)}
                       selectedValue={fieldProps.field.value}
                       subtitle={description}
                       title={optionLabel}

@@ -113,10 +113,15 @@ const DeliveryAndPayments = () => {
                 description: true
               })
 
+              const price = getLanguagePrice({
+                language: currentLanguage,
+                price: type
+              })
+
               return (
                 <FeatureItem
                   key={type.id}
-                  subtitle={`${displayMoney(type.price)} - ${description}`}
+                  subtitle={`${displayMoney(price)} - ${description}`}
                   title={label}
                 >
                   <FontAwesomeIcon
