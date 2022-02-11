@@ -2,7 +2,7 @@ import { FormRow, CheckboxField, ValidatedInput } from 'components'
 import React from 'react'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
-import { displayMoney, getLanguageLabel } from 'utils'
+import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
 import { FormValues } from './useForm'
 import { DeliveryType } from 'braty-common'
 
@@ -28,6 +28,11 @@ const Form = ({ deliveryTypes }: Props) => {
           description: true
         })
 
+        const price = getLanguagePrice({
+          language: currentLanguage,
+          price: type
+        })
+
         return (
           <Field key={optionLabel} name="delivery_type">
             {(fieldProps: FieldProps<DeliveryType, FormValues>) => {
@@ -42,7 +47,7 @@ const Form = ({ deliveryTypes }: Props) => {
 
                   <CheckboxField
                     {...fieldProps.field}
-                    caption={displayMoney(type.price)}
+                    caption={displayMoney(price)}
                     selectedValue={fieldProps.field.value}
                     subtitle={description}
                     title={optionLabel}

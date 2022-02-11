@@ -15,13 +15,14 @@ import { checkoutContext } from 'providers'
 import React, { useContext, useState } from 'react'
 import { useQuery } from 'react-query'
 import { Navigate } from 'react-router-dom'
+import { getLanguagePrice } from 'utils'
 import Form from './Form'
 import Loader from './index.loader'
 import ShippingForm from './ShippingForm'
 import useForm from './useForm'
 
 const CheckoutDelivery = () => {
-  const { t } = useTranslation('CHECKOUT_DELIVERY')
+  const { currentLanguage, t } = useTranslation('CHECKOUT_DELIVERY')
   const { checkout, setCheckout } = useContext(checkoutContext)
 
   usePageTitle(t('title'))
@@ -73,6 +74,14 @@ const CheckoutDelivery = () => {
 
               const shouldSwitchBeDisplayed = delivery?.requires_address
 
+              let price: number | undefined
+              if (delivery) {
+                price = getLanguagePrice({
+                  language: currentLanguage,
+                  price: delivery
+                })
+              }
+
               return (
                 <FormikForm onSubmit={handleSubmit}>
                   <Columns>
@@ -105,7 +114,7 @@ const CheckoutDelivery = () => {
                     </div>
 
                     <div>
-                      <CheckoutTotal customDelivery={delivery?.price} />
+                      <CheckoutTotal customDelivery={price} />
                     </div>
                   </Columns>
                 </FormikForm>

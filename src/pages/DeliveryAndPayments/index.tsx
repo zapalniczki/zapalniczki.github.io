@@ -16,7 +16,7 @@ import {
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, getLanguageLabel } from 'utils'
+import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
 import Option from './Option'
 
 const DeliveryAndPayments = () => {
@@ -73,17 +73,25 @@ const DeliveryAndPayments = () => {
       <QueryLoader Loader={<ProductsGridLoader />} query={deliveryTypesQuery}>
         {(deliveryTypes) => (
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
-            {deliveryTypes.map((type) => (
-              <FeatureItem
-                key={type.id}
-                subtitle={`${displayMoney(type.price)} - ${
-                  type.description_pl
-                }`}
-                title={type.label_pl}
-              >
-                <FontAwesomeIcon icon={type.icon_name as IconName} size="3x" />
-              </FeatureItem>
-            ))}
+            {deliveryTypes.map((type) => {
+              const price = getLanguagePrice({
+                language: currentLanguage,
+                price: type
+              })
+
+              return (
+                <FeatureItem
+                  key={type.id}
+                  subtitle={`${displayMoney(price)} - ${type.description_pl}`}
+                  title={type.label_pl}
+                >
+                  <FontAwesomeIcon
+                    icon={type.icon_name as IconName}
+                    size="3x"
+                  />
+                </FeatureItem>
+              )
+            })}
           </Grid>
         )}
       </QueryLoader>

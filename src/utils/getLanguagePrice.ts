@@ -12,8 +12,8 @@ function getLanguagePrice(props: Props) {
 }
 
 type Price = {
-  price_en: string
-  price_pl: string
+  price_en: number
+  price_pl: number
 }
 
 export default getLanguagePrice

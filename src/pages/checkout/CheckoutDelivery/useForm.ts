@@ -1,9 +1,10 @@
 import { DeliveryType, ROUTES } from 'braty-common'
-import { useFormSchema } from 'hooks'
+import { useFormSchema, useTranslation } from 'hooks'
 import { Shipping } from 'models'
 import { checkoutContext } from 'providers'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getLanguagePrice } from 'utils'
 import { object, string } from 'yup'
 
 export type FormValues = {
@@ -12,6 +13,7 @@ export type FormValues = {
 }
 
 const useForm = () => {
+  const { currentLanguage } = useTranslation('COMMON')
   const navigate = useNavigate()
   const { getSchema: getNativeSchema } = useFormSchema()
   const { checkout, setCheckout } = useContext(checkoutContext)
@@ -26,6 +28,11 @@ const useForm = () => {
     )
 
     if (selectedDeliveryType) {
+      const price = getLanguagePrice({
+        language: currentLanguage,
+        price: selectedDeliveryType
+      })
+
       setCheckout((prev) => ({
         ...prev,
         delivery_type: selectedDeliveryType.id,
@@ -35,7 +42,7 @@ const useForm = () => {
         delivery_type_allows_cash_payment: selectedDeliveryType.cash_payment,
         total: {
           ...prev.total,
-          delivery: selectedDeliveryType.price
+          delivery: price
         },
         shipping: selectedDeliveryType.requires_address ? form.shipping : null
       }))
