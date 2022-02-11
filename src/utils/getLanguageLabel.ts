@@ -1,4 +1,4 @@
-import { Language } from 'hooks'
+import { Language } from 'braty-common'
 
 type Props = {
   language: Language
@@ -38,8 +38,6 @@ function getLanguageLabel(props: Props) {
   return props.label[key]
 }
 
-export default getLanguageLabel
-
 type Label = {
   label_en: string
   label_pl: string
@@ -54,3 +52,5 @@ type Name = {
   name_en: string
   name_pl: string
 }
+
+export default getLanguageLabel

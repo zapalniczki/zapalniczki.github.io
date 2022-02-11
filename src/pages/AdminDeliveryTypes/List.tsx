@@ -4,7 +4,12 @@ import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
 import { Language, useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, formatDate, getLanguageLabel } from 'utils'
+import {
+  displayMoney,
+  formatDate,
+  getLanguageLabel,
+  getLanguagePrice
+} from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
@@ -82,11 +87,16 @@ const shapeData = (data: DeliveryType[], currentLanguage: Language) =>
       description: true
     })
 
+    const price = getLanguagePrice({
+      language: currentLanguage,
+      price: record
+    })
+
     return {
       created_at: formatDate(record.created_at),
       updated_at: formatDate(record.updated_at),
       label: record.label_pl,
-      price: displayMoney(record.price),
+      price: displayMoney(price),
       description: description,
       requires_address: getIcon(record.requires_address),
       is_enabled: getIcon(record.is_enabled),
