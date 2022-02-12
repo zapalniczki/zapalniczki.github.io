@@ -18,7 +18,8 @@ import { generatePath } from 'react-router'
 import {
   displayMoney,
   findCorrectProductImageSize,
-  getLanguageLabel
+  getLanguageLabel,
+  getLanguagePrice
 } from 'utils'
 
 type Props = {
@@ -82,7 +83,8 @@ const getDetails = (
 
     return {
       ...details,
-      price: p.price,
+      price_pl: p.price_pl,
+      price_en: p.price_en,
       quantity: p.quantity
     }
   })
@@ -107,6 +109,11 @@ const shapeData = (
       name: true
     })
 
+    const price = getLanguagePrice({
+      language: currentLanguage,
+      price: product
+    })
+
     return {
       product_image: (
         <Box maxHeight="9rem" maxWidth="9rem" minHeight="9rem" minWidth="9rem">
@@ -115,8 +122,8 @@ const shapeData = (
       ),
       product_name: <Link label={productName} showUnderline to={productPath} />,
       boxes_count: product.quantity,
-      product_price: displayMoney(product.price),
-      product_total: displayMoney(multiply(product.price, product.quantity))
+      product_price: displayMoney(price),
+      product_total: displayMoney(multiply(price, product.quantity))
     }
   })
 

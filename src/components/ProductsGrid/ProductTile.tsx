@@ -12,7 +12,8 @@ import getColor from 'styles/getColor'
 import {
   displayMoney,
   findCorrectProductImageSize,
-  getLanguageLabel
+  getLanguageLabel,
+  getLanguagePrice
 } from 'utils'
 
 export type Props = {
@@ -38,6 +39,11 @@ const ProductTile = ({ product }: Props) => {
     language: currentLanguage,
     label: product,
     name: true
+  })
+
+  const price = getLanguagePrice({
+    language: currentLanguage,
+    price: product
   })
 
   return (
@@ -89,7 +95,7 @@ const ProductTile = ({ product }: Props) => {
 
               <Flexbox justifyContent="space-between" width="100%">
                 <Text type="body-2">
-                  {`${displayMoney(product.price)} ${commonT('unit')}`}
+                  {`${displayMoney(price)} ${commonT('unit')}`}
                 </Text>
 
                 {isInBasket && (

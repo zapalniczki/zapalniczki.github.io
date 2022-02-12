@@ -35,7 +35,8 @@ export const getProducts = async (params: Params = {}) => {
 
 export const getProductsSelectQuery = `
 id,
-price,
+price_pl,
+price_en,
 updated_at,
 visible,
 bestseller,

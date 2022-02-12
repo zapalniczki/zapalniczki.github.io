@@ -10,7 +10,8 @@ type Payload = {
   is_test: boolean
   order_will_take_long: boolean
   payment_type: string
-  products_price: number
+  products_price_en: number
+  products_price_pl: number
   same_address_as_invoice: boolean | null
   shipping: string | null
   voucher_id: Voucher['id'] | null

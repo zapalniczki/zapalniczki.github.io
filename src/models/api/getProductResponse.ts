@@ -6,7 +6,8 @@ const getProductResponse = product
     description_pl: true,
     description_en: true,
     id: true,
-    price: true,
+    price_pl: true,
+    price_en: true,
     name_pl: true,
     name_en: true
   })

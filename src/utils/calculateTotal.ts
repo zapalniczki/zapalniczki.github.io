@@ -1,5 +1,7 @@
 const calculateTotal = (arr: number[]) => {
-  if (!arr || arr?.length === 0) return 0
+  if (!arr || arr?.length === 0) {
+    return 0
+  }
 
   const total = arr.reduce((acc, val) => acc + val, 0)
 

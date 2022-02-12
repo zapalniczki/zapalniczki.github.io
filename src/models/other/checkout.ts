@@ -13,8 +13,10 @@ const checkout = object({
   delivery_type_allows_cash_payment: boolean().nullable(),
   shipping: shipping.nullable(),
   total: object({
-    delivery: number(),
-    payment: number()
+    delivery_en: number(),
+    delivery_pl: number(),
+    payment_en: number(),
+    payment_pl: number()
   }),
   voucher_id: voucher.shape.id.nullable(),
   voucher: voucher

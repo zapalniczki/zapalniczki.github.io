@@ -9,13 +9,14 @@ import {
 import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { calculateTotal, displayMoney } from 'utils'
+import { calculateTotal, displayMoney, getLanguagePrice } from 'utils'
 
 type Props = {
   products: GetProductsByIdResponseItem[]
 }
 
 const Checkout = ({ products }: Props) => {
+  const { currentLanguage } = useTranslation('COMMON')
   const commonT = useTranslation('COMMON').withBase('BASKET')
   const isMobile = useBreakpoints('mobile')
 
@@ -25,9 +26,15 @@ const Checkout = ({ products }: Props) => {
   const { closeBasket } = useContext(togglesContext)
   const { basket, isBasketEmpty } = useContext(checkoutContext)
 
-  const productsTotal = calculateTotal(
-    basket.map((product) => getProductTotal(products, product))
-  )
+  const productTotals = basket.map((product) => {
+    const total = getLanguagePrice({
+      language: currentLanguage,
+      price: getProductTotal(products, product)
+    })
+
+    return total
+  })
+  const productsTotal = calculateTotal(productTotals)
 
   return (
     <Flexbox background="white" flexDirection="column">
@@ -62,13 +69,20 @@ const Checkout = ({ products }: Props) => {
   )
 }
 
-export const getProductTotal = (
+const getProductTotal = (
   products: GetProductsResponseItem[],
   basketItem: BasketItem
 ) => {
-  const price = products.find((elem) => elem.id === basketItem.id)?.price || 0
+  const price_pl =
+    products.find((elem) => elem.id === basketItem.id)?.price_pl || 0
 
-  return price * basketItem.quantity
+  const price_en =
+    products.find((elem) => elem.id === basketItem.id)?.price_en || 0
+
+  return {
+    price_pl: price_pl * basketItem.quantity,
+    price_en: price_en * basketItem.quantity
+  }
 }
 
 export default Checkout

@@ -36,7 +36,8 @@ const useForm = (product: GetProductResponse) => {
         newBasket[basketItemIndex] = {
           id: product.id,
           quantity: values.product_quantity,
-          price: product.price
+          price_en: product.price_en,
+          price_pl: product.price_pl
         }
 
         return {
@@ -52,7 +53,8 @@ const useForm = (product: GetProductResponse) => {
           {
             id: product.id,
             quantity: values.product_quantity,
-            price: product.price
+            price_pl: product.price_pl,
+            price_en: product.price_en
           }
         ]
       }

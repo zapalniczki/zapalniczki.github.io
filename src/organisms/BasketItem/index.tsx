@@ -11,7 +11,8 @@ import getSpace from 'styles/getSpace'
 import {
   displayMoney,
   findCorrectProductImageSize,
-  getLanguageLabel
+  getLanguageLabel,
+  getLanguagePrice
 } from 'utils'
 import BasketItemLoader from './index.loader'
 import SimpleButton from './SimpleButton'
@@ -44,7 +45,11 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
     name: true
   })
 
-  const { id, images, price } = product
+  const { id, images, price_en, price_pl } = product
+  const price = getLanguagePrice({
+    language: currentLanguage,
+    price: product
+  })
 
   const productPath = generatePath(ROUTES.PRODUCTS_ID, { id })
 
@@ -66,7 +71,8 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
         newBasket[basketIndex] = {
           id,
           quantity: newQuantity,
-          price
+          price_en,
+          price_pl
         }
 
         basket = newBasket

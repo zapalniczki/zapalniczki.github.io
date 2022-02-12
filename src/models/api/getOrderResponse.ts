@@ -13,7 +13,8 @@ import { array, TypeOf } from 'zod'
 const getOrderResponse = order.extend({
   products: array(
     orderItem.pick({
-      price: true,
+      price_pl: true,
+      price_en: true,
       quantity: true,
       product_id: true
     })

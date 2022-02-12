@@ -6,11 +6,11 @@ import {
 } from 'api'
 import { MoldStatus, PaymentType, ROUTES, Voucher } from 'braty-common'
 import {
-  useTest,
   useFormSchema,
   useFormSubmit,
-  useTranslation,
-  useNoEmail
+  useNoEmail,
+  useTest,
+  useTranslation
 } from 'hooks'
 import multiply from 'lodash/multiply'
 import { checkoutContext, initState } from 'providers'
@@ -42,9 +42,14 @@ const useForm = () => {
     const { mutateAsync: mutateAddOrderFunction } = useMutation(rpcAddOrder)
 
     return useFormSubmit(async (values: FormValues) => {
-      const productsPrice = sumArray(
-        basket.map((product) => multiply(product.price, product.quantity))
+      const basketTotalsPl = basket.map((product) =>
+        multiply(product.price_pl, product.quantity)
       )
+      const basketTotalsEn = basket.map((product) =>
+        multiply(product.price_en, product.quantity)
+      )
+      const productsPricePl = sumArray(basketTotalsPl)
+      const productsPriceEn = sumArray(basketTotalsEn)
 
       const productIds = basket.map((product) => product.id)
       const productsData = await mutateGetProductsById(productIds)
@@ -90,7 +95,8 @@ const useForm = () => {
             : null
         }),
 
-        products_price: productsPrice,
+        products_price_pl: productsPricePl,
+        products_price_en: productsPriceEn,
 
         order_will_take_long: orderWillTakeLong,
 
@@ -101,7 +107,8 @@ const useForm = () => {
         product_id: product.id,
         order_id: orderId,
         quantity: product.quantity,
-        price: product.price,
+        price_pl: product.price_pl,
+        price_en: product.price_en,
         is_test: isTest
       }))
 

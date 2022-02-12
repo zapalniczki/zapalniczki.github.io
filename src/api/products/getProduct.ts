@@ -15,7 +15,8 @@ export const getProduct = async (params: Params) => {
       description_pl,
       description_en,
       id,
-      price,
+      price_pl,
+      price_en,
       name_pl,
       name_en,
       ${DB_TABLES.IMAGES} (

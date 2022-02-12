@@ -2,7 +2,7 @@ import { GetProductResponse } from 'models'
 import { Flexbox, Heading, Separator, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
-import { displayMoney, getLanguageLabel } from 'utils'
+import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
 import Form from './Form'
 import AvilabilityIndicator from './AvilabilityIndicator'
 
@@ -40,6 +40,11 @@ const Info = ({ product }: Props) => {
     description: true
   })
 
+  const price = getLanguagePrice({
+    language: currentLanguage,
+    price: product
+  })
+
   return (
     <Flexbox
       flexDirection="column"
@@ -51,7 +56,7 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Heading level={5}>{displayMoney(product.price)}</Heading>
+      <Heading level={5}>{displayMoney(price)}</Heading>
 
       <Text type="caption">{t('priceSubtitle')}</Text>
 

@@ -4,7 +4,8 @@ import { array, TypeOf } from 'zod'
 const getProductsByIdResponseItem = product
   .pick({
     id: true,
-    price: true,
+    price_en: true,
+    price_pl: true,
     collection_id: true,
     label_id: true,
     icon_id: true,

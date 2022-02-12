@@ -20,7 +20,13 @@ import subtract from 'lodash.subtract'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { calculateDiscount, displayMoney, getVatAmount, sumArray } from 'utils'
+import {
+  calculateDiscount,
+  displayMoney,
+  getLanguagePrice,
+  getVatAmount,
+  sumArray
+} from 'utils'
 import CheckoutTotalLoader from './index.loader'
 
 type Props = {
@@ -35,6 +41,7 @@ const CheckoutTotal = ({
   customProducts
 }: Props) => {
   const commonT = useTranslation('COMMON').withBase('CHECKOUT_TOTAL')
+  const { currentLanguage } = useTranslation('COMMON')
   const navigate = useNavigate()
   const current = useCheckoutStep()
 
@@ -45,14 +52,26 @@ const CheckoutTotal = ({
     customProducts !== undefined
       ? customProducts
       : sumArray(
-          basket.map((product) => multiply(product.quantity, product.price))
+          basket.map((product) =>
+            multiply(
+              product.quantity,
+              getLanguagePrice({
+                language: currentLanguage,
+                price: product
+              })
+            )
+          )
         )
 
   const delivery =
-    customDelivery !== undefined ? customDelivery : checkoutTotal.delivery || 0
+    customDelivery !== undefined
+      ? customDelivery
+      : checkoutTotal[`delivery_${currentLanguage}`] || 0
 
   const payment =
-    customPayment !== undefined ? customPayment : checkoutTotal.payment || 0
+    customPayment !== undefined
+      ? customPayment
+      : checkoutTotal[`payment_${currentLanguage}`] || 0
 
   const cost = add(add(products, delivery), payment)
 

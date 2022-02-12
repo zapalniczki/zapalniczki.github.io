@@ -1,9 +1,9 @@
-import { number, object, string, TypeOf } from 'zod'
+import { number, string, TypeOf } from 'zod'
+import { price } from 'braty-common'
 
-const basketItem = object({
+const basketItem = price.extend({
   id: string(),
-  quantity: number(),
-  price: number()
+  quantity: number()
 })
 
 export type BasketItem = TypeOf<typeof basketItem>
