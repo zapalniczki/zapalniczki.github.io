@@ -7,12 +7,14 @@ type Props = Pick<GetOrderResponse, 'voucher'>
 
 const Voucher = ({ voucher }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.VOUCHER')
+  const { currentLanguage } = useTranslation('ORDER')
 
   if (!voucher) {
     return null
   }
 
-  const amount = `-${voucher.discount}${voucher.is_fixed ? 'zł' : '%'}`
+  const discount = voucher[`discount_${currentLanguage}`]
+  const amount = `-${discount}${voucher.is_fixed ? 'zł' : '%'}`
 
   return (
     <Tile marginTop="m-size">

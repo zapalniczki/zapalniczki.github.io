@@ -14,7 +14,8 @@ export const getOrder = async ({ id }: Props) => {
       `*,
       products: ${DB_TABLES.ORDER_ITEMS} (
         product_id,
-        price,
+        price_pl,
+        price_en,
         quantity
       ),
       shipping: ${DB_TABLES.ADDRESSES} (
@@ -32,7 +33,8 @@ export const getOrder = async ({ id }: Props) => {
       ),
       voucher: ${DB_TABLES.VOUCHERS} (
         id,
-        discount,
+        discount_pl,
+        discount_en,
         is_fixed
       ),
       parcel: ${DB_TABLES.PARCELS} (

@@ -28,7 +28,8 @@ const useForm = (
           voucher_id: response.id,
           voucher: {
             is_fixed: response.is_fixed,
-            discount: response.discount
+            discount_pl: response.discount_pl,
+            discount_en: response.discount_en
           }
         }))
       }

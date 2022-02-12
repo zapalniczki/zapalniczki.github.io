@@ -77,7 +77,11 @@ const CheckoutTotal = ({
 
   let discount = 0
   if (voucher) {
-    discount = calculateDiscount(voucher.discount, voucher.is_fixed, cost)
+    discount = calculateDiscount(
+      voucher[`discount_${currentLanguage}`],
+      voucher.is_fixed,
+      cost
+    )
   }
 
   const total = subtract(cost, discount)

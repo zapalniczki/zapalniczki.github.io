@@ -2,7 +2,7 @@ import multiply from 'lodash/multiply'
 import { Voucher } from 'braty-common'
 
 const calculateDiscount = (
-  discount: Voucher['discount'],
+  discount: Voucher['discount_pl'] | Voucher['discount_en'],
   isFixed: Voucher['is_fixed'],
   cost: number
 ) => {

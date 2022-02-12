@@ -22,7 +22,8 @@ const checkout = object({
   voucher: voucher
     .pick({
       is_fixed: true,
-      discount: true
+      discount_pl: true,
+      discount_en: true
     })
     .nullable()
 })

@@ -6,18 +6,26 @@ import { displayMoney, getVatAmount } from 'utils'
 
 type Props = Pick<
   GetOrderResponse,
-  'products_price' | 'delivery_price' | 'payment_price' | 'discount' | 'total'
+  | 'products_price_pl'
+  | 'products_price_en'
+  | 'delivery_price_pl'
+  | 'delivery_price_en'
+  | 'payment_price_pl'
+  | 'payment_price_en'
+  | 'discount_pl'
+  | 'discount_en'
+  | 'total'
 >
 
-const Billing = ({
-  delivery_price,
-  discount,
-  payment_price,
-  products_price,
-  total
-}: Props) => {
+const Billing = ({ ...props }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.BILLING')
+  const { currentLanguage } = useTranslation('ORDER')
 
+  const discount = props[`discount_${currentLanguage}`]
+  const deliveryPrice = props[`delivery_price_${currentLanguage}`]
+  const paymentPrice = props[`payment_price_${currentLanguage}`]
+  const productsPrice = props[`products_price_${currentLanguage}`]
+  const total = props[`total_${currentLanguage}`]
   const vat = getVatAmount(total)
 
   return (
@@ -25,21 +33,21 @@ const Billing = ({
       <SectionHead separator title={t('title')} />
 
       <LabelledItem
-        item={displayMoney(products_price)}
+        item={displayMoney(productsPrice)}
         label={t('LABELS.products_price')}
       />
 
-      {delivery_price ? (
+      {deliveryPrice ? (
         <LabelledItem
-          item={displayMoney(delivery_price)}
+          item={displayMoney(deliveryPrice)}
           label={t('LABELS.delivery_price')}
           marginTop="m-size"
         />
       ) : null}
 
-      {payment_price ? (
+      {paymentPrice ? (
         <LabelledItem
-          item={displayMoney(payment_price)}
+          item={displayMoney(paymentPrice)}
           label={t('LABELS.payment_price')}
           marginTop="m-size"
         />
