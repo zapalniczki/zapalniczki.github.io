@@ -14,6 +14,9 @@ const colors = {
   'heading-color': '#1a1a1a',
   'label-color': '#696868',
 
+  'skeleton-dark': 'rgb(203, 202, 204)',
+  'skeleton-light': 'rgb(226, 224, 226)',
+
   white: 'rgb(255, 255, 255)',
   black: 'rgb(0, 0, 0)',
   'dark-color': '#3a3a3a',
