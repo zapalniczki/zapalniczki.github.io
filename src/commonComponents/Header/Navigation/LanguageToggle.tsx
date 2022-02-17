@@ -1,9 +1,9 @@
 import { ReactComponent as En } from 'assets/flags/en.svg'
 import { ReactComponent as Pl } from 'assets/flags/pl.svg'
 import { Button, Flexbox } from 'components'
-import { Language, useTranslation } from 'hooks'
+import { useTranslation } from 'hooks'
 import React from 'react'
-import { language } from 'braty-common'
+import { language, Language } from 'braty-common'
 
 const LanguageToggle = () => {
   const { currentLanguage, i18n, withBase } = useTranslation('COMMON')

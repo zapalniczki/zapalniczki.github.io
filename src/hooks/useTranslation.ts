@@ -10,7 +10,7 @@ import {
   FALLBACK_LANGUAGE
 } from 'i18n/config'
 import { useCallback } from 'react'
-import { enum as zenum, TypeOf } from 'zod'
+import { Language, language } from 'braty-common'
 
 export default function useTranslation(
   ns: TranslationsNamespace,
@@ -46,9 +46,6 @@ export type TranslateFunc = (
   key: string | string[],
   options?: TOptions<StringMap> | string
 ) => string
-
-export const language = zenum(['pl', 'en'])
-export type Language = TypeOf<typeof language>
 
 type UseTranslation<Namespace extends TranslationsNamespace> = {
   currentLanguage: Language

@@ -1,5 +1,5 @@
 import { getProductsById } from 'api'
-import { DB_TABLES, ROUTES } from 'braty-common'
+import { DB_TABLES, ROUTES, Language } from 'braty-common'
 import {
   Box,
   DisplayMoney,
@@ -10,7 +10,7 @@ import {
   Table,
   Tile
 } from 'components'
-import { Language, TranslateFunc, useTranslation } from 'hooks'
+import { TranslateFunc, useTranslation } from 'hooks'
 import { multiply } from 'lodash'
 import { GetOrderResponse, GetProductsResponseItem } from 'models'
 import React, { useMemo } from 'react'

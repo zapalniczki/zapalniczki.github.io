@@ -4,7 +4,7 @@ import { i18nextPlugin } from 'translation-check'
 
 import pl from 'cms/pl'
 import en from 'cms/en'
-import { Language } from 'hooks'
+import { Language } from 'braty-common'
 
 export const keySeparator = '.'
 export const FALLBACK_LANGUAGE: Language = 'en'

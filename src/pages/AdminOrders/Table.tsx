@@ -1,5 +1,5 @@
 import { getOrders } from 'api'
-import { DB_TABLES, Mold, Order } from 'braty-common'
+import { DB_TABLES, Mold, Order, Language } from 'braty-common'
 import {
   Box,
   DisplayDate,
@@ -17,7 +17,7 @@ import {
 } from 'components'
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
-import { Language, useTest, useTranslation } from 'hooks'
+import { useTest, useTranslation } from 'hooks'
 import { GetOrdersResponseItem } from 'models'
 import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
