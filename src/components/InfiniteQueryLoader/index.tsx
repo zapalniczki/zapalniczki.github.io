@@ -1,3 +1,4 @@
+import ErrorFetchingMessage from '../ErrorFetchingMessage'
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { ReactElement } from 'react'
@@ -35,7 +36,7 @@ function InfiniteQueryLoader<T>({
     return <>{children(query.data.pages)}</>
   }
 
-  return <p>ERROR</p>
+  return <ErrorFetchingMessage Loader={Loader} refetch={query.refetch} />
 }
 
 export default InfiniteQueryLoader
