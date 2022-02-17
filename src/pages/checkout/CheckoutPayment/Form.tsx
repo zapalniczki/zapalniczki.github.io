@@ -28,18 +28,18 @@ const Form = ({ paymentTypes }: Props) => {
         .filter((type) => type.is_enabled)
         .map((type, index) => {
           const optionLabel = getLanguageLabel({
-            language: language,
+            language,
             label: type
           })
 
           const description = getLanguageLabel({
-            language: language,
+            language,
             label: type,
             description: true
           })
 
           const price = getLanguagePrice({
-            language: language,
+            language,
             price: type
           })
 

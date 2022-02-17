@@ -92,7 +92,7 @@ i18n
   .use(LanguageDetector)
   .init({
     fallbackLng: FALLBACK_LANGUAGE,
-    keySeparator: keySeparator,
+    keySeparator,
     resources: {
       pl: namespacesPL,
       en: namespacesEN

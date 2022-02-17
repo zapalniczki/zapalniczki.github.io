@@ -77,7 +77,7 @@ const CheckoutDelivery = () => {
               let price: number | undefined
               if (delivery) {
                 price = getLanguagePrice({
-                  language: language,
+                  language,
                   price: delivery
                 })
               }

@@ -128,7 +128,7 @@ const shapeData = (
       <>
         {order.products.map((product) => {
           const productName = getLanguageLabel({
-            language: language,
+            language,
             label: product.product,
             name: true
           })
@@ -153,7 +153,7 @@ const shapeData = (
       <>
         {order.products.map((product) => {
           const productName = getLanguageLabel({
-            language: language,
+            language,
             label: product.product,
             name: true
           })

@@ -15,33 +15,33 @@ const Info = ({ product }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const iconLabel = getLanguageLabel({
-    language: language,
+    language,
     label: product.icon
   })
   const labelLabel = getLanguageLabel({
-    language: language,
+    language,
     label: product.label
   })
 
   const collectionLabel = getLanguageLabel({
-    language: language,
+    language,
     label: product.collection
   })
 
   const productName = getLanguageLabel({
-    language: language,
+    language,
     label: product,
     name: true
   })
 
   const description = getLanguageLabel({
-    language: language,
+    language,
     label: product,
     description: true
   })
 
   const price = getLanguagePrice({
-    language: language,
+    language,
     price: product
   })
 

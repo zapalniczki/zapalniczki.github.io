@@ -70,18 +70,18 @@ const List = () => {
 const shapeData = (data: PaymentType[], language: Language) =>
   data.map((record) => {
     const label = getLanguageLabel({
-      language: language,
+      language,
       label: record
     })
 
     const description = getLanguageLabel({
-      language: language,
+      language,
       label: record,
       description: true
     })
 
     const price = getLanguagePrice({
-      language: language,
+      language,
       price: record
     })
 

@@ -39,14 +39,14 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
   }
 
   const productName = getLanguageLabel({
-    language: language,
+    language,
     label: product,
     name: true
   })
 
   const { id, images, price_en, price_pl } = product
   const price = getLanguagePrice({
-    language: language,
+    language,
     price: product
   })
 

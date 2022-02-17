@@ -99,7 +99,7 @@ const shapeData = (data: DeliveryType[], language: Language) =>
       updated_at: formatDate(record.updated_at),
       label: record.label_pl,
       price: <DisplayMoney>{price}</DisplayMoney>,
-      description: description,
+      description,
       requires_address: getIcon(record.requires_address),
       is_enabled: getIcon(record.is_enabled),
       icon_name: record.icon_name ?? '-',

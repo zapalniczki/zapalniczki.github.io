@@ -36,7 +36,7 @@ const ViewProduct = () => {
     productQuery.data.icon.label_pl
   ) {
     productName = getLanguageLabel({
-      language: language,
+      language,
       label: productQuery.data,
       name: true
     })

@@ -72,7 +72,7 @@ const useForm = (
         const orderResponse = await mutateUpdateOrderStatus({
           id: values.id,
           status: values.status as OrderStatus,
-          parcel_id: parcel_id
+          parcel_id
         })
 
         const userResponse = await mutateGetUser({

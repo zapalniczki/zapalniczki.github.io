@@ -21,7 +21,7 @@ const Images = ({ product }: Props) => {
   const thumbnailImage = findCorrectProductImageSize(images, 'THUMBNAIL')
 
   const productName = getLanguageLabel({
-    language: language,
+    language,
     label: product,
     name: true
   })

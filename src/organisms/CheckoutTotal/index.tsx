@@ -56,7 +56,7 @@ const CheckoutTotal = ({
             multiply(
               product.quantity,
               getLanguagePrice({
-                language: language,
+                language,
                 price: product
               })
             )

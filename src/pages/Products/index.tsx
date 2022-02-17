@@ -39,9 +39,9 @@ const Products = () => {
   const params = {
     page: 0,
     size: isAboveDesktop ? 9 : 4,
-    collectionId: collectionId,
-    labelId: labelId,
-    iconId: iconId,
+    collectionId,
+    labelId,
+    iconId,
     [nameParamsKey]: debouncedSearchQuery
   }
 

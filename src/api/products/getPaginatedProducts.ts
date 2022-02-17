@@ -39,8 +39,8 @@ export const getPaginatedProducts = async ({
 
   return {
     data,
-    count: count,
-    page: page,
+    count,
+    page,
     hasNextPage: size * (page + 1) < count
   }
 }

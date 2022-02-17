@@ -75,7 +75,7 @@ const DeliveryAndPayments = () => {
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {deliveryTypes.map((type) => {
               const price = getLanguagePrice({
-                language: language,
+                language,
                 price: type
               })
 
@@ -103,18 +103,18 @@ const DeliveryAndPayments = () => {
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {paymentTypes.map((type) => {
               const label = getLanguageLabel({
-                language: language,
+                language,
                 label: type
               })
 
               const description = getLanguageLabel({
-                language: language,
+                language,
                 label: type,
                 description: true
               })
 
               const price = getLanguagePrice({
-                language: language,
+                language,
                 price: type
               })
 

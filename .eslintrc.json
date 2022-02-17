@@ -33,6 +33,7 @@
     "prefer-promise-reject-errors": 2,
     "callback-return": 2,
     "prefer-arrow-callback": 1,
+    "object-shorthand": 2,
 
     "no-useless-rename": 2,
     "no-console": 2,

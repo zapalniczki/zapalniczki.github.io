@@ -35,13 +35,13 @@ const ProductTile = ({ product }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   const productName = getLanguageLabel({
-    language: language,
+    language,
     label: product,
     name: true
   })
 
   const price = getLanguagePrice({
-    language: language,
+    language,
     price: product
   })
 

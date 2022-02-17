@@ -56,7 +56,7 @@ const Condition = ({ keyId, query, title, ...props }: Props) => {
               .sort((prev, next) => (prev.label_pl < next.label_pl ? -1 : 1))
               .map((elem) => {
                 const label = getLanguageLabel({
-                  language: language,
+                  language,
                   label: elem
                 })
 

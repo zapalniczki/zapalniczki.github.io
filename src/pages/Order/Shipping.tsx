@@ -15,7 +15,7 @@ const Shipping = ({ deliveryType, shipping }: Props) => {
   const { language, t: commonT } = useTranslation('COMMON')
 
   const label = getLanguageLabel({
-    language: language,
+    language,
     label: deliveryType
   })
 

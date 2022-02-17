@@ -65,7 +65,7 @@ const CheckoutPayment = () => {
               let price: number | undefined
               if (paymentType) {
                 price = getLanguagePrice({
-                  language: language,
+                  language,
                   price: paymentType
                 })
               }

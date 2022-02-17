@@ -87,8 +87,8 @@ const useForm = () => {
         delivery_type: checkout.delivery_type ?? '',
 
         contact_details: getHstoreFromObject({
-          email: email,
-          phone: phone,
+          email,
+          phone,
           full_name: fullName,
           nip: checkout.contact_details?.nip
             ? checkout.contact_details.nip
@@ -121,14 +121,14 @@ const useForm = () => {
 
       if (!isNoEmail) {
         await mutateTriggerSendEmail({
-          language: language,
+          language,
           to: email,
           type: {
             key: 'NEW_ORDER',
             content: {
               name: fullName,
               order_id: orderId,
-              phone: phone,
+              phone,
               is_long: orderWillTakeLong
             }
           }
