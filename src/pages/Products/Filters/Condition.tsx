@@ -41,12 +41,7 @@ const Condition = ({ keyId, query, title, ...props }: Props) => {
   }
 
   return (
-    <QueryLoader
-      Loader={<Loader {...props} />}
-      // persistLoader
-      query={query}
-      // showLoading={false}
-    >
+    <QueryLoader Loader={<Loader {...props} />} query={query}>
       {(data) => (
         <Flexbox {...props} flexDirection="column">
           <Text type="subtitle-2">{title}</Text>
