@@ -12,6 +12,7 @@ const Money = ({ children, negative }: Props) => {
   const { currentLanguage } = useTranslation('COMMON')
   const formattedMoney = displayMoney(children, negative, currentLanguage)
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{formattedMoney}</>
 }
 
