@@ -1,4 +1,4 @@
-import { ContentLoader, Flexbox } from 'components'
+import { ContentLoader } from 'components'
 import { useBreakpoints, useLoaderWidth } from 'hooks'
 import React from 'react'
 
@@ -21,19 +21,11 @@ const BasketItem = ({ first, inCart }: Props) => {
   }
 
   return (
-    <Flexbox
+    <ContentLoader
       height={height}
       marginTop={first ? 'unset' : 'm-size'}
       width={width}
-    >
-      <ContentLoader
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
-        width={width}
-      >
-        <rect height={height} width={width} />
-      </ContentLoader>
-    </Flexbox>
+    />
   )
 }
 

@@ -4,8 +4,8 @@ import React from 'react'
 
 const Cart = () => (
   <Flexbox flexDirection="column" width="100%">
-    {[1, 2, 3].map((elem) => (
-      <BasketItemLoader first={elem === 1} inCart key={elem} />
+    {[...new Array(3)].map((_elem, index) => (
+      <BasketItemLoader first={!index} inCart key={index} />
     ))}
   </Flexbox>
 )

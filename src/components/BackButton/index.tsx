@@ -1,4 +1,5 @@
-import { Box, Link } from 'components'
+import Box from '../Box'
+import Link from '../Link'
 import React from 'react'
 import { To } from 'history'
 import { SpaceProps } from 'styled-system'

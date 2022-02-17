@@ -1,4 +1,5 @@
-import { Flexbox, Heading } from 'components'
+import Heading from '../Heading'
+import Flexbox from '../Flexbox'
 import { useBreakpoints } from 'hooks'
 import React, { ReactNode } from 'react'
 import { OrderProps, SpaceProps } from 'styled-system'

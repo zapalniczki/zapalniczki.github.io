@@ -107,7 +107,8 @@ export const breakpoints = {
 }
 
 const radii = {
-  tiny: '0.4rem'
+  tiny: '0.4rem',
+  large: '5rem'
 }
 
 const theme = {

@@ -20,16 +20,7 @@ const ProductTileLoader = () => {
 
   const height = 300
 
-  return (
-    <ContentLoader
-      gradientRatio={1}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      width={width}
-    >
-      <rect height={height} width={width} />
-    </ContentLoader>
-  )
+  return <ContentLoader height={height} width={width} />
 }
 
 export default ProductTileLoader

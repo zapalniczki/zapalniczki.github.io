@@ -1,4 +1,4 @@
-import { Flexbox } from 'components'
+import Flexbox from '../Flexbox'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'

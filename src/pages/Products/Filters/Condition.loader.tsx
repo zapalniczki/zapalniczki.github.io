@@ -1,40 +1,25 @@
 import React from 'react'
-import { Box, ContentLoader, Flexbox } from 'components'
+import { ContentLoader, Flexbox, ChipLoader as Chip } from 'components'
 import { SpaceProps } from 'styled-system'
+import { useBreakpoints } from 'hooks'
 
 type Props = SpaceProps
 
-// TODO RWD
-const Condtion = (props: Props) => (
-  <Flexbox flexDirection="column" {...props}>
-    <Box height="2.4rem">
-      <ContentLoader
-        gradientRatio={1}
-        height={24}
-        viewBox="0 0 65 24"
-        width={65}
-      >
-        <rect height="24" width="65" />
-      </ContentLoader>
-    </Box>
+const Condtion = (props: Props) => {
+  const mobile = useBreakpoints('mobile')
+  const n = mobile ? 3 : 7
 
-    <Flexbox>
-      <Chip isFirst />
+  return (
+    <Flexbox flexDirection="column" {...props}>
+      <ContentLoader gradientRatio={1} height={24} width={65} />
 
-      <Chip />
-
-      <Chip />
+      <Flexbox>
+        {[...new Array(n)].map((_elem, index) => (
+          <Chip isFirst={!index} key={index} />
+        ))}
+      </Flexbox>
     </Flexbox>
-  </Flexbox>
-)
-
-type ChipProps = { isFirst?: boolean }
-const Chip = ({ isFirst = false }: ChipProps) => (
-  <Box height="2.8rem" marginLeft={isFirst ? 0 : 'xs-size'} marginTop="0.5rem">
-    <ContentLoader gradientRatio={1} height={28} viewBox="0 0 85 28" width={85}>
-      <rect height="28" width="65" />
-    </ContentLoader>
-  </Box>
-)
+  )
+}
 
 export default Condtion

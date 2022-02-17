@@ -1,4 +1,4 @@
-import { Box } from 'components'
+import Box from '../Box'
 import styled from 'styled-components'
 import getSpace from 'styles/getSpace'
 import { Space } from 'styles/theme'

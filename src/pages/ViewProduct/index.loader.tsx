@@ -1,25 +1,19 @@
-import { Box, ContentLoader } from 'components'
+import { ContentLoader } from 'components'
 import { useLoaderWidth } from 'hooks'
 import React from 'react'
 
 const Loader = () => {
-  const width = useLoaderWidth('MAIN')
+  const infoWidth = useLoaderWidth()
+  const infoHeight = 800
+
+  const labelHeight = 24
+  const labelWidth = 55
 
   return (
     <>
-      <ContentLoader height={44} viewBox={`0 0 ${width} 44`} width={width}>
-        <rect height="24" transform="translate(0,10)" width="55" />
-      </ContentLoader>
+      <ContentLoader height={labelHeight} width={labelWidth} />
 
-      <Box marginTop="1.2rem">
-        <ContentLoader
-          height={800}
-          viewBox={`0 0 ${width} ${800}`}
-          width={width}
-        >
-          <rect height={800} width={width} />
-        </ContentLoader>
-      </Box>
+      <ContentLoader height={infoHeight} marginTop="1.2rem" width={infoWidth} />
     </>
   )
 }

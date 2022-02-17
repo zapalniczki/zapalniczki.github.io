@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
 import { Color } from 'styles/theme'
+import Loader from './index.loader'
 
 type Props = {
   children: ReactNode
@@ -36,7 +37,7 @@ const Chip = ({ children, onClick, rounded, selected, ...props }: Props) => {
       backgroundColor={color}
       border={onClick ? '1px solid' : 'none'}
       borderColor="border-color"
-      borderRadius={rounded ? '5rem' : 0}
+      borderRadius={rounded ? 'large' : 0}
       color="white"
       justifyContent="center"
       onClick={onClick}
@@ -64,4 +65,5 @@ const Container = styled(Flexbox)<ContainerProps>`
   cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 `
 
+export { Loader as ChipLoader }
 export default Chip

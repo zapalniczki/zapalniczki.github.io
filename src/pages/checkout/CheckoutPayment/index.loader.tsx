@@ -1,15 +1,16 @@
-import { CheckboxFieldLoader, Columns } from 'components'
-import React from 'react'
+import { CheckboxFieldLoader, Columns, ContentLoader } from 'components'
+import React, { Fragment } from 'react'
 import { CheckoutTotalLoader } from 'organisms'
 
 const Loader = () => (
   <Columns>
     <div>
-      {[1, 2, 3].map((elem) => (
-        <CheckboxFieldLoader
-          key={elem}
-          marginTop={elem === 1 ? 'unset' : 'm-size'}
-        />
+      {[...new Array(3)].map((_elem, index) => (
+        <Fragment key={index}>
+          {!index && <Label />}
+
+          <CheckboxFieldLoader marginTop={!index ? 'unset' : 'm-size'} />
+        </Fragment>
       ))}
     </div>
 
@@ -18,5 +19,16 @@ const Loader = () => (
     </div>
   </Columns>
 )
+
+const Label = () => {
+  const height = 34.4
+  const width = 150
+
+  return (
+    <ContentLoader height={height} marginBottom="m-size" width={width}>
+      <rect height={14.4} transform="translate(0, 10)" width={width} />
+    </ContentLoader>
+  )
+}
 
 export default Loader

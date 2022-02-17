@@ -5,10 +5,10 @@ import { CheckoutTotalLoader } from 'organisms'
 const Loader = () => (
   <Columns>
     <div>
-      {[1, 2, 3].map((elem) => (
+      {[...new Array(3)].map((_elem, index) => (
         <CheckboxFieldLoader
-          key={elem}
-          marginTop={elem === 1 ? 'unset' : 'm-size'}
+          key={index}
+          marginTop={!index ? 'unset' : 'm-size'}
         />
       ))}
     </div>
