@@ -1,5 +1,5 @@
 import { ROUTES } from 'braty-common'
-import { Box, Flexbox, Image, Link, Text, Tile } from 'components'
+import { Box, DisplayMoney, Flexbox, Image, Link, Text, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { BasketItem, GetProductsResponseItem } from 'models'
 import { checkoutContext, togglesContext } from 'providers'
@@ -9,7 +9,6 @@ import styled from 'styled-components'
 import breakpoints from 'styles/breakpoints'
 import getSpace from 'styles/getSpace'
 import {
-  displayMoney,
   findCorrectProductImageSize,
   getLanguageLabel,
   getLanguagePrice
@@ -134,13 +133,13 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
         gridArea="button-remove"
       >
         <Text fontWeight="bold" type="subtitle-1">
-          {displayMoney(quantity * price)}
+          <DisplayMoney>{quantity * price}</DisplayMoney>
         </Text>
 
         {quantity > 1 && (
           <Text type="caption">
             {/* eslint-disable-next-line react/jsx-newline */}
-            {displayMoney(price)} {commonT('BASKET.each')}
+            <DisplayMoney>{price}</DisplayMoney> {commonT('BASKET.each')}
           </Text>
         )}
       </Flexbox>

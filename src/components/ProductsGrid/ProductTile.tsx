@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ROUTES } from 'braty-common'
-import { Flexbox, Image, Text, Tile } from 'components'
+import { DisplayMoney, Flexbox, Image, Text, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import { checkoutContext } from 'providers'
@@ -10,7 +10,6 @@ import ReactVisibilitySensor from 'react-visibility-sensor'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
 import {
-  displayMoney,
   findCorrectProductImageSize,
   getLanguageLabel,
   getLanguagePrice
@@ -95,7 +94,8 @@ const ProductTile = ({ product }: Props) => {
 
               <Flexbox justifyContent="space-between" width="100%">
                 <Text type="body-2">
-                  {`${displayMoney(price)} ${commonT('unit')}`}
+                  {/* eslint-disable-next-line react/jsx-newline */}
+                  <DisplayMoney>{price}</DisplayMoney> {commonT('unit')}
                 </Text>
 
                 {isInBasket && (

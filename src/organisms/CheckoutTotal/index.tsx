@@ -7,6 +7,7 @@ import {
 } from 'braty-common'
 import {
   Button,
+  DisplayMoney,
   LabelledItem,
   SectionHead,
   Separator,
@@ -22,7 +23,6 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   calculateDiscount,
-  displayMoney,
   getLanguagePrice,
   getVatAmount,
   sumArray
@@ -112,28 +112,28 @@ const CheckoutTotal = ({
       <LabelledItem
         bold={false}
         horizontal
-        item={products && displayMoney(products)}
+        item={products && <DisplayMoney>{products}</DisplayMoney>}
         label={commonT('products')}
       />
 
       <LabelledItem
         bold={false}
         horizontal
-        item={delivery && displayMoney(delivery)}
+        item={delivery && <DisplayMoney>{delivery}</DisplayMoney>}
         label={commonT('delivery')}
       />
 
       <LabelledItem
         bold={false}
         horizontal
-        item={payment && displayMoney(payment)}
+        item={payment && <DisplayMoney>{payment}</DisplayMoney>}
         label={commonT('payment')}
       />
 
       <LabelledItem
         bold={false}
         horizontal
-        item={discount && displayMoney(discount, true)}
+        item={discount && <DisplayMoney negative>{discount}</DisplayMoney>}
         label={commonT('discount')}
       />
 
@@ -141,14 +141,14 @@ const CheckoutTotal = ({
 
       <LabelledItem
         horizontal
-        item={displayMoney(total)}
+        item={<DisplayMoney>{total}</DisplayMoney>}
         label={commonT('total')}
       />
 
       <LabelledItem
         bold={false}
         horizontal
-        item={displayMoney(vat)}
+        item={<DisplayMoney>{vat}</DisplayMoney>}
         label={commonT('vat')}
       />
 

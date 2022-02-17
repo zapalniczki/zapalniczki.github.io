@@ -19,6 +19,7 @@ export { default as InputLabel } from './InputLabel'
 export { default as Link } from './Link'
 
 export { default as AdminAuth } from './AdminAuth'
+export { default as DisplayMoney } from './DisplayMoney'
 export { default as BackButton } from './BackButton'
 export { default as Banner } from './Banner'
 export { default as BannerWithImage } from './BannerWithImage'

@@ -1,15 +1,17 @@
 import { getPaymentTypes } from 'api'
 import { DB_TABLES, PaymentType } from 'braty-common'
-import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
+import {
+  DisplayMoney,
+  Flexbox,
+  QueryLoader,
+  ResultIcon,
+  Table,
+  Tile
+} from 'components'
 import { Language, useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
-import {
-  displayMoney,
-  formatDate,
-  getLanguageLabel,
-  getLanguagePrice
-} from 'utils'
+import { formatDate, getLanguageLabel, getLanguagePrice } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
@@ -87,7 +89,7 @@ const shapeData = (data: PaymentType[], currentLanguage: Language) =>
       created_at: formatDate(record.created_at),
       updated_at: formatDate(record.updated_at),
       label,
-      price: displayMoney(price),
+      price: <DisplayMoney>{price}</DisplayMoney>,
       description,
       is_enabled: (
         <Flexbox justifyContent="center">

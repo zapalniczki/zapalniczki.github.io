@@ -44,7 +44,8 @@ const Order = () => {
               <Payment
                 id={order.id}
                 status={order.status}
-                total={order.total}
+                total_en={order.total_en}
+                total_pl={order.total_pl}
               />
 
               {order.status === 'COMPLETED' && (
@@ -52,11 +53,16 @@ const Order = () => {
               )}
 
               <Billing
-                delivery_price={order.delivery_price}
-                discount={order.discount}
-                payment_price={order.payment_price}
-                products_price={order.products_price}
-                total={order.total}
+                delivery_price_en={order.delivery_price_en}
+                delivery_price_pl={order.delivery_price_pl}
+                discount_en={order.discount_en}
+                discount_pl={order.discount_pl}
+                payment_price_en={order.payment_price_en}
+                payment_price_pl={order.payment_price_pl}
+                products_price_en={order.products_price_en}
+                products_price_pl={order.products_price_pl}
+                total_en={order.total_en}
+                total_pl={order.total_pl}
               />
 
               <Voucher voucher={order.voucher} />

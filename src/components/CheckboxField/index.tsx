@@ -1,12 +1,12 @@
 import { StyledInput, Text, Flexbox } from 'components'
 import { FieldProps, FieldInputProps } from 'formik'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
 import CheckboxFieldLoader from './index.loader'
 
 type Props = FieldInputProps<string> & {
-  caption?: string
+  caption?: ReactNode
   selectedValue: FieldProps['field']['value']
   subtitle?: string
   title: string

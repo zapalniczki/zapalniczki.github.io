@@ -1,10 +1,10 @@
-import { GetProductResponse } from 'models'
-import { Flexbox, Heading, Separator, Text } from 'components'
-import React from 'react'
+import { DisplayMoney, Flexbox, Heading, Separator, Text } from 'components'
 import { useTranslation } from 'hooks'
-import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
-import Form from './Form'
+import { GetProductResponse } from 'models'
+import React from 'react'
+import { getLanguageLabel, getLanguagePrice } from 'utils'
 import AvilabilityIndicator from './AvilabilityIndicator'
+import Form from './Form'
 
 type Props = {
   product: GetProductResponse
@@ -56,7 +56,9 @@ const Info = ({ product }: Props) => {
 
       <Separator />
 
-      <Heading level={5}>{displayMoney(price)}</Heading>
+      <Heading level={5}>
+        <DisplayMoney>{price}</DisplayMoney>
+      </Heading>
 
       <Text type="caption">{t('priceSubtitle')}</Text>
 

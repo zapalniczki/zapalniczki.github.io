@@ -1,12 +1,17 @@
-import React, { useContext } from 'react'
+import { PaymentType } from 'braty-common'
+import {
+  CheckboxField,
+  DisplayMoney,
+  FormRow,
+  ValidatedInput
+} from 'components'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
-import { FormRow, CheckboxField, ValidatedInput } from 'components'
-import { FormValues } from './useForm'
-import { PaymentType } from 'braty-common'
-import Voucher from './Voucher'
-import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
 import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
+import { getLanguageLabel, getLanguagePrice } from 'utils'
+import { FormValues } from './useForm'
+import Voucher from './Voucher'
 
 type Props = {
   paymentTypes: PaymentType[]
@@ -52,7 +57,7 @@ const Form = ({ paymentTypes }: Props) => {
 
                     <CheckboxField
                       {...fieldProps.field}
-                      caption={displayMoney(price)}
+                      caption={<DisplayMoney>{price}</DisplayMoney>}
                       selectedValue={fieldProps.field.value}
                       subtitle={description}
                       title={optionLabel}

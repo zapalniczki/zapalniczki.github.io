@@ -3,20 +3,22 @@ import {
   BRATY_BANK_ACCOUNT,
   BRATY_BANK_NAME
 } from 'braty-common'
-import { SectionHead, Tile, Text, LabelledItem } from 'components'
+import { SectionHead, Tile, Text, LabelledItem, DisplayMoney } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import React from 'react'
-import { displayMoney } from 'utils'
 
-type Props = Pick<GetOrderResponse, 'id' | 'total' | 'status'>
+type Props = Pick<GetOrderResponse, 'id' | 'total_pl' | 'total_en' | 'status'>
 
-const Payment = ({ id, status, total }: Props) => {
+const Payment = ({ id, status, ...props }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.PAYMENT')
+  const { currentLanguage } = useTranslation('ORDER')
 
   if (status !== 'CONFIRMED') {
     return null
   }
+
+  const total = props[`total_${currentLanguage}`]
 
   return (
     <Tile marginTop="m-size">
@@ -45,7 +47,7 @@ const Payment = ({ id, status, total }: Props) => {
       <LabelledItem item={id} label={t('LABELS.title')} marginTop="m-size" />
 
       <LabelledItem
-        item={displayMoney(total)}
+        item={<DisplayMoney>{total}</DisplayMoney>}
         label={t('LABELS.amount')}
         marginTop="m-size"
       />

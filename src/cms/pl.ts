@@ -934,7 +934,7 @@ const pl = {
           payment_price: 'Płatność',
           discount: 'Rabat',
           grand_total: 'Łącznie to zapłaty',
-          vat: 'W tym 23% VAT'
+          vat: '(W tym 23% VAT)'
         }
       },
 

@@ -960,7 +960,7 @@ const en: LanguageKeys = {
         LABELS: {
           created_at: 'Created order',
           updated_at: 'Last modification',
-          product_count: 'Boxes count'
+          product_count: 'Box count'
         }
       },
 

@@ -16,7 +16,7 @@ const getOrdersResponseItem = order
     id: true,
     updated_at: true,
     created_at: true,
-    total: true,
+    total_pl: true,
     status: true,
     is_test: true
   })

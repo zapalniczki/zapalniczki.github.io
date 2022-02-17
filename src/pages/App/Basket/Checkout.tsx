@@ -1,5 +1,13 @@
 import { ROUTES } from 'braty-common'
-import { Box, Button, Flexbox, Heading, Separator, Text } from 'components'
+import {
+  Box,
+  Button,
+  DisplayMoney,
+  Flexbox,
+  Heading,
+  Separator,
+  Text
+} from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
 import {
   BasketItem,
@@ -9,7 +17,7 @@ import {
 import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { calculateTotal, displayMoney, getLanguagePrice } from 'utils'
+import { calculateTotal, getLanguagePrice } from 'utils'
 
 type Props = {
   products: GetProductsByIdResponseItem[]
@@ -49,7 +57,9 @@ const Checkout = ({ products }: Props) => {
         <Flexbox flexDirection="column">
           <Text type="caption">{commonT('total')}</Text>
 
-          <Heading level={5}>{displayMoney(productsTotal)}</Heading>
+          <Heading level={5}>
+            <DisplayMoney>{productsTotal}</DisplayMoney>
+          </Heading>
         </Flexbox>
 
         <Box>

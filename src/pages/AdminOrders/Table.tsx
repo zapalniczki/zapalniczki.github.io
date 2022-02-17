@@ -3,6 +3,7 @@ import { DB_TABLES, Mold, Order } from 'braty-common'
 import {
   Box,
   DisplayDate,
+  DisplayMoney,
   ExternalLink,
   Flexbox,
   Link,
@@ -20,7 +21,7 @@ import { Language, useTest, useTranslation } from 'hooks'
 import { GetOrdersResponseItem } from 'models'
 import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
-import { displayMoney, getLanguageLabel, getOrderPath } from 'utils'
+import { getLanguageLabel, getOrderPath } from 'utils'
 import EditModal from './EditModal'
 import { AdminTableColumns } from './statusToColumns'
 
@@ -107,13 +108,13 @@ const shapeData = (
     id: <Link label={order.id} showUnderline to={getOrderPath(order.id)} />,
     is_company: true,
     status: order.status,
-    total: order.total,
+    total: order.total_pl,
     updated_at: <DisplayDate>{order.updated_at}</DisplayDate>,
     order_time: differenceInDays(
       parseISO(order.created_at),
       parseISO(order.updated_at)
     ),
-    sum: displayMoney(order.total),
+    sum: <DisplayMoney>{order.total_pl}</DisplayMoney>,
     boxes_count:
       order.products
         ?.map((product) => product.quantity)

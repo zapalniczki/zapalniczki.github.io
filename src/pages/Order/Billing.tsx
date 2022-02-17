@@ -1,8 +1,14 @@
-import { LabelledItem, SectionHead, Separator, Tile } from 'components'
+import {
+  DisplayMoney,
+  LabelledItem,
+  SectionHead,
+  Separator,
+  Tile
+} from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import React from 'react'
-import { displayMoney, getVatAmount } from 'utils'
+import { getVatAmount } from 'utils'
 
 type Props = Pick<
   GetOrderResponse,
@@ -14,7 +20,8 @@ type Props = Pick<
   | 'payment_price_en'
   | 'discount_pl'
   | 'discount_en'
-  | 'total'
+  | 'total_pl'
+  | 'total_en'
 >
 
 const Billing = ({ ...props }: Props) => {
@@ -33,13 +40,13 @@ const Billing = ({ ...props }: Props) => {
       <SectionHead separator title={t('title')} />
 
       <LabelledItem
-        item={displayMoney(productsPrice)}
+        item={<DisplayMoney>{productsPrice}</DisplayMoney>}
         label={t('LABELS.products_price')}
       />
 
       {deliveryPrice ? (
         <LabelledItem
-          item={displayMoney(deliveryPrice)}
+          item={<DisplayMoney>{deliveryPrice}</DisplayMoney>}
           label={t('LABELS.delivery_price')}
           marginTop="m-size"
         />
@@ -47,7 +54,7 @@ const Billing = ({ ...props }: Props) => {
 
       {paymentPrice ? (
         <LabelledItem
-          item={displayMoney(paymentPrice)}
+          item={<DisplayMoney>{paymentPrice}</DisplayMoney>}
           label={t('LABELS.payment_price')}
           marginTop="m-size"
         />
@@ -55,7 +62,7 @@ const Billing = ({ ...props }: Props) => {
 
       {discount ? (
         <LabelledItem
-          item={displayMoney(discount, true)}
+          item={<DisplayMoney negative>{discount}</DisplayMoney>}
           label={t('LABELS.discount')}
           marginTop="m-size"
         />
@@ -64,12 +71,12 @@ const Billing = ({ ...props }: Props) => {
       <Separator />
 
       <LabelledItem
-        item={displayMoney(total)}
+        item={<DisplayMoney>{total}</DisplayMoney>}
         label={t('LABELS.grand_total')}
       />
 
       <LabelledItem
-        item={displayMoney(vat)}
+        item={<DisplayMoney>{vat}</DisplayMoney>}
         label={t('LABELS.vat')}
         marginTop="m-size"
       />

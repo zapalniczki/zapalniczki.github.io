@@ -1,10 +1,15 @@
-import { FormRow, CheckboxField, ValidatedInput } from 'components'
-import React from 'react'
+import { DeliveryType } from 'braty-common'
+import {
+  CheckboxField,
+  DisplayMoney,
+  FormRow,
+  ValidatedInput
+} from 'components'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
-import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
+import React from 'react'
+import { getLanguageLabel, getLanguagePrice } from 'utils'
 import { FormValues } from './useForm'
-import { DeliveryType } from 'braty-common'
 
 type Props = {
   deliveryTypes: DeliveryType[]
@@ -47,7 +52,7 @@ const Form = ({ deliveryTypes }: Props) => {
 
                   <CheckboxField
                     {...fieldProps.field}
-                    caption={displayMoney(price)}
+                    caption={<DisplayMoney>{price}</DisplayMoney>}
                     selectedValue={fieldProps.field.value}
                     subtitle={description}
                     title={optionLabel}

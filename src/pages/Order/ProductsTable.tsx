@@ -2,6 +2,7 @@ import { getProductsById } from 'api'
 import { DB_TABLES, ROUTES } from 'braty-common'
 import {
   Box,
+  DisplayMoney,
   Image,
   Link,
   QueryLoader,
@@ -16,7 +17,6 @@ import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { generatePath } from 'react-router'
 import {
-  displayMoney,
   findCorrectProductImageSize,
   getLanguageLabel,
   getLanguagePrice
@@ -122,8 +122,10 @@ const shapeData = (
       ),
       product_name: <Link label={productName} showUnderline to={productPath} />,
       boxes_count: product.quantity,
-      product_price: displayMoney(price),
-      product_total: displayMoney(multiply(price, product.quantity))
+      product_price: <DisplayMoney>{price}</DisplayMoney>,
+      product_total: (
+        <DisplayMoney>{multiply(price, product.quantity)}</DisplayMoney>
+      )
     }
   })
 
