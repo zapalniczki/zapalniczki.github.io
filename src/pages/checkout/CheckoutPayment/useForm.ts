@@ -26,7 +26,7 @@ export type FormValues = {
 }
 
 const useForm = () => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const navigate = useNavigate()
   const { getSchema } = useFormSchema()
   const isNoEmail = useNoEmail()
@@ -121,7 +121,7 @@ const useForm = () => {
 
       if (!isNoEmail) {
         await mutateTriggerSendEmail({
-          language: currentLanguage,
+          language: language,
           to: email,
           type: {
             key: 'NEW_ORDER',

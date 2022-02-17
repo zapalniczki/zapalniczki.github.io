@@ -12,13 +12,13 @@ type Props = Pick<GetOrderResponse, 'id' | 'total_pl' | 'total_en' | 'status'>
 
 const Payment = ({ id, status, ...props }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.PAYMENT')
-  const { currentLanguage } = useTranslation('ORDER')
+  const { language } = useTranslation('ORDER')
 
   if (status !== 'CONFIRMED') {
     return null
   }
 
-  const total = props[`total_${currentLanguage}`]
+  const total = props[`total_${language}`]
 
   return (
     <Tile marginTop="m-size">

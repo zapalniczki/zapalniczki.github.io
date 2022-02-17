@@ -17,24 +17,24 @@ type Props = {
 
 const Form = ({ deliveryTypes }: Props) => {
   const { getInput } = useInput()
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
 
   return (
     <FormRow vertical>
       {deliveryTypes.map((type, index) => {
         const optionLabel = getLanguageLabel({
-          language: currentLanguage,
+          language: language,
           label: type
         })
 
         const description = getLanguageLabel({
-          language: currentLanguage,
+          language: language,
           label: type,
           description: true
         })
 
         const price = getLanguagePrice({
-          language: currentLanguage,
+          language: language,
           price: type
         })
 

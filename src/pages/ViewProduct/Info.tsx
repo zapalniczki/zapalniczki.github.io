@@ -11,37 +11,37 @@ type Props = {
 }
 
 const Info = ({ product }: Props) => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const iconLabel = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product.icon
   })
   const labelLabel = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product.label
   })
 
   const collectionLabel = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product.collection
   })
 
   const productName = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product,
     name: true
   })
 
   const description = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product,
     description: true
   })
 
   const price = getLanguagePrice({
-    language: currentLanguage,
+    language: language,
     price: product
   })
 

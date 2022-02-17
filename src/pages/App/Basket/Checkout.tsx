@@ -24,7 +24,7 @@ type Props = {
 }
 
 const Checkout = ({ products }: Props) => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const commonT = useTranslation('COMMON').withBase('BASKET')
   const isMobile = useBreakpoints('mobile')
 
@@ -36,7 +36,7 @@ const Checkout = ({ products }: Props) => {
 
   const productTotals = basket.map((product) => {
     const total = getLanguagePrice({
-      language: currentLanguage,
+      language,
       price: getProductTotal(products, product)
     })
 

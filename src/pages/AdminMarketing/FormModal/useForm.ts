@@ -45,7 +45,7 @@ const useForm = (
     const { mutateAsync: mutateAddMarketing } = useMutation(addMarketing)
     const { mutateAsync: mutateTriggerSendEmail } =
       useMutation(triggerSendEmail)
-    const { currentLanguage } = useTranslation('COMMON')
+    const { language } = useTranslation('COMMON')
 
     return useFormSubmit(
       async (values: FormValues) => {
@@ -96,7 +96,7 @@ const useForm = (
 
         if (shouldSendEmail) {
           mutateTriggerSendEmail({
-            language: currentLanguage,
+            language,
             to: values.email,
             type: {
               key: 'MARKETING_OFFER',

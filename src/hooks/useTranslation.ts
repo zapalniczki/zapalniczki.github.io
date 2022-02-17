@@ -10,7 +10,7 @@ import {
   FALLBACK_LANGUAGE
 } from 'i18n/config'
 import { useCallback } from 'react'
-import { Language, language } from 'braty-common'
+import { Language, language as languageSchema } from 'braty-common'
 
 export default function useTranslation(
   ns: TranslationsNamespace,
@@ -25,12 +25,12 @@ export default function useTranslation(
     [t]
   )
 
-  let currentLanguage: Language
-  const parsedLanguage = language.safeParse(i18n.language)
+  let language: Language
+  const parsedLanguage = languageSchema.safeParse(i18n.language)
   if (parsedLanguage.success) {
-    currentLanguage = parsedLanguage.data
+    language = parsedLanguage.data
   } else {
-    currentLanguage = FALLBACK_LANGUAGE
+    language = FALLBACK_LANGUAGE
   }
 
   return {
@@ -38,7 +38,7 @@ export default function useTranslation(
     withBase,
     i18n,
     ready,
-    currentLanguage
+    language
   }
 }
 
@@ -48,8 +48,8 @@ export type TranslateFunc = (
 ) => string
 
 type UseTranslation<Namespace extends TranslationsNamespace> = {
-  currentLanguage: Language
   i18n: i18n
+  language: Language
   ready: boolean
   t: UseTranslationResponse<Namespace>['t']
   withBase: (base: string) => TranslateFunc

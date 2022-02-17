@@ -14,14 +14,14 @@ type Props = {
 }
 
 const Images = ({ product }: Props) => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const { images } = product
 
   const largeImage = findCorrectProductImageSize(images, 'LARGE')
   const thumbnailImage = findCorrectProductImageSize(images, 'THUMBNAIL')
 
   const productName = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product,
     name: true
   })

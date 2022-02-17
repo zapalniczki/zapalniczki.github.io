@@ -15,7 +15,7 @@ import { formatDate, getLanguageLabel, getLanguagePrice } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
-  const { currentLanguage, t: commonT } = useTranslation('COMMON')
+  const { language, t: commonT } = useTranslation('COMMON')
 
   const deliveryTypesQuery = useQuery(DB_TABLES.DELIVERY_TYPES, () =>
     getDeliveryTypes()
@@ -66,7 +66,7 @@ const List = () => {
     <Tile>
       <QueryLoader query={deliveryTypesQuery}>
         {(data) => {
-          const shappedData = shapeData(data, currentLanguage)
+          const shappedData = shapeData(data, language)
 
           return <Table columns={columns} data={shappedData} />
         }}
@@ -75,7 +75,7 @@ const List = () => {
   )
 }
 
-const shapeData = (data: DeliveryType[], currentLanguage: Language) =>
+const shapeData = (data: DeliveryType[], language: Language) =>
   data.map((record) => {
     const getIcon = (possitive: boolean | null) => (
       <Flexbox justifyContent="center">
@@ -84,13 +84,13 @@ const shapeData = (data: DeliveryType[], currentLanguage: Language) =>
     )
 
     const description = getLanguageLabel({
-      language: currentLanguage,
+      language,
       label: record,
       description: true
     })
 
     const price = getLanguagePrice({
-      language: currentLanguage,
+      language,
       price: record
     })
 

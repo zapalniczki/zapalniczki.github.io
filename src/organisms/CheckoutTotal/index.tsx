@@ -41,7 +41,7 @@ const CheckoutTotal = ({
   customProducts
 }: Props) => {
   const commonT = useTranslation('COMMON').withBase('CHECKOUT_TOTAL')
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const navigate = useNavigate()
   const current = useCheckoutStep()
 
@@ -56,7 +56,7 @@ const CheckoutTotal = ({
             multiply(
               product.quantity,
               getLanguagePrice({
-                language: currentLanguage,
+                language: language,
                 price: product
               })
             )
@@ -66,19 +66,19 @@ const CheckoutTotal = ({
   const delivery =
     customDelivery !== undefined
       ? customDelivery
-      : checkoutTotal[`delivery_${currentLanguage}`] || 0
+      : checkoutTotal[`delivery_${language}`] || 0
 
   const payment =
     customPayment !== undefined
       ? customPayment
-      : checkoutTotal[`payment_${currentLanguage}`] || 0
+      : checkoutTotal[`payment_${language}`] || 0
 
   const cost = add(add(products, delivery), payment)
 
   let discount = 0
   if (voucher) {
     discount = calculateDiscount(
-      voucher[`discount_${currentLanguage}`],
+      voucher[`discount_${language}`],
       voucher.is_fixed,
       cost
     )

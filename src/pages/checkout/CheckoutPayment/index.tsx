@@ -15,7 +15,7 @@ import useForm from './useForm'
 import { getLanguagePrice } from 'utils'
 
 const CheckoutPayment = () => {
-  const { currentLanguage, t } = useTranslation('CHECKOUT_PAYMENT')
+  const { language, t } = useTranslation('CHECKOUT_PAYMENT')
 
   usePageTitle(t('title'))
   useScrollTop()
@@ -65,7 +65,7 @@ const CheckoutPayment = () => {
               let price: number | undefined
               if (paymentType) {
                 price = getLanguagePrice({
-                  language: currentLanguage,
+                  language: language,
                   price: paymentType
                 })
               }

@@ -31,7 +31,7 @@ type Props = {
 }
 
 const Table = ({ columns, status }: Props) => {
-  const { currentLanguage, t } = useTranslation('ADMIN_ORDERS')
+  const { language, t } = useTranslation('ADMIN_ORDERS')
   const { t: commonT } = useTranslation('COMMON')
 
   const isTest = useTest()
@@ -73,7 +73,7 @@ const Table = ({ columns, status }: Props) => {
       <Box marginTop="m-size" overflowX="scroll" overflowY="auto" width="100%">
         <QueryLoader query={ordersQuery}>
           {(orders) => {
-            const data = shapeData(orders, currentLanguage)
+            const data = shapeData(orders, language)
 
             return <NativeTable columns={columnsMemo} data={data} />
           }}
@@ -85,7 +85,7 @@ const Table = ({ columns, status }: Props) => {
 
 const shapeData = (
   data: GetOrdersResponseItem[],
-  currentLanguage: Language
+  language: Language
 ): Record<AdminTableColumns, string | boolean | number | JSX.Element>[] =>
   data.map((order) => ({
     created_at: <DisplayDate>{order.created_at}</DisplayDate>,
@@ -128,7 +128,7 @@ const shapeData = (
       <>
         {order.products.map((product) => {
           const productName = getLanguageLabel({
-            language: currentLanguage,
+            language: language,
             label: product.product,
             name: true
           })
@@ -153,7 +153,7 @@ const shapeData = (
       <>
         {order.products.map((product) => {
           const productName = getLanguageLabel({
-            language: currentLanguage,
+            language: language,
             label: product.product,
             name: true
           })

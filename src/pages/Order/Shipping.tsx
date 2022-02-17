@@ -12,10 +12,10 @@ type Props = {
 
 const Shipping = ({ deliveryType, shipping }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.SHIPPING')
-  const { currentLanguage, t: commonT } = useTranslation('COMMON')
+  const { language, t: commonT } = useTranslation('COMMON')
 
   const label = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: deliveryType
   })
 

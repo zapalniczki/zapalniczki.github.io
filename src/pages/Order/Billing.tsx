@@ -26,13 +26,13 @@ type Props = Pick<
 
 const Billing = ({ ...props }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.BILLING')
-  const { currentLanguage } = useTranslation('ORDER')
+  const { language } = useTranslation('ORDER')
 
-  const discount = props[`discount_${currentLanguage}`]
-  const deliveryPrice = props[`delivery_price_${currentLanguage}`]
-  const paymentPrice = props[`payment_price_${currentLanguage}`]
-  const productsPrice = props[`products_price_${currentLanguage}`]
-  const total = props[`total_${currentLanguage}`]
+  const discount = props[`discount_${language}`]
+  const deliveryPrice = props[`delivery_price_${language}`]
+  const paymentPrice = props[`payment_price_${language}`]
+  const productsPrice = props[`products_price_${language}`]
+  const total = props[`total_${language}`]
   const vat = getVatAmount(total)
 
   return (

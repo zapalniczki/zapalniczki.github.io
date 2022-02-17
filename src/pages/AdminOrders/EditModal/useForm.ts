@@ -39,7 +39,7 @@ const useForm = (
   })
 
   const useSubmit = () => {
-    const { currentLanguage } = useTranslation('COMMON')
+    const { language } = useTranslation('COMMON')
     const isNoEmail = useNoEmail()
 
     const { mutateAsync: mutateTriggerSendEmail } =
@@ -81,7 +81,7 @@ const useForm = (
 
         if (!isNoEmail) {
           mutateTriggerSendEmail({
-            language: currentLanguage,
+            language,
             to: userResponse.email,
             type: {
               key: 'ORDER_STATUS_CHANGE',

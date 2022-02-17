@@ -20,7 +20,7 @@ export type Props = {
 }
 
 const ProductTile = ({ product }: Props) => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const viewProductPath = generatePath(ROUTES.PRODUCTS_ID, { id: product.id })
 
   const { getProductFromBasket } = useContext(checkoutContext)
@@ -35,13 +35,13 @@ const ProductTile = ({ product }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   const productName = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product,
     name: true
   })
 
   const price = getLanguagePrice({
-    language: currentLanguage,
+    language: language,
     price: product
   })
 

@@ -13,7 +13,7 @@ import OtherIcons from './OtherIcons'
 import OtherLabels from './OtherLabels'
 
 const ViewProduct = () => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const { t } = useTranslation('VIEW_PRODUCT')
 
   const navigate = useNavigate()
@@ -36,7 +36,7 @@ const ViewProduct = () => {
     productQuery.data.icon.label_pl
   ) {
     productName = getLanguageLabel({
-      language: currentLanguage,
+      language: language,
       label: productQuery.data,
       name: true
     })

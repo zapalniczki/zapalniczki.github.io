@@ -10,7 +10,7 @@ import {
   Table,
   Tile
 } from 'components'
-import { TranslateFunc, useTranslation } from 'hooks'
+import { useTranslation } from 'hooks'
 import { multiply } from 'lodash'
 import { GetOrderResponse, GetProductsResponseItem } from 'models'
 import React, { useMemo } from 'react'
@@ -27,7 +27,7 @@ type Props = {
 }
 
 const ProductsTable = ({ products }: Props) => {
-  const { currentLanguage, t: commonT } = useTranslation('COMMON')
+  const { language, t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PRODUCTS')
 
   const ids = products.map((e) => e.product_id)
@@ -56,7 +56,7 @@ const ProductsTable = ({ products }: Props) => {
     <QueryLoader query={productsQuery}>
       {(data) => {
         const details = getDetails(data, products)
-        const shapedData = shapeData(details, commonT, currentLanguage)
+        const shapedData = shapeData(details, language)
 
         return (
           <Tile marginTop="m-size">
@@ -94,8 +94,7 @@ const getDetails = (
 
 const shapeData = (
   data: RichProductDetails[],
-  t: TranslateFunc,
-  currentLanguage: Language
+  language: Language
 ): Record<
   OrderProductsTableColumns,
   string | boolean | number | JSX.Element
@@ -104,13 +103,13 @@ const shapeData = (
     const productPath = generatePath(ROUTES.PRODUCTS_ID, { id: product.id })
     const basketImage = findCorrectProductImageSize(product.images, 'BASKET')
     const productName = getLanguageLabel({
-      language: currentLanguage,
+      language,
       label: product,
       name: true
     })
 
     const price = getLanguagePrice({
-      language: currentLanguage,
+      language,
       price: product
     })
 

@@ -15,7 +15,7 @@ import { formatDate, getLanguageLabel, getLanguagePrice } from 'utils'
 import EditModal from './EditModal'
 
 const List = () => {
-  const { currentLanguage, t: commonT } = useTranslation('COMMON')
+  const { language, t: commonT } = useTranslation('COMMON')
 
   const paymentTypesQuery = useQuery(DB_TABLES.PAYMENT_TYPE, () =>
     getPaymentTypes()
@@ -58,7 +58,7 @@ const List = () => {
     <Tile>
       <QueryLoader query={paymentTypesQuery}>
         {(data) => {
-          const shappedData = shapeData(data, currentLanguage)
+          const shappedData = shapeData(data, language)
 
           return <Table columns={columns} data={shappedData} />
         }}
@@ -67,21 +67,21 @@ const List = () => {
   )
 }
 
-const shapeData = (data: PaymentType[], currentLanguage: Language) =>
+const shapeData = (data: PaymentType[], language: Language) =>
   data.map((record) => {
     const label = getLanguageLabel({
-      language: currentLanguage,
+      language: language,
       label: record
     })
 
     const description = getLanguageLabel({
-      language: currentLanguage,
+      language: language,
       label: record,
       description: true
     })
 
     const price = getLanguagePrice({
-      language: currentLanguage,
+      language: language,
       price: record
     })
 

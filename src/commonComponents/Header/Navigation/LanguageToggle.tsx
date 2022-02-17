@@ -3,31 +3,31 @@ import { ReactComponent as Pl } from 'assets/flags/pl.svg'
 import { Button, Flexbox } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
-import { language, Language } from 'braty-common'
+import { language as languageSchema, Language } from 'braty-common'
 
 const LanguageToggle = () => {
-  const { currentLanguage, i18n, withBase } = useTranslation('COMMON')
+  const { i18n, language, withBase } = useTranslation('COMMON')
   const commonT = withBase('LANGUAGE_TOGGLE_LABEL')
 
   return (
     <Button
       onClick={() => {
-        const indexOfCurrentLanguage = language.options.indexOf(currentLanguage)
+        const indexOfCurrentLanguage = languageSchema.options.indexOf(language)
         const indexOfNextLanguage =
-          indexOfCurrentLanguage === language.options.length - 1
+          indexOfCurrentLanguage === languageSchema.options.length - 1
             ? 0
             : indexOfCurrentLanguage + 1
-        const nextLanguage = language.options[indexOfNextLanguage]
+        const nextLanguage = languageSchema.options[indexOfNextLanguage]
 
         i18n.changeLanguage(nextLanguage)
       }}
       padding="s-size"
-      title={commonT(currentLanguage)}
+      title={commonT(language)}
       type="button"
       variant="quaternary"
     >
       <Flexbox alignItems="center" height="2.5rem" width="2.5rem">
-        {languageToFlagMapping[currentLanguage]}
+        {languageToFlagMapping[language]}
       </Flexbox>
     </Button>
   )

@@ -22,7 +22,7 @@ import ShippingForm from './ShippingForm'
 import useForm from './useForm'
 
 const CheckoutDelivery = () => {
-  const { currentLanguage, t } = useTranslation('CHECKOUT_DELIVERY')
+  const { language, t } = useTranslation('CHECKOUT_DELIVERY')
   const { checkout, setCheckout } = useContext(checkoutContext)
 
   usePageTitle(t('title'))
@@ -77,7 +77,7 @@ const CheckoutDelivery = () => {
               let price: number | undefined
               if (delivery) {
                 price = getLanguagePrice({
-                  language: currentLanguage,
+                  language: language,
                   price: delivery
                 })
               }

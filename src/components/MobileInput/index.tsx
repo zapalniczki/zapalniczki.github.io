@@ -15,7 +15,7 @@ type Props = {
 
 const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
   const commonT = useTranslation('COMMON').withBase('COUNTRIES')
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const { colors, radii } = useTheme()
 
   const { field, meta } = fieldProps
@@ -24,7 +24,7 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
   const { setValue } = helpers
 
   let country = 'pl'
-  if (currentLanguage !== 'pl') {
+  if (language !== 'pl') {
     country = 'gb'
   }
 

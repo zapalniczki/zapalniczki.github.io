@@ -15,7 +15,7 @@ type Props = {
 } & SpaceProps
 
 const Condition = ({ keyId, query, title, ...props }: Props) => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const [searchParams, setSearchParams] = useSearchParams({})
 
   const keyIdValueInSeachParams = searchParams.get(keyId) || undefined
@@ -56,7 +56,7 @@ const Condition = ({ keyId, query, title, ...props }: Props) => {
               .sort((prev, next) => (prev.label_pl < next.label_pl ? -1 : 1))
               .map((elem) => {
                 const label = getLanguageLabel({
-                  language: currentLanguage,
+                  language: language,
                   label: elem
                 })
 

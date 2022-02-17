@@ -20,7 +20,7 @@ import { displayMoney, getLanguageLabel, getLanguagePrice } from 'utils'
 import Option from './Option'
 
 const DeliveryAndPayments = () => {
-  const { currentLanguage, t } = useTranslation('DELIVERY_AND_PAYMENTS')
+  const { language, t } = useTranslation('DELIVERY_AND_PAYMENTS')
 
   useScrollTop()
   usePageTitle(t('title'))
@@ -75,7 +75,7 @@ const DeliveryAndPayments = () => {
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {deliveryTypes.map((type) => {
               const price = getLanguagePrice({
-                language: currentLanguage,
+                language: language,
                 price: type
               })
 
@@ -103,18 +103,18 @@ const DeliveryAndPayments = () => {
           <Grid gridTemplateColumns={['unset', '1fr', '1fr', 'repeat(3, 1fr)']}>
             {paymentTypes.map((type) => {
               const label = getLanguageLabel({
-                language: currentLanguage,
+                language: language,
                 label: type
               })
 
               const description = getLanguageLabel({
-                language: currentLanguage,
+                language: language,
                 label: type,
                 description: true
               })
 
               const price = getLanguagePrice({
-                language: currentLanguage,
+                language: language,
                 price: type
               })
 

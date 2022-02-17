@@ -19,7 +19,7 @@ type Props = {
 
 const Form = ({ paymentTypes }: Props) => {
   const { vouchers } = useContext(remoteConfigContext)
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const { getInput } = useInput()
 
   return (
@@ -28,18 +28,18 @@ const Form = ({ paymentTypes }: Props) => {
         .filter((type) => type.is_enabled)
         .map((type, index) => {
           const optionLabel = getLanguageLabel({
-            language: currentLanguage,
+            language: language,
             label: type
           })
 
           const description = getLanguageLabel({
-            language: currentLanguage,
+            language: language,
             label: type,
             description: true
           })
 
           const price = getLanguagePrice({
-            language: currentLanguage,
+            language: language,
             price: type
           })
 

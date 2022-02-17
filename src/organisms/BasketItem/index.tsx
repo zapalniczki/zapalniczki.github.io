@@ -24,7 +24,7 @@ type Props = {
 }
 
 const BasketItem = ({ first, originalId, product, quantity }: Props) => {
-  const { currentLanguage, t: commonT } = useTranslation('COMMON')
+  const { language, t: commonT } = useTranslation('COMMON')
 
   const { closeBasket } = useContext(togglesContext)
   const { setCheckout } = useContext(checkoutContext)
@@ -39,14 +39,14 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
   }
 
   const productName = getLanguageLabel({
-    language: currentLanguage,
+    language: language,
     label: product,
     name: true
   })
 
   const { id, images, price_en, price_pl } = product
   const price = getLanguagePrice({
-    language: currentLanguage,
+    language: language,
     price: product
   })
 

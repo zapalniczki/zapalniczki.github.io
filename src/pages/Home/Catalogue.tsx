@@ -4,7 +4,7 @@ import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 
 const Catalogue = () => {
-  const { currentLanguage } = useTranslation('COMMON')
+  const { language } = useTranslation('COMMON')
   const t = useTranslation('HOME').withBase('CATALOGUE')
   const { homeCatalogueDisplay, homeCatalogueOrder, ...remoteConfig } =
     useContext(remoteConfigContext)
@@ -13,8 +13,8 @@ const Catalogue = () => {
     return null
   }
 
-  const catalogueCover = remoteConfig[`catalogue_cover_${currentLanguage}`]
-  const catalogueLink = remoteConfig[`catalogue_link_${currentLanguage}`]
+  const catalogueCover = remoteConfig[`catalogue_cover_${language}`]
+  const catalogueLink = remoteConfig[`catalogue_link_${language}`]
 
   return (
     <BannerWithImage
