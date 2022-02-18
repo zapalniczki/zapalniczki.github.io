@@ -25,7 +25,7 @@ const Order = () => {
   useScrollTop()
 
   if (!id) {
-    throw new Error('Not id')
+    throw new Error('No id')
   }
 
   const params = { id }
