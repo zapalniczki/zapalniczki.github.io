@@ -134,7 +134,6 @@ export type FormValues = {
   phone: NonNullable<Marketing['phone']>
   plus_code: NonNullable<Marketing['plus_code']>
   send_brochure_agreement: Marketing['send_brochure_agreement']
-  send_brochure_cyclic_agreement: Marketing['send_brochure_cyclic_agreement']
   status: Marketing['status']
 }
 
