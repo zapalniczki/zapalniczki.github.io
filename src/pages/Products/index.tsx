@@ -33,7 +33,7 @@ const Products = () => {
   const iconId = searchParams.get('iconId') || undefined
   const collectionId = searchParams.get('collectionId') || undefined
 
-  const isFiltered = labelId
+  const isFilteredByLabelId = labelId
 
   const nameParamsKey = `name_${language}` as const
   const params = {
@@ -61,7 +61,7 @@ const Products = () => {
 
   return (
     <Page>
-      {!isFiltered && (
+      {!isFilteredByLabelId && (
         <Filters
           searchQuery={searchQuery}
           setSearchQuery={(value) => {
@@ -78,7 +78,7 @@ const Products = () => {
         paginated
         query={infiniteProductQuery}
         sectionHeadChildren={
-          isFiltered ? (
+          isFilteredByLabelId ? (
             <BackButton label={t('showAllLabel')} to={ROUTES.PRODUCTS} />
           ) : undefined
         }
