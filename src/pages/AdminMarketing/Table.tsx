@@ -74,14 +74,6 @@ const shapeData = (
         />
       </Flexbox>
     ),
-    sendBrochureCyclicAgreement: (
-      <Flexbox justifyContent="center">
-        <ResultIcon
-          size="2x"
-          variant={record.send_brochure_cyclic_agreement ? 'SUCCESS' : 'ERROR'}
-        />
-      </Flexbox>
-    ),
     edit: (
       <FormModal
         email={record.email}
@@ -91,7 +83,6 @@ const shapeData = (
         phone={record.phone}
         plus_code={record.plus_code}
         send_brochure_agreement={record.send_brochure_agreement}
-        send_brochure_cyclic_agreement={record.send_brochure_cyclic_agreement}
         status={record.status}
       />
     ),

@@ -5,7 +5,7 @@ const pl = {
     MARKETING_STATUSES: {
       REJECTED: 'Brak zainteresowania',
       UNANSWERED: 'Nieodebrane',
-      INTERESTED: 'Zainteresowanie',
+      INTERESTED: 'Wysłano',
       TODO: 'To zrobienia'
     },
 

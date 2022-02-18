@@ -117,30 +117,6 @@ const Form = () => {
           </Field>
         </FieldWrapper>
       </FormRow>
-
-      <FormRow>
-        <FieldWrapper>
-          <Field name="send_brochure_cyclic_agreement">
-            {(
-              props: FieldProps<
-                FormValues['send_brochure_cyclic_agreement'],
-                FormValues
-              >
-            ) => (
-              <Switch
-                checked={props.field.value}
-                {...getInput('SEND_BROCHURE_CYCLIC_AGREEMENT')}
-                onChange={(value) =>
-                  props.form.setFieldValue(
-                    'send_brochure_cyclic_agreement',
-                    value
-                  )
-                }
-              />
-            )}
-          </Field>
-        </FieldWrapper>
-      </FormRow>
     </ModalContent>
   )
 }

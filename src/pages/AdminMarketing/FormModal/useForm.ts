@@ -14,7 +14,6 @@ const useForm = (
   name?: Marketing['name'],
   plus_code?: Marketing['plus_code'],
   send_brochure_agreement?: Marketing['send_brochure_agreement'],
-  send_brochure_cyclic_agreement?: Marketing['send_brochure_cyclic_agreement'],
   status?: Marketing['status']
 ) => {
   const { getSchema } = useFormSchema()
@@ -27,7 +26,6 @@ const useForm = (
     name: name ?? '',
     plus_code: plus_code ?? '',
     send_brochure_agreement: send_brochure_agreement ?? false,
-    send_brochure_cyclic_agreement: send_brochure_cyclic_agreement ?? false,
     status: status ?? 'TODO'
   }
 
@@ -60,8 +58,6 @@ const useForm = (
             name: values.name,
             plus_code: values.plus_code,
             send_brochure_agreement: values.send_brochure_agreement,
-            send_brochure_cyclic_agreement:
-              values.send_brochure_cyclic_agreement,
             status: values.status,
             is_test: isTest
           })
@@ -74,8 +70,6 @@ const useForm = (
             status: values.status,
             plus_code: values.plus_code,
             send_brochure_agreement: values.send_brochure_agreement,
-            send_brochure_cyclic_agreement:
-              values.send_brochure_cyclic_agreement,
             is_test: isTest
           })
         }

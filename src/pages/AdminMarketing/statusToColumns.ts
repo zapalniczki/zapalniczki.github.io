@@ -10,7 +10,6 @@ const statusToColumns: Record<MarketingStatus, AdminMarketingTableColumn[]> = {
     'email',
     'notes',
     'sendBrochureAgreement',
-    'sendBrochureCyclicAgreement',
     'edit'
   ],
   REJECTED: [
@@ -19,24 +18,22 @@ const statusToColumns: Record<MarketingStatus, AdminMarketingTableColumn[]> = {
     'plus_code',
     'email',
     'notes',
-    'edit',
     'sendBrochureAgreement',
-    'sendBrochureCyclicAgreement',
+    'edit',
     'delete'
   ]
 }
 
 export type AdminMarketingTableColumn =
   | 'created_at'
-  | 'updated_at'
-  | 'name'
-  | 'plus_code'
-  | 'email'
-  | 'phone'
-  | 'notes'
-  | 'sendBrochureAgreement'
-  | 'sendBrochureCyclicAgreement'
-  | 'edit'
   | 'delete'
+  | 'edit'
+  | 'email'
+  | 'name'
+  | 'notes'
+  | 'phone'
+  | 'plus_code'
+  | 'sendBrochureAgreement'
+  | 'updated_at'
 
 export default statusToColumns
