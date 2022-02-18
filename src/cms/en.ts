@@ -533,7 +533,7 @@ const en: LanguageKeys = {
     },
 
     CATALOGUE: {
-      title: 'Products Catalogue',
+      title: 'Product Catalogue',
       linkLabel: 'View'
     },
 
