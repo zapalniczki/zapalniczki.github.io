@@ -9,32 +9,32 @@ import { getLanguageLabel } from 'utils'
 import Loader from './Condition.loader'
 
 type Props = {
-  keyId: 'collectionId' | 'iconId'
+  keyName: 'collection_key' | 'icon_key'
   query: UseQueryResult<(GetIconsResponseItem | GetCollectionsResponseItem)[]>
   title: string
 } & SpaceProps
 
-const Condition = ({ keyId, query, title, ...props }: Props) => {
+const Condition = ({ keyName, query, title, ...props }: Props) => {
   const { language } = useTranslation('COMMON')
   const [searchParams, setSearchParams] = useSearchParams({})
 
-  const keyIdValueInSeachParams = searchParams.get(keyId) || undefined
-  const isKeyIdApplied = !!keyIdValueInSeachParams
+  const keyValueInSeachParams = searchParams.get(keyName) || undefined
+  const isKeyApplied = !!keyValueInSeachParams
 
-  const getIdValueApplied = (value: string) => keyIdValueInSeachParams === value
+  const getKeyValueApplied = (value: string) => keyValueInSeachParams === value
 
   const selectItem = (value: string) => {
-    const isValueApplied = getIdValueApplied(value)
+    const isValueApplied = getKeyValueApplied(value)
 
-    if (isKeyIdApplied) {
+    if (isKeyApplied) {
       if (isValueApplied) {
-        searchParams.delete(keyId)
+        searchParams.delete(keyName)
       } else {
-        searchParams.delete(keyId)
-        searchParams.append(keyId, value)
+        searchParams.delete(keyName)
+        searchParams.append(keyName, value)
       }
     } else {
-      searchParams.append(keyId, value)
+      searchParams.append(keyName, value)
     }
 
     setSearchParams(searchParams)
@@ -55,13 +55,13 @@ const Condition = ({ keyId, query, title, ...props }: Props) => {
                   label: elem
                 })
 
-                const isValueApplied = getIdValueApplied(elem.id)
-                const isSelected = isKeyIdApplied && isValueApplied
+                const isValueApplied = getKeyValueApplied(elem.key)
+                const isSelected = isKeyApplied && isValueApplied
 
                 return (
                   <Chip
                     key={label}
-                    onClick={() => selectItem(elem.id)}
+                    onClick={() => selectItem(elem.key)}
                     rounded
                     selected={isSelected}
                   >

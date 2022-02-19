@@ -29,17 +29,15 @@ export const getProduct = async (params: Params) => {
       icon: ${DB_TABLES.ICONS} (
         label_pl,
         label_en,
-        id
+        key
       ),
       collection: ${DB_TABLES.COLLECTIONS} (
         label_pl,
         label_en,
-        id
+        key
       ),
       label: ${DB_TABLES.LABELS} (
-        label_pl,
-        label_en,
-        id
+        key
       )
       `
     )

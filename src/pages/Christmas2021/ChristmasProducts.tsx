@@ -9,9 +9,7 @@ import { DB_TABLES } from 'braty-common'
 const ChristmasProducts = () => {
   const t = useTranslation('CHRISTMAS_2021').withBase('CHRISTMAS_PRODUCTS')
 
-  const params = {
-    collectionId: '3eb90808-0d57-4173-ac0a-2fb8bc66c049'
-  }
+  const params = { collectionKey: 'CHRISTMAS_2021' }
   const christmasProductsQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
     getProducts(params)
   )

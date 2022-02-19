@@ -6,22 +6,23 @@ import React from 'react'
 import { useQuery } from 'react-query'
 
 type Props = {
-  iconId: Icon['id']
-  labelId: Label['id']
+  iconKey: Icon['key']
+  labelKey: Label['key']
 }
 
-const OtherIcons = ({ iconId, labelId }: Props) => {
+const OtherIcons = ({ iconKey, labelKey }: Props) => {
   const t = useTranslation('VIEW_PRODUCT').withBase('OTHER_ICONS')
 
-  const params = { labelId, iconId }
+  const params = { labelKey, iconKey }
   const otherIconsQuery = useQuery(['other_icons', params], () =>
     getOtherIcons(params)
   )
 
   return (
     <ProductsGrid
+      hideWhenEmpty={false}
       link={{
-        to: { pathname: '/products', search: `labelId=${labelId}` },
+        to: { pathname: '/products', search: `label_key=${labelKey}` },
         label: t('linkLabel')
       }}
       marginTop="xxl-size"

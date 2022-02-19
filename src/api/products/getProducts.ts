@@ -6,10 +6,10 @@ import { array } from 'zod'
 
 export type Params = {
   bestseller?: Product['bestseller']
-  collectionId?: Collection['id']
+  collectionKey?: Collection['key']
   featured?: Product['featured']
-  iconId?: Icon['id']
-  labelId?: Label['id']
+  iconKey?: Icon['key'] | null
+  labelKey?: Label['key']
   limit?: number
   name_en?: Product['name_en']
   name_pl?: Product['name_pl']
@@ -34,18 +34,18 @@ export const getProducts = async (params: Params = {}) => {
 }
 
 export const getProductsSelectQuery = `
+bestseller,
+collection_key,
+featured,
+icon_key,
 id,
-price_pl,
+label_key,
+name_en,
+name_pl,
 price_en,
+price_pl,
 updated_at,
 visible,
-bestseller,
-featured,
-collection_id,
-label_id,
-name_pl,
-name_en,
-icon_id,
 ${DB_TABLES.IMAGES} (
   *
 ),
@@ -57,15 +57,14 @@ icon: ${DB_TABLES.ICONS} (
   label_en
 ),
 label: ${DB_TABLES.LABELS} (
-  label_pl,
-  label_en
+  key
 )
 `
 
 export const getProductsMatch = (params: Params) => ({
-  ...(params?.labelId && { label_id: params.labelId }),
-  ...(params?.collectionId && { collection_id: params.collectionId }),
-  ...(params?.iconId && { icon_id: params.iconId }),
+  ...(params?.labelKey && { label_key: params.labelKey }),
+  ...(params?.collectionKey && { collection_key: params.collectionKey }),
+  ...(params?.iconKey && { icon_key: params.iconKey }),
   ...(params?.bestseller && { bestseller: params.bestseller }),
   ...(params?.featured && { featured: params.featured })
 })

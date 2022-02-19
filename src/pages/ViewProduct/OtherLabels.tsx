@@ -6,14 +6,14 @@ import React from 'react'
 import { useQuery } from 'react-query'
 
 type Props = {
-  collectionId: Collection['id']
-  labelId: Label['id']
+  collectionKey: Collection['key']
+  labelKey: Label['key']
 }
 
-const OtherLabels = ({ collectionId, labelId }: Props) => {
+const OtherLabels = ({ collectionKey, labelKey }: Props) => {
   const t = useTranslation('VIEW_PRODUCT').withBase('OTHER_LABELS')
 
-  const params = { labelId, collectionId }
+  const params = { labelKey, collectionKey }
   const otherLabelsQuery = useQuery(['other_labels', params], () =>
     getOtherLabels(params)
   )
@@ -21,7 +21,7 @@ const OtherLabels = ({ collectionId, labelId }: Props) => {
   return (
     <ProductsGrid
       link={{
-        to: { pathname: '/products', search: `collectionId=${collectionId}` },
+        to: { pathname: '/products', search: `collectionId=${collectionKey}` },
         label: t('linkLabel')
       }}
       loaderCount={3}

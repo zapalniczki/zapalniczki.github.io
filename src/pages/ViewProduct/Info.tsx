@@ -18,10 +18,6 @@ const Info = ({ product }: Props) => {
     language,
     label: product.icon
   })
-  const labelLabel = getLanguageLabel({
-    language,
-    label: product.label
-  })
 
   const collectionLabel = getLanguageLabel({
     language,
@@ -74,7 +70,7 @@ const Info = ({ product }: Props) => {
 
       <Detail label={t('collection')} value={collectionLabel} />
 
-      <Detail label={t('label')} quotes value={labelLabel} />
+      <Detail label={t('label')} quotes value={product.label.key} />
 
       <Detail label={t('icon')} value={iconLabel} />
 

@@ -14,8 +14,7 @@ const getMoldsResponseItem = mold
       label_en: true
     }),
     label: label.pick({
-      label_pl: true,
-      label_en: true
+      key: true
     })
   })
 

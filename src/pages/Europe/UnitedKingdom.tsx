@@ -9,7 +9,7 @@ import { DB_TABLES } from 'braty-common'
 const UnitedKingdom = () => {
   const t = useTranslation('EUROPE').withBase('UNITED_KINGDOM')
 
-  const params = { collectionId: 'daa8e336-4ecc-4214-ad57-aa760dcaa35e' }
+  const params = { collectionKey: 'UNITED_KINGDOM' }
   const unitedKingdomProductsQuery = useQuery(
     [DB_TABLES.PRODUCTS, params],
     () => getProducts(params)

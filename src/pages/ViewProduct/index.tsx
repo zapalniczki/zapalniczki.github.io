@@ -30,9 +30,10 @@ const ViewProduct = () => {
 
   let productName = `Produkt ${params.id}`
 
+  // TODO
   if (
     productQuery &&
-    productQuery.data?.label.label_pl &&
+    productQuery.data?.label.key &&
     productQuery.data.icon.label_pl
   ) {
     productName = getLanguageLabel({
@@ -62,11 +63,14 @@ const ViewProduct = () => {
               <Info product={product} />
             </Tile>
 
-            <OtherIcons iconId={product.icon.id} labelId={product.label.id} />
+            <OtherIcons
+              iconKey={product.icon.key}
+              labelKey={product.label.key}
+            />
 
             <OtherLabels
-              collectionId={product.collection.id}
-              labelId={product.label.id}
+              collectionKey={product.collection.key}
+              labelKey={product.label.key}
             />
           </>
         )}

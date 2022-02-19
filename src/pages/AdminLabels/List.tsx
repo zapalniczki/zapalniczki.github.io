@@ -45,7 +45,7 @@ const shapeData = (data: Label[]) =>
   data.map((record) => ({
     created_at: formatDate(record.created_at),
     updated_at: formatDate(record.updated_at),
-    label: record.label_pl
+    label: record.key
   }))
 
 export default List

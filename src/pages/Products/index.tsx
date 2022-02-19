@@ -1,5 +1,5 @@
 import { getPaginatedProducts } from 'api'
-import { DB_TABLES, ROUTES } from 'braty-common'
+import { DB_TABLES, iconKey as iconKeySchema, ROUTES } from 'braty-common'
 import { BackButton, Page, ProductsGrid } from 'components'
 import {
   useBreakpoints,
@@ -29,19 +29,19 @@ const Products = () => {
 
   const debouncedChangeHandler = useMemo(() => debounce(changeHandler, 300), [])
 
-  const labelId = searchParams.get('labelId') || undefined
-  const iconId = searchParams.get('iconId') || undefined
-  const collectionId = searchParams.get('collectionId') || undefined
+  const labelKey = searchParams.get('label_key') || undefined
+  const iconKey = iconKeySchema.nullable().parse(searchParams.get('icon_key'))
+  const collectionKey = searchParams.get('collection_key') || undefined
 
-  const isFilteredByLabelId = labelId
+  const isFilteredByLabelKey = !!labelKey
 
   const nameParamsKey = `name_${language}` as const
   const params = {
     page: 0,
     size: isAboveDesktop ? 9 : 4,
-    collectionId,
-    labelId,
-    iconId,
+    collectionKey,
+    labelKey,
+    iconKey,
     [nameParamsKey]: debouncedSearchQuery
   }
 
@@ -61,7 +61,7 @@ const Products = () => {
 
   return (
     <Page>
-      {!isFilteredByLabelId && (
+      {!isFilteredByLabelKey && (
         <Filters
           searchQuery={searchQuery}
           setSearchQuery={(value) => {
@@ -78,7 +78,7 @@ const Products = () => {
         paginated
         query={infiniteProductQuery}
         sectionHeadChildren={
-          isFilteredByLabelId ? (
+          isFilteredByLabelKey ? (
             <BackButton label={t('showAllLabel')} to={ROUTES.PRODUCTS} />
           ) : undefined
         }

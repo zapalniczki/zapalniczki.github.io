@@ -7,7 +7,7 @@ import { DB_TABLES } from 'braty-common'
 
 const Products = () => {
   const params = {
-    collectionId: 'c8445406-9971-424e-a788-df15dd6f0460'
+    collectionKey: 'VALENTINES_DAY'
   }
   const productsQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
     getProducts(params)

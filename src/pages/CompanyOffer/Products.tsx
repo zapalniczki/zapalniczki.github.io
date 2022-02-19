@@ -3,15 +3,15 @@ import { ProductsGrid } from 'components'
 
 import React from 'react'
 import { useQuery } from 'react-query'
-import { DB_TABLES } from 'braty-common'
+import { Collection, DB_TABLES } from 'braty-common'
 
 type Props = {
-  collectionId?: string
+  collectionKey?: Collection['key']
   title: string
 }
 
-const Products = ({ collectionId, title }: Props) => {
-  const params = { collectionId }
+const Products = ({ collectionKey, title }: Props) => {
+  const params = { collectionKey }
   const productsQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
     getProducts(params)
   )

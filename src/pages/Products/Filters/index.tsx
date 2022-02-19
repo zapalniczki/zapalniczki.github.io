@@ -29,14 +29,14 @@ const Filters = ({ searchQuery, setSearchQuery }: Props) => {
       <Search onChange={(value) => setSearchQuery(value)} value={searchQuery} />
 
       <Condition
-        keyId="collectionId"
+        keyName="collection_key"
         marginTop="m-size"
         query={collectionsQuery}
         title={t('collections')}
       />
 
       <Condition
-        keyId="iconId"
+        keyName="icon_key"
         marginTop="m-size"
         query={iconsQuery}
         title={t('icons')}

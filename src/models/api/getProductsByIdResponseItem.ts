@@ -6,9 +6,9 @@ const getProductsByIdResponseItem = product
     id: true,
     price_en: true,
     price_pl: true,
-    collection_id: true,
-    label_id: true,
-    icon_id: true,
+    collection_key: true,
+    label_key: true,
+    icon_key: true,
     visible: true,
     bestseller: true,
     name_pl: true,
@@ -25,8 +25,7 @@ const getProductsByIdResponseItem = product
       label_en: true
     }),
     label: label.pick({
-      label_pl: true,
-      label_en: true
+      key: true
     })
   })
 

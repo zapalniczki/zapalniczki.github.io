@@ -3,19 +3,19 @@ import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 import { getProductsSelectQuery } from '.'
-import { DB_TABLES } from 'braty-common'
+import { Collection, DB_TABLES, Label } from 'braty-common'
 
 type Params = {
-  collectionId: string
-  labelId: string
+  collectionKey: Collection['key']
+  labelKey: Label['key']
 }
 
 export const getOtherLabels = async (params: Params) => {
   const response = await supabase
     .from<GetProductsResponseItem>(DB_TABLES.PRODUCTS)
     .select(getProductsSelectQuery)
-    .eq('collection_id', params.collectionId)
-    .neq('label_id', params.labelId)
+    .eq('collection_key', params.collectionKey)
+    .neq('label_key', params.labelKey)
     .limit(3)
 
   const data = parseApiResponse(array(getProductsResponseItem), response)

@@ -14,19 +14,17 @@ const getProductResponse = product
   .extend({
     images: array(image),
     icon: icon.pick({
-      id: true,
+      key: true,
       label_pl: true,
       label_en: true
     }),
     label: label.pick({
-      id: true,
-      label_pl: true,
-      label_en: true
+      key: true
     }),
     collection: collection.pick({
+      key: true,
       label_en: true,
-      label_pl: true,
-      id: true
+      label_pl: true
     }),
     mold: mold.pick({
       id: true,
