@@ -26,7 +26,7 @@ const Filters = ({ searchQuery, setSearchQuery }: Props) => {
         {t('title')}
       </Heading>
 
-      <Search onChange={(value) => setSearchQuery(value)} value={searchQuery} />
+      <Search onChange={setSearchQuery} value={searchQuery} />
 
       <Condition
         keyName="collection_key"
