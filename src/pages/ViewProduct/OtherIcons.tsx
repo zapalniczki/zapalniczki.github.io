@@ -20,7 +20,6 @@ const OtherIcons = ({ iconKey, labelKey }: Props) => {
 
   return (
     <ProductsGrid
-      hideWhenEmpty={false}
       link={{
         to: { pathname: '/products', search: `label_key=${labelKey}` },
         label: t('linkLabel')
