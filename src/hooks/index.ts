@@ -1,5 +1,6 @@
 export * from './useBreakpoints'
 export * from './useInput'
+export * from './useScrollTop'
 export * from './useTranslation'
 export { default as useAdmin } from './useAdmin'
 export { default as useBreakpoints } from './useBreakpoints'

@@ -1,7 +1,7 @@
 import { ReactComponent as En } from 'assets/flags/en.svg'
 import { ReactComponent as Pl } from 'assets/flags/pl.svg'
 import { Button, Flexbox } from 'components'
-import { useTranslation } from 'hooks'
+import { scrollToTop, useTranslation } from 'hooks'
 import React from 'react'
 import { language as languageSchema, Language } from 'braty-common'
 
@@ -20,6 +20,8 @@ const LanguageToggle = () => {
         const nextLanguage = languageSchema.options[indexOfNextLanguage]
 
         i18n.changeLanguage(nextLanguage)
+
+        scrollToTop()
       }}
       padding="s-size"
       title={commonT(language)}
