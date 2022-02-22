@@ -1,8 +1,7 @@
 import { Banner, Heading, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
+import { Products } from 'organisms'
 import React from 'react'
-import ChristmasProducts from './ChristmasProducts'
-import NewYearProducts from './NewYearProducts'
 
 const Christmas2021 = () => {
   const { t } = useTranslation('CHRISTMAS_2021')
@@ -18,7 +17,10 @@ const Christmas2021 = () => {
         </Heading>
       </Banner>
 
-      <ChristmasProducts />
+      <Products
+        collectionKey="CHRISTMAS_2021"
+        title={t('CHRISTMAS_PRODUCTS.title')}
+      />
 
       <Banner backgroundColor="christmas-red" marginTop="xxl-size" size="SMALL">
         <Heading color="white" fontFamily="Caveat Brush" level={4}>
@@ -30,7 +32,10 @@ const Christmas2021 = () => {
         </Heading>
       </Banner>
 
-      <NewYearProducts />
+      <Products
+        collectionKey="NEW_YEARS_EVE_2022"
+        title={t('NEW_YEAR_PRODUCTS.title')}
+      />
     </Page>
   )
 }

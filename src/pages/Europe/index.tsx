@@ -1,8 +1,7 @@
 import { Banner, Heading, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
+import { Products } from 'organisms'
 import React from 'react'
-import Germany from './Germany'
-import UnitedKingdom from './UnitedKingdom'
 
 const Europe = () => {
   const { t } = useTranslation('EUROPE')
@@ -16,9 +15,12 @@ const Europe = () => {
         <Heading level={3}>{t('title')}</Heading>
       </Banner>
 
-      <Germany />
+      <Products collectionKey="GERMANY" title={t('GERMANY.title')} />
 
-      <UnitedKingdom />
+      <Products
+        collectionKey="UNITED_KINGDOM"
+        title={t('UNITED_KINGDOM.title')}
+      />
     </Page>
   )
 }

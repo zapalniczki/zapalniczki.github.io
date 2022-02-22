@@ -7,10 +7,11 @@ import { Collection, DB_TABLES } from 'braty-common'
 
 type Props = {
   collectionKey?: Collection['key']
-  title: string
+  loaderCount?: number
+  title?: string
 }
 
-const Products = ({ collectionKey, title }: Props) => {
+const Products = ({ collectionKey, loaderCount, title }: Props) => {
   const params = { collectionKey }
   const productsQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
     getProducts(params)
@@ -19,7 +20,7 @@ const Products = ({ collectionKey, title }: Props) => {
   return (
     <ProductsGrid
       hideWhenEmpty={false}
-      loaderCount={3}
+      loaderCount={loaderCount}
       marginTop="xxl-size"
       query={productsQuery}
       title={title}

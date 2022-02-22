@@ -1,7 +1,7 @@
 import { Banner, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
-import Products from './Products'
+import { Products } from 'organisms'
 
 const CompanyOffer = () => {
   const { t } = useTranslation('VALENTINES_2022')
