@@ -857,7 +857,7 @@ const en: LanguageKeys = {
   },
 
   DELIVERY_AND_PAYMENTS: {
-    title: 'Dostawa i płatności',
+    title: 'Delivery and payments',
 
     processingTime: {
       title: 'Czas realizacji',
