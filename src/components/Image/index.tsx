@@ -36,7 +36,7 @@ const Image = ({ alt = '', size, src, ...props }: Props) => {
           justifyContent="center"
           width="100%"
         >
-          <Spinner small />
+          <Spinner size="SMALL" />
         </Flexbox>
       }
       src={imageSrc}

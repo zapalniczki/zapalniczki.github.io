@@ -53,7 +53,7 @@ const Button = ({
         type={type}
         variant={variant}
       >
-        <Spinner small />
+        <Spinner size="SMALL" />
       </Container>
     )
   }
