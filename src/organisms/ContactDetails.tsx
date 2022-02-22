@@ -14,6 +14,7 @@ import {
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'
+import Loader from './ContactDetails.loader'
 
 type Props = {
   userId: Order['user_id']
@@ -26,7 +27,7 @@ const ContactDetails = ({ userId }: Props) => {
   const userQuery = useQuery([DB_TABLES.USERS, params], () => getUser(params))
 
   return (
-    <QueryLoader query={userQuery}>
+    <QueryLoader Loader={<Loader />} query={userQuery}>
       {(data) => {
         const nip = data.nip
 

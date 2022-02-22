@@ -16,6 +16,7 @@ import ProductsTable from './ProductsTable'
 import Shipping from './Shipping'
 import Status from './Status'
 import Voucher from './Voucher'
+import Loader from './index.loader'
 
 const Order = () => {
   const { t } = useTranslation('ORDER')
@@ -33,7 +34,7 @@ const Order = () => {
 
   return (
     <Page>
-      <QueryLoader query={orderQuery}>
+      <QueryLoader Loader={<Loader />} query={orderQuery}>
         {(order) => (
           <Columns>
             <div>
