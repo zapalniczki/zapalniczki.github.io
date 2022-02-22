@@ -2,12 +2,13 @@ import { Chip } from 'components'
 import { useTranslation } from 'hooks'
 import { Order } from 'braty-common'
 import React from 'react'
+import { SpaceProps } from 'styled-system'
 
 type Props = {
   status: Order['status']
-}
+} & SpaceProps
 
-const StatusIndicator = ({ status }: Props) => {
+const StatusIndicator = ({ status, ...props }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   let variant
@@ -29,7 +30,11 @@ const StatusIndicator = ({ status }: Props) => {
       break
   }
 
-  return <Chip variant={variant}>{commonT(`ORDER_STATUSES.${status}`)}</Chip>
+  return (
+    <Chip rounded variant={variant} {...props}>
+      {commonT(`ORDER_STATUSES.${status}`)}
+    </Chip>
+  )
 }
 
 export default StatusIndicator
