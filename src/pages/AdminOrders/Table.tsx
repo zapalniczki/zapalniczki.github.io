@@ -104,17 +104,15 @@ const shapeData = (
         <Text type="body-2">{order.customerEmail.email}</Text>
       </Flexbox>
     ),
-
     id: <Link label={order.id} showUnderline to={getOrderPath(order.id)} />,
     is_company: true,
     status: order.status,
-    total: order.total_pl,
     updated_at: <DisplayDate>{order.updated_at}</DisplayDate>,
     order_time: differenceInDays(
       parseISO(order.created_at),
       parseISO(order.updated_at)
     ),
-    sum: <DisplayMoney>{order.total_pl}</DisplayMoney>,
+    sum: <DisplayMoney>{order[`total_${language}`]}</DisplayMoney>,
     boxes_count:
       order.products
         ?.map((product) => product.quantity)

@@ -2,7 +2,7 @@ import React from 'react'
 import { Tile, Text, SectionHead, Flexbox } from 'components'
 import { useTranslation } from 'hooks'
 import StatusIndicator from './StatusIndicator'
-import { Order } from 'braty-common'
+import { Order, orderStatus } from 'braty-common'
 
 type Props = {
   status: Order['status']
@@ -15,6 +15,8 @@ const Status = ({ status }: Props) => {
   return (
     <Tile marginTop="m-size">
       <SectionHead separator title={t('title')} />
+
+      {}
 
       <Flexbox alignItems="center">
         <StatusIndicator status={status} />

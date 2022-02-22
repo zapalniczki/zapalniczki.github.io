@@ -18,7 +18,8 @@ export const getOrders = async ({ is_test, status }: Params) => {
         description_pl,
         description_en
       ),
-      total,
+      total_pl,
+      total_en,
       updated_at,
       created_at,
       customerName: ${DB_TABLES.USERS}!user_id (
@@ -41,8 +42,7 @@ export const getOrders = async ({ is_test, status }: Params) => {
             status
           ),
           label: ${DB_TABLES.LABELS} (
-            label_pl,
-            label_en
+            key
           ),
           icon: ${DB_TABLES.ICONS} (
             label_pl,
