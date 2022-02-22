@@ -423,11 +423,11 @@ const pl = {
         placeholder: ''
       },
       NIP_UK: {
-        label: 'numer VAT',
+        label: 'Numer VAT',
         placeholder: ''
       },
       NIP_DE: {
-        label: 'numer VAT',
+        label: 'Numer VAT',
         placeholder: ''
       },
       ORDER_ID: {
@@ -635,6 +635,7 @@ const pl = {
     collection: 'kategoria',
     colorValueTODO: 'drewno mix',
     sku: 'SKU',
+    notVisible: 'Produkt nie jest dostępny',
 
     priceSubtitle: 'Cena za 1 pudełko (50 sztuk) - zawiera 23% VAT',
     avilability: {

@@ -633,6 +633,7 @@ const en: LanguageKeys = {
     collection: 'category',
     colorValueTODO: 'wood mix',
     sku: 'SKU',
+    notVisible: 'Product is not available',
 
     priceSubtitle: 'Price for 1 box (50 inside) - including 23% TAX',
     avilability: {

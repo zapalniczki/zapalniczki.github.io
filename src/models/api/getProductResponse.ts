@@ -3,13 +3,14 @@ import { array, TypeOf } from 'zod'
 
 const getProductResponse = product
   .pick({
-    description_pl: true,
     description_en: true,
+    description_pl: true,
     id: true,
-    price_pl: true,
-    price_en: true,
+    name_en: true,
     name_pl: true,
-    name_en: true
+    price_en: true,
+    price_pl: true,
+    visible: true
   })
   .extend({
     images: array(image),

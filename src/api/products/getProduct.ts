@@ -19,6 +19,7 @@ export const getProduct = async (params: Params) => {
       price_en,
       name_pl,
       name_en,
+      visible,
       ${DB_TABLES.IMAGES} (
         *
       ),

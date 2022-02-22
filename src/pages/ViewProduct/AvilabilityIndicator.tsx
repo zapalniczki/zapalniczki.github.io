@@ -8,38 +8,40 @@ import getSpace from 'styles/getSpace'
 
 type Props = {
   status: MoldStatus
+  visible: boolean
 }
 
-const AvilabilityIndicator = ({ status }: Props) => {
+const AvilabilityIndicator = ({ status, visible }: Props) => {
   const { t } = useTranslation('VIEW_PRODUCT')
 
-  if (status === 'UNDONE') {
+  if (visible && status === 'UNDONE') {
     return null
   }
 
   return (
     <Flexbox alignItems="center" marginTop="s-size">
-      <Dot status={status} />
+      <Dot status={status} visible={visible} />
 
       <Text marginLeft="s-size" type="caption">
-        {t(`avilability.${status}`)}
+        {t(!visible ? 'notVisible' : `avilability.${status}`)}
       </Text>
     </Flexbox>
   )
 }
 
-type DotProps = { status: MoldStatus }
-const Dot = styled.div<DotProps>`
+const Dot = styled.div<Props>`
   width: ${getSpace('m-size')};
   height: ${getSpace('m-size')};
   background: ${(props) => {
-    if (props.status === 'UNDONE') {
-      return getColor('yellow')(props)
+    if (!props.visible) {
+      return getColor('red')(props)
+    } else if (props.status === 'DONE') {
+      return getColor('green')(props)
     } else if (props.status === 'IN_PROGRESS') {
-      return getColor('dark-color')(props)
+      return getColor('yellow')(props)
     }
 
-    return getColor('green')(props)
+    return getColor('dark-color')(props)
   }};
   border-radius: 50%;
 `

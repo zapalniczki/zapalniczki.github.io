@@ -58,11 +58,18 @@ const Info = ({ product }: Props) => {
 
       <Text type="caption">{t('priceSubtitle')}</Text>
 
-      <AvilabilityIndicator status={product.mold.status} />
+      <AvilabilityIndicator
+        status={product.mold.status}
+        visible={product.visible}
+      />
 
-      <Separator />
+      {product.visible && (
+        <>
+          <Separator />
 
-      <Form product={product} />
+          <Form product={product} />
+        </>
+      )}
 
       <Separator />
 
