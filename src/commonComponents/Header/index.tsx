@@ -1,7 +1,7 @@
 import { ROUTES } from 'braty-common'
 import { TOP_BAR_HEIGHT } from 'commonComponents'
 import { Box, Link, Logo, MaxWidth } from 'components'
-import { useTranslation } from 'hooks'
+import { useBreakpoints, useTranslation } from 'hooks'
 import { togglesContext } from 'providers'
 import React, { useContext, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components'
@@ -22,6 +22,7 @@ const Header = () => {
 
   const { t: commonT } = useTranslation('COMMON')
   const { space } = useTheme()
+  const isAboveDesktop = useBreakpoints('desktop max')
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -51,19 +52,22 @@ const Header = () => {
         innerPadding
         justifyContent="space-between"
       >
-        <Navigation marginLeft={`-${space['s-size']}`}>
+        <Navigation marginLeft={isAboveDesktop ? 0 : `-${space['s-size']}`}>
           <Box as="li" margin={0} padding={0}>
             <HamburgerToggle />
           </Box>
         </Navigation>
 
         <Link title={commonT('LINKS.home')} to={ROUTES.HOME}>
-          <Logo expanded={isHeaderExpanded} />
+          <Logo
+            expanded={isHeaderExpanded}
+            marginLeft={isAboveDesktop ? `-${space['xs-size']}` : 0}
+          />
         </Link>
 
         <Main />
 
-        <Navigation marginRight={`-${space['s-size']}`}>
+        <Navigation marginRight={isAboveDesktop ? 0 : `-${space['s-size']}`}>
           {i18n && (
             <Box as="li" margin={0} padding={0}>
               <LanguageToggle />
