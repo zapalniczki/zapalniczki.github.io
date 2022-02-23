@@ -1,20 +1,27 @@
 import { ROUTES } from 'braty-common'
 import { TOP_BAR_HEIGHT } from 'commonComponents'
-import { Link, Logo, MaxWidth } from 'components'
+import { Box, Link, Logo, MaxWidth } from 'components'
 import { useTranslation } from 'hooks'
 import { togglesContext } from 'providers'
 import React, { useContext, useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
 import Main from './Main'
 import Navigation from './Navigation'
+import BasketToggle from './toggles/BasketToggle'
+import HamburgerToggle from './toggles/HamburgerToggle'
+import LanguageToggle from './toggles/LanguageToggle'
+import SignoutToggle from './toggles/SignoutToggle'
+import { remoteConfigContext } from 'providers'
 
 const Header = () => {
+  const { i18n } = useContext(remoteConfigContext)
   const { basketOpen, hamburgerOpen, isHeaderExpanded, setIsHeaderExpanded } =
     useContext(togglesContext)
 
   const { t: commonT } = useTranslation('COMMON')
+  const { space } = useTheme()
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -44,13 +51,33 @@ const Header = () => {
         innerPadding
         justifyContent="space-between"
       >
+        <Navigation marginLeft={`-${space['s-size']}`}>
+          <Box as="li" margin={0} padding={0}>
+            <HamburgerToggle />
+          </Box>
+        </Navigation>
+
         <Link title={commonT('LINKS.home')} to={ROUTES.HOME}>
           <Logo expanded={isHeaderExpanded} />
         </Link>
 
         <Main />
 
-        <Navigation />
+        <Navigation marginRight={`-${space['s-size']}`}>
+          {i18n && (
+            <Box as="li" margin={0} padding={0}>
+              <LanguageToggle />
+            </Box>
+          )}
+
+          <Box as="li" margin={0} padding={0}>
+            <BasketToggle />
+          </Box>
+
+          <Box as="li" margin={0} padding={0}>
+            <SignoutToggle />
+          </Box>
+        </Navigation>
       </MaxWidth>
     </Container>
   )

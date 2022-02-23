@@ -19,7 +19,7 @@ const HamburgerMenu = () => {
   }
 
   return (
-    <PopupPanel>
+    <PopupPanel opposite>
       <Header />
 
       {handleRoutes(routes, remoteConfig, 'HAMBURGER').map(

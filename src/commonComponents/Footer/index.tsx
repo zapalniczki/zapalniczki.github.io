@@ -14,6 +14,7 @@ import { useAdmin, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
+import { useTheme } from 'styled-components'
 import { handleRoutes } from 'utils'
 import AdminNavigation from './AdminNavigation'
 
@@ -21,6 +22,7 @@ const Footer = () => {
   const { t: commonT } = useTranslation('COMMON')
   const isAdmin = useAdmin()
   const remoteConfig = useContext(remoteConfigContext)
+  const { space } = useTheme()
 
   return (
     <Flexbox
@@ -30,7 +32,7 @@ const Footer = () => {
       paddingY="l-size"
     >
       <MaxWidth alignItems="flex-start" flexDirection="column" innerPadding>
-        <Logo />
+        <Logo marginLeft={`-${space['xs-size']}`} />
 
         <Flexbox
           flexDirection={['unset', 'column', 'column', 'row']}
