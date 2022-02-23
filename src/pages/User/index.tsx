@@ -4,6 +4,10 @@ import { ContactDetails } from 'organisms'
 import React from 'react'
 import Orders from './Orders'
 
+/**
+ *
+ * @deprecated
+ */
 const User = () => {
   const { t } = useTranslation('USER')
 

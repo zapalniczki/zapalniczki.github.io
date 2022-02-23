@@ -8,6 +8,10 @@ import Form from './Form'
 import useForm from './useForm'
 import { ROUTES } from 'braty-common'
 
+/**
+ *
+ * @deprecated
+ */
 const SignUp = () => {
   const { t } = useTranslation('SIGN_UP')
   const { isLoggedIn } = useContext(authContext)

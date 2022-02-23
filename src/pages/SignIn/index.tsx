@@ -8,6 +8,10 @@ import { Navigate } from 'react-router-dom'
 import Form from './Form'
 import useForm from './useForm'
 
+/**
+ *
+ * @deprecated
+ */
 const SignIn = () => {
   const { t } = useTranslation('SIGN_IN')
   const { isLoggedIn } = useContext(authContext)

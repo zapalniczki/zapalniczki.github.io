@@ -3,6 +3,10 @@ import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 import { Products } from 'organisms'
 
+/**
+ *
+ * @deprecated
+ */
 const CompanyOffer = () => {
   const { t } = useTranslation('VALENTINES_2022')
 

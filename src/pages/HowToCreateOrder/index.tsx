@@ -7,6 +7,10 @@ import { Banner, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 
+/**
+ *
+ * @deprecated
+ */
 const HowToCreateOrder = () => {
   const { t } = useTranslation('HOW_TO_CREATE_ORDER')
 
