@@ -23,7 +23,7 @@ const CheckoutDetails = () => {
 
   const { getSchema, initialValues, onSubmitForm } = useForm()
 
-  if (isBasketEmpty) {
+  if (isBasketEmpty || !checkout.processStarted) {
     return <Navigate to={ROUTES.CART} />
   }
 

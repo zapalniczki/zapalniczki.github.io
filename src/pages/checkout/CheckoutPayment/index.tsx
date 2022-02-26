@@ -1,21 +1,17 @@
 import { getPaymentTypes } from 'api'
-import { DB_TABLES } from 'braty-common'
-import { BackButton, Columns, Heading, Page, QueryLoader } from 'components'
-import { ROUTES } from 'braty-common'
-import { Form as FormikForm, Formik } from 'formik'
+import { DB_TABLES, ROUTES } from 'braty-common'
+import { BackButton, Heading, Page, QueryLoader } from 'components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
-import { CheckoutTotal, StepTracker } from 'organisms'
+import { StepTracker } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 import { Navigate } from 'react-router-dom'
-import Form from './Form'
+import FormWrapper from './FormWrapper'
 import Loader from './index.loader'
-import useForm from './useForm'
-import { getLanguagePrice } from 'utils'
 
 const CheckoutPayment = () => {
-  const { language, t } = useTranslation('CHECKOUT_PAYMENT')
+  const { t } = useTranslation('CHECKOUT_PAYMENT')
 
   usePageTitle(t('title'))
   useScrollTop()
@@ -33,9 +29,8 @@ const CheckoutPayment = () => {
   const paymentTypesQuery = useQuery([DB_TABLES.PAYMENT_TYPE, params], () =>
     getPaymentTypes(params)
   )
-  const { initialValues, onSubmit, schema } = useForm()
 
-  if (!checkout.delivery_type) {
+  if (!checkout.delivery_type || !checkout.processStarted) {
     return <Navigate to={ROUTES.CHECKOUT_DELIVERY} />
   }
 
@@ -50,42 +45,7 @@ const CheckoutPayment = () => {
       </Heading>
 
       <QueryLoader Loader={<Loader />} query={paymentTypesQuery}>
-        {(paymentTypes) => (
-          <Formik
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validateOnChange
-            validationSchema={schema}
-          >
-            {({ values }) => {
-              const paymentType = paymentTypes.find(
-                (type) => type.id === values.payment_type
-              )
-
-              let price: number | undefined
-              if (paymentType) {
-                price = getLanguagePrice({
-                  language,
-                  price: paymentType
-                })
-              }
-
-              return (
-                <FormikForm>
-                  <Columns>
-                    <div>
-                      <Form paymentTypes={paymentTypes} />
-                    </div>
-
-                    <div>
-                      <CheckoutTotal customPayment={price} />
-                    </div>
-                  </Columns>
-                </FormikForm>
-              )
-            }}
-          </Formik>
-        )}
+        {(paymentTypes) => <FormWrapper paymentTypes={paymentTypes} />}
       </QueryLoader>
     </Page>
   )

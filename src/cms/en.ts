@@ -585,15 +585,21 @@ const en: LanguageKeys = {
   },
 
   CHECKOUT_RESULT: {
-    title: 'Order has been successfully created',
-    PAYMENT_INFO: {
-      short:
-        'To given email address we have just sent a message with confirmation in which you will find payment information. After we receive found, we will inform you about it and start completing the order.',
-      long: 'To given email address we have just sent a message with confirmation. We will contact you within next business day and confirm order preparation time.'
+    MAIN: {
+      title: 'Order has been successfully created',
+      PAYMENT_INFO: {
+        short:
+          'To given email address we have just sent a message with confirmation in which you will find payment information. After we receive found, we will inform you about it and start completing the order.',
+        long: 'To given email address we have just sent a message with confirmation. We will contact you within next business day and confirm order preparation time.'
+      },
+      ACTIONS: {
+        backToHome: 'Go to home page',
+        seeOrder: 'View order'
+      }
     },
-    actions: {
-      backToHome: 'Go to home page',
-      seeOrder: 'View order'
+
+    SETTINGS: {
+      title: 'Settings'
     }
   },
 

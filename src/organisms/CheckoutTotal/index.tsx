@@ -45,7 +45,7 @@ const CheckoutTotal = ({
   const navigate = useNavigate()
   const current = useCheckoutStep()
 
-  const { checkout, voucher } = useContext(checkoutContext)
+  const { checkout, setCheckout, voucher } = useContext(checkoutContext)
   const { basket, total: checkoutTotal } = checkout
 
   const products =
@@ -156,7 +156,15 @@ const CheckoutTotal = ({
         icon="arrow-right"
         label={commonT(nextStepLabel)}
         marginTop="l-size"
-        onClick={() => isCart && navigate(ROUTES.CHECKOUT_DETAILS)}
+        onClick={() => {
+          if (isCart) {
+            navigate(ROUTES.CHECKOUT_DETAILS)
+            setCheckout((prev) => ({
+              ...prev,
+              processStarted: true
+            }))
+          }
+        }}
         size="medium"
         type={isCart ? 'button' : 'submit'}
       />

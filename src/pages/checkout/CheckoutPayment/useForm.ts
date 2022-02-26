@@ -8,7 +8,7 @@ import {
   useTranslation
 } from 'hooks'
 import multiply from 'lodash/multiply'
-import { checkoutContext, initState } from 'providers'
+import { checkoutContext } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
@@ -21,14 +21,15 @@ export type FormValues = {
   voucher_id: Voucher['id']
 }
 
-const useForm = () => {
+const useForm = (paymentTypes: PaymentType[]) => {
   const { language } = useTranslation('COMMON')
   const navigate = useNavigate()
   const { getSchema } = useFormSchema()
   const isNoEmail = useNoEmail()
   const isTest = useTest()
 
-  const { basket, checkout, setCheckout } = useContext(checkoutContext)
+  const { basket, checkout, clearBasket, setCheckout } =
+    useContext(checkoutContext)
 
   const useSubmit = () => {
     const { mutateAsync: mutateTriggerSendEmail } =
@@ -124,8 +125,21 @@ const useForm = () => {
         })
       }
 
+      const selectedPaymentType = paymentTypes.find(
+        (method) => method.id === values.payment_type
+      )
+
+      if (!selectedPaymentType) {
+        throw new Error('No selectedPaymentType')
+      }
+
       navigate(ROUTES.CHECKOUT_RESULT, { state: locationState })
-      setCheckout(initState)
+      clearBasket()
+      setCheckout((prev) => ({
+        ...prev,
+        payment_type: selectedPaymentType.id,
+        processStarted: false
+      }))
     })
   }
 

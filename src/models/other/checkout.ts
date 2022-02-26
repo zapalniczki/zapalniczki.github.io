@@ -5,6 +5,7 @@ import { deliveryType, paymentType, voucher } from 'braty-common'
 import { array, boolean, object, number, TypeOf } from 'zod'
 
 const checkout = object({
+  processStarted: boolean(),
   basket: array(basketItem),
   contact_details: contactDetails.nullable(),
   delivery_type: deliveryType.shape.id.nullable(),

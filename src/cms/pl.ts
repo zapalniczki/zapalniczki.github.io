@@ -587,15 +587,21 @@ const pl = {
   },
 
   CHECKOUT_RESULT: {
-    title: 'Zamówienie zostało złożone',
-    PAYMENT_INFO: {
-      short:
-        'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem, w której znajdziesz informacje potrzebne do płatności. Po zaksięgowaniu środków na koncie, poinformujemy Cię o tym i przystąpimy do realizacji zamówienia.',
-      long: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Skontaktujemy się z Tobą w następnym dniu roboczym i potwierdzimy czas realizacji zamówienia.'
+    MAIN: {
+      title: 'Zamówienie zostało złożone',
+      PAYMENT_INFO: {
+        short:
+          'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem, w której znajdziesz informacje potrzebne do płatności. Po zaksięgowaniu środków na koncie, poinformujemy Cię o tym i przystąpimy do realizacji zamówienia.',
+        long: 'Na podany adres email wysłaliśmy wiadomość z potwierdzeniem. Skontaktujemy się z Tobą w następnym dniu roboczym i potwierdzimy czas realizacji zamówienia.'
+      },
+      ACTIONS: {
+        backToHome: 'Wróć na stronę główną',
+        seeOrder: 'Zobacz zamówienie'
+      }
     },
-    actions: {
-      backToHome: 'Wróć na stronę główną',
-      seeOrder: 'Zobacz zamówienie'
+
+    SETTINGS: {
+      title: 'Ustawienia'
     }
   },
 

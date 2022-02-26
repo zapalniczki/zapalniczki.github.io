@@ -25,22 +25,24 @@ const useForm = () => {
       (method) => method.id === form.delivery_type
     )
 
-    if (selectedDeliveryType) {
-      setCheckout((prev) => ({
-        ...prev,
-        delivery_type: selectedDeliveryType.id,
-        same_address_as_invoice: selectedDeliveryType.requires_address
-          ? sameAddressAsInvoice
-          : null,
-        delivery_type_allows_cash_payment: selectedDeliveryType.cash_payment,
-        total: {
-          ...prev.total,
-          delivery_en: selectedDeliveryType.price_en,
-          delivery_pl: selectedDeliveryType.price_pl
-        },
-        shipping: selectedDeliveryType.requires_address ? form.shipping : null
-      }))
+    if (!selectedDeliveryType) {
+      throw new Error('No selectedDeliveryType')
     }
+
+    setCheckout((prev) => ({
+      ...prev,
+      delivery_type: selectedDeliveryType.id,
+      same_address_as_invoice: selectedDeliveryType.requires_address
+        ? sameAddressAsInvoice
+        : null,
+      delivery_type_allows_cash_payment: selectedDeliveryType.cash_payment,
+      total: {
+        ...prev.total,
+        delivery_en: selectedDeliveryType.price_en,
+        delivery_pl: selectedDeliveryType.price_pl
+      },
+      shipping: selectedDeliveryType.requires_address ? form.shipping : null
+    }))
 
     navigate(ROUTES.CHECKOUT_PAYMENT)
   }

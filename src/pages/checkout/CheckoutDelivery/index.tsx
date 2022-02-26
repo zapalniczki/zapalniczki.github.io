@@ -43,7 +43,7 @@ const CheckoutDelivery = () => {
       : true
   )
 
-  if (!checkout.contact_details) {
+  if (!checkout.contact_details || !checkout.processStarted) {
     return <Navigate to={ROUTES.CHECKOUT_DETAILS} />
   }
 

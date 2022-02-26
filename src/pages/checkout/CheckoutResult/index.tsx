@@ -14,10 +14,11 @@ import { useNavigate, useLocation, Navigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import { getOrderPath } from 'utils'
 import { object, string, enum as zenum, TypeOf } from 'zod'
+import Settings from './Settings'
 
 const CheckoutResult = () => {
   const { colors } = useTheme()
-  const { t } = useTranslation('CHECKOUT_RESULT')
+  const t = useTranslation('CHECKOUT_RESULT').withBase('MAIN')
   const isMobile = useBreakpoints('mobile')
 
   const location = useLocation()
@@ -78,7 +79,7 @@ const CheckoutResult = () => {
               width="100%"
             >
               <Button
-                label={t('actions.seeOrder')}
+                label={t('ACTIONS.seeOrder')}
                 onClick={() => {
                   const path = getOrderPath(locationState.data.orderId)
 
@@ -97,6 +98,10 @@ const CheckoutResult = () => {
               />
             </Flexbox>
           </Tile>
+        </div>
+
+        <div>
+          <Settings />
         </div>
       </Columns>
     </Page>
