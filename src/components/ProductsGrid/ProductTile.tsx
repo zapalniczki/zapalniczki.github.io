@@ -126,6 +126,10 @@ const Container = styled(Tile)`
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+
+  &:hover {
+    border-color: ${getColor('border-color-hover')};
+  }
 `
 
 const ImageWrapper = styled.div`

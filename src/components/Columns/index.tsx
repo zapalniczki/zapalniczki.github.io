@@ -35,7 +35,7 @@ const Container = styled(Flexbox)`
         max-width: 70%;
       }
 
-      &:last-child {
+      &:last-child:not(:first-child) {
         min-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
         max-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
       }

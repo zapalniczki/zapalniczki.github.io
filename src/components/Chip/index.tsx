@@ -3,6 +3,7 @@ import { Flexbox, Text } from 'components'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
+import getColor from 'styles/getColor'
 import { Color } from 'styles/theme'
 import Loader from './index.loader'
 
@@ -63,6 +64,10 @@ const Chip = ({ children, onClick, rounded, selected, ...props }: Props) => {
 type ContainerProps = Pick<Props, 'onClick'>
 const Container = styled(Flexbox)<ContainerProps>`
   cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
+
+  &:hover {
+    border-color: ${getColor('border-color-hover')};
+  }
 `
 
 export { Loader as ChipLoader }

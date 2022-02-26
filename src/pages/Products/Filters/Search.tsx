@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import React from 'react'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
+import getRadius from 'styles/getRadius'
 
 type Props = {
   onChange: (value: string) => void
@@ -40,8 +41,13 @@ const StyledInput = styled.input`
   width: 100%;
   padding: ${(props) => `0 ${getSpace('s-size')(props)}`};
   border: 1px solid;
+  border-radius: ${getRadius('tiny')};
   border-color: ${getColor('border-color')};
   font-size: 1.7rem;
+
+  &:hover {
+    border-color: ${getColor('border-color-hover')};
+  }
 `
 
 export default Search
