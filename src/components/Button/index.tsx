@@ -148,7 +148,7 @@ const Container = styled.button<ContainerProps>`
       box-shadow: none;
 
       &:hover {
-        background: transparent;
+        background: ${getColor('banner-color')};
         border-color: transparent;
       }
     `}
