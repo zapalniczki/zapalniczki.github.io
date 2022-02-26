@@ -13,8 +13,7 @@ import { useNavigate, useLocation, Navigate } from 'react-router-dom'
 
 import { useTheme } from 'styled-components'
 import { getOrderPath } from 'utils'
-import { object, string, enum as zenum } from 'zod'
-import { CheckoutResultLocationState } from '../CheckoutPayment/useForm'
+import { object, string, enum as zenum, TypeOf } from 'zod'
 
 const CheckoutResult = () => {
   const { colors } = useTheme()
@@ -27,15 +26,10 @@ const CheckoutResult = () => {
   usePageTitle(t('title'))
   useScrollTop()
 
-  // TODO https://github.com/remix-run/react-router/issues/8503
-  const checkoutResultLocationStateSchema = object({
-    orderID: string(),
-    productionTime: zenum(['LONG', 'SHORT'])
-  })
-  const state2: CheckoutResultLocationState =
+  const locationState: CheckoutResultLocationState =
     checkoutResultLocationStateSchema.parse(location.state)
 
-  if (!state2?.orderID) {
+  if (!locationState?.orderId) {
     return <Navigate to={ROUTES.HOME} />
   }
 
@@ -56,11 +50,11 @@ const CheckoutResult = () => {
         </Heading>
 
         <Heading level={5} marginTop="l-size" textAlign="center">
-          {state2.orderID}
+          {locationState.orderId}
         </Heading>
 
         <Text marginTop="l-size" textAlign="center" type="body-2">
-          {t(`PAYMENT_INFO.${state2.productionTime.toLowerCase()}`)}
+          {t(`PAYMENT_INFO.${locationState.productionTime.toLowerCase()}`)}
         </Text>
 
         <Flexbox
@@ -72,7 +66,7 @@ const CheckoutResult = () => {
           <Button
             label={t('actions.seeOrder')}
             onClick={() => {
-              const path = getOrderPath(state2.orderID)
+              const path = getOrderPath(locationState.orderId)
 
               navigate(path)
             }}
@@ -92,5 +86,15 @@ const CheckoutResult = () => {
     </Page>
   )
 }
+
+// TODO https://github.com/remix-run/react-router/issues/8503
+const checkoutResultLocationStateSchema = object({
+  orderId: string(),
+  productionTime: zenum(['LONG', 'SHORT'])
+})
+
+export type CheckoutResultLocationState = TypeOf<
+  typeof checkoutResultLocationStateSchema
+>
 
 export default CheckoutResult

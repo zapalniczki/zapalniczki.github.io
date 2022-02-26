@@ -1,9 +1,4 @@
-import {
-  addOrderItem,
-  getProductsById,
-  rpcAddOrder,
-  triggerSendEmail
-} from 'api'
+import { getProductsById, rpcAddOrder, triggerSendEmail } from 'api'
 import { MoldStatus, PaymentType, ROUTES, Voucher } from 'braty-common'
 import {
   useFormSchema,
@@ -19,6 +14,7 @@ import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 import { getHstoreFromObject, sumArray } from 'utils'
 import { object } from 'yup'
+import { CheckoutResultLocationState } from '../CheckoutResult'
 
 export type FormValues = {
   payment_type: PaymentType['id']
@@ -35,7 +31,6 @@ const useForm = () => {
   const { basket, checkout, setCheckout } = useContext(checkoutContext)
 
   const useSubmit = () => {
-    const { mutateAsync: mutateAddOrderItem } = useMutation(addOrderItem)
     const { mutateAsync: mutateTriggerSendEmail } =
       useMutation(triggerSendEmail)
     const { mutateAsync: mutateGetProductsById } = useMutation(getProductsById)
@@ -98,24 +93,18 @@ const useForm = () => {
         products_price_pl: productsPricePl,
         products_price_en: productsPriceEn,
 
+        products: basket.map((basketItem) => ({
+          product_id: basketItem.id,
+          quantity: basketItem.quantity
+        })),
+
         order_will_take_long: orderWillTakeLong,
 
         is_test: isTest
       })
 
-      const products = basket.map((product) => ({
-        product_id: product.id,
-        order_id: orderId,
-        quantity: product.quantity,
-        price_pl: product.price_pl,
-        price_en: product.price_en,
-        is_test: isTest
-      }))
-
-      await mutateAddOrderItem(products)
-
       const locationState: CheckoutResultLocationState = {
-        orderID: orderId,
+        orderId,
         productionTime
       }
 
@@ -156,11 +145,6 @@ const useForm = () => {
     initialValues,
     schema
   }
-}
-
-export type CheckoutResultLocationState = {
-  orderID: string
-  productionTime: 'LONG' | 'SHORT'
 }
 
 export default useForm

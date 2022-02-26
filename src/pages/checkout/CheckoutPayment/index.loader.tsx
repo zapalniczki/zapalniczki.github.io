@@ -20,7 +20,7 @@ const Loader = () => (
   </Columns>
 )
 
-const Label = () => {
+export const Label = () => {
   const height = 34.4
   const width = 150
 
