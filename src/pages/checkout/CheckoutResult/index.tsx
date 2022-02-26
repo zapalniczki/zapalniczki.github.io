@@ -26,10 +26,11 @@ const CheckoutResult = () => {
   usePageTitle(t('title'))
   useScrollTop()
 
-  const locationState: CheckoutResultLocationState =
-    checkoutResultLocationStateSchema.parse(location.state)
+  const locationState = checkoutResultLocationStateSchema.safeParse(
+    location.state
+  )
 
-  if (!locationState?.orderId) {
+  if (!locationState.success) {
     return <Navigate to={ROUTES.HOME} />
   }
 
@@ -37,11 +38,7 @@ const CheckoutResult = () => {
     <Page alignItems="center">
       <Columns>
         <div>
-          <Tile
-            alignItems="center"
-            maxWidth="100%"
-            // width="70rem"
-          >
+          <Tile alignItems="center" maxWidth="100%">
             <Flexbox
               alignItems="center"
               justifyContent="center"
@@ -65,11 +62,13 @@ const CheckoutResult = () => {
             </Heading>
 
             <Heading level={5} marginTop="l-size" textAlign="center">
-              {locationState.orderId}
+              {locationState.data.orderId}
             </Heading>
 
             <Text marginTop="l-size" textAlign="center" type="body-2">
-              {t(`PAYMENT_INFO.${locationState.productionTime.toLowerCase()}`)}
+              {t(
+                `PAYMENT_INFO.${locationState.data.productionTime.toLowerCase()}`
+              )}
             </Text>
 
             <Flexbox
@@ -81,7 +80,7 @@ const CheckoutResult = () => {
               <Button
                 label={t('actions.seeOrder')}
                 onClick={() => {
-                  const path = getOrderPath(locationState.orderId)
+                  const path = getOrderPath(locationState.data.orderId)
 
                   navigate(path)
                 }}
