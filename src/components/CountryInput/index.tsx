@@ -14,14 +14,7 @@ const CountryInput = ({ value, ...props }: Props) => {
 
   const selectedValue = options.find((option) => option.value === value)
 
-  return (
-    <Select
-      // disabled
-      options={options}
-      value={selectedValue}
-      {...props}
-    />
-  )
+  return <Select options={options} value={selectedValue} {...props} />
 }
 
 const getOptions = (
