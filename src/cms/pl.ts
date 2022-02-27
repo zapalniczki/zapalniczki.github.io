@@ -601,7 +601,8 @@ const pl = {
     },
 
     SETTINGS: {
-      title: 'Ustawienia'
+      title: 'Ustawienia',
+      safeMyDetails: 'Zapamiętaj moje dane'
     }
   },
 

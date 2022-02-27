@@ -85,15 +85,17 @@ type CheckoutContent = {
   voucher: Checkout['voucher']
 }
 
+export const initTotalState: Checkout['total'] = {
+  delivery_pl: 0,
+  delivery_en: 0,
+  payment_pl: 0,
+  payment_en: 0
+}
+
 export const initState: Checkout = {
   processStarted: false,
   contact_details: null,
-  total: {
-    delivery_pl: 0,
-    delivery_en: 0,
-    payment_pl: 0,
-    payment_en: 0
-  },
+  total: initTotalState,
   basket: [],
   delivery_type: null,
   shipping: null,

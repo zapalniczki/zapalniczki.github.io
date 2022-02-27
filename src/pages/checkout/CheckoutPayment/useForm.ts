@@ -8,7 +8,7 @@ import {
   useTranslation
 } from 'hooks'
 import multiply from 'lodash/multiply'
-import { checkoutContext } from 'providers'
+import { checkoutContext, initTotalState } from 'providers'
 import { useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
@@ -138,6 +138,9 @@ const useForm = (paymentTypes: PaymentType[]) => {
       setCheckout((prev) => ({
         ...prev,
         payment_type: selectedPaymentType.id,
+        total: initTotalState,
+        voucher: null,
+        voucher_id: null,
         processStarted: false
       }))
     })

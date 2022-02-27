@@ -599,7 +599,8 @@ const en: LanguageKeys = {
     },
 
     SETTINGS: {
-      title: 'Settings'
+      title: 'Settings',
+      safeMyDetails: 'Use these data with future orders'
     }
   },
 

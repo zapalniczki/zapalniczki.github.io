@@ -90,7 +90,7 @@ const CheckoutResult = () => {
               />
 
               <Button
-                label={t('actions.backToHome')}
+                label={t('ACTIONS.backToHome')}
                 marginTop={isMobile ? 'm-size' : 0}
                 onClick={() => navigate(ROUTES.HOME)}
                 size="medium"

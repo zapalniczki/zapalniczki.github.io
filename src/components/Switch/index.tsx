@@ -6,6 +6,7 @@ import { FlexboxProps, SpaceProps } from 'styled-system'
 
 type Props = {
   checked: boolean
+  disabled?: boolean
   label?: string
   onChange: (checked: boolean) => void
   size?: 'small' | 'medium' | 'large'
@@ -14,6 +15,7 @@ type Props = {
 
 const Switch = ({
   checked,
+  disabled,
   label,
   onChange,
   size = 'medium',
@@ -59,6 +61,7 @@ const Switch = ({
       <NativeSwitch
         checked={checked}
         checkedIcon={false}
+        disabled={disabled}
         handleDiameter={diameter}
         height={height}
         offColor={colors['dark-color']}
