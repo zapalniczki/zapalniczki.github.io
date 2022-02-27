@@ -47,9 +47,13 @@ const pl = {
       nip: 'NIP'
     },
 
-    TOAST: {
+    TOASTS: {
       success: 'Udało się!',
-      error: 'Nie udało się'
+      error: 'Nie udało się',
+      addedProductToBasket: 'Dodano produkt do koszyka',
+      removeProductFromBasket: 'Usunięto produkt z koszyka',
+      removedNotAvailableProductFromBasket:
+        'Usunęliśmy niektóre produkty z koszyka, ponieważ nie są już dostępne'
     },
 
     LINKS: {
@@ -235,11 +239,6 @@ const pl = {
 
     HAMBURGER_MENU: {
       title: 'Menu'
-    },
-
-    toasts: {
-      addedProductToBasket: 'Dodano produkt do koszyka',
-      removeProductFromBasket: 'Usunięto produkt z koszyka'
     },
 
     features: {
@@ -1001,7 +1000,8 @@ const pl = {
 
       ACTIONS: {
         title: 'Dostępne akcje',
-        emptyState: 'Brak dostępnych akcji'
+        emptyState: 'Brak dostępnych akcji',
+        copyProductsToBasket: 'Dodaj te produkty to koszyka'
       }
     }
   },

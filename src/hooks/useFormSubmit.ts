@@ -21,7 +21,7 @@ const useFormSubmit = <T, TFormValues>(
   const { hide, show } = useContext(loaderContext)
   const { addToast } = useContext(toastContext)
 
-  const commonT = useTranslation('COMMON').withBase('TOAST')
+  const commonT = useTranslation('COMMON').withBase('TOASTS')
 
   return async (values: TFormValues, form: FormikHelpers<TFormValues>) => {
     try {

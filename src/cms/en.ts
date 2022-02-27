@@ -47,9 +47,13 @@ const en: LanguageKeys = {
       nip: 'VAT number'
     },
 
-    TOAST: {
+    TOASTS: {
       success: 'Udało się!',
-      error: 'Nie udało się'
+      error: 'Nie udało się',
+      addedProductToBasket: 'Dodano produkt do koszyka',
+      removeProductFromBasket: 'Usunięto produkt z koszyka',
+      removedNotAvailableProductFromBasket:
+        'We have just removed unavailable product from the basket'
     },
 
     LINKS: {
@@ -234,11 +238,6 @@ const en: LanguageKeys = {
 
     HAMBURGER_MENU: {
       title: 'Menu'
-    },
-
-    toasts: {
-      addedProductToBasket: 'Dodano produkt do koszyka',
-      removeProductFromBasket: 'Usunięto produkt z koszyka'
     },
 
     features: {
@@ -998,7 +997,8 @@ const en: LanguageKeys = {
 
       ACTIONS: {
         title: 'Available actions',
-        emptyState: 'None'
+        emptyState: 'None',
+        copyProductsToBasket: 'Add these products to basket'
       }
     }
   },

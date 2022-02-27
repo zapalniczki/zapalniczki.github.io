@@ -29,7 +29,7 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
   const { closeBasket } = useContext(togglesContext)
   const { setCheckout } = useContext(checkoutContext)
 
-  if (!product) {
+  if (!product || !product.visible) {
     setCheckout((prev) => ({
       ...prev,
       basket: prev.basket.filter((p) => p.id !== originalId)
