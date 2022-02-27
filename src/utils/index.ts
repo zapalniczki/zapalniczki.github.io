@@ -1,6 +1,8 @@
+export * from './combineProductDataAndBasketItem'
 export { default as calculateDiscount } from './calculateDiscount'
 export { default as calculateTotal } from './calculateTotal'
 export { default as changeColorAlpha } from './changeColorAlpha'
+export { default as combineProductDataAndBasketItem } from './combineProductDataAndBasketItem'
 export { default as displayMoney } from './displayMoney'
 export { default as findCorrectProductImageSize } from './findCorrectProductImageSize'
 export { default as formatDate } from './formatDate'

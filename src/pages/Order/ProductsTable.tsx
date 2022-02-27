@@ -12,14 +12,16 @@ import {
 } from 'components'
 import { useTranslation } from 'hooks'
 import { multiply } from 'lodash'
-import { GetOrderResponse, GetProductsResponseItem } from 'models'
+import { GetOrderResponse } from 'models'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { generatePath } from 'react-router'
 import {
+  combineProductDataAndBasketItem,
   findCorrectProductImageSize,
   getLanguageLabel,
-  getLanguagePrice
+  getLanguagePrice,
+  ProductAndBasketItemDetails
 } from 'utils'
 
 type Props = {
@@ -55,8 +57,8 @@ const ProductsTable = ({ products }: Props) => {
   return (
     <QueryLoader query={productsQuery}>
       {(data) => {
-        const details = getDetails(data, products)
-        const shapedData = shapeData(details, language)
+        const productData = combineProductDataAndBasketItem(data, products)
+        const shapedData = shapeData(productData, language)
 
         return (
           <Tile>
@@ -70,30 +72,8 @@ const ProductsTable = ({ products }: Props) => {
   )
 }
 
-const getDetails = (
-  data: GetProductsResponseItem[],
-  products: GetOrderResponse['products']
-): RichProductDetails[] => {
-  const productsDetails = products.map((p) => {
-    const details = data.find((d) => d.id === p.product_id)
-
-    if (!details) {
-      throw new Error(`No details for product ${p.product_id}`)
-    }
-
-    return {
-      ...details,
-      price_pl: p.price_pl,
-      price_en: p.price_en,
-      quantity: p.quantity
-    }
-  })
-
-  return productsDetails
-}
-
 const shapeData = (
-  data: RichProductDetails[],
+  data: ProductAndBasketItemDetails[],
   language: Language
 ): Record<
   OrderProductsTableColumns,
@@ -134,9 +114,5 @@ type OrderProductsTableColumns =
   | 'boxes_count'
   | 'product_price'
   | 'product_total'
-
-type RichProductDetails = GetProductsResponseItem & {
-  quantity: number
-}
 
 export default ProductsTable
