@@ -21,7 +21,7 @@ const Payment = ({ id, status, ...props }: Props) => {
   const total = props[`total_${language}`]
 
   return (
-    <Tile marginTop="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       <Text type="body-2">{t('info')}</Text>

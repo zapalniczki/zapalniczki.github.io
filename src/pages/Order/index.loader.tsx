@@ -36,21 +36,21 @@ const OrderStatus = () => {
   const width = useLoaderWidth('MAIN')
   const height = 152.6
 
-  return <ContentLoader height={height} marginTop="m-size" width={width} />
+  return <ContentLoader height={height} width={width} />
 }
 
 const Billing = () => {
   const width = useLoaderWidth('MAIN')
   const height = 450
 
-  return <ContentLoader height={height} marginTop="m-size" width={width} />
+  return <ContentLoader height={height} width={width} />
 }
 
 const Products = () => {
   const width = useLoaderWidth('MAIN')
   const height = 292
 
-  return <ContentLoader height={height} marginTop="m-size" width={width} />
+  return <ContentLoader height={height} width={width} />
 }
 
 const Details = () => {
@@ -64,7 +64,7 @@ const Shipping = () => {
   const width = useLoaderWidth('SIDE')
   const height = 289
 
-  return <ContentLoader height={height} marginTop="m-size" width={width} />
+  return <ContentLoader height={height} width={width} />
 }
 
 export default Loader

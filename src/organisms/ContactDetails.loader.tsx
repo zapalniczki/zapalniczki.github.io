@@ -6,7 +6,7 @@ const ContactDetailsLoader = () => {
   const width = useLoaderWidth('SIDE')
   const height = 516
 
-  return <ContentLoader height={height} marginTop="m-size" width={width} />
+  return <ContentLoader height={height} width={width} />
 }
 
 export default ContactDetailsLoader

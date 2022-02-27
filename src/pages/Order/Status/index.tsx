@@ -13,7 +13,7 @@ const Status = ({ status }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.STATUS')
 
   return (
-    <Tile marginTop="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       <Flexbox alignItems="center">

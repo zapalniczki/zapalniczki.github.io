@@ -36,7 +36,7 @@ const Billing = ({ ...props }: Props) => {
   const vat = getVatAmount(total)
 
   return (
-    <Tile marginTop="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       <LabelledItem

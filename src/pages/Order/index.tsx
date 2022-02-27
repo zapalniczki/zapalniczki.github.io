@@ -17,6 +17,7 @@ import Shipping from './Shipping'
 import Status from './Status'
 import Voucher from './Voucher'
 import Loader from './index.loader'
+import Actions from './Actions'
 
 const Order = () => {
   const { t } = useTranslation('ORDER')
@@ -76,6 +77,8 @@ const Order = () => {
             </div>
 
             <div>
+              <Actions />
+
               <Details
                 created_at={order.created_at}
                 products={order.products}

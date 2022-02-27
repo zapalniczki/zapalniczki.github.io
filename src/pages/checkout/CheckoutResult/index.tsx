@@ -39,7 +39,7 @@ const CheckoutResult = () => {
     <Page alignItems="center">
       <Columns>
         <div>
-          <Tile alignItems="center" maxWidth="100%">
+          <Tile alignItems="center">
             <Flexbox
               alignItems="center"
               justifyContent="center"

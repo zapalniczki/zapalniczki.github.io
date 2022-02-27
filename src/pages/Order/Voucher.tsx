@@ -17,7 +17,7 @@ const Voucher = ({ voucher }: Props) => {
   const amount = `-${discount}${voucher.is_fixed ? 'zł' : '%'}`
 
   return (
-    <Tile marginTop="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       <LabelledItem item={voucher.id} label={t('LABELS.voucher_id')} />

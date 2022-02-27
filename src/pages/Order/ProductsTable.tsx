@@ -59,7 +59,7 @@ const ProductsTable = ({ products }: Props) => {
         const shapedData = shapeData(details, language)
 
         return (
-          <Tile marginTop="m-size">
+          <Tile>
             <SectionHead title={t('title')} />
 
             <Table columns={columnsMemo} data={shapedData} />

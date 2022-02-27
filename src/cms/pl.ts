@@ -997,6 +997,11 @@ const pl = {
           voucher_id: 'Kod',
           voucher_value: 'Wartość'
         }
+      },
+
+      ACTIONS: {
+        title: 'Dostępne akcje',
+        emptyState: 'Brak dostępnych akcji'
       }
     }
   },

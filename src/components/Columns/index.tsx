@@ -15,6 +15,10 @@ const Container = styled(Flexbox)`
   gap: ${getSpace('m-size')};
 
   & > * {
+    display: flex;
+    flex-direction: column;
+    gap: ${getSpace('m-size')};
+
     &:first-child {
       min-width: 100%;
       max-width: 100%;

@@ -9,7 +9,7 @@ const Invoice = ({ invoice }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.INVOICE')
 
   return (
-    <Tile marginTop="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       {invoice?.length ? (

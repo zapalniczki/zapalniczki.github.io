@@ -13,7 +13,7 @@ const ParcelDetails = ({ parcel }: Props) => {
   }
 
   return (
-    <Tile marginBottom="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       <LabelledItem item={parcel.ref} label={t('LABELS.parcel_id')} />

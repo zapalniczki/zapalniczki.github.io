@@ -14,7 +14,7 @@ const Details = ({ created_at, products, updated_at }: Props) => {
     .reduce((prev, curr) => prev + curr, 0)
 
   return (
-    <Tile marginBottom="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       {created_at !== updated_at && (

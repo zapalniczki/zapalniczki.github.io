@@ -994,6 +994,11 @@ const en: LanguageKeys = {
           voucher_id: 'Kod',
           voucher_value: 'Wartość'
         }
+      },
+
+      ACTIONS: {
+        title: 'Available actions',
+        emptyState: 'None'
       }
     }
   },

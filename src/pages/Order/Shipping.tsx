@@ -20,7 +20,7 @@ const Shipping = ({ deliveryType, shipping }: Props) => {
   })
 
   return (
-    <Tile marginBottom="m-size">
+    <Tile>
       <SectionHead separator title={t('title')} />
 
       <LabelledItem item={label} label={t('LABELS.delivery_type')} />
