@@ -8,6 +8,7 @@ import Orders from './Orders'
 import { ROUTES, user } from 'braty-common'
 
 const User = () => {
+  // TODO Add user auth here
   const { t } = useTranslation('USER')
 
   useScrollTop()

@@ -22,6 +22,7 @@ type Props = {
   userId: Order['user_id']
 }
 
+// TODO Should be renamed to ¬User/Customer Profile
 const ContactDetails = ({ hideProfileLink, userId }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
