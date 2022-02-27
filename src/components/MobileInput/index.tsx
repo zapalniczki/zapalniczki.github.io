@@ -48,6 +48,9 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
         countryCodeEditable={false}
         disabled={disabled}
         inputClass="input-form d-block"
+        inputProps={{
+          autoComplete: 'tel'
+        }}
         inputStyle={{
           width: '100%',
           border: '1px solid',
