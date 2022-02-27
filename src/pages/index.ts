@@ -1,15 +1,12 @@
+export * from './App'
 export { default as AdminCallbacks } from './AdminCallbacks'
 export { default as AdminDeliveryTypes } from './AdminDeliveryTypes'
 export { default as AdminIcons } from './AdminIcons'
 export { default as AdminLabels } from './AdminLabels'
+export { default as AdminMolds } from './AdminMolds'
 export { default as AdminOrders } from './AdminOrders'
 export { default as AdminPaymentTypes } from './AdminPaymentTypes'
-
-export { default as AdminMolds } from './AdminMolds'
-
 export { default as App } from './App'
-export * from './App'
-
 export { default as Cart } from './checkout/Cart'
 export { default as CheckoutDelivery } from './checkout/CheckoutDelivery'
 export { default as CheckoutDetails } from './checkout/CheckoutDetails'
@@ -28,4 +25,5 @@ export { default as PageNotFound } from './PageNotFound'
 export { default as Products } from './Products'
 export { default as SignIn } from './SignIn'
 export { default as SignUp } from './SignUp'
+export { default as User } from './User'
 export { default as ViewProduct } from './ViewProduct'

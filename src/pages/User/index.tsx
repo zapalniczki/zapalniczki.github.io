@@ -2,17 +2,23 @@ import { Banner, Columns, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { ContactDetails } from 'organisms'
 import React from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
+import { object } from 'zod'
 import Orders from './Orders'
+import { ROUTES, user } from 'braty-common'
 
-/**
- *
- * @deprecated
- */
 const User = () => {
   const { t } = useTranslation('USER')
 
   useScrollTop()
   usePageTitle(t('title'))
+
+  const location = useLocation()
+  const locationState = locationStateSchema.safeParse(location.state)
+
+  if (!locationState.success) {
+    return <Navigate to={ROUTES.HOME} />
+  }
 
   return (
     <Page>
@@ -24,11 +30,15 @@ const User = () => {
         </div>
 
         <div>
-          <ContactDetails userId="9014ee40-0227-4e27-8c47-fa3238217e12" />
+          <ContactDetails hideProfileLink userId={locationState.data.id} />
         </div>
       </Columns>
     </Page>
   )
 }
+
+const locationStateSchema = object({
+  id: user.shape.id
+})
 
 export default User

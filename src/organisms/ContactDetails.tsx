@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-newline */
 import { getUser } from 'api'
-import { DB_TABLES, Order } from 'braty-common'
+import { DB_TABLES, Order, ROUTES } from 'braty-common'
 import {
   Flexbox,
   LabelledItem,
@@ -12,28 +12,44 @@ import {
   UserAvatar
 } from 'components'
 import { useTranslation } from 'hooks'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 import Loader from './ContactDetails.loader'
 
 type Props = {
+  hideProfileLink?: boolean
   userId: Order['user_id']
 }
 
-const ContactDetails = ({ userId }: Props) => {
+const ContactDetails = ({ hideProfileLink, userId }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   const params = { id: userId }
   const userQuery = useQuery([DB_TABLES.USERS, params], () => getUser(params))
+  const { customer } = useContext(remoteConfigContext)
 
   return (
     <QueryLoader Loader={<Loader />} query={userQuery}>
       {(data) => {
         const nip = data.nip
 
+        let profileLink = undefined
+        if (customer && !hideProfileLink) {
+          profileLink = {
+            to: ROUTES.USER,
+            options: { state: { id: userId } },
+            label: commonT('CONTACT_DETAILS.profile')
+          }
+        }
+
         return (
           <Tile>
-            <SectionHead separator title={commonT('CONTACT_DETAILS.title')} />
+            <SectionHead
+              link={profileLink}
+              separator
+              title={commonT('CONTACT_DETAILS.title')}
+            />
 
             <Flexbox alignItems="center" flexDirection="column">
               <UserAvatar company={!!nip} />

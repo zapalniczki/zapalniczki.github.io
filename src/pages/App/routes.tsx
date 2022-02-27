@@ -104,7 +104,8 @@ const routes: Route[] = [
   {
     Component: React.lazy(() => import('pages/User')),
     path: ROUTES.USER,
-    user: true,
+    // TODO This should be true
+    // user: true,
     key: 'customer'
   },
 

@@ -44,7 +44,8 @@ const en: LanguageKeys = {
       title: 'Contact details',
       address: 'Address',
       shippings: 'Shipping address',
-      nip: 'VAT number'
+      nip: 'VAT number',
+      profile: 'Profile'
     },
 
     TOASTS: {
@@ -624,10 +625,10 @@ const en: LanguageKeys = {
   },
 
   USER: {
-    title: 'Konto użytkownika',
+    title: 'Customer profile',
 
     ORDERS: {
-      title: 'Zamówienia'
+      title: 'Orders'
     }
   },
 

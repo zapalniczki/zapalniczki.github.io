@@ -44,7 +44,8 @@ const pl = {
       title: 'Dane kontaktowe',
       address: 'Adres',
       shippings: 'Adres do wysyłki',
-      nip: 'NIP'
+      nip: 'NIP',
+      profile: 'Profil'
     },
 
     TOASTS: {
