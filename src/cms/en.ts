@@ -628,7 +628,8 @@ const en: LanguageKeys = {
     title: 'Customer profile',
 
     ORDERS: {
-      title: 'Orders'
+      title: 'Orders',
+      emptyState: 'No orders'
     }
   },
 

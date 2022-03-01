@@ -83,7 +83,7 @@ const Actions = ({ products }: Props) => {
               </Button>
             ) : null}
 
-            {displayEmptyState && <Text type="caption">{t('emptyState')}</Text>}
+            {displayEmptyState && <Text type="body-2">{t('emptyState')}</Text>}
           </Tile>
         )
       }}

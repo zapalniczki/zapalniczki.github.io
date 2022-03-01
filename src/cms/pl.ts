@@ -630,7 +630,8 @@ const pl = {
     title: 'Konto użytkownika',
 
     ORDERS: {
-      title: 'Zamówienia'
+      title: 'Zamówienia',
+      emptyState: 'Brak zamówień'
     }
   },
 
