@@ -1,7 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getProductsById } from 'api'
 import { BasketItem } from 'organisms'
-import { Columns, Flexbox, Heading, Page, QueryLoader, Text } from 'components'
+import {
+  Columns,
+  Flexbox,
+  Grid,
+  Heading,
+  Page,
+  QueryLoader,
+  Text
+} from 'components'
 
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { CheckoutTotal } from 'organisms'
@@ -51,15 +59,14 @@ const Cart = () => {
           <div>
             <QueryLoader Loader={<Loader />} query={productsQuery}>
               {(products) => (
-                <Flexbox alignItems="center" flexDirection="column">
-                  {basket.map((basketItem, index) => {
+                <Grid gridTemplateColumns="1fr">
+                  {basket.map((basketItem) => {
                     const thisProduct = products.find(
                       (product) => product.id === basketItem.id
                     )
 
                     return (
                       <BasketItem
-                        first={index === 0}
                         key={basketItem.id}
                         originalId={basketItem.id}
                         product={thisProduct}
@@ -67,7 +74,7 @@ const Cart = () => {
                       />
                     )
                   })}
-                </Flexbox>
+                </Grid>
               )}
             </QueryLoader>
           </div>

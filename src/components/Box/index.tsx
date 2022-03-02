@@ -24,10 +24,12 @@ import {
   BorderRadiusProps,
   borderRadius,
   shadow,
-  ShadowProps
+  ShadowProps,
+  GridTemplateColumnsProps,
+  gridTemplateColumns
 } from 'styled-system'
 
-const styleProps = compose(
+export const boxStyleProps = compose(
   layout,
   space,
   position,
@@ -39,7 +41,8 @@ const styleProps = compose(
   color,
   typography,
   shadow,
-  borderRadius
+  borderRadius,
+  gridTemplateColumns
 )
 
 type Props = LayoutProps &
@@ -53,10 +56,11 @@ type Props = LayoutProps &
   ColorProps &
   TypographyProps &
   BorderRadiusProps &
-  ShadowProps
+  ShadowProps &
+  GridTemplateColumnsProps
 
 const Box = styled.div<Props>`
-  ${styleProps}
+  ${boxStyleProps}
 `
 
 export default Box

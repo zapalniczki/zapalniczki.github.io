@@ -16,7 +16,7 @@ const SimpleButton = ({ disabled, icon, onClick, ...props }: Props) => (
     onClick={onClick}
     size="medium"
     type="button"
-    variant="quaternary"
+    variant="ternary"
     {...props}
   />
 )

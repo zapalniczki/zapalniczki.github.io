@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BasketItem } from 'organisms'
-import { Flexbox, Text } from 'components'
+import { Flexbox, Text, Grid } from 'components'
 import { useModalView, useTranslation } from 'hooks'
 import { GetProductsByIdResponseItem } from 'models'
 import { checkoutContext } from 'providers'
@@ -21,9 +21,11 @@ const BasketContent = ({ products }: Props) => {
   }, [])
 
   return (
-    <Flexbox
-      flexDirection="column"
-      flexGrow={1}
+    <Grid
+      gridAutoRows="max-content"
+      gridGap="s-size"
+      gridTemplateColumns="1fr"
+      height="100%"
       overflowY="auto"
       padding="s-size"
     >
@@ -33,6 +35,7 @@ const BasketContent = ({ products }: Props) => {
           flexDirection="column"
           flexGrow={1}
           justifyContent="center"
+          minHeight="75vh"
         >
           <FontAwesomeIcon icon="cart-arrow-down" size="2x" />
 
@@ -42,14 +45,13 @@ const BasketContent = ({ products }: Props) => {
         </Flexbox>
       )}
 
-      {basket.map((basketItem, index) => {
+      {basket.map((basketItem) => {
         const productDetails = products.find(
           (product) => product.id === basketItem.id
         )
 
         return (
           <BasketItem
-            first={index === 0}
             key={basketItem.id}
             originalId={basketItem.id}
             product={productDetails}
@@ -57,7 +59,7 @@ const BasketContent = ({ products }: Props) => {
           />
         )
       })}
-    </Flexbox>
+    </Grid>
   )
 }
 
