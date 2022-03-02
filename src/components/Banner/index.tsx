@@ -47,7 +47,7 @@ const Banner = ({
       paddingY="l-size"
       position="relative"
     >
-      {title && <Heading level={4}>{title}</Heading>}
+      {title && <Heading level={3}>{title}</Heading>}
 
       {children}
 

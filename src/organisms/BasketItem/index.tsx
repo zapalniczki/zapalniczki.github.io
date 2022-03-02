@@ -121,7 +121,7 @@ const BasketItem = ({ originalId, product, quantity }: Props) => {
         gridGap="xxs-size"
         gridTemplateAreas={`'name price'
       'controls price'`}
-        gridTemplateColumns="repeat(2, 1fr)"
+        gridTemplateColumns="3fr 1fr"
         height="100%"
         paddingBottom={['unset', 's-size', 'm-size']}
         paddingTop={['unset', 's-size', 'l-size']}

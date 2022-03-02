@@ -1,5 +1,5 @@
-import { Banner, Heading, Page } from 'components'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
+import { Banner, Page } from 'components'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { Products } from 'organisms'
 import React from 'react'
 
@@ -11,9 +11,7 @@ const Europe = () => {
 
   return (
     <Page>
-      <Banner size="SMALL">
-        <Heading level={3}>{t('title')}</Heading>
-      </Banner>
+      <Banner size="SMALL" title={t('title')} />
 
       <Products collectionKey="GERMANY" title={t('GERMANY.title')} />
 
