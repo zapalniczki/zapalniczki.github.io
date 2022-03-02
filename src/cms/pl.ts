@@ -826,7 +826,6 @@ const pl = {
 
       EMAIL: {
         title: 'E-mail',
-        info: 'Kontakt w jakiejkolwiek sprawie',
         link: `mailto:{{email}}?subject=Kontakt ze strony internetowej`
       },
 
@@ -846,18 +845,15 @@ const pl = {
       },
 
       ADDRESS: {
-        title: 'Adres',
-        info: 'Wymiany, zwroty i odbiór osobisty'
+        title: 'Adres'
       },
 
       PHONE: {
-        title: 'Telefon',
-        info: 'Kontakt w jakiejkolwiek sprawie'
+        title: 'Telefon'
       },
 
       ACCOUNT: {
         title: 'Numer rachunku',
-        info: 'Do wpłat za zamówienia',
         bankName: `nazwa banku: <strong>{{bankName}}</strong>`,
         ref: 'tytuł: <strong>Numer referencyjny zamówienia</strong>',
         iban: 'IBAN: <strong>{{iban}}</strong>',

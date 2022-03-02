@@ -13,7 +13,7 @@ const Spinner = ({ size = 'REGULAR', ...props }: Props) => {
 
   return (
     <Box {...props} opacity={0.5}>
-      <FontAwesomeIcon icon="spinner" size={iconSize} spin />
+      <FontAwesomeIcon icon="circle-notch" size={iconSize} spin />
     </Box>
   )
 }

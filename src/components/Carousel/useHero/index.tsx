@@ -10,7 +10,7 @@ import { Theme } from 'styles/theme'
 import Christmas2021 from './Christmas2021'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 
-const useBanners = () => {
+const useHero = () => {
   const commonT = useTranslation('COMMON').withBase('BANNERS')
   const { christmas2021 } = useContext(remoteConfigContext)
 
@@ -77,7 +77,7 @@ const getBanners = (
           icon="arrow-right"
           label={commonT('YOUR_PLACE.buttonLabel')}
           onClick={() => navigate(ROUTES.PRODUCTS)}
-          size="medium"
+          size="large"
         />
       </Flexbox>
     </Banner>
@@ -117,4 +117,4 @@ const getBanners = (
   )
 })
 
-export default useBanners
+export default useHero

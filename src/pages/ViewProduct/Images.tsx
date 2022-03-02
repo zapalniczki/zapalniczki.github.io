@@ -77,7 +77,7 @@ const GalleryImageWrapper = styled.div`
   min-height: 6rem;
   max-height: 6rem;
   border: 1px solid;
-  border-color: ${getColor('border-color')};
+  border-color: ${getColor('gray-medium')};
   position: relative;
   cursor: pointer;
 

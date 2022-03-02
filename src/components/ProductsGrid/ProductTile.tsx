@@ -9,6 +9,8 @@ import { generatePath, Link } from 'react-router-dom'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import styled from 'styled-components'
 import getColor from 'styles/getColor'
+import getRadius from 'styles/getRadius'
+import getShadow from 'styles/getShadow'
 import {
   findCorrectProductImageSize,
   getLanguageLabel,
@@ -72,9 +74,9 @@ const ProductTile = ({ product }: Props) => {
           </ImageWrapper>
 
           <Flexbox
-            backgroundColor="background-color"
-            borderBottomLeftRadius="tiny"
-            borderBottomRightRadius="tiny"
+            backgroundColor="gray-light"
+            borderBottomLeftRadius="inherit"
+            borderBottomRightRadius="inherit"
             justifyContent="space-between"
             overflow="hidden"
             paddingX={['unset', 'xs-size', 'xs-size', 'm-size']}
@@ -121,14 +123,15 @@ const Container = styled(Tile)`
   cursor: pointer;
   justify-content: space-between;
   text-decoration: none;
-  border: 1px solid;
-  border-color: ${getColor('border-color-light')};
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  border: 1px solid;
+  border-color: ${getColor('gray-medium')};
+  border-radius: ${getRadius('medium')};
 
   &:hover {
-    border-color: ${getColor('border-color-hover')};
+    box-shadow: ${getShadow('tile')};
   }
 `
 
@@ -138,6 +141,8 @@ const ImageWrapper = styled.div`
   background: ${getColor('white')};
   position: relative;
   overflow: hidden;
+  border-radius-top-left: inherit;
+  border-radius-top-right: inherit;
 
   img {
     width: 100%;

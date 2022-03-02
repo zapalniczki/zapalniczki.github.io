@@ -40,7 +40,7 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
         autocompleteSearch
         buttonStyle={{
           border: '1px solid',
-          borderColor: colors['border-color'],
+          borderColor: colors['gray-medium'],
           cursor: 'default',
           background: colors['white']
         }}
@@ -54,7 +54,7 @@ const MobileInput = ({ disabled, fieldProps, label, placeholder }: Props) => {
         inputStyle={{
           width: '100%',
           border: '1px solid',
-          borderColor: colors['border-color'],
+          borderColor: colors['gray-medium'],
           borderRadius: radii['tiny']
         }}
         localization={{

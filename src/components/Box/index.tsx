@@ -20,7 +20,11 @@ import {
   color,
   ColorProps,
   typography,
-  TypographyProps
+  TypographyProps,
+  BorderRadiusProps,
+  borderRadius,
+  shadow,
+  ShadowProps
 } from 'styled-system'
 
 const styleProps = compose(
@@ -33,7 +37,9 @@ const styleProps = compose(
   flexbox,
   background,
   color,
-  typography
+  typography,
+  shadow,
+  borderRadius
 )
 
 type Props = LayoutProps &
@@ -45,7 +51,9 @@ type Props = LayoutProps &
   FlexboxProps &
   BackgroundProps &
   ColorProps &
-  TypographyProps
+  TypographyProps &
+  BorderRadiusProps &
+  ShadowProps
 
 const Box = styled.div<Props>`
   ${styleProps}

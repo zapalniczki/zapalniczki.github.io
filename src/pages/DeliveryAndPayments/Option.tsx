@@ -13,7 +13,7 @@ const Option = ({ description, icon, title }: Props) => (
     alignItems="center"
     backgroundColor="white"
     border="1px solid"
-    borderColor="border-color"
+    borderColor="gray-medium"
     padding="m-size"
   >
     <Flexbox alignItems="center" justifyContent="center" marginRight="l-size">

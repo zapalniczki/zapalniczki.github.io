@@ -1,6 +1,7 @@
 import { CheckboxFieldLoader, Columns, ContentLoader } from 'components'
 import React, { Fragment } from 'react'
 import { CheckoutTotalLoader } from 'organisms'
+import { SpaceProps } from 'styled-system'
 
 const Loader = () => (
   <Columns>
@@ -20,12 +21,12 @@ const Loader = () => (
   </Columns>
 )
 
-export const Label = () => {
+export const Label = (props: SpaceProps) => {
   const height = 34.4
   const width = 150
 
   return (
-    <ContentLoader height={height} marginBottom="m-size" width={width}>
+    <ContentLoader height={height} {...props} width={width}>
       <rect height={14.4} transform="translate(0, 10)" width={width} />
     </ContentLoader>
   )

@@ -90,7 +90,7 @@ const BasketItem = ({ first, originalId, product, quantity }: Props) => {
     <Container first={first}>
       <Box
         border="1px solid"
-        borderColor="border-color"
+        borderColor="gray-medium"
         gridArea="picture"
         height={['unset', '3rem', '3rem', '9rem']}
         position="relative"

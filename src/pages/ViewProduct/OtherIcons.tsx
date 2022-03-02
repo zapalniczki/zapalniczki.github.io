@@ -24,7 +24,7 @@ const OtherIcons = ({ iconKey, labelKey }: Props) => {
         to: { pathname: '/products', search: `label_key=${labelKey}` },
         label: t('linkLabel')
       }}
-      marginTop="xxl-size"
+      marginTop="xxxl-size"
       query={otherIconsQuery}
       title={t('title')}
     />

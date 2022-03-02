@@ -40,13 +40,13 @@ const Select = ({ disabled, onChange, options, placeholder, value }: Props) => {
           ...provided,
           minHeight: INPUT_HEIGHT,
           borderRadius: radii['tiny'],
-          borderColor: colors['border-color'],
+          borderColor: colors['gray-medium'],
           boxShadow: 'none',
           outline: state.isFocused ? '2px solid' : 'none',
           outlineColor: state.isFocused ? colors['yellow-outline'] : 'none',
 
           '&:hover': {
-            borderColor: colors['border-color-hover']
+            borderColor: colors['gray-dark']
           }
         }),
 
@@ -66,7 +66,7 @@ const Select = ({ disabled, onChange, options, placeholder, value }: Props) => {
         ...provided,
         colors: {
           ...provided.colors,
-          primary25: colors['select-option-background-hover'],
+          primary25: colors['gray-medium'],
           primary: colors['braty-red']
         }
       })}

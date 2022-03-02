@@ -1,19 +1,25 @@
-import { ContentLoader, Flexbox, Grid } from 'components'
+import { Flexbox, Grid } from 'components'
+import { SectionTitleLoader } from '../SectionTitle'
 import React from 'react'
 import { SpaceProps } from 'styled-system'
 import ProductTileLoader from './ProductTIle.loader'
 
 type Props = SpaceProps & {
   count?: number
-  leftTitle?: boolean
-  rightTitle?: boolean
+  link?: boolean
+  showCount?: boolean
+  title?: boolean
 }
 
-const ProductsGridLoader = ({ count = 3, leftTitle, ...props }: Props) => (
+const ProductsGridLoader = ({
+  count = 3,
+  link,
+  showCount,
+  title,
+  ...props
+}: Props) => (
   <Flexbox flexDirection="column" {...props}>
-    {leftTitle && (
-      <ContentLoader height={30} marginBottom="m-size" width={117} />
-    )}
+    <SectionTitleLoader left={title} right={showCount || link} />
 
     <Grid
       gridTemplateColumns={['unset', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}

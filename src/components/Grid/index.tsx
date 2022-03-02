@@ -21,13 +21,12 @@ type Props = {
 const Grid = ({ children, ...props }: Props) => (
   <Box
     display="grid"
-    gridGap={GRID_GAP}
+    gridGap="l-size"
     gridTemplateColumns="repeat(3, 1fr)"
     {...props}
   >
     {children}
   </Box>
 )
-const GRID_GAP = '3rem'
 
 export default Grid

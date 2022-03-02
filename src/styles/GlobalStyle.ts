@@ -26,7 +26,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: ${(props) => props.theme.fontSizes.baseFontSize};
 
-  background: ${getColor('background-color')};
+  background: ${getColor('white')};
   overflow-x: hidden;
   margin: 0;
 }
@@ -50,7 +50,7 @@ li {
 
 // COOKIES-CONSENT
 .CookieConsent {
-    background-color: ${getColor('banner-color')} !important;
+    background-color: ${getColor('gray-light')} !important;
     align-items: center !important;
     position: static !important;
 }

@@ -38,9 +38,8 @@ const Banner = ({
   return (
     <Flexbox
       {...props}
-      backgroundColor={backgroundColor ?? 'banner-color'}
-      border="1px solid"
-      borderColor="border-color"
+      backgroundColor={backgroundColor ?? 'gray-light'}
+      borderRadius="medium"
       flexDirection="column"
       justifyContent="center"
       minHeight={height}

@@ -824,7 +824,6 @@ const en: LanguageKeys = {
 
       EMAIL: {
         title: 'E-mail',
-        info: 'For any enquires',
         link: `mailto:{{email}}?subject=Enquiry from website`
       },
 
@@ -844,18 +843,15 @@ const en: LanguageKeys = {
       },
 
       ADDRESS: {
-        title: 'Address',
-        info: 'Exchanges, refunds and pickup in person'
+        title: 'Address'
       },
 
       PHONE: {
-        title: 'Telephone',
-        info: 'For any enquiries'
+        title: 'Telephone'
       },
 
       ACCOUNT: {
         title: 'Bank account number',
-        info: 'For order payments',
         bankName: `bank name: <strong>{{bankName}}</strong>`,
         ref: 'title: <strong>Order reference number</strong>',
         iban: 'IBAN: <strong>{{iban}}</strong>',

@@ -15,6 +15,14 @@ type Props = {
 
 const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
   const { fontSizes, fontWeigths, letterSpacings } = useTheme()
+  let color = 'paragraph-color'
+  if (props.white) {
+    color = 'white'
+  }
+
+  if (type === 'button') {
+    color = 'inherit'
+  }
 
   let fontSize: string, fontWeight: string, letterSpacing: string
   switch (type) {
@@ -66,7 +74,7 @@ const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
     <Container
       $wrap={wrap}
       as={span ? 'span' : 'p'}
-      color={props.white ? 'white' : 'paragraph-color'}
+      color={color}
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}

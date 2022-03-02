@@ -79,13 +79,13 @@ export const StyledInput = styled.input<StyledInputProps>`
   cursor: pointer;
   border: 1px solid;
   border-radius: ${getRadius('tiny')};
-  border-color: ${getColor('border-color')};
+  border-color: ${getColor('gray-medium')};
   padding: ${getSpace('xxs-size')} ${getSpace('xs-size')};
   font-family: 'Roboto', sans-serif;
   font-size: 1.4rem;
 
   &:hover {
-    border-color: ${getColor('border-color-hover')};
+    border-color: ${getColor('gray-dark')};
   }
 
   &[type='checkbox'],
@@ -104,7 +104,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     -webkit-appearance: none;
     background-color: ${getColor('white')};
     border: 1px solid;
-    border-color: ${getColor('border-color')};
+    border-color: ${getColor('gray-medium')};
     padding: 1rem;
     display: inline-block;
     position: relative;
@@ -127,7 +127,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     width: 3px;
     height: 1rem;
     border: solid;
-    border-color: ${getColor('border-color')};
+    border-color: ${getColor('gray-medium')};
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
     transition: all 0.3s ease;
@@ -136,7 +136,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   &[type='checkbox']:hover + label:before,
   &[type='radio']:hover + label:before {
     border: 1px solid;
-    border-color: ${getColor('border-color')};
+    border-color: ${getColor('gray-medium')};
   }
 
   &[type='checkbox']:checked + label:before,

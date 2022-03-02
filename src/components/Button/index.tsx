@@ -14,6 +14,7 @@ import {
   borderRadius
 } from 'styled-system'
 import getColor from 'styles/getColor'
+import getShadow from 'styles/getShadow'
 import getSpace from 'styles/getSpace'
 
 type Props = {
@@ -95,7 +96,7 @@ type ContainerProps = {
 
 const Container = styled.button<ContainerProps>`
   background: ${getColor('dark-color')};
-  padding: ${getSpace('m-size')};
+  padding: ${getSpace('s-size')} ${getSpace('l-size')};
   border: 1px solid;
   border-color: ${getColor('dark-color')};
   color: ${getColor('white')};
@@ -106,7 +107,14 @@ const Container = styled.button<ContainerProps>`
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 5px 15px 0 rgb(0 0 0 / 15%);
+  box-shadow: ${getShadow('button')};
+
+  &:hover {
+    color: ${getColor('paragraph-color')};
+    background: ${getColor('white')};
+    border: 1px solid;
+    border-color: ${getColor('dark-color')};
+  }
 
   ${(props) =>
     props.variant === 'secondary' &&
@@ -117,7 +125,8 @@ const Container = styled.button<ContainerProps>`
       color: ${getColor('dark-color')};
 
       &:hover {
-        background: ${getColor('border-color')};
+        color: ${getColor('white')};
+        background: ${getColor('dark-color')};
         border: 1px solid;
         border-color: ${getColor('dark-color')};
       }
@@ -128,14 +137,14 @@ const Container = styled.button<ContainerProps>`
     css`
       background: transparent;
       border: 1px solid;
-      border-color: ${getColor('border-color')};
+      border-color: ${getColor('gray-medium')};
       color: ${getColor('paragraph-color')};
       box-shadow: none;
 
       &:hover {
         border: 1px solid;
-        border-color: ${getColor('border-color')};
-        background: ${getColor('border-color')};
+        border-color: ${getColor('gray-dark')};
+        background: transparent;
       }
     `}
 
@@ -148,7 +157,7 @@ const Container = styled.button<ContainerProps>`
       box-shadow: none;
 
       &:hover {
-        background: ${getColor('banner-color')};
+        background: ${getColor('gray-light')};
         border-color: transparent;
       }
     `}

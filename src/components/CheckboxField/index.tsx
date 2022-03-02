@@ -25,9 +25,9 @@ const CheckboxField = ({
 }: Props) => (
   <Container
     alignItems="center"
-    backgroundColor="banner-color"
+    backgroundColor="gray-light"
     border="1px solid"
-    borderColor="border-color"
+    borderColor="gray-medium"
     position="relative"
   >
     <StyledInput
@@ -62,7 +62,7 @@ const CheckboxField = ({
 
 const Container = styled(Flexbox)`
   &:hover {
-    border-color: ${getColor('border-color-hover')};
+    border-color: ${getColor('gray-dark')};
   }
 `
 

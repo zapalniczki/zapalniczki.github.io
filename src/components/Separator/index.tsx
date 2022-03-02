@@ -7,8 +7,8 @@ import getSpace from 'styles/getSpace'
 const Separator = styled(Box)`
   width: 100%;
   height: 1px;
-  background: ${getColor('border-color-light')};
-  margin: ${(props) => `${getSpace('m-size')(props)} 0`};
+  background: ${getColor('gray-medium')};
+  margin: ${getSpace('m-size')} 0;
 
   ${space}
   ${layout}

@@ -27,7 +27,7 @@ const Footer = () => {
   return (
     <Flexbox
       alignItems="center"
-      backgroundColor="banner-color"
+      backgroundColor="gray-light"
       flexDirection="column"
       paddingY="l-size"
     >

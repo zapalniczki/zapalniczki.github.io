@@ -2,19 +2,15 @@ import React, { Fragment } from 'react'
 
 import { Carousel as CarouselNative } from 'react-responsive-carousel'
 import { Box } from 'components'
-import useBanners, { BannerKey } from './useBanners'
+import useHero, { BannerKey } from './useHero'
 import Chevron from './Chevron'
 
 const Carousel = () => {
-  const { getBanner, visibleBanners } = useBanners()
+  const { getBanner, visibleBanners } = useHero()
   const multipleChildren = visibleBanners.length > 1
 
   return (
-    <Box
-      // border="1px solid red"
-      height="100%"
-      width="100%"
-    >
+    <Box height="100%" width="100%">
       <CarouselNative
         autoPlay
         dynamicHeight={false}
@@ -49,4 +45,4 @@ const Carousel = () => {
 }
 
 export default Carousel
-export { useBanners, BannerKey }
+export { useHero as useBanners, BannerKey }

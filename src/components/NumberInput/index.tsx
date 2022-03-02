@@ -56,14 +56,24 @@ const Container = styled.input<ContainerProps>`
       return `3px solid ${getColor('red')(props)}`
     }
 
-    return `1px solid ${getColor('border-color')(props)}`
+    return `1px solid ${getColor('gray-medium')(props)}`
   }};
+
+  &:hover {
+    border: 1px solid ${getColor('gray-dark')};
+  }
 `
 
 type StyledButtonProps = { reversed?: boolean }
 const StyledButton = styled(Button)<StyledButtonProps>`
   border-left: ${(props) => props.reversed && 'none'};
   border-right: ${(props) => !props.reversed && 'none'};
+
+  border-top-left-radius: ${(props) => props.reversed && '0'};
+  border-bottom-left-radius: ${(props) => props.reversed && '0'};
+
+  border-top-right-radius: ${(props) => !props.reversed && '0'};
+  border-bottom-right-radius: ${(props) => !props.reversed && '0'};
 
   &:hover {
     border-left: ${(props) => props.reversed && 'none'};

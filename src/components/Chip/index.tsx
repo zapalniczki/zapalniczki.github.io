@@ -37,7 +37,7 @@ const Chip = ({ children, onClick, rounded, selected, ...props }: Props) => {
       as={onClick ? 'button' : 'div'}
       backgroundColor={color}
       border={onClick ? '1px solid' : 'none'}
-      borderColor="border-color"
+      borderColor="gray-medium"
       borderRadius={rounded ? 'large' : 0}
       color="white"
       justifyContent="center"
@@ -66,7 +66,7 @@ const Container = styled(Flexbox)<ContainerProps>`
   cursor: ${(props) => (props.onClick ? 'pointer' : 'default')};
 
   &:hover {
-    border-color: ${getColor('border-color-hover')};
+    border-color: ${getColor('gray-dark')};
   }
 `
 

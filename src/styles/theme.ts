@@ -1,14 +1,9 @@
 export const MAX_WIDTH = 1200
 
 const colors = {
-  'background-color': '#f5f5f5',
-  // 'banner-color': '#FFFFFF',
-  'banner-color': '#F2F2F2',
-  'border-color': 'rgb(225, 225, 225)',
-  'border-color-light': 'rgb(234, 234, 234)',
-  'border-color-hover': '#CACACA',
-
-  'select-option-background-hover': '#F7F7F7',
+  'gray-light': '#F8F8F8',
+  'gray-medium': '#DDDDDD',
+  'gray-dark': '#9b9b9b',
 
   'paragraph-color': '#4a4a4a',
   'heading-color': '#1a1a1a',
@@ -108,24 +103,36 @@ export const breakpoints = {
 
 const radii = {
   tiny: '0.4rem',
+  medium: '0.8rem',
   large: '5rem'
 }
 
+const shadows = {
+  tile: `rgba(0, 0, 0, 0.008) 0px 1.8px 2.2px,
+  rgba(0, 0, 0, 0.008) 0px 4.3px 5.2px, rgba(0, 0, 0, 0.01) 0px 8px 9.8px,
+  rgba(0, 0, 0, 0.01) 0px 14.3px 17.4px,
+  rgba(0, 0, 0, 0.016) 0px 26.7px 32.6px, rgba(0, 0, 0, 0.02) 0px 64px 78px`,
+  button: '0 5px 15px 0 rgb(0 0 0 / 15%)'
+}
+
 const theme = {
+  breakpoints: Object.values(breakpoints).map((val) => `${val}px`),
   colors,
-  space,
-  zIndices,
   fontSizes,
   fontWeigths,
   letterSpacings,
   radii,
-  breakpoints: Object.values(breakpoints).map((val) => `${val}px`)
+  shadows,
+  space,
+  zIndices
 }
 
-export type Theme = typeof theme
+export type Breakpoint = keyof typeof breakpoints
 export type Color = keyof typeof colors
 export type Radius = keyof typeof radii
+export type Shadow = keyof typeof shadows
 export type Space = keyof typeof space
-export type Breakpoint = keyof typeof breakpoints
+export type FontSize = keyof typeof fontSizes
+export type Theme = typeof theme
 
 export default theme

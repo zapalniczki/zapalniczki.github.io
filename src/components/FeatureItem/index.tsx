@@ -15,7 +15,7 @@ const FeatureItem = ({ children, subtitle, title }: Props) => (
 
     <Flexbox
       alignItems="center"
-      backgroundColor="background-color"
+      // backgroundColor="background-color" FFFFFF
       flexDirection="column"
       padding="m-size"
     >

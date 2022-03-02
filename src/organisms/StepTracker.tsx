@@ -6,7 +6,6 @@ import styled, { useTheme } from 'styled-components'
 import breakpoints from 'styles/breakpoints'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
-import { changeColorAlpha } from 'utils'
 
 const StepTracker = () => {
   const { t } = useTranslation('COMMON')
@@ -77,8 +76,7 @@ const Wrapper = styled.ul`
     margin: auto;
     width: 90%;
     height: 2px;
-    background: ${(props) =>
-      `${changeColorAlpha(getColor('border-color')(props), 0.5)}`};
+    background: ${getColor('gray-light')};
   }
 
   ${breakpoints('mobile')`
@@ -99,16 +97,12 @@ const StepIcon = styled.div<StepIconProps>`
   padding: ${getSpace('m-size')};
   margin: ${(props) => `0 ${getSpace('s-size')(props)}`};
   border-radius: 50%;
-  background: ${getColor('background-color')};
-
   background: ${(props) => {
     if (props.done) {
       return getColor('green')(props)
-    } else if (props.selected) {
-      return getColor('background-color')(props)
     }
 
-    return getColor('background-color')(props)
+    return getColor('white')(props)
   }};
 
   width: 4.5rem;
@@ -123,10 +117,10 @@ const StepIcon = styled.div<StepIconProps>`
     if (props.done) {
       return getColor('green')(props)
     } else if (props.selected) {
-      return undefined
+      return getColor('gray-dark')(props)
     }
 
-    return getColor('border-color')(props)
+    return getColor('gray-medium')(props)
   }};
 `
 

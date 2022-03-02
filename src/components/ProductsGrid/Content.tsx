@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Grid, SectionHead, Text } from 'components'
+import { Flexbox, Grid, SectionTitle, Text } from 'components'
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import React from 'react'
@@ -31,13 +31,14 @@ const Content = ({
 
   return (
     <Flexbox as="section" flexDirection="column" {...props}>
-      <SectionHead
+      <SectionTitle
         count={showCount ? productsCount : undefined}
         link={link}
+        marginBottom="l-size"
         title={title}
       >
         {sectionHeadChildren || undefined}
-      </SectionHead>
+      </SectionTitle>
 
       {!productsCount && (
         <Flexbox

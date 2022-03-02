@@ -4,11 +4,13 @@ import breakpoints from 'styles/breakpoints'
 import getSpace from 'styles/getSpace'
 
 type Props = {
+  checkbox?: boolean
   vertical?: boolean
 }
 
 const FormRow = styled(Flexbox)<Props>`
-  gap: ${getSpace('m-size')};
+  gap: ${(props) =>
+    props.checkbox ? getSpace('l-size')(props) : getSpace('m-size')(props)};
   flex-direction: ${(props) => (props.vertical ? 'column' : 'column')};
 
   &:not(:last-child) {

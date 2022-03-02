@@ -64,6 +64,7 @@ import { App } from './pages'
 import ReactGA from 'react-ga'
 import { HashRouter } from 'react-router-dom'
 import envs from 'envs'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 ReactGA.initialize(envs.measurementId)
 
@@ -112,7 +113,8 @@ library.add(
   faUniversity,
   faUserAlt,
   faUserClock,
-  faHeart
+  faHeart,
+  faCircleNotch
 )
 
 export const queryClient = new QueryClient({

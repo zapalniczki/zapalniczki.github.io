@@ -49,7 +49,9 @@ const ProductsGrid = ({
   const loader = (
     <ProductsGridLoader
       count={loaderCount}
-      leftTitle={!!title || !!link || !!showCount || !!sectionHeadChildren}
+      link={!!link}
+      showCount={showCount}
+      title={!!title}
       {...props}
     />
   )

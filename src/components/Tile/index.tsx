@@ -23,8 +23,8 @@ const Tile = ({ children, onClick, ...props }: Props) => (
   <Flexbox
     background="white"
     border="1px solid"
-    borderColor="border-color"
-    borderRadius="tiny"
+    borderColor="gray-medium"
+    borderRadius="medium"
     flexDirection="column"
     onClick={onClick}
     padding={['unset', 'm-size', 'm-size', 'l-size']}

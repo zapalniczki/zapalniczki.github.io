@@ -92,12 +92,12 @@ const Container = styled(Box)`
 
   table {
     border: 1px solid;
-    border-color: ${getColor('border-color')};
+    border-color: ${getColor('gray-medium')};
     width: 100%;
 
     th {
       text-align: left;
-      background: ${getColor('banner-color')};
+      background: ${getColor('gray-light')};
     }
 
     th,

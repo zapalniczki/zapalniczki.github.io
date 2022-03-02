@@ -12,12 +12,12 @@ const Columns = ({ children }: Props) => <Container>{children}</Container>
 
 const Container = styled(Flexbox)`
   flex-direction: column;
-  gap: ${getSpace('m-size')};
+  gap: ${getSpace('l-size')};
 
   & > * {
     display: flex;
     flex-direction: column;
-    gap: ${getSpace('m-size')};
+    gap: ${getSpace('l-size')};
 
     &:first-child {
       min-width: 100%;
@@ -40,8 +40,8 @@ const Container = styled(Flexbox)`
       }
 
       &:last-child:not(:first-child) {
-        min-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
-        max-width: ${`calc(30% - ${getSpace('m-size')(props)})`};
+        min-width: ${`calc(30% - ${getSpace('l-size')(props)})`};
+        max-width: ${`calc(30% - ${getSpace('l-size')(props)})`};
       }
     }
 `}

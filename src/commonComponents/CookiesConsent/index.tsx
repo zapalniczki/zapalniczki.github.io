@@ -24,7 +24,7 @@ const CookiesConsent = () => {
   return (
     <Loader>
       <Flexbox
-        backgroundColor="banner-color"
+        backgroundColor="gray-light"
         bottom="0"
         justifyContent="center"
         left="0"

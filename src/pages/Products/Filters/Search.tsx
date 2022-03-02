@@ -5,6 +5,7 @@ import React from 'react'
 import getColor from 'styles/getColor'
 import getSpace from 'styles/getSpace'
 import getRadius from 'styles/getRadius'
+import getFontSize from 'styles/getFontSize'
 
 type Props = {
   onChange: (value: string) => void
@@ -28,7 +29,7 @@ const Search = ({ onChange, value }: Props) => {
         marginLeft={['unset', 0, 0, 'm-size']}
         marginTop={['unset', 'm-size', 'm-size', 0]}
         onClick={() => onChange('')}
-        size="medium"
+        size="large"
         variant="primary"
       />
     </Flexbox>
@@ -37,16 +38,17 @@ const Search = ({ onChange, value }: Props) => {
 
 const StyledInput = styled.input`
   border: none;
-  height: 4.6rem;
   width: 100%;
-  padding: ${(props) => `0 ${getSpace('s-size')(props)}`};
+  padding: ${getSpace('s-size')} ${getSpace('s-size')};
+
   border: 1px solid;
   border-radius: ${getRadius('tiny')};
-  border-color: ${getColor('border-color')};
-  font-size: 1.7rem;
+  border-color: ${getColor('gray-medium')};
+
+  font-size: ${getFontSize('new-small-l-size')};
 
   &:hover {
-    border-color: ${getColor('border-color-hover')};
+    border-color: ${getColor('gray-dark')};
   }
 `
 

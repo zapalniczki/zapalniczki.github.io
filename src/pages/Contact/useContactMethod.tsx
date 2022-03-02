@@ -9,7 +9,6 @@ import {
   BRATY_ADDRESS_1,
   BRATY_ADDRESS_2,
   BRATY_ADDRESS_3,
-  BRATY_BANK_ACCOUNT,
   BRATY_BANK_NAME,
   BRATY_BIC,
   BRATY_EMAIL,
@@ -32,16 +31,12 @@ const useContactMethods = (): ContactMethod[] => {
       icon: 'envelope-open-text',
       key: 'EMAIL',
       content: (
-        <>
-          <Text type="body-2">{t('items.EMAIL.info')}</Text>
-
-          <ExternalLink
-            marginTop="s-size"
-            to={t('items.EMAIL.link', { email: BRATY_EMAIL })}
-          >
-            <Text type="subtitle-2">{BRATY_EMAIL}</Text>
-          </ExternalLink>
-        </>
+        <ExternalLink
+          marginTop="s-size"
+          to={t('items.EMAIL.link', { email: BRATY_EMAIL })}
+        >
+          <Text type="subtitle-2">{BRATY_EMAIL}</Text>
+        </ExternalLink>
       )
     },
 
@@ -49,13 +44,9 @@ const useContactMethods = (): ContactMethod[] => {
       icon: 'phone-alt',
       key: 'PHONE',
       content: (
-        <>
-          <Text type="body-2">{t('items.PHONE.info')}</Text>
-
-          <Text marginTop="s-size" type="subtitle-2">
-            {BRATY_PHONE}
-          </Text>
-        </>
+        <Text marginTop="s-size" type="subtitle-2">
+          {BRATY_PHONE}
+        </Text>
       )
     },
 
@@ -70,12 +61,6 @@ const useContactMethods = (): ContactMethod[] => {
       key: 'ACCOUNT',
       content: (
         <>
-          <Text type="body-2">{t('items.ACCOUNT.info')}</Text>
-
-          <Text marginTop="s-size" type="subtitle-2">
-            {BRATY_BANK_ACCOUNT}
-          </Text>
-
           <Text marginTop="s-size" type="body-2">
             <Trans
               i18nKey="items.ACCOUNT.bankName"
@@ -112,8 +97,6 @@ const useContactMethods = (): ContactMethod[] => {
       key: 'ADDRESS',
       content: (
         <>
-          <Text type="body-2">{t('items.ADDRESS.info')}</Text>
-
           <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
             {BRATY_ADDRESS_1}
           </Text>

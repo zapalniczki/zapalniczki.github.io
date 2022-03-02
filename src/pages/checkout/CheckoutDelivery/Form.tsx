@@ -20,7 +20,7 @@ const Form = ({ deliveryTypes }: Props) => {
   const { language } = useTranslation('COMMON')
 
   return (
-    <FormRow vertical>
+    <FormRow checkbox vertical>
       {deliveryTypes.map((type, index) => {
         const optionLabel = getLanguageLabel({
           language,

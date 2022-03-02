@@ -10,7 +10,7 @@ const Loader = () => (
         <Fragment key={index}>
           {!index && <Label />}
 
-          <CheckboxFieldLoader marginTop={!index ? 'unset' : 'm-size'} />
+          <CheckboxFieldLoader />
         </Fragment>
       ))}
     </div>

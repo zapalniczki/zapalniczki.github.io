@@ -13,7 +13,7 @@ const UserAvatar = ({ company }: Props) => {
   return (
     <Flexbox
       alignItems="center"
-      backgroundColor="border-color"
+      backgroundColor="dark-medium"
       borderRadius="50%"
       justifyContent="center"
       maxHeight={SIZE}

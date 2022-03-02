@@ -13,8 +13,12 @@ const Bestsellers = () => {
   const { t } = useTranslation('HOME')
 
   const params = { bestseller: true }
-  const bestsellersQuery = useQuery([DB_TABLES.PRODUCTS, params], () =>
-    getProducts(params)
+  const bestsellersQuery = useQuery(
+    [DB_TABLES.PRODUCTS, params],
+    () => getProducts(params),
+    {
+      enabled: true
+    }
   )
 
   if (!homeBestsellersDisplay) {
@@ -24,7 +28,7 @@ const Bestsellers = () => {
   return (
     <ProductsGrid
       loaderCount={6}
-      marginTop="xxl-size"
+      marginTop="xxxl-size"
       order={homeBestsellersOrder}
       query={bestsellersQuery}
       title={t('bestsellers.title')}
