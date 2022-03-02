@@ -21,10 +21,10 @@ const Image = ({ alt = '', size, src, ...props }: Props) => {
   const isDev = useDev()
   const placeholder = getProductImagePlaceholder(size || 'TILE')
 
-  const imageSrc = [src, placeholder]
-  // if (isDev && size) {
-  //   imageSrc = [placeholder]
-  // }
+  let imageSrc = [src, placeholder]
+  if (isDev && size) {
+    imageSrc = [placeholder]
+  }
 
   return (
     <Img

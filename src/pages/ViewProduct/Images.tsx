@@ -1,13 +1,9 @@
-import { Flexbox, Image } from 'components'
-
-import styled from 'styled-components'
-import React from 'react'
-import { GetProductResponse } from 'models'
-import getColor from 'styles/getColor'
-import { findCorrectProductImageSize, getLanguageLabel } from 'utils'
-import getSpace from 'styles/getSpace'
-import breakpoints from 'styles/breakpoints'
+import { Box, Flexbox, Image } from 'components'
 import { useTranslation } from 'hooks'
+import { GetProductResponse } from 'models'
+import React from 'react'
+import styled from 'styled-components'
+import { findCorrectProductImageSize, getLanguageLabel } from 'utils'
 
 type Props = {
   product: GetProductResponse
@@ -18,7 +14,6 @@ const Images = ({ product }: Props) => {
   const { images } = product
 
   const largeImage = findCorrectProductImageSize(images, 'LARGE')
-  const thumbnailImage = findCorrectProductImageSize(images, 'THUMBNAIL')
 
   const productName = getLanguageLabel({
     language,
@@ -26,64 +21,26 @@ const Images = ({ product }: Props) => {
     name: true
   })
 
-  const width = '60%'
+  const width = ['unset', '100%', '50%']
 
   return (
     <Flexbox
-      flexDirection={['unset', 'column-reverse', 'column-reverse', 'row']}
-      flexGrow={4}
-      height="100%"
-      maxWidth={['unset', '100%', '100%', width]}
-      minWidth={['unset', '100%', '100%', width]}
+      justifyContent="center"
+      maxWidth={width}
+      minWidth={width}
+      paddingBottom="m-size"
+      paddingTop="m-size"
     >
-      <Flexbox flexDirection="column" height="100%" width="6rem">
-        {[thumbnailImage].map((image) => (
-          <GalleryImageWrapper key={image.toString()} role="presentation">
-            <Image size="THUMBNAIL" src={image} />
-          </GalleryImageWrapper>
-        ))}
-      </Flexbox>
-
-      <ImageWrapper>
-        <Image alt={productName} size="LARGE" src={largeImage} />
-      </ImageWrapper>
+      <Box>
+        <ImageStyled alt={productName} size="LARGE" src={largeImage} />
+      </Box>
     </Flexbox>
   )
 }
 
-const ImageWrapper = styled.div`
+const ImageStyled = styled(Image)`
   width: 100%;
-  height: 100%;
-  flex-grow: 1;
-  position: relative;
-
-  & > * {
-    width: 100%;
-    height: auto;
-  }
-
-  ${(props) => breakpoints('desktop max')`
-    padding: ${`0 ${getSpace('xxxl-size')(props)}`};
-
-    & > * {
-      width: auto;
-  }
-  `}
-`
-
-const GalleryImageWrapper = styled.div`
-  min-width: 6rem;
-  max-width: 6rem;
-  min-height: 6rem;
-  max-height: 6rem;
-  border: 1px solid;
-  border-color: ${getColor('gray-medium')};
-  position: relative;
-  cursor: pointer;
-
-  &:not(:first-child) {
-    margin-top: ${getSpace('s-size')};
-  }
+  height: auto;
 `
 
 export default Images

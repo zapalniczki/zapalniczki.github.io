@@ -57,7 +57,10 @@ const ViewProduct = () => {
               to={ROUTES.PRODUCTS}
             />
 
-            <Tile flexDirection={['unset', 'column', 'column', 'row']}>
+            <Tile
+              flexDirection={['unset', 'column', 'row']}
+              padding={[0, 0, 0, 0]}
+            >
               <Images product={product} />
 
               <Info product={product} />

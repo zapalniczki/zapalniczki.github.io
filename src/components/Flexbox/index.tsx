@@ -1,4 +1,4 @@
-import Box from '../Box'
+import Box, { boxStyleProps } from '../Box'
 import styled from 'styled-components'
 import getSpace from 'styles/getSpace'
 import { Space } from 'styles/theme'
@@ -11,6 +11,8 @@ const Flexbox = styled(Box).attrs(() => ({
   display: 'flex'
 }))<Props>`
   gap: ${(props) => (props.gap ? getSpace(props.gap)(props) : undefined)};
+
+  ${boxStyleProps}
 `
 
 export default Flexbox

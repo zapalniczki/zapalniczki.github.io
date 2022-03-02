@@ -1,4 +1,11 @@
-import { DisplayMoney, Flexbox, Heading, Separator, Text } from 'components'
+import {
+  DisplayMoney,
+  Flexbox,
+  Heading,
+  Separator,
+  Text,
+  Tile
+} from 'components'
 import { useTranslation } from 'hooks'
 import { GetProductResponse } from 'models'
 import React from 'react'
@@ -42,11 +49,11 @@ const Info = ({ product }: Props) => {
   })
 
   return (
-    <Flexbox
-      flexDirection="column"
+    <Tile
+      backgroundColor="gray-light"
+      border="none"
+      borderRadius={0}
       flexGrow={1}
-      marginLeft={['unset', 'unset', 'unset', 'xl-size']}
-      marginTop={['unset', 'xxl-size', 'xxl-size', 'unset']}
     >
       <Heading level={4}>{productName}</Heading>
 
@@ -86,7 +93,7 @@ const Info = ({ product }: Props) => {
       <Separator />
 
       <Text type="body-2">{description}</Text>
-    </Flexbox>
+    </Tile>
   )
 }
 
