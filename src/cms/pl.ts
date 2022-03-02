@@ -96,6 +96,7 @@ const pl = {
     profileToggleLabel: 'Profil użytkownika',
     signoutToggleLabel: 'Wyloguj',
     soon: 'Wkrótce',
+    emailSubject: 'Kontakt ze strony internetowej',
     productsEmptyState: 'Nie znaleziono żadnych produktów',
     productsLoadMore: 'Pokaż więcej',
     productsSingle: '{{count}} produkt',
@@ -825,8 +826,7 @@ const pl = {
       },
 
       EMAIL: {
-        title: 'E-mail',
-        link: `mailto:{{email}}?subject=Kontakt ze strony internetowej`
+        title: 'E-mail'
       },
 
       DOWNLOAD_INVOICE: {
@@ -853,11 +853,13 @@ const pl = {
       },
 
       ACCOUNT: {
-        title: 'Numer rachunku',
-        bankName: `nazwa banku: <strong>{{bankName}}</strong>`,
-        ref: 'tytuł: <strong>Numer referencyjny zamówienia</strong>',
-        iban: 'IBAN: <strong>{{iban}}</strong>',
-        bic: 'BIC: <strong>{{bic}}</strong>'
+        title: 'Dane do płatności',
+        bankName: 'Nazwa banku',
+        ref: 'Tytuł',
+        // TODO
+        refVal: 'Numer referencyjny zamówienia',
+        iban: 'IBAN',
+        bic: 'BIC'
       }
     }
   },

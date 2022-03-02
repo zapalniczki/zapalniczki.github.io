@@ -54,6 +54,7 @@ export { default as Text } from './Text'
 export { default as UserAvatar } from './UserAvatar'
 export { default as FormRow } from './FormRow'
 export { default as SectionTitle } from './SectionTitle'
+export { default as Email } from './Email'
 
 export * from './SectionTitle'
 export * from './Banner'

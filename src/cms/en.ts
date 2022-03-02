@@ -96,6 +96,7 @@ const en: LanguageKeys = {
     profileToggleLabel: 'Profil użytkownika',
     signoutToggleLabel: 'Wyloguj',
     soon: 'Wkrótce',
+    emailSubject: 'Enquiry from website',
     productsEmptyState: 'No results',
     productsLoadMore: 'Show more',
     productsSingle: '{{count}} product',
@@ -823,8 +824,7 @@ const en: LanguageKeys = {
       },
 
       EMAIL: {
-        title: 'E-mail',
-        link: `mailto:{{email}}?subject=Enquiry from website`
+        title: 'E-mail'
       },
 
       DOWNLOAD_INVOICE: {
@@ -851,11 +851,12 @@ const en: LanguageKeys = {
       },
 
       ACCOUNT: {
-        title: 'Bank account number',
-        bankName: `bank name: <strong>{{bankName}}</strong>`,
-        ref: 'title: <strong>Order reference number</strong>',
-        iban: 'IBAN: <strong>{{iban}}</strong>',
-        bic: 'BIC: <strong>{{bic}}</strong>'
+        title: 'Payment details',
+        bankName: 'Bank name',
+        ref: 'Title',
+        refVal: 'Order reference number',
+        iban: 'IBAN',
+        bic: 'BIC'
       }
     }
   },

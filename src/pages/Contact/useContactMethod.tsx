@@ -1,10 +1,4 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
-import { ExternalLink, Text } from 'components'
-import { ReactNode } from 'react'
-import { useTranslation } from 'hooks'
-import CheckStatus from './CheckStatus'
-import React from 'react'
-import DownloadInvoice from './DownloadInvoice'
 import {
   BRATY_ADDRESS_1,
   BRATY_ADDRESS_2,
@@ -15,12 +9,18 @@ import {
   BRATY_IBAN,
   BRATY_PHONE
 } from 'braty-common'
-import { Trans } from 'react-i18next'
-import TileHeading from './TileHeading'
+import { ExternalLink, LabelledItem, Text } from 'components'
+import { useTranslation } from 'hooks'
+import React, { ReactNode } from 'react'
+import { getEmail } from 'utils'
+import CheckStatus from './CheckStatus'
+import DownloadInvoice from './DownloadInvoice'
 import TileContent from './TileContent'
+import TileHeading from './TileHeading'
 
 const useContactMethod = (): ContactMethod[] => {
   const { t } = useTranslation('CONTACT')
+  const { t: commonT } = useTranslation('COMMON')
 
   return [
     {
@@ -41,7 +41,7 @@ const useContactMethod = (): ContactMethod[] => {
           <TileContent>
             <ExternalLink
               marginTop="s-size"
-              to={t('items.EMAIL.link', { email: BRATY_EMAIL })}
+              to={getEmail(BRATY_EMAIL, commonT('emailSubject'))}
             >
               <Text type="subtitle-2">{BRATY_EMAIL}</Text>
             </ExternalLink>
@@ -78,33 +78,28 @@ const useContactMethod = (): ContactMethod[] => {
           <TileHeading icon="university" title={t(`items.ACCOUNT.title`)} />
 
           <TileContent>
-            <Text marginTop="s-size" type="body-2">
-              <Trans
-                i18nKey="items.ACCOUNT.bankName"
-                t={t}
-                values={{ bankName: BRATY_BANK_NAME }}
-              />
-            </Text>
+            <LabelledItem
+              item={BRATY_BANK_NAME}
+              label={t('items.ACCOUNT.bankName', { bankName: BRATY_BANK_NAME })}
+            />
 
-            <Text type="body-2">
-              <Trans i18nKey="items.ACCOUNT.ref" t={t} />
-            </Text>
+            <LabelledItem
+              item={t('items.ACCOUNT.refVal')}
+              label={t('items.ACCOUNT.ref')}
+              marginTop="2rem"
+            />
 
-            <Text type="body-2">
-              <Trans
-                i18nKey="items.ACCOUNT.iban"
-                t={t}
-                values={{ iban: BRATY_IBAN }}
-              />
-            </Text>
+            <LabelledItem
+              item={BRATY_IBAN}
+              label={t('items.ACCOUNT.iban')}
+              marginTop="2rem"
+            />
 
-            <Text type="body-2">
-              <Trans
-                i18nKey="items.ACCOUNT.bic"
-                t={t}
-                values={{ bic: BRATY_BIC }}
-              />
-            </Text>
+            <LabelledItem
+              item={BRATY_BIC}
+              label={t('items.ACCOUNT.bic')}
+              marginTop="2rem"
+            />
           </TileContent>
         </>
       )
