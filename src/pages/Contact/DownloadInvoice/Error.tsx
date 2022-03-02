@@ -4,6 +4,7 @@ import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
 import TileHeading from '../TileHeading'
+import TileContent from '../TileContent'
 
 type Props = {
   message: string
@@ -21,15 +22,17 @@ const Error = ({ message, setView }: Props) => {
         title={t('items.DOWNLOAD_INVOICE.error.title')}
       />
 
-      <Text type="body-2">{message}</Text>
+      <TileContent>
+        <Text type="body-2">{message}</Text>
 
-      <Box marginTop="m-size">
-        <Button
-          label={t('items.DOWNLOAD_INVOICE.error.new')}
-          onClick={() => setView({ view: 'FORM' })}
-          size="small"
-        />
-      </Box>
+        <Box marginTop="m-size">
+          <Button
+            label={t('items.DOWNLOAD_INVOICE.error.new')}
+            onClick={() => setView({ view: 'FORM' })}
+            size="small"
+          />
+        </Box>
+      </TileContent>
     </ViewWrapper>
   )
 }

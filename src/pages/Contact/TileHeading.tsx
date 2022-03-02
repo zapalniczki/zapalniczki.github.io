@@ -25,7 +25,11 @@ const TileHeading = ({ icon, status, title }: Props) => {
   }
 
   return (
-    <Flexbox alignItems="center" marginBottom="m-size">
+    <Flexbox
+      alignItems="center"
+      paddingX={['unset', 'm-size', 'l-size']}
+      paddingY="m-size"
+    >
       {icon && <FontAwesomeIcon color={color} icon={icon} size="2x" />}
 
       <Heading level={6} marginLeft={icon && 'm-size'}>

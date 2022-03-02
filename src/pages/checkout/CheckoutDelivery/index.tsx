@@ -95,7 +95,6 @@ const CheckoutDelivery = () => {
                             flexDirection="row-reverse"
                             justifyContent="flex-end"
                             label={t('sameAddress')}
-                            marginTop="m-size"
                             onChange={(checked) => {
                               setSameAddressAsInvoice(!checked)
 

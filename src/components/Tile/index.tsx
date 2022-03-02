@@ -1,38 +1,27 @@
 import { Flexbox } from 'components'
-import React, { ReactNode } from 'react'
-import {
-  FlexboxProps,
-  GridColumnProps,
-  HeightProps,
-  MaxWidthProps,
-  SpaceProps,
-  WidthProps
-} from 'styled-system'
+// eslint-disable-next-line no-restricted-imports
+import { boxStyleProps } from 'components/Box'
+import styled from 'styled-components'
+import breakpoints from 'styles/breakpoints'
+import getColor from 'styles/getColor'
+import getRadius from 'styles/getRadius'
+import getSpace from 'styles/getSpace'
 
-type Props = {
-  children?: ReactNode
-  onClick?: () => void
-} & SpaceProps &
-  HeightProps &
-  GridColumnProps &
-  FlexboxProps &
-  WidthProps &
-  MaxWidthProps
+const Tile = styled(Flexbox)`
+  background-color: ${getColor('white')};
+  border: 1px solid;
+  border-color: ${getColor('gray-medium')};
+  border-radius: ${getRadius('medium')};
+  flex-direction: column;
+  padding: ${getSpace('l-size')};
 
-const Tile = ({ children, onClick, ...props }: Props) => (
-  <Flexbox
-    background="white"
-    border="1px solid"
-    borderColor="gray-medium"
-    borderRadius="medium"
-    flexDirection="column"
-    onClick={onClick}
-    padding={['unset', 'm-size', 'm-size', 'l-size']}
-    width="100%"
-    {...props}
-  >
-    {children}
-  </Flexbox>
-)
+  ${(props) => breakpoints('tablet mobile')`
+    padding: ${getSpace('m-size')(props)};
+  `}
+
+  width: 100%;
+
+  ${boxStyleProps}
+`
 
 export default Tile

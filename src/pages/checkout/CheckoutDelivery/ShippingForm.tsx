@@ -47,7 +47,7 @@ const ShippingForm = () => {
         </FieldWrapper>
       </FormRow>
 
-      <FormRow marginTop="m-size">
+      <FormRow>
         <FieldWrapper>
           <Field name="shipping.street_address">
             {(

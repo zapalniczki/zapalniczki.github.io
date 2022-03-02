@@ -129,6 +129,7 @@ const Container = styled(Tile)`
   border: 1px solid;
   border-color: ${getColor('gray-medium')};
   border-radius: ${getRadius('medium')};
+  padding: 0;
 
   &:hover {
     box-shadow: ${getShadow('tile')};

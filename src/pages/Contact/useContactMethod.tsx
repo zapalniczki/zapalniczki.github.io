@@ -16,8 +16,10 @@ import {
   BRATY_PHONE
 } from 'braty-common'
 import { Trans } from 'react-i18next'
+import TileHeading from './TileHeading'
+import TileContent from './TileContent'
 
-const useContactMethods = (): ContactMethod[] => {
+const useContactMethod = (): ContactMethod[] => {
   const { t } = useTranslation('CONTACT')
 
   return [
@@ -28,25 +30,38 @@ const useContactMethods = (): ContactMethod[] => {
     },
 
     {
-      icon: 'envelope-open-text',
       key: 'EMAIL',
       content: (
-        <ExternalLink
-          marginTop="s-size"
-          to={t('items.EMAIL.link', { email: BRATY_EMAIL })}
-        >
-          <Text type="subtitle-2">{BRATY_EMAIL}</Text>
-        </ExternalLink>
+        <>
+          <TileHeading
+            icon="envelope-open-text"
+            title={t(`items.EMAIL.title`)}
+          />
+
+          <TileContent>
+            <ExternalLink
+              marginTop="s-size"
+              to={t('items.EMAIL.link', { email: BRATY_EMAIL })}
+            >
+              <Text type="subtitle-2">{BRATY_EMAIL}</Text>
+            </ExternalLink>
+          </TileContent>
+        </>
       )
     },
 
     {
-      icon: 'phone-alt',
       key: 'PHONE',
       content: (
-        <Text marginTop="s-size" type="subtitle-2">
-          {BRATY_PHONE}
-        </Text>
+        <>
+          <TileHeading icon="phone-alt" title={t(`items.PHONE.title`)} />
+
+          <TileContent>
+            <Text marginTop="s-size" type="subtitle-2">
+              {BRATY_PHONE}
+            </Text>
+          </TileContent>
+        </>
       )
     },
 
@@ -57,57 +72,63 @@ const useContactMethods = (): ContactMethod[] => {
     },
 
     {
-      icon: 'university',
       key: 'ACCOUNT',
       content: (
         <>
-          <Text marginTop="s-size" type="body-2">
-            <Trans
-              i18nKey="items.ACCOUNT.bankName"
-              t={t}
-              values={{ bankName: BRATY_BANK_NAME }}
-            />
-          </Text>
+          <TileHeading icon="university" title={t(`items.ACCOUNT.title`)} />
 
-          <Text type="body-2">
-            <Trans i18nKey="items.ACCOUNT.ref" t={t} />
-          </Text>
+          <TileContent>
+            <Text marginTop="s-size" type="body-2">
+              <Trans
+                i18nKey="items.ACCOUNT.bankName"
+                t={t}
+                values={{ bankName: BRATY_BANK_NAME }}
+              />
+            </Text>
 
-          <Text type="body-2">
-            <Trans
-              i18nKey="items.ACCOUNT.iban"
-              t={t}
-              values={{ iban: BRATY_IBAN }}
-            />
-          </Text>
+            <Text type="body-2">
+              <Trans i18nKey="items.ACCOUNT.ref" t={t} />
+            </Text>
 
-          <Text type="body-2">
-            <Trans
-              i18nKey="items.ACCOUNT.bic"
-              t={t}
-              values={{ bic: BRATY_BIC }}
-            />
-          </Text>
+            <Text type="body-2">
+              <Trans
+                i18nKey="items.ACCOUNT.iban"
+                t={t}
+                values={{ iban: BRATY_IBAN }}
+              />
+            </Text>
+
+            <Text type="body-2">
+              <Trans
+                i18nKey="items.ACCOUNT.bic"
+                t={t}
+                values={{ bic: BRATY_BIC }}
+              />
+            </Text>
+          </TileContent>
         </>
       )
     },
 
     {
-      icon: 'map-marked-alt',
       key: 'ADDRESS',
       content: (
         <>
-          <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
-            {BRATY_ADDRESS_1}
-          </Text>
+          <TileHeading icon="map-marked-alt" title={t(`items.ADDRESS.title`)} />
 
-          <Text lineHeight="1.21" type="subtitle-2">
-            {BRATY_ADDRESS_2}
-          </Text>
+          <TileContent>
+            <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
+              {BRATY_ADDRESS_1}
+            </Text>
 
-          <Text lineHeight="1.21" type="subtitle-2">
-            {BRATY_ADDRESS_3}
-          </Text>
+            <Text lineHeight="1.21" type="subtitle-2">
+              {BRATY_ADDRESS_2}
+            </Text>
+
+            <Text lineHeight="1.21" type="subtitle-2">
+              {BRATY_ADDRESS_3}
+            </Text>
+          </TileContent>
         </>
       )
     }
@@ -127,4 +148,4 @@ type ContactMethod = {
     | 'ACCOUNT'
 }
 
-export default useContactMethods
+export default useContactMethod

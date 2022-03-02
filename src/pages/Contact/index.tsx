@@ -1,13 +1,12 @@
 import { CallMeBack, ReadTermsAndConditions } from 'commonComponents'
-import { Banner, Grid, Page } from 'components'
+import { Banner, Grid, Page, Tile } from 'components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
-import Tile from './Tile'
-import useContactMethods from './useContactMethod'
+import useContactMethod from './useContactMethod'
 
 const Contact = () => {
   const { t } = useTranslation('CONTACT')
-  const contactMethods = useContactMethods()
+  const contactMethods = useContactMethod()
 
   usePageTitle(t('title'))
   useScrollTop()
@@ -25,13 +24,20 @@ const Contact = () => {
         ]}
         marginTop="xxl-size"
       >
-        {contactMethods.map(({ icon, key, ...props }) => (
+        {contactMethods.map(({ content, extended, key, ...props }) => (
           <Tile
-            icon={icon}
+            gridColumn={[
+              'unset',
+              '1fr',
+              '1fr',
+              extended ? 'auto / span 2' : 'auto'
+            ]}
             key={key}
-            title={icon ? t(`items.${key}.title`) : undefined}
+            padding={[0, 0, 0, 0]}
             {...props}
-          />
+          >
+            {content}
+          </Tile>
         ))}
       </Grid>
 

@@ -1,11 +1,11 @@
-import { FieldWrapper, Button, Flexbox, Input } from 'components'
+import { Button, FieldWrapper, Input } from 'components'
 import { Field, FieldProps } from 'formik'
-
-import React from 'react'
 import { useInput, useTranslation } from 'hooks'
+import React from 'react'
 import { ViewWrapper } from '.'
-import { FormValues } from './useForm'
+import TileContent from '../TileContent'
 import TileHeading from '../TileHeading'
+import { FormValues } from './useForm'
 
 const Form = () => {
   const { t } = useTranslation('CONTACT')
@@ -19,9 +19,9 @@ const Form = () => {
         title={t(`items.DOWNLOAD_INVOICE.title`)}
       />
 
-      <Flexbox
-        alignItems={['unset', 'flex-start', 'flex-start', 'flex-end']}
-        flexDirection={['unset', 'column', 'column', 'row']}
+      <TileContent
+        alignItems={['unset', 'flex-start', 'flex-end']}
+        flexDirection={['unset', 'column', 'row']}
         justifyContent="flex-end"
       >
         <FieldWrapper>
@@ -34,12 +34,12 @@ const Form = () => {
 
         <Button
           label={getInput('SUBMIT').label}
-          marginLeft={['unset', 0, 0, 'm-size']}
-          marginTop={['unset', 'm-size', 'm-size', 0]}
+          marginLeft={['unset', 0, 'm-size']}
+          marginTop={['unset', 'm-size', 0]}
           size="small"
           type="submit"
         />
-      </Flexbox>
+      </TileContent>
     </ViewWrapper>
   )
 }

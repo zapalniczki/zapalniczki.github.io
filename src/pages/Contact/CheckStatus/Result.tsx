@@ -7,6 +7,7 @@ import TileHeading from '../TileHeading'
 import { useNavigate } from 'react-router'
 import { Order } from 'braty-common'
 import { getOrderPath } from 'utils'
+import TileContent from '../TileContent'
 
 type Props = {
   id: Order['id']
@@ -27,30 +28,29 @@ const Result = ({ id, setView, status }: Props) => {
         title={commonT(`ORDER_STATUSES.${status}`)}
       />
 
-      <Text type="body-2">{commonT(`STATUS_MEANINGS.${status}`)}</Text>
+      <TileContent>
+        <Text type="body-2">{commonT(`STATUS_MEANINGS.${status}`)}</Text>
 
-      <Flexbox
-        flexDirection={['unset', 'column', 'column', 'row']}
-        marginTop="m-size"
-      >
-        <Button
-          label={t('items.CHECK_STATUS.result.tryNew')}
-          onClick={() => setView({ view: 'FORM' })}
-          size="small"
-          variant="secondary"
-        />
+        <Flexbox flexDirection={['unset', 'column', 'row']} marginTop="m-size">
+          <Button
+            label={t('items.CHECK_STATUS.result.tryNew')}
+            onClick={() => setView({ view: 'FORM' })}
+            size="small"
+            variant="secondary"
+          />
 
-        <Button
-          label={t('items.CHECK_STATUS.result.seeOrder')}
-          marginLeft={['unset', 0, 0, 'm-size']}
-          marginTop={['unset', 'm-size', 'm-size', 0]}
-          onClick={() => {
-            const path = getOrderPath(id)
-            navigate(path)
-          }}
-          size="small"
-        />
-      </Flexbox>
+          <Button
+            label={t('items.CHECK_STATUS.result.seeOrder')}
+            marginLeft={['unset', 0, 'm-size']}
+            marginTop={['unset', 'm-size', 0]}
+            onClick={() => {
+              const path = getOrderPath(id)
+              navigate(path)
+            }}
+            size="small"
+          />
+        </Flexbox>
+      </TileContent>
     </ViewWrapper>
   )
 }
