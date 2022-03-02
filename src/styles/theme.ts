@@ -7,18 +7,16 @@ const colors = {
 
   'paragraph-color': '#4a4a4a',
   'heading-color': '#1a1a1a',
+  'dark-color': '#3a3a3a',
   'label-color': '#696868',
-
-  'skeleton-dark': 'rgb(203, 202, 204)',
-  'skeleton-light': 'rgb(226, 224, 226)',
 
   white: 'rgb(255, 255, 255)',
   black: 'rgb(0, 0, 0)',
-  'dark-color': '#3a3a3a',
 
   red: 'rgba(247, 45, 45, 0.986)',
   green: '#3B9620',
   yellow: 'rgb(228, 165, 31)',
+
   'yellow-outline': 'rgb(255, 221, 0)',
 
   'braty-red': '#E6070F',

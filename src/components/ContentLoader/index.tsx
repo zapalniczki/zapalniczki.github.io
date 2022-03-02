@@ -45,8 +45,8 @@ const ContentLoader = ({
       width={`${props.width}px`}
     >
       <ReactContentLoader
-        backgroundColor={colors['skeleton-dark']}
-        foregroundColor={colors['skeleton-light']}
+        backgroundColor={colors['gray-medium']}
+        foregroundColor={colors['gray-light']}
         speed={2.5}
         title={commonT('loading')}
         viewBox={customViewBox}
