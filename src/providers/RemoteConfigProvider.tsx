@@ -3,6 +3,7 @@ import { useDev } from 'hooks'
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
 
 const init: RemoteConfig = {
+  // ROUTES
   _404: true,
   adminCallbacks: false,
   adminDeliveryTypes: false,
@@ -34,6 +35,25 @@ const init: RemoteConfig = {
   signedOut: false,
   valentinesDay: false,
   viewProduct: true,
+
+  // CUSTOMER
+  customerRecentOrders: false,
+  customerContactDetails: false,
+  customerInvoices: false,
+
+  // ORDER
+  orderId: false,
+  orderStatus: false,
+  orderBilling: false,
+  orderPayment: false,
+  orderProducts: false,
+  orderInvoice: false,
+  orderVoucher: false,
+  orderShipping: false,
+  orderActions: false,
+  orderDetails: false,
+  orderContactDetails: false,
+
   // HOME
   homeFeaturedCount: 6,
   homeBestsellersDisplay: false,
@@ -43,12 +63,14 @@ const init: RemoteConfig = {
   homeFeaturedOrder: 0,
   homeCatalogueOrder: 0,
   homeBestsellersOrder: 0,
+
   // DATA
   catalogue_cover_pl: '',
   catalogue_link_pl: '',
   catalogue_cover_en: '',
   catalogue_link_en: '',
-  // REST
+
+  // CONFIG
   i18n: false,
   snow: false,
   vouchers: false
