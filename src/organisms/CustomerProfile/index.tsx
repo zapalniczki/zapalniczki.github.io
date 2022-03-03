@@ -15,18 +15,18 @@ import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
-import Loader from './ContactDetails.loader'
+import Loader from './index.loader'
 
 type Props = {
+  customerId: Order['customer_id']
   hideProfileLink?: boolean
-  userId: Order['customer_id']
 }
 
 // TODO Should be renamed to ¬User/Customer Profile
-const ContactDetails = ({ hideProfileLink, userId }: Props) => {
+const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
-  const params = { id: userId }
+  const params = { id: customerId }
   const userQuery = useQuery([DB_TABLES.USERS, params], () => getUser(params))
   const { customer } = useContext(remoteConfigContext)
 
@@ -112,4 +112,5 @@ const ContactDetails = ({ hideProfileLink, userId }: Props) => {
   )
 }
 
-export default ContactDetails
+export { Loader as CustomerProfileLoader }
+export default CustomerProfile

@@ -1,6 +1,6 @@
 import { Banner, Columns, Page, QueryLoader } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
-import { ContactDetails } from 'organisms'
+import { CustomerProfile } from 'organisms'
 import React, { useContext } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { object } from 'zod'
@@ -50,7 +50,10 @@ const Customer = () => {
 
               <div>
                 {customerContactDetails ? (
-                  <ContactDetails hideProfileLink userId={userProfile.id} />
+                  <CustomerProfile
+                    customerId={userProfile.id}
+                    hideProfileLink
+                  />
                 ) : null}
               </div>
             </Columns>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContentLoader, Columns } from 'components'
-import { ContactDetailsLoader as ContactDetails } from 'organisms'
+import { CustomerProfileLoader as CustomerProfile } from 'organisms'
 import { useLoaderWidth } from 'hooks'
 
 const Loader = () => (
@@ -10,7 +10,7 @@ const Loader = () => (
     </div>
 
     <div>
-      <ContactDetails />
+      <CustomerProfile />
     </div>
   </Columns>
 )

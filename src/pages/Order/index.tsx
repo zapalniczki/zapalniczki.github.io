@@ -2,7 +2,7 @@ import { getOrder } from 'api'
 import { DB_TABLES, Order } from 'braty-common'
 import { Columns, Page, QueryLoader } from 'components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
-import { ContactDetails } from 'organisms'
+import { CustomerProfile } from 'organisms'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
@@ -93,7 +93,7 @@ const Order = () => {
               />
 
               {orderContactDetails && (
-                <ContactDetails userId={order.customer_id} />
+                <CustomerProfile customerId={order.customer_id} />
               )}
             </div>
           </Columns>

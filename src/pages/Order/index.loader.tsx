@@ -1,7 +1,7 @@
 import { useLoaderWidth } from 'hooks'
 import React from 'react'
 import { ContentLoader, Columns } from 'components'
-import { ContactDetailsLoader as ContactDetails } from 'organisms'
+import { CustomerProfileLoader as CustomerProfile } from 'organisms'
 
 const Loader = () => (
   <Columns>
@@ -20,7 +20,7 @@ const Loader = () => (
 
       <Shipping />
 
-      <ContactDetails />
+      <CustomerProfile />
     </div>
   </Columns>
 )
