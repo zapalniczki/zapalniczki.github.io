@@ -1,7 +1,7 @@
 import { TypeOf } from 'zod'
-import { user } from 'braty-common'
+import { customer } from 'braty-common'
 
-const addCustomerResponse = user
+const addCustomerResponse = customer
 
 export type AddCustomerResponse = TypeOf<typeof addCustomerResponse>
 

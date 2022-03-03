@@ -1,7 +1,7 @@
-import { order, user } from 'braty-common'
+import { order, customer } from 'braty-common'
 import { array, TypeOf } from 'zod'
 
-const getCustomerOrdersResponseItem = user
+const getCustomerOrdersResponseItem = customer
   .pick({
     id: true,
     email: true

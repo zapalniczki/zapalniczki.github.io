@@ -8,7 +8,7 @@ import {
   orderItem,
   parcel,
   product,
-  user
+  customer
 } from 'braty-common'
 
 const getOrdersResponseItem = order
@@ -22,9 +22,9 @@ const getOrdersResponseItem = order
     is_test: true
   })
   .extend({
-    customerEmail: user.pick({ email: true }),
-    customerName: user.pick({ full_name: true }),
-    customerPhone: user.pick({ phone: true }),
+    customerEmail: customer.pick({ email: true }),
+    customerName: customer.pick({ full_name: true }),
+    customerPhone: customer.pick({ phone: true }),
     deliveryType: deliveryType.pick({
       label_en: true,
       label_pl: true

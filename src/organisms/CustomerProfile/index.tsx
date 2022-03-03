@@ -22,12 +22,11 @@ type Props = {
   hideProfileLink?: boolean
 }
 
-// TODO Should be renamed to ¬User/Customer Profile
 const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   const params = { id: customerId }
-  const customerQuery = useQuery([DB_TABLES.USERS, params], () =>
+  const customerQuery = useQuery([DB_TABLES.CUSTOMERS, params], () =>
     getCustomer(params)
   )
   const { customer } = useContext(remoteConfigContext)

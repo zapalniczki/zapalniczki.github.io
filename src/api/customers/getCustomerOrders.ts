@@ -1,4 +1,4 @@
-import { DB_TABLES, User } from 'braty-common'
+import { DB_TABLES, Customer } from 'braty-common'
 import {
   getCustomerOrdersResponseItem,
   GetCustomerOrdersResponseItem
@@ -9,11 +9,11 @@ import { array } from 'zod'
 
 type Params = {
   limit?: number
-} & Pick<User, 'email'>
+} & Pick<Customer, 'email'>
 
 export const getCustomerOrders = async ({ email, limit }: Params) => {
   const response = await supabase
-    .from<GetCustomerOrdersResponseItem>(DB_TABLES.USERS)
+    .from<GetCustomerOrdersResponseItem>(DB_TABLES.CUSTOMERS)
     .select(
       `
         id,

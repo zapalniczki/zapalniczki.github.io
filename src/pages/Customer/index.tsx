@@ -5,7 +5,7 @@ import React, { useContext } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { object } from 'zod'
 import RecentOrders from './RecentOrders'
-import { DB_TABLES, Order, ROUTES, user } from 'braty-common'
+import { DB_TABLES, Order, ROUTES, customer } from 'braty-common'
 import { useQuery } from 'react-query'
 import { getCustomerOrders } from 'api'
 import Loader from './index.loader'
@@ -30,7 +30,7 @@ const Customer = () => {
   const queryParams = {
     email: locationState.data.email
   }
-  const customerOrdersQuery = useQuery([DB_TABLES.USERS, queryParams], () =>
+  const customerOrdersQuery = useQuery([DB_TABLES.CUSTOMERS, queryParams], () =>
     getCustomerOrders(queryParams)
   )
 
@@ -40,18 +40,18 @@ const Customer = () => {
 
       <QueryLoader Loader={<Loader />} query={customerOrdersQuery}>
         {(data) => {
-          const userProfile = shapeData(data)
+          const customerProfile = shapeData(data)
 
           return (
             <Columns>
               <div>
-                <RecentOrders orders={userProfile.orders} />
+                <RecentOrders orders={customerProfile.orders} />
               </div>
 
               <div>
                 {customerContactDetails ? (
                   <CustomerProfile
-                    customerId={userProfile.id}
+                    customerId={customerProfile.id}
                     hideProfileLink
                   />
                 ) : null}
@@ -65,18 +65,18 @@ const Customer = () => {
 }
 
 const locationStateSchema = object({
-  email: user.shape.email
+  email: customer.shape.email
 })
 
 const shapeData = (
   rawData: GetCustomerOrdersResponseItem[]
 ): GetCustomerOrdersResponseItem => {
-  const user = rawData[0]
-  const allOrders: Order[] = rawData.map((user) => user.orders).flat()
+  const customer = rawData[0]
+  const allOrders: Order[] = rawData.map((customer) => customer.orders).flat()
 
-  user.orders = allOrders
+  customer.orders = allOrders
 
-  return user
+  return customer
 }
 
 export default Customer

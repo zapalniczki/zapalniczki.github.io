@@ -1,11 +1,11 @@
 import { signUp } from 'api'
 import { useFormSchema, useFormSubmit } from 'hooks'
-import { User } from 'braty-common'
+import { Customer } from 'braty-common'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
 
 export type FormValues = {
-  email: User['email']
+  email: Customer['email']
   newPassword: string
   passwordConfirmation: string
 }

@@ -1,13 +1,13 @@
 import { GetCustomerResponse, getCustomerResponse } from 'models'
 import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
-import { User, DB_TABLES } from 'braty-common'
+import { Customer, DB_TABLES } from 'braty-common'
 
-type Params = Pick<User, 'id'>
+type Params = Pick<Customer, 'id'>
 
 export const getCustomer = async ({ id }: Params) => {
   const response = await supabase
-    .from<GetCustomerResponse>(DB_TABLES.USERS)
+    .from<GetCustomerResponse>(DB_TABLES.CUSTOMERS)
     .select(
       `
         *,

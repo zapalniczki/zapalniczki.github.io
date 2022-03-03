@@ -1,7 +1,7 @@
 import { TypeOf } from 'zod'
-import { user, address } from 'braty-common'
+import { customer, address } from 'braty-common'
 
-const getCustomerResponse = user
+const getCustomerResponse = customer
   .pick({
     full_name: true,
     email: true,

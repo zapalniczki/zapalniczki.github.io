@@ -1,13 +1,13 @@
-import { DB_TABLES, User } from 'braty-common'
+import { DB_TABLES, Customer } from 'braty-common'
 import { AddCustomerResponse, addCustomerResponse } from 'models'
 import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
-type Payload = Omit<User, 'created_at' | 'updated_at' | 'id'>
+type Payload = Omit<Customer, 'created_at' | 'updated_at' | 'id'>
 
 export const addCustomer = async (payload: Payload) => {
   const response = await supabase
-    .from<AddCustomerResponse>(DB_TABLES.USERS)
+    .from<AddCustomerResponse>(DB_TABLES.CUSTOMERS)
     .insert([payload])
     .single()
 
