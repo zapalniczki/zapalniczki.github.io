@@ -11,6 +11,11 @@ import useForm from './useForm'
 
 type Props = SpaceProps
 
+//**
+ *
+ * @delete
+ *
+ */
 const CallMeBack = (props: Props) => {
   const commonT = useTranslation('COMMON').withBase('CALL_ME_BACK')
   const { initialValues, onSubmit, schema, setView, view } = useForm()

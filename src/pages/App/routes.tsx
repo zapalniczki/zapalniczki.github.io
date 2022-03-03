@@ -133,50 +133,50 @@ const routes: Route[] = [
   },
 
   {
-    Component: React.lazy(() => import('pages/AdminOrders')),
+    Component: React.lazy(() => import('pages/admin/AdminOrders')),
     admin: true,
     path: ROUTES.ADMIN_ORDERS,
     key: 'adminOrders'
   },
   {
-    Component: React.lazy(() => import('pages/AdminIcons')),
+    Component: React.lazy(() => import('pages/admin/AdminIcons')),
     admin: true,
     path: ROUTES.ADMIN_ICONS,
     key: 'adminIcons'
   },
   {
-    Component: React.lazy(() => import('pages/AdminLabels')),
+    Component: React.lazy(() => import('pages/admin/AdminLabels')),
     admin: true,
     path: ROUTES.ADMIN_LABELS,
     key: 'adminLabels'
   },
   {
-    Component: React.lazy(() => import('pages/AdminCallbacks')),
+    Component: React.lazy(() => import('pages/admin/AdminCallbacks')),
     admin: true,
     path: ROUTES.ADMIN_CALLBACKS,
     key: 'adminCallbacks'
   },
   {
-    Component: React.lazy(() => import('pages/AdminMarketing')),
+    Component: React.lazy(() => import('pages/admin/AdminMarketing')),
     admin: true,
     path: ROUTES.ADMIN_MARKETING,
     key: 'adminMarketing'
   },
   {
-    Component: React.lazy(() => import('pages/AdminDeliveryTypes')),
+    Component: React.lazy(() => import('pages/admin/AdminDeliveryTypes')),
     admin: true,
     path: ROUTES.ADMIN_DELIVERY_TYPES,
     key: 'adminDeliveryTypes'
   },
   {
-    Component: React.lazy(() => import('pages/AdminPaymentTypes')),
+    Component: React.lazy(() => import('pages/admin/AdminPaymentTypes')),
     admin: true,
     path: ROUTES.ADMIN_PAYMENT_TYPES,
     key: 'adminPaymentTypes'
   },
 
   {
-    Component: React.lazy(() => import('pages/AdminMolds')),
+    Component: React.lazy(() => import('pages/admin/AdminMolds')),
     admin: true,
     path: ROUTES.ADMIN_MOLDS,
     key: 'adminMolds'
