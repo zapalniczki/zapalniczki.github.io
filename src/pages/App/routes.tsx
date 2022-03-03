@@ -57,7 +57,7 @@ const routes: Route[] = [
     key: 'order'
   },
   {
-    Component: React.lazy(() => import('pages/CompanyOffer')),
+    Component: React.lazy(() => import('pages/grids/CompanyOffer')),
     path: ROUTES.COMPANY_OFFER,
     key: 'companyOffer',
     order: 5
@@ -110,7 +110,7 @@ const routes: Route[] = [
   },
 
   {
-    Component: React.lazy(() => import('pages/Christmas2021')),
+    Component: React.lazy(() => import('pages/grids/Christmas2021')),
     path: ROUTES.CHRISTMAS_2021,
     order: 2,
     icon: 'gift',
@@ -118,7 +118,7 @@ const routes: Route[] = [
   },
 
   {
-    Component: React.lazy(() => import('pages/ValentinesDay')),
+    Component: React.lazy(() => import('pages/grids/ValentinesDay')),
     path: ROUTES.VALENTINES_DAY,
     order: 2,
     icon: 'heart',
@@ -126,7 +126,7 @@ const routes: Route[] = [
   },
 
   {
-    Component: React.lazy(() => import('pages/Europe')),
+    Component: React.lazy(() => import('pages/grids/Europe')),
     path: ROUTES.EUROPE,
     order: 4,
     key: 'europe'
