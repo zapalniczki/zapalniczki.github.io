@@ -857,11 +857,12 @@ const pl = {
       ACCOUNT: {
         title: 'Dane do płatności',
         bankName: 'Nazwa banku',
-        ref: 'Tytuł',
-        // TODO
-        refVal: 'Numer referencyjny zamówienia',
+        bic: 'BIC',
+        recipient: 'Recipient',
         iban: 'IBAN',
-        bic: 'BIC'
+        titleRef: 'Tytuł',
+        // TODO
+        titleVal: 'Numer referencyjny zamówienia'
       }
     }
   },
@@ -951,9 +952,10 @@ const pl = {
         title: 'Dane do płatności',
         info: 'Zamówienie należy opłacić w ciągu 5 dni roboczych od potwierdzenia przez nas czasu realizacji.',
         LABELS: {
-          nrb: 'Numer konta',
+          iban: 'IBAN',
+          bic: 'BIC',
           amount: 'Kwota do zapłaty',
-          title: 'Tytuł płatności',
+          title: 'Tytuł',
           recipient: 'Odbiorca płatności',
           bankName: 'Nazwa banku'
         }

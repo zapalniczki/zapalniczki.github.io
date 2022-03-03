@@ -84,8 +84,8 @@ const useContactMethod = (): ContactMethod[] => {
             />
 
             <LabelledItem
-              item={t('items.ACCOUNT.refVal')}
-              label={t('items.ACCOUNT.ref')}
+              item={BRATY_BIC}
+              label={t('items.ACCOUNT.bic')}
               marginTop="2rem"
             />
 
@@ -96,8 +96,8 @@ const useContactMethod = (): ContactMethod[] => {
             />
 
             <LabelledItem
-              item={BRATY_BIC}
-              label={t('items.ACCOUNT.bic')}
+              item={t('items.ACCOUNT.titleVal')}
+              label={t('items.ACCOUNT.titleRef')}
               marginTop="2rem"
             />
           </TileContent>

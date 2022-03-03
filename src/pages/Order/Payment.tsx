@@ -1,9 +1,10 @@
 import {
   BRATY_ADDRESS_1,
-  BRATY_BANK_ACCOUNT,
-  BRATY_BANK_NAME
+  BRATY_BANK_NAME,
+  BRATY_BIC,
+  BRATY_IBAN
 } from 'braty-common'
-import { SectionHead, Tile, Text, LabelledItem, DisplayMoney } from 'components'
+import { DisplayMoney, LabelledItem, SectionHead, Text, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import React from 'react'
@@ -33,8 +34,8 @@ const Payment = ({ id, status, ...props }: Props) => {
       />
 
       <LabelledItem
-        item={BRATY_BANK_ACCOUNT}
-        label={t('LABELS.nrb')}
+        item={BRATY_BIC}
+        label={t('LABELS.bic')}
         marginTop="m-size"
       />
 
@@ -44,9 +45,16 @@ const Payment = ({ id, status, ...props }: Props) => {
         marginTop="m-size"
       />
 
+      <LabelledItem
+        item={BRATY_IBAN}
+        label={t('LABELS.iban')}
+        marginTop="m-size"
+      />
+
       <LabelledItem item={id} label={t('LABELS.title')} marginTop="m-size" />
 
       <LabelledItem
+        green
         item={<DisplayMoney>{total}</DisplayMoney>}
         label={t('LABELS.amount')}
         marginTop="m-size"

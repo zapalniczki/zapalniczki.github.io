@@ -855,10 +855,12 @@ const en: LanguageKeys = {
       ACCOUNT: {
         title: 'Payment details',
         bankName: 'Bank name',
-        ref: 'Title',
-        refVal: 'Order reference number',
+        bic: 'BIC',
+        recipient: 'Recipient',
         iban: 'IBAN',
-        bic: 'BIC'
+        titleRef: 'Title',
+        // TODO
+        titleVal: 'Order reference number'
       }
     }
   },
@@ -948,9 +950,10 @@ const en: LanguageKeys = {
         title: 'Payment details',
         info: 'Payment should be made within 5 working days from receiving order realization time confirmation.',
         LABELS: {
-          nrb: 'Account number',
+          iban: 'IBAN',
+          bic: 'BIC',
           amount: 'Outstanding amount',
-          title: 'Payment title',
+          title: 'Title',
           recipient: 'Recipient',
           bankName: 'Bank name'
         }
