@@ -1,13 +1,13 @@
-import { GetUserResponse, getUserResponse } from 'models'
+import { GetCustomerResponse, getCustomerResponse } from 'models'
 import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 import { User, DB_TABLES } from 'braty-common'
 
 type Params = Pick<User, 'id'>
 
-export const getUser = async ({ id }: Params) => {
+export const getCustomer = async ({ id }: Params) => {
   const response = await supabase
-    .from<GetUserResponse>(DB_TABLES.USERS)
+    .from<GetCustomerResponse>(DB_TABLES.USERS)
     .select(
       `
         *,
@@ -22,7 +22,7 @@ export const getUser = async ({ id }: Params) => {
     .eq('id', id)
     .single()
 
-  const data = parseApiResponse(getUserResponse, response)
+  const data = parseApiResponse(getCustomerResponse, response)
 
   return data
 }

@@ -1,7 +1,7 @@
 import { TypeOf } from 'zod'
 import { user, address } from 'braty-common'
 
-const getUserResponse = user
+const getCustomerResponse = user
   .pick({
     full_name: true,
     email: true,
@@ -18,6 +18,6 @@ const getUserResponse = user
     })
   })
 
-export type GetUserResponse = TypeOf<typeof getUserResponse>
+export type GetCustomerResponse = TypeOf<typeof getCustomerResponse>
 
-export default getUserResponse
+export default getCustomerResponse

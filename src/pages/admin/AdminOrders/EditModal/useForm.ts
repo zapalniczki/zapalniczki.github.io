@@ -1,7 +1,7 @@
 import {
   addParcel,
   editParcel,
-  getUser,
+  getCustomer,
   triggerSendEmail,
   updateOrderStatus
 } from 'api'
@@ -44,7 +44,7 @@ const useForm = (
 
     const { mutateAsync: mutateTriggerSendEmail } =
       useMutation(triggerSendEmail)
-    const { mutateAsync: mutateGetUser } = useMutation(getUser)
+    const { mutateAsync: mutateGetUser } = useMutation(getCustomer)
     const { mutateAsync: mutateUpdateOrderStatus } =
       useMutation(updateOrderStatus)
 

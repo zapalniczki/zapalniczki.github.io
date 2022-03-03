@@ -7,7 +7,7 @@ const Settings = () => {
   const t = useTranslation('CHECKOUT_RESULT').withBase('SETTINGS')
 
   const { checkout, setCheckout } = useContext(checkoutContext)
-  const hasUserData = !!(
+  const hasCustomerData = !!(
     checkout.contact_details &&
     checkout.delivery_type &&
     checkout.payment_type
@@ -18,8 +18,8 @@ const Settings = () => {
       <SectionHead separator title={t('title')} />
 
       <Switch
-        checked={hasUserData}
-        disabled={!hasUserData}
+        checked={hasCustomerData}
+        disabled={!hasCustomerData}
         flexDirection="row-reverse"
         label={t('safeMyDetails')}
         marginRight="auto"

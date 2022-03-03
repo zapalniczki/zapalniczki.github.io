@@ -7,9 +7,9 @@ import { object } from 'zod'
 import RecentOrders from './RecentOrders'
 import { DB_TABLES, Order, ROUTES, user } from 'braty-common'
 import { useQuery } from 'react-query'
-import { getUserOrders } from 'api'
+import { getCustomerOrders } from 'api'
 import Loader from './index.loader'
-import { GetUserOrdersResponseItem } from 'models'
+import { GetCustomerOrdersResponseItem } from 'models'
 import { remoteConfigContext } from 'providers'
 
 const Customer = () => {
@@ -30,15 +30,15 @@ const Customer = () => {
   const queryParams = {
     email: locationState.data.email
   }
-  const userOrdersQuery = useQuery([DB_TABLES.USERS, queryParams], () =>
-    getUserOrders(queryParams)
+  const customerOrdersQuery = useQuery([DB_TABLES.USERS, queryParams], () =>
+    getCustomerOrders(queryParams)
   )
 
   return (
     <Page>
       <Banner marginBottom="xxl-size" size="SMALL" title={t('title')} />
 
-      <QueryLoader Loader={<Loader />} query={userOrdersQuery}>
+      <QueryLoader Loader={<Loader />} query={customerOrdersQuery}>
         {(data) => {
           const userProfile = shapeData(data)
 
@@ -69,8 +69,8 @@ const locationStateSchema = object({
 })
 
 const shapeData = (
-  rawData: GetUserOrdersResponseItem[]
-): GetUserOrdersResponseItem => {
+  rawData: GetCustomerOrdersResponseItem[]
+): GetCustomerOrdersResponseItem => {
   const user = rawData[0]
   const allOrders: Order[] = rawData.map((user) => user.orders).flat()
 

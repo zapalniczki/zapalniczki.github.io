@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-newline */
-import { getUser } from 'api'
+import { getCustomer } from 'api'
 import { DB_TABLES, Order, ROUTES } from 'braty-common'
 import {
   Flexbox,
@@ -9,7 +9,7 @@ import {
   Separator,
   Text,
   Tile,
-  UserAvatar
+  CustomerAvatar
 } from 'components'
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
@@ -27,11 +27,13 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   const params = { id: customerId }
-  const userQuery = useQuery([DB_TABLES.USERS, params], () => getUser(params))
+  const customerQuery = useQuery([DB_TABLES.USERS, params], () =>
+    getCustomer(params)
+  )
   const { customer } = useContext(remoteConfigContext)
 
   return (
-    <QueryLoader Loader={<Loader />} query={userQuery}>
+    <QueryLoader Loader={<Loader />} query={customerQuery}>
       {(data) => {
         const nip = data.nip
 
@@ -53,7 +55,7 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
             />
 
             <Flexbox alignItems="center" flexDirection="column">
-              <UserAvatar company={!!nip} />
+              <CustomerAvatar company={!!nip} />
 
               <Text
                 fontWeight="bold"

@@ -1,6 +1,0 @@
-export * from './addUserResponse'
-export * from './getUserOrdersResponseItem'
-export * from './getUserResponse'
-export { default as addUserResponse } from './addUserResponse'
-export { default as getUserOrdersResponseItem } from './getUserOrdersResponseItem'
-export { default as getUserResponse } from './getUserResponse'

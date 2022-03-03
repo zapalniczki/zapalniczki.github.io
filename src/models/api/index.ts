@@ -67,5 +67,5 @@ export { default as updateNewsletterConsentResponse } from './updateNewsletterCo
 export { default as updateOrderStatusResponse } from './updateOrderStatusResponse'
 export { default as updatePaymentTypeResponse } from './updatePaymentTypeResponse'
 
-export * from './users'
+export * from './customers'
 export * from './addresses'
