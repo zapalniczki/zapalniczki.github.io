@@ -38,7 +38,7 @@ const ContactDetails = ({ hideProfileLink, userId }: Props) => {
         let profileLink = undefined
         if (customer && !hideProfileLink) {
           profileLink = {
-            to: ROUTES.USER,
+            to: ROUTES.CUSTOMER,
             options: { state: { email: data.email } },
             label: commonT('CONTACT_DETAILS.profile')
           }

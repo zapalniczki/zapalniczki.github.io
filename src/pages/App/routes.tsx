@@ -103,10 +103,9 @@ const routes: Route[] = [
 
   {
     Component: React.lazy(() => import('pages/Customer')),
-    path: ROUTES.USER,
+    path: ROUTES.CUSTOMER,
     // TODO This should be true
     // user: true,
-    // TODO Customer or user? Should be unified across
     key: 'customer'
   },
 

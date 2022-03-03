@@ -22,7 +22,7 @@ const SignIn = () => {
   const { initialValues, onSubmit, validationSchema } = useForm()
 
   if (isLoggedIn) {
-    return <Navigate to={ROUTES.USER} />
+    return <Navigate to={ROUTES.CUSTOMER} />
   }
 
   return (

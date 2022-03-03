@@ -19,7 +19,7 @@ const ProfileToggle = () => {
   return (
     <Button
       disabled={basketDisabledpathnames.includes(pathname)}
-      onClick={() => navigate(ROUTES.USER)}
+      onClick={() => navigate(ROUTES.CUSTOMER)}
       padding="s-size"
       title={commonT('profileToggleLabel')}
       type="button"
