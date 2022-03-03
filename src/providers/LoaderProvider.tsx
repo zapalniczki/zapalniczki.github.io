@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { changeColorAlpha } from 'utils'
 import { Spinner } from 'components'
-import getColor from 'styles/getColor'
+import { getColor } from 'styles'
 
 type LoaderContext = {
   hide: () => void

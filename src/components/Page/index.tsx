@@ -5,7 +5,7 @@ import { matchPath, useLocation } from 'react-router-dom'
 import Snowfall from 'react-snowfall'
 import styled from 'styled-components'
 import { FlexboxProps } from 'styled-system'
-import getSpace from 'styles/getSpace'
+import { getSpace } from 'styles'
 import Flexbox from '../Flexbox'
 import MaxWidth from '../MaxWidth'
 

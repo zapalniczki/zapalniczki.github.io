@@ -3,7 +3,7 @@ import Flexbox from '../Flexbox'
 import { useBreakpoints } from 'hooks'
 import React, { ReactNode } from 'react'
 import { OrderProps, SpaceProps } from 'styled-system'
-import { Color } from 'styles/theme'
+import { Color } from 'styles'
 
 export type Props = {
   background?: ReactNode

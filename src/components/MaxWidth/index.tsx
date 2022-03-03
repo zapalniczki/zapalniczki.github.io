@@ -1,9 +1,9 @@
 import { Flexbox } from 'components'
 import styled from 'styled-components'
 import { flexbox } from 'styled-system'
-import breakpoints from 'styles/breakpoints'
-import getSpace from 'styles/getSpace'
-import { MAX_WIDTH } from 'styles/theme'
+import { breakpoints } from 'styles'
+import { getSpace } from 'styles'
+import { MAX_WIDTH } from 'styles'
 
 type Props = { innerPadding?: boolean }
 const MaxWidth = styled(Flexbox)<Props>`

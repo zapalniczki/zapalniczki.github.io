@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import getSpace from 'styles/getSpace'
+import { getSpace } from 'styles'
 import Box, { boxStyleProps } from '../Box'
 
 const Grid = styled(Box)`

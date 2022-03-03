@@ -2,7 +2,7 @@ import { Box } from 'components'
 import React, { ReactNode } from 'react'
 import styled, { css, useTheme } from 'styled-components'
 import { LayoutProps, SpaceProps, TypographyProps } from 'styled-system'
-import { Color } from 'styles/theme'
+import { Color } from 'styles'
 
 type Props = {
   children: ReactNode

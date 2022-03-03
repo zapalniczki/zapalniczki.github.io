@@ -4,7 +4,7 @@ import React from 'react'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
-import getColor from 'styles/getColor'
+import { getColor } from 'styles'
 
 type Props = {
   children: ReactNode

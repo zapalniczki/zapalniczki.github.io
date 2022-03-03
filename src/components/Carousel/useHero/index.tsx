@@ -6,7 +6,7 @@ import React, { useContext } from 'react'
 import { Trans } from 'react-i18next'
 import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
-import { Theme } from 'styles/theme'
+import { Theme } from 'styles'
 import Christmas2021 from './Christmas2021'
 import YourPlaceInYourPoint from './YourPlaceInYourPoint'
 

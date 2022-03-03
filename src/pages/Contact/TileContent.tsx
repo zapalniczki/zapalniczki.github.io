@@ -2,9 +2,9 @@ import { Tile as TileComponent } from 'components'
 // eslint-disable-next-line no-restricted-imports
 import { boxStyleProps } from 'components/Box'
 import styled from 'styled-components'
-import breakpoints from 'styles/breakpoints'
-import getColor from 'styles/getColor'
-import getSpace from 'styles/getSpace'
+import { breakpoints } from 'styles'
+import { getColor } from 'styles'
+import { getSpace } from 'styles'
 
 const TileContent = styled(TileComponent)`
   background-color: ${getColor('gray-light')};

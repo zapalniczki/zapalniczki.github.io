@@ -2,8 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { i18nextPlugin } from 'translation-check'
 
-import pl from 'cms/pl'
-import en from 'cms/en'
+import { pl, en } from 'cms'
 import { Language } from 'braty-common'
 
 export const keySeparator = '.'

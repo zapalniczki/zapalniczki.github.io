@@ -1,0 +1,10 @@
+export { default as breakpoints } from './breakpoints'
+export { default as getColor } from './getColor'
+export { default as getFontSize } from './getFontSize'
+export { default as getRadius } from './getRadius'
+export { default as getShadow } from './getShadow'
+export { default as getSpace } from './getSpace'
+export { default as theme } from './theme'
+export { default as GlobalStyle } from './GlobalStyle'
+
+export * from './theme'

@@ -45,14 +45,16 @@
       {
         "paths": ["date-fns"],
         "patterns": [
-          "components/*",
           "api/*",
+          "cms/*",
+          "components/*",
           "commonComponents/*",
           "models/*",
           "pages/*",
           "providers/*",
           "utils/*",
           "hooks/*",
+          "styles/*",
           "organisms/*"
         ]
       }

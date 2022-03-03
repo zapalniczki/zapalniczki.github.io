@@ -13,9 +13,9 @@ import {
   BorderRadiusProps,
   borderRadius
 } from 'styled-system'
-import getColor from 'styles/getColor'
-import getShadow from 'styles/getShadow'
-import getSpace from 'styles/getSpace'
+import { getColor } from 'styles'
+import { getShadow } from 'styles'
+import { getSpace } from 'styles'
 
 type Props = {
   children?: ReactNode

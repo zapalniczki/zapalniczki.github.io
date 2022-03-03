@@ -5,8 +5,8 @@ import React from 'react'
 import { Column, useTable } from 'react-table'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
-import getColor from 'styles/getColor'
-import getSpace from 'styles/getSpace'
+import { getColor } from 'styles'
+import { getSpace } from 'styles'
 
 type DataConstraint = Record<
   string,

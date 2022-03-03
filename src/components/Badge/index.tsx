@@ -1,8 +1,8 @@
 import Flexbox from '../Flexbox'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import getColor from 'styles/getColor'
-import getSpace from 'styles/getSpace'
+import { getColor } from 'styles'
+import { getSpace } from 'styles'
 
 type BaseProps = {
   children?: ReactNode

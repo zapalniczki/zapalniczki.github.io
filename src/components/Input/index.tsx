@@ -3,9 +3,9 @@ import { FieldProps } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
-import getColor from 'styles/getColor'
-import getSpace from 'styles/getSpace'
-import getRadius from 'styles/getRadius'
+import { getColor } from 'styles'
+import { getSpace } from 'styles'
+import { getRadius } from 'styles'
 
 type Props = FieldProps<string> & {
   autocomplete?: string

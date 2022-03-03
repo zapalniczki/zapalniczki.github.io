@@ -1,7 +1,7 @@
 import { Link } from 'components'
 import styled from 'styled-components'
-import getColor from 'styles/getColor'
-import getSpace from 'styles/getSpace'
+import { getColor } from 'styles'
+import { getSpace } from 'styles'
 
 const NavigationLink = styled(Link)`
   padding: ${(props) =>

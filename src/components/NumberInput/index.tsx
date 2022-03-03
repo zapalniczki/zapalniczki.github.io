@@ -1,9 +1,9 @@
 import React from 'react'
 import { Flexbox, Button, INPUT_HEIGHT } from 'components'
 import styled from 'styled-components'
-import getColor from 'styles/getColor'
+import { getColor } from 'styles'
 import { FieldProps, useField } from 'formik'
-import getSpace from 'styles/getSpace'
+import { getSpace } from 'styles'
 
 type Props = FieldProps<number> & {
   max?: number

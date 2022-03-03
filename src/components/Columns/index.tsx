@@ -1,8 +1,8 @@
 import { Flexbox } from 'components'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import breakpoints from 'styles/breakpoints'
-import getSpace from 'styles/getSpace'
+import { breakpoints } from 'styles'
+import { getSpace } from 'styles'
 
 type Props = {
   children: ReactNode

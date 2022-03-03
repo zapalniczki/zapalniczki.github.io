@@ -2,10 +2,10 @@ import { Button, Flexbox } from 'components'
 import { useTranslation } from 'hooks'
 import styled from 'styled-components'
 import React from 'react'
-import getColor from 'styles/getColor'
-import getSpace from 'styles/getSpace'
-import getRadius from 'styles/getRadius'
-import getFontSize from 'styles/getFontSize'
+import { getColor } from 'styles'
+import { getSpace } from 'styles'
+import { getRadius } from 'styles'
+import { getFontSize } from 'styles'
 
 type Props = {
   onChange: (value: string) => void

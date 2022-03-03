@@ -1,8 +1,8 @@
 import { Box } from 'components'
 import styled from 'styled-components'
 import { space, layout } from 'styled-system'
-import getColor from 'styles/getColor'
-import getSpace from 'styles/getSpace'
+import { getColor } from 'styles'
+import { getSpace } from 'styles'
 
 const Separator = styled(Box)`
   width: 100%;

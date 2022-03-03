@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+// eslint-disable-next-line no-restricted-imports
 import { Breakpoint, breakpoints as breakpointsDefinition } from 'styles/theme'
 import debounce from 'lodash/fp/debounce'
 

@@ -5,7 +5,7 @@ import React from 'react'
 import { Link as RouterLink, LinkProps } from 'react-router-dom'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
-import getColor from 'styles/getColor'
+import { getColor } from 'styles'
 
 type Props = LinkProps & {
   active?: boolean

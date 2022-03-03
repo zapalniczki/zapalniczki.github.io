@@ -3,8 +3,8 @@ import { Flexbox, Text } from 'components'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
-import getColor from 'styles/getColor'
-import { Color } from 'styles/theme'
+import { getColor } from 'styles'
+import { Color } from 'styles'
 import Loader from './index.loader'
 
 type Props = {

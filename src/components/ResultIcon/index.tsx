@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'
 import { IconName } from '@fortawesome/fontawesome-svg-core'
-import { Color } from 'styles/theme'
+import { Color } from 'styles'
 
 type Props = {
   size?: '5x' | '2x' | '1x' | '3x'

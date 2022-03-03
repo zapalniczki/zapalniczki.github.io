@@ -5,8 +5,8 @@ import { Loader } from 'providers'
 import React, { useState } from 'react'
 import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
 import styled, { useTheme } from 'styled-components'
-import breakpoints from 'styles/breakpoints'
-import getSpace from 'styles/getSpace'
+import { breakpoints } from 'styles'
+import { getSpace } from 'styles'
 
 const CookiesConsent = () => {
   const commonT = useTranslation('COMMON').withBase('COOKIES_CONSENT')

@@ -2,9 +2,9 @@ import { Flexbox, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import styled from 'styled-components'
-import getColor from 'styles/getColor'
+import { getColor } from 'styles'
 import { MoldStatus } from 'braty-common'
-import getSpace from 'styles/getSpace'
+import { getSpace } from 'styles'
 
 type Props = {
   status: MoldStatus
