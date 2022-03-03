@@ -1,12 +1,18 @@
 import { Box, Button, SectionHead, Text, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 
 type Props = Pick<GetOrderResponse, 'invoice'>
 
 const Invoice = ({ invoice }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.INVOICE')
+  const { orderInvoice } = useContext(remoteConfigContext)
+
+  if (!orderInvoice) {
+    return null
+  }
 
   return (
     <Tile>

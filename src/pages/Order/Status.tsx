@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Tile,
   Text,
@@ -8,6 +8,7 @@ import {
 } from 'components'
 import { useTranslation } from 'hooks'
 import { Order } from 'braty-common'
+import { remoteConfigContext } from 'providers'
 
 type Props = {
   status: Order['status']
@@ -16,6 +17,11 @@ type Props = {
 const Status = ({ status }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.STATUS')
+  const { orderStatus } = useContext(remoteConfigContext)
+
+  if (!orderStatus) {
+    return null
+  }
 
   return (
     <Tile>

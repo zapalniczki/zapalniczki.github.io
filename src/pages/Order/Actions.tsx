@@ -11,7 +11,7 @@ import {
 import { useTranslation } from 'hooks'
 import uniq from 'lodash.uniq'
 import { BasketItem, GetOrderResponse } from 'models'
-import { checkoutContext } from 'providers'
+import { checkoutContext, remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 import { combineProductDataAndBasketItem } from 'utils'
@@ -21,6 +21,11 @@ type Props = Pick<GetOrderResponse, 'products' | 'status'>
 const Actions = ({ products, status }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.ACTIONS')
   const { setCheckout } = useContext(checkoutContext)
+  const { orderActions } = useContext(remoteConfigContext)
+
+  if (!orderActions) {
+    return null
+  }
 
   const ids = products.map((e) => e.product_id)
   const productsQuery = useQuery([DB_TABLES.PRODUCTS, ids], () =>

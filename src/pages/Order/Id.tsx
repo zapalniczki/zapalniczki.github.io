@@ -1,7 +1,8 @@
 import { Text, Heading, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { Order } from 'braty-common'
-import React from 'react'
+import React, { useContext } from 'react'
+import { remoteConfigContext } from 'providers'
 
 type Props = {
   id: Order['id']
@@ -9,6 +10,11 @@ type Props = {
 
 const Id = ({ id }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.ID')
+  const { orderId } = useContext(remoteConfigContext)
+
+  if (!orderId) {
+    return null
+  }
 
   return (
     <Tile>

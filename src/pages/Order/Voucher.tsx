@@ -1,15 +1,17 @@
 import { LabelledItem, SectionHead, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 
 type Props = Pick<GetOrderResponse, 'voucher'>
 
 const Voucher = ({ voucher }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.VOUCHER')
   const { language } = useTranslation('ORDER')
+  const { orderVoucher } = useContext(remoteConfigContext)
 
-  if (!voucher) {
+  if (!orderVoucher || !voucher) {
     return null
   }
 

@@ -9,7 +9,8 @@ import {
 } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { getLanguageLabel } from 'utils'
 
 type Props = {
@@ -21,6 +22,11 @@ type Props = {
 const Shipping = ({ deliveryType, parcel, shipping }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.SHIPPING')
   const { language, t: commonT } = useTranslation('COMMON')
+  const { orderShipping } = useContext(remoteConfigContext)
+
+  if (!orderShipping) {
+    return null
+  }
 
   const label = getLanguageLabel({
     language,

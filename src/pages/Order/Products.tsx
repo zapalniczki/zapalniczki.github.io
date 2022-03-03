@@ -13,7 +13,8 @@ import {
 import { useTranslation } from 'hooks'
 import { multiply } from 'lodash'
 import { GetOrderResponse } from 'models'
-import React, { useMemo } from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext, useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { generatePath } from 'react-router'
 import {
@@ -31,6 +32,11 @@ type Props = {
 const Products = ({ products }: Props) => {
   const { language, t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PRODUCTS')
+  const { orderProducts } = useContext(remoteConfigContext)
+
+  if (!orderProducts) {
+    return null
+  }
 
   const ids = products.map((e) => e.product_id)
   const productsQuery = useQuery([DB_TABLES.PRODUCTS, ids], () =>

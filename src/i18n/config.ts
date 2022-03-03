@@ -45,7 +45,7 @@ const namespacesPL = {
   ORDER: pl.ORDER,
   SIGN_IN: pl.SIGN_IN,
   SIGN_UP: pl.SIGN_UP,
-  USER: pl.USER
+  CUSTOMER: pl.CUSTOMER
 }
 
 const namespacesEN: Namespaces = {
@@ -84,7 +84,7 @@ const namespacesEN: Namespaces = {
   SIGN_UP: en.SIGN_UP,
 
   ORDER: en.ORDER,
-  USER: en.USER
+  CUSTOMER: en.CUSTOMER
 }
 
 i18n

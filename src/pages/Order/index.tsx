@@ -3,7 +3,8 @@ import { DB_TABLES, Order } from 'braty-common'
 import { Columns, Page, QueryLoader } from 'components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { ContactDetails } from 'organisms'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
 import Actions from './Actions'
@@ -21,6 +22,7 @@ import Voucher from './Voucher'
 const Order = () => {
   const { t } = useTranslation('ORDER')
   const { id } = useParams<'id'>()
+  const { orderContactDetails } = useContext(remoteConfigContext)
 
   usePageTitle(`${t('title')} ${id}`)
   useScrollTop()
@@ -90,7 +92,7 @@ const Order = () => {
                 shipping={order.shipping}
               />
 
-              <ContactDetails userId={order.user_id} />
+              {orderContactDetails && <ContactDetails userId={order.user_id} />}
             </div>
           </Columns>
         )}

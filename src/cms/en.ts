@@ -627,7 +627,7 @@ const en: LanguageKeys = {
     buttonLabel: 'Go to home'
   },
 
-  USER: {
+  CUSTOMER: {
     title: 'Customer profile',
 
     RECENT_ORDERS: {

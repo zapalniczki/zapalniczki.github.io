@@ -102,7 +102,7 @@ const routes: Route[] = [
   },
 
   {
-    Component: React.lazy(() => import('pages/User')),
+    Component: React.lazy(() => import('pages/Customer')),
     path: ROUTES.USER,
     // TODO This should be true
     // user: true,

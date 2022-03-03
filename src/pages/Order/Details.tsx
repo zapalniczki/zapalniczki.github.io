@@ -1,13 +1,19 @@
 import { DisplayDate, LabelledItem, SectionHead, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { formatDate } from 'utils'
 
 type Props = Pick<GetOrderResponse, 'created_at' | 'updated_at' | 'products'>
 
 const Details = ({ created_at, products, updated_at }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.DETAILS')
+  const { orderDetails } = useContext(remoteConfigContext)
+
+  if (!orderDetails) {
+    return null
+  }
 
   const productCount = products
     .map((product) => product.quantity)

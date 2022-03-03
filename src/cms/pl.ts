@@ -629,7 +629,7 @@ const pl = {
     buttonLabel: 'Przejdź na stronę główną'
   },
 
-  USER: {
+  CUSTOMER: {
     title: 'Konto użytkownika',
 
     RECENT_ORDERS: {

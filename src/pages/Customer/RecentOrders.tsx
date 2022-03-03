@@ -9,15 +9,21 @@ import {
   DisplayDate
 } from 'components'
 import { useTranslation } from 'hooks'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { generatePath } from 'react-router-dom'
 
 type Props = {
   orders: Order[]
 }
 
-const Orders = ({ orders }: Props) => {
-  const t = useTranslation('USER').withBase('RECENT_ORDERS')
+const RecentOrders = ({ orders }: Props) => {
+  const t = useTranslation('CUSTOMER').withBase('RECENT_ORDERS')
+  const { customerRecentOrders } = useContext(remoteConfigContext)
+
+  if (!customerRecentOrders) {
+    return null
+  }
 
   const isEmpty = !orders.length
 
@@ -52,4 +58,4 @@ const Orders = ({ orders }: Props) => {
   )
 }
 
-export default Orders
+export default RecentOrders

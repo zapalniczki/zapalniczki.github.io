@@ -8,7 +8,8 @@ import {
 } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 import { getVatAmount } from 'utils'
 
 type Props = Pick<
@@ -28,6 +29,11 @@ type Props = Pick<
 const Billing = ({ ...props }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.BILLING')
   const { language } = useTranslation('ORDER')
+  const { orderBilling } = useContext(remoteConfigContext)
+
+  if (!orderBilling) {
+    return null
+  }
 
   const discount = props[`discount_${language}`]
   const deliveryPrice = props[`delivery_price_${language}`]

@@ -7,13 +7,19 @@ import {
 import { DisplayMoney, LabelledItem, SectionHead, Text, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
-import React from 'react'
+import { remoteConfigContext } from 'providers'
+import React, { useContext } from 'react'
 
 type Props = Pick<GetOrderResponse, 'id' | 'total_pl' | 'total_en' | 'status'>
 
 const Payment = ({ id, status, ...props }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.PAYMENT')
   const { language } = useTranslation('ORDER')
+  const { orderPayment } = useContext(remoteConfigContext)
+
+  if (!orderPayment) {
+    return null
+  }
 
   if (status !== 'CONFIRMED') {
     return null

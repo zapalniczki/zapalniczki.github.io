@@ -1,19 +1,21 @@
 import { Banner, Columns, Page, QueryLoader } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { ContactDetails } from 'organisms'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { object } from 'zod'
-import Orders from './Orders'
+import RecentOrders from './RecentOrders'
 import { DB_TABLES, Order, ROUTES, user } from 'braty-common'
 import { useQuery } from 'react-query'
 import { getUserOrders } from 'api'
 import Loader from './index.loader'
 import { GetUserOrdersResponseItem } from 'models'
+import { remoteConfigContext } from 'providers'
 
-const User = () => {
+const Customer = () => {
   // TODO Add user auth here
-  const { t } = useTranslation('USER')
+  const { t } = useTranslation('CUSTOMER')
+  const { customerContactDetails } = useContext(remoteConfigContext)
 
   useScrollTop()
   usePageTitle(t('title'))
@@ -43,11 +45,13 @@ const User = () => {
           return (
             <Columns>
               <div>
-                <Orders orders={userProfile.orders} />
+                <RecentOrders orders={userProfile.orders} />
               </div>
 
               <div>
-                <ContactDetails hideProfileLink userId={userProfile.id} />
+                {customerContactDetails ? (
+                  <ContactDetails hideProfileLink userId={userProfile.id} />
+                ) : null}
               </div>
             </Columns>
           )
@@ -72,4 +76,4 @@ const shapeData = (
   return user
 }
 
-export default User
+export default Customer
