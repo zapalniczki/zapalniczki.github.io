@@ -13,7 +13,7 @@ const UserAvatar = ({ company }: Props) => {
   return (
     <Flexbox
       alignItems="center"
-      backgroundColor="dark-medium"
+      backgroundColor="gray-light"
       borderRadius="50%"
       justifyContent="center"
       maxHeight={SIZE}
@@ -22,7 +22,7 @@ const UserAvatar = ({ company }: Props) => {
       minWidth={SIZE}
     >
       <FontAwesomeIcon
-        color={colors.white}
+        color={colors['gray-medium']}
         icon={company ? 'building' : 'user-alt'}
         size="3x"
       />

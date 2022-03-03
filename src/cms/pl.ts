@@ -42,6 +42,8 @@ const pl = {
 
     CONTACT_DETAILS: {
       title: 'Dane kontaktowe',
+      email: 'Email',
+      phone: 'Telefon',
       address: 'Adres',
       shippings: 'Adres do wysyłki',
       nip: 'NIP',

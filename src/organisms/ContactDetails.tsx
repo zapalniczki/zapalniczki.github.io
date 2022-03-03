@@ -67,15 +67,21 @@ const ContactDetails = ({ hideProfileLink, userId }: Props) => {
               <Text type="caption">
                 {commonT(`customerTypes.${nip ? 'COMPANY' : 'INDIVIDUAL'}`)}
               </Text>
-
-              <Text marginTop="m-size" type="body-1">
-                {data.email}
-              </Text>
-
-              <Text type="body-2">{data.phone}</Text>
             </Flexbox>
 
             <Separator />
+
+            <LabelledItem
+              item={data.email}
+              label={commonT('CONTACT_DETAILS.email')}
+              marginBottom="m-size"
+            />
+
+            <LabelledItem
+              item={data.phone}
+              label={commonT('CONTACT_DETAILS.phone')}
+              marginBottom="m-size"
+            />
 
             {nip && (
               <LabelledItem

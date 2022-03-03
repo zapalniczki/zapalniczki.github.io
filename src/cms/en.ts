@@ -42,6 +42,8 @@ const en: LanguageKeys = {
 
     CONTACT_DETAILS: {
       title: 'Contact details',
+      email: 'Email',
+      phone: 'Phone',
       address: 'Address',
       shippings: 'Shipping address',
       nip: 'VAT number',
