@@ -15,7 +15,7 @@ export const getUserOrders = async ({ email, limit }: Params) => {
       `
         id,
         email,
-        orders: ${DB_TABLES.ORDER}!user_id (
+        orders: ${DB_TABLES.ORDER}!customer_id (
           *
         )
       `

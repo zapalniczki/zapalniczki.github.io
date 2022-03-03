@@ -92,7 +92,9 @@ const Order = () => {
                 shipping={order.shipping}
               />
 
-              {orderContactDetails && <ContactDetails userId={order.user_id} />}
+              {orderContactDetails && (
+                <ContactDetails userId={order.customer_id} />
+              )}
             </div>
           </Columns>
         )}

@@ -19,7 +19,7 @@ import Loader from './ContactDetails.loader'
 
 type Props = {
   hideProfileLink?: boolean
-  userId: Order['user_id']
+  userId: Order['customer_id']
 }
 
 // TODO Should be renamed to ¬User/Customer Profile

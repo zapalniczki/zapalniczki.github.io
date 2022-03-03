@@ -76,7 +76,7 @@ const useForm = (
         })
 
         const userResponse = await mutateGetUser({
-          id: orderResponse.user_id
+          id: orderResponse.customer_id
         })
 
         if (!isNoEmail) {

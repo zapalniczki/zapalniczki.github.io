@@ -22,13 +22,13 @@ export const getOrders = async ({ is_test, status }: Params) => {
       total_en,
       updated_at,
       created_at,
-      customerName: ${DB_TABLES.USERS}!user_id (
+      customerName: ${DB_TABLES.USERS}!customer_id (
         full_name
       ),
-      customerPhone: ${DB_TABLES.USERS}!user_id (
+      customerPhone: ${DB_TABLES.USERS}!customer_id (
         phone
       ),
-      customerEmail: ${DB_TABLES.USERS}!user_id (
+      customerEmail: ${DB_TABLES.USERS}!customer_id (
         email
       ),
       status,
