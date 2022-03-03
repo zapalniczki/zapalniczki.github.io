@@ -1,6 +1,6 @@
 import { DB_TABLES, Order } from 'braty-common'
 import { getOrderResponse, GetOrderResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Props = {

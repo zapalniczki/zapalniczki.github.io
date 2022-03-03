@@ -1,6 +1,6 @@
 import { DB_TABLES, Product } from 'braty-common'
 import { GetProductResponse, getProductResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Params = {

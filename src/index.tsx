@@ -44,7 +44,7 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding'
 import { faCookieBite } from '@fortawesome/free-solid-svg-icons/faCookieBite'
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 
-import i18n from 'i18n/config'
+import { i18n } from 'config'
 import {
   AuthProvider,
   TogglesProvider,
@@ -63,7 +63,7 @@ import { theme } from 'styles'
 import { App } from './pages'
 import ReactGA from 'react-ga'
 import { HashRouter } from 'react-router-dom'
-import envs from 'envs'
+import { envs } from 'config'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 ReactGA.initialize(envs.measurementId)

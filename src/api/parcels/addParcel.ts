@@ -1,6 +1,6 @@
 import { DB_TABLES, Parcel } from 'braty-common'
 import { addParcelResponse, AddParcelResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Payload = Omit<Parcel, 'created_at' | 'updated_at' | 'id'>

@@ -1,5 +1,5 @@
 import { BasketItem, rpcAddOrderResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 import { Voucher } from 'braty-common'
 

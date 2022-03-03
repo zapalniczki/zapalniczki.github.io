@@ -4,7 +4,7 @@ import { ROUTES } from 'braty-common'
 import React, { createContext, ReactNode, useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
-import supabase from 'supabase'
+import { supabase } from 'config'
 
 type AuthContexType = {
   auth?: Session | null

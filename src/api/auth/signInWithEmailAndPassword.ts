@@ -1,5 +1,5 @@
 import { User } from 'braty-common'
-import supabase from 'supabase'
+import { supabase } from 'config'
 
 type Payload = {
   email: User['email']

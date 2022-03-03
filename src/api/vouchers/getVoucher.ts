@@ -1,5 +1,5 @@
 import { DB_TABLES, voucher, Voucher } from 'braty-common'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Payload = Pick<Voucher, 'id'>

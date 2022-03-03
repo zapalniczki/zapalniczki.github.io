@@ -1,6 +1,6 @@
 import { DB_TABLES, DeliveryType } from 'braty-common'
 import { updateDeliveryTypeResponse, UpdateDeliveryTypeResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Payload = Pick<DeliveryType, 'id' | 'is_enabled'>

@@ -1,6 +1,6 @@
 import { DB_TABLES, Order } from 'braty-common'
 import { getInvoiceResponse, GetInvoiceResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Params = {

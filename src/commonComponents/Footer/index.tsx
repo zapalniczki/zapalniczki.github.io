@@ -9,7 +9,7 @@ import {
   Separator,
   Text
 } from 'components'
-import envs from 'envs'
+import { envs } from 'config'
 import { useAdmin, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'

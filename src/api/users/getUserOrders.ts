@@ -1,6 +1,6 @@
 import { DB_TABLES, User } from 'braty-common'
 import { getUserOrdersResponseItem, GetUserOrdersResponseItem } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 

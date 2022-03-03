@@ -1,6 +1,6 @@
 import { DB_TABLES, Order } from 'braty-common'
 import { addOrderResponse, AddOrderResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Payload = Omit<Order, 'id' | 'created_at' | 'updated_at' | 'status'>

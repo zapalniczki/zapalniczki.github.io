@@ -1,6 +1,6 @@
 import { DB_TABLES, OrderItem } from 'braty-common'
 import { AddOrderItemResponse, addOrderItemResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 

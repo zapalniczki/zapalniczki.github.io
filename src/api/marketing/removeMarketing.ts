@@ -1,6 +1,6 @@
 import { DB_TABLES, Marketing } from 'braty-common'
 import { RemoveMarketingResponse, removeMarketingResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 

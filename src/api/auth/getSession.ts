@@ -1,4 +1,4 @@
-import supabase from 'supabase'
+import { supabase } from 'config'
 
 export const getSession = async () => {
   const session = supabase.auth.session()

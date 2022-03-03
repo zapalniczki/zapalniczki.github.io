@@ -1,6 +1,6 @@
 import { DB_TABLES, Voucher } from 'braty-common'
 import { addVoucherResponse, AddVoucherResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Payload = Pick<Voucher, 'id' | 'is_used'>

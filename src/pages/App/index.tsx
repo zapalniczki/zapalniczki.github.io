@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
 import AppRouter from './AppRouter'
-import envs from '../../envs'
+import { envs } from 'config'
 
 const App = () => {
   const { auth } = useContext(authContext)

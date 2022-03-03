@@ -1,6 +1,6 @@
 import { DB_TABLES, Order } from 'braty-common'
 import { GetOrdersResponseItem } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 
 type Params = Pick<Order, 'status' | 'is_test'>
 

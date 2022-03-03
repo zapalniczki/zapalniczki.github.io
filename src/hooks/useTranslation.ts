@@ -4,11 +4,7 @@ import {
   UseTranslationOptions,
   UseTranslationResponse
 } from 'react-i18next'
-import {
-  TranslationsNamespace,
-  keySeparator,
-  FALLBACK_LANGUAGE
-} from 'i18n/config'
+import { TranslationsNamespace, keySeparator, FALLBACK_LANGUAGE } from 'config'
 import { useCallback } from 'react'
 import { Language, language as languageSchema } from 'braty-common'
 

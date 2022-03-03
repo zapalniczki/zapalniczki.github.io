@@ -1,6 +1,6 @@
 import { DB_TABLES, Marketing } from 'braty-common'
 import { AddMarketingResponse, addMarketingResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Payload = Omit<Marketing, 'id' | 'created_at' | 'updated_at'>

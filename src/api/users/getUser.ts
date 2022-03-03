@@ -1,5 +1,5 @@
 import { GetUserResponse, getUserResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 import { User, DB_TABLES } from 'braty-common'
 

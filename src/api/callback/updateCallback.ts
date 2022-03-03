@@ -1,6 +1,6 @@
 import { Callback, DB_TABLES } from 'braty-common'
 import { updateCallbackResponse, UpdateCallbackResponse } from 'models'
-import supabase from 'supabase'
+import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
 type Payload = Pick<Callback, 'done' | 'id'>
