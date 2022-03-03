@@ -140,6 +140,7 @@ const CheckoutTotal = ({
       <Separator />
 
       <LabelledItem
+        green
         horizontal
         item={<DisplayMoney>{total}</DisplayMoney>}
         label={commonT('total')}
@@ -148,9 +149,13 @@ const CheckoutTotal = ({
       <LabelledItem
         bold={false}
         horizontal
-        item={<DisplayMoney>{vat}</DisplayMoney>}
         label={commonT('vat')}
-      />
+        labelTextType="caption"
+      >
+        <Text type="caption">
+          <DisplayMoney>{vat}</DisplayMoney>
+        </Text>
+      </LabelledItem>
 
       <Button
         icon="arrow-right"

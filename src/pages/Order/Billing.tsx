@@ -3,6 +3,7 @@ import {
   LabelledItem,
   SectionHead,
   Separator,
+  Text,
   Tile
 } from 'components'
 import { useTranslation } from 'hooks'
@@ -40,46 +41,49 @@ const Billing = ({ ...props }: Props) => {
       <SectionHead separator title={t('title')} />
 
       <LabelledItem
+        horizontal
         item={<DisplayMoney>{productsPrice}</DisplayMoney>}
         label={t('LABELS.products_price')}
       />
 
       {deliveryPrice ? (
         <LabelledItem
+          horizontal
           item={<DisplayMoney>{deliveryPrice}</DisplayMoney>}
           label={t('LABELS.delivery_price')}
-          marginTop="m-size"
         />
       ) : null}
 
       {paymentPrice ? (
         <LabelledItem
+          horizontal
           item={<DisplayMoney>{paymentPrice}</DisplayMoney>}
           label={t('LABELS.payment_price')}
-          marginTop="m-size"
         />
       ) : null}
 
       {discount ? (
         <LabelledItem
+          horizontal
           item={<DisplayMoney negative>{discount}</DisplayMoney>}
           label={t('LABELS.discount')}
-          marginTop="m-size"
         />
       ) : null}
 
       <Separator />
 
       <LabelledItem
+        green
+        horizontal
         item={<DisplayMoney>{total}</DisplayMoney>}
         label={t('LABELS.grand_total')}
       />
 
-      <LabelledItem
-        item={<DisplayMoney>{vat}</DisplayMoney>}
-        label={t('LABELS.vat')}
-        marginTop="m-size"
-      />
+      <LabelledItem horizontal label={t('LABELS.vat')} labelTextType="caption">
+        <Text type="caption">
+          <DisplayMoney>{vat}</DisplayMoney>
+        </Text>
+      </LabelledItem>
     </Tile>
   )
 }

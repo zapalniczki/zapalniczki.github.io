@@ -2,9 +2,11 @@ import { Box } from 'components'
 import React, { ReactNode } from 'react'
 import styled, { css, useTheme } from 'styled-components'
 import { LayoutProps, SpaceProps, TypographyProps } from 'styled-system'
+import { Color } from 'styles/theme'
 
 type Props = {
   children: ReactNode
+  color?: Color
   span?: boolean
   type: Type
   white?: boolean
@@ -13,15 +15,18 @@ type Props = {
   TypographyProps &
   LayoutProps
 
-const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
+const Text = ({
+  children,
+  color,
+  span,
+  type,
+  wrap = true,
+  ...props
+}: Props) => {
   const { fontSizes, fontWeigths, letterSpacings } = useTheme()
-  let color = 'paragraph-color'
+  const fontColor = color ?? 'paragraph-color'
   if (props.white) {
     color = 'white'
-  }
-
-  if (type === 'button') {
-    color = 'inherit'
   }
 
   let fontSize: string, fontWeight: string, letterSpacing: string
@@ -74,7 +79,7 @@ const Text = ({ children, span, type, wrap = true, ...props }: Props) => {
     <Container
       $wrap={wrap}
       as={span ? 'span' : 'p'}
-      color={color}
+      color={type === 'button' ? 'inherit' : fontColor}
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}
@@ -104,7 +109,7 @@ const Container = styled(Box)<ContainerProps>`
         `}
 `
 
-type Type =
+export type Type =
   | 'subtitle-1'
   | 'subtitle-2'
   | 'body-1'

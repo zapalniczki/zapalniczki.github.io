@@ -939,7 +939,7 @@ const en: LanguageKeys = {
           delivery_price: 'Delivery',
           payment_price: 'Payment',
           discount: 'Discount',
-          grand_total: 'Total to pay',
+          grand_total: 'Total',
           vat: '(including 23% TAX)'
         }
       },
