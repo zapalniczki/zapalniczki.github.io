@@ -1,4 +1,4 @@
-import { Chip } from 'components'
+import Chip from '../Chip'
 import { useTranslation } from 'hooks'
 import { Order } from 'braty-common'
 import React from 'react'
@@ -8,7 +8,7 @@ type Props = {
   status: Order['status']
 } & SpaceProps
 
-const StatusIndicator = ({ status, ...props }: Props) => {
+const OrderStatusIndicator = ({ status, ...props }: Props) => {
   const { t: commonT } = useTranslation('COMMON')
 
   let variant
@@ -37,4 +37,4 @@ const StatusIndicator = ({ status, ...props }: Props) => {
   )
 }
 
-export default StatusIndicator
+export default OrderStatusIndicator

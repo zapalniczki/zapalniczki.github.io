@@ -630,8 +630,8 @@ const en: LanguageKeys = {
   USER: {
     title: 'Customer profile',
 
-    ORDERS: {
-      title: 'Orders',
+    RECENT_ORDERS: {
+      title: 'Recent orders',
       emptyState: 'No orders'
     }
   },
@@ -999,7 +999,8 @@ const en: LanguageKeys = {
       ACTIONS: {
         title: 'Available actions',
         emptyState: 'None',
-        copyProductsToBasket: 'Add these products to basket'
+        copyProductsToBasket: 'Add these products to basket',
+        cancelOrder: 'Cancel order'
       }
     }
   },

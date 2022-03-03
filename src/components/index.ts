@@ -55,6 +55,7 @@ export { default as UserAvatar } from './UserAvatar'
 export { default as FormRow } from './FormRow'
 export { default as SectionTitle } from './SectionTitle'
 export { default as Email } from './Email'
+export { default as OrderStatusIndicator } from './OrderStatusIndicator'
 
 export * from './SectionTitle'
 export * from './Banner'

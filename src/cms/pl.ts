@@ -632,8 +632,8 @@ const pl = {
   USER: {
     title: 'Konto użytkownika',
 
-    ORDERS: {
-      title: 'Zamówienia',
+    RECENT_ORDERS: {
+      title: 'Ostatnie zamówienia',
       emptyState: 'Brak zamówień'
     }
   },
@@ -1003,7 +1003,8 @@ const pl = {
       ACTIONS: {
         title: 'Dostępne akcje',
         emptyState: 'Brak dostępnych akcji',
-        copyProductsToBasket: 'Dodaj te produkty to koszyka'
+        copyProductsToBasket: 'Dodaj te produkty to koszyka',
+        cancelOrder: 'Anuluj zamówienie'
       }
     }
   },

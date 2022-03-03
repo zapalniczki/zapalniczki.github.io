@@ -4,9 +4,11 @@ import supabase from 'supabase'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 
-type Params = Pick<User, 'email'>
+type Params = {
+  limit?: number
+} & Pick<User, 'email'>
 
-export const getUserOrders = async ({ email }: Params) => {
+export const getUserOrders = async ({ email, limit }: Params) => {
   const response = await supabase
     .from<GetUserOrdersResponseItem>(DB_TABLES.USERS)
     .select(
@@ -19,6 +21,7 @@ export const getUserOrders = async ({ email }: Params) => {
       `
     )
     .eq('email', email)
+    .limit(limit ?? 1000)
 
   const data = parseApiResponse(array(getUserOrdersResponseItem), response)
 

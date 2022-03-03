@@ -77,7 +77,7 @@ const Order = () => {
             </div>
 
             <div>
-              <Actions products={order.products} />
+              <Actions products={order.products} status={order.status} />
 
               <Details
                 created_at={order.created_at}

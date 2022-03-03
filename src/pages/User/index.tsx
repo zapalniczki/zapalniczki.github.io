@@ -25,7 +25,9 @@ const User = () => {
     return <Navigate to={ROUTES.HOME} />
   }
 
-  const queryParams = { email: locationState.data.email }
+  const queryParams = {
+    email: locationState.data.email
+  }
   const userOrdersQuery = useQuery([DB_TABLES.USERS, queryParams], () =>
     getUserOrders(queryParams)
   )
