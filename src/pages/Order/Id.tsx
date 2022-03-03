@@ -7,8 +7,8 @@ type Props = {
   id: Order['id']
 }
 
-const OrderId = ({ id }: Props) => {
-  const t = useTranslation('ORDER').withBase('SECTIONS.ORDER_ID')
+const Id = ({ id }: Props) => {
+  const t = useTranslation('ORDER').withBase('SECTIONS.ID')
 
   return (
     <Tile>
@@ -19,4 +19,4 @@ const OrderId = ({ id }: Props) => {
   )
 }
 
-export default OrderId
+export default Id

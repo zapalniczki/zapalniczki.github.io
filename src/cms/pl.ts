@@ -924,7 +924,7 @@ const pl = {
   ORDER: {
     title: 'Zamówienie',
     SECTIONS: {
-      ORDER_ID: {
+      ID: {
         label: 'Numer referencyjny zamówienia'
       },
 
@@ -950,7 +950,7 @@ const pl = {
 
       PAYMENT: {
         title: 'Dane do płatności',
-        info: 'Zamówienie należy opłacić w ciągu 5 dni roboczych od potwierdzenia przez nas czasu realizacji.',
+        info: 'Zamówienie należy opłacić w ciągu 10 dni roboczych od potwierdzenia przez nas czasu realizacji.',
         LABELS: {
           iban: 'IBAN',
           bic: 'BIC',
@@ -978,17 +978,11 @@ const pl = {
         }
       },
 
-      PARCEL_DETAILS: {
-        title: 'Przesyłka',
-        LABELS: {
-          parcel_id: 'Numer referencyjny',
-          follow_parcel: 'Śledź paczkę'
-        }
-      },
-
       SHIPPING: {
         title: 'Dostawa',
         LABELS: {
+          parcel_id: 'Numer referencyjny',
+          follow_parcel: 'Śledź paczkę',
           delivery_type: 'Typ',
           shipping_address: 'Adres'
         }

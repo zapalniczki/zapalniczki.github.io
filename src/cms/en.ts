@@ -922,7 +922,7 @@ const en: LanguageKeys = {
   ORDER: {
     title: 'Order',
     SECTIONS: {
-      ORDER_ID: {
+      ID: {
         label: 'Order reference number'
       },
 
@@ -948,7 +948,7 @@ const en: LanguageKeys = {
 
       PAYMENT: {
         title: 'Payment details',
-        info: 'Payment should be made within 5 working days from receiving order realization time confirmation.',
+        info: 'Payment should be made within 10 working days from receiving order realization time confirmation.',
         LABELS: {
           iban: 'IBAN',
           bic: 'BIC',
@@ -975,17 +975,11 @@ const en: LanguageKeys = {
         }
       },
 
-      PARCEL_DETAILS: {
-        title: 'Delivery',
-        LABELS: {
-          parcel_id: 'Reference number',
-          follow_parcel: 'Follow parcel'
-        }
-      },
-
       SHIPPING: {
         title: 'Shipping',
         LABELS: {
+          parcel_id: 'Reference number',
+          follow_parcel: 'Follow parcel',
           delivery_type: 'Type',
           shipping_address: 'Destination'
         }

@@ -28,7 +28,7 @@ type Props = {
   products: GetOrderResponse['products']
 }
 
-const ProductsTable = ({ products }: Props) => {
+const Products = ({ products }: Props) => {
   const { language, t: commonT } = useTranslation('COMMON')
   const t = useTranslation('ORDER').withBase('SECTIONS.PRODUCTS')
 
@@ -115,4 +115,4 @@ type OrderProductsTableColumns =
   | 'product_price'
   | 'product_total'
 
-export default ProductsTable
+export default Products

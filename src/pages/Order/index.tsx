@@ -6,18 +6,17 @@ import { ContactDetails } from 'organisms'
 import React from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
+import Actions from './Actions'
 import Billing from './Billing'
 import Details from './Details'
+import Id from './Id'
+import Loader from './index.loader'
 import Invoice from './Invoice'
-import OrderId from './OrderId'
-import ParcelDetails from './ParcelDetails'
 import Payment from './Payment'
-import ProductsTable from './ProductsTable'
+import Products from './Products'
 import Shipping from './Shipping'
 import Status from './Status'
 import Voucher from './Voucher'
-import Loader from './index.loader'
-import Actions from './Actions'
 
 const Order = () => {
   const { t } = useTranslation('ORDER')
@@ -39,7 +38,7 @@ const Order = () => {
         {(order) => (
           <Columns>
             <div>
-              <OrderId id={order.id} />
+              <Id id={order.id} />
 
               <Status status={order.status} />
 
@@ -69,7 +68,7 @@ const Order = () => {
 
               <Voucher voucher={order.voucher} />
 
-              <ProductsTable products={order.products} />
+              <Products products={order.products} />
 
               {order.status !== 'COMPLETED' && (
                 <Invoice invoice={order.invoice} />
@@ -85,10 +84,9 @@ const Order = () => {
                 updated_at={order.updated_at}
               />
 
-              <ParcelDetails parcel={order.parcel} />
-
               <Shipping
                 deliveryType={order.delivery_type}
+                parcel={order.parcel}
                 shipping={order.shipping}
               />
 
