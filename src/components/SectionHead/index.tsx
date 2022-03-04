@@ -20,6 +20,7 @@ const SectionHead = ({ link, separator, title, ...props }: Props) => (
       alignItems="center"
       justifyContent="space-between"
       marginBottom={separator ? 0 : 'm-size'}
+      width="100%"
       {...props}
     >
       <Heading level={5}>{title}</Heading>
