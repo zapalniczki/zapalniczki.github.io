@@ -7,7 +7,8 @@ const getCustomerResponse = customer
     email: true,
     phone: true,
     id: true,
-    nip: true
+    nip: true,
+    user_id: true
   })
   .extend({
     address: address.pick({

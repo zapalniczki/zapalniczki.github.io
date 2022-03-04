@@ -36,9 +36,9 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
       {(data) => {
         const nip = data.nip
 
-        let profileLink = undefined
+        let customerProfileLink = undefined
         if (customer && !hideProfileLink) {
-          profileLink = {
+          customerProfileLink = {
             to: ROUTES.CUSTOMER,
             options: { state: { email: data.email } },
             label: commonT('CONTACT_DETAILS.profile')
@@ -48,7 +48,7 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
         return (
           <Tile>
             <SectionHead
-              link={profileLink}
+              link={customerProfileLink}
               separator
               title={commonT('CONTACT_DETAILS.title')}
             />
