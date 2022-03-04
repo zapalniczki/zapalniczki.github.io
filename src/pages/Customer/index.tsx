@@ -7,7 +7,7 @@ import { object } from 'zod'
 import RecentOrders from './RecentOrders'
 import { DB_TABLES, Order, ROUTES, customer } from 'braty-common'
 import { useQuery } from 'react-query'
-import { getCustomerOrders } from 'api'
+import { getCustomerOrders, getUser } from 'api'
 import Loader from './index.loader'
 import { GetCustomerOrdersResponseItem } from 'models'
 import { remoteConfigContext } from 'providers'
@@ -33,6 +33,9 @@ const Customer = () => {
   const customerOrdersQuery = useQuery([DB_TABLES.CUSTOMERS, queryParams], () =>
     getCustomerOrders(queryParams)
   )
+
+  // const params = { id: '92e2470c-8728-4671-b057-2b6f3c5d95f2' }
+  // const temp = useQuery([DB_TABLES.USERS, params], () => getUser(params))
 
   return (
     <Page>
