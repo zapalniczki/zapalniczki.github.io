@@ -1,20 +1,18 @@
-import { DB_TABLES, Order } from 'braty-common'
-import { getInvoiceResponse, GetInvoiceResponse } from 'models'
+import { DB_TABLES, User } from 'braty-common'
+import { GetUserResponse, getUserResponse } from 'models'
 import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 
-type Params = {
-  order_id: Order['id']
-}
+type Params = Pick<User, 'id'>
 
 export const getUser = async (params: Params) => {
   const response = await supabase
-    .from<GetInvoiceResponse>(DB_TABLES.INVOICES)
+    .from<GetUserResponse>(DB_TABLES.USERS)
     .select()
     .eq('id', params.id)
     .single()
 
-  const data = parseApiResponse(getInvoiceResponse, response)
+  const data = parseApiResponse(getUserResponse, response)
 
   return data
 }

@@ -69,3 +69,4 @@ export { default as updatePaymentTypeResponse } from './updatePaymentTypeRespons
 
 export * from './customers'
 export * from './addresses'
+export * from './users'
