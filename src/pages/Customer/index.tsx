@@ -1,16 +1,16 @@
+import { getCustomerOrders } from 'api'
+import { customer, DB_TABLES, Order, ROUTES } from 'braty-common'
 import { Banner, Columns, Page, QueryLoader } from 'components'
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import { GetCustomerOrdersResponseItem } from 'models'
 import { CustomerProfile } from 'organisms'
+import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
+import { useQuery } from 'react-query'
 import { Navigate, useLocation } from 'react-router-dom'
 import { object } from 'zod'
-import RecentOrders from './RecentOrders'
-import { DB_TABLES, Order, ROUTES, customer } from 'braty-common'
-import { useQuery } from 'react-query'
-import { getCustomerOrders, getUser } from 'api'
 import Loader from './index.loader'
-import { GetCustomerOrdersResponseItem } from 'models'
-import { remoteConfigContext } from 'providers'
+import RecentOrders from './RecentOrders'
 
 const Customer = () => {
   // TODO Add user auth here

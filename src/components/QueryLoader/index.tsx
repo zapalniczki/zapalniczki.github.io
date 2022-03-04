@@ -1,8 +1,6 @@
 import { ErrorFetchingMessage } from 'components'
 import { useTranslation } from 'hooks'
-import React from 'react'
-import { ReactElement } from 'react'
-import { ReactNode } from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 import { UseQueryResult } from 'react-query'
 
 type Props<T> = {

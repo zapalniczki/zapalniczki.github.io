@@ -1,7 +1,6 @@
-import Box, { boxStyleProps } from '../Box'
 import styled from 'styled-components'
-import { getSpace } from 'styles'
-import { Space } from 'styles'
+import { getSpace, Space } from 'styles'
+import Box, { boxStyleProps } from '../Box'
 
 type Props = {
   gap?: Space

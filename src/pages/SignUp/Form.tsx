@@ -6,11 +6,11 @@ import {
   ValidatedInput
 } from 'components'
 import { Field, FieldProps, Form as FormikForm, useFormikContext } from 'formik'
+import { FormValues } from './useForm'
+import { getSpace } from 'styles'
 import { useInput } from 'hooks'
 import React from 'react'
 import styled from 'styled-components'
-import { FormValues } from './useForm'
-import { getSpace } from 'styles'
 
 const Form = () => {
   const { isValid } = useFormikContext<FormValues>()

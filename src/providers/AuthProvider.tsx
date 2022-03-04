@@ -1,16 +1,8 @@
 import { Session } from '@supabase/supabase-js'
 import { getSession } from 'api'
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState
-} from 'react'
-import { useMutation } from 'react-query'
-import { useNavigate } from 'react-router-dom'
 import { supabase } from 'config'
-import { toastContext } from './ToastProvider'
+import React, { createContext, ReactNode, useEffect, useState } from 'react'
+import { useMutation } from 'react-query'
 
 type AuthContexType = {
   auth?: Session | null

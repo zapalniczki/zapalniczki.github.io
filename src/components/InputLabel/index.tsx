@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { getColor } from 'styles'
-import { getSpace } from 'styles'
+import { getColor, getSpace } from 'styles'
 
 type LabelProps = {
   error?: boolean

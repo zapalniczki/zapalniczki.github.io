@@ -1,9 +1,8 @@
-import { useState, createContext, ReactNode } from 'react'
-import React from 'react'
-import styled from 'styled-components'
-import { changeColorAlpha } from 'utils'
 import { Spinner } from 'components'
+import React, { createContext, ReactNode, useState } from 'react'
+import styled from 'styled-components'
 import { getColor } from 'styles'
+import { changeColorAlpha } from 'utils'
 
 type LoaderContext = {
   hide: () => void

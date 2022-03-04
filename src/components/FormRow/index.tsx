@@ -1,7 +1,6 @@
 import { Flexbox } from 'components'
 import styled from 'styled-components'
-import { breakpoints } from 'styles'
-import { getSpace } from 'styles'
+import { breakpoints, getSpace } from 'styles'
 
 type Props = {
   vertical?: boolean

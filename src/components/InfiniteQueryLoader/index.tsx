@@ -1,9 +1,7 @@
-import ErrorFetchingMessage from '../ErrorFetchingMessage'
 import { useTranslation } from 'hooks'
-import React from 'react'
-import { ReactElement } from 'react'
-import { ReactNode } from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 import { UseInfiniteQueryResult } from 'react-query'
+import ErrorFetchingMessage from '../ErrorFetchingMessage'
 
 type Props<T> = {
   Loader?: ReactElement

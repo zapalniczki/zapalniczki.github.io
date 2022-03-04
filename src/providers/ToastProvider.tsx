@@ -1,7 +1,6 @@
-import { createContext, ReactNode, ReactText, useMemo } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
-import React from 'react'
-import { Flexbox, Text, ResultIcon } from 'components'
+import { Flexbox, ResultIcon, Text } from 'components'
+import React, { createContext, ReactNode, ReactText, useMemo } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 
 type Props = {
   children: ReactNode

@@ -1,13 +1,12 @@
 import {
+  address,
+  deliveryType,
+  invoice,
   order,
   orderItem,
-  voucher,
-  invoice,
   parcel,
-  deliveryType
+  voucher
 } from 'braty-common'
-
-import { address } from 'braty-common'
 import { array, TypeOf } from 'zod'
 
 const getOrderResponse = order.extend({

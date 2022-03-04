@@ -3,9 +3,7 @@ import { Flexbox, Text } from 'components'
 import { useCheckoutStep, useTranslation } from 'hooks'
 import React from 'react'
 import styled, { useTheme } from 'styled-components'
-import { breakpoints } from 'styles'
-import { getColor } from 'styles'
-import { getSpace } from 'styles'
+import { breakpoints, getColor, getSpace } from 'styles'
 
 const StepTracker = () => {
   const { t } = useTranslation('COMMON')

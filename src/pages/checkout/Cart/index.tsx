@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getProductsById } from 'api'
-import { BasketItem } from 'organisms'
+import { DB_TABLES } from 'braty-common'
 import {
   Columns,
   Flexbox,
@@ -10,14 +10,12 @@ import {
   QueryLoader,
   Text
 } from 'components'
-
-import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
-import { CheckoutTotal } from 'organisms'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
+import { BasketItem, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query'
 import Loader from './index.loader'
-import { DB_TABLES } from 'braty-common'
 
 const Cart = () => {
   const { t } = useTranslation('CART')

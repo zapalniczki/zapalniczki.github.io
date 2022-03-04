@@ -1,7 +1,7 @@
 import { getOtherIcons } from 'api'
+import { Icon, Label } from 'braty-common'
 import { ProductsGrid } from 'components'
 import { useTranslation } from 'hooks'
-import { Icon, Label } from 'braty-common'
 import React from 'react'
 import { useQuery } from 'react-query'
 

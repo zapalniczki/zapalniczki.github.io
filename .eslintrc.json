@@ -59,6 +59,7 @@
         ]
       }
     ],
+    "no-duplicate-imports": "error",
 
     "react/jsx-newline": 2,
     "react/jsx-boolean-value": 2,

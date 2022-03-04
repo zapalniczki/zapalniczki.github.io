@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ROUTES } from 'braty-common'
 import {
   Button,
   Columns,
@@ -7,12 +9,9 @@ import {
   Spinner,
   Tile
 } from 'components'
-import { ROUTES } from 'braty-common'
-import { useScrollTop, usePageTitle } from 'hooks'
+import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React, { useEffect, useState } from 'react'
-import { useTranslation } from 'hooks'
 import { useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'
 
 const PageNotFound = () => {

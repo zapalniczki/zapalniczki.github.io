@@ -1,13 +1,12 @@
+import { DB_TABLES, Product } from 'braty-common'
+import { supabase } from 'config'
 import {
   getProductsByIdResponseItem,
   GetProductsByIdResponseItem
 } from 'models'
-import { supabase } from 'config'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 import { getProductsSelectQuery } from '.'
-import { Product } from 'braty-common'
-import { DB_TABLES } from 'braty-common'
 
 type Payload = Product['id'][]
 

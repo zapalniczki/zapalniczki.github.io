@@ -1,8 +1,7 @@
-import Select from '../Select'
-import React from 'react'
-import { Props as SelectProps } from '../Select'
-import { TranslateFunc, useTranslation } from 'hooks'
 import { Country } from 'braty-common'
+import { TranslateFunc, useTranslation } from 'hooks'
+import React from 'react'
+import Select, { Props as SelectProps } from '../Select'
 
 type Props = Omit<SelectProps, 'options' | 'value'> & {
   value: string

@@ -2,10 +2,7 @@ import { Flexbox } from 'components'
 // eslint-disable-next-line no-restricted-imports
 import { boxStyleProps } from 'components/Box'
 import styled from 'styled-components'
-import { breakpoints } from 'styles'
-import { getColor } from 'styles'
-import { getRadius } from 'styles'
-import { getSpace } from 'styles'
+import { breakpoints, getColor, getRadius, getSpace } from 'styles'
 
 const Tile = styled(Flexbox)`
   background-color: ${getColor('white')};

@@ -1,11 +1,9 @@
-import { InputLabel, Flexbox } from 'components'
+import { Flexbox, InputLabel } from 'components'
 import { FieldProps } from 'formik'
 import React from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
-import { getColor } from 'styles'
-import { getSpace } from 'styles'
-import { getRadius } from 'styles'
+import { getColor, getRadius, getSpace } from 'styles'
 
 type Props = FieldProps<string> & {
   autocomplete?: string

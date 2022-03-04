@@ -8,9 +8,7 @@ import React, { useContext, useState } from 'react'
 import { generatePath, Link } from 'react-router-dom'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import styled from 'styled-components'
-import { getColor } from 'styles'
-import { getRadius } from 'styles'
-import { getShadow } from 'styles'
+import { getColor, getRadius, getShadow } from 'styles'
 import {
   findCorrectProductImageSize,
   getLanguageLabel,

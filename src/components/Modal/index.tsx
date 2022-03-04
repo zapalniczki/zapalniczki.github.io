@@ -1,11 +1,10 @@
 import { Button } from 'components'
-import React, { Dispatch, SetStateAction } from 'react'
-import { ReactNode } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction } from 'react'
 import NativeModal from 'react-modal'
-import ModalHeader from './ModalHeader'
-import ModalFooter from './ModalFooter'
-import ModalResult from './ModalResult'
 import ModalContent from './ModalContent'
+import ModalFooter from './ModalFooter'
+import ModalHeader from './ModalHeader'
+import ModalResult from './ModalResult'
 
 type Props = {
   children: ReactNode

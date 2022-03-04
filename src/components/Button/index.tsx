@@ -1,21 +1,19 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Text, Box, Spinner } from 'components'
+import { Box, Spinner, Text } from 'components'
 import { LayoutProps } from 'framer-motion'
 import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import {
-  SpaceProps,
-  space,
-  WidthProps,
-  width,
-  layout,
+  borderRadius,
   BorderRadiusProps,
-  borderRadius
+  layout,
+  space,
+  SpaceProps,
+  width,
+  WidthProps
 } from 'styled-system'
-import { getColor } from 'styles'
-import { getShadow } from 'styles'
-import { getSpace } from 'styles'
+import { getColor, getShadow, getSpace } from 'styles'
 
 type Props = {
   children?: ReactNode

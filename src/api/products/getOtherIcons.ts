@@ -1,10 +1,9 @@
-import { getProductsResponseItem, GetProductsResponseItem } from 'models'
+import { DB_TABLES, Icon, Label } from 'braty-common'
 import { supabase } from 'config'
+import { getProductsResponseItem, GetProductsResponseItem } from 'models'
 import { parseApiResponse } from 'utils'
 import { array } from 'zod'
 import { getProductsSelectQuery } from '.'
-import { Icon, Label } from 'braty-common'
-import { DB_TABLES } from 'braty-common'
 
 type Params = {
   iconKey: Icon['key']
