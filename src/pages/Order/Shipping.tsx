@@ -19,6 +19,7 @@ type Props = {
   shipping: GetOrderResponse['shipping']
 }
 
+// TODO name is wrong => Delivery
 const Shipping = ({ deliveryType, parcel, shipping }: Props) => {
   const t = useTranslation('ORDER').withBase('SECTIONS.SHIPPING')
   const { language, t: commonT } = useTranslation('COMMON')
@@ -54,13 +55,12 @@ const Shipping = ({ deliveryType, parcel, shipping }: Props) => {
         <LabelledItem item={label} label={t('LABELS.delivery_type')} />
 
         {shipping && (
-          <>
-            <LabelledItem
-              item={shipping.street_address}
-              label={t('LABELS.shipping_address')}
-            />
-
+          <LabelledItem label={t('LABELS.shipping_address')}>
             <Flexbox flexDirection="column">
+              <Text fontWeight="bold" type="body-1">
+                {shipping.street_address}
+              </Text>
+
               <Text fontWeight="bold" type="body-1">
                 {shipping.post_code}, {shipping.city}
               </Text>
@@ -69,7 +69,7 @@ const Shipping = ({ deliveryType, parcel, shipping }: Props) => {
                 {commonT(`COUNTRIES.${shipping.country}`)}
               </Text>
             </Flexbox>
-          </>
+          </LabelledItem>
         )}
       </Flexbox>
     </Tile>
