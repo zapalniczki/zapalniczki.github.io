@@ -2,6 +2,7 @@ import { useLoaderWidth } from 'hooks'
 import React from 'react'
 import { ContentLoader, Columns } from 'components'
 import { CustomerProfileLoader as CustomerProfile } from 'organisms'
+import Actions from './Actions.loader'
 
 const Loader = () => (
   <Columns>
@@ -16,6 +17,8 @@ const Loader = () => (
     </div>
 
     <div>
+      <Actions />
+
       <Details />
 
       <Shipping />

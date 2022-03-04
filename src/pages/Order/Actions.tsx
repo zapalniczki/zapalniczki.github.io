@@ -10,6 +10,7 @@ import {
 } from 'components'
 import { useTranslation } from 'hooks'
 import uniq from 'lodash.uniq'
+import Loader from './Actions.loader'
 import { BasketItem, GetOrderResponse } from 'models'
 import { checkoutContext, remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'
@@ -33,7 +34,7 @@ const Actions = ({ products, status }: Props) => {
   )
 
   return (
-    <QueryLoader query={productsQuery}>
+    <QueryLoader Loader={<Loader />} query={productsQuery}>
       {(data) => {
         const productDetails = combineProductDataAndBasketItem(data, products)
         const visibleProductDetails = productDetails.filter(
