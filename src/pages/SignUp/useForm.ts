@@ -1,8 +1,9 @@
 import { signUp } from 'api'
-import { useFormSchema, useFormSubmit } from 'hooks'
+import { useErrorMessage, useFormSchema, useFormSubmit } from 'hooks'
 import { Customer } from 'braty-common'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
+import { useState } from 'react'
 
 export type FormValues = {
   email: Customer['email']
@@ -12,18 +13,27 @@ export type FormValues = {
 
 const useForm = () => {
   const { getSchema } = useFormSchema()
+  const [view, setView] = useState<View>('FORM')
 
   const useSubmit = () => {
-    const { mutateAsync: mutateSignUp } = useMutation(signUp)
+    const getError = useErrorMessage()
+    const { mutateAsync: mutateSignUp } = useMutation(signUp, {
+      onSuccess: () => setView('SUCCESS')
+    })
 
     return useFormSubmit(
-      (values: FormValues) =>
-        mutateSignUp({
+      async (values: FormValues) =>
+        await mutateSignUp({
           email: values.email,
           password: values.newPassword
         }),
       {
-        hideErrorToastMessage: true
+        hideErrorToastMessage: true,
+        onError: (error, _values, form) => {
+          const errorMessage = getError(error.message)
+
+          form.setFieldError('email', errorMessage)
+        }
       }
     )
   }
@@ -43,10 +53,13 @@ const useForm = () => {
   })
 
   return {
+    view,
     onSubmit,
     initialValues,
     validationSchema
   }
 }
+
+type View = 'FORM' | 'SUCCESS' | 'ERROR'
 
 export default useForm

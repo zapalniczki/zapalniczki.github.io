@@ -1,4 +1,4 @@
-import { Preloader } from 'commonComponents'
+import Preloader from './Preloader'
 import { initializeApp } from 'firebase/app'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'

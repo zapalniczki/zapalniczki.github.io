@@ -6,12 +6,9 @@ import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
 import Form from './Form'
 import useForm from './useForm'
+import Success from './Success'
 import { ROUTES } from 'braty-common'
 
-/**
- *
- * @deprecated
- */
 const SignUp = () => {
   const { t } = useTranslation('SIGN_UP')
   const { isLoggedIn } = useContext(authContext)
@@ -19,10 +16,14 @@ const SignUp = () => {
   usePageTitle(t('title'))
   useScrollTop()
 
-  const { initialValues, onSubmit, validationSchema } = useForm()
+  const { initialValues, onSubmit, validationSchema, view } = useForm()
 
   if (isLoggedIn) {
     return <Navigate to={ROUTES.CUSTOMER} />
+  }
+
+  if (view === 'SUCCESS') {
+    return <Success />
   }
 
   return (

@@ -8,10 +8,6 @@ import { Navigate } from 'react-router-dom'
 import Form from './Form'
 import useForm from './useForm'
 
-/**
- *
- * @deprecated
- */
 const SignIn = () => {
   const { t } = useTranslation('SIGN_IN')
   const { isLoggedIn } = useContext(authContext)
@@ -22,7 +18,12 @@ const SignIn = () => {
   const { initialValues, onSubmit, validationSchema } = useForm()
 
   if (isLoggedIn) {
-    return <Navigate to={ROUTES.CUSTOMER} />
+    return (
+      <Navigate
+        // TODO here is missing state
+        to={ROUTES.CUSTOMER}
+      />
+    )
   }
 
   return (

@@ -37,7 +37,8 @@ const pl = {
     ERRORS: {
       23505: 'Podany adres e-mail jest już zarejestrowany',
       'Invalid login credentials': 'Nieprawidłowa nazwa użytkownika lub hasło',
-      default: `Nieoczekiwany błąd. Próbuj ponownie lub zadzwoń na ${BRATY_PHONE}.`
+      'User already registered': 'Podany adres email jest już zajęty',
+      default: `Nieoczekiwany błąd. Spróbuj ponownie lub zadzwoń na {{phone}}.`
     },
 
     CONTACT_DETAILS: {
@@ -104,7 +105,6 @@ const pl = {
     productsSingle: '{{count}} produkt',
     productsFew: '{{count}} produkty',
     productsMultiple: '{{count}} produktów',
-    preloaderInfo: 'Ładowanie strony',
     loading: 'Ładowanie...',
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Zapalniczka',

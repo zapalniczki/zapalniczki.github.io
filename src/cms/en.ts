@@ -1,4 +1,4 @@
-import { BRATY_EMAIL, BRATY_PHONE } from 'braty-common'
+import { BRATY_PHONE } from 'braty-common'
 import { LanguageKeys } from './pl'
 
 const en: LanguageKeys = {
@@ -35,9 +35,11 @@ const en: LanguageKeys = {
     },
 
     ERRORS: {
+      // TODO This is not used anywhere ?
       23505: 'Given email address is already registered',
       'Invalid login credentials': 'Invalid username or password',
-      default: `Unexpected error. Try again or send us an email to ${BRATY_EMAIL}.`
+      'User already registered': 'User already registered',
+      default: `Unexpected error. Try again or send us an email to {{email}}.`
     },
 
     CONTACT_DETAILS: {
@@ -104,7 +106,6 @@ const en: LanguageKeys = {
     productsSingle: '{{count}} product',
     productsFew: '{{count}} products',
     productsMultiple: '{{count}} products',
-    preloaderInfo: 'Website loading',
     loading: 'Loading...',
     tableEmpty: 'Tabela jest pusta',
     productNameBase: 'Lighter',

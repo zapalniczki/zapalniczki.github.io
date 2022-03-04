@@ -1,6 +1,10 @@
 import { signInWithEmailAndPassword } from 'api'
-import { useFormSchema, useFormSubmit, useTranslation } from 'hooks'
 import { Customer } from 'braty-common'
+import {
+  useErrorMessage,
+  useFormSchema,
+  useFormSubmit
+} from 'hooks'
 import { useMutation } from 'react-query'
 import { object } from 'yup'
 
@@ -10,10 +14,11 @@ export type FormValues = {
 }
 
 const useForm = () => {
-  const commonT = useTranslation('COMMON').withBase('ERRORS')
   const { getSchema } = useFormSchema()
 
   const useSubmit = () => {
+    const getError = useErrorMessage()
+
     const { mutateAsync: mutateSignInWithEmailAndPassword } = useMutation(
       signInWithEmailAndPassword
     )
@@ -23,15 +28,9 @@ const useForm = () => {
       {
         hideErrorToastMessage: true,
         onError: (error, _values, form) => {
-          let errorMessageKey = 'default'
+          const errorMessage = getError(error.message)
 
-          switch (error.message) {
-            case 'Invalid login credentials':
-              errorMessageKey = error.message
-              break
-          }
-
-          form.setFieldError('email', commonT(errorMessageKey))
+          form.setFieldError('email', errorMessage)
         }
       }
     )

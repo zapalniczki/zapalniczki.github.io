@@ -58,7 +58,7 @@ const Header = () => {
           </Box>
         </Navigation>
 
-        <Link title={commonT('LINKS.home')} to={ROUTES.HOME}>
+        <Link marginRight="auto" title={commonT('LINKS.home')} to={ROUTES.HOME}>
           <Logo
             expanded={isHeaderExpanded}
             marginLeft={isAboveDesktop ? `-${space['xs-size']}` : 0}
