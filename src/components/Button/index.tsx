@@ -112,7 +112,6 @@ const Container = styled.button<ContainerProps>`
   &:hover {
     color: ${getColor('paragraph-color')};
     background: ${getColor('white')};
-    border: 1px solid;
     border-color: ${getColor('dark-color')};
   }
 
@@ -120,14 +119,12 @@ const Container = styled.button<ContainerProps>`
     props.variant === 'secondary' &&
     css`
       background: transparent;
-      border: 1px solid;
       border-color: ${getColor('dark-color')};
       color: ${getColor('dark-color')};
 
       &:hover {
         color: ${getColor('white')};
         background: ${getColor('dark-color')};
-        border: 1px solid;
         border-color: ${getColor('dark-color')};
       }
     `}
@@ -136,13 +133,11 @@ const Container = styled.button<ContainerProps>`
     props.variant === 'ternary' &&
     css`
       background: transparent;
-      border: 1px solid;
       border-color: ${getColor('gray-medium')};
       color: ${getColor('paragraph-color')};
       box-shadow: none;
 
       &:hover {
-        border: 1px solid;
         border-color: ${getColor('gray-dark')};
         background: transparent;
       }

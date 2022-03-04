@@ -1,5 +1,4 @@
 import { ROUTES } from 'braty-common'
-import { TOP_BAR_HEIGHT } from 'commonComponents'
 import { Box, Link, Logo, MaxWidth } from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
 import { togglesContext } from 'providers'
@@ -14,6 +13,7 @@ import HamburgerToggle from './toggles/HamburgerToggle'
 import LanguageToggle from './toggles/LanguageToggle'
 import SignoutToggle from './toggles/SignoutToggle'
 import { remoteConfigContext } from 'providers'
+import { TOP_BAR_HEIGHT } from '../TopBar'
 
 const Header = () => {
   const { i18n } = useContext(remoteConfigContext)
@@ -92,6 +92,7 @@ type ContainerProps = {
 }
 
 const Container = styled.nav<ContainerProps>`
+  border: 1px solid red;
   width: 100%;
   background: ${(props) => {
     if (props.isExpanded) {
