@@ -2422,10 +2422,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zapalniczki/shared-components@^0.0.16":
-  version "0.0.16"
-  resolved "https://npm.pkg.github.com/download/@zapalniczki/shared-components/0.0.16/07839e376cbd5f9287886bb451aed23c479c28dd55768a3d69184fe17681bf4e#01f6c214d9da0a9cb26d54383fae5422456ba3d6"
-  integrity sha512-n5OPpsHFsH8jNuJBzLnMbqyiuJ5x9616aJ+mq4QPhPGqkQVLJ1X6R8SxSY6M5sJtr2iDIfC+H2z4oW4q5Po1Fw==
+"@zapalniczki/shared-components@^0.0.17":
+  version "0.0.17"
+  resolved "https://npm.pkg.github.com/download/@zapalniczki/shared-components/0.0.17/0a08b606aa7a5663deddb250aa29f5b998889ddbe114105b74d9100b385a7f65#7d8fd62c995de408016b9ef6d1f94404396ec008"
+  integrity sha512-mnzEqXDB/78D0j9A2kto5e2P2ocxC+WjU8JtbHaamvV/N+VxGnDv+DpxX4zCFRIBfW6T+OVvSwbj6qHuLROiFg==
 
 accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
