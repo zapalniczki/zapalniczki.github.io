@@ -12,7 +12,8 @@
     "minor": "yarn version --new-version minor",
     "patch": "yarn version --new-version patch",
     "start": "webpack serve --config webpack/dev.config.js --hot",
-    "up": "yarn upgrade braty-common & git add . & git commit -m \"Upgraded braty-common\""
+    "up": "yarn upgrade braty-common & git add . & git commit -m \"Upgraded braty-common\"",
+    "up2": "git stash & yarn upgrade @zapalniczki/shared-components & git add . & git commit -m \"Upgraded shared-components\" & git stash pop"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
