@@ -1,18 +1,26 @@
-import styled from 'styled-components'
-import { getSpace, Space } from 'styles'
-
 import { Box, boxStyleProps } from '@zapalniczki/shared-components'
+import styled from 'styled-components'
+import { system } from 'styled-system'
+import { Space } from 'styles'
 
-type Props = {
-  gap?: Space
-}
+type Props = GapProps
 
-const Flexbox = styled(Box).attrs(() => ({
-  display: 'flex'
-}))<Props>`
-  gap: ${(props) => (props.gap ? getSpace(props.gap)(props) : undefined)};
+const gap = system({
+  gap: {
+    property: 'gap',
+    scale: 'space'
+  }
+})
+
+const Flexbox = styled(Box)<Props>`
+  display: flex;
 
   ${boxStyleProps}
+  ${gap}
 `
+
+type GapProps = {
+  gap?: Space
+}
 
 export default Flexbox
