@@ -79,7 +79,7 @@
     "@types/react-tabs": "^2.3.3",
     "@types/styled-components": "^5.1.11",
     "@types/styled-system": "^5.1.12",
-    "@zapalniczki/shared-components": "^0.0.10",
+    "@zapalniczki/shared-components": "latest",
     "braty-common": "zapalniczki/braty-common",
     "date-fns": "^2.23.0",
     "firebase": "^9.4.1",
