@@ -8,7 +8,9 @@ import {
   QueryLoader,
   SectionHead,
   Text,
-  Tile
+  Tile,
+  TileBody,
+  TileHeading
 } from 'components'
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
@@ -46,7 +48,7 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
 
         return (
           <Tile padding={0}>
-            <Tile alignItems="center" border="unset" paddingBottom="m-size">
+            <TileHeading alignItems="center">
               <SectionHead
                 link={customerProfileLink}
                 separator
@@ -67,15 +69,9 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
               <Text type="caption">
                 {commonT(`customerTypes.${nip ? 'COMPANY' : 'INDIVIDUAL'}`)}
               </Text>
-            </Tile>
+            </TileHeading>
 
-            <Tile
-              backgroundColor="gray-light"
-              border="unset"
-              borderTopLeftRadius="unset"
-              borderTopRightRadius="unset"
-              paddingTop="m-size"
-            >
+            <TileBody>
               <LabelledItem
                 item={data.email}
                 label={commonT('CONTACT_DETAILS.email')}
@@ -110,7 +106,7 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
                   {commonT(`COUNTRIES.${data.address.country}`)}
                 </Text>
               </Flexbox>
-            </Tile>
+            </TileBody>
           </Tile>
         )
       }}

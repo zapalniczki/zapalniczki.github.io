@@ -21,4 +21,19 @@ const Tile = styled(Flexbox)`
   ${boxStyleProps}
 `
 
+export const TileHeading = styled(Tile)`
+  border: unset;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+  padding-bottom: ${getSpace('m-size')};
+`
+
+export const TileBody = styled(Tile)`
+  border: unset;
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+  background: ${getColor('gray-light')};
+  padding-top: ${getSpace('m-size')};
+`
+
 export default Tile

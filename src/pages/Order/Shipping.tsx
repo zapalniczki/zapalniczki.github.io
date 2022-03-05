@@ -5,7 +5,9 @@ import {
   Text,
   LabelledItem,
   Flexbox,
-  Button
+  Button,
+  TileBody,
+  TileHeading
 } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
@@ -37,10 +39,12 @@ const Shipping = ({ deliveryType, parcel, shipping }: Props) => {
   const hasLink = !!parcel?.link
 
   return (
-    <Tile>
-      <SectionHead separator title={t('title')} />
+    <Tile padding="unset">
+      <TileHeading>
+        <SectionHead marginBottom={0} title={t('title')} />
+      </TileHeading>
 
-      <Flexbox flexDirection="column" gap="m-size">
+      <TileBody gap="m-size">
         {hasLink && (
           <Button
             label={t('LABELS.follow_parcel')}
@@ -71,7 +75,7 @@ const Shipping = ({ deliveryType, parcel, shipping }: Props) => {
             </Flexbox>
           </LabelledItem>
         )}
-      </Flexbox>
+      </TileBody>
     </Tile>
   )
 }

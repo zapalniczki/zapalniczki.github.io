@@ -1,4 +1,11 @@
-import { DisplayDate, LabelledItem, SectionHead, Tile } from 'components'
+import {
+  DisplayDate,
+  LabelledItem,
+  SectionHead,
+  Tile,
+  TileBody,
+  TileHeading
+} from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import { remoteConfigContext } from 'providers'
@@ -20,27 +27,31 @@ const Details = ({ created_at, products, updated_at }: Props) => {
     .reduce((prev, curr) => prev + curr, 0)
 
   return (
-    <Tile>
-      <SectionHead separator title={t('title')} />
+    <Tile padding={0}>
+      <TileHeading>
+        <SectionHead marginBottom={0} title={t('title')} />
+      </TileHeading>
 
-      {created_at !== updated_at && (
+      <TileBody>
+        {created_at !== updated_at && (
+          <LabelledItem
+            item={<DisplayDate>{updated_at}</DisplayDate>}
+            label={t('LABELS.updated_at')}
+            marginBottom="m-size"
+          />
+        )}
+
         <LabelledItem
-          item={<DisplayDate>{updated_at}</DisplayDate>}
-          label={t('LABELS.updated_at')}
-          marginBottom="m-size"
+          item={formatDate(created_at)}
+          label={t('LABELS.created_at')}
         />
-      )}
 
-      <LabelledItem
-        item={formatDate(created_at)}
-        label={t('LABELS.created_at')}
-      />
-
-      <LabelledItem
-        item={productCount}
-        label={t('LABELS.product_count')}
-        marginTop="m-size"
-      />
+        <LabelledItem
+          item={productCount}
+          label={t('LABELS.product_count')}
+          marginTop="m-size"
+        />
+      </TileBody>
     </Tile>
   )
 }
