@@ -1,5 +1,4 @@
 export { default as Badge } from './Badge'
-export { default as Box } from './Box'
 export { default as QueryLoader } from './QueryLoader'
 export { default as Flexbox } from './Flexbox'
 export { default as Page } from './Page'

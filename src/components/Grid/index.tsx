@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { getSpace } from 'styles'
-import { boxStyleProps } from '../Box'
-import { Box } from '@zapalniczki/shared-components'
+import { Box, boxStyleProps } from '@zapalniczki/shared-components'
 
 const Grid = styled(Box)`
   display: grid;

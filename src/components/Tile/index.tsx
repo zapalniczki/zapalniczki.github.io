@@ -1,6 +1,5 @@
 import { Flexbox } from 'components'
-// eslint-disable-next-line no-restricted-imports
-import { boxStyleProps } from 'components/Box'
+import { boxStyleProps } from '@zapalniczki/shared-components'
 import styled from 'styled-components'
 import { breakpoints, getColor, getRadius, getSpace } from 'styles'
 
