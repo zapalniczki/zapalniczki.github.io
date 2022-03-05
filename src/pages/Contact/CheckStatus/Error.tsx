@@ -1,10 +1,9 @@
-import { Box, Button, Text } from 'components'
+import { TileBody, Box, Button, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'
 import TileHeading from '../TileHeading'
-import TileContent from '../TileContent'
 
 type Props = {
   message: string
@@ -22,7 +21,7 @@ const Error = ({ message, setView }: Props) => {
         title={t('items.CHECK_STATUS.error.title')}
       />
 
-      <TileContent>
+      <TileBody>
         <Text type="body-2">{message}</Text>
 
         <Box marginTop="m-size">
@@ -32,7 +31,7 @@ const Error = ({ message, setView }: Props) => {
             size="small"
           />
         </Box>
-      </TileContent>
+      </TileBody>
     </ViewWrapper>
   )
 }

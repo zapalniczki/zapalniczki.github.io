@@ -9,13 +9,12 @@ import {
   BRATY_IBAN,
   BRATY_PHONE
 } from 'braty-common'
-import { ExternalLink, LabelledItem, Text } from 'components'
+import { TileBody, ExternalLink, LabelledItem, Text } from 'components'
 import { useTranslation } from 'hooks'
 import React, { ReactNode } from 'react'
 import { getEmail } from 'utils'
 import CheckStatus from './CheckStatus'
 import DownloadInvoice from './DownloadInvoice'
-import TileContent from './TileContent'
 import TileHeading from './TileHeading'
 
 const useContactMethod = (): ContactMethod[] => {
@@ -38,14 +37,14 @@ const useContactMethod = (): ContactMethod[] => {
             title={t(`items.EMAIL.title`)}
           />
 
-          <TileContent>
+          <TileBody>
             <ExternalLink
               marginTop="s-size"
               to={getEmail(BRATY_EMAIL, commonT('emailSubject'))}
             >
               <Text type="subtitle-2">{BRATY_EMAIL}</Text>
             </ExternalLink>
-          </TileContent>
+          </TileBody>
         </>
       )
     },
@@ -56,11 +55,11 @@ const useContactMethod = (): ContactMethod[] => {
         <>
           <TileHeading icon="phone-alt" title={t(`items.PHONE.title`)} />
 
-          <TileContent>
+          <TileBody>
             <Text marginTop="s-size" type="subtitle-2">
               {BRATY_PHONE}
             </Text>
-          </TileContent>
+          </TileBody>
         </>
       )
     },
@@ -77,7 +76,7 @@ const useContactMethod = (): ContactMethod[] => {
         <>
           <TileHeading icon="university" title={t(`items.ACCOUNT.title`)} />
 
-          <TileContent>
+          <TileBody>
             <LabelledItem
               item={BRATY_BANK_NAME}
               label={t('items.ACCOUNT.bankName', { bankName: BRATY_BANK_NAME })}
@@ -100,7 +99,7 @@ const useContactMethod = (): ContactMethod[] => {
               label={t('items.ACCOUNT.titleRef')}
               marginTop="2rem"
             />
-          </TileContent>
+          </TileBody>
         </>
       )
     },
@@ -111,7 +110,7 @@ const useContactMethod = (): ContactMethod[] => {
         <>
           <TileHeading icon="map-marked-alt" title={t(`items.ADDRESS.title`)} />
 
-          <TileContent>
+          <TileBody>
             <Text lineHeight="1.21" marginTop="s-size" type="subtitle-2">
               {BRATY_ADDRESS_1}
             </Text>
@@ -123,7 +122,7 @@ const useContactMethod = (): ContactMethod[] => {
             <Text lineHeight="1.21" type="subtitle-2">
               {BRATY_ADDRESS_3}
             </Text>
-          </TileContent>
+          </TileBody>
         </>
       )
     }

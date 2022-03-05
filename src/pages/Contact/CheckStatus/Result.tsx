@@ -1,4 +1,4 @@
-import { Button, Flexbox, Text } from 'components'
+import { TileBody, Button, Flexbox, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
@@ -7,7 +7,6 @@ import TileHeading from '../TileHeading'
 import { useNavigate } from 'react-router'
 import { Order } from 'braty-common'
 import { getOrderPath } from 'utils'
-import TileContent from '../TileContent'
 
 type Props = {
   id: Order['id']
@@ -28,7 +27,7 @@ const Result = ({ id, setView, status }: Props) => {
         title={commonT(`ORDER_STATUSES.${status}`)}
       />
 
-      <TileContent>
+      <TileBody>
         <Text type="body-2">{commonT(`STATUS_MEANINGS.${status}`)}</Text>
 
         <Flexbox flexDirection={['unset', 'column', 'row']} marginTop="m-size">
@@ -50,7 +49,7 @@ const Result = ({ id, setView, status }: Props) => {
             size="small"
           />
         </Flexbox>
-      </TileContent>
+      </TileBody>
     </ViewWrapper>
   )
 }

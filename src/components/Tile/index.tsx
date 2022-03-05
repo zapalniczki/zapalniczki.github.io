@@ -34,6 +34,7 @@ export const TileBody = styled(Tile)`
   border-top-right-radius: unset;
   background: ${getColor('gray-light')};
   padding-top: ${getSpace('m-size')};
+  height: 100%;
 `
 
 export default Tile

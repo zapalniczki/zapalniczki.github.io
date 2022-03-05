@@ -1,8 +1,7 @@
-import { Button, Flexbox, Text } from 'components'
+import { TileBody, Button, Flexbox, Text } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
 import { ViewWrapper } from '.'
-import TileContent from '../TileContent'
 import TileHeading from '../TileHeading'
 import { View } from './useForm'
 
@@ -18,7 +17,7 @@ const Result = ({ setView, url }: Props) => {
     <ViewWrapper flexDirection="column">
       <TileHeading icon="check-circle" status="POSITIVE" title={t('title')} />
 
-      <TileContent>
+      <TileBody>
         <Text type="body-2">{t('info')}</Text>
 
         <Flexbox flexDirection={['unset', 'column', 'row']} marginTop="m-size">
@@ -37,7 +36,7 @@ const Result = ({ setView, url }: Props) => {
             size="small"
           />
         </Flexbox>
-      </TileContent>
+      </TileBody>
     </ViewWrapper>
   )
 }

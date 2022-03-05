@@ -1,9 +1,8 @@
-import { Button, FieldWrapper, Input } from 'components'
+import { TileBody, Button, FieldWrapper, Input } from 'components'
 import { Field, FieldProps } from 'formik'
 import { useInput, useTranslation } from 'hooks'
 import React from 'react'
 import { ViewWrapper } from '.'
-import TileContent from '../TileContent'
 import TileHeading from '../TileHeading'
 import { FormValues } from './useForm'
 
@@ -15,7 +14,7 @@ const Form = () => {
     <ViewWrapper>
       <TileHeading icon="question" title={t(`items.CHECK_STATUS.title`)} />
 
-      <TileContent
+      <TileBody
         alignItems={['unset', 'flex-start', 'flex-end']}
         flexDirection={['unset', 'column', 'row']}
         justifyContent="flex-end"
@@ -35,7 +34,7 @@ const Form = () => {
           size="small"
           type="submit"
         />
-      </TileContent>
+      </TileBody>
     </ViewWrapper>
   )
 }
