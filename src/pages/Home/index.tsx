@@ -8,7 +8,7 @@ import Christmas2021 from './Christmas2021'
 import Featured from './Featured'
 import NewYearsEve2022 from './NewYearsEve2022'
 import ValentinesDay from './ValentinesDay'
-
+import { Box, Button } from '@zapalniczki/shared-components'
 const Home = () => {
   const { t } = useTranslation('HOME')
 
@@ -20,6 +20,10 @@ const Home = () => {
       <Carousel />
 
       <ValentinesDay />
+
+      <Box>
+        <Button label="fdf" />
+      </Box>
 
       <Christmas2021 />
 
