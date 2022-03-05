@@ -43,7 +43,7 @@ const Link = ({
 
 type ContainerProps = {
   $showUnderline?: boolean
-}
+} & SpaceProps
 
 const Container = styled(RouterLink)<ContainerProps>`
   display: flex;

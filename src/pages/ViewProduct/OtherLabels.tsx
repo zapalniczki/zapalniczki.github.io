@@ -28,7 +28,6 @@ const OtherLabels = ({ collectionKey, labelKey }: Props) => {
         label: t('linkLabel')
       }}
       loaderCount={3}
-      marginTop="xxxl-size"
       query={otherLabelsQuery}
       title={t('title')}
     />

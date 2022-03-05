@@ -93,16 +93,11 @@ const ProductsGrid = ({
             />
 
             {props.query.hasNextPage && (
-              <Flexbox
-                alignItems="center"
-                justifyContent="center"
-                marginTop="l-size"
-              >
+              <Flexbox alignItems="center" justifyContent="center">
                 <Button
                   disabled={props.query.isFetchingNextPage}
                   label={commonT('productsLoadMore')}
                   loading={props.query.isFetchingNextPage}
-                  marginRight="s-size"
                   onClick={() => props.query.fetchNextPage()}
                   size="medium"
                 />

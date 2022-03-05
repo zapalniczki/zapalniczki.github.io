@@ -2,13 +2,16 @@ import React from 'react'
 import { ReactComponent as Svg } from 'assets/logo.svg'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
+import { Box } from 'components'
 
 type Props = {
   expanded?: boolean
 } & SpaceProps
 
 const Logo = ({ expanded, ...props }: Props) => (
-  <StyledSvg $expanded={expanded} {...props} />
+  <Box {...props}>
+    <StyledSvg $expanded={expanded} />
+  </Box>
 )
 
 type StyledSvgProps = {
