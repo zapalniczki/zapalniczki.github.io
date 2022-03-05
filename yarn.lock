@@ -2422,6 +2422,11 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@zapalniczki/shared-components@^0.0.10":
+  version "0.0.10"
+  resolved "https://npm.pkg.github.com/download/@zapalniczki/shared-components/0.0.10/f53b5305aebda6c5b6b914566c4a08eb7e4fda0edadeefcb25d85af4e9812287#1f7452d832334729935615f2449fa51c97b1ac47"
+  integrity sha512-ZDDLyrXBU+TZ8gqAVCSok3NjBf89phUEvjRQRjWMlTlW568BGakKOPmz/rntCJArf1zXg2V8EOdzqIwv0H7Eng==
+
 accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/accepts/-/accepts-1.3.7.tgz#531bc726517a3b2b41f850021c6cc15eaab507cd"
