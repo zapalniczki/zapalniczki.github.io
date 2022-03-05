@@ -1,7 +1,11 @@
 import { Box, boxStyleProps } from '@zapalniczki/shared-components'
 import styled from 'styled-components'
-import { system } from 'styled-system'
-import { Space } from 'styles'
+import {
+  ResponsiveValue,
+  system,
+  Theme,
+  TLengthStyledSystem
+} from 'styled-system'
 
 type Props = GapProps
 
@@ -20,7 +24,12 @@ const Flexbox = styled(Box)<Props>`
 `
 
 type GapProps = {
-  gap?: Space
+  gap?:
+    | ResponsiveValue<
+        string | number | symbol,
+        Required<Theme<TLengthStyledSystem>>
+      >
+    | undefined
 }
 
 export default Flexbox
