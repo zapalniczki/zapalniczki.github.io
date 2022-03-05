@@ -1,6 +1,8 @@
 import { IconName } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FeatureItem, Flexbox, Grid, SectionHead } from 'components'
+import { FeatureItem, Grid, SectionHead } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React from 'react'
 import { useTranslation } from 'hooks'
 import styled, { keyframes } from 'styled-components'

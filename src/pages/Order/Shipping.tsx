@@ -4,11 +4,12 @@ import {
   Tile,
   Text,
   LabelledItem,
-  Flexbox,
   Button,
   TileBody,
   TileHeading
 } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import { remoteConfigContext } from 'providers'

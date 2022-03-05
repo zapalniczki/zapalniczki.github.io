@@ -1,4 +1,5 @@
-import { FieldWrapper, Button, Flexbox, Input } from 'components'
+import { FieldWrapper, Button, Input } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import { Field, FieldProps } from 'formik'
 import React from 'react'
 import { useInput, useTranslation } from 'hooks'

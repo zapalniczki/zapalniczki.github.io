@@ -1,4 +1,4 @@
-import { Flexbox } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import React from 'react'
 
 const TopBar = () => {

@@ -1,4 +1,6 @@
-import { Flexbox, Grid } from 'components'
+import { Grid } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { SectionTitleLoader } from '../SectionTitle'
 import React from 'react'
 import { SpaceProps } from 'styled-system'

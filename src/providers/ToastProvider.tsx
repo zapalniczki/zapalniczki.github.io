@@ -1,6 +1,7 @@
-import { Flexbox, ResultIcon, Text } from 'components'
+import { ResultIcon, Text } from 'components'
 import React, { createContext, ReactNode, ReactText, useMemo } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   children: ReactNode

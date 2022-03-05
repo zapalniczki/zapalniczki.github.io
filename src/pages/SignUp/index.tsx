@@ -1,5 +1,7 @@
-import { Flexbox, Page, SectionHead, Tile } from 'components'
+import { Page, SectionHead, Tile } from 'components'
 import { Formik } from 'formik'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'

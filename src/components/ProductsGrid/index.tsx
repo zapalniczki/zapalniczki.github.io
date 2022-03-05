@@ -1,5 +1,7 @@
-import { Button, Flexbox, InfiniteQueryLoader, QueryLoader } from 'components'
+import { Button, InfiniteQueryLoader, QueryLoader } from 'components'
 import { To } from 'history'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import React, { ReactNode } from 'react'

@@ -1,12 +1,11 @@
 import { getOrders } from 'api'
 import { DB_TABLES, Mold, Order, Language } from 'braty-common'
-import { Box } from '@zapalniczki/shared-components'
+import { Box, Flexbox } from '@zapalniczki/shared-components'
 
 import {
   DisplayDate,
   DisplayMoney,
   ExternalLink,
-  Flexbox,
   Link,
   QueryLoader,
   ResultIcon,
@@ -16,6 +15,7 @@ import {
   Text,
   Tile
 } from 'components'
+
 import differenceInDays from 'date-fns/differenceInDays'
 import parseISO from 'date-fns/parseISO'
 import { useTest, useTranslation } from 'hooks'

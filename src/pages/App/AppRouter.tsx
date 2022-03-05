@@ -1,4 +1,6 @@
-import { AdminAuth, Flexbox, UserAuth } from 'components'
+import { AdminAuth, UserAuth } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { remoteConfigContext } from 'providers'
 import React, { Suspense, useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'

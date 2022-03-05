@@ -1,4 +1,4 @@
-import Flexbox from '../Flexbox'
+import { Flexbox } from '@zapalniczki/shared-components'
 import { motion, AnimatePresence } from 'framer-motion'
 import React, { forwardRef, ReactNode } from 'react'
 import { useTheme } from 'styled-components'

@@ -1,4 +1,4 @@
-import { Flexbox } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import React, { ReactNode } from 'react'
 import { FlexboxProps, SpaceProps } from 'styled-system'
 

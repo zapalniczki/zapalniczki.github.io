@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Text } from 'components'
+import { Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'

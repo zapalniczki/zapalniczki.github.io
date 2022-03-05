@@ -1,5 +1,7 @@
-import { TileBody, Button, Flexbox, Text } from 'components'
+import { TileBody, Button, Text } from 'components'
 import React from 'react'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'
 import { View } from './useForm'

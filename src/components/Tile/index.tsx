@@ -1,4 +1,4 @@
-import { Flexbox } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import { boxStyleProps } from '@zapalniczki/shared-components'
 import styled from 'styled-components'
 import { breakpoints, getColor, getRadius, getSpace } from 'styles'

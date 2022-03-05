@@ -1,7 +1,8 @@
 import { IconName } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Text } from 'components'
+import { Text } from 'components'
 import React from 'react'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   description: string

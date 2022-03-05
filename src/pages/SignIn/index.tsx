@@ -1,11 +1,13 @@
 import { ROUTES } from 'braty-common'
-import { Flexbox, Page, SectionHead, Tile } from 'components'
+import { Page, SectionHead, Tile } from 'components'
 import { Formik } from 'formik'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { authContext } from 'providers'
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
 import Form from './Form'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import useForm from './useForm'
 
 const SignIn = () => {

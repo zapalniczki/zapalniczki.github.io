@@ -1,5 +1,7 @@
 import { marketingStatus } from 'braty-common'
-import { Banner, Flexbox, Page, Switch, Text } from 'components'
+import { Banner, Page, Switch, Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { usePageTitle, useScrollTop, useTest, useTranslation } from 'hooks'
 import React, { useState } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'

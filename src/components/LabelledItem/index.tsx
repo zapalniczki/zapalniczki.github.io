@@ -1,4 +1,5 @@
-import { Flexbox, Text } from 'components'
+import { Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 // eslint-disable-next-line no-restricted-imports
 import { Type } from 'components/Text'

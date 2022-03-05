@@ -1,5 +1,7 @@
-import { Flexbox, Spinner } from 'components'
+import { Spinner } from 'components'
 import { useDev } from 'hooks'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { ImageSize } from 'braty-common'
 import React from 'react'
 import { Img } from 'react-image'

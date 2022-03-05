@@ -1,6 +1,7 @@
-import { Flexbox, Heading, Button, Banner, Size } from 'components'
+import { Heading, Button, Banner, Size } from 'components'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   link: {

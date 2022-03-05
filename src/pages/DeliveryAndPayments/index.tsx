@@ -6,13 +6,14 @@ import { ReadTermsAndConditions } from 'commonComponents'
 import {
   Banner,
   FeatureItem,
-  Flexbox,
   Grid,
   Page,
   ProductsGridLoader,
   QueryLoader,
   SectionHead
 } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React from 'react'
 import { useQuery } from 'react-query'

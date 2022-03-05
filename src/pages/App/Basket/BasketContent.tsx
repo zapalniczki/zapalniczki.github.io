@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BasketItem } from 'organisms'
-import { Flexbox, Text, Grid } from 'components'
+import { Text, Grid } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useModalView, useTranslation } from 'hooks'
 import { GetProductsByIdResponseItem } from 'models'
 import { checkoutContext } from 'providers'

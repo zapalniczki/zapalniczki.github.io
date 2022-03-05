@@ -1,6 +1,8 @@
 import { IconName } from '@fortawesome/fontawesome-common-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Heading } from 'components'
+import { Heading } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React from 'react'
 import { useTheme } from 'styled-components'
 

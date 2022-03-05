@@ -1,7 +1,7 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
-import { Box } from '@zapalniczki/shared-components'
+import { Box, Flexbox } from '@zapalniczki/shared-components'
 
-import { Flexbox, NavigationLink } from 'components'
+import { NavigationLink } from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'

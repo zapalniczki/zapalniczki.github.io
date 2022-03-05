@@ -1,7 +1,9 @@
 import { MoldStatus } from 'braty-common'
-import { Flexbox, Text } from 'components'
+import { Text } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import styled from 'styled-components'
 import { getColor, getSpace } from 'styles'
 

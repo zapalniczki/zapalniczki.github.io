@@ -1,4 +1,4 @@
-import { Flexbox } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import styled from 'styled-components'
 import { flexbox } from 'styled-system'
 import { breakpoints, getSpace, MAX_WIDTH } from 'styles'

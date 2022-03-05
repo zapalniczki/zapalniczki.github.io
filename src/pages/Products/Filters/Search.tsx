@@ -1,6 +1,8 @@
-import { Button, Flexbox } from 'components'
+import { Button } from 'components'
 import { useTranslation } from 'hooks'
 import React from 'react'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import styled from 'styled-components'
 import { getColor, getFontSize, getRadius, getSpace } from 'styles'
 

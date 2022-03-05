@@ -1,6 +1,8 @@
 import { ReactComponent as En } from 'assets/flags/en.svg'
 import { ReactComponent as Pl } from 'assets/flags/pl.svg'
-import { Button, Flexbox } from 'components'
+import { Button } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { scrollToTop, useTranslation } from 'hooks'
 import React from 'react'
 import { language as languageSchema, Language } from 'braty-common'

@@ -1,11 +1,6 @@
-import {
-  DisplayMoney,
-  Flexbox,
-  Heading,
-  Separator,
-  Text,
-  Tile
-} from 'components'
+import { DisplayMoney, Heading, Separator, Text, Tile } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { GetProductResponse } from 'models'
 import React from 'react'

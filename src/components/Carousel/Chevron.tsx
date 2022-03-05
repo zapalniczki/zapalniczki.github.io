@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Button } from 'components'
+import { Button } from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
 import React from 'react'
 import { useTheme } from 'styled-components'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   clickHandler: () => void

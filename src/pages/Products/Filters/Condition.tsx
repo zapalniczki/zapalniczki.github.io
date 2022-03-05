@@ -1,7 +1,9 @@
-import { Chip, Flexbox, QueryLoader, Text } from 'components'
+import { Chip, QueryLoader, Text } from 'components'
 import { useTranslation } from 'hooks'
 import { GetCollectionsResponseItem, GetIconsResponseItem } from 'models'
 import React from 'react'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { UseQueryResult } from 'react-query'
 import { useSearchParams } from 'react-router-dom'
 import { SpaceProps } from 'styled-system'

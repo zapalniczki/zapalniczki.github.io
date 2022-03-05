@@ -1,6 +1,6 @@
 import { ROUTES } from 'braty-common'
-import { DisplayMoney, Flexbox, Grid, Image, Link, Text } from 'components'
-import { Box } from '@zapalniczki/shared-components'
+import { DisplayMoney, Grid, Image, Link, Text } from 'components'
+import { Box, Flexbox } from '@zapalniczki/shared-components'
 
 import { useBreakpoints, useTranslation } from 'hooks'
 import { BasketItem, GetProductsResponseItem } from 'models'

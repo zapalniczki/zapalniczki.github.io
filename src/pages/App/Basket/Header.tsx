@@ -1,4 +1,6 @@
-import { Button, Flexbox, PanelHeader, Text } from 'components'
+import { Button, PanelHeader, Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { checkoutContext, togglesContext } from 'providers'
 import React, { useContext } from 'react'

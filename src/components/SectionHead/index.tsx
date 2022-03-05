@@ -1,5 +1,7 @@
-import { Flexbox, Heading, Link, Separator } from 'components'
+import { Heading, Link, Separator } from 'components'
 import { To } from 'history'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React from 'react'
 import { NavigateOptions } from 'react-router-dom'
 import { SpaceProps } from 'styled-system'

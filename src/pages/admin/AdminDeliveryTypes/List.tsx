@@ -1,13 +1,8 @@
 import { getDeliveryTypes } from 'api'
 import { DB_TABLES, DeliveryType, Language } from 'braty-common'
-import {
-  DisplayMoney,
-  Flexbox,
-  QueryLoader,
-  ResultIcon,
-  Table,
-  Tile
-} from 'components'
+import { DisplayMoney, QueryLoader, ResultIcon, Table, Tile } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'

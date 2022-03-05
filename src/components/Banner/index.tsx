@@ -1,5 +1,6 @@
 import Heading from '../Heading'
-import Flexbox from '../Flexbox'
+
+import { Flexbox } from '@zapalniczki/shared-components'
 import { useBreakpoints } from 'hooks'
 import React, { ReactNode } from 'react'
 import { OrderProps, SpaceProps } from 'styled-system'

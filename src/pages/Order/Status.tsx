@@ -1,11 +1,6 @@
 import React, { useContext } from 'react'
-import {
-  Tile,
-  Text,
-  SectionHead,
-  Flexbox,
-  OrderStatusIndicator
-} from 'components'
+import { Tile, Text, SectionHead, OrderStatusIndicator } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import { useTranslation } from 'hooks'
 import { Order } from 'braty-common'
 import { remoteConfigContext } from 'providers'

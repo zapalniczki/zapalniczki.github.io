@@ -4,7 +4,8 @@ import { checkoutContext } from 'providers'
 import useForm, { FormValues } from './useForm'
 import { GetProductResponse } from 'models'
 import { useTranslation } from 'hooks'
-import { Button, Flexbox, NumberInput, Text } from 'components'
+import { Button, NumberInput, Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   product: GetProductResponse

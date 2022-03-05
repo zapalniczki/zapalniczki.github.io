@@ -1,6 +1,8 @@
 import { getCallbacks } from 'api'
 import { Callback, DB_TABLES } from 'braty-common'
-import { Flexbox, QueryLoader, ResultIcon, Table, Tile } from 'components'
+import { QueryLoader, ResultIcon, Table, Tile } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'

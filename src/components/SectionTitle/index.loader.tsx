@@ -1,6 +1,6 @@
 import React from 'react'
 import ContentLoader from '../ContentLoader'
-import Flexbox from '../Flexbox'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   left?: boolean

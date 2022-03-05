@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import Flexbox from '../Flexbox'
+import { Flexbox } from '@zapalniczki/shared-components'
 import { useField } from 'formik'
 import InputLabel from '../InputLabel'
 

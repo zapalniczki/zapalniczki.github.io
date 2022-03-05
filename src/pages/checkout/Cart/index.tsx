@@ -1,15 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getProductsById } from 'api'
 import { DB_TABLES } from 'braty-common'
-import {
-  Columns,
-  Flexbox,
-  Grid,
-  Heading,
-  Page,
-  QueryLoader,
-  Text
-} from 'components'
+import { Columns, Grid, Heading, Page, QueryLoader, Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { BasketItem, CheckoutTotal } from 'organisms'
 import { checkoutContext } from 'providers'

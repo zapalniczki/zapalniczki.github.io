@@ -1,4 +1,6 @@
-import { Flexbox, Heading } from 'components'
+import { Heading } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'

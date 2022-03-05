@@ -1,6 +1,6 @@
 import { Form as FormikForm, Formik } from 'formik'
 import React from 'react'
-import { Flexbox } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
 import Form from './Form'
 import Result from './Result'
 import Error from './Error'

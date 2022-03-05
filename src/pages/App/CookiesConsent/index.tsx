@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, MaxWidth, Text } from 'components'
+import { MaxWidth, Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useBreakpoints, useTranslation } from 'hooks'
 import { Loader } from 'providers'
 import React, { useState } from 'react'

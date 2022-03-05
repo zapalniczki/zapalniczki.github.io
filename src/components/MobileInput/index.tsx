@@ -1,4 +1,6 @@
-import { Flexbox, InputLabel } from 'components'
+import { InputLabel } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { FieldProps, useField } from 'formik'
 import { useTranslation } from 'hooks'
 import React from 'react'

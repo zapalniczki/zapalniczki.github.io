@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ROUTES } from 'braty-common'
-import { DisplayMoney, Flexbox, Image, Text, Tile } from 'components'
+import { DisplayMoney, Image, Text, Tile } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { GetProductsResponseItem } from 'models'
 import { checkoutContext } from 'providers'

@@ -1,4 +1,6 @@
-import { Flexbox, Logo } from 'components'
+import { Logo } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React from 'react'
 
 const Preloader = () => (

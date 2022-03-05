@@ -1,4 +1,4 @@
-import Flexbox from '../Flexbox'
+import { Flexbox } from '@zapalniczki/shared-components'
 import Separator from '../Separator'
 import React, { ReactNode } from 'react'
 import { Button, Grid } from 'components'

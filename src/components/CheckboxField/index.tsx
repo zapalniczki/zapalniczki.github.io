@@ -1,9 +1,10 @@
-import { StyledInput, Text, Flexbox } from 'components'
+import { StyledInput, Text } from 'components'
 import { FieldProps, FieldInputProps } from 'formik'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { getColor } from 'styles'
 import CheckboxFieldLoader from './index.loader'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = FieldInputProps<string> & {
   caption?: ReactNode

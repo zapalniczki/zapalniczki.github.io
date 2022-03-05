@@ -1,5 +1,7 @@
-import { Button, Flexbox, INPUT_HEIGHT } from 'components'
+import { Button, INPUT_HEIGHT } from 'components'
 import { FieldProps, useField } from 'formik'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React from 'react'
 import styled from 'styled-components'
 import { getColor, getSpace } from 'styles'

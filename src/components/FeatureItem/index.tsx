@@ -1,5 +1,6 @@
-import { Flexbox, Tile, Text } from 'components'
+import { Tile, Text } from 'components'
 import React, { ReactNode } from 'react'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   children: ReactNode

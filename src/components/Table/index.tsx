@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Text } from 'components'
-import { Box } from '@zapalniczki/shared-components'
+import { Text } from 'components'
+import { Box, Flexbox } from '@zapalniczki/shared-components'
 
 import { useTranslation } from 'hooks'
 import React from 'react'

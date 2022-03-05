@@ -6,7 +6,7 @@ import Snowfall from 'react-snowfall'
 import styled from 'styled-components'
 import { FlexboxProps } from 'styled-system'
 import { getSpace } from 'styles'
-import Flexbox from '../Flexbox'
+import { Flexbox } from '@zapalniczki/shared-components'
 import MaxWidth from '../MaxWidth'
 
 type Props = {

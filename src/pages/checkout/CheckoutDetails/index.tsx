@@ -1,6 +1,8 @@
 import { ROUTES } from 'braty-common'
-import { BackButton, Columns, Flexbox, Heading, Page, Switch } from 'components'
+import { BackButton, Columns, Heading, Page, Switch } from 'components'
 import { Form as FormikForm, Formik } from 'formik'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import { CheckoutTotal, StepTracker } from 'organisms'
 import { checkoutContext } from 'providers'

@@ -1,4 +1,4 @@
-import Flexbox from '../Flexbox'
+import { Flexbox } from '@zapalniczki/shared-components'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'

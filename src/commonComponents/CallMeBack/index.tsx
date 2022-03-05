@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BRATY_PHONE } from 'braty-common'
-import { Banner, Button, Flexbox, Heading, Text } from 'components'
+import { Banner, Button, Heading, Text } from 'components'
+
 import { Form as FormikForm, Formik } from 'formik'
-import { Box } from '@zapalniczki/shared-components'
+import { Flexbox, Box } from '@zapalniczki/shared-components'
 import { useBreakpoints, useTranslation } from 'hooks'
 import React from 'react'
 import { useTheme } from 'styled-components'

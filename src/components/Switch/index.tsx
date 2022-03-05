@@ -1,4 +1,6 @@
-import { Flexbox, Text } from 'components'
+import { Text } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React from 'react'
 import NativeSwitch from 'react-switch'
 import { useTheme } from 'styled-components'

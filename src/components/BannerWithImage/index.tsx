@@ -1,6 +1,7 @@
-import { Banner, Flexbox, Heading, Image, Size } from 'components'
+import { Banner, Heading, Image, Size } from 'components'
 import React, { ReactNode } from 'react'
 import { OrderProps, SpaceProps } from 'styled-system'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = {
   children?: ReactNode

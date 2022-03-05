@@ -1,4 +1,6 @@
-import { Button, FieldWrapper, Flexbox, Input } from 'components'
+import { Button, FieldWrapper, Input } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { Field, FieldProps, FormikContextType, useFormikContext } from 'formik'
 import { useInput, useTranslation } from 'hooks'
 import { Voucher } from 'braty-common'

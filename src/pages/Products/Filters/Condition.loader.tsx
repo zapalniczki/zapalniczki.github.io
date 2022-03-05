@@ -1,7 +1,8 @@
 import React from 'react'
-import { ContentLoader, Flexbox, ChipLoader as Chip } from 'components'
+import { ContentLoader, ChipLoader as Chip } from 'components'
 import { SpaceProps } from 'styled-system'
 import { useBreakpoints } from 'hooks'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type Props = SpaceProps
 

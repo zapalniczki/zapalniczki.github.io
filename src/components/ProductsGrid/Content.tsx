@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Flexbox, Grid, SectionTitle, Text } from 'components'
+import { Grid, SectionTitle, Text } from 'components'
 import { useTranslation } from 'hooks'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { GetProductsResponseItem } from 'models'
 import React from 'react'
 import { BaseProps } from '.'

@@ -1,5 +1,6 @@
-import { Button, Flexbox } from 'components'
+import { Button } from 'components'
 import React from 'react'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 type ButtonProps = {
   disabled?: boolean

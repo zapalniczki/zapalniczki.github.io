@@ -1,13 +1,8 @@
 import { getProductsById } from 'api'
 import { DB_TABLES } from 'braty-common'
-import {
-  Button,
-  Flexbox,
-  QueryLoader,
-  SectionHead,
-  Text,
-  Tile
-} from 'components'
+import { Button, QueryLoader, SectionHead, Text, Tile } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import uniq from 'lodash.uniq'
 import Loader from './Actions.loader'

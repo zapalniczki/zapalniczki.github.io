@@ -1,11 +1,8 @@
 import { getMarketings } from 'api'
 import { DB_TABLES, Marketing } from 'braty-common'
-import {
-  Flexbox,
-  QueryLoader,
-  ResultIcon,
-  Table as NativeTable
-} from 'components'
+import { QueryLoader, ResultIcon, Table as NativeTable } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import React, { useMemo } from 'react'
 import { useQuery } from 'react-query'

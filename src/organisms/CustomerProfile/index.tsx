@@ -3,7 +3,6 @@ import { getCustomer } from 'api'
 import { DB_TABLES, Order, ROUTES } from 'braty-common'
 import {
   CustomerAvatar,
-  Flexbox,
   LabelledItem,
   QueryLoader,
   SectionHead,
@@ -12,6 +11,8 @@ import {
   TileBody,
   TileHeading
 } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'

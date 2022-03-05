@@ -1,5 +1,7 @@
-import { Flexbox, Button, Text } from 'components'
+import { Button, Text } from 'components'
 import { useTranslation } from 'hooks'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import React, { ReactElement } from 'react'
 
 type Props = {

@@ -1,14 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ROUTES } from 'braty-common'
-import {
-  Button,
-  Columns,
-  Flexbox,
-  Heading,
-  Page,
-  Spinner,
-  Tile
-} from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
+import { Button, Columns, Heading, Page, Spinner, Tile } from 'components'
 import { usePageTitle, useScrollTop, useTranslation } from 'hooks'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'

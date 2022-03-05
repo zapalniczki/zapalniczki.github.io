@@ -3,11 +3,12 @@ import {
   SectionHead,
   Tile,
   Text,
-  Flexbox,
   OrderStatusIndicator,
   Link,
   DisplayDate
 } from 'components'
+import { Flexbox } from '@zapalniczki/shared-components'
+
 import { useTranslation } from 'hooks'
 import { remoteConfigContext } from 'providers'
 import React, { useContext } from 'react'

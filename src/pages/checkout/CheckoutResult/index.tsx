@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Button, Columns, Flexbox, Heading, Page, Text, Tile } from 'components'
+import { Button, Columns, Heading, Page, Text, Tile } from 'components'
 import { ROUTES } from 'braty-common'
+import { Flexbox } from '@zapalniczki/shared-components'
 
 import {
   useBreakpoints,
