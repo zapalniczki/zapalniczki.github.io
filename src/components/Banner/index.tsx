@@ -4,12 +4,14 @@ import { useBreakpoints } from 'hooks'
 import React, { ReactNode } from 'react'
 import { OrderProps, SpaceProps } from 'styled-system'
 import { Color } from 'styles'
+import Loader from './index.loader'
 
 export type Props = {
   background?: ReactNode
   backgroundColor?: Color
   children?: ReactNode
   size?: Size
+  subtitle?: string
   title?: string
   vhOnMobile?: boolean
 } & SpaceProps &
@@ -20,6 +22,7 @@ const Banner = ({
   backgroundColor,
   children,
   size,
+  subtitle,
   title,
   vhOnMobile,
   ...props
@@ -49,6 +52,8 @@ const Banner = ({
     >
       {title && <Heading level={3}>{title}</Heading>}
 
+      {subtitle && <Heading level={5}>{subtitle}</Heading>}
+
       {children}
 
       {background && (
@@ -76,4 +81,5 @@ const sizeToHeight: Record<Size, string> = {
 
 export type Size = 'SMALL' | 'MEDIUM' | 'LARGE'
 
+export { Loader as BannerLoader }
 export default Banner

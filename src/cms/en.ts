@@ -922,11 +922,8 @@ const en: LanguageKeys = {
 
   ORDER: {
     title: 'Order',
+    subtitle: 'Order reference number',
     SECTIONS: {
-      ID: {
-        label: 'Order reference number'
-      },
-
       PRODUCTS: {
         title: 'Products'
       },

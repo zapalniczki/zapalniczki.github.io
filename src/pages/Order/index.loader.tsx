@@ -1,39 +1,34 @@
 import { useLoaderWidth } from 'hooks'
 import React from 'react'
-import { ContentLoader, Columns } from 'components'
+import { ContentLoader, Columns, BannerLoader as Banner } from 'components'
 import { CustomerProfileLoader as CustomerProfile } from 'organisms'
 import Actions from './Actions.loader'
 
 const Loader = () => (
-  <Columns>
-    <div>
-      <OrderId />
+  <>
+    <Banner marginBottom="l-size" />
 
-      <OrderStatus />
+    <Columns>
+      <div>
+        <OrderStatus />
 
-      <Billing />
+        <Billing />
 
-      <Products />
-    </div>
+        <Products />
+      </div>
 
-    <div>
-      <Actions />
+      <div>
+        <Actions />
 
-      <Details />
+        <Details />
 
-      <Shipping />
+        <Shipping />
 
-      <CustomerProfile />
-    </div>
-  </Columns>
+        <CustomerProfile />
+      </div>
+    </Columns>
+  </>
 )
-
-const OrderId = () => {
-  const width = useLoaderWidth('MAIN')
-  const height = 130.8
-
-  return <ContentLoader height={height} width={width} />
-}
 
 const OrderStatus = () => {
   const width = useLoaderWidth('MAIN')

@@ -923,11 +923,8 @@ const pl = {
 
   ORDER: {
     title: 'Zamówienie',
+    subtitle: 'Numer referencyjny zamówienia',
     SECTIONS: {
-      ID: {
-        label: 'Numer referencyjny zamówienia'
-      },
-
       PRODUCTS: {
         title: 'Produkty'
       },

@@ -30,9 +30,9 @@ const useLoaderWidth = (column?: 'MAIN' | 'SIDE') => {
 
   if (column === 'SIDE') {
     if (isMax) {
-      width = 344
+      width = 328
     } else if (!isMax && isDesktop) {
-      width = 291.2
+      width = 275.2
     } else if (!isDesktop && isTablet) {
       width = 768
     } else {
