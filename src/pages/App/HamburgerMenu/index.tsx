@@ -1,4 +1,6 @@
-import { Box, NavigationLink, PopupPanel } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+
+import { NavigationLink, PopupPanel } from 'components'
 import { useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext, togglesContext } from 'providers'

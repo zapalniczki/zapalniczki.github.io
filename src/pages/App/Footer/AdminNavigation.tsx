@@ -1,6 +1,8 @@
 import { getOrdersCount } from 'api'
 import { DB_TABLES } from 'braty-common'
-import { Badge, Box, Flexbox, Link, QueryLoader } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+
+import { Badge, Flexbox, Link, QueryLoader } from 'components'
 import { useAdmin, useBreakpoints, useTest, useTranslation } from 'hooks'
 import { routes } from 'pages'
 import { remoteConfigContext } from 'providers'

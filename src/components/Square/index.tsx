@@ -1,4 +1,4 @@
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 import React, { useEffect, useRef, useState, ReactNode } from 'react'
 import { DisplayProps, GridAreaProps } from 'styled-system'
 

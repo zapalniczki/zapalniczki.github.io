@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Box, Flexbox, Tile } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+
+import { Flexbox, Tile } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { useTheme } from 'styled-components'

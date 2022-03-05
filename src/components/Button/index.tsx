@@ -1,6 +1,8 @@
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Box, Spinner, Text } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+
+import { Spinner, Text } from 'components'
 import { LayoutProps } from 'framer-motion'
 import React, { ReactNode } from 'react'
 import styled, { css } from 'styled-components'

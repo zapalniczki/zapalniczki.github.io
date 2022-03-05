@@ -1,4 +1,4 @@
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 import React, { ReactNode, ElementType } from 'react'
 import { useTheme } from 'styled-components'
 import { SpaceProps, TypographyProps } from 'styled-system'

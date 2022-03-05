@@ -1,6 +1,7 @@
 import { ROUTES } from 'braty-common'
+import { Box } from '@zapalniczki/shared-components'
+
 import {
-  Box,
   Button,
   DisplayMoney,
   Flexbox,

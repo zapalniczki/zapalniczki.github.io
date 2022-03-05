@@ -1,4 +1,5 @@
-import { Box, Button, SectionHead, Text, Tile } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+import { Button, SectionHead, Text, Tile } from 'components'
 import { useTranslation } from 'hooks'
 import { GetOrderResponse } from 'models'
 import { remoteConfigContext } from 'providers'

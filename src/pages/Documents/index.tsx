@@ -1,4 +1,6 @@
-import { Banner, Box, ExternalLink, Flexbox, ListItem, Page } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+
+import { Banner, ExternalLink, Flexbox, ListItem, Page } from 'components'
 import { useScrollTop, usePageTitle, useTranslation } from 'hooks'
 import React from 'react'
 

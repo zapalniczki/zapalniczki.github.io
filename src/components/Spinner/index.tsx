@@ -1,6 +1,6 @@
 import { SizeProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 import React from 'react'
 import { SpaceProps } from 'styled-system'
 

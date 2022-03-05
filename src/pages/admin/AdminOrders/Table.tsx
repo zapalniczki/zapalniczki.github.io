@@ -1,7 +1,8 @@
 import { getOrders } from 'api'
 import { DB_TABLES, Mold, Order, Language } from 'braty-common'
+import { Box } from '@zapalniczki/shared-components'
+
 import {
-  Box,
   DisplayDate,
   DisplayMoney,
   ExternalLink,

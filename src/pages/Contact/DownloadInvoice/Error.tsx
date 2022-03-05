@@ -1,4 +1,6 @@
-import { TileBody, Box, Button, Text } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+
+import { TileBody, Button, Text } from 'components'
 import React from 'react'
 import { useTranslation } from 'hooks'
 import { ViewWrapper } from '.'

@@ -2,7 +2,7 @@ import React from 'react'
 import { ReactComponent as Svg } from 'assets/logo.svg'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 
 type Props = {
   expanded?: boolean

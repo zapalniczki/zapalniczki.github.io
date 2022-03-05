@@ -1,4 +1,4 @@
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 import styled from 'styled-components'
 import { flexBasis, layout } from 'styled-system'
 

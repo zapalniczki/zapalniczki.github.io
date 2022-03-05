@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import { Carousel as CarouselNative } from 'react-responsive-carousel'
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 import useHero, { BannerKey } from './useHero'
 import Chevron from './Chevron'
 

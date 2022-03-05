@@ -1,4 +1,4 @@
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 import { useTranslation } from 'hooks'
 import React, { ReactNode } from 'react'
 import ReactContentLoader, { IContentLoaderProps } from 'react-content-loader'

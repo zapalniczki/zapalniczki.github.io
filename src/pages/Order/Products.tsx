@@ -1,7 +1,8 @@
 import { getProductsById } from 'api'
 import { DB_TABLES, ROUTES, Language } from 'braty-common'
+import { Box } from '@zapalniczki/shared-components'
+
 import {
-  Box,
   DisplayMoney,
   Image,
   Link,

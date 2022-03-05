@@ -1,4 +1,5 @@
-import { Box, Flexbox, Image } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+import { Flexbox, Image } from 'components'
 import { useTranslation } from 'hooks'
 import { GetProductResponse } from 'models'
 import React from 'react'

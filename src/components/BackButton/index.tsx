@@ -1,4 +1,5 @@
-import Box from '../Box'
+import { Box } from '@zapalniczki/shared-components'
+
 import Link from '../Link'
 import React from 'react'
 import { To } from 'history'

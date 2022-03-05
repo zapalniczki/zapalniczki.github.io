@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { getSpace, Space } from 'styles'
-import Box, { boxStyleProps } from '../Box'
+import { boxStyleProps } from '../Box'
+
+import { Box } from '@zapalniczki/shared-components'
 
 type Props = {
   gap?: Space

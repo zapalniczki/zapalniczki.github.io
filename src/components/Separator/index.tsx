@@ -1,4 +1,4 @@
-import { Box } from 'components'
+import { Box } from '@zapalniczki/shared-components'
 import styled from 'styled-components'
 import { layout, space } from 'styled-system'
 import { getColor, getSpace } from 'styles'

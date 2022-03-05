@@ -1,5 +1,7 @@
 import { ROUTES } from 'braty-common'
-import { Box, Link, Logo, MaxWidth } from 'components'
+import { Box } from '@zapalniczki/shared-components'
+
+import { Link, Logo, MaxWidth } from 'components'
 import { useBreakpoints, useTranslation } from 'hooks'
 import { remoteConfigContext, togglesContext } from 'providers'
 import React, { useContext, useEffect } from 'react'

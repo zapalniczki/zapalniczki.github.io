@@ -1,6 +1,7 @@
 import { ROUTES, BRATY_WEBSITE_WORKFLOW_BADGE, BRATY_NAME } from 'braty-common'
+import { Box } from '@zapalniczki/shared-components'
+
 import {
-  Box,
   Flexbox,
   Image,
   Link,
