@@ -18,7 +18,6 @@ const Catalogue = () => {
 
   return (
     <BannerWithImage
-      marginTop="xxxl-size"
       order={homeCatalogueOrder}
       size="MEDIUM"
       src={catalogueCover}

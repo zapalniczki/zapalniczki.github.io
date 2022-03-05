@@ -27,7 +27,6 @@ const Featured = () => {
   return (
     <ProductsGrid
       loaderCount={homeFeaturedCount}
-      marginTop="xxxl-size"
       order={homeFeaturedOrder}
       query={featuredQuery}
       title={commonT('title')}

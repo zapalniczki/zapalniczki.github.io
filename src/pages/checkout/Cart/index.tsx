@@ -32,9 +32,7 @@ const Cart = () => {
 
   return (
     <Page>
-      <Heading level={4} marginBottom="l-size">
-        {t('title')}
-      </Heading>
+      <Heading level={4}>{t('title')}</Heading>
 
       {isBasketEmpty && (
         <Flexbox

@@ -27,7 +27,7 @@ const Details = ({ created_at, products, updated_at }: Props) => {
     .reduce((prev, curr) => prev + curr, 0)
 
   return (
-    <Tile padding={0}>
+    <Tile padding={[0, 0, 0, 0]}>
       <TileHeading>
         <SectionHead marginBottom={0} title={t('title')} />
       </TileHeading>

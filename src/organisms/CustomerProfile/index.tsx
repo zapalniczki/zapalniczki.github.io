@@ -47,7 +47,7 @@ const CustomerProfile = ({ customerId, hideProfileLink }: Props) => {
         }
 
         return (
-          <Tile padding={0}>
+          <Tile padding={[0, 0, 0, 0]}>
             <TileHeading alignItems="center">
               <SectionHead
                 link={customerProfileLink}

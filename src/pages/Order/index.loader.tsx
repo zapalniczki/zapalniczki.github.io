@@ -6,7 +6,7 @@ import Actions from './Actions.loader'
 
 const Loader = () => (
   <>
-    <Banner marginBottom="l-size" />
+    <Banner />
 
     <Columns>
       <div>

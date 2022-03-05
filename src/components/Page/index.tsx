@@ -25,7 +25,9 @@ const Page = ({ children, ...props }: Props) => {
 
   return (
     <Container as="main">
-      <MaxWidth {...props}>{children}</MaxWidth>
+      <MaxWidth gap="xxl-size" {...props}>
+        {children}
+      </MaxWidth>
 
       {snow && !isProductsPage && (
         <Snowfall

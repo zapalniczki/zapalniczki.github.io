@@ -38,12 +38,7 @@ const Order = () => {
       <QueryLoader Loader={<Loader />} query={orderQuery}>
         {(order) => (
           <>
-            <Banner
-              marginBottom="l-size"
-              size="SMALL"
-              subtitle={t('subtitle')}
-              title={id}
-            />
+            <Banner size="SMALL" subtitle={t('subtitle')} title={id} />
 
             <Columns>
               <div>

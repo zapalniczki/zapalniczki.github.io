@@ -11,7 +11,7 @@ const StepTracker = () => {
   const { colors } = useTheme()
 
   return (
-    <Flexbox justifyContent="center" marginBottom="xl-size" marginTop="l-size">
+    <Flexbox justifyContent="center">
       <Wrapper>
         {[1, 2, 3].map((step) => {
           const stepProps = getProps(current, step)

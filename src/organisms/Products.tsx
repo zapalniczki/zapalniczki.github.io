@@ -21,7 +21,6 @@ const Products = ({ collectionKey, loaderCount, title }: Props) => {
     <ProductsGrid
       hideWhenEmpty={false}
       loaderCount={loaderCount}
-      marginTop="xxl-size"
       query={productsQuery}
       title={title}
     />

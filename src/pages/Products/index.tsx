@@ -74,7 +74,6 @@ const Products = () => {
       <ProductsGrid
         hideWhenEmpty={false}
         loaderCount={6}
-        marginTop="xxl-size"
         paginated
         query={infiniteProductQuery}
         sectionHeadChildren={

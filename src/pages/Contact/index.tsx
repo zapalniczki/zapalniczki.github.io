@@ -22,7 +22,6 @@ const Contact = () => {
           'repeat(1, 1fr)',
           'repeat(3, 1fr)'
         ]}
-        marginTop="xxl-size"
       >
         {contactMethods.map(({ content, extended, key, ...props }) => (
           <Tile

@@ -28,7 +28,6 @@ const Bestsellers = () => {
   return (
     <ProductsGrid
       loaderCount={6}
-      marginTop="xxxl-size"
       order={homeBestsellersOrder}
       query={bestsellersQuery}
       title={t('bestsellers.title')}

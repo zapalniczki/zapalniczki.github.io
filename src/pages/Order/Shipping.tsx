@@ -39,7 +39,7 @@ const Shipping = ({ deliveryType, parcel, shipping }: Props) => {
   const hasLink = !!parcel?.link
 
   return (
-    <Tile padding="unset">
+    <Tile padding={[0, 0, 0, 0]}>
       <TileHeading>
         <SectionHead marginBottom={0} title={t('title')} />
       </TileHeading>
